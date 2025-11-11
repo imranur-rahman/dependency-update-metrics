@@ -166,7 +166,15 @@ def main():
                 for dep_name, dep_df in results['dependency_data'].items():
                     # Excel sheet names have a 31 character limit
                     sheet_name = dep_name[:31]
-                    dep_df.to_excel(writer, sheet_name=sheet_name, index=False)
+                    
+                    # Convert timezone-aware datetimes to timezone-naive for Excel
+                    df_copy = dep_df.copy()
+                    for col in df_copy.columns:
+                        if pd.api.types.is_datetime64tz_dtype(df_copy[col]):
+                            # Convert to UTC and remove timezone info
+                            df_copy[col] = df_copy[col].dt.tz_convert('UTC').dt.tz_localize(None)
+                    
+                    df_copy.to_excel(writer, sheet_name=sheet_name, index=False)
             print(f"Worksheets saved to: {excel_file}")
         
     except Exception as e:

@@ -6,7 +6,7 @@ import json
 import logging
 import math
 import subprocess
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Any
 
@@ -47,8 +47,17 @@ class DependencyAnalyzer:
         """
         self.ecosystem = ecosystem.lower()
         self.package = package
-        self.start_date = start_date
-        self.end_date = end_date
+        # Ensure dates are timezone-aware (UTC)
+        if start_date.tzinfo is None:
+            self.start_date = start_date.replace(tzinfo=timezone.utc)
+        else:
+            self.start_date = start_date.astimezone(timezone.utc)
+            
+        if end_date.tzinfo is None:
+            self.end_date = end_date.replace(tzinfo=timezone.utc)
+        else:
+            self.end_date = end_date.astimezone(timezone.utc)
+            
         self.weighting_type = weighting_type
         self.half_life = half_life
         self.output_dir = Path(output_dir)
@@ -459,7 +468,39 @@ class DependencyAnalyzer:
         try:
             metadata = self.fetch_package_metadata(dependency)
             
+            # Get all versions up to at_date without modifying instance state
             if self.ecosystem == "npm":
+                # Try npm view time first
+                try:
+                    cmd = ['npm', 'view', dependency, 'time', '--json']
+                    result = subprocess.run(
+                        cmd, 
+                        capture_output=True, 
+                        text=True, 
+                        timeout=30
+                    )
+                    
+                    if result.returncode == 0:
+                        time_data = json.loads(result.stdout)
+                        time_data.pop('modified', None)
+                        time_data.pop('created', None)
+                        
+                        valid_versions = []
+                        for ver, timestamp in time_data.items():
+                            try:
+                                pub_date = datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
+                                if pub_date <= at_date:
+                                    valid_versions.append(ver)
+                            except (ValueError, AttributeError):
+                                continue
+                        
+                        if valid_versions:
+                            valid_versions.sort(key=lambda v: pkg_version.parse(v))
+                            return valid_versions[-1]
+                except (subprocess.TimeoutExpired, json.JSONDecodeError, FileNotFoundError) as e:
+                    logger.warning(f"npm view time failed for {dependency}, falling back to metadata: {e}")
+                
+                # Fallback to metadata parsing
                 versions = metadata.get('versions', {})
                 valid_versions = []
                 
@@ -473,7 +514,6 @@ class DependencyAnalyzer:
                         valid_versions.append(ver)
                 
                 if valid_versions:
-                    # Sort using semantic versioning
                     valid_versions.sort(key=lambda v: pkg_version.parse(v))
                     return valid_versions[-1]
             
@@ -630,6 +670,10 @@ class DependencyAnalyzer:
         """
         if dep_version is None:
             return False
+        
+        # Check if OSV dataframe has data
+        if len(osv_df) == 0 or 'package' not in osv_df.columns:
+            return True  # No vulnerability data available
         
         # Get vulnerabilities for this dependency
         dep_vulns = osv_df[osv_df['package'] == dependency]
@@ -796,7 +840,9 @@ class DependencyAnalyzer:
                 all_deps_data[dep_name] = dep_df
                 
             except Exception as e:
+                import traceback
                 logger.error(f"Error analyzing {dep_name}: {e}")
+                logger.error(traceback.format_exc())
                 print(f"    Error: {e}")
                 continue
         
