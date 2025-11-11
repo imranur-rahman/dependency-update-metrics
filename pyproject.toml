@@ -1,0 +1,69 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dependency-metrics"
+version = "0.1.0"
+description = "A tool for analyzing time-to-update and time-to-remediate metrics for package dependencies"
+readme = "README.md"
+authors = [
+    {name = "Imranur Rahman", email = "your.email@example.com"}
+]
+license = {text = "MIT"}
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Build Tools",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+keywords = ["dependencies", "metrics", "security", "vulnerabilities", "npm", "pypi"]
+
+dependencies = [
+    "pandas>=1.3.0",
+    "requests>=2.25.0",
+    "tqdm>=4.60.0",
+    "packaging>=21.0",
+    "openpyxl>=3.0.0",
+    "pyarrow>=6.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=3.0.0",
+    "black>=22.0.0",
+    "flake8>=4.0.0",
+    "mypy>=0.950",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/imranur-rahman/dependency-update-metrics"
+"Bug Reports" = "https://github.com/imranur-rahman/dependency-update-metrics/issues"
+"Source" = "https://github.com/imranur-rahman/dependency-update-metrics"
+
+[project.scripts]
+dependency-metrics = "dependency_metrics.cli:main"
+
+[tool.setuptools]
+packages = ["dependency_metrics"]
+
+[tool.setuptools.package-data]
+dependency_metrics = ["py.typed"]
+
+[tool.black]
+line-length = 100
+target-version = ['py38']
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
