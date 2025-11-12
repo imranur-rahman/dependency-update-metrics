@@ -646,6 +646,13 @@ class DependencyAnalyzer:
                 'weight': weight
             })
         
+        # If the interval_start for first record is default (i.e., '1900-01-01 00:00:00')
+        # set the weight of that record to 0
+        print (records[0])
+        if records and records[0]['interval_start'] == datetime(1900, 1, 1, 0, 0, tzinfo=timezone.utc):
+            # Remove the default placeholder record
+            records.pop(0)
+        
         return pd.DataFrame(records)
     
     def _check_remediation(
