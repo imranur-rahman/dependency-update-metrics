@@ -650,17 +650,26 @@ class DependencyAnalyzer:
             interval_start = interval_dates[i]
             interval_end = interval_dates[i + 1]
             
-            # Find highest package version available at interval_start
-            pkg_version_at_interval = None
-            constraint_at_interval = None
-            
+            # Find highest SEMVER package version available at interval_start
+            # Collect all versions released before or at interval_start
+            available_versions = []
             for ver, date, constraint in pkg_version_info:
                 if date <= interval_start:
-                    pkg_version_at_interval = ver
-                    constraint_at_interval = constraint
+                    available_versions.append((ver, constraint))
             
-            # Skip if no package version had this dependency yet
-            if pkg_version_at_interval is None or constraint_at_interval is None:
+            if not available_versions:
+                continue
+            
+            # Sort by semantic version and pick the highest
+            try:
+                available_versions.sort(key=lambda x: pkg_version.parse(x[0]))
+                pkg_version_at_interval, constraint_at_interval = available_versions[-1]
+            except Exception:
+                # Fallback to last by date if semver parsing fails
+                pkg_version_at_interval, constraint_at_interval = available_versions[-1]
+            
+            # Skip if no constraint for this dependency
+            if constraint_at_interval is None:
                 continue
             
             # Resolve dependency version at this interval using the constraint
