@@ -451,28 +451,33 @@ class DependencyAnalyzer:
         
         return None
     
-    def get_highest_version_at_date(
+    def get_highest_semver_version_at_date(
         self, 
-        dependency: str, 
-        at_date: datetime
+        package_name: str, 
+        at_date: datetime,
+        metadata: Optional[Dict] = None
     ) -> Optional[str]:
-        """Get highest available version at a specific date.
+        """Get highest SEMVER version available at a specific date.
         
         Args:
-            dependency: Dependency name
+            package_name: Package name to check
             at_date: Date to check versions
+            metadata: Optional pre-fetched package metadata
             
         Returns:
-            Highest version or None
+            Highest SEMVER version or None
         """
         try:
-            metadata = self.fetch_package_metadata(dependency)
+            # Fetch metadata if not provided
+            if metadata is None:
+                metadata = self.fetch_package_metadata(package_name)
             
-            # Get all versions up to at_date without modifying instance state
+            valid_versions = []
+            
             if self.ecosystem == "npm":
-                # Try npm view time first
+                # Try npm view time first for accurate timestamps
                 try:
-                    cmd = ['npm', 'view', dependency, 'time', '--json']
+                    cmd = ['npm', 'view', package_name, 'time', '--json']
                     result = subprocess.run(
                         cmd, 
                         capture_output=True, 
@@ -485,7 +490,6 @@ class DependencyAnalyzer:
                         time_data.pop('modified', None)
                         time_data.pop('created', None)
                         
-                        valid_versions = []
                         for ver, timestamp in time_data.items():
                             try:
                                 pub_date = datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
@@ -493,52 +497,45 @@ class DependencyAnalyzer:
                                     valid_versions.append(ver)
                             except (ValueError, AttributeError):
                                 continue
-                        
-                        if valid_versions:
-                            valid_versions.sort(key=lambda v: pkg_version.parse(v))
-                            return valid_versions[-1]
                 except (subprocess.TimeoutExpired, json.JSONDecodeError, FileNotFoundError) as e:
-                    logger.warning(f"npm view time failed for {dependency}, falling back to metadata: {e}")
+                    logger.warning(f"npm view time failed for {package_name}, falling back to metadata: {e}")
                 
-                # Fallback to metadata parsing
-                versions = metadata.get('versions', {})
-                valid_versions = []
-                
-                for ver, ver_data in versions.items():
-                    published = ver_data.get('dist', {}).get('published')
-                    if not published:
-                        continue
-                    
-                    pub_date = datetime.fromisoformat(published.replace('Z', '+00:00'))
-                    if pub_date <= at_date:
-                        valid_versions.append(ver)
-                
-                if valid_versions:
-                    valid_versions.sort(key=lambda v: pkg_version.parse(v))
-                    return valid_versions[-1]
+                # Fallback to metadata parsing if npm view failed
+                if not valid_versions:
+                    versions = metadata.get('versions', {})
+                    for ver, ver_data in versions.items():
+                        published = ver_data.get('dist', {}).get('published')
+                        if not published:
+                            continue
+                        try:
+                            pub_date = datetime.fromisoformat(published.replace('Z', '+00:00'))
+                            if pub_date <= at_date:
+                                valid_versions.append(ver)
+                        except (ValueError, AttributeError):
+                            continue
             
             elif self.ecosystem == "pypi":
                 releases = metadata.get('releases', {})
-                valid_versions = []
-                
                 for ver, release_files in releases.items():
                     if not release_files:
                         continue
-                    
                     upload_time = release_files[0].get('upload_time')
                     if not upload_time:
                         continue
-                    
-                    upload_date = datetime.fromisoformat(upload_time.replace('Z', '+00:00'))
-                    if upload_date <= at_date:
-                        valid_versions.append(ver)
-                
-                if valid_versions:
-                    valid_versions.sort(key=lambda v: pkg_version.parse(v))
-                    return valid_versions[-1]
+                    try:
+                        upload_date = datetime.fromisoformat(upload_time.replace('Z', '+00:00'))
+                        if upload_date <= at_date:
+                            valid_versions.append(ver)
+                    except (ValueError, AttributeError):
+                        continue
+            
+            # Sort by semantic version and return the highest
+            if valid_versions:
+                valid_versions.sort(key=lambda v: pkg_version.parse(v))
+                return valid_versions[-1]
         
         except Exception as e:
-            logger.warning(f"Error getting highest version for {dependency}: {e}")
+            logger.warning(f"Error getting highest semver version for {package_name}: {e}")
         
         return None
     
@@ -677,8 +674,10 @@ class DependencyAnalyzer:
                 dependency, constraint_at_interval, interval_start
             )
             
-            # Get highest available dependency version at interval_start
-            highest_dep_version = self.get_highest_version_at_date(dependency, interval_start)
+            # Get highest SEMVER dependency version available at interval_start
+            highest_dep_version = self.get_highest_semver_version_at_date(
+                dependency, interval_start, metadata=dep_metadata
+            )
             
             # Check if updated (dependency is at highest available version)
             updated = (dep_version == highest_dep_version) if dep_version and highest_dep_version else False
