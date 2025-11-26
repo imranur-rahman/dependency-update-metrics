@@ -569,17 +569,19 @@ class DependencyAnalyzer:
     def analyze_dependency(
         self, 
         dependency: str, 
-        constraint: str,
-        package_version: str,
+        pkg_metadata: Dict,
         dep_metadata: Dict,
         osv_df: pd.DataFrame
     ) -> pd.DataFrame:
-        """Analyze a single dependency.
+        """Analyze a single dependency across all intervals.
+        
+        For each interval (defined by unique release dates of both package and dependency),
+        we find the highest available package version, get its constraint for this dependency,
+        and resolve the dependency version using npm --before.
         
         Args:
             dependency: Dependency name
-            constraint: Version constraint
-            package_version: Parent package version
+            pkg_metadata: Parent package metadata
             dep_metadata: Dependency metadata
             osv_df: OSV vulnerability dataframe
             
@@ -588,36 +590,89 @@ class DependencyAnalyzer:
         """
         logger.info(f"Analyzing dependency: {dependency}")
         
+        # Get all version release dates for the package (parent)
+        pkg_versions = self.get_all_versions_with_dates(pkg_metadata, package_name=self.package)
+        
         # Get all version release dates for the dependency
         dep_versions = self.get_all_versions_with_dates(dep_metadata, package_name=dependency)
         
-        # Create intervals
-        intervals = []
-        interval_dates = [self.start_date]
+        # Determine effective start date: max of analysis start_date and first release dates
+        effective_start = self.start_date
+        if pkg_versions:
+            first_pkg_date = pkg_versions[0][1]
+            effective_start = max(effective_start, first_pkg_date)
+        if dep_versions:
+            first_dep_date = dep_versions[0][1]
+            effective_start = max(effective_start, first_dep_date)
         
-        # Add dependency version release dates
+        # Collect all unique dates from both package and dependency versions
+        all_dates = set()
+        all_dates.add(effective_start)
+        all_dates.add(self.end_date)
+        
+        for ver, date in pkg_versions:
+            if effective_start <= date <= self.end_date:
+                all_dates.add(date)
+        
         for ver, date in dep_versions:
-            if date not in interval_dates:
-                interval_dates.append(date)
+            if effective_start <= date <= self.end_date:
+                all_dates.add(date)
         
-        # Sort and create intervals
-        interval_dates.sort()
+        # Sort dates to create intervals
+        interval_dates = sorted(all_dates)
+        
+        if len(interval_dates) < 2:
+            return pd.DataFrame()
+        
+        # Build lookup for package versions: date -> (version, constraint for this dependency)
+        pkg_version_info = []  # List of (version, date, constraint_for_dep)
+        for ver, date in pkg_versions:
+            # Get dependencies for this version
+            if self.ecosystem == "npm":
+                ver_data = pkg_metadata.get('versions', {}).get(ver, {})
+                deps = ver_data.get('dependencies', {})
+            elif self.ecosystem == "pypi":
+                releases = pkg_metadata.get('releases', {})
+                # For PyPI, we need to fetch version-specific metadata
+                deps = {}  # PyPI requires separate API call per version
+            else:
+                deps = {}
+            
+            constraint = deps.get(dependency, None)
+            if constraint is not None:
+                pkg_version_info.append((ver, date, constraint))
+        
+        # Sort by date
+        pkg_version_info.sort(key=lambda x: x[1])
         
         records = []
         for i in range(len(interval_dates) - 1):
             interval_start = interval_dates[i]
             interval_end = interval_dates[i + 1]
             
-            # Resolve dependency version at this interval
+            # Find highest package version available at interval_start
+            pkg_version_at_interval = None
+            constraint_at_interval = None
+            
+            for ver, date, constraint in pkg_version_info:
+                if date <= interval_start:
+                    pkg_version_at_interval = ver
+                    constraint_at_interval = constraint
+            
+            # Skip if no package version had this dependency yet
+            if pkg_version_at_interval is None or constraint_at_interval is None:
+                continue
+            
+            # Resolve dependency version at this interval using the constraint
             dep_version = self.resolve_dependency_version(
-                dependency, constraint, interval_start
+                dependency, constraint_at_interval, interval_start
             )
             
-            # Get highest available version
-            highest_version = self.get_highest_version_at_date(dependency, interval_start)
+            # Get highest available dependency version at interval_start
+            highest_dep_version = self.get_highest_version_at_date(dependency, interval_start)
             
-            # Check if updated
-            updated = (dep_version == highest_version) if dep_version and highest_version else False
+            # Check if updated (dependency is at highest available version)
+            updated = (dep_version == highest_dep_version) if dep_version and highest_dep_version else False
             
             # Calculate age
             age_of_interval = (self.end_date - interval_start).days
@@ -633,11 +688,11 @@ class DependencyAnalyzer:
             records.append({
                 'ecosystem': self.ecosystem,
                 'package': self.package,
-                'package_version': package_version,
+                'package_version': pkg_version_at_interval,
                 'dependency': dependency,
-                'dependency_constraint': constraint,
+                'dependency_constraint': constraint_at_interval,
                 'dependency_version': dep_version,
-                'dependency_highest_version': highest_version,
+                'dependency_highest_version': highest_dep_version,
                 'interval_start': interval_start,
                 'interval_end': interval_end,
                 'updated': updated,
@@ -645,13 +700,6 @@ class DependencyAnalyzer:
                 'age_of_interval': age_of_interval,
                 'weight': weight
             })
-        
-        # If the interval_start for first record is default (i.e., '1900-01-01 00:00:00')
-        # set the weight of that record to 0
-        print (records[0])
-        if records and records[0]['interval_start'] == datetime(1900, 1, 1, 0, 0, tzinfo=timezone.utc):
-            # Remove the default placeholder record
-            records.pop(0)
         
         return pd.DataFrame(records)
     
@@ -830,11 +878,10 @@ class DependencyAnalyzer:
                 # Fetch dependency metadata
                 dep_metadata = self.fetch_package_metadata(dep_name)
                 
-                # Analyze dependency
+                # Analyze dependency (pass package metadata for interval creation)
                 dep_df = self.analyze_dependency(
                     dep_name, 
-                    dep_constraint, 
-                    pkg_version,
+                    pkg_metadata,
                     dep_metadata,
                     osv_df
                 )
