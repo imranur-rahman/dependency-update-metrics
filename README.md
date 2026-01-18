@@ -53,6 +53,9 @@ dependency-metrics --ecosystem npm --package express --get-worksheets
 
 # Get OSV vulnerability data
 dependency-metrics --ecosystem npm --package express --get-osv
+
+# Test a PyPI package
+dependency-metrics --ecosystem pypi --package requests --start-date 2020-01-01 --end-date 2021-01-01 --get-worksheets
 ```
 
 ### As a Python module
@@ -159,6 +162,20 @@ The tool generates several outputs in the specified output directory:
 - Python 3.8+
 - npm CLI (for npm ecosystem analysis)
 - Internet connection (for fetching package metadata and OSV data)
+- Vendored patched pip for PyPI `--before` resolution (see below)
+
+## Vendored pip setup (PyPI `--before`)
+
+This project uses a patched pip to resolve the highest PyPI version available
+before a specific date. To make the package standalone, clone the patched pip
+repo into `vendor/pip`:
+
+```bash
+git clone https://github.com/imranur-rahman/pip vendor/pip
+```
+
+The resolver imports pip from `vendor/pip/src`, so the `vendor/pip` directory
+must exist before running PyPI analyses.
 
 ## Development
 
