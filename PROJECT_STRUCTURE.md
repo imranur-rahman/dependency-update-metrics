@@ -12,8 +12,14 @@ dependency-update-metrics/
 ├── dependency_metrics/            # Main package directory
 │   ├── __init__.py               # Package initialization
 │   ├── cli.py                    # Command-line interface
-│   ├── analyzer.py               # Core analysis logic
-│   └── osv_builder.py            # OSV database builder
+│   ├── analyzer.py               # Core analysis logic (orchestrator)
+│   ├── osv_builder.py            # OSV database builder
+│   ├── osv_service.py            # OSV remediation logic
+│   ├── reporting.py              # Reporting/export helpers
+│   ├── resolvers.py              # npm/PyPI resolution logic
+│   ├── time_utils.py             # Datetime helpers
+│   ├── models.py                 # Core data models
+│   └── interfaces.py             # Resolver/service interfaces
 ├── tests/                        # Test suite
 │   ├── __init__.py
 │   └── test_basic.py            # Basic unit tests
@@ -81,6 +87,16 @@ Handles vulnerability data:
 **Key Methods:**
 - `build_database()`: Build complete database
 - `get_vulnerabilities()`: Get package vulnerabilities
+
+### 4. OSV Service Module (`osv_service.py`)
+
+Encapsulates remediation checks:
+- Evaluates whether a dependency version is remediated at an interval
+- Looks up fix release dates for npm and PyPI
+
+**Key Methods:**
+- `is_remediated()`: Determine if a dependency is remediated
+- `get_version_release_date()`: Resolve fix release date
 
 ## Data Flow
 

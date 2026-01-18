@@ -3,15 +3,18 @@ Command-line interface for the dependency metrics tool.
 """
 
 import argparse
-import json
 import sys
 from datetime import datetime
 from pathlib import Path
 
-import pandas as pd
-
 from .analyzer import DependencyAnalyzer
 from .osv_builder import OSVBuilder
+from .reporting import (
+    export_osv_data,
+    export_worksheets,
+    print_summary,
+    save_results_json,
+)
 
 
 def main():
@@ -132,50 +135,30 @@ def main():
         results = analyzer.analyze()
         
         # Output results
-        print("\n" + "="*60)
-        print("ANALYSIS RESULTS")
-        print("="*60)
-        print(f"Package: {args.package}")
-        print(f"Ecosystem: {args.ecosystem}")
-        print(f"Period: {start_date.date()} to {end_date.date()}")
-        print(f"Weighting: {args.weighting_type}")
-        if args.weighting_type == "exponential":
-            print(f"Half-life: {args.half_life} days")
-        print("-"*60)
-        print(f"Average Time-to-Update (TTU): {results['ttu']:.2f} days")
-        print(f"Average Time-to-Remediate (TTR): {results['ttr']:.2f} days")
-        print(f"Number of dependencies: {results['num_dependencies']}")
-        print("="*60)
+        print_summary(
+            package=args.package,
+            ecosystem=args.ecosystem,
+            start_date=start_date,
+            end_date=end_date,
+            weighting_type=args.weighting_type,
+            half_life=args.half_life,
+            results=results,
+        )
         
-        # Save results to JSON
-        results_file = output_dir / f"{args.package}_results.json"
-        with open(results_file, 'w') as f:
-            json.dump(results, f, indent=2, default=str)
+        results_file = save_results_json(results, output_dir, args.package)
         print(f"\nResults saved to: {results_file}")
         
         # Export OSV data if requested
-        if args.get_osv and 'osv_data' in results:
-            osv_file = output_dir / f"{args.package}_osv.csv"
-            results['osv_data'].to_csv(osv_file, index=False)
-            print(f"OSV data saved to: {osv_file}")
+        if args.get_osv:
+            osv_file = export_osv_data(results, output_dir, args.package)
+            if osv_file is not None:
+                print(f"OSV data saved to: {osv_file}")
         
         # Export worksheets if requested
-        if args.get_worksheets and 'dependency_data' in results:
-            excel_file = output_dir / f"{args.package}_worksheets.xlsx"
-            with pd.ExcelWriter(excel_file, engine='openpyxl') as writer:
-                for dep_name, dep_df in results['dependency_data'].items():
-                    # Excel sheet names have a 31 character limit
-                    sheet_name = dep_name[:31]
-                    
-                    # Convert timezone-aware datetimes to timezone-naive for Excel
-                    df_copy = dep_df.copy()
-                    for col in df_copy.columns:
-                        if pd.api.types.is_datetime64tz_dtype(df_copy[col]):
-                            # Convert to UTC and remove timezone info
-                            df_copy[col] = df_copy[col].dt.tz_convert('UTC').dt.tz_localize(None)
-                    
-                    df_copy.to_excel(writer, sheet_name=sheet_name, index=False)
-            print(f"Worksheets saved to: {excel_file}")
+        if args.get_worksheets:
+            excel_file = export_worksheets(results, output_dir, args.package)
+            if excel_file is not None:
+                print(f"Worksheets saved to: {excel_file}")
         
     except Exception as e:
         print(f"\nError during analysis: {e}", file=sys.stderr)

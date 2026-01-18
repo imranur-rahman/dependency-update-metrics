@@ -150,12 +150,19 @@ The tool generates several outputs in the specified output directory:
 1. **Package Analysis**: Fetches package metadata from the registry
 2. **Dependency Extraction**: Extracts dependencies from the package version closest to the end date
 3. **Timeline Construction**: Creates a timeline of version releases for each dependency
-4. **Version Resolution**: Resolves dependency versions at each time interval
-5. **Metric Calculation**:
+4. **Version Resolution**: Resolves dependency versions at each time interval via ecosystem resolvers
+5. **Remediation Check**: Uses the OSV service to determine vulnerability remediation
+6. **Metric Calculation**:
    - **TTU**: Measures time when dependency is not at the highest available version
    - **TTR**: Measures time when dependency has known vulnerabilities
-6. **Weighting**: Applies optional time-based weighting to prioritize recent periods
-7. **Aggregation**: Averages metrics across all dependencies
+7. **Weighting**: Applies optional time-based weighting to prioritize recent periods
+8. **Aggregation**: Averages metrics across all dependencies
+
+## Architecture Notes
+
+- Ecosystem-specific resolution is encapsulated in `dependency_metrics/resolvers.py`.
+- OSV remediation checks are handled by `dependency_metrics/osv_service.py`.
+- Reporting/export helpers live in `dependency_metrics/reporting.py`.
 
 ## Requirements
 

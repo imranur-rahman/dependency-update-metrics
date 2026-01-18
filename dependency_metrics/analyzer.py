@@ -2,21 +2,19 @@
 Core dependency analyzer for calculating TTU and TTR metrics.
 """
 
-import json
 import logging
 import math
-import subprocess
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Any
 
 import pandas as pd
-import requests
 from packaging import version as pkg_version
-from packaging.requirements import Requirement
 
 from .osv_builder import OSVBuilder
-from .pypi_resolver import resolve_pypi_version
+from .osv_service import OSVService
+from .resolvers import NpmResolver, PyPIResolver, ResolverCache
+from .time_utils import build_intervals
 
 
 logger = logging.getLogger(__name__)
@@ -64,17 +62,32 @@ class DependencyAnalyzer:
         self.output_dir = Path(output_dir)
         
         self.osv_builder = OSVBuilder(output_dir)
-        self._metadata_cache: Dict[Tuple[str, str], Dict] = {}
-        self._pypi_version_deps_cache: Dict[str, Dict[str, str]] = {}
-        self._pypi_version_metadata_cache: Dict[str, Dict] = {}
-        self._npm_time_cache: Dict[str, Dict[str, str]] = {}
-        self._npm_resolve_cache: Dict[Tuple[str, str, str], Optional[str]] = {}
+        self.osv_service = OSVService()
+        self._resolver_cache = ResolverCache()
         
         # Registry URLs
         self.registry_urls = {
             "npm": "https://registry.npmjs.org",
             "pypi": "https://pypi.org/pypi"
         }
+        if self.ecosystem == "npm":
+            self.resolver = NpmResolver(
+                package=self.package,
+                start_date=self.start_date,
+                end_date=self.end_date,
+                registry_urls=self.registry_urls,
+                cache=self._resolver_cache,
+            )
+        elif self.ecosystem == "pypi":
+            self.resolver = PyPIResolver(
+                package=self.package,
+                start_date=self.start_date,
+                end_date=self.end_date,
+                registry_urls=self.registry_urls,
+                cache=self._resolver_cache,
+            )
+        else:
+            raise ValueError(f"Unsupported ecosystem: {self.ecosystem}")
     
     def fetch_package_metadata(self, package_name: str) -> Dict:
         """Fetch package metadata from registry.
@@ -85,55 +98,7 @@ class DependencyAnalyzer:
         Returns:
             Package metadata as dictionary
         """
-        cache_key = (self.ecosystem, package_name)
-        if cache_key in self._metadata_cache:
-            return self._metadata_cache[cache_key]
-
-        if self.ecosystem == "npm":
-            url = f"{self.registry_urls['npm']}/{package_name}"
-        elif self.ecosystem == "pypi":
-            url = f"{self.registry_urls['pypi']}/{package_name}/json"
-        else:
-            raise ValueError(f"Unsupported ecosystem: {self.ecosystem}")
-        
-        logger.info(f"Fetching metadata for {package_name}")
-        response = requests.get(url)
-        response.raise_for_status()
-        data = response.json()
-        self._metadata_cache[cache_key] = data
-        return data
-
-    def _get_npm_time_data(self, package_name: str) -> Optional[Dict[str, str]]:
-        if package_name in self._npm_time_cache:
-            return self._npm_time_cache[package_name]
-
-        cmd = ['npm', 'view', package_name, 'time', '--json']
-        result = subprocess.run(
-            cmd,
-            capture_output=True,
-            text=True,
-            timeout=30
-        )
-        if result.returncode != 0:
-            return None
-
-        time_data = json.loads(result.stdout)
-        time_data.pop('modified', None)
-        time_data.pop('created', None)
-        self._npm_time_cache[package_name] = time_data
-        return time_data
-
-    def _get_pypi_version_metadata(self, package: str, version: str) -> Dict:
-        cache_key = f"{package}@{version}"
-        if cache_key in self._pypi_version_metadata_cache:
-            return self._pypi_version_metadata_cache[cache_key]
-
-        version_url = f"{self.registry_urls['pypi']}/{package}/{version}/json"
-        response = requests.get(version_url)
-        response.raise_for_status()
-        data = response.json()
-        self._pypi_version_metadata_cache[cache_key] = data
-        return data
+        return self.resolver.fetch_package_metadata(package_name)
     
     def get_package_version_at_date(self, metadata: Dict) -> Tuple[str, Dict]:
         """Get package version closest to end_date but before it.
@@ -144,138 +109,7 @@ class DependencyAnalyzer:
         Returns:
             Tuple of (version string, version data)
         """
-        if self.ecosystem == "npm":
-            # Use npm view time command for more reliable date fetching
-            return self._get_npm_version_at_date(metadata)
-        elif self.ecosystem == "pypi":
-            return self._get_pypi_version_at_date(metadata)
-        else:
-            raise ValueError(f"Unsupported ecosystem: {self.ecosystem}")
-    
-    def _get_npm_version_at_date(self, metadata: Dict) -> Tuple[str, Dict]:
-        """Get npm package version at end_date using npm view time.
-        
-        Args:
-            metadata: Package metadata
-            
-        Returns:
-            Tuple of (version string, version data)
-        """
-        try:
-            # Use npm view to get all version timestamps
-            time_data = self._get_npm_time_data(self.package)
-            if time_data:
-                valid_versions = []
-                for ver, timestamp in time_data.items():
-                    try:
-                        pub_date = datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
-                        if pub_date.tzinfo is None:
-                            pub_date = pub_date.replace(tzinfo=timezone.utc)
-                        if pub_date <= self.end_date:
-                            valid_versions.append((ver, pub_date))
-                    except (ValueError, AttributeError):
-                        continue
-
-                if valid_versions:
-                    # Sort by date and get the latest
-                    valid_versions.sort(key=lambda x: x[1], reverse=True)
-                    latest_version = valid_versions[0][0]
-
-                    # Get version data from metadata
-                    versions = metadata.get('versions', {})
-                    version_data = versions.get(latest_version, {})
-                    return latest_version, version_data
-        except (subprocess.TimeoutExpired, json.JSONDecodeError, FileNotFoundError) as e:
-            logger.warning(f"npm view time failed, falling back to metadata parsing: {e}")
-        
-        # Fallback to parsing metadata directly
-        return self._parse_versions_from_metadata(metadata)
-    
-    def _get_pypi_version_at_date(self, metadata: Dict) -> Tuple[str, Dict]:
-        """Get PyPI package version at end_date.
-        
-        Args:
-            metadata: Package metadata
-            
-        Returns:
-            Tuple of (version string, version data)
-        """
-        releases = metadata.get('releases', {})
-        valid_versions = []
-        
-        for ver, release_files in releases.items():
-            if not release_files:
-                continue
-            
-            # Get upload time from first file
-            upload_time = release_files[0].get('upload_time')
-            if not upload_time:
-                continue
-            
-            try:
-                pub_date = datetime.fromisoformat(upload_time.replace('Z', '+00:00'))
-                if pub_date.tzinfo is None:
-                    pub_date = pub_date.replace(tzinfo=timezone.utc)
-                if pub_date <= self.end_date:
-                    valid_versions.append((ver, pub_date))
-            except (ValueError, AttributeError):
-                continue
-        
-        if not valid_versions:
-            raise ValueError(f"No versions found before {self.end_date}")
-        
-        # Sort by date and get the latest
-        valid_versions.sort(key=lambda x: x[1], reverse=True)
-        latest_version = valid_versions[0][0]
-        
-        # For PyPI, we need to fetch the specific version info
-        try:
-            version_metadata = self._get_pypi_version_metadata(self.package, latest_version)
-            
-            # Extract version data with dependencies
-            version_data = {
-                'upload_time': valid_versions[0][1].isoformat(),
-                'requires_dist': version_metadata.get('info', {}).get('requires_dist', [])
-            }
-            return latest_version, version_data
-        except Exception as e:
-            logger.warning(f"Failed to fetch version-specific data: {e}")
-            # Return basic version data without dependencies
-            return latest_version, {'upload_time': valid_versions[0][1].isoformat(), 'requires_dist': []}
-    
-    def _parse_versions_from_metadata(self, metadata: Dict) -> Tuple[str, Dict]:
-        """Fallback method to parse versions from metadata.
-        
-        Args:
-            metadata: Package metadata
-            
-        Returns:
-            Tuple of (version string, version data)
-        """
-        versions = metadata.get('versions', {})
-        valid_versions = []
-        
-        for ver, ver_data in versions.items():
-            # Get publish date
-            published = ver_data.get('dist', {}).get('published')
-            if not published:
-                continue
-            
-            try:
-                pub_date = datetime.fromisoformat(published.replace('Z', '+00:00'))
-                if pub_date.tzinfo is None:
-                    pub_date = pub_date.replace(tzinfo=timezone.utc)
-                if pub_date <= self.end_date:
-                    valid_versions.append((ver, pub_date, ver_data))
-            except (ValueError, AttributeError):
-                continue
-        
-        if not valid_versions:
-            raise ValueError(f"No versions found before {self.end_date}")
-        
-        # Sort by date and get the latest
-        valid_versions.sort(key=lambda x: x[1], reverse=True)
-        return valid_versions[0][0], valid_versions[0][2]
+        return self.resolver.get_package_version_at_date(metadata)
     
     def extract_dependencies(self, version_data: Dict) -> Dict[str, str]:
         """Extract dependencies from version data.
@@ -286,25 +120,7 @@ class DependencyAnalyzer:
         Returns:
             Dictionary mapping dependency names to constraints
         """
-        if self.ecosystem == "npm":
-            return version_data.get('dependencies', {})
-        elif self.ecosystem == "pypi":
-            # PyPI stores dependencies differently
-            requires_dist = version_data.get('requires_dist', [])
-            deps = {}
-            for req in requires_dist or []:
-                # Parse requirement string with packaging; drop extras, ignore markers.
-                try:
-                    requirement = Requirement(req)
-                except Exception:
-                    continue
-                if requirement.extras:
-                    continue
-                constraint = str(requirement.specifier) if requirement.specifier else "*"
-                deps[requirement.name] = constraint
-            return deps
-        
-        return {}
+        return self.resolver.extract_dependencies(version_data)
     
     def get_all_versions_with_dates(self, metadata: Dict, package_name: Optional[str] = None) -> List[Tuple[str, datetime]]:
         """Get all versions and their release dates within the date range.
@@ -316,61 +132,8 @@ class DependencyAnalyzer:
         Returns:
             List of (version, date) tuples
         """
-        if self.ecosystem == "npm" and package_name:
-            # Try using npm view time for more reliable date fetching
-            try:
-                time_data = self._get_npm_time_data(package_name)
-                if time_data:
-                    version_dates = []
-                    for ver, timestamp in time_data.items():
-                        try:
-                            pub_date = datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
-                            if pub_date.tzinfo is None:
-                                pub_date = pub_date.replace(tzinfo=timezone.utc)
-                            if self.start_date <= pub_date <= self.end_date:
-                                version_dates.append((ver, pub_date))
-                        except (ValueError, AttributeError):
-                            continue
-
-                    return sorted(version_dates, key=lambda x: x[1])
-            except (subprocess.TimeoutExpired, json.JSONDecodeError, FileNotFoundError) as e:
-                logger.warning(f"npm view time failed for {package_name}, falling back to metadata: {e}")
-        
-        # Fallback to parsing metadata
-        if self.ecosystem == "npm":
-            versions = metadata.get('versions', {})
-        elif self.ecosystem == "pypi":
-            versions = metadata.get('releases', {})
-        else:
-            versions = {}
-        
-        version_dates = []
-        
-        for ver, ver_data in versions.items():
-            if self.ecosystem == "npm":
-                published = ver_data.get('dist', {}).get('published')
-            elif self.ecosystem == "pypi":
-                # For PyPI, ver_data is a list of release files
-                if isinstance(ver_data, list) and ver_data:
-                    published = ver_data[0].get('upload_time')
-                else:
-                    published = ver_data.get('upload_time') if isinstance(ver_data, dict) else None
-            else:
-                published = None
-            
-            if not published:
-                continue
-            
-            try:
-                pub_date = datetime.fromisoformat(published.replace('Z', '+00:00'))
-                if pub_date.tzinfo is None:
-                    pub_date = pub_date.replace(tzinfo=timezone.utc)
-                if self.start_date <= pub_date <= self.end_date:
-                    version_dates.append((ver, pub_date))
-            except (ValueError, AttributeError):
-                continue
-        
-        return sorted(version_dates, key=lambda x: x[1])
+        versions = self.resolver.get_all_versions_with_dates(metadata, package_name=package_name)
+        return [(item.version, item.released_at) for item in versions]
     
     def resolve_dependency_version(
         self, 
@@ -388,69 +151,7 @@ class DependencyAnalyzer:
         Returns:
             Resolved version or None
         """
-        if self.ecosystem == "npm":
-            return self._resolve_npm_version(dependency, constraint, before_date)
-        elif self.ecosystem == "pypi":
-            return self._resolve_pypi_version(dependency, constraint, before_date)
-        
-        return None
-    
-    def _resolve_npm_version(
-        self, 
-        dependency: str, 
-        constraint: str, 
-        before_date: datetime
-    ) -> Optional[str]:
-        """Resolve NPM dependency version."""
-        cache_key = (dependency, constraint, before_date.isoformat())
-        try:
-            # Use npm view with --before flag
-            if cache_key in self._npm_resolve_cache:
-                return self._npm_resolve_cache[cache_key]
-
-            cmd = [
-                'npm', 'view', 
-                f'{dependency}@{constraint}',
-                'version',
-                '--json',
-                '--before', before_date.isoformat()
-            ]
-            
-            result = subprocess.run(
-                cmd, 
-                capture_output=True, 
-                text=True, 
-                timeout=30
-            )
-            
-            if result.returncode == 0:
-                output = result.stdout.strip()
-                if output:
-                    versions = json.loads(output)
-                    if isinstance(versions, list):
-                        resolved = versions[-1]
-                    else:
-                        resolved = versions
-                    self._npm_resolve_cache[cache_key] = resolved
-                    return resolved
-        except (subprocess.TimeoutExpired, json.JSONDecodeError, FileNotFoundError) as e:
-            logger.warning(f"Error resolving npm version for {dependency}: {e}")
-
-        self._npm_resolve_cache[cache_key] = None
-        return None
-    
-    def _resolve_pypi_version(
-        self, 
-        dependency: str, 
-        constraint: str, 
-        before_date: datetime
-    ) -> Optional[str]:
-        """Resolve PyPI dependency version."""
-        try:
-            return resolve_pypi_version(dependency, constraint, before_date)
-        except Exception as e:
-            logger.warning(f"Error resolving pypi version for {dependency}: {e}")
-            return None
+        return self.resolver.resolve_dependency_version(dependency, constraint, before_date)
     
     def get_highest_semver_version_at_date(
         self, 
@@ -468,72 +169,9 @@ class DependencyAnalyzer:
         Returns:
             Highest SEMVER version or None
         """
-        try:
-            # Fetch metadata if not provided
-            if metadata is None:
-                metadata = self.fetch_package_metadata(package_name)
-            
-            valid_versions = []
-            
-            if self.ecosystem == "npm":
-                # Try npm view time first for accurate timestamps
-                try:
-                    time_data = self._get_npm_time_data(package_name)
-                    if time_data:
-                        for ver, timestamp in time_data.items():
-                            try:
-                                pub_date = datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
-                                if pub_date.tzinfo is None:
-                                    pub_date = pub_date.replace(tzinfo=timezone.utc)
-                                if pub_date <= at_date:
-                                    valid_versions.append(ver)
-                            except (ValueError, AttributeError):
-                                continue
-                except (subprocess.TimeoutExpired, json.JSONDecodeError, FileNotFoundError) as e:
-                    logger.warning(f"npm view time failed for {package_name}, falling back to metadata: {e}")
-                
-                # Fallback to metadata parsing if npm view failed
-                if not valid_versions:
-                    versions = metadata.get('versions', {})
-                    for ver, ver_data in versions.items():
-                        published = ver_data.get('dist', {}).get('published')
-                        if not published:
-                            continue
-                        try:
-                            pub_date = datetime.fromisoformat(published.replace('Z', '+00:00'))
-                            if pub_date.tzinfo is None:
-                                pub_date = pub_date.replace(tzinfo=timezone.utc)
-                            if pub_date <= at_date:
-                                valid_versions.append(ver)
-                        except (ValueError, AttributeError):
-                            continue
-            
-            elif self.ecosystem == "pypi":
-                releases = metadata.get('releases', {})
-                for ver, release_files in releases.items():
-                    if not release_files:
-                        continue
-                    upload_time = release_files[0].get('upload_time')
-                    if not upload_time:
-                        continue
-                    try:
-                        upload_date = datetime.fromisoformat(upload_time.replace('Z', '+00:00'))
-                        if upload_date.tzinfo is None:
-                            upload_date = upload_date.replace(tzinfo=timezone.utc)
-                        if upload_date <= at_date:
-                            valid_versions.append(ver)
-                    except (ValueError, AttributeError):
-                        continue
-            
-            # Sort by semantic version and return the highest
-            if valid_versions:
-                valid_versions.sort(key=lambda v: pkg_version.parse(v))
-                return valid_versions[-1]
-        
-        except Exception as e:
-            logger.warning(f"Error getting highest semver version for {package_name}: {e}")
-        
-        return None
+        return self.resolver.get_highest_semver_version_at_date(
+            package_name, at_date, metadata=metadata
+        )
     
     def calculate_weight(self, age_of_interval: float) -> float:
         """Calculate weight based on age and weighting type.
@@ -598,23 +236,16 @@ class DependencyAnalyzer:
             first_dep_date = dep_versions[0][1]
             effective_start = max(effective_start, first_dep_date)
         
-        # Collect all unique dates from both package and dependency versions
-        all_dates = set()
-        all_dates.add(effective_start)
-        all_dates.add(self.end_date)
-        
-        for ver, date in pkg_versions:
+        dates = []
+        for _, date in pkg_versions:
             if effective_start <= date <= self.end_date:
-                all_dates.add(date)
-        
-        for ver, date in dep_versions:
+                dates.append(date)
+        for _, date in dep_versions:
             if effective_start <= date <= self.end_date:
-                all_dates.add(date)
-        
-        # Sort dates to create intervals
-        interval_dates = sorted(all_dates)
-        
-        if len(interval_dates) < 2:
+                dates.append(date)
+
+        intervals = build_intervals(dates, effective_start, self.end_date)
+        if not intervals:
             return pd.DataFrame()
         
         # Build lookup for package versions: date -> (version, constraint for this dependency)
@@ -625,7 +256,7 @@ class DependencyAnalyzer:
                 ver_data = pkg_metadata.get('versions', {}).get(ver, {})
                 deps = ver_data.get('dependencies', {})
             elif self.ecosystem == "pypi":
-                deps = self._get_pypi_version_dependencies(self.package, ver)
+                deps = self.resolver.get_version_dependencies(self.package, ver)
             else:
                 deps = {}
             
@@ -637,9 +268,7 @@ class DependencyAnalyzer:
         pkg_version_info.sort(key=lambda x: x[1])
         
         records = []
-        for i in range(len(interval_dates) - 1):
-            interval_start = interval_dates[i]
-            interval_end = interval_dates[i + 1]
+        for interval_start, interval_end in intervals:
             
             # Find highest SEMVER package version available at interval_start
             # Collect all versions released before or at interval_start
@@ -706,23 +335,8 @@ class DependencyAnalyzer:
         return pd.DataFrame(records)
 
     def _get_pypi_version_dependencies(self, package: str, version: str) -> Dict[str, str]:
-        """Fetch PyPI version-specific dependencies with caching."""
-        cache_key = f"{package}@{version}"
-        if cache_key in self._pypi_version_deps_cache:
-            return self._pypi_version_deps_cache[cache_key]
-
-        deps: Dict[str, str] = {}
-        try:
-            version_metadata = self._get_pypi_version_metadata(package, version)
-            version_data = {
-                'requires_dist': version_metadata.get('info', {}).get('requires_dist', [])
-            }
-            deps = self.extract_dependencies(version_data)
-        except Exception as e:
-            logger.warning(f"Failed to fetch dependencies for {package}=={version}: {e}")
-
-        self._pypi_version_deps_cache[cache_key] = deps
-        return deps
+        """Backward-compatible wrapper for resolver access."""
+        return self.resolver.get_version_dependencies(package, version)
     
     def _check_remediation(
         self,
@@ -744,44 +358,14 @@ class DependencyAnalyzer:
         Returns:
             True if remediated, False otherwise
         """
-        if dep_version is None:
-            return False
-        
-        # Check if OSV dataframe has data
-        if len(osv_df) == 0 or 'package' not in osv_df.columns:
-            return True  # No vulnerability data available
-        
-        # Get vulnerabilities for this dependency
-        dep_vulns = osv_df[osv_df['package'] == dependency]
-        
-        if len(dep_vulns) == 0:
-            return True  # No vulnerabilities
-        
-        try:
-            current_ver = pkg_version.parse(dep_version)
-        except Exception:
-            return False
-        
-        # Check each vulnerability
-        for _, vuln in dep_vulns.iterrows():
-            try:
-                intro_ver = pkg_version.parse(vuln['vul_introduced'])
-                fixed_ver = pkg_version.parse(vuln['vul_fixed'])
-                
-                # Check if current version is in vulnerable range
-                if intro_ver <= current_ver < fixed_ver:
-                    # Get fixed version release date
-                    fixed_date = self._get_version_release_date(
-                        dependency, vuln['vul_fixed'], dep_metadata
-                    )
-                    
-                    # If fixed version was available before interval_start, it's not remediated
-                    if fixed_date and fixed_date <= interval_start:
-                        return False
-            except Exception:
-                continue
-        
-        return True
+        return self.osv_service.is_remediated(
+            dependency=dependency,
+            dependency_version=dep_version,
+            interval_start=interval_start,
+            osv_df=osv_df,
+            dependency_metadata=dep_metadata,
+            ecosystem=self.ecosystem,
+        )
     
     def _get_version_release_date(
         self, 
@@ -799,33 +383,7 @@ class DependencyAnalyzer:
         Returns:
             Release date or None
         """
-        try:
-            if self.ecosystem == "npm":
-                versions = metadata.get('versions', {})
-                ver_data = versions.get(version)
-                if ver_data:
-                    published = ver_data.get('dist', {}).get('published')
-                    if published:
-                        pub_date = datetime.fromisoformat(published.replace('Z', '+00:00'))
-                        if pub_date.tzinfo is None:
-                            pub_date = pub_date.replace(tzinfo=timezone.utc)
-                        return pub_date
-            
-            elif self.ecosystem == "pypi":
-                releases = metadata.get('releases', {})
-                release_files = releases.get(version, [])
-                if release_files:
-                    upload_time = release_files[0].get('upload_time')
-                    if upload_time:
-                        upload_date = datetime.fromisoformat(upload_time.replace('Z', '+00:00'))
-                        if upload_date.tzinfo is None:
-                            upload_date = upload_date.replace(tzinfo=timezone.utc)
-                        return upload_date
-        
-        except Exception:
-            pass
-        
-        return None
+        return self.osv_service.get_version_release_date(self.ecosystem, package, version, metadata)
     
     def calculate_ttu_ttr(self, df: pd.DataFrame) -> Tuple[float, float]:
         """Calculate TTU and TTR metrics.

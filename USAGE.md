@@ -147,6 +147,12 @@ The JSON file contains detailed results:
 }
 ```
 
+## Architecture Notes
+
+- Ecosystem resolution lives in `dependency_metrics/resolvers.py`.
+- OSV remediation checks are handled by `dependency_metrics/osv_service.py`.
+- Reporting/export helpers live in `dependency_metrics/reporting.py`.
+
 ### Excel Worksheets
 
 When using `--get-worksheets`, you'll get an Excel file with one sheet per dependency containing:

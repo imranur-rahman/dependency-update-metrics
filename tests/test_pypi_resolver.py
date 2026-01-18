@@ -99,3 +99,23 @@ def test_pypi_analyzer_produces_intervals_with_stubbed_versions(monkeypatch):
     df = analyzer.analyze_dependency("dep", pkg_metadata, dep_metadata, osv_df=[])
 
     assert not df.empty
+
+
+def test_build_intervals_uses_unique_sorted_dates():
+    from dependency_metrics.time_utils import build_intervals
+
+    start = datetime(2020, 1, 1)
+    end = datetime(2020, 1, 5)
+    dates = [
+        datetime(2020, 1, 3),
+        datetime(2020, 1, 2),
+        datetime(2020, 1, 2),
+    ]
+
+    intervals = build_intervals(dates, start, end)
+
+    assert intervals == [
+        (datetime(2020, 1, 1), datetime(2020, 1, 2)),
+        (datetime(2020, 1, 2), datetime(2020, 1, 3)),
+        (datetime(2020, 1, 3), datetime(2020, 1, 5)),
+    ]
