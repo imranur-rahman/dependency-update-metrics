@@ -64,7 +64,11 @@ class DependencyAnalyzer:
         self.output_dir = Path(output_dir)
         
         self.osv_builder = OSVBuilder(output_dir)
+        self._metadata_cache: Dict[Tuple[str, str], Dict] = {}
         self._pypi_version_deps_cache: Dict[str, Dict[str, str]] = {}
+        self._pypi_version_metadata_cache: Dict[str, Dict] = {}
+        self._npm_time_cache: Dict[str, Dict[str, str]] = {}
+        self._npm_resolve_cache: Dict[Tuple[str, str, str], Optional[str]] = {}
         
         # Registry URLs
         self.registry_urls = {
@@ -81,6 +85,10 @@ class DependencyAnalyzer:
         Returns:
             Package metadata as dictionary
         """
+        cache_key = (self.ecosystem, package_name)
+        if cache_key in self._metadata_cache:
+            return self._metadata_cache[cache_key]
+
         if self.ecosystem == "npm":
             url = f"{self.registry_urls['npm']}/{package_name}"
         elif self.ecosystem == "pypi":
@@ -91,7 +99,41 @@ class DependencyAnalyzer:
         logger.info(f"Fetching metadata for {package_name}")
         response = requests.get(url)
         response.raise_for_status()
-        return response.json()
+        data = response.json()
+        self._metadata_cache[cache_key] = data
+        return data
+
+    def _get_npm_time_data(self, package_name: str) -> Optional[Dict[str, str]]:
+        if package_name in self._npm_time_cache:
+            return self._npm_time_cache[package_name]
+
+        cmd = ['npm', 'view', package_name, 'time', '--json']
+        result = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            timeout=30
+        )
+        if result.returncode != 0:
+            return None
+
+        time_data = json.loads(result.stdout)
+        time_data.pop('modified', None)
+        time_data.pop('created', None)
+        self._npm_time_cache[package_name] = time_data
+        return time_data
+
+    def _get_pypi_version_metadata(self, package: str, version: str) -> Dict:
+        cache_key = f"{package}@{version}"
+        if cache_key in self._pypi_version_metadata_cache:
+            return self._pypi_version_metadata_cache[cache_key]
+
+        version_url = f"{self.registry_urls['pypi']}/{package}/{version}/json"
+        response = requests.get(version_url)
+        response.raise_for_status()
+        data = response.json()
+        self._pypi_version_metadata_cache[cache_key] = data
+        return data
     
     def get_package_version_at_date(self, metadata: Dict) -> Tuple[str, Dict]:
         """Get package version closest to end_date but before it.
@@ -121,34 +163,24 @@ class DependencyAnalyzer:
         """
         try:
             # Use npm view to get all version timestamps
-            cmd = ['npm', 'view', self.package, 'time', '--json']
-            result = subprocess.run(
-                cmd, 
-                capture_output=True, 
-                text=True, 
-                timeout=30
-            )
-            
-            if result.returncode == 0:
-                time_data = json.loads(result.stdout)
-                # Remove metadata entries
-                time_data.pop('modified', None)
-                time_data.pop('created', None)
-                
+            time_data = self._get_npm_time_data(self.package)
+            if time_data:
                 valid_versions = []
                 for ver, timestamp in time_data.items():
                     try:
                         pub_date = datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
+                        if pub_date.tzinfo is None:
+                            pub_date = pub_date.replace(tzinfo=timezone.utc)
                         if pub_date <= self.end_date:
                             valid_versions.append((ver, pub_date))
                     except (ValueError, AttributeError):
                         continue
-                
+
                 if valid_versions:
                     # Sort by date and get the latest
                     valid_versions.sort(key=lambda x: x[1], reverse=True)
                     latest_version = valid_versions[0][0]
-                    
+
                     # Get version data from metadata
                     versions = metadata.get('versions', {})
                     version_data = versions.get(latest_version, {})
@@ -198,10 +230,7 @@ class DependencyAnalyzer:
         
         # For PyPI, we need to fetch the specific version info
         try:
-            version_url = f"{self.registry_urls['pypi']}/{self.package}/{latest_version}/json"
-            response = requests.get(version_url)
-            response.raise_for_status()
-            version_metadata = response.json()
+            version_metadata = self._get_pypi_version_metadata(self.package, latest_version)
             
             # Extract version data with dependencies
             version_data = {
@@ -290,20 +319,8 @@ class DependencyAnalyzer:
         if self.ecosystem == "npm" and package_name:
             # Try using npm view time for more reliable date fetching
             try:
-                cmd = ['npm', 'view', package_name, 'time', '--json']
-                result = subprocess.run(
-                    cmd, 
-                    capture_output=True, 
-                    text=True, 
-                    timeout=30
-                )
-                
-                if result.returncode == 0:
-                    time_data = json.loads(result.stdout)
-                    # Remove metadata entries
-                    time_data.pop('modified', None)
-                    time_data.pop('created', None)
-                    
+                time_data = self._get_npm_time_data(package_name)
+                if time_data:
                     version_dates = []
                     for ver, timestamp in time_data.items():
                         try:
@@ -314,7 +331,7 @@ class DependencyAnalyzer:
                                 version_dates.append((ver, pub_date))
                         except (ValueError, AttributeError):
                             continue
-                    
+
                     return sorted(version_dates, key=lambda x: x[1])
             except (subprocess.TimeoutExpired, json.JSONDecodeError, FileNotFoundError) as e:
                 logger.warning(f"npm view time failed for {package_name}, falling back to metadata: {e}")
@@ -385,8 +402,12 @@ class DependencyAnalyzer:
         before_date: datetime
     ) -> Optional[str]:
         """Resolve NPM dependency version."""
+        cache_key = (dependency, constraint, before_date.isoformat())
         try:
             # Use npm view with --before flag
+            if cache_key in self._npm_resolve_cache:
+                return self._npm_resolve_cache[cache_key]
+
             cmd = [
                 'npm', 'view', 
                 f'{dependency}@{constraint}',
@@ -407,11 +428,15 @@ class DependencyAnalyzer:
                 if output:
                     versions = json.loads(output)
                     if isinstance(versions, list):
-                        return versions[-1]  # Return latest matching version
-                    return versions
+                        resolved = versions[-1]
+                    else:
+                        resolved = versions
+                    self._npm_resolve_cache[cache_key] = resolved
+                    return resolved
         except (subprocess.TimeoutExpired, json.JSONDecodeError, FileNotFoundError) as e:
             logger.warning(f"Error resolving npm version for {dependency}: {e}")
-        
+
+        self._npm_resolve_cache[cache_key] = None
         return None
     
     def _resolve_pypi_version(
@@ -453,19 +478,8 @@ class DependencyAnalyzer:
             if self.ecosystem == "npm":
                 # Try npm view time first for accurate timestamps
                 try:
-                    cmd = ['npm', 'view', package_name, 'time', '--json']
-                    result = subprocess.run(
-                        cmd, 
-                        capture_output=True, 
-                        text=True, 
-                        timeout=30
-                    )
-                    
-                    if result.returncode == 0:
-                        time_data = json.loads(result.stdout)
-                        time_data.pop('modified', None)
-                        time_data.pop('created', None)
-                        
+                    time_data = self._get_npm_time_data(package_name)
+                    if time_data:
                         for ver, timestamp in time_data.items():
                             try:
                                 pub_date = datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
@@ -699,10 +713,7 @@ class DependencyAnalyzer:
 
         deps: Dict[str, str] = {}
         try:
-            version_url = f"{self.registry_urls['pypi']}/{package}/{version}/json"
-            response = requests.get(version_url)
-            response.raise_for_status()
-            version_metadata = response.json()
+            version_metadata = self._get_pypi_version_metadata(package, version)
             version_data = {
                 'requires_dist': version_metadata.get('info', {}).get('requires_dist', [])
             }
