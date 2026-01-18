@@ -64,6 +64,7 @@ class DependencyAnalyzer:
         self.output_dir = Path(output_dir)
         
         self.osv_builder = OSVBuilder(output_dir)
+        self._pypi_version_deps_cache: Dict[str, Dict[str, str]] = {}
         
         # Registry URLs
         self.registry_urls = {
@@ -181,6 +182,8 @@ class DependencyAnalyzer:
             
             try:
                 pub_date = datetime.fromisoformat(upload_time.replace('Z', '+00:00'))
+                if pub_date.tzinfo is None:
+                    pub_date = pub_date.replace(tzinfo=timezone.utc)
                 if pub_date <= self.end_date:
                     valid_versions.append((ver, pub_date))
             except (ValueError, AttributeError):
@@ -231,6 +234,8 @@ class DependencyAnalyzer:
             
             try:
                 pub_date = datetime.fromisoformat(published.replace('Z', '+00:00'))
+                if pub_date.tzinfo is None:
+                    pub_date = pub_date.replace(tzinfo=timezone.utc)
                 if pub_date <= self.end_date:
                     valid_versions.append((ver, pub_date, ver_data))
             except (ValueError, AttributeError):
@@ -259,12 +264,10 @@ class DependencyAnalyzer:
             requires_dist = version_data.get('requires_dist', [])
             deps = {}
             for req in requires_dist or []:
-                # Parse requirement string with packaging; drop env markers/extras.
+                # Parse requirement string with packaging; drop extras, ignore markers.
                 try:
                     requirement = Requirement(req)
                 except Exception:
-                    continue
-                if requirement.marker is not None:
                     continue
                 if requirement.extras:
                     continue
@@ -305,6 +308,8 @@ class DependencyAnalyzer:
                     for ver, timestamp in time_data.items():
                         try:
                             pub_date = datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
+                            if pub_date.tzinfo is None:
+                                pub_date = pub_date.replace(tzinfo=timezone.utc)
                             if self.start_date <= pub_date <= self.end_date:
                                 version_dates.append((ver, pub_date))
                         except (ValueError, AttributeError):
@@ -341,6 +346,8 @@ class DependencyAnalyzer:
             
             try:
                 pub_date = datetime.fromisoformat(published.replace('Z', '+00:00'))
+                if pub_date.tzinfo is None:
+                    pub_date = pub_date.replace(tzinfo=timezone.utc)
                 if self.start_date <= pub_date <= self.end_date:
                     version_dates.append((ver, pub_date))
             except (ValueError, AttributeError):
@@ -462,6 +469,8 @@ class DependencyAnalyzer:
                         for ver, timestamp in time_data.items():
                             try:
                                 pub_date = datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
+                                if pub_date.tzinfo is None:
+                                    pub_date = pub_date.replace(tzinfo=timezone.utc)
                                 if pub_date <= at_date:
                                     valid_versions.append(ver)
                             except (ValueError, AttributeError):
@@ -478,6 +487,8 @@ class DependencyAnalyzer:
                             continue
                         try:
                             pub_date = datetime.fromisoformat(published.replace('Z', '+00:00'))
+                            if pub_date.tzinfo is None:
+                                pub_date = pub_date.replace(tzinfo=timezone.utc)
                             if pub_date <= at_date:
                                 valid_versions.append(ver)
                         except (ValueError, AttributeError):
@@ -493,6 +504,8 @@ class DependencyAnalyzer:
                         continue
                     try:
                         upload_date = datetime.fromisoformat(upload_time.replace('Z', '+00:00'))
+                        if upload_date.tzinfo is None:
+                            upload_date = upload_date.replace(tzinfo=timezone.utc)
                         if upload_date <= at_date:
                             valid_versions.append(ver)
                     except (ValueError, AttributeError):
@@ -598,9 +611,7 @@ class DependencyAnalyzer:
                 ver_data = pkg_metadata.get('versions', {}).get(ver, {})
                 deps = ver_data.get('dependencies', {})
             elif self.ecosystem == "pypi":
-                releases = pkg_metadata.get('releases', {})
-                # For PyPI, we need to fetch version-specific metadata
-                deps = {}  # PyPI requires separate API call per version
+                deps = self._get_pypi_version_dependencies(self.package, ver)
             else:
                 deps = {}
             
@@ -679,6 +690,28 @@ class DependencyAnalyzer:
             })
         
         return pd.DataFrame(records)
+
+    def _get_pypi_version_dependencies(self, package: str, version: str) -> Dict[str, str]:
+        """Fetch PyPI version-specific dependencies with caching."""
+        cache_key = f"{package}@{version}"
+        if cache_key in self._pypi_version_deps_cache:
+            return self._pypi_version_deps_cache[cache_key]
+
+        deps: Dict[str, str] = {}
+        try:
+            version_url = f"{self.registry_urls['pypi']}/{package}/{version}/json"
+            response = requests.get(version_url)
+            response.raise_for_status()
+            version_metadata = response.json()
+            version_data = {
+                'requires_dist': version_metadata.get('info', {}).get('requires_dist', [])
+            }
+            deps = self.extract_dependencies(version_data)
+        except Exception as e:
+            logger.warning(f"Failed to fetch dependencies for {package}=={version}: {e}")
+
+        self._pypi_version_deps_cache[cache_key] = deps
+        return deps
     
     def _check_remediation(
         self,
@@ -762,7 +795,10 @@ class DependencyAnalyzer:
                 if ver_data:
                     published = ver_data.get('dist', {}).get('published')
                     if published:
-                        return datetime.fromisoformat(published.replace('Z', '+00:00'))
+                        pub_date = datetime.fromisoformat(published.replace('Z', '+00:00'))
+                        if pub_date.tzinfo is None:
+                            pub_date = pub_date.replace(tzinfo=timezone.utc)
+                        return pub_date
             
             elif self.ecosystem == "pypi":
                 releases = metadata.get('releases', {})
@@ -770,7 +806,10 @@ class DependencyAnalyzer:
                 if release_files:
                     upload_time = release_files[0].get('upload_time')
                     if upload_time:
-                        return datetime.fromisoformat(upload_time.replace('Z', '+00:00'))
+                        upload_date = datetime.fromisoformat(upload_time.replace('Z', '+00:00'))
+                        if upload_date.tzinfo is None:
+                            upload_date = upload_date.replace(tzinfo=timezone.utc)
+                        return upload_date
         
         except Exception:
             pass

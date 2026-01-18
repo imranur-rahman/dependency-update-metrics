@@ -10,7 +10,6 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
 
-from packaging.specifiers import SpecifierSet
 
 
 _PIP_VENDOR_PATH = Path(__file__).resolve().parents[1] / "vendor" / "pip" / "src"
@@ -49,9 +48,12 @@ class PyPIResolver:
             return None
         return str(result.best_candidate.version)
 
-    def _build_specifier(self, constraint: str) -> Optional[SpecifierSet]:
+    def _build_specifier(self, constraint: str):
         if not constraint or constraint == "*":
             return None
+        # Use pip's vendored packaging to match candidate versions.
+        from pip._vendor.packaging.specifiers import SpecifierSet  # type: ignore
+
         return SpecifierSet(constraint)
 
     def _get_finder(self, before: datetime) -> "PackageFinder":
