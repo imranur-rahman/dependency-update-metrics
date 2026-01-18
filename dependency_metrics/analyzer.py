@@ -13,9 +13,10 @@ from typing import Dict, List, Optional, Tuple, Any
 import pandas as pd
 import requests
 from packaging import version as pkg_version
-from packaging.specifiers import SpecifierSet
+from packaging.requirements import Requirement
 
 from .osv_builder import OSVBuilder
+from .pypi_resolver import resolve_pypi_version
 
 
 logger = logging.getLogger(__name__)
@@ -258,16 +259,17 @@ class DependencyAnalyzer:
             requires_dist = version_data.get('requires_dist', [])
             deps = {}
             for req in requires_dist or []:
-                # Parse requirement string
-                parts = req.split(';')[0].strip()  # Remove environment markers
-                if '(' in parts or '[' in parts:
-                    continue  # Skip extras
-                
-                if ' ' in parts:
-                    name, constraint = parts.split(' ', 1)
-                    deps[name] = constraint
-                else:
-                    deps[parts] = '*'
+                # Parse requirement string with packaging; drop env markers/extras.
+                try:
+                    requirement = Requirement(req)
+                except Exception:
+                    continue
+                if requirement.marker is not None:
+                    continue
+                if requirement.extras:
+                    continue
+                constraint = str(requirement.specifier) if requirement.specifier else "*"
+                deps[requirement.name] = constraint
             return deps
         
         return {}
@@ -413,43 +415,10 @@ class DependencyAnalyzer:
     ) -> Optional[str]:
         """Resolve PyPI dependency version."""
         try:
-            metadata = self.fetch_package_metadata(dependency)
-            versions = metadata.get('releases', {})
-            
-            # Filter versions by date and constraint
-            spec = SpecifierSet(constraint) if constraint != '*' else None
-            valid_versions = []
-            
-            for ver, releases in versions.items():
-                if not releases:
-                    continue
-                
-                # Get upload date
-                upload_date_str = releases[0].get('upload_time')
-                if not upload_date_str:
-                    continue
-                
-                upload_date = datetime.fromisoformat(upload_date_str.replace('Z', '+00:00'))
-                if upload_date > before_date:
-                    continue
-                
-                # Check constraint
-                try:
-                    parsed_ver = pkg_version.parse(ver)
-                    if spec is None or parsed_ver in spec:
-                        valid_versions.append((ver, upload_date))
-                except Exception:
-                    continue
-            
-            if valid_versions:
-                # Sort and return latest
-                valid_versions.sort(key=lambda x: (x[1], pkg_version.parse(x[0])))
-                return valid_versions[-1][0]
-        
+            return resolve_pypi_version(dependency, constraint, before_date)
         except Exception as e:
             logger.warning(f"Error resolving pypi version for {dependency}: {e}")
-        
-        return None
+            return None
     
     def get_highest_semver_version_at_date(
         self, 
