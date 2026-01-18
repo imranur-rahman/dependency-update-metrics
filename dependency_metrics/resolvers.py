@@ -57,6 +57,7 @@ class NpmResolver(PackageResolver):
     def fetch_package_metadata(self, package_name: str) -> Dict:
         cache_key = (self.ecosystem, package_name)
         if cache_key in self.cache.metadata_cache:
+            logger.debug("Cache hit: metadata %s:%s", self.ecosystem, package_name)
             return self.cache.metadata_cache[cache_key]
 
         url = f"{self.registry_urls['npm']}/{package_name}"
@@ -143,6 +144,7 @@ class NpmResolver(PackageResolver):
     ) -> Optional[str]:
         cache_key = (dependency, constraint, before_date.isoformat())
         if cache_key in self.cache.npm_resolve_cache:
+            logger.debug("Cache hit: npm resolve %s %s %s", dependency, constraint, before_date)
             return self.cache.npm_resolve_cache[cache_key]
 
         try:
@@ -231,6 +233,7 @@ class NpmResolver(PackageResolver):
 
     def _get_npm_time_data(self, package_name: str) -> Optional[Dict[str, str]]:
         if package_name in self.cache.npm_time_cache:
+            logger.debug("Cache hit: npm time %s", package_name)
             return self.cache.npm_time_cache[package_name]
 
         cmd = ['npm', 'view', package_name, 'time', '--json']
@@ -296,6 +299,7 @@ class PyPIResolver(PackageResolver):
     def fetch_package_metadata(self, package_name: str) -> Dict:
         cache_key = (self.ecosystem, package_name)
         if cache_key in self.cache.metadata_cache:
+            logger.debug("Cache hit: metadata %s:%s", self.ecosystem, package_name)
             return self.cache.metadata_cache[cache_key]
 
         url = f"{self.registry_urls['pypi']}/{package_name}/json"
@@ -432,6 +436,7 @@ class PyPIResolver(PackageResolver):
     def get_version_dependencies(self, package: str, version: str) -> Dict[str, str]:
         cache_key = f"{package}@{version}"
         if cache_key in self.cache.pypi_version_deps_cache:
+            logger.debug("Cache hit: pypi deps %s", cache_key)
             return self.cache.pypi_version_deps_cache[cache_key]
 
         deps: Dict[str, str] = {}
@@ -450,6 +455,7 @@ class PyPIResolver(PackageResolver):
     def _get_pypi_version_metadata(self, package: str, version: str) -> Dict:
         cache_key = f"{package}@{version}"
         if cache_key in self.cache.pypi_version_metadata_cache:
+            logger.debug("Cache hit: pypi version metadata %s", cache_key)
             return self.cache.pypi_version_metadata_cache[cache_key]
 
         version_url = f"{self.registry_urls['pypi']}/{package}/{version}/json"

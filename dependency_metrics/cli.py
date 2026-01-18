@@ -85,6 +85,12 @@ def main():
         default="./output",
         help="Output directory for results. Default: ./output"
     )
+
+    parser.add_argument(
+        "--verbose",
+        action="store_true",
+        help="Enable debug logging"
+    )
     
     args = parser.parse_args()
     
@@ -112,6 +118,12 @@ def main():
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     
+    # Configure logging
+    if args.verbose:
+        import logging
+        logging.basicConfig(level=logging.INFO)
+        logging.getLogger("dependency_metrics").setLevel(logging.DEBUG)
+
     # Build OSV database if requested
     if args.build_osv:
         print("Building OSV vulnerability database...")
