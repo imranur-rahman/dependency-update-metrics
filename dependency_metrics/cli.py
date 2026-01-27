@@ -4,10 +4,13 @@ Command-line interface for the dependency metrics tool.
 
 import argparse
 import csv
+import io
 import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional
+
+import pandas as pd
 
 from .analyzer import DependencyAnalyzer
 from .osv_builder import OSVBuilder
@@ -30,21 +33,59 @@ def _parse_date(value: str, field: str, row_num: Optional[int] = None) -> dateti
 
 
 def _load_input_csv(path: Path) -> List[Dict[str, object]]:
-    with path.open(newline="") as handle:
-        reader = csv.DictReader(handle)
-        if reader.fieldnames is None:
-            raise ValueError("Input CSV must include a header row.")
+    raw = path.read_bytes()
+    if raw.lstrip().startswith(b"{\\rtf"):
+        raise ValueError("Input file appears to be RTF. Please export as CSV.")
 
-        required = {"ecosystem", "package_name", "end_date"}
-        missing = required.difference({name.strip() for name in reader.fieldnames})
-        if missing:
-            raise ValueError(f"Input CSV missing required columns: {', '.join(sorted(missing))}.")
+    for encoding in ("utf-8-sig", "utf-8", "latin-1"):
+        try:
+            text = raw.decode(encoding)
+            break
+        except UnicodeDecodeError:
+            text = ""
+    if not text:
+        raise ValueError("Unable to decode input CSV. Please save as UTF-8.")
 
-        rows: List[Dict[str, object]] = []
-        for row_num, row in enumerate(reader, start=2):
-            cleaned = {key.strip(): (value or "").strip() for key, value in row.items()}
-            cleaned["_row_num"] = row_num
-            rows.append(cleaned)
+    buffer = io.StringIO(text)
+    try:
+        df = pd.read_csv(buffer, sep=None, engine="python")
+    except Exception as exc:
+        raise ValueError(f"Failed to parse CSV: {exc}") from exc
+
+    if df.empty:
+        raise ValueError("Input CSV contains no data rows.")
+
+    normalized_fields = []
+    for name in df.columns:
+        if name is None:
+            continue
+        normalized_fields.append(str(name).strip().lstrip("\ufeff"))
+
+    field_map = {name.lower(): name for name in normalized_fields}
+    required = {"ecosystem", "package_name", "end_date"}
+    missing = required.difference(field_map.keys())
+    if missing:
+        available = ", ".join(normalized_fields) if normalized_fields else "none"
+        raise ValueError(
+            f"Input CSV missing required columns: {', '.join(sorted(missing))}. "
+            f"Found columns: {available}."
+        )
+
+    rows: List[Dict[str, object]] = []
+    for idx, record in df.iterrows():
+        row_num = int(idx) + 2
+        cleaned = {str(k).strip().lstrip("\ufeff"): ("" if pd.isna(v) else str(v).strip()) for k, v in record.items()}
+        normalized = {
+            "ecosystem": cleaned.get(field_map["ecosystem"], ""),
+            "package_name": cleaned.get(field_map["package_name"], ""),
+            "end_date": cleaned.get(field_map["end_date"], ""),
+            "start_date": cleaned.get(field_map.get("start_date", ""), ""),
+        }
+        for key, value in cleaned.items():
+            if key not in normalized:
+                normalized[key] = value
+        normalized["_row_num"] = row_num
+        rows.append(normalized)
 
     if not rows:
         raise ValueError("Input CSV contains no data rows.")
