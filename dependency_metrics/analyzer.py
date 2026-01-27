@@ -488,6 +488,8 @@ class DependencyAnalyzer:
                 logger.error(f"Error analyzing {dep_name}: {e}")
                 logger.error(traceback.format_exc())
                 print(f"    Error: {e}")
+                if "Error getting highest semver version for" in str(e):
+                    raise
                 continue
         
         # Calculate averages

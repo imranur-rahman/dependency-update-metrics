@@ -219,7 +219,9 @@ class NpmResolver(PackageResolver):
                 valid_versions.sort(key=lambda v: pkg_version.parse(v))
                 return valid_versions[-1]
         except Exception as e:
-            logger.warning("Error getting highest semver version for %s: %s", package_name, e)
+            message = f"Error getting highest semver version for {package_name}: {e}"
+            logger.warning(message)
+            raise RuntimeError(message) from e
 
         return None
 
@@ -415,7 +417,9 @@ class PyPIResolver(PackageResolver):
                 valid_versions.sort(key=lambda v: pkg_version.parse(v))
                 return valid_versions[-1]
         except Exception as e:
-            logger.warning("Error getting highest semver version for %s: %s", package_name, e)
+            message = f"Error getting highest semver version for {package_name}: {e}"
+            logger.warning(message)
+            raise RuntimeError(message) from e
 
         return None
 

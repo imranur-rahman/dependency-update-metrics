@@ -288,7 +288,9 @@ def main():
 
             except Exception as exc:
                 status = "error"
-                error = str(exc)
+                error = f"\"{exc}\""
+                mttu = -1.0
+                mttr = -1.0
 
                 start_date = default_start_date
                 if start_date_raw:
