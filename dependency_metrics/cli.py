@@ -206,6 +206,25 @@ def main():
             print(f"Error: {exc}", file=sys.stderr)
             sys.exit(1)
 
+        # Remove duplicate rows by ecosystem/package_name/end_date (case-insensitive)
+        deduped_rows = []
+        seen_keys = set()
+        duplicates = 0
+        for row in input_rows:
+            key = (
+                str(row.get("ecosystem", "")).strip().lower(),
+                str(row.get("package_name", "")).strip().lower(),
+                str(row.get("end_date", "")).strip(),
+            )
+            if key in seen_keys:
+                duplicates += 1
+                continue
+            seen_keys.add(key)
+            deduped_rows.append(row)
+        input_rows = deduped_rows
+        if duplicates:
+            print(f"Removed {duplicates} duplicate rows from input CSV.")
+
         # Build OSV database automatically if missing
         osv_builder = OSVBuilder(output_dir)
         osv_df = osv_builder.build_database()
