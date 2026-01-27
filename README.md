@@ -167,7 +167,7 @@ The tool generates several outputs in the specified output directory:
 ## Requirements
 
 - Python 3.8+
-- npm CLI (for npm ecosystem analysis)
+- npm CLI (for npm ecosystem analysis) `sudo apt install nodejs npm`
 - Internet connection (for fetching package metadata and OSV data)
 - Vendored patched pip for PyPI `--before` resolution (see below)
 
