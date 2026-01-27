@@ -31,7 +31,8 @@ class DependencyAnalyzer:
         end_date: datetime,
         weighting_type: str = "disable",
         half_life: Optional[float] = None,
-        output_dir: Path = Path("./output")
+        output_dir: Path = Path("./output"),
+        resolver_cache: Optional[ResolverCache] = None,
     ):
         """Initialize dependency analyzer.
         
@@ -43,6 +44,7 @@ class DependencyAnalyzer:
             weighting_type: Type of weighting (linear, exponential, inverse, disable)
             half_life: Half-life in days (for exponential weighting)
             output_dir: Output directory for results
+            resolver_cache: Shared resolver cache for minimizing network calls
         """
         self.ecosystem = ecosystem.lower()
         self.package = package
@@ -63,7 +65,7 @@ class DependencyAnalyzer:
         
         self.osv_builder = OSVBuilder(output_dir)
         self.osv_service = OSVService()
-        self._resolver_cache = ResolverCache()
+        self._resolver_cache = resolver_cache or ResolverCache()
         
         # Registry URLs
         self.registry_urls = {
@@ -416,7 +418,7 @@ class DependencyAnalyzer:
         
         return ttu, ttr
     
-    def analyze(self) -> Dict[str, Any]:
+    def analyze(self, osv_df: Optional[pd.DataFrame] = None) -> Dict[str, Any]:
         """Run complete analysis.
         
         Returns:
@@ -444,12 +446,15 @@ class DependencyAnalyzer:
             }
         
         # Load or build OSV database
-        osv_db_file = self.output_dir / "osv_database.parquet"
-        if osv_db_file.exists():
-            osv_df = pd.read_parquet(osv_db_file)
-            osv_df = osv_df[osv_df['ecosystem'] == self.ecosystem.upper()]
-        else:
-            osv_df = pd.DataFrame()
+        if osv_df is None:
+            osv_db_file = self.output_dir / "osv_database.parquet"
+            if osv_db_file.exists():
+                osv_df = pd.read_parquet(osv_db_file)
+            else:
+                osv_df = pd.DataFrame()
+
+        if len(osv_df) > 0:
+            osv_df = osv_df[osv_df['ecosystem'] == self.ecosystem.upper()].copy()
         
         # Analyze each dependency
         all_deps_data = {}

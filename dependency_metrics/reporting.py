@@ -6,7 +6,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Dict
+from typing import Dict, Iterable, List
 
 import pandas as pd
 
@@ -67,3 +67,43 @@ def export_worksheets(results: Dict, output_dir: Path, package: str) -> Path | N
 
             df_copy.to_excel(writer, sheet_name=sheet_name, index=False)
     return excel_file
+
+
+def export_bulk_summary_csv(
+    rows: Iterable[Dict],
+    output_dir: Path,
+    input_csv: Path,
+) -> Path:
+    output_dir.mkdir(parents=True, exist_ok=True)
+    summary_file = output_dir / f"{input_csv.stem}_bulk_results.csv"
+    df = pd.DataFrame(list(rows))
+    columns = [
+        "ecosystem",
+        "package_name",
+        "start_date",
+        "end_date",
+        "mttu",
+        "mttr",
+        "num_dependencies",
+        "status",
+        "error",
+    ]
+    df.to_csv(summary_file, index=False, columns=columns)
+    return summary_file
+
+
+def export_bulk_dependency_csv(
+    dependency_frames: List[pd.DataFrame],
+    output_dir: Path,
+    input_csv: Path,
+) -> Path | None:
+    if not dependency_frames:
+        return None
+    output_dir.mkdir(parents=True, exist_ok=True)
+    deps_file = output_dir / f"{input_csv.stem}_dependency_details.csv"
+    df = pd.concat(dependency_frames, ignore_index=True)
+    for col in df.columns:
+        if pd.api.types.is_datetime64tz_dtype(df[col]):
+            df[col] = df[col].dt.tz_convert("UTC").dt.tz_localize(None)
+    df.to_csv(deps_file, index=False)
+    return deps_file

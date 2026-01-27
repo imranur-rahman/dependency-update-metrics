@@ -3,18 +3,53 @@ Command-line interface for the dependency metrics tool.
 """
 
 import argparse
+import csv
 import sys
 from datetime import datetime
 from pathlib import Path
+from typing import Dict, List, Optional
 
 from .analyzer import DependencyAnalyzer
 from .osv_builder import OSVBuilder
+from .resolvers import ResolverCache
 from .reporting import (
     export_osv_data,
+    export_bulk_dependency_csv,
+    export_bulk_summary_csv,
     export_worksheets,
     print_summary,
     save_results_json,
 )
+
+def _parse_date(value: str, field: str, row_num: Optional[int] = None) -> datetime:
+    try:
+        return datetime.strptime(value, "%Y-%m-%d")
+    except ValueError:
+        location = f" on row {row_num}" if row_num is not None else ""
+        raise ValueError(f"Invalid {field} format{location}. Use YYYY-MM-DD.")
+
+
+def _load_input_csv(path: Path) -> List[Dict[str, object]]:
+    with path.open(newline="") as handle:
+        reader = csv.DictReader(handle)
+        if reader.fieldnames is None:
+            raise ValueError("Input CSV must include a header row.")
+
+        required = {"ecosystem", "package_name", "end_date"}
+        missing = required.difference({name.strip() for name in reader.fieldnames})
+        if missing:
+            raise ValueError(f"Input CSV missing required columns: {', '.join(sorted(missing))}.")
+
+        rows: List[Dict[str, object]] = []
+        for row_num, row in enumerate(reader, start=2):
+            cleaned = {key.strip(): (value or "").strip() for key, value in row.items()}
+            cleaned["_row_num"] = row_num
+            rows.append(cleaned)
+
+    if not rows:
+        raise ValueError("Input CSV contains no data rows.")
+
+    return rows
 
 
 def main():
@@ -25,15 +60,18 @@ def main():
     
     parser.add_argument(
         "--ecosystem",
-        required=True,
         choices=["npm", "pypi"],
         help="The ecosystem to analyze (npm or pypi)"
     )
-    
+
     parser.add_argument(
         "--package",
-        required=True,
         help="The name of the package to analyze"
+    )
+
+    parser.add_argument(
+        "--input-csv",
+        help="CSV file with columns: ecosystem, package_name, end_date, optional start_date"
     )
     
     parser.add_argument(
@@ -98,21 +136,12 @@ def main():
     if args.weighting_type == "exponential" and args.half_life is None:
         parser.error("--half-life is required when --weighting-type is exponential")
     
-    # Parse dates
+    # Parse default start date
     try:
-        start_date = datetime.strptime(args.start_date, "%Y-%m-%d")
-    except ValueError:
-        print(f"Error: Invalid start-date format. Use YYYY-MM-DD", file=sys.stderr)
+        default_start_date = _parse_date(args.start_date, "start_date")
+    except ValueError as exc:
+        print(f"Error: {exc}", file=sys.stderr)
         sys.exit(1)
-    
-    if args.end_date:
-        try:
-            end_date = datetime.strptime(args.end_date, "%Y-%m-%d")
-        except ValueError:
-            print(f"Error: Invalid end-date format. Use YYYY-MM-DD", file=sys.stderr)
-            sys.exit(1)
-    else:
-        end_date = datetime.today()
     
     # Create output directory
     output_dir = Path(args.output_dir)
@@ -124,59 +153,180 @@ def main():
         logging.basicConfig(level=logging.INFO)
         logging.getLogger("dependency_metrics").setLevel(logging.DEBUG)
 
-    # Build OSV database if requested
-    if args.build_osv:
-        print("Building OSV vulnerability database...")
+    if args.input_csv:
+        input_csv = Path(args.input_csv)
+        if not input_csv.exists():
+            print(f"Error: Input CSV not found: {input_csv}", file=sys.stderr)
+            sys.exit(1)
+
+        try:
+            input_rows = _load_input_csv(input_csv)
+        except ValueError as exc:
+            print(f"Error: {exc}", file=sys.stderr)
+            sys.exit(1)
+
+        # Build OSV database automatically if missing
         osv_builder = OSVBuilder(output_dir)
         osv_df = osv_builder.build_database()
-        print(f"OSV database built with {len(osv_df)} records")
-    
-    # Analyze package dependencies
-    print(f"Analyzing {args.ecosystem} package: {args.package}")
-    analyzer = DependencyAnalyzer(
-        ecosystem=args.ecosystem,
-        package=args.package,
-        start_date=start_date,
-        end_date=end_date,
-        weighting_type=args.weighting_type,
-        half_life=args.half_life,
-        output_dir=output_dir
-    )
-    
-    try:
-        results = analyzer.analyze()
-        
-        # Output results
-        print_summary(
-            package=args.package,
+        ecosystems = sorted({row["ecosystem"].lower() for row in input_rows if row.get("ecosystem")})
+        osv_by_ecosystem: Dict[str, object] = {}
+        for ecosystem in ecosystems:
+            if len(osv_df) > 0 and "ecosystem" in osv_df.columns:
+                osv_by_ecosystem[ecosystem] = osv_df[osv_df["ecosystem"] == ecosystem.upper()].copy()
+            else:
+                osv_by_ecosystem[ecosystem] = osv_df
+
+        resolver_cache = ResolverCache()
+        summary_rows: List[Dict[str, object]] = []
+        dependency_frames = []
+
+        for row in input_rows:
+            row_num = row.get("_row_num")
+            ecosystem = row.get("ecosystem", "").lower()
+            package_name = row.get("package_name", "")
+            end_date_raw = row.get("end_date", "")
+            start_date_raw = row.get("start_date", "")
+
+            status = "ok"
+            error = ""
+            mttu = 0.0
+            mttr = 0.0
+            num_dependencies = 0
+
+            try:
+                if not ecosystem or not package_name or not end_date_raw:
+                    raise ValueError("ecosystem, package_name, and end_date are required.")
+                if ecosystem not in {"npm", "pypi"}:
+                    raise ValueError(f"Unsupported ecosystem: {ecosystem}.")
+
+                start_date = default_start_date
+                if start_date_raw:
+                    start_date = _parse_date(start_date_raw, "start_date", row_num)
+                end_date = _parse_date(end_date_raw, "end_date", row_num)
+
+                analyzer = DependencyAnalyzer(
+                    ecosystem=ecosystem,
+                    package=package_name,
+                    start_date=start_date,
+                    end_date=end_date,
+                    weighting_type=args.weighting_type,
+                    half_life=args.half_life,
+                    output_dir=output_dir,
+                    resolver_cache=resolver_cache,
+                )
+
+                results = analyzer.analyze(osv_df=osv_by_ecosystem.get(ecosystem))
+                mttu = results.get("ttu", 0.0)
+                mttr = results.get("ttr", 0.0)
+                num_dependencies = results.get("num_dependencies", 0)
+
+                dep_data = results.get("dependency_data", {})
+                for dep_df in dep_data.values():
+                    dependency_frames.append(dep_df)
+
+            except Exception as exc:
+                status = "error"
+                error = str(exc)
+
+                start_date = default_start_date
+                if start_date_raw:
+                    try:
+                        start_date = _parse_date(start_date_raw, "start_date", row_num)
+                    except ValueError:
+                        start_date = default_start_date
+                try:
+                    end_date = _parse_date(end_date_raw, "end_date", row_num)
+                except ValueError:
+                    end_date = datetime.today()
+
+            summary_rows.append({
+                "ecosystem": ecosystem,
+                "package_name": package_name,
+                "start_date": start_date.date().isoformat(),
+                "end_date": end_date.date().isoformat(),
+                "mttu": mttu,
+                "mttr": mttr,
+                "num_dependencies": num_dependencies,
+                "status": status,
+                "error": error,
+            })
+
+        summary_file = export_bulk_summary_csv(summary_rows, output_dir, input_csv)
+        print(f"Bulk results saved to: {summary_file}")
+
+        deps_file = export_bulk_dependency_csv(dependency_frames, output_dir, input_csv)
+        if deps_file is not None:
+            print(f"Dependency details saved to: {deps_file}")
+
+    else:
+        if not args.ecosystem or not args.package:
+            parser.error("--ecosystem and --package are required unless --input-csv is provided.")
+
+        # Parse end date for single package
+        if args.end_date:
+            try:
+                end_date = _parse_date(args.end_date, "end_date")
+            except ValueError as exc:
+                print(f"Error: {exc}", file=sys.stderr)
+                sys.exit(1)
+        else:
+            end_date = datetime.today()
+
+        start_date = default_start_date
+
+        # Build OSV database if requested
+        if args.build_osv:
+            print("Building OSV vulnerability database...")
+            osv_builder = OSVBuilder(output_dir)
+            osv_df = osv_builder.build_database()
+            print(f"OSV database built with {len(osv_df)} records")
+
+        # Analyze package dependencies
+        print(f"Analyzing {args.ecosystem} package: {args.package}")
+        analyzer = DependencyAnalyzer(
             ecosystem=args.ecosystem,
+            package=args.package,
             start_date=start_date,
             end_date=end_date,
             weighting_type=args.weighting_type,
             half_life=args.half_life,
-            results=results,
+            output_dir=output_dir,
         )
-        
-        results_file = save_results_json(results, output_dir, args.package)
-        print(f"\nResults saved to: {results_file}")
-        
-        # Export OSV data if requested
-        if args.get_osv:
-            osv_file = export_osv_data(results, output_dir, args.package)
-            if osv_file is not None:
-                print(f"OSV data saved to: {osv_file}")
-        
-        # Export worksheets if requested
-        if args.get_worksheets:
-            excel_file = export_worksheets(results, output_dir, args.package)
-            if excel_file is not None:
-                print(f"Worksheets saved to: {excel_file}")
-        
-    except Exception as e:
-        print(f"\nError during analysis: {e}", file=sys.stderr)
-        import traceback
-        traceback.print_exc()
-        sys.exit(1)
+
+        try:
+            results = analyzer.analyze()
+
+            # Output results
+            print_summary(
+                package=args.package,
+                ecosystem=args.ecosystem,
+                start_date=start_date,
+                end_date=end_date,
+                weighting_type=args.weighting_type,
+                half_life=args.half_life,
+                results=results,
+            )
+
+            results_file = save_results_json(results, output_dir, args.package)
+            print(f"\nResults saved to: {results_file}")
+
+            # Export OSV data if requested
+            if args.get_osv:
+                osv_file = export_osv_data(results, output_dir, args.package)
+                if osv_file is not None:
+                    print(f"OSV data saved to: {osv_file}")
+
+            # Export worksheets if requested
+            if args.get_worksheets:
+                excel_file = export_worksheets(results, output_dir, args.package)
+                if excel_file is not None:
+                    print(f"Worksheets saved to: {excel_file}")
+
+        except Exception as e:
+            print(f"\nError during analysis: {e}", file=sys.stderr)
+            import traceback
+            traceback.print_exc()
+            sys.exit(1)
 
 
 if __name__ == "__main__":
