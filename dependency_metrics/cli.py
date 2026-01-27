@@ -221,8 +221,10 @@ def main():
         summary_rows: List[Dict[str, object]] = []
         dependency_frames = []
 
-        for row in input_rows:
+        total_rows = len(input_rows)
+        for index, row in enumerate(input_rows, start=1):
             row_num = row.get("_row_num")
+            print(f"Processing row {index}/{total_rows} (CSV line {row_num})...")
             ecosystem = row.get("ecosystem", "").lower()
             package_name = row.get("package_name", "")
             end_date_raw = row.get("end_date", "")
