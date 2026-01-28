@@ -33,6 +33,7 @@ class ResolverCache:
     pypi_version_deps_cache: Dict[str, Dict[str, str]] = field(default_factory=dict)
     npm_time_cache: Dict[str, Dict[str, str]] = field(default_factory=dict)
     npm_resolve_cache: Dict[Tuple[str, str, str], Optional[str]] = field(default_factory=dict)
+    session: requests.Session = field(default_factory=requests.Session)
 
 
 class NpmResolver(PackageResolver):
@@ -62,9 +63,9 @@ class NpmResolver(PackageResolver):
 
         url = f"{self.registry_urls['npm']}/{package_name}"
         logger.info("Fetching metadata for %s", package_name)
-        response = requests.get(url)
-        response.raise_for_status()
-        data = response.json()
+        with self.cache.session.get(url) as response:
+            response.raise_for_status()
+            data = response.json()
         self.cache.metadata_cache[cache_key] = data
         return data
 
@@ -306,9 +307,9 @@ class PyPIResolver(PackageResolver):
 
         url = f"{self.registry_urls['pypi']}/{package_name}/json"
         logger.info("Fetching metadata for %s", package_name)
-        response = requests.get(url)
-        response.raise_for_status()
-        data = response.json()
+        with self.cache.session.get(url) as response:
+            response.raise_for_status()
+            data = response.json()
         self.cache.metadata_cache[cache_key] = data
         return data
 
@@ -463,8 +464,8 @@ class PyPIResolver(PackageResolver):
             return self.cache.pypi_version_metadata_cache[cache_key]
 
         version_url = f"{self.registry_urls['pypi']}/{package}/{version}/json"
-        response = requests.get(version_url)
-        response.raise_for_status()
-        data = response.json()
+        with self.cache.session.get(version_url) as response:
+            response.raise_for_status()
+            data = response.json()
         self.cache.pypi_version_metadata_cache[cache_key] = data
         return data
