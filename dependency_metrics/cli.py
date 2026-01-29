@@ -236,7 +236,7 @@ def main():
             else:
                 osv_by_ecosystem[ecosystem] = osv_df
 
-        resolver_cache = ResolverCache()
+        resolver_cache = ResolverCache(cache_dir=output_dir / "cache")
         summary_rows: List[Dict[str, object]] = []
         dependency_frames = []
 

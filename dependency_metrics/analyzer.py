@@ -65,7 +65,7 @@ class DependencyAnalyzer:
         
         self.osv_builder = OSVBuilder(output_dir)
         self.osv_service = OSVService()
-        self._resolver_cache = resolver_cache or ResolverCache()
+        self._resolver_cache = resolver_cache or ResolverCache(cache_dir=self.output_dir / "cache")
         
         # Registry URLs
         self.registry_urls = {

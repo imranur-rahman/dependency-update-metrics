@@ -7,12 +7,15 @@ from __future__ import annotations
 import json
 import logging
 import subprocess
+import hashlib
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Dict, Iterable, Optional, Tuple
+from pathlib import Path
+from typing import Dict, Iterable, Optional, Tuple, Any
 
 import requests
 from packaging import version as pkg_version
+from packaging.specifiers import SpecifierSet
 from packaging.requirements import Requirement
 
 from .interfaces import PackageResolver
@@ -34,6 +37,34 @@ class ResolverCache:
     npm_time_cache: Dict[str, Dict[str, str]] = field(default_factory=dict)
     npm_resolve_cache: Dict[Tuple[str, str, str], Optional[str]] = field(default_factory=dict)
     session: requests.Session = field(default_factory=requests.Session)
+    cache_dir: Optional[Path] = None
+
+    def _cache_path(self, namespace: str, key: str) -> Optional[Path]:
+        if self.cache_dir is None:
+            return None
+        digest = hashlib.sha256(key.encode("utf-8")).hexdigest()
+        return self.cache_dir / namespace / f"{digest}.json"
+
+    def load_json(self, namespace: str, key: str) -> Optional[Dict[str, Any]]:
+        path = self._cache_path(namespace, key)
+        if path is None or not path.exists():
+            return None
+        try:
+            with path.open("r", encoding="utf-8") as handle:
+                return json.load(handle)
+        except (OSError, json.JSONDecodeError):
+            return None
+
+    def save_json(self, namespace: str, key: str, data: Dict[str, Any]) -> None:
+        path = self._cache_path(namespace, key)
+        if path is None:
+            return
+        try:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            with path.open("w", encoding="utf-8") as handle:
+                json.dump(data, handle)
+        except OSError:
+            return
 
 
 class NpmResolver(PackageResolver):
@@ -61,12 +92,19 @@ class NpmResolver(PackageResolver):
             logger.debug("Cache hit: metadata %s:%s", self.ecosystem, package_name)
             return self.cache.metadata_cache[cache_key]
 
+        disk_key = f"{self.ecosystem}:{package_name}"
+        cached = self.cache.load_json("metadata", disk_key)
+        if cached is not None:
+            self.cache.metadata_cache[cache_key] = cached
+            return cached
+
         url = f"{self.registry_urls['npm']}/{package_name}"
         logger.info("Fetching metadata for %s", package_name)
         with self.cache.session.get(url) as response:
             response.raise_for_status()
             data = response.json()
         self.cache.metadata_cache[cache_key] = data
+        self.cache.save_json("metadata", disk_key, data)
         return data
 
     def get_package_version_at_date(self, metadata: Dict) -> Tuple[str, Dict]:
@@ -239,6 +277,12 @@ class NpmResolver(PackageResolver):
             logger.debug("Cache hit: npm time %s", package_name)
             return self.cache.npm_time_cache[package_name]
 
+        disk_key = f"npm:{package_name}"
+        cached = self.cache.load_json("npm_time", disk_key)
+        if cached is not None:
+            self.cache.npm_time_cache[package_name] = cached
+            return cached
+
         cmd = ['npm', 'view', package_name, 'time', '--json']
         result = subprocess.run(
             cmd,
@@ -253,6 +297,7 @@ class NpmResolver(PackageResolver):
         time_data.pop('modified', None)
         time_data.pop('created', None)
         self.cache.npm_time_cache[package_name] = time_data
+        self.cache.save_json("npm_time", disk_key, time_data)
         return time_data
 
     def _parse_versions_from_metadata(self, metadata: Dict) -> Tuple[str, Dict]:
@@ -305,12 +350,19 @@ class PyPIResolver(PackageResolver):
             logger.debug("Cache hit: metadata %s:%s", self.ecosystem, package_name)
             return self.cache.metadata_cache[cache_key]
 
+        disk_key = f"{self.ecosystem}:{package_name}"
+        cached = self.cache.load_json("metadata", disk_key)
+        if cached is not None:
+            self.cache.metadata_cache[cache_key] = cached
+            return cached
+
         url = f"{self.registry_urls['pypi']}/{package_name}/json"
         logger.info("Fetching metadata for %s", package_name)
         with self.cache.session.get(url) as response:
             response.raise_for_status()
             data = response.json()
         self.cache.metadata_cache[cache_key] = data
+        self.cache.save_json("metadata", disk_key, data)
         return data
 
     def get_package_version_at_date(self, metadata: Dict) -> Tuple[str, Dict]:
@@ -463,9 +515,16 @@ class PyPIResolver(PackageResolver):
             logger.debug("Cache hit: pypi version metadata %s", cache_key)
             return self.cache.pypi_version_metadata_cache[cache_key]
 
+        disk_key = f"{package}:{version}"
+        cached = self.cache.load_json("pypi_version", disk_key)
+        if cached is not None:
+            self.cache.pypi_version_metadata_cache[cache_key] = cached
+            return cached
+
         version_url = f"{self.registry_urls['pypi']}/{package}/{version}/json"
         with self.cache.session.get(version_url) as response:
             response.raise_for_status()
             data = response.json()
         self.cache.pypi_version_metadata_cache[cache_key] = data
+        self.cache.save_json("pypi_version", disk_key, data)
         return data
