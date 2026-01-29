@@ -104,6 +104,23 @@ dependency-metrics \
   --output-dir ./my-results
 ```
 
+### Bulk CSV input (parallel processing)
+
+Input CSV must include `ecosystem`, `package_name`, `end_date` and can include `start_date`.
+Extra columns are allowed. The tool automatically removes duplicate rows by
+`ecosystem`, `package_name`, and `end_date`.
+
+```bash
+dependency-metrics \
+  --input-csv ./input.csv \
+  --workers 8 \
+  --output-dir ./output
+```
+
+Bulk outputs:
+- `<input>_bulk_results.csv` (summary)
+- `<input>_dependency_details.csv` (per-interval dependency data)
+
 ## Understanding the Output
 
 ### Console Output

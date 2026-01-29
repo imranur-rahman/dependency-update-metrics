@@ -5,12 +5,14 @@ Command-line interface for the dependency metrics tool.
 import argparse
 import csv
 import io
+import os
 import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional
 
 import pandas as pd
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from .analyzer import DependencyAnalyzer
 from .osv_builder import OSVBuilder
@@ -166,6 +168,13 @@ def main():
     )
 
     parser.add_argument(
+        "--workers",
+        type=int,
+        default=None,
+        help="Number of parallel workers for bulk CSV mode. Default: min(8, CPU count)"
+    )
+
+    parser.add_argument(
         "--verbose",
         action="store_true",
         help="Enable debug logging"
@@ -241,13 +250,16 @@ def main():
         dependency_frames = []
 
         total_rows = len(input_rows)
-        for index, row in enumerate(input_rows, start=1):
+        worker_count = args.workers
+        if worker_count is None or worker_count <= 0:
+            worker_count = min(8, os.cpu_count() or 4)
+
+        def _process_row(row: Dict[str, object]) -> Dict[str, object]:
             row_num = row.get("_row_num")
-            print(f"Processing row {index}/{total_rows} (CSV line {row_num})...")
-            ecosystem = row.get("ecosystem", "").lower()
-            package_name = row.get("package_name", "")
-            end_date_raw = row.get("end_date", "")
-            start_date_raw = row.get("start_date", "")
+            ecosystem = str(row.get("ecosystem", "")).lower()
+            package_name = str(row.get("package_name", ""))
+            end_date_raw = str(row.get("end_date", ""))
+            start_date_raw = str(row.get("start_date", ""))
 
             status = "ok"
             error = ""
@@ -283,14 +295,14 @@ def main():
                 num_dependencies = results.get("num_dependencies", 0)
 
                 dep_data = results.get("dependency_data", {})
-                for dep_df in dep_data.values():
-                    dependency_frames.append(dep_df)
+                dep_frames = list(dep_data.values())
 
             except Exception as exc:
                 status = "error"
                 error = f"\"{exc}\""
                 mttu = -1.0
                 mttr = -1.0
+                dep_frames = []
 
                 start_date = default_start_date
                 if start_date_raw:
@@ -303,7 +315,7 @@ def main():
                 except ValueError:
                     end_date = datetime.today()
 
-            summary_rows.append({
+            summary = {
                 "ecosystem": ecosystem,
                 "package_name": package_name,
                 "start_date": start_date.date().isoformat(),
@@ -313,7 +325,29 @@ def main():
                 "num_dependencies": num_dependencies,
                 "status": status,
                 "error": error,
-            })
+            }
+
+            return {
+                "row_num": row_num,
+                "summary": summary,
+                "dependency_frames": dep_frames,
+            }
+
+        with ThreadPoolExecutor(max_workers=worker_count) as executor:
+            futures = []
+            for row in input_rows:
+                futures.append(executor.submit(_process_row, row))
+
+            processed = 0
+            for future in as_completed(futures):
+                result = future.result()
+                processed += 1
+                print(f"Processing row {processed}/{total_rows} (CSV line {result['row_num']})...")
+            summary_rows.append((result["row_num"], result["summary"]))
+            dependency_frames.extend(result["dependency_frames"])
+
+        summary_rows.sort(key=lambda item: item[0])
+        summary_rows = [item[1] for item in summary_rows]
 
         summary_file = export_bulk_summary_csv(summary_rows, output_dir, input_csv)
         print(f"Bulk results saved to: {summary_file}")

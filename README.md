@@ -56,7 +56,13 @@ dependency-metrics --ecosystem npm --package express --get-osv
 
 # Test a PyPI package
 dependency-metrics --ecosystem pypi --package requests --start-date 2020-01-01 --end-date 2021-01-01 --get-worksheets
+
+# Bulk CSV input (parallel by default)
+dependency-metrics --input-csv ./input.csv --workers 8 --output-dir ./output
 ```
+
+Input CSV columns: `ecosystem`, `package_name`, `end_date`, optional `start_date`.
+Extra columns are allowed; duplicates are removed by `ecosystem, package_name, end_date`.
 
 ### As a Python module
 
@@ -85,8 +91,9 @@ print(f"Average TTR: {results['ttr']:.2f} days")
 
 ## Command-line Arguments
 
-- `--ecosystem`: Ecosystem to analyze (`npm` or `pypi`) [Required]
-- `--package`: Package name to analyze [Required]
+- `--ecosystem`: Ecosystem to analyze (`npm` or `pypi`) [Required unless `--input-csv`]
+- `--package`: Package name to analyze [Required unless `--input-csv`]
+- `--input-csv`: CSV file with columns `ecosystem, package_name, end_date` and optional `start_date`
 - `--start-date`: Start date for analysis (YYYY-MM-DD) [Default: 1900-01-01]
 - `--end-date`: End date for analysis (YYYY-MM-DD) [Default: today]
 - `--weighting-type`: Weighting method (`linear`, `exponential`, `inverse`, `disable`) [Default: disable]
@@ -95,6 +102,7 @@ print(f"Average TTR: {results['ttr']:.2f} days")
 - `--get-osv`: Export OSV data for the package's dependencies
 - `--get-worksheets`: Export detailed analysis worksheets to Excel
 - `--output-dir`: Output directory for results [Default: ./output]
+- `--workers`: Number of parallel workers for bulk CSV mode [Default: min(8, CPU count)]
 
 ## Weighting Methods
 
@@ -127,6 +135,7 @@ The tool generates several outputs in the specified output directory:
 1. **JSON results file**: Contains TTU, TTR, and metadata
 2. **OSV data** (with `--get-osv`): CSV file with vulnerability information
 3. **Excel worksheets** (with `--get-worksheets`): Detailed analysis for each dependency
+4. **Bulk CSV results** (with `--input-csv`): Summary CSV and dependency details CSV
 
 ### Example JSON output
 
