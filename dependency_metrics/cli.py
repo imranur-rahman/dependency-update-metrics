@@ -333,18 +333,47 @@ def main():
                 "dependency_frames": dep_frames,
             }
 
+        # Group rows by package to maximize cache reuse within a package
+        grouped_rows: Dict[tuple[str, str], List[Dict[str, object]]] = {}
+        for row in input_rows:
+            key = (
+                str(row.get("ecosystem", "")).strip().lower(),
+                str(row.get("package_name", "")).strip().lower(),
+            )
+            grouped_rows.setdefault(key, []).append(row)
+
+        def _parse_end_date_for_sort(row: Dict[str, object]) -> datetime:
+            end_date_raw = str(row.get("end_date", ""))
+            try:
+                return _parse_date(end_date_raw, "end_date", row.get("_row_num"))
+            except ValueError:
+                return datetime.min
+
+        def _process_group(rows: List[Dict[str, object]]) -> List[Dict[str, object]]:
+            sorted_rows = sorted(
+                rows,
+                key=lambda r: (
+                    _parse_end_date_for_sort(r),
+                    str(r.get("start_date", "")),
+                ),
+            )
+            results = []
+            for row in sorted_rows:
+                results.append(_process_row(row))
+            return results
+
         with ThreadPoolExecutor(max_workers=worker_count) as executor:
             futures = []
-            for row in input_rows:
-                futures.append(executor.submit(_process_row, row))
+            for rows in grouped_rows.values():
+                futures.append(executor.submit(_process_group, rows))
 
             processed = 0
             for future in as_completed(futures):
-                result = future.result()
-                processed += 1
-                print(f"Processing row {processed}/{total_rows} (CSV line {result['row_num']})...")
-            summary_rows.append((result["row_num"], result["summary"]))
-            dependency_frames.extend(result["dependency_frames"])
+                for result in future.result():
+                    processed += 1
+                    print(f"Processing row {processed}/{total_rows} (CSV line {result['row_num']})...")
+                    summary_rows.append((result["row_num"], result["summary"]))
+                    dependency_frames.extend(result["dependency_frames"])
 
         summary_rows.sort(key=lambda item: item[0])
         summary_rows = [item[1] for item in summary_rows]

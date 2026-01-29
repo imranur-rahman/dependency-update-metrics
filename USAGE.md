@@ -169,6 +169,7 @@ The JSON file contains detailed results:
 - Ecosystem resolution lives in `dependency_metrics/resolvers.py`.
 - OSV remediation checks are handled by `dependency_metrics/osv_service.py`.
 - Reporting/export helpers live in `dependency_metrics/reporting.py`.
+- Bulk CSV mode groups rows by `(ecosystem, package_name)` and processes each group sequentially while running groups in parallel to maximize cache reuse.
 
 ### Excel Worksheets
 
