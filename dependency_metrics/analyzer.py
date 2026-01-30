@@ -13,7 +13,7 @@ from packaging import version as pkg_version
 
 from .osv_builder import OSVBuilder
 from .osv_service import OSVService
-from .resolvers import NpmResolver, PyPIResolver, ResolverCache
+from .resolvers import NpmResolver, PyPIResolver, ResolverCache, npm_semver_key
 from .time_utils import build_intervals
 
 
@@ -283,12 +283,24 @@ class DependencyAnalyzer:
                 continue
             
             # Sort by semantic version and pick the highest
-            try:
-                available_versions.sort(key=lambda x: pkg_version.parse(x[0]))
-                pkg_version_at_interval, constraint_at_interval = available_versions[-1]
-            except Exception:
-                # Fallback to last by date if semver parsing fails
-                pkg_version_at_interval, constraint_at_interval = available_versions[-1]
+            if self.ecosystem == "npm":
+                semver_candidates = []
+                for ver, constraint in available_versions:
+                    key = npm_semver_key(ver)
+                    if key is not None:
+                        semver_candidates.append((key, ver, constraint))
+                if semver_candidates:
+                    semver_candidates.sort(key=lambda item: item[0])
+                    _, pkg_version_at_interval, constraint_at_interval = semver_candidates[-1]
+                else:
+                    pkg_version_at_interval, constraint_at_interval = available_versions[-1]
+            else:
+                try:
+                    available_versions.sort(key=lambda x: pkg_version.parse(x[0]))
+                    pkg_version_at_interval, constraint_at_interval = available_versions[-1]
+                except Exception:
+                    # Fallback to last by date if semver parsing fails
+                    pkg_version_at_interval, constraint_at_interval = available_versions[-1]
             
             # Skip if no constraint for this dependency
             if constraint_at_interval is None:

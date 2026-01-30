@@ -27,6 +27,51 @@ from .time_utils import parse_timestamp
 logger = logging.getLogger(__name__)
 
 
+def npm_semver_key(version: str) -> Optional[Tuple[int, int, int, int, Tuple[Tuple[int, object], ...]]]:
+    """Return a sortable key for npm semver strings or None if invalid."""
+    if version is None:
+        return None
+    cleaned = str(version).strip()
+    while cleaned and cleaned[0] in ("v", "="):
+        cleaned = cleaned[1:]
+    if not cleaned:
+        return None
+
+    # Drop build metadata
+    cleaned = cleaned.split("+", 1)[0]
+
+    prerelease_key: Tuple[Tuple[int, object], ...] = tuple()
+    is_release = 1
+    if "-" in cleaned:
+        base, prerelease = cleaned.split("-", 1)
+        is_release = 0
+        identifiers = prerelease.split(".") if prerelease else []
+        parts = []
+        for ident in identifiers:
+            if ident.isdigit():
+                parts.append((0, int(ident)))
+            else:
+                parts.append((1, ident))
+        prerelease_key = tuple(parts)
+    else:
+        base = cleaned
+
+    parts = base.split(".")
+    if len(parts) > 3:
+        return None
+    while len(parts) < 3:
+        parts.append("0")
+
+    try:
+        major = int(parts[0])
+        minor = int(parts[1])
+        patch = int(parts[2])
+    except ValueError:
+        return None
+
+    return (major, minor, patch, is_release, prerelease_key)
+
+
 @dataclass
 class ResolverCache:
     """Shared in-memory caches for resolver operations."""
@@ -255,7 +300,17 @@ class NpmResolver(PackageResolver):
                         continue
 
             if valid_versions:
-                valid_versions.sort(key=lambda v: pkg_version.parse(v))
+                semver_candidates = []
+                for ver in valid_versions:
+                    key = npm_semver_key(ver)
+                    if key is not None:
+                        semver_candidates.append((key, ver))
+
+                if semver_candidates:
+                    semver_candidates.sort(key=lambda item: item[0])
+                    return semver_candidates[-1][1]
+
+                valid_versions.sort()
                 return valid_versions[-1]
         except Exception as e:
             message = f"Error getting highest semver version for {package_name}: {e}"
