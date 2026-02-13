@@ -13,6 +13,7 @@ from typing import Dict, List, Optional
 
 import pandas as pd
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from contextlib import redirect_stdout
 
 from .analyzer import DependencyAnalyzer
 from .osv_builder import OSVBuilder
@@ -204,6 +205,10 @@ def main():
         logging.getLogger("dependency_metrics").setLevel(logging.DEBUG)
 
     if args.input_csv:
+        if not args.verbose:
+            import logging
+            logging.getLogger("dependency_metrics").setLevel(logging.ERROR)
+
         input_csv = Path(args.input_csv)
         if not input_csv.exists():
             print(f"Error: Input CSV not found: {input_csv}", file=sys.stderr)
@@ -289,7 +294,8 @@ def main():
                     resolver_cache=resolver_cache,
                 )
 
-                results = analyzer.analyze(osv_df=osv_by_ecosystem.get(ecosystem))
+                with io.StringIO() as buffer, redirect_stdout(buffer):
+                    results = analyzer.analyze(osv_df=osv_by_ecosystem.get(ecosystem))
                 mttu = results.get("ttu", 0.0)
                 mttr = results.get("ttr", 0.0)
                 num_dependencies = results.get("num_dependencies", 0)
@@ -372,6 +378,8 @@ def main():
                 for result in future.result():
                     processed += 1
                     print(f"Processing row {processed}/{total_rows} (CSV line {result['row_num']})...")
+                    if result["summary"]["status"] == "error":
+                        print(f"Error (CSV line {result['row_num']}): {result['summary']['error']}")
                     summary_rows.append((result["row_num"], result["summary"]))
                     dependency_frames.extend(result["dependency_frames"])
 
