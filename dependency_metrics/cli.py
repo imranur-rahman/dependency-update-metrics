@@ -20,8 +20,6 @@ from .osv_builder import OSVBuilder
 from .resolvers import ResolverCache
 from .reporting import (
     export_osv_data,
-    export_bulk_dependency_csv,
-    export_bulk_summary_csv,
     export_worksheets,
     print_summary,
     save_results_json,
@@ -251,8 +249,6 @@ def main():
                 osv_by_ecosystem[ecosystem] = osv_df
 
         resolver_cache = ResolverCache(cache_dir=output_dir / "cache")
-        summary_rows: List[Dict[str, object]] = []
-        dependency_frames = []
 
         total_rows = len(input_rows)
         worker_count = args.workers
@@ -373,25 +369,56 @@ def main():
             for rows in grouped_rows.values():
                 futures.append(executor.submit(_process_group, rows))
 
-            processed = 0
-            for future in as_completed(futures):
-                for result in future.result():
-                    processed += 1
-                    print(f"Processing row {processed}/{total_rows} (CSV line {result['row_num']})...")
-                    if result["summary"]["status"] == "error":
-                        print(f"Error (CSV line {result['row_num']}): {result['summary']['error']}")
-                    summary_rows.append((result["row_num"], result["summary"]))
-                    dependency_frames.extend(result["dependency_frames"])
+            summary_file_path = output_dir / f"{input_csv.stem}_bulk_results.csv"
+            deps_file_path = output_dir / f"{input_csv.stem}_dependency_details.csv"
+            if deps_file_path.exists():
+                deps_file_path.unlink()
+            summary_columns = [
+                "ecosystem",
+                "package_name",
+                "start_date",
+                "end_date",
+                "mttu",
+                "mttr",
+                "num_dependencies",
+                "status",
+                "error",
+            ]
+            summary_file_path.parent.mkdir(parents=True, exist_ok=True)
+            summary_writer = None
+            deps_header_written = False
 
-        summary_rows.sort(key=lambda item: item[0])
-        summary_rows = [item[1] for item in summary_rows]
+            summary_handle = summary_file_path.open("w", newline="")
+            try:
+                import csv as _csv
 
-        summary_file = export_bulk_summary_csv(summary_rows, output_dir, input_csv)
-        print(f"Bulk results saved to: {summary_file}")
+                summary_writer = _csv.DictWriter(summary_handle, fieldnames=summary_columns)
+                summary_writer.writeheader()
 
-        deps_file = export_bulk_dependency_csv(dependency_frames, output_dir, input_csv)
-        if deps_file is not None:
-            print(f"Dependency details saved to: {deps_file}")
+                processed = 0
+                for future in as_completed(futures):
+                    for result in future.result():
+                        processed += 1
+                        print(f"Processing row {processed}/{total_rows} (CSV line {result['row_num']})...")
+                        if result["summary"]["status"] == "error":
+                            print(f"Error (CSV line {result['row_num']}): {result['summary']['error']}")
+                        summary_writer.writerow(result["summary"])
+                        summary_handle.flush()
+
+                        for dep_df in result["dependency_frames"]:
+                            dep_df.to_csv(
+                                deps_file_path,
+                                mode="a",
+                                header=not deps_header_written,
+                                index=False,
+                            )
+                            deps_header_written = True
+            finally:
+                summary_handle.close()
+
+        print(f"Bulk results saved to: {summary_file_path}")
+        if deps_header_written:
+            print(f"Dependency details saved to: {deps_file_path}")
 
     else:
         if not args.ecosystem or not args.package:
