@@ -8,6 +8,7 @@ import json
 import logging
 import subprocess
 import hashlib
+from urllib.parse import quote
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
@@ -145,7 +146,7 @@ class NpmResolver(PackageResolver):
 
         url = f"{self.registry_urls['npm']}/{package_name}"
         logger.info("Fetching metadata for %s", package_name)
-        with self.cache.session.get(url) as response:
+        with self.cache.session.get(quote(url, safe=":/@")) as response:
             response.raise_for_status()
             data = response.json()
         self.cache.metadata_cache[cache_key] = data
@@ -413,7 +414,7 @@ class PyPIResolver(PackageResolver):
 
         url = f"{self.registry_urls['pypi']}/{package_name}/json"
         logger.info("Fetching metadata for %s", package_name)
-        with self.cache.session.get(url) as response:
+        with self.cache.session.get(quote(url, safe=":/@")) as response:
             response.raise_for_status()
             data = response.json()
         self.cache.metadata_cache[cache_key] = data
@@ -577,7 +578,7 @@ class PyPIResolver(PackageResolver):
             return cached
 
         version_url = f"{self.registry_urls['pypi']}/{package}/{version}/json"
-        with self.cache.session.get(version_url) as response:
+        with self.cache.session.get(quote(version_url, safe=":/@")) as response:
             response.raise_for_status()
             data = response.json()
         self.cache.pypi_version_metadata_cache[cache_key] = data
