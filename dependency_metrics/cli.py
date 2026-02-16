@@ -13,7 +13,6 @@ from typing import Dict, List, Optional
 
 import pandas as pd
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from contextlib import redirect_stdout
 
 from .analyzer import DependencyAnalyzer
 from .osv_builder import OSVBuilder
@@ -330,8 +329,7 @@ def main():
             )
 
             try:
-                with io.StringIO() as buffer, redirect_stdout(buffer):
-                    results = analyzer.analyze_bulk_rows(valid_rows, osv_df=osv_by_ecosystem.get(ecosystem))
+                results = analyzer.analyze_bulk_rows(valid_rows, osv_df=osv_by_ecosystem.get(ecosystem))
             except Exception as exc:
                 error = f"\"{exc}\""
                 for row in valid_rows:
