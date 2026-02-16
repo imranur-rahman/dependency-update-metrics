@@ -14,7 +14,7 @@ from packaging import version as pkg_version
 from .osv_builder import OSVBuilder
 from .osv_service import OSVService
 from .resolvers import NpmResolver, PyPIResolver, ResolverCache, npm_semver_key
-from .time_utils import build_intervals
+from .time_utils import build_intervals, parse_timestamp
 
 
 logger = logging.getLogger(__name__)
@@ -123,6 +123,265 @@ class DependencyAnalyzer:
             Dictionary mapping dependency names to constraints
         """
         return self.resolver.extract_dependencies(version_data)
+
+    def _get_latest_package_version_data(self, metadata: Dict) -> Tuple[str, Dict]:
+        """Get latest package version and its metadata (regardless of end_date)."""
+        if self.ecosystem == "npm":
+            latest_version = None
+            latest_date = None
+            versions = metadata.get("versions", {})
+            for ver, ver_data in versions.items():
+                published = ver_data.get("dist", {}).get("published")
+                if not published:
+                    continue
+                pub_date = parse_timestamp(published)
+                if pub_date is None:
+                    continue
+                if latest_date is None or pub_date > latest_date:
+                    latest_date = pub_date
+                    latest_version = ver
+            if latest_version is None:
+                raise ValueError("No versions found in npm metadata.")
+            return latest_version, versions.get(latest_version, {})
+
+        if self.ecosystem == "pypi":
+            latest_version = None
+            latest_date = None
+            releases = metadata.get("releases", {})
+            for ver, release_files in releases.items():
+                if not release_files:
+                    continue
+                for file_info in release_files:
+                    upload_time = file_info.get("upload_time")
+                    if not upload_time:
+                        continue
+                    pub_date = parse_timestamp(upload_time)
+                    if pub_date is None:
+                        continue
+                    if latest_date is None or pub_date > latest_date:
+                        latest_date = pub_date
+                        latest_version = ver
+            if latest_version is None:
+                raise ValueError("No versions found in PyPI metadata.")
+            try:
+                version_metadata = self.resolver._get_pypi_version_metadata(self.package, latest_version)
+                version_data = {
+                    "upload_time": latest_date.isoformat() if latest_date else None,
+                    "requires_dist": version_metadata.get("info", {}).get("requires_dist", []),
+                }
+            except Exception:
+                version_data = {
+                    "upload_time": latest_date.isoformat() if latest_date else None,
+                    "requires_dist": [],
+                }
+            return latest_version, version_data
+
+        raise ValueError(f"Unsupported ecosystem: {self.ecosystem}")
+
+    def analyze_bulk_rows(
+        self,
+        rows: List[Dict[str, Any]],
+        osv_df: Optional[pd.DataFrame] = None,
+    ) -> List[Dict[str, Any]]:
+        """Analyze multiple rows for a single package using latest dependencies."""
+        if not rows:
+            return []
+
+        # Parse and normalize dates
+        parsed_rows = []
+        for row in rows:
+            start_date = row["start_date"]
+            end_date = row["end_date"]
+            if start_date.tzinfo is None:
+                start_date = start_date.replace(tzinfo=timezone.utc)
+            else:
+                start_date = start_date.astimezone(timezone.utc)
+            if end_date.tzinfo is None:
+                end_date = end_date.replace(tzinfo=timezone.utc)
+            else:
+                end_date = end_date.astimezone(timezone.utc)
+            parsed_rows.append({**row, "start_date": start_date, "end_date": end_date})
+
+        min_start = min(row["start_date"] for row in parsed_rows)
+        max_end = max(row["end_date"] for row in parsed_rows)
+
+        # Override analyzer range for bulk timeline computation
+        original_start = self.start_date
+        original_end = self.end_date
+        self.start_date = min_start
+        self.end_date = max_end
+        self.resolver.start_date = min_start
+        self.resolver.end_date = max_end
+
+        # Fetch package metadata and latest dependencies
+        pkg_metadata = self.fetch_package_metadata(self.package)
+        latest_pkg_version, latest_version_data = self._get_latest_package_version_data(pkg_metadata)
+        dependencies = self.extract_dependencies(latest_version_data)
+
+        if osv_df is None:
+            osv_db_file = self.output_dir / "osv_database.parquet"
+            if osv_db_file.exists():
+                osv_df = pd.read_parquet(osv_db_file)
+            else:
+                osv_df = pd.DataFrame()
+        if len(osv_df) > 0:
+            osv_df = osv_df[osv_df["ecosystem"] == self.ecosystem.upper()].copy()
+
+        pkg_versions = self.get_all_versions_with_dates(pkg_metadata, package_name=self.package)
+        pkg_versions = [(ver, date) for ver, date in pkg_versions]
+        pkg_versions.sort(key=lambda item: item[1])
+
+        pkg_version_at_date = {}
+        for ver, date in pkg_versions:
+            pkg_version_at_date[date] = ver
+
+        # Precompute package version available at each interval start
+        def _package_version_for_date(at_date: datetime) -> Optional[str]:
+            available = [(ver, d) for ver, d in pkg_versions if d <= at_date]
+            if not available:
+                return None
+            if self.ecosystem == "npm":
+                semver_candidates = []
+                for ver, _ in available:
+                    key = npm_semver_key(ver)
+                    if key is not None:
+                        semver_candidates.append((key, ver))
+                if semver_candidates:
+                    semver_candidates.sort(key=lambda item: item[0])
+                    return semver_candidates[-1][1]
+                return available[-1][0]
+            try:
+                available.sort(key=lambda item: pkg_version.parse(item[0]))
+                return available[-1][0]
+            except Exception:
+                return available[-1][0]
+
+        dep_cache: Dict[str, Dict[datetime, Dict[str, Any]]] = {}
+        dep_metadata_cache: Dict[str, Dict] = {}
+        dep_dates_cache: Dict[str, List[datetime]] = {}
+
+        # Precompute dependency timelines and per-date resolution
+        for dep_name, dep_constraint in dependencies.items():
+            dep_metadata = self.fetch_package_metadata(dep_name)
+            dep_metadata_cache[dep_name] = dep_metadata
+            dep_versions = self.get_all_versions_with_dates(dep_metadata, package_name=dep_name)
+            dep_versions = [(ver, date) for ver, date in dep_versions]
+
+            dates = []
+            for _, date in pkg_versions:
+                if min_start <= date <= max_end:
+                    dates.append(date)
+            for _, date in dep_versions:
+                if min_start <= date <= max_end:
+                    dates.append(date)
+
+            dates = sorted(set(dates))
+            dep_dates_cache[dep_name] = dates
+
+            per_date = {}
+            for date in dates:
+                dep_version = self.resolve_dependency_version(dep_name, dep_constraint, date)
+                highest_dep_version = self.get_highest_semver_version_at_date(
+                    dep_name, date, metadata=dep_metadata
+                )
+                updated = (
+                    dep_version == highest_dep_version
+                    if dep_version and highest_dep_version
+                    else False
+                )
+                remediated = self._check_remediation(
+                    dep_name,
+                    dep_version,
+                    date,
+                    osv_df if osv_df is not None else pd.DataFrame(),
+                    dep_metadata,
+                )
+                per_date[date] = {
+                    "dependency_version": dep_version,
+                    "dependency_highest_version": highest_dep_version,
+                    "updated": updated,
+                    "remediated": remediated,
+                }
+            dep_cache[dep_name] = per_date
+
+        results = []
+        for row in parsed_rows:
+            start_date = row["start_date"]
+            end_date = row["end_date"]
+            ttu_values = []
+            ttr_values = []
+            dep_frames = []
+
+            original_start_row = self.start_date
+            original_end_row = self.end_date
+            self.start_date = start_date
+            self.end_date = end_date
+
+            for dep_name, dep_constraint in dependencies.items():
+                dates = [d for d in dep_dates_cache[dep_name] if start_date <= d <= end_date]
+                intervals = build_intervals(dates, start_date, end_date)
+                if not intervals:
+                    continue
+                records = []
+                for interval_start, interval_end in intervals:
+                    info = dep_cache[dep_name].get(interval_start)
+                    if info is None:
+                        continue
+                    age_of_interval = (end_date - interval_start).days
+                    weight = self.calculate_weight(age_of_interval)
+                    pkg_version_at_interval = _package_version_for_date(interval_start)
+                    records.append({
+                        "ecosystem": self.ecosystem,
+                        "package": self.package,
+                        "package_version": pkg_version_at_interval or latest_pkg_version,
+                        "dependency": dep_name,
+                        "dependency_constraint": dep_constraint,
+                        "dependency_version": info["dependency_version"],
+                        "dependency_highest_version": info["dependency_highest_version"],
+                        "interval_start": interval_start,
+                        "interval_end": interval_end,
+                        "updated": info["updated"],
+                        "remediated": info["remediated"],
+                        "age_of_interval": age_of_interval,
+                        "weight": weight,
+                        "analysis_end_date": end_date,
+                    })
+                dep_df = pd.DataFrame(records)
+                if len(dep_df) == 0:
+                    continue
+                ttu, ttr = self.calculate_ttu_ttr(dep_df)
+                ttu_values.append(ttu)
+                ttr_values.append(ttr)
+                dep_frames.append(dep_df)
+
+            self.start_date = original_start_row
+            self.end_date = original_end_row
+
+            avg_ttu = sum(ttu_values) / len(ttu_values) if ttu_values else 0.0
+            avg_ttr = sum(ttr_values) / len(ttr_values) if ttr_values else 0.0
+
+            results.append({
+                "row_num": row["row_num"],
+                "summary": {
+                    "ecosystem": self.ecosystem,
+                    "package_name": self.package,
+                    "start_date": start_date.date().isoformat(),
+                    "end_date": end_date.date().isoformat(),
+                    "mttu": avg_ttu,
+                    "mttr": avg_ttr,
+                    "num_dependencies": len(dependencies),
+                    "status": "ok",
+                    "error": "",
+                },
+                "dependency_frames": dep_frames,
+            })
+
+        self.start_date = original_start
+        self.end_date = original_end
+        self.resolver.start_date = original_start
+        self.resolver.end_date = original_end
+
+        return results
     
     def get_all_versions_with_dates(self, metadata: Dict, package_name: Optional[str] = None) -> List[Tuple[str, datetime]]:
         """Get all versions and their release dates within the date range.

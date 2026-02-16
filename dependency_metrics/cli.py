@@ -255,85 +255,104 @@ def main():
         if worker_count is None or worker_count <= 0:
             worker_count = min(8, os.cpu_count() or 4)
 
-        def _process_row(row: Dict[str, object]) -> Dict[str, object]:
-            row_num = row.get("_row_num")
-            ecosystem = str(row.get("ecosystem", "")).lower()
-            package_name = str(row.get("package_name", ""))
-            end_date_raw = str(row.get("end_date", ""))
-            start_date_raw = str(row.get("start_date", ""))
+        def _process_group(rows: List[Dict[str, object]]) -> List[Dict[str, object]]:
+            error_results = []
+            valid_rows = []
 
-            status = "ok"
-            error = ""
-            mttu = 0.0
-            mttr = 0.0
-            num_dependencies = 0
+            for row in rows:
+                row_num = row.get("_row_num")
+                ecosystem = str(row.get("ecosystem", "")).lower()
+                package_name = str(row.get("package_name", ""))
+                end_date_raw = str(row.get("end_date", ""))
+                start_date_raw = str(row.get("start_date", ""))
+
+                try:
+                    if not ecosystem or not package_name or not end_date_raw:
+                        raise ValueError("ecosystem, package_name, and end_date are required.")
+                    if ecosystem not in {"npm", "pypi"}:
+                        raise ValueError(f"Unsupported ecosystem: {ecosystem}.")
+
+                    start_date = default_start_date
+                    if start_date_raw:
+                        start_date = _parse_date(start_date_raw, "start_date", row_num)
+                    end_date = _parse_date(end_date_raw, "end_date", row_num)
+
+                    valid_rows.append({
+                        "row_num": row_num,
+                        "start_date": start_date,
+                        "end_date": end_date,
+                    })
+                except Exception as exc:
+                    start_date = default_start_date
+                    if start_date_raw:
+                        try:
+                            start_date = _parse_date(start_date_raw, "start_date", row_num)
+                        except ValueError:
+                            start_date = default_start_date
+                    try:
+                        end_date = _parse_date(end_date_raw, "end_date", row_num)
+                    except ValueError:
+                        end_date = datetime.today()
+
+                    error_results.append({
+                        "row_num": row_num,
+                        "summary": {
+                            "ecosystem": ecosystem,
+                            "package_name": package_name,
+                            "start_date": start_date.date().isoformat(),
+                            "end_date": end_date.date().isoformat(),
+                            "mttu": -1.0,
+                            "mttr": -1.0,
+                            "num_dependencies": 0,
+                            "status": "error",
+                            "error": f"\"{exc}\"",
+                        },
+                        "dependency_frames": [],
+                    })
+
+            if not valid_rows:
+                return error_results
+
+            ecosystem = str(rows[0].get("ecosystem", "")).lower()
+            package_name = str(rows[0].get("package_name", ""))
+            min_start = min(row["start_date"] for row in valid_rows)
+            max_end = max(row["end_date"] for row in valid_rows)
+
+            analyzer = DependencyAnalyzer(
+                ecosystem=ecosystem,
+                package=package_name,
+                start_date=min_start,
+                end_date=max_end,
+                weighting_type=args.weighting_type,
+                half_life=args.half_life,
+                output_dir=output_dir,
+                resolver_cache=resolver_cache,
+            )
 
             try:
-                if not ecosystem or not package_name or not end_date_raw:
-                    raise ValueError("ecosystem, package_name, and end_date are required.")
-                if ecosystem not in {"npm", "pypi"}:
-                    raise ValueError(f"Unsupported ecosystem: {ecosystem}.")
-
-                start_date = default_start_date
-                if start_date_raw:
-                    start_date = _parse_date(start_date_raw, "start_date", row_num)
-                end_date = _parse_date(end_date_raw, "end_date", row_num)
-
-                analyzer = DependencyAnalyzer(
-                    ecosystem=ecosystem,
-                    package=package_name,
-                    start_date=start_date,
-                    end_date=end_date,
-                    weighting_type=args.weighting_type,
-                    half_life=args.half_life,
-                    output_dir=output_dir,
-                    resolver_cache=resolver_cache,
-                )
-
                 with io.StringIO() as buffer, redirect_stdout(buffer):
-                    results = analyzer.analyze(osv_df=osv_by_ecosystem.get(ecosystem))
-                mttu = results.get("ttu", 0.0)
-                mttr = results.get("ttr", 0.0)
-                num_dependencies = results.get("num_dependencies", 0)
-
-                dep_data = results.get("dependency_data", {})
-                dep_frames = list(dep_data.values())
-
+                    results = analyzer.analyze_bulk_rows(valid_rows, osv_df=osv_by_ecosystem.get(ecosystem))
             except Exception as exc:
-                status = "error"
                 error = f"\"{exc}\""
-                mttu = -1.0
-                mttr = -1.0
-                dep_frames = []
+                for row in valid_rows:
+                    error_results.append({
+                        "row_num": row["row_num"],
+                        "summary": {
+                            "ecosystem": ecosystem,
+                            "package_name": package_name,
+                            "start_date": row["start_date"].date().isoformat(),
+                            "end_date": row["end_date"].date().isoformat(),
+                            "mttu": -1.0,
+                            "mttr": -1.0,
+                            "num_dependencies": 0,
+                            "status": "error",
+                            "error": error,
+                        },
+                        "dependency_frames": [],
+                    })
+                return error_results
 
-                start_date = default_start_date
-                if start_date_raw:
-                    try:
-                        start_date = _parse_date(start_date_raw, "start_date", row_num)
-                    except ValueError:
-                        start_date = default_start_date
-                try:
-                    end_date = _parse_date(end_date_raw, "end_date", row_num)
-                except ValueError:
-                    end_date = datetime.today()
-
-            summary = {
-                "ecosystem": ecosystem,
-                "package_name": package_name,
-                "start_date": start_date.date().isoformat(),
-                "end_date": end_date.date().isoformat(),
-                "mttu": mttu,
-                "mttr": mttr,
-                "num_dependencies": num_dependencies,
-                "status": status,
-                "error": error,
-            }
-
-            return {
-                "row_num": row_num,
-                "summary": summary,
-                "dependency_frames": dep_frames,
-            }
+            return results + error_results
 
         # Group rows by package to maximize cache reuse within a package
         grouped_rows: Dict[tuple[str, str], List[Dict[str, object]]] = {}
@@ -343,26 +362,6 @@ def main():
                 str(row.get("package_name", "")).strip().lower(),
             )
             grouped_rows.setdefault(key, []).append(row)
-
-        def _parse_end_date_for_sort(row: Dict[str, object]) -> datetime:
-            end_date_raw = str(row.get("end_date", ""))
-            try:
-                return _parse_date(end_date_raw, "end_date", row.get("_row_num"))
-            except ValueError:
-                return datetime.min
-
-        def _process_group(rows: List[Dict[str, object]]) -> List[Dict[str, object]]:
-            sorted_rows = sorted(
-                rows,
-                key=lambda r: (
-                    _parse_end_date_for_sort(r),
-                    str(r.get("start_date", "")),
-                ),
-            )
-            results = []
-            for row in sorted_rows:
-                results.append(_process_row(row))
-            return results
 
         with ThreadPoolExecutor(max_workers=worker_count) as executor:
             futures = []

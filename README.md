@@ -63,6 +63,7 @@ dependency-metrics --input-csv ./input.csv --workers 8 --output-dir ./output
 
 Input CSV columns: `ecosystem`, `package_name`, `end_date`, optional `start_date`.
 Extra columns are allowed; duplicates are removed by `ecosystem, package_name, end_date`.
+Bulk mode computes metrics per package using the latest dependency set.
 
 ### As a Python module
 
@@ -173,6 +174,7 @@ The tool generates several outputs in the specified output directory:
 - OSV remediation checks are handled by `dependency_metrics/osv_service.py`.
 - Reporting/export helpers live in `dependency_metrics/reporting.py`.
 - Bulk CSV mode groups rows by `(ecosystem, package_name)` and processes each group sequentially while running groups in parallel to maximize cache reuse.
+- For bulk runs, a single package analysis computes metrics across multiple end dates using the latest dependency set.
 
 ## Requirements
 

@@ -109,6 +109,7 @@ dependency-metrics \
 Input CSV must include `ecosystem`, `package_name`, `end_date` and can include `start_date`.
 Extra columns are allowed. The tool automatically removes duplicate rows by
 `ecosystem`, `package_name`, and `end_date`.
+Bulk mode computes metrics per package using the latest dependency set.
 
 ```bash
 dependency-metrics \
@@ -170,6 +171,7 @@ The JSON file contains detailed results:
 - OSV remediation checks are handled by `dependency_metrics/osv_service.py`.
 - Reporting/export helpers live in `dependency_metrics/reporting.py`.
 - Bulk CSV mode groups rows by `(ecosystem, package_name)` and processes each group sequentially while running groups in parallel to maximize cache reuse.
+- For bulk runs, a single package analysis computes metrics across multiple end dates using the latest dependency set.
 
 ### Excel Worksheets
 
