@@ -7,6 +7,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 from typing import Dict, Iterable, List
+import logging
 
 import pandas as pd
 
@@ -20,20 +21,20 @@ def print_summary(
     half_life,
     results: Dict,
 ) -> None:
-    print("\n" + "=" * 60)
-    print("ANALYSIS RESULTS")
-    print("=" * 60)
-    print(f"Package: {package}")
-    print(f"Ecosystem: {ecosystem}")
-    print(f"Period: {start_date.date()} to {end_date.date()}")
-    print(f"Weighting: {weighting_type}")
+    logger.info("\n" + "=" * 60)
+    logger.info("ANALYSIS RESULTS")
+    logger.info("=" * 60)
+    logger.info("Package: %s", package)
+    logger.info("Ecosystem: %s", ecosystem)
+    logger.info("Period: %s to %s", start_date.date(), end_date.date())
+    logger.info("Weighting: %s", weighting_type)
     if weighting_type == "exponential":
-        print(f"Half-life: {half_life} days")
-    print("-" * 60)
-    print(f"Average Time-to-Update (TTU): {results['ttu']:.2f} days")
-    print(f"Average Time-to-Remediate (TTR): {results['ttr']:.2f} days")
-    print(f"Number of dependencies: {results['num_dependencies']}")
-    print("=" * 60)
+        logger.info("Half-life: %s days", half_life)
+    logger.info("-" * 60)
+    logger.info("Average Time-to-Update (TTU): %.2f days", results["ttu"])
+    logger.info("Average Time-to-Remediate (TTR): %.2f days", results["ttr"])
+    logger.info("Number of dependencies: %s", results["num_dependencies"])
+    logger.info("=" * 60)
 
 
 def save_results_json(results: Dict, output_dir: Path, package: str) -> Path:
@@ -107,3 +108,4 @@ def export_bulk_dependency_csv(
             df[col] = df[col].dt.tz_convert("UTC").dt.tz_localize(None)
     df.to_csv(deps_file, index=False)
     return deps_file
+logger = logging.getLogger(__name__)

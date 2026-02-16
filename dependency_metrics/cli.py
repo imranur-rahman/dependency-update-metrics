@@ -7,6 +7,7 @@ import csv
 import io
 import os
 import sys
+import logging
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional
@@ -188,7 +189,7 @@ def main():
     try:
         default_start_date = _parse_date(args.start_date, "start_date")
     except ValueError as exc:
-        print(f"Error: {exc}", file=sys.stderr)
+        logging.getLogger("dependency_metrics").error("Error: %s", exc)
         sys.exit(1)
     
     # Create output directory
@@ -197,24 +198,24 @@ def main():
     
     # Configure logging
     if args.verbose:
-        import logging
-        logging.basicConfig(level=logging.INFO)
+        logging.basicConfig(level=logging.INFO, force=True)
         logging.getLogger("dependency_metrics").setLevel(logging.DEBUG)
 
     if args.input_csv:
         if not args.verbose:
-            import logging
             logging.getLogger("dependency_metrics").setLevel(logging.ERROR)
 
         input_csv = Path(args.input_csv)
         if not input_csv.exists():
-            print(f"Error: Input CSV not found: {input_csv}", file=sys.stderr)
+            logging.getLogger("dependency_metrics").error(
+                "Error: Input CSV not found: %s", input_csv
+            )
             sys.exit(1)
 
         try:
             input_rows = _load_input_csv(input_csv)
         except ValueError as exc:
-            print(f"Error: {exc}", file=sys.stderr)
+            logging.getLogger("dependency_metrics").error("Error: %s", exc)
             sys.exit(1)
 
         # Remove duplicate rows by ecosystem/package_name/end_date (case-insensitive)
@@ -234,7 +235,10 @@ def main():
             deduped_rows.append(row)
         input_rows = deduped_rows
         if duplicates:
-            print(f"Removed {duplicates} duplicate rows from input CSV.")
+            logging.getLogger("dependency_metrics").info(
+                "Removed %s duplicate rows from input CSV.",
+                duplicates,
+            )
 
         # Build OSV database automatically if missing
         osv_builder = OSVBuilder(output_dir)
@@ -396,9 +400,18 @@ def main():
                 for future in as_completed(futures):
                     for result in future.result():
                         processed += 1
-                        print(f"Processing row {processed}/{total_rows} (CSV line {result['row_num']})...")
+                        logging.getLogger("dependency_metrics").info(
+                            "Processing row %s/%s (CSV line %s)...",
+                            processed,
+                            total_rows,
+                            result["row_num"],
+                        )
                         if result["summary"]["status"] == "error":
-                            print(f"Error (CSV line {result['row_num']}): {result['summary']['error']}")
+                            logging.getLogger("dependency_metrics").error(
+                                "Error (CSV line %s): %s",
+                                result["row_num"],
+                                result["summary"]["error"],
+                            )
                         summary_writer.writerow(result["summary"])
                         summary_handle.flush()
 
@@ -413,9 +426,13 @@ def main():
             finally:
                 summary_handle.close()
 
-        print(f"Bulk results saved to: {summary_file_path}")
+        logging.getLogger("dependency_metrics").info(
+            "Bulk results saved to: %s", summary_file_path
+        )
         if deps_header_written:
-            print(f"Dependency details saved to: {deps_file_path}")
+            logging.getLogger("dependency_metrics").info(
+                "Dependency details saved to: %s", deps_file_path
+            )
 
     else:
         if not args.ecosystem or not args.package:
@@ -426,7 +443,7 @@ def main():
             try:
                 end_date = _parse_date(args.end_date, "end_date")
             except ValueError as exc:
-                print(f"Error: {exc}", file=sys.stderr)
+                logging.getLogger("dependency_metrics").error("Error: %s", exc)
                 sys.exit(1)
         else:
             end_date = datetime.today()
@@ -435,13 +452,17 @@ def main():
 
         # Build OSV database if requested
         if args.build_osv:
-            print("Building OSV vulnerability database...")
+            logging.getLogger("dependency_metrics").info("Building OSV vulnerability database...")
             osv_builder = OSVBuilder(output_dir)
             osv_df = osv_builder.build_database()
-            print(f"OSV database built with {len(osv_df)} records")
+            logging.getLogger("dependency_metrics").info(
+                "OSV database built with %s records", len(osv_df)
+            )
 
         # Analyze package dependencies
-        print(f"Analyzing {args.ecosystem} package: {args.package}")
+        logging.getLogger("dependency_metrics").info(
+            "Analyzing %s package: %s", args.ecosystem, args.package
+        )
         analyzer = DependencyAnalyzer(
             ecosystem=args.ecosystem,
             package=args.package,
@@ -467,22 +488,30 @@ def main():
             )
 
             results_file = save_results_json(results, output_dir, args.package)
-            print(f"\nResults saved to: {results_file}")
+            logging.getLogger("dependency_metrics").info(
+                "Results saved to: %s", results_file
+            )
 
             # Export OSV data if requested
             if args.get_osv:
                 osv_file = export_osv_data(results, output_dir, args.package)
                 if osv_file is not None:
-                    print(f"OSV data saved to: {osv_file}")
+                    logging.getLogger("dependency_metrics").info(
+                        "OSV data saved to: %s", osv_file
+                    )
 
             # Export worksheets if requested
             if args.get_worksheets:
                 excel_file = export_worksheets(results, output_dir, args.package)
                 if excel_file is not None:
-                    print(f"Worksheets saved to: {excel_file}")
+                    logging.getLogger("dependency_metrics").info(
+                        "Worksheets saved to: %s", excel_file
+                    )
 
         except Exception as e:
-            print(f"\nError during analysis: {e}", file=sys.stderr)
+            logging.getLogger("dependency_metrics").error(
+                "Error during analysis: %s", e
+            )
             import traceback
             traceback.print_exc()
             sys.exit(1)

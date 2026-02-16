@@ -38,7 +38,7 @@ class OSVBuilder:
     def download_osv_data(self) -> None:
         """Download OSV vulnerability data."""
         logger.info(f"Downloading OSV data from {self.OSV_URL}")
-        print(f"Downloading OSV vulnerability database...")
+        logger.info("Downloading OSV vulnerability database...")
         
         response = requests.get(self.OSV_URL, stream=True)
         response.raise_for_status()
@@ -56,7 +56,7 @@ class OSVBuilder:
     def extract_osv_data(self) -> None:
         """Extract OSV zip file."""
         logger.info(f"Extracting OSV data to {self.osv_dir}")
-        print("Extracting OSV data...")
+        logger.info("Extracting OSV data...")
         
         # Remove existing directory if it exists
         if self.osv_dir.exists():
@@ -92,7 +92,7 @@ class OSVBuilder:
             DataFrame with vulnerability information
         """
         logger.info("Parsing OSV JSON files")
-        print("Parsing OSV vulnerability data...")
+        logger.info("Parsing OSV vulnerability data...")
         
         records = []
         
@@ -158,7 +158,7 @@ class OSVBuilder:
         # Check if database already exists
         if self.osv_db_file.exists():
             logger.info(f"Loading existing OSV database from {self.osv_db_file}")
-            print("Loading existing OSV database...")
+            logger.info("Loading existing OSV database...")
             return pd.read_parquet(self.osv_db_file)
         
         # Download and extract if needed

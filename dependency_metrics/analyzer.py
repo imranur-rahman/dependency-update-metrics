@@ -696,16 +696,16 @@ class DependencyAnalyzer:
             Dictionary with analysis results
         """
         # Fetch package metadata
-        print(f"Fetching metadata for {self.package}...")
+        logger.info("Fetching metadata for %s...", self.package)
         pkg_metadata = self.fetch_package_metadata(self.package)
         
         # Get package version at end_date
         pkg_version, version_data = self.get_package_version_at_date(pkg_metadata)
-        print(f"Analyzing version {pkg_version}")
+        logger.info("Analyzing version %s", pkg_version)
         
         # Extract dependencies
         dependencies = self.extract_dependencies(version_data)
-        print(f"Found {len(dependencies)} dependencies")
+        logger.info("Found %s dependencies", len(dependencies))
         
         if len(dependencies) == 0:
             return {
@@ -733,7 +733,7 @@ class DependencyAnalyzer:
         ttr_values = []
         
         for dep_name, dep_constraint in dependencies.items():
-            print(f"  Analyzing {dep_name}...")
+            logger.info("  Analyzing %s...", dep_name)
             
             try:
                 # Fetch dependency metadata
@@ -758,7 +758,7 @@ class DependencyAnalyzer:
                 import traceback
                 logger.error(f"Error analyzing {dep_name}: {e}")
                 logger.error(traceback.format_exc())
-                print(f"    Error: {e}")
+                logger.error("    Error: %s", e)
                 if "Error getting highest semver version for" in str(e):
                     raise
                 continue
