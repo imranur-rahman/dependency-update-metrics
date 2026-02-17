@@ -37,8 +37,8 @@ class OSVBuilder:
         
     def download_osv_data(self) -> None:
         """Download OSV vulnerability data."""
-        logger.info(f"Downloading OSV data from {self.OSV_URL}")
-        logger.info("Downloading OSV vulnerability database...")
+        logger.warning(f"Downloading OSV data from {self.OSV_URL}")
+        logger.warning("Downloading OSV vulnerability database...")
         
         response = requests.get(self.OSV_URL, stream=True)
         response.raise_for_status()
@@ -51,12 +51,12 @@ class OSVBuilder:
                     f.write(chunk)
                     pbar.update(len(chunk))
         
-        logger.info(f"Downloaded OSV data to {self.osv_zip}")
+        logger.warning(f"Downloaded OSV data to {self.osv_zip}")
     
     def extract_osv_data(self) -> None:
         """Extract OSV zip file."""
-        logger.info(f"Extracting OSV data to {self.osv_dir}")
-        logger.info("Extracting OSV data...")
+        logger.warning(f"Extracting OSV data to {self.osv_dir}")
+        logger.warning("Extracting OSV data...")
         
         # Remove existing directory if it exists
         if self.osv_dir.exists():
@@ -65,7 +65,7 @@ class OSVBuilder:
         with zipfile.ZipFile(self.osv_zip, 'r') as zip_ref:
             zip_ref.extractall(self.osv_dir)
         
-        logger.info("Extraction complete")
+        logger.warning("Extraction complete")
     
     def transformation_semver(self, version: str) -> str:
         """Transform version strings to semver format.
