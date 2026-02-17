@@ -127,19 +127,21 @@ class DependencyAnalyzer:
     def _get_latest_package_version_data(self, metadata: Dict) -> Tuple[str, Dict]:
         """Get latest package version and its metadata (regardless of end_date)."""
         if self.ecosystem == "npm":
-            latest_version = None
-            latest_date = None
             versions = metadata.get("versions", {})
-            for ver, ver_data in versions.items():
-                published = ver_data.get("dist", {}).get("published")
-                if not published:
-                    continue
-                pub_date = parse_timestamp(published)
-                if pub_date is None:
-                    continue
-                if latest_date is None or pub_date > latest_date:
-                    latest_date = pub_date
-                    latest_version = ver
+            semver_candidates = []
+            for ver in versions.keys():
+                key = npm_semver_key(ver)
+                if key is not None:
+                    semver_candidates.append((key, ver))
+
+            latest_version = None
+            if semver_candidates:
+                semver_candidates.sort(key=lambda item: item[0])
+                latest_version = semver_candidates[-1][1]
+            else:
+                dist_tags = metadata.get("dist-tags", {})
+                latest_version = dist_tags.get("latest")
+
             if latest_version is None:
                 raise ValueError("No versions found in npm metadata.")
             return latest_version, versions.get(latest_version, {})
