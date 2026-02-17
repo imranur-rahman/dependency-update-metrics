@@ -147,12 +147,41 @@ class DependencyAnalyzer:
             return latest_version, versions.get(latest_version, {})
 
         if self.ecosystem == "pypi":
-            latest_version = None
-            latest_date = None
             releases = metadata.get("releases", {})
-            for ver, release_files in releases.items():
-                if not release_files:
+            valid_versions = []
+            for ver in releases.keys():
+                try:
+                    pkg_version.parse(ver)
+                except Exception:
                     continue
+                valid_versions.append(ver)
+
+            latest_version = None
+            if valid_versions:
+                valid_versions.sort(key=lambda v: pkg_version.parse(v))
+                latest_version = valid_versions[-1]
+            else:
+                latest_date = None
+                for ver, release_files in releases.items():
+                    if not release_files:
+                        continue
+                    for file_info in release_files:
+                        upload_time = file_info.get("upload_time")
+                        if not upload_time:
+                            continue
+                        pub_date = parse_timestamp(upload_time)
+                        if pub_date is None:
+                            continue
+                        if latest_date is None or pub_date > latest_date:
+                            latest_date = pub_date
+                            latest_version = ver
+
+            if latest_version is None:
+                raise ValueError("No versions found in PyPI metadata.")
+
+            latest_date = None
+            release_files = releases.get(latest_version, [])
+            if release_files:
                 for file_info in release_files:
                     upload_time = file_info.get("upload_time")
                     if not upload_time:
@@ -162,9 +191,7 @@ class DependencyAnalyzer:
                         continue
                     if latest_date is None or pub_date > latest_date:
                         latest_date = pub_date
-                        latest_version = ver
-            if latest_version is None:
-                raise ValueError("No versions found in PyPI metadata.")
+
             try:
                 version_metadata = self.resolver._get_pypi_version_metadata(self.package, latest_version)
                 version_data = {
