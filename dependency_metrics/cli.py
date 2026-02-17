@@ -203,7 +203,7 @@ def main():
 
     if args.input_csv:
         if not args.verbose:
-            logging.getLogger("dependency_metrics").setLevel(logging.ERROR)
+            logging.getLogger("dependency_metrics").setLevel(logging.WARNING)
 
         input_csv = Path(args.input_csv)
         if not input_csv.exists():
@@ -400,11 +400,13 @@ def main():
                 for future in as_completed(futures):
                     for result in future.result():
                         processed += 1
-                        logging.getLogger("dependency_metrics").info(
-                            "Processing row %s/%s (CSV line %s)...",
+                        logging.getLogger("dependency_metrics").warning(
+                            "Processing row %s/%s (CSV line %s): %s %s",
                             processed,
                             total_rows,
                             result["row_num"],
+                            result["summary"]["ecosystem"],
+                            result["summary"]["package_name"],
                         )
                         if result["summary"]["status"] == "error":
                             logging.getLogger("dependency_metrics").error(
