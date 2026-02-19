@@ -8,6 +8,7 @@ import json
 import logging
 import subprocess
 import hashlib
+import threading
 from urllib.parse import quote
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -15,6 +16,8 @@ from pathlib import Path
 from typing import Dict, Iterable, Optional, Tuple, Any
 
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 from packaging import version as pkg_version
 from packaging.specifiers import SpecifierSet
 from packaging.requirements import Requirement
@@ -82,14 +85,48 @@ class ResolverCache:
     pypi_version_deps_cache: Dict[str, Dict[str, str]] = field(default_factory=dict)
     npm_time_cache: Dict[str, Dict[str, str]] = field(default_factory=dict)
     npm_resolve_cache: Dict[Tuple[str, str, str], Optional[str]] = field(default_factory=dict)
-    session: requests.Session = field(default_factory=requests.Session)
     cache_dir: Optional[Path] = None
+    request_timeout: Tuple[float, float] = (5.0, 30.0)
+    _thread_local: threading.local = field(default_factory=threading.local, init=False, repr=False)
 
     def _cache_path(self, namespace: str, key: str) -> Optional[Path]:
         if self.cache_dir is None:
             return None
         digest = hashlib.sha256(key.encode("utf-8")).hexdigest()
         return self.cache_dir / namespace / f"{digest}.json"
+
+    def get_session(self) -> requests.Session:
+        """Get or create a thread-local HTTP session with bounded pooling and retries."""
+        session = getattr(self._thread_local, "session", None)
+        if session is not None:
+            return session
+
+        session = requests.Session()
+        retry = Retry(
+            total=5,
+            connect=5,
+            read=5,
+            backoff_factor=0.5,
+            status_forcelist=(429, 500, 502, 503, 504),
+            allowed_methods=frozenset({"GET"}),
+            respect_retry_after_header=True,
+        )
+        adapter = HTTPAdapter(
+            max_retries=retry,
+            pool_connections=10,
+            pool_maxsize=10,
+            pool_block=True,
+        )
+        session.mount("https://", adapter)
+        session.mount("http://", adapter)
+        self._thread_local.session = session
+        return session
+
+    def get(self, url: str, **kwargs: Any) -> requests.Response:
+        """Issue a GET request through the thread-local session."""
+        if "timeout" not in kwargs:
+            kwargs["timeout"] = self.request_timeout
+        return self.get_session().get(url, **kwargs)
 
     def load_json(self, namespace: str, key: str) -> Optional[Dict[str, Any]]:
         path = self._cache_path(namespace, key)
@@ -147,7 +184,7 @@ class NpmResolver(PackageResolver):
         encoded_package = quote(package_name, safe="")
         url = f"{self.registry_urls['npm']}/{encoded_package}"
         logger.info("Fetching metadata for %s", package_name)
-        with self.cache.session.get(url) as response:
+        with self.cache.get(url) as response:
             response.raise_for_status()
             data = response.json()
         self.cache.metadata_cache[cache_key] = data
@@ -416,7 +453,7 @@ class PyPIResolver(PackageResolver):
         encoded_package = quote(package_name, safe="")
         url = f"{self.registry_urls['pypi']}/{encoded_package}/json"
         logger.info("Fetching metadata for %s", package_name)
-        with self.cache.session.get(url) as response:
+        with self.cache.get(url) as response:
             response.raise_for_status()
             data = response.json()
         self.cache.metadata_cache[cache_key] = data
@@ -582,7 +619,7 @@ class PyPIResolver(PackageResolver):
         encoded_package = quote(package, safe="")
         encoded_version = quote(version, safe="")
         version_url = f"{self.registry_urls['pypi']}/{encoded_package}/{encoded_version}/json"
-        with self.cache.session.get(version_url) as response:
+        with self.cache.get(version_url) as response:
             response.raise_for_status()
             data = response.json()
         self.cache.pypi_version_metadata_cache[cache_key] = data
