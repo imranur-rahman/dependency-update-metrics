@@ -174,6 +174,12 @@ def main():
     )
 
     parser.add_argument(
+        "--resume",
+        action="store_true",
+        help="Resume bulk CSV runs by skipping rows already completed in output summary"
+    )
+
+    parser.add_argument(
         "--verbose",
         action="store_true",
         help="Enable debug logging"
@@ -239,6 +245,84 @@ def main():
                 "Removed %s duplicate rows from input CSV.",
                 duplicates,
             )
+
+        input_label = input_csv.name
+        summary_file_path = output_dir / f"{input_label}_bulk_results.csv"
+        deps_file_path = output_dir / f"{input_label}_dependency_details.csv"
+
+        existing_status = {}
+        if args.resume and summary_file_path.exists():
+            try:
+                summary_df = pd.read_csv(summary_file_path)
+                for _, record in summary_df.iterrows():
+                    ecosystem_raw = str(record.get("ecosystem", "")).strip()
+                    package_name_raw = str(record.get("package_name", "")).strip()
+                    ecosystem = ecosystem_raw.lower()
+                    package_name = package_name_raw.lower()
+                    start_date = str(record.get("start_date", "")).strip()
+                    end_date = str(record.get("end_date", "")).strip()
+                    status = str(record.get("status", "")).strip().lower()
+                    if not ecosystem or not package_name or not start_date or not end_date:
+                        continue
+                    key = (ecosystem, package_name, start_date, end_date)
+                    existing_status[key] = status
+            except Exception as exc:
+                logging.getLogger("dependency_metrics").warning(
+                    "Failed to read existing summary for resume: %s", exc
+                )
+                existing_status = {}
+
+        if args.resume and existing_status:
+            filtered_rows = []
+            skipped = 0
+            retried = 0
+            new_rows = 0
+            for row in input_rows:
+                row_num = row.get("_row_num")
+                ecosystem = str(row.get("ecosystem", "")).strip().lower()
+                package_name = str(row.get("package_name", "")).strip().lower()
+                end_date_raw = str(row.get("end_date", "")).strip()
+                start_date_raw = str(row.get("start_date", "")).strip()
+
+                try:
+                    start_date = default_start_date
+                    if start_date_raw:
+                        start_date = _parse_date(start_date_raw, "start_date", row_num)
+                    end_date = _parse_date(end_date_raw, "end_date", row_num)
+                except Exception:
+                    filtered_rows.append(row)
+                    new_rows += 1
+                    continue
+
+                key = (
+                    ecosystem,
+                    package_name,
+                    start_date.date().isoformat(),
+                    end_date.date().isoformat(),
+                )
+                status = existing_status.get(key)
+                if status == "ok":
+                    skipped += 1
+                    continue
+                if status == "error":
+                    retried += 1
+                else:
+                    new_rows += 1
+                filtered_rows.append(row)
+
+            input_rows = filtered_rows
+            logging.getLogger("dependency_metrics").warning(
+                "Resume enabled: skipping %s completed rows, retrying %s error rows, processing %s new rows.",
+                skipped,
+                retried,
+                new_rows,
+            )
+
+            if not input_rows:
+                logging.getLogger("dependency_metrics").warning(
+                    "Resume enabled: no rows to process (all completed)."
+                )
+                sys.exit(0)
 
         # Build OSV database automatically if missing
         osv_builder = OSVBuilder(output_dir)
@@ -370,9 +454,7 @@ def main():
             for rows in grouped_rows.values():
                 futures.append(executor.submit(_process_group, rows))
 
-            summary_file_path = output_dir / f"{input_csv.stem}_bulk_results.csv"
-            deps_file_path = output_dir / f"{input_csv.stem}_dependency_details.csv"
-            if deps_file_path.exists():
+            if deps_file_path.exists() and not args.resume:
                 deps_file_path.unlink()
             summary_columns = [
                 "ecosystem",
@@ -387,14 +469,22 @@ def main():
             ]
             summary_file_path.parent.mkdir(parents=True, exist_ok=True)
             summary_writer = None
-            deps_header_written = False
+            deps_header_written = deps_file_path.exists()
 
-            summary_handle = summary_file_path.open("w", newline="")
+            summary_exists = summary_file_path.exists()
+            summary_mode = "a" if args.resume and summary_exists else "w"
+            logging.getLogger("dependency_metrics").info(
+                "Bulk summary output: %s (%s mode)",
+                summary_file_path,
+                "append" if summary_mode == "a" else "write",
+            )
+            summary_handle = summary_file_path.open(summary_mode, newline="")
             try:
                 import csv as _csv
 
                 summary_writer = _csv.DictWriter(summary_handle, fieldnames=summary_columns)
-                summary_writer.writeheader()
+                if summary_mode == "w":
+                    summary_writer.writeheader()
 
                 processed = 0
                 for future in as_completed(futures):

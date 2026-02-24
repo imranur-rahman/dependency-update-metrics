@@ -118,9 +118,22 @@ dependency-metrics \
   --output-dir ./output
 ```
 
+To resume an interrupted bulk run and skip completed rows:
+```bash
+dependency-metrics \
+  --input-csv ./input.csv \
+  --output-dir ./output \
+  --resume
+```
+
 Bulk outputs:
-- `<input>_bulk_results.csv` (summary)
-- `<input>_dependency_details.csv` (per-interval dependency data)
+- `<input_filename>_bulk_results.csv` (summary)
+- `<input_filename>_dependency_details.csv` (per-interval dependency data)
+
+Resume behavior:
+- Rows with `status=ok` in the summary are skipped.
+- Rows with `status=error` are retried.
+- Summary results are appended so progress survives interruptions.
 
 ## Understanding the Output
 

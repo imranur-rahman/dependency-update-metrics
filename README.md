@@ -59,6 +59,9 @@ dependency-metrics --ecosystem pypi --package requests --start-date 2020-01-01 -
 
 # Bulk CSV input (parallel by default)
 dependency-metrics --input-csv ./input.csv --workers 8 --output-dir ./output
+
+# Resume an interrupted bulk run
+dependency-metrics --input-csv ./input.csv --output-dir ./output --resume
 ```
 
 Input CSV columns: `ecosystem`, `package_name`, `end_date`, optional `start_date`.
@@ -104,6 +107,7 @@ print(f"Average TTR: {results['ttr']:.2f} days")
 - `--get-worksheets`: Export detailed analysis worksheets to Excel
 - `--output-dir`: Output directory for results [Default: ./output]
 - `--workers`: Number of parallel workers for bulk CSV mode [Default: min(8, CPU count)]
+- `--resume`: Resume bulk CSV runs by skipping completed rows and retrying errors
 
 ## Weighting Methods
 
