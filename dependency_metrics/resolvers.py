@@ -31,6 +31,58 @@ from .time_utils import parse_timestamp
 logger = logging.getLogger(__name__)
 
 
+def resolve_pypi_version_locally(
+    dep_metadata: Dict,
+    constraint: str,
+    before_date: datetime,
+) -> Optional[str]:
+    """Resolve a PyPI dependency version locally using cached package metadata.
+
+    Avoids any network call by filtering the releases dict that is already
+    present in the JSON metadata fetched from PyPI.  This is a direct
+    replacement for the vendored-pip path in the hot loop.
+
+    Args:
+        dep_metadata: Full JSON metadata dict for the dependency (from PyPI API).
+        constraint: PEP 440 version specifier string, e.g. ">=2.0,<3" or "*".
+        before_date: Only consider versions uploaded on or before this datetime.
+
+    Returns:
+        Highest matching version string, or None if none exists.
+    """
+    releases = dep_metadata.get("releases", {})
+    specifier = SpecifierSet(constraint) if constraint and constraint != "*" else SpecifierSet("")
+
+    valid: list = []
+    for ver_str, files in releases.items():
+        if not files:
+            continue
+        upload_time = files[0].get("upload_time")
+        if not upload_time:
+            continue
+        try:
+            pub_date = parse_timestamp(upload_time)
+            if pub_date is None:
+                continue
+            # Normalize before_date to UTC for comparison
+            if before_date.tzinfo is None:
+                from datetime import timezone as _tz
+                cmp_date = before_date.replace(tzinfo=_tz.utc)
+            else:
+                cmp_date = before_date
+            if pub_date > cmp_date:
+                continue
+            parsed = pkg_version.parse(ver_str)
+            if parsed in specifier:
+                valid.append(parsed)
+        except Exception:
+            continue
+
+    if not valid:
+        return None
+    return str(max(valid))
+
+
 def npm_semver_key(version: str) -> Optional[Tuple[int, int, int, int, Tuple[Tuple[int, object], ...]]]:
     """Return a sortable key for npm semver strings or None if invalid."""
     if version is None:
@@ -88,6 +140,19 @@ class ResolverCache:
     cache_dir: Optional[Path] = None
     request_timeout: Tuple[float, float] = (5.0, 30.0)
     _thread_local: threading.local = field(default_factory=threading.local, init=False, repr=False)
+    _lock: threading.Lock = field(default_factory=threading.Lock, init=False, repr=False)
+    _metadata_locks: Dict[Any, threading.Lock] = field(default_factory=dict, init=False, repr=False)
+
+    def get_key_lock(self, key: Any) -> threading.Lock:
+        """Return a per-cache-key Lock, creating one on first use.
+
+        Used to serialize concurrent fetches for the same package so that
+        at most one thread performs the network call (thundering-herd fix).
+        """
+        with self._lock:
+            if key not in self._metadata_locks:
+                self._metadata_locks[key] = threading.Lock()
+            return self._metadata_locks[key]
 
     def _cache_path(self, namespace: str, key: str) -> Optional[Path]:
         if self.cache_dir is None:
@@ -171,25 +236,33 @@ class NpmResolver(PackageResolver):
 
     def fetch_package_metadata(self, package_name: str) -> Dict:
         cache_key = (self.ecosystem, package_name)
+        # Fast path: GIL-safe dict lookup (no lock needed)
         if cache_key in self.cache.metadata_cache:
             logger.debug("Cache hit: metadata %s:%s", self.ecosystem, package_name)
             return self.cache.metadata_cache[cache_key]
 
-        disk_key = f"{self.ecosystem}:{package_name}"
-        cached = self.cache.load_json("metadata", disk_key)
-        if cached is not None:
-            self.cache.metadata_cache[cache_key] = cached
-            return cached
+        # Serialize concurrent fetches for the same key (thundering-herd fix)
+        with self.cache.get_key_lock(cache_key):
+            # Double-check after acquiring lock
+            if cache_key in self.cache.metadata_cache:
+                logger.debug("Cache hit (post-lock): metadata %s:%s", self.ecosystem, package_name)
+                return self.cache.metadata_cache[cache_key]
 
-        encoded_package = quote(package_name, safe="")
-        url = f"{self.registry_urls['npm']}/{encoded_package}"
-        logger.info("Fetching metadata for %s", package_name)
-        with self.cache.get(url) as response:
-            response.raise_for_status()
-            data = response.json()
-        self.cache.metadata_cache[cache_key] = data
-        self.cache.save_json("metadata", disk_key, data)
-        return data
+            disk_key = f"{self.ecosystem}:{package_name}"
+            cached = self.cache.load_json("metadata", disk_key)
+            if cached is not None:
+                self.cache.metadata_cache[cache_key] = cached
+                return cached
+
+            encoded_package = quote(package_name, safe="")
+            url = f"{self.registry_urls['npm']}/{encoded_package}"
+            logger.info("Fetching metadata for %s", package_name)
+            with self.cache.get(url) as response:
+                response.raise_for_status()
+                data = response.json()
+            self.cache.metadata_cache[cache_key] = data
+            self.cache.save_json("metadata", disk_key, data)
+            return data
 
     def get_package_version_at_date(self, metadata: Dict) -> Tuple[str, Dict]:
         try:
@@ -270,6 +343,14 @@ class NpmResolver(PackageResolver):
             logger.debug("Cache hit: npm resolve %s %s %s", dependency, constraint, before_date)
             return self.cache.npm_resolve_cache[cache_key]
 
+        # Check disk cache (persists across restarts / --resume runs)
+        disk_key = f"npm:{dependency}|{constraint}|{before_date.isoformat()}"
+        cached = self.cache.load_json("resolve_npm", disk_key)
+        if cached is not None:
+            result = cached.get("version")
+            self.cache.npm_resolve_cache[cache_key] = result
+            return result
+
         try:
             cmd = [
                 'npm', 'view',
@@ -293,11 +374,13 @@ class NpmResolver(PackageResolver):
                     else:
                         resolved = versions
                     self.cache.npm_resolve_cache[cache_key] = resolved
+                    self.cache.save_json("resolve_npm", disk_key, {"version": resolved})
                     return resolved
         except (subprocess.TimeoutExpired, json.JSONDecodeError, FileNotFoundError) as e:
             logger.warning("Error resolving npm version for %s: %s", dependency, e)
 
         self.cache.npm_resolve_cache[cache_key] = None
+        self.cache.save_json("resolve_npm", disk_key, {"version": None})
         return None
 
     def get_highest_semver_version_at_date(
@@ -440,25 +523,33 @@ class PyPIResolver(PackageResolver):
 
     def fetch_package_metadata(self, package_name: str) -> Dict:
         cache_key = (self.ecosystem, package_name)
+        # Fast path: GIL-safe dict lookup (no lock needed)
         if cache_key in self.cache.metadata_cache:
             logger.debug("Cache hit: metadata %s:%s", self.ecosystem, package_name)
             return self.cache.metadata_cache[cache_key]
 
-        disk_key = f"{self.ecosystem}:{package_name}"
-        cached = self.cache.load_json("metadata", disk_key)
-        if cached is not None:
-            self.cache.metadata_cache[cache_key] = cached
-            return cached
+        # Serialize concurrent fetches for the same key (thundering-herd fix)
+        with self.cache.get_key_lock(cache_key):
+            # Double-check after acquiring lock
+            if cache_key in self.cache.metadata_cache:
+                logger.debug("Cache hit (post-lock): metadata %s:%s", self.ecosystem, package_name)
+                return self.cache.metadata_cache[cache_key]
 
-        encoded_package = quote(package_name, safe="")
-        url = f"{self.registry_urls['pypi']}/{encoded_package}/json"
-        logger.info("Fetching metadata for %s", package_name)
-        with self.cache.get(url) as response:
-            response.raise_for_status()
-            data = response.json()
-        self.cache.metadata_cache[cache_key] = data
-        self.cache.save_json("metadata", disk_key, data)
-        return data
+            disk_key = f"{self.ecosystem}:{package_name}"
+            cached = self.cache.load_json("metadata", disk_key)
+            if cached is not None:
+                self.cache.metadata_cache[cache_key] = cached
+                return cached
+
+            encoded_package = quote(package_name, safe="")
+            url = f"{self.registry_urls['pypi']}/{encoded_package}/json"
+            logger.info("Fetching metadata for %s", package_name)
+            with self.cache.get(url) as response:
+                response.raise_for_status()
+                data = response.json()
+            self.cache.metadata_cache[cache_key] = data
+            self.cache.save_json("metadata", disk_key, data)
+            return data
 
     def get_package_version_at_date(self, metadata: Dict) -> Tuple[str, Dict]:
         releases = metadata.get('releases', {})

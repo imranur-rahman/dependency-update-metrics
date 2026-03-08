@@ -5,7 +5,7 @@ OSV remediation logic wrapper.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Dict, Optional
+from typing import Dict, List, Optional
 
 import pandas as pd
 from packaging import version as pkg_version
@@ -24,11 +24,41 @@ class OSVService:
         osv_df: pd.DataFrame,
         dependency_metadata: Dict,
         ecosystem: str,
+        osv_index: Optional[Dict[str, List[Dict]]] = None,
     ) -> bool:
         if dependency_version is None:
             return False
         interval_start = ensure_utc(interval_start)
 
+        # Fast path: use pre-built index (O(1) lookup) when available
+        if osv_index is not None:
+            dep_vulns_list = osv_index.get(dependency)
+            if not dep_vulns_list:
+                return True
+
+            try:
+                current_ver = pkg_version.parse(dependency_version)
+            except Exception:
+                return False
+
+            for vuln in dep_vulns_list:
+                try:
+                    intro_ver = pkg_version.parse(vuln['vul_introduced'])
+                    fixed_ver = pkg_version.parse(vuln['vul_fixed'])
+
+                    if intro_ver <= current_ver < fixed_ver:
+                        fixed_date = self.get_version_release_date(
+                            ecosystem, dependency, vuln['vul_fixed'], dependency_metadata
+                        )
+
+                        if fixed_date and fixed_date <= interval_start:
+                            return False
+                except Exception:
+                    continue
+
+            return True
+
+        # Fallback: DataFrame linear scan (legacy path)
         if len(osv_df) == 0 or 'package' not in osv_df.columns:
             return True
 

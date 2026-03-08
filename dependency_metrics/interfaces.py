@@ -5,7 +5,7 @@ Interfaces for resolvers and vulnerability services.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Dict, Iterable, Optional, Protocol, Tuple
+from typing import Dict, Iterable, List, Optional, Protocol, Tuple
 
 import pandas as pd
 
@@ -58,5 +58,7 @@ class VulnerabilityService(Protocol):
         interval_start: datetime,
         osv_df: pd.DataFrame,
         dependency_metadata: Dict,
+        ecosystem: str = "",
+        osv_index: Optional[Dict[str, List[Dict]]] = None,
     ) -> bool:
         ...

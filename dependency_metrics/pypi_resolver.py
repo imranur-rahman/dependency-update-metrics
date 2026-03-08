@@ -5,10 +5,14 @@ Resolve PyPI versions using patched pip's --before support.
 from __future__ import annotations
 
 import sys
-from dataclasses import dataclass
+import threading
+from collections import OrderedDict
+from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
+
+_FINDER_CACHE_MAX_SIZE = 50
 
 
 
@@ -27,10 +31,12 @@ def _ensure_pip_on_path() -> None:
 class PyPIResolver:
     """Resolve versions from PyPI using pip's PackageFinder."""
 
-    _finder_cache: dict[datetime, "PackageFinder"]
+    _finder_cache: OrderedDict
+    _finder_lock: threading.Lock
 
     def __init__(self) -> None:
-        self._finder_cache = {}
+        self._finder_cache = OrderedDict()
+        self._finder_lock = threading.Lock()
 
     def resolve(self, package: str, constraint: str, before: datetime) -> Optional[str]:
         """Resolve highest version before date that satisfies constraint."""
@@ -57,8 +63,10 @@ class PyPIResolver:
         return SpecifierSet(constraint)
 
     def _get_finder(self, before: datetime) -> "PackageFinder":
-        if before in self._finder_cache:
-            return self._finder_cache[before]
+        with self._finder_lock:
+            if before in self._finder_cache:
+                self._finder_cache.move_to_end(before)
+                return self._finder_cache[before]
 
         # Local import after sys.path injection.
         from pip._internal.index.package_finder import PackageFinder
@@ -87,7 +95,12 @@ class PyPIResolver:
             selection_prefs=selection_prefs,
             target_python=None,
         )
-        self._finder_cache[before] = finder
+        with self._finder_lock:
+            self._finder_cache[before] = finder
+            self._finder_cache.move_to_end(before)
+            # Evict oldest entries beyond the size cap (OPT-6: prevent memory leak)
+            while len(self._finder_cache) > _FINDER_CACHE_MAX_SIZE:
+                self._finder_cache.popitem(last=False)
         return finder
 
 

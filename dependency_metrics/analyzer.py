@@ -4,6 +4,7 @@ Core dependency analyzer for calculating TTU and TTR metrics.
 
 import logging
 import math
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Any
@@ -13,7 +14,7 @@ from packaging import version as pkg_version
 
 from .osv_builder import OSVBuilder
 from .osv_service import OSVService
-from .resolvers import NpmResolver, PyPIResolver, ResolverCache, npm_semver_key
+from .resolvers import NpmResolver, PyPIResolver, ResolverCache, npm_semver_key, resolve_pypi_version_locally
 from .time_utils import build_intervals, parse_timestamp
 
 
@@ -256,6 +257,12 @@ class DependencyAnalyzer:
         if len(osv_df) > 0:
             osv_df = osv_df[osv_df["ecosystem"] == self.ecosystem.upper()].copy()
 
+        # OPT-2: Pre-index OSV DataFrame for O(1) per-dependency lookups
+        osv_index: Dict[str, List[Dict]] = {}
+        if len(osv_df) > 0 and "package" in osv_df.columns:
+            for pkg_name, group in osv_df.groupby("package"):
+                osv_index[pkg_name] = group.to_dict("records")
+
         pkg_versions = self.get_all_versions_with_dates(pkg_metadata, package_name=self.package)
         pkg_versions = [(ver, date) for ver, date in pkg_versions]
         pkg_versions.sort(key=lambda item: item[1])
@@ -289,10 +296,24 @@ class DependencyAnalyzer:
         dep_metadata_cache: Dict[str, Dict] = {}
         dep_dates_cache: Dict[str, List[datetime]] = {}
 
+        # OPT-4: Fetch all dependency metadata in parallel (independent HTTP calls)
+        if dependencies:
+            with ThreadPoolExecutor(max_workers=min(8, len(dependencies))) as inner_pool:
+                meta_futures = {
+                    inner_pool.submit(self.fetch_package_metadata, dep_name): dep_name
+                    for dep_name in dependencies
+                }
+                for fut in as_completed(meta_futures):
+                    dep_name = meta_futures[fut]
+                    try:
+                        dep_metadata_cache[dep_name] = fut.result()
+                    except Exception as exc:
+                        logger.warning("Failed to fetch metadata for %s: %s", dep_name, exc)
+                        dep_metadata_cache[dep_name] = {}
+
         # Precompute dependency timelines and per-date resolution
         for dep_name, dep_constraint in dependencies.items():
-            dep_metadata = self.fetch_package_metadata(dep_name)
-            dep_metadata_cache[dep_name] = dep_metadata
+            dep_metadata = dep_metadata_cache.get(dep_name, {})
             dep_versions = self.get_all_versions_with_dates(dep_metadata, package_name=dep_name)
             dep_versions = [(ver, date) for ver, date in dep_versions]
 
@@ -309,7 +330,11 @@ class DependencyAnalyzer:
 
             per_date = {}
             for date in dates:
-                dep_version = self.resolve_dependency_version(dep_name, dep_constraint, date)
+                # OPT-1: For PyPI, resolve locally from cached metadata (eliminates network calls)
+                if self.ecosystem == "pypi" and dep_metadata:
+                    dep_version = resolve_pypi_version_locally(dep_metadata, dep_constraint, date)
+                else:
+                    dep_version = self.resolve_dependency_version(dep_name, dep_constraint, date)
                 highest_dep_version = self.get_highest_semver_version_at_date(
                     dep_name, date, metadata=dep_metadata
                 )
@@ -318,12 +343,14 @@ class DependencyAnalyzer:
                     if dep_version and highest_dep_version
                     else False
                 )
+                # OPT-2: Pass pre-built osv_index for O(1) vulnerability lookup
                 remediated = self._check_remediation(
                     dep_name,
                     dep_version,
                     date,
                     osv_df if osv_df is not None else pd.DataFrame(),
                     dep_metadata,
+                    osv_index=osv_index,
                 )
                 per_date[date] = {
                     "dependency_version": dep_version,
@@ -510,7 +537,13 @@ class DependencyAnalyzer:
             DataFrame with analysis results
         """
         logger.info(f"Analyzing dependency: {dependency}")
-        
+
+        # OPT-2: Pre-index OSV DataFrame for O(1) per-dependency lookups
+        osv_index: Dict[str, List[Dict]] = {}
+        if isinstance(osv_df, pd.DataFrame) and len(osv_df) > 0 and "package" in osv_df.columns:
+            for pkg_name, group in osv_df.groupby("package"):
+                osv_index[pkg_name] = group.to_dict("records")
+
         # Get all version release dates for the package (parent)
         pkg_versions = self.get_all_versions_with_dates(pkg_metadata, package_name=self.package)
         
@@ -594,10 +627,13 @@ class DependencyAnalyzer:
             if constraint_at_interval is None:
                 continue
             
-            # Resolve dependency version at this interval using the constraint
-            dep_version = self.resolve_dependency_version(
-                dependency, constraint_at_interval, interval_start
-            )
+            # OPT-1: For PyPI, resolve locally from cached metadata (eliminates network calls)
+            if self.ecosystem == "pypi" and dep_metadata:
+                dep_version = resolve_pypi_version_locally(dep_metadata, constraint_at_interval, interval_start)
+            else:
+                dep_version = self.resolve_dependency_version(
+                    dependency, constraint_at_interval, interval_start
+                )
             
             # Get highest SEMVER dependency version available at interval_start
             highest_dep_version = self.get_highest_semver_version_at_date(
@@ -613,9 +649,10 @@ class DependencyAnalyzer:
             # Calculate weight
             weight = self.calculate_weight(age_of_interval)
             
-            # Check remediation status
+            # OPT-2: Pass pre-built osv_index for O(1) vulnerability lookup
             remediated = self._check_remediation(
-                dependency, dep_version, interval_start, osv_df, dep_metadata
+                dependency, dep_version, interval_start, osv_df, dep_metadata,
+                osv_index=osv_index,
             )
             
             records.append({
@@ -646,17 +683,19 @@ class DependencyAnalyzer:
         dep_version: Optional[str],
         interval_start: datetime,
         osv_df: pd.DataFrame,
-        dep_metadata: Dict
+        dep_metadata: Dict,
+        osv_index: Optional[Dict[str, List[Dict]]] = None,
     ) -> bool:
         """Check if dependency version is remediated from vulnerabilities.
-        
+
         Args:
             dependency: Dependency name
             dep_version: Current dependency version
             interval_start: Start of interval
             osv_df: OSV vulnerability dataframe
             dep_metadata: Dependency metadata
-            
+            osv_index: Optional pre-built dict index for O(1) lookups (OPT-2)
+
         Returns:
             True if remediated, False otherwise
         """
@@ -667,6 +706,7 @@ class DependencyAnalyzer:
             osv_df=osv_df,
             dependency_metadata=dep_metadata,
             ecosystem=self.ecosystem,
+            osv_index=osv_index,
         )
     
     def _get_version_release_date(
