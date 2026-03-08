@@ -32,14 +32,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- `--per-release` CLI flag: computes MTTU/MTTR at every release of the parent package within the analysis window, producing one output row per release instead of one per input row.
+- `DependencyAnalyzer.analyze_at_release_points()`: new method that fetches per-version dependency sets, builds a shared dep-cache for the full window, and slices it for each release sub-window `[start_date, release_date]`.
+- `DependencyAnalyzer._calculate_weight_with_window()`: private helper that computes interval weights using the sub-window span as `max_age` (avoids mutating `self.end_date` for each release point).
+- `export_per_release_summary_csv()` and `export_per_release_dependency_csv()` in `reporting.py`.
+- Resume support for per-release mode: tracks completed `(ecosystem, package_name, window_start, package_version)` entries and skips duplicates at write time.
+- 5 new unit tests in `tests/test_per_release.py` (no network calls).
+
 ### Planned
 - Support for additional ecosystems (Maven, RubyGems, Go, etc.)
-- Caching mechanism for package metadata
-- Parallel processing for faster analysis
 - Web dashboard for visualization
 - GitHub Actions integration
 - Docker containerization
-- More sophisticated version resolution strategies
 - Support for custom vulnerability databases
-- Historical trend analysis
 - Comparative analysis across packages

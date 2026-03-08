@@ -180,6 +180,12 @@ def main():
     )
 
     parser.add_argument(
+        "--per-release",
+        action="store_true",
+        help="Compute MTTU/MTTR at every release of the parent package within the window",
+    )
+
+    parser.add_argument(
         "--verbose",
         action="store_true",
         help="Enable debug logging"
@@ -247,32 +253,51 @@ def main():
             )
 
         input_label = input_csv.name
-        summary_file_path = output_dir / f"{input_label}_bulk_results.csv"
-        deps_file_path = output_dir / f"{input_label}_dependency_details.csv"
+        if args.per_release:
+            summary_file_path = output_dir / f"{input_label}_per_release_results.csv"
+            deps_file_path = output_dir / f"{input_label}_per_release_dependency_details.csv"
+        else:
+            summary_file_path = output_dir / f"{input_label}_bulk_results.csv"
+            deps_file_path = output_dir / f"{input_label}_dependency_details.csv"
 
         existing_status = {}
+        # For per-release resume: track (ecosystem, package_name, window_start, package_version) already written
+        existing_per_release: set = set()
         if args.resume and summary_file_path.exists():
             try:
                 summary_df = pd.read_csv(summary_file_path)
-                for _, record in summary_df.iterrows():
-                    ecosystem_raw = str(record.get("ecosystem", "")).strip()
-                    package_name_raw = str(record.get("package_name", "")).strip()
-                    ecosystem = ecosystem_raw.lower()
-                    package_name = package_name_raw.lower()
-                    start_date = str(record.get("start_date", "")).strip()
-                    end_date = str(record.get("end_date", "")).strip()
-                    status = str(record.get("status", "")).strip().lower()
-                    if not ecosystem or not package_name or not start_date or not end_date:
-                        continue
-                    key = (ecosystem, package_name, start_date, end_date)
-                    existing_status[key] = status
+                if args.per_release:
+                    for _, record in summary_df.iterrows():
+                        ecosystem_r = str(record.get("ecosystem", "")).strip().lower()
+                        package_r = str(record.get("package_name", "")).strip().lower()
+                        window_start_r = str(record.get("window_start", "")).strip()
+                        pkg_ver_r = str(record.get("package_version", "")).strip()
+                        status_r = str(record.get("status", "")).strip().lower()
+                        if not ecosystem_r or not package_r or not window_start_r or not pkg_ver_r:
+                            continue
+                        existing_per_release.add((ecosystem_r, package_r, window_start_r, pkg_ver_r))
+                        existing_status[(ecosystem_r, package_r, window_start_r, "")] = status_r
+                else:
+                    for _, record in summary_df.iterrows():
+                        ecosystem_raw = str(record.get("ecosystem", "")).strip()
+                        package_name_raw = str(record.get("package_name", "")).strip()
+                        ecosystem = ecosystem_raw.lower()
+                        package_name = package_name_raw.lower()
+                        start_date = str(record.get("start_date", "")).strip()
+                        end_date = str(record.get("end_date", "")).strip()
+                        status = str(record.get("status", "")).strip().lower()
+                        if not ecosystem or not package_name or not start_date or not end_date:
+                            continue
+                        key = (ecosystem, package_name, start_date, end_date)
+                        existing_status[key] = status
             except Exception as exc:
                 logging.getLogger("dependency_metrics").warning(
                     "Failed to read existing summary for resume: %s", exc
                 )
                 existing_status = {}
+                existing_per_release = set()
 
-        if args.resume and existing_status:
+        if args.resume and existing_status and not args.per_release:
             filtered_rows = []
             skipped = 0
             retried = 0
@@ -440,6 +465,112 @@ def main():
 
             return results + error_results
 
+        def _process_group_per_release(rows: List[Dict[str, object]]) -> List[Dict[str, object]]:
+            """Process a group of rows (same package) in per-release mode."""
+            error_results = []
+            valid_rows = []
+
+            for row in rows:
+                row_num = row.get("_row_num")
+                ecosystem = str(row.get("ecosystem", "")).lower()
+                package_name = str(row.get("package_name", ""))
+                end_date_raw = str(row.get("end_date", ""))
+                start_date_raw = str(row.get("start_date", ""))
+
+                try:
+                    if not ecosystem or not package_name or not end_date_raw:
+                        raise ValueError("ecosystem, package_name, and end_date are required.")
+                    if ecosystem not in {"npm", "pypi"}:
+                        raise ValueError(f"Unsupported ecosystem: {ecosystem}.")
+
+                    start_date = default_start_date
+                    if start_date_raw:
+                        start_date = _parse_date(start_date_raw, "start_date", row_num)
+                    end_date = _parse_date(end_date_raw, "end_date", row_num)
+
+                    valid_rows.append({
+                        "row_num": row_num,
+                        "start_date": start_date,
+                        "end_date": end_date,
+                    })
+                except Exception as exc:
+                    start_date = default_start_date
+                    if start_date_raw:
+                        try:
+                            start_date = _parse_date(start_date_raw, "start_date", row_num)
+                        except ValueError:
+                            start_date = default_start_date
+                    try:
+                        end_date = _parse_date(end_date_raw, "end_date", row_num)
+                    except ValueError:
+                        end_date = datetime.today()
+
+                    error_results.append({
+                        "row_num": row_num,
+                        "summary": {
+                            "ecosystem": ecosystem,
+                            "package_name": package_name,
+                            "package_version": "",
+                            "package_release_date": "",
+                            "window_start": start_date.date().isoformat(),
+                            "window_end": end_date.date().isoformat(),
+                            "mttu": -1.0,
+                            "mttr": -1.0,
+                            "num_dependencies": 0,
+                            "status": "error",
+                            "error": f"\"{exc}\"",
+                        },
+                        "dependency_frames": [],
+                    })
+
+            if not valid_rows:
+                return error_results
+
+            ecosystem = str(rows[0].get("ecosystem", "")).lower()
+            package_name = str(rows[0].get("package_name", ""))
+            min_start = min(row["start_date"] for row in valid_rows)
+            max_end = max(row["end_date"] for row in valid_rows)
+
+            analyzer = DependencyAnalyzer(
+                ecosystem=ecosystem,
+                package=package_name,
+                start_date=min_start,
+                end_date=max_end,
+                weighting_type=args.weighting_type,
+                half_life=args.half_life,
+                output_dir=output_dir,
+                resolver_cache=resolver_cache,
+            )
+
+            all_results = []
+            for row in valid_rows:
+                try:
+                    release_results = analyzer.analyze_at_release_points(
+                        row, osv_df=osv_by_ecosystem.get(ecosystem)
+                    )
+                    all_results.extend(release_results)
+                except Exception as exc:
+                    error = f"\"{exc}\""
+                    error_results.append({
+                        "row_num": row["row_num"],
+                        "summary": {
+                            "ecosystem": ecosystem,
+                            "package_name": package_name,
+                            "package_version": "",
+                            "package_release_date": "",
+                            "window_start": row["start_date"].date().isoformat(),
+                            "window_end": row["end_date"].date().isoformat(),
+                            "mttu": -1.0,
+                            "mttr": -1.0,
+                            "num_dependencies": 0,
+                            "status": "error",
+                            "error": error,
+                        },
+                        "dependency_frames": [],
+                    })
+
+            return all_results + error_results
+
         # Group rows by package to maximize cache reuse within a package
         grouped_rows: Dict[tuple[str, str], List[Dict[str, object]]] = {}
         for row in input_rows:
@@ -452,21 +583,40 @@ def main():
         with ThreadPoolExecutor(max_workers=worker_count) as executor:
             futures = []
             for rows in grouped_rows.values():
-                futures.append(executor.submit(_process_group, rows))
+                if args.per_release:
+                    futures.append(executor.submit(_process_group_per_release, rows))
+                else:
+                    futures.append(executor.submit(_process_group, rows))
 
             if deps_file_path.exists() and not args.resume:
                 deps_file_path.unlink()
-            summary_columns = [
-                "ecosystem",
-                "package_name",
-                "start_date",
-                "end_date",
-                "mttu",
-                "mttr",
-                "num_dependencies",
-                "status",
-                "error",
-            ]
+
+            if args.per_release:
+                summary_columns = [
+                    "ecosystem",
+                    "package_name",
+                    "package_version",
+                    "package_release_date",
+                    "window_start",
+                    "window_end",
+                    "mttu",
+                    "mttr",
+                    "num_dependencies",
+                    "status",
+                    "error",
+                ]
+            else:
+                summary_columns = [
+                    "ecosystem",
+                    "package_name",
+                    "start_date",
+                    "end_date",
+                    "mttu",
+                    "mttr",
+                    "num_dependencies",
+                    "status",
+                    "error",
+                ]
             summary_file_path.parent.mkdir(parents=True, exist_ok=True)
             summary_writer = None
             deps_header_written = deps_file_path.exists()
@@ -504,6 +654,16 @@ def main():
                                 result["row_num"],
                                 result["summary"]["error"],
                             )
+                        # Skip already-written per-release entries in resume mode
+                        if args.per_release and args.resume and existing_per_release:
+                            release_key = (
+                                result["summary"]["ecosystem"].lower(),
+                                result["summary"]["package_name"].lower(),
+                                result["summary"]["window_start"],
+                                result["summary"]["package_version"],
+                            )
+                            if release_key in existing_per_release:
+                                continue
                         summary_writer.writerow(result["summary"])
                         summary_handle.flush()
 

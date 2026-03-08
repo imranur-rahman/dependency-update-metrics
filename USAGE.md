@@ -135,6 +135,52 @@ Resume behavior:
 - Rows with `status=error` are retried.
 - Summary results are appended so progress survives interruptions.
 
+### Per-release analysis (`--per-release`)
+
+Instead of one result per input row, compute MTTU/MTTR **at every release of the parent package** within the window. For each release `R`:
+- Uses the dependency set declared by **version R** (not globally latest).
+- The analysis window is `[start_date, R]` — `R` becomes the `window_end`.
+- Outputs one row per release point.
+
+This answers: *"How did this package's update discipline evolve across its release history?"*
+
+**Single-package mode:**
+```bash
+dependency-metrics \
+  --ecosystem pypi \
+  --package requests \
+  --start-date 2020-01-01 \
+  --end-date 2021-01-01 \
+  --per-release \
+  --get-worksheets
+```
+
+**Bulk CSV mode:**
+```bash
+dependency-metrics \
+  --input-csv ./input.csv \
+  --per-release \
+  --workers 4 \
+  --output-dir ./output
+```
+
+**Resume an interrupted per-release bulk run:**
+```bash
+dependency-metrics \
+  --input-csv ./input.csv \
+  --per-release \
+  --output-dir ./output \
+  --resume
+```
+
+Per-release outputs:
+- `<input_filename>_per_release_results.csv` — one row per package release with columns: `ecosystem`, `package_name`, `package_version`, `package_release_date`, `window_start`, `window_end`, `mttu`, `mttr`, `num_dependencies`, `status`, `error`
+- `<input_filename>_per_release_dependency_details.csv` — per-interval dependency data for all release windows
+
+Resume behavior in per-release mode:
+- Already-written `(ecosystem, package_name, window_start, package_version)` entries are skipped.
+- New release entries are appended to the output CSV.
+
 ## Understanding the Output
 
 ### Console Output

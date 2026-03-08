@@ -439,6 +439,244 @@ class DependencyAnalyzer:
 
         return results
     
+    def _calculate_weight_with_window(
+        self,
+        age_of_interval: float,
+        window_start: datetime,
+        window_end: datetime,
+    ) -> float:
+        """Calculate weight for a sub-window, using window_end - window_start as max_age."""
+        if self.weighting_type == "disable":
+            return 1.0
+        elif self.weighting_type == "linear":
+            max_age = (window_end - window_start).days
+            return 1.0 - (age_of_interval / max_age) if max_age > 0 else 1.0
+        elif self.weighting_type == "exponential":
+            lambda_val = math.log(2) / self.half_life
+            return math.exp(-lambda_val * age_of_interval)
+        elif self.weighting_type == "inverse":
+            return 1.0 / (1.0 + age_of_interval)
+        return 1.0
+
+    def analyze_at_release_points(
+        self,
+        row: Dict[str, Any],
+        osv_df: Optional[pd.DataFrame] = None,
+    ) -> List[Dict[str, Any]]:
+        """Compute MTTU/MTTR at every release of the parent package within [start_date, end_date].
+
+        For each release R of the package:
+          - Uses the dependency set declared by version R.
+          - Window = [start_date, R].
+          - Emits one result dict per release point.
+        """
+        start_date = row["start_date"]
+        end_date = row["end_date"]
+        if start_date.tzinfo is None:
+            start_date = start_date.replace(tzinfo=timezone.utc)
+        else:
+            start_date = start_date.astimezone(timezone.utc)
+        if end_date.tzinfo is None:
+            end_date = end_date.replace(tzinfo=timezone.utc)
+        else:
+            end_date = end_date.astimezone(timezone.utc)
+
+        pkg_metadata = self.fetch_package_metadata(self.package)
+
+        all_pkg_versions = self.get_all_versions_with_dates(pkg_metadata, package_name=self.package)
+        all_pkg_versions.sort(key=lambda item: item[1])
+        releases_in_window = [
+            (ver, date) for ver, date in all_pkg_versions if start_date <= date <= end_date
+        ]
+
+        if not releases_in_window:
+            return []
+
+        if osv_df is None:
+            osv_db_file = self.output_dir / "osv_database.parquet"
+            if osv_db_file.exists():
+                osv_df = pd.read_parquet(osv_db_file)
+            else:
+                osv_df = pd.DataFrame()
+        if len(osv_df) > 0:
+            osv_df = osv_df[osv_df["ecosystem"] == self.ecosystem.upper()].copy()
+
+        osv_index: Dict[str, List[Dict]] = {}
+        if len(osv_df) > 0 and "package" in osv_df.columns:
+            for pkg_name, group in osv_df.groupby("package"):
+                osv_index[pkg_name] = group.to_dict("records")
+
+        # Fetch per-version deps for each release
+        per_version_deps: Dict[str, Dict[str, str]] = {}
+        for ver, _ in releases_in_window:
+            per_version_deps[ver] = self.resolver.get_version_dependencies(self.package, ver)
+
+        # Union of all dep names across all releases
+        all_dep_names: set = set()
+        for deps in per_version_deps.values():
+            all_dep_names.update(deps.keys())
+
+        if not all_dep_names:
+            return [
+                {
+                    "row_num": row.get("row_num"),
+                    "summary": {
+                        "ecosystem": self.ecosystem,
+                        "package_name": self.package,
+                        "package_version": ver,
+                        "package_release_date": release_date.date().isoformat(),
+                        "window_start": start_date.date().isoformat(),
+                        "window_end": release_date.date().isoformat(),
+                        "mttu": 0.0,
+                        "mttr": 0.0,
+                        "num_dependencies": 0,
+                        "status": "ok",
+                        "error": "",
+                    },
+                    "dependency_frames": [],
+                }
+                for ver, release_date in releases_in_window
+            ]
+
+        # Fetch all dep metadata in parallel
+        dep_metadata_cache: Dict[str, Dict] = {}
+        with ThreadPoolExecutor(max_workers=min(8, len(all_dep_names))) as inner_pool:
+            meta_futures = {
+                inner_pool.submit(self.fetch_package_metadata, dep_name): dep_name
+                for dep_name in all_dep_names
+            }
+            for fut in as_completed(meta_futures):
+                dep_name = meta_futures[fut]
+                try:
+                    dep_metadata_cache[dep_name] = fut.result()
+                except Exception as exc:
+                    logger.warning("Failed to fetch metadata for %s: %s", dep_name, exc)
+                    dep_metadata_cache[dep_name] = {}
+
+        # Build shared dep_cache: for each dep, a map date -> {highest_dep_version}
+        # Covers all dates in [start_date, end_date] derived from pkg + dep release dates.
+        dep_cache: Dict[str, Dict[datetime, Dict[str, Any]]] = {}
+        dep_dates_cache: Dict[str, List[datetime]] = {}
+
+        for dep_name in all_dep_names:
+            dep_metadata = dep_metadata_cache.get(dep_name, {})
+            dep_versions = self.get_all_versions_with_dates(dep_metadata, package_name=dep_name)
+
+            dates = []
+            for _, date in all_pkg_versions:
+                if start_date <= date <= end_date:
+                    dates.append(date)
+            for _, date in dep_versions:
+                if start_date <= date <= end_date:
+                    dates.append(date)
+
+            dates = sorted(set(dates))
+            dep_dates_cache[dep_name] = dates
+
+            per_date: Dict[datetime, Dict[str, Any]] = {}
+            for date in dates:
+                highest_dep_version = self.get_highest_semver_version_at_date(
+                    dep_name, date, metadata=dep_metadata
+                )
+                per_date[date] = {"highest_dep_version": highest_dep_version}
+            dep_cache[dep_name] = per_date
+
+        # For each release point, build intervals and compute MTTU/MTTR
+        results = []
+        for ver, release_date in releases_in_window:
+            window_end = release_date
+            pkg_deps = per_version_deps[ver]
+            ttu_values = []
+            ttr_values = []
+            dep_frames = []
+
+            for dep_name, dep_constraint in pkg_deps.items():
+                dep_metadata = dep_metadata_cache.get(dep_name, {})
+                dates = [d for d in dep_dates_cache.get(dep_name, []) if start_date <= d <= window_end]
+                intervals = build_intervals(dates, start_date, window_end)
+                if not intervals:
+                    continue
+
+                records = []
+                for interval_start, interval_end in intervals:
+                    cached = dep_cache[dep_name].get(interval_start)
+                    if cached is None:
+                        continue
+
+                    if self.ecosystem == "pypi" and dep_metadata:
+                        dep_version = resolve_pypi_version_locally(
+                            dep_metadata, dep_constraint, interval_start
+                        )
+                    else:
+                        dep_version = self.resolve_dependency_version(
+                            dep_name, dep_constraint, interval_start
+                        )
+
+                    highest_dep_version = cached["highest_dep_version"]
+                    updated = (
+                        dep_version == highest_dep_version
+                        if dep_version and highest_dep_version
+                        else False
+                    )
+                    remediated = self._check_remediation(
+                        dep_name,
+                        dep_version,
+                        interval_start,
+                        osv_df if osv_df is not None else pd.DataFrame(),
+                        dep_metadata,
+                        osv_index=osv_index,
+                    )
+                    age_of_interval = (window_end - interval_start).days
+                    weight = self._calculate_weight_with_window(age_of_interval, start_date, window_end)
+
+                    records.append({
+                        "ecosystem": self.ecosystem,
+                        "package": self.package,
+                        "package_version": ver,
+                        "dependency": dep_name,
+                        "dependency_constraint": dep_constraint,
+                        "dependency_version": dep_version,
+                        "dependency_highest_version": highest_dep_version,
+                        "interval_start": interval_start,
+                        "interval_end": interval_end,
+                        "updated": updated,
+                        "remediated": remediated,
+                        "age_of_interval": age_of_interval,
+                        "weight": weight,
+                        "analysis_end_date": window_end,
+                    })
+
+                dep_df = pd.DataFrame(records)
+                if len(dep_df) == 0:
+                    continue
+                ttu, ttr = self.calculate_ttu_ttr(dep_df)
+                ttu_values.append(ttu)
+                ttr_values.append(ttr)
+                dep_frames.append(dep_df)
+
+            avg_ttu = sum(ttu_values) / len(ttu_values) if ttu_values else 0.0
+            avg_ttr = sum(ttr_values) / len(ttr_values) if ttr_values else 0.0
+
+            results.append({
+                "row_num": row.get("row_num"),
+                "summary": {
+                    "ecosystem": self.ecosystem,
+                    "package_name": self.package,
+                    "package_version": ver,
+                    "package_release_date": release_date.date().isoformat(),
+                    "window_start": start_date.date().isoformat(),
+                    "window_end": release_date.date().isoformat(),
+                    "mttu": avg_ttu,
+                    "mttr": avg_ttr,
+                    "num_dependencies": len(pkg_deps),
+                    "status": "ok",
+                    "error": "",
+                },
+                "dependency_frames": dep_frames,
+            })
+
+        return results
+
     def get_all_versions_with_dates(self, metadata: Dict, package_name: Optional[str] = None) -> List[Tuple[str, datetime]]:
         """Get all versions and their release dates within the date range.
         

@@ -62,6 +62,14 @@ dependency-metrics --input-csv ./input.csv --workers 8 --output-dir ./output
 
 # Resume an interrupted bulk run
 dependency-metrics --input-csv ./input.csv --output-dir ./output --resume
+
+# Per-release analysis: MTTU/MTTR at every release of the parent package
+dependency-metrics --ecosystem pypi --package requests \
+  --start-date 2020-01-01 --end-date 2021-01-01 \
+  --per-release --get-worksheets
+
+# Per-release in bulk CSV mode
+dependency-metrics --input-csv ./input.csv --per-release --workers 4
 ```
 
 Input CSV columns: `ecosystem`, `package_name`, `end_date`, optional `start_date`.
@@ -108,6 +116,7 @@ print(f"Average TTR: {results['ttr']:.2f} days")
 - `--output-dir`: Output directory for results [Default: ./output]
 - `--workers`: Number of parallel workers for bulk CSV mode [Default: min(8, CPU count)]
 - `--resume`: Resume bulk CSV runs by skipping completed rows and retrying errors
+- `--per-release`: Compute MTTU/MTTR at every release of the parent package within the window (one output row per release)
 
 ## Weighting Methods
 
@@ -141,6 +150,7 @@ The tool generates several outputs in the specified output directory:
 2. **OSV data** (with `--get-osv`): CSV file with vulnerability information
 3. **Excel worksheets** (with `--get-worksheets`): Detailed analysis for each dependency
 4. **Bulk CSV results** (with `--input-csv`): Summary CSV and dependency details CSV
+5. **Per-release results** (with `--per-release`): One row per package release with `package_version`, `package_release_date`, `window_start`, `window_end`, `mttu`, `mttr`
 
 ### Example JSON output
 
@@ -179,6 +189,7 @@ The tool generates several outputs in the specified output directory:
 - Reporting/export helpers live in `dependency_metrics/reporting.py`.
 - Bulk CSV mode groups rows by `(ecosystem, package_name)` and processes each group sequentially while running groups in parallel to maximize cache reuse.
 - For bulk runs, a single package analysis computes metrics across multiple end dates using the latest dependency set.
+- `--per-release` mode uses `analyze_at_release_points()` which fetches per-version dependency sets and builds a shared dep-cache covering the full window; it slices that cache for each release sub-window `[start_date, release_date]`.
 
 ## Requirements
 

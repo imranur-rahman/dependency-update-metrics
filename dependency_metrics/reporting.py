@@ -108,4 +108,48 @@ def export_bulk_dependency_csv(
             df[col] = df[col].dt.tz_convert("UTC").dt.tz_localize(None)
     df.to_csv(deps_file, index=False)
     return deps_file
+def export_per_release_summary_csv(
+    rows: Iterable[Dict],
+    output_dir: Path,
+    input_csv: Path,
+) -> Path:
+    """Write per-release summary CSV with extended columns."""
+    output_dir.mkdir(parents=True, exist_ok=True)
+    summary_file = output_dir / f"{input_csv.stem}_per_release_results.csv"
+    df = pd.DataFrame(list(rows))
+    columns = [
+        "ecosystem",
+        "package_name",
+        "package_version",
+        "package_release_date",
+        "window_start",
+        "window_end",
+        "mttu",
+        "mttr",
+        "num_dependencies",
+        "status",
+        "error",
+    ]
+    df.to_csv(summary_file, index=False, columns=columns)
+    return summary_file
+
+
+def export_per_release_dependency_csv(
+    dependency_frames: List[pd.DataFrame],
+    output_dir: Path,
+    input_csv: Path,
+) -> "Path | None":
+    """Concatenate and write per-release dependency detail frames."""
+    if not dependency_frames:
+        return None
+    output_dir.mkdir(parents=True, exist_ok=True)
+    deps_file = output_dir / f"{input_csv.stem}_per_release_dependency_details.csv"
+    df = pd.concat(dependency_frames, ignore_index=True)
+    for col in df.columns:
+        if pd.api.types.is_datetime64tz_dtype(df[col]):
+            df[col] = df[col].dt.tz_convert("UTC").dt.tz_localize(None)
+    df.to_csv(deps_file, index=False)
+    return deps_file
+
+
 logger = logging.getLogger(__name__)
