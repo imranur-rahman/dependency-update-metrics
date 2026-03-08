@@ -20,9 +20,10 @@ def test_npm_semver_prerelease_sorting() -> None:
     keys.sort(key=lambda item: item[0])
     ordered = [v for _, v in keys]
 
-    assert ordered[-1] == "1.0.0"
-    assert ordered[-2] == "1.0.0-beta"
     assert ordered[0] == "0.0.0-insiders.b4008fc"
+    assert ordered[-4] == "1.0.0-beta"
+    assert ordered[-3] == "1.0.0"
 
-    # v-prefix and build metadata should not affect ordering vs base version.
-    assert ordered[-3] in {"1.2.3+build.7", "v1.2.3"}
+    # v-prefix and build metadata should not affect ordering vs base version:
+    # both v1.2.3 and 1.2.3+build.7 normalise to 1.2.3 and rank above 1.0.0.
+    assert set(ordered[-2:]) == {"v1.2.3", "1.2.3+build.7"}
