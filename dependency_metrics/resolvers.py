@@ -451,11 +451,17 @@ class NpmResolver(PackageResolver):
                         continue
 
             if valid_versions:
+                known_invalid = self.cache.load_invalid_versions(self.ecosystem, package_name)
                 semver_candidates = []
                 for ver in valid_versions:
+                    if ver in known_invalid:
+                        continue
                     key = npm_semver_key(ver)
-                    if key is not None:
-                        semver_candidates.append((key, ver))
+                    if key is None:
+                        logger.debug("Skipping invalid npm semver %s for %s", ver, package_name)
+                        self.cache.record_invalid_version(self.ecosystem, package_name, ver)
+                        continue
+                    semver_candidates.append((key, ver))
 
                 if semver_candidates:
                     semver_candidates.sort(key=lambda item: item[0])
