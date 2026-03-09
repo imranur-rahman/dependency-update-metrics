@@ -92,18 +92,18 @@ class OSVService:
                 result[k] = False
             return result
 
-        for _, vuln in dep_vulns.iterrows():
+        for vuln in dep_vulns.itertuples(index=False):
             try:
-                intro_ver = pkg_version.parse(vuln["vul_introduced"])
-                fixed_ver = pkg_version.parse(vuln["vul_fixed"])
+                intro_ver = pkg_version.parse(vuln.vul_introduced)
+                fixed_ver = pkg_version.parse(vuln.vul_fixed)
 
                 if intro_ver <= current_ver < fixed_ver:
                     fixed_date = self.get_version_release_date(
-                        ecosystem, dependency, vuln["vul_fixed"], dependency_metadata
+                        ecosystem, dependency, vuln.vul_fixed, dependency_metadata
                     )
 
                     if fixed_date and fixed_date <= interval_start:
-                        severity_of_vuln = vuln.get("severity", "None")
+                        severity_of_vuln = getattr(vuln, "severity", "None")
                         if severity_of_vuln in SEVERITY_LEVELS:
                             result[severity_of_vuln] = False
                         result["all_severities"] = False
@@ -167,14 +167,14 @@ class OSVService:
         except Exception:
             return False
 
-        for _, vuln in dep_vulns.iterrows():
+        for vuln in dep_vulns.itertuples(index=False):
             try:
-                intro_ver = pkg_version.parse(vuln["vul_introduced"])
-                fixed_ver = pkg_version.parse(vuln["vul_fixed"])
+                intro_ver = pkg_version.parse(vuln.vul_introduced)
+                fixed_ver = pkg_version.parse(vuln.vul_fixed)
 
                 if intro_ver <= current_ver < fixed_ver:
                     fixed_date = self.get_version_release_date(
-                        ecosystem, dependency, vuln["vul_fixed"], dependency_metadata
+                        ecosystem, dependency, vuln.vul_fixed, dependency_metadata
                     )
 
                     if fixed_date and fixed_date <= interval_start:

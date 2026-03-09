@@ -77,6 +77,8 @@ class DependencyAnalyzer:
         self.osv_service = OSVService()
         self._resolver_cache = resolver_cache or ResolverCache(cache_dir=self.output_dir / "cache")
         self.severity_breakdown = severity_breakdown
+        self._osv_df: Optional[pd.DataFrame] = None
+        self._osv_index: Optional[Dict[str, List[Dict]]] = None
 
         # Registry URLs
         self.registry_urls = {"npm": "https://registry.npmjs.org", "pypi": "https://pypi.org/pypi"}
@@ -99,6 +101,30 @@ class DependencyAnalyzer:
             )
         else:
             raise ValueError(f"Unsupported ecosystem: {self.ecosystem}")
+
+    def _get_osv_index(
+        self, osv_df: Optional[pd.DataFrame] = None
+    ) -> Tuple[pd.DataFrame, Dict[str, List[Dict]]]:
+        """Return (filtered_osv_df, osv_index), using the instance cache when available."""
+        if self._osv_index is not None:
+            return self._osv_df, self._osv_index
+
+        if osv_df is None:
+            osv_db_file = self.output_dir / "osv_database.parquet"
+            osv_df = pd.read_parquet(osv_db_file) if osv_db_file.exists() else pd.DataFrame()
+
+        if len(osv_df) > 0:
+            osv_df = osv_df[osv_df["ecosystem"] == self.ecosystem.upper()].copy()
+
+        index: Dict[str, List[Dict]] = {}
+        if len(osv_df) > 0 and "package" in osv_df.columns:
+            for pkg_name, group in osv_df.groupby("package"):
+                index[pkg_name] = group.to_dict("records")
+
+        logger.debug("OSV index built: %d packages", len(index))
+        self._osv_df = osv_df
+        self._osv_index = index
+        return osv_df, index
 
     def fetch_package_metadata(self, package_name: str) -> Dict:
         """Fetch package metadata from registry.
@@ -261,20 +287,7 @@ class DependencyAnalyzer:
         )
         dependencies = self.extract_dependencies(latest_version_data)
 
-        if osv_df is None:
-            osv_db_file = self.output_dir / "osv_database.parquet"
-            if osv_db_file.exists():
-                osv_df = pd.read_parquet(osv_db_file)
-            else:
-                osv_df = pd.DataFrame()
-        if len(osv_df) > 0:
-            osv_df = osv_df[osv_df["ecosystem"] == self.ecosystem.upper()].copy()
-
-        # OPT-2: Pre-index OSV DataFrame for O(1) per-dependency lookups
-        osv_index: Dict[str, List[Dict]] = {}
-        if len(osv_df) > 0 and "package" in osv_df.columns:
-            for pkg_name, group in osv_df.groupby("package"):
-                osv_index[pkg_name] = group.to_dict("records")
+        osv_df, osv_index = self._get_osv_index(osv_df)
 
         pkg_versions = self.get_all_versions_with_dates(pkg_metadata, package_name=self.package)
         pkg_versions = [(ver, date) for ver, date in pkg_versions]
@@ -578,19 +591,7 @@ class DependencyAnalyzer:
         if not releases_in_window:
             return []
 
-        if osv_df is None:
-            osv_db_file = self.output_dir / "osv_database.parquet"
-            if osv_db_file.exists():
-                osv_df = pd.read_parquet(osv_db_file)
-            else:
-                osv_df = pd.DataFrame()
-        if len(osv_df) > 0:
-            osv_df = osv_df[osv_df["ecosystem"] == self.ecosystem.upper()].copy()
-
-        osv_index: Dict[str, List[Dict]] = {}
-        if len(osv_df) > 0 and "package" in osv_df.columns:
-            for pkg_name, group in osv_df.groupby("package"):
-                osv_index[pkg_name] = group.to_dict("records")
+        osv_df, osv_index = self._get_osv_index(osv_df)
 
         # Fetch per-version deps for each release
         per_version_deps: Dict[str, Dict[str, str]] = {}
@@ -938,11 +939,9 @@ class DependencyAnalyzer:
         """
         logger.info(f"Analyzing dependency: {dependency}")
 
-        # OPT-2: Pre-index OSV DataFrame for O(1) per-dependency lookups
-        osv_index: Dict[str, List[Dict]] = {}
-        if isinstance(osv_df, pd.DataFrame) and len(osv_df) > 0 and "package" in osv_df.columns:
-            for pkg_name, group in osv_df.groupby("package"):
-                osv_index[pkg_name] = group.to_dict("records")
+        osv_df, osv_index = self._get_osv_index(
+            osv_df if isinstance(osv_df, pd.DataFrame) else None
+        )
 
         # Get all version release dates for the package (parent)
         pkg_versions = self.get_all_versions_with_dates(pkg_metadata, package_name=self.package)

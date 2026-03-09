@@ -803,6 +803,7 @@ def main():
                                 result["summary"]["package_name"],
                             )
 
+                    pending_dep_frames: list = []
                     for result in results:
                         if result["summary"]["status"] == "error":
                             logging.getLogger("dependency_metrics").error(
@@ -821,16 +822,21 @@ def main():
                             if release_key in existing_per_release:
                                 continue
                         summary_writer.writerow(result["summary"])
-                        summary_handle.flush()
+                        pending_dep_frames.extend(result["dependency_frames"])
 
-                        for dep_df in result["dependency_frames"]:
-                            dep_df.to_csv(
-                                deps_file_path,
-                                mode="a",
-                                header=not deps_header_written,
-                                index=False,
-                            )
-                            deps_header_written = True
+                    # Flush once per package to preserve results on interruption
+                    if pending_dep_frames:
+                        import pandas as _pd
+
+                        combined = _pd.concat(pending_dep_frames, ignore_index=True)
+                        combined.to_csv(
+                            deps_file_path,
+                            mode="a",
+                            header=not deps_header_written,
+                            index=False,
+                        )
+                        deps_header_written = True
+                    summary_handle.flush()
             finally:
                 summary_handle.close()
 
