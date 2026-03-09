@@ -50,6 +50,7 @@ def test_pypi_resolver_returns_best_candidate(monkeypatch):
         return FakeFinder()
 
     monkeypatch.setattr(pypi_resolver.PyPIResolver, "_get_finder", fake_get_finder)
+    monkeypatch.setattr(pypi_resolver, "_ensure_pip_on_path", lambda: None)
 
     resolver = pypi_resolver.PyPIResolver()
     version = resolver.resolve("demo", ">=1.0", datetime(2020, 1, 1))
