@@ -680,6 +680,8 @@ def main():
             )
             grouped_rows.setdefault(key, []).append(row)
 
+        total_unique_packages = len(grouped_rows)
+
         with ThreadPoolExecutor(max_workers=worker_count) as executor:
             futures = []
             for rows in grouped_rows.values():
@@ -771,17 +773,37 @@ def main():
                     summary_writer.writeheader()
 
                 processed = 0
+                packages_done = 0
                 for future in as_completed(futures):
-                    for result in future.result():
-                        processed += 1
-                        logging.getLogger("dependency_metrics").warning(
-                            "Processing row %s/%s (CSV line %s): %s %s",
-                            processed,
-                            total_rows,
-                            result["row_num"],
-                            result["summary"]["ecosystem"],
-                            result["summary"]["package_name"],
-                        )
+                    results = future.result()
+
+                    if args.per_release:
+                        packages_done += 1
+                        if results:
+                            first_summary = results[0]["summary"]
+                            first_row_num = results[0]["row_num"]
+                            logging.getLogger("dependency_metrics").warning(
+                                "Completed package %s/%s (CSV line %s): %s %s (%s release points)",
+                                packages_done,
+                                total_unique_packages,
+                                first_row_num,
+                                first_summary["ecosystem"],
+                                first_summary["package_name"],
+                                len(results),
+                            )
+                    else:
+                        for result in results:
+                            processed += 1
+                            logging.getLogger("dependency_metrics").warning(
+                                "Processing row %s/%s (CSV line %s): %s %s",
+                                processed,
+                                total_rows,
+                                result["row_num"],
+                                result["summary"]["ecosystem"],
+                                result["summary"]["package_name"],
+                            )
+
+                    for result in results:
                         if result["summary"]["status"] == "error":
                             logging.getLogger("dependency_metrics").error(
                                 "Error (CSV line %s): %s",
