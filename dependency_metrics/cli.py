@@ -25,6 +25,7 @@ from .reporting import (
     save_results_json,
 )
 
+
 def _parse_date(value: str, field: str, row_num: Optional[int] = None) -> datetime:
     try:
         return datetime.strptime(value, "%Y-%m-%d")
@@ -75,7 +76,10 @@ def _load_input_csv(path: Path) -> List[Dict[str, object]]:
     rows: List[Dict[str, object]] = []
     for idx, record in df.iterrows():
         row_num = int(idx) + 2
-        cleaned = {str(k).strip().lstrip("\ufeff"): ("" if pd.isna(v) else str(v).strip()) for k, v in record.items()}
+        cleaned = {
+            str(k).strip().lstrip("\ufeff"): ("" if pd.isna(v) else str(v).strip())
+            for k, v in record.items()
+        }
         normalized = {
             "ecosystem": cleaned.get(field_map["ecosystem"], ""),
             "package_name": cleaned.get(field_map["package_name"], ""),
@@ -99,84 +103,73 @@ def main():
     parser = argparse.ArgumentParser(
         description="Analyze dependency update and remediation metrics for packages"
     )
-    
-    parser.add_argument(
-        "--ecosystem",
-        choices=["npm", "pypi"],
-        help="The ecosystem to analyze (npm or pypi)"
-    )
 
     parser.add_argument(
-        "--package",
-        help="The name of the package to analyze"
+        "--ecosystem", choices=["npm", "pypi"], help="The ecosystem to analyze (npm or pypi)"
     )
+
+    parser.add_argument("--package", help="The name of the package to analyze")
 
     parser.add_argument(
         "--input-csv",
-        help="CSV file with columns: ecosystem, package_name, end_date, optional start_date"
+        help="CSV file with columns: ecosystem, package_name, end_date, optional start_date",
     )
-    
+
     parser.add_argument(
         "--start-date",
         default="1900-01-01",
-        help="Start date for analysis (YYYY-MM-DD). Default: 1900-01-01"
+        help="Start date for analysis (YYYY-MM-DD). Default: 1900-01-01",
     )
-    
+
     parser.add_argument(
-        "--end-date",
-        default=None,
-        help="End date for analysis (YYYY-MM-DD). Default: today"
+        "--end-date", default=None, help="End date for analysis (YYYY-MM-DD). Default: today"
     )
-    
+
     parser.add_argument(
         "--weighting-type",
         choices=["linear", "exponential", "inverse", "disable"],
         default="disable",
-        help="Type of weighting to apply. Default: disable"
+        help="Type of weighting to apply. Default: disable",
     )
-    
+
     parser.add_argument(
         "--half-life",
         type=float,
         default=None,
-        help="Half-life in days (required for exponential weighting)"
+        help="Half-life in days (required for exponential weighting)",
     )
-    
+
     parser.add_argument(
-        "--build-osv",
-        action="store_true",
-        help="Build the OSV vulnerability database"
+        "--build-osv", action="store_true", help="Build the OSV vulnerability database"
     )
-    
+
     parser.add_argument(
         "--get-osv",
         action="store_true",
-        help="Return the OSV dataset for the ecosystem and vulnerable dependencies"
+        help="Return the OSV dataset for the ecosystem and vulnerable dependencies",
     )
-    
+
     parser.add_argument(
         "--get-worksheets",
         action="store_true",
-        help="Export dependency dataframes to an Excel file with multiple sheets"
+        help="Export dependency dataframes to an Excel file with multiple sheets",
     )
-    
+
     parser.add_argument(
-        "--output-dir",
-        default="./output",
-        help="Output directory for results. Default: ./output"
+        "--output-dir", default="./output", help="Output directory for results. Default: ./output"
     )
 
     parser.add_argument(
         "--workers",
         type=int,
         default=None,
-        help="Number of parallel workers for bulk CSV mode. Default: min(8, CPU count)"
+        help="Number of parallel workers for bulk CSV mode. Default: min(8, CPU count)",
     )
 
     parser.add_argument(
         "--resume",
         action="store_true",
-        help="Resume bulk CSV runs by skipping rows already completed in output summary"
+        help="Resume bulk CSV runs by skipping rows already completed in output summary",
     )
 
     parser.add_argument(
@@ -191,29 +184,25 @@ def main():
         help="Report MTTR separately for Critical, High, Medium, Low, and all_severities",
     )
 
-    parser.add_argument(
-        "--verbose",
-        action="store_true",
-        help="Enable debug logging"
-    )
-    
+    parser.add_argument("--verbose", action="store_true", help="Enable debug logging")
+
     args = parser.parse_args()
-    
+
     # Validate arguments
     if args.weighting_type == "exponential" and args.half_life is None:
         parser.error("--half-life is required when --weighting-type is exponential")
-    
+
     # Parse default start date
     try:
         default_start_date = _parse_date(args.start_date, "start_date")
     except ValueError as exc:
         logging.getLogger("dependency_metrics").error("Error: %s", exc)
         sys.exit(1)
-    
+
     # Create output directory
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
-    
+
     # Configure logging
     if args.verbose:
         logging.basicConfig(level=logging.INFO, force=True)
@@ -281,7 +270,9 @@ def main():
                         status_r = str(record.get("status", "")).strip().lower()
                         if not ecosystem_r or not package_r or not window_start_r or not pkg_ver_r:
                             continue
-                        existing_per_release.add((ecosystem_r, package_r, window_start_r, pkg_ver_r))
+                        existing_per_release.add(
+                            (ecosystem_r, package_r, window_start_r, pkg_ver_r)
+                        )
                         existing_status[(ecosystem_r, package_r, window_start_r, "")] = status_r
                 else:
                     for _, record in summary_df.iterrows():
@@ -363,11 +354,15 @@ def main():
             logging.getLogger("dependency_metrics").warning(
                 "OSV database missing 'severity' column — rebuild with --build-osv for severity support."
             )
-        ecosystems = sorted({row["ecosystem"].lower() for row in input_rows if row.get("ecosystem")})
+        ecosystems = sorted(
+            {row["ecosystem"].lower() for row in input_rows if row.get("ecosystem")}
+        )
         osv_by_ecosystem: Dict[str, object] = {}
         for ecosystem in ecosystems:
             if len(osv_df) > 0 and "ecosystem" in osv_df.columns:
-                osv_by_ecosystem[ecosystem] = osv_df[osv_df["ecosystem"] == ecosystem.upper()].copy()
+                osv_by_ecosystem[ecosystem] = osv_df[
+                    osv_df["ecosystem"] == ecosystem.upper()
+                ].copy()
             else:
                 osv_by_ecosystem[ecosystem] = osv_df
 
@@ -400,11 +395,13 @@ def main():
                         start_date = _parse_date(start_date_raw, "start_date", row_num)
                     end_date = _parse_date(end_date_raw, "end_date", row_num)
 
-                    valid_rows.append({
-                        "row_num": row_num,
-                        "start_date": start_date,
-                        "end_date": end_date,
-                    })
+                    valid_rows.append(
+                        {
+                            "row_num": row_num,
+                            "start_date": start_date,
+                            "end_date": end_date,
+                        }
+                    )
                 except Exception as exc:
                     start_date = default_start_date
                     if start_date_raw:
@@ -431,7 +428,7 @@ def main():
                             "mttr_all_severities": -1.0,
                             "num_dependencies": 0,
                             "status": "error",
-                            "error": f"\"{exc}\"",
+                            "error": f'"{exc}"',
                         }
                     else:
                         err_summary = {
@@ -443,13 +440,15 @@ def main():
                             "mttr": -1.0,
                             "num_dependencies": 0,
                             "status": "error",
-                            "error": f"\"{exc}\"",
+                            "error": f'"{exc}"',
                         }
-                    error_results.append({
-                        "row_num": row_num,
-                        "summary": err_summary,
-                        "dependency_frames": [],
-                    })
+                    error_results.append(
+                        {
+                            "row_num": row_num,
+                            "summary": err_summary,
+                            "dependency_frames": [],
+                        }
+                    )
 
             if not valid_rows:
                 return error_results
@@ -472,9 +471,11 @@ def main():
             )
 
             try:
-                results = analyzer.analyze_bulk_rows(valid_rows, osv_df=osv_by_ecosystem.get(ecosystem))
+                results = analyzer.analyze_bulk_rows(
+                    valid_rows, osv_df=osv_by_ecosystem.get(ecosystem)
+                )
             except Exception as exc:
-                error = f"\"{exc}\""
+                error = f'"{exc}"'
                 for row in valid_rows:
                     if args.severity_breakdown:
                         exc_summary = {
@@ -504,11 +505,13 @@ def main():
                             "status": "error",
                             "error": error,
                         }
-                    error_results.append({
-                        "row_num": row["row_num"],
-                        "summary": exc_summary,
-                        "dependency_frames": [],
-                    })
+                    error_results.append(
+                        {
+                            "row_num": row["row_num"],
+                            "summary": exc_summary,
+                            "dependency_frames": [],
+                        }
+                    )
                 return error_results
 
             return results + error_results
@@ -536,11 +539,13 @@ def main():
                         start_date = _parse_date(start_date_raw, "start_date", row_num)
                     end_date = _parse_date(end_date_raw, "end_date", row_num)
 
-                    valid_rows.append({
-                        "row_num": row_num,
-                        "start_date": start_date,
-                        "end_date": end_date,
-                    })
+                    valid_rows.append(
+                        {
+                            "row_num": row_num,
+                            "start_date": start_date,
+                            "end_date": end_date,
+                        }
+                    )
                 except Exception as exc:
                     start_date = default_start_date
                     if start_date_raw:
@@ -569,7 +574,7 @@ def main():
                             "mttr_all_severities": -1.0,
                             "num_dependencies": 0,
                             "status": "error",
-                            "error": f"\"{exc}\"",
+                            "error": f'"{exc}"',
                         }
                     else:
                         pr_err_summary = {
@@ -583,13 +588,15 @@ def main():
                             "mttr": -1.0,
                             "num_dependencies": 0,
                             "status": "error",
-                            "error": f"\"{exc}\"",
+                            "error": f'"{exc}"',
                         }
-                    error_results.append({
-                        "row_num": row_num,
-                        "summary": pr_err_summary,
-                        "dependency_frames": [],
-                    })
+                    error_results.append(
+                        {
+                            "row_num": row_num,
+                            "summary": pr_err_summary,
+                            "dependency_frames": [],
+                        }
+                    )
 
             if not valid_rows:
                 return error_results
@@ -619,7 +626,7 @@ def main():
                     )
                     all_results.extend(release_results)
                 except Exception as exc:
-                    error = f"\"{exc}\""
+                    error = f'"{exc}"'
                     if args.severity_breakdown:
                         pr_exc_summary = {
                             "ecosystem": ecosystem,
@@ -652,11 +659,13 @@ def main():
                             "status": "error",
                             "error": error,
                         }
-                    error_results.append({
-                        "row_num": row["row_num"],
-                        "summary": pr_exc_summary,
-                        "dependency_frames": [],
-                    })
+                    error_results.append(
+                        {
+                            "row_num": row["row_num"],
+                            "summary": pr_exc_summary,
+                            "dependency_frames": [],
+                        }
+                    )
 
             return all_results + error_results
 
@@ -801,9 +810,7 @@ def main():
             finally:
                 summary_handle.close()
 
-        logging.getLogger("dependency_metrics").info(
-            "Bulk results saved to: %s", summary_file_path
-        )
+        logging.getLogger("dependency_metrics").info("Bulk results saved to: %s", summary_file_path)
         if deps_header_written:
             logging.getLogger("dependency_metrics").info(
                 "Dependency details saved to: %s", deps_file_path
@@ -863,17 +870,13 @@ def main():
             )
 
             results_file = save_results_json(results, output_dir, args.package)
-            logging.getLogger("dependency_metrics").info(
-                "Results saved to: %s", results_file
-            )
+            logging.getLogger("dependency_metrics").info("Results saved to: %s", results_file)
 
             # Export OSV data if requested
             if args.get_osv:
                 osv_file = export_osv_data(results, output_dir, args.package)
                 if osv_file is not None:
-                    logging.getLogger("dependency_metrics").info(
-                        "OSV data saved to: %s", osv_file
-                    )
+                    logging.getLogger("dependency_metrics").info("OSV data saved to: %s", osv_file)
 
             # Export worksheets if requested
             if args.get_worksheets:
@@ -884,10 +887,9 @@ def main():
                     )
 
         except Exception as e:
-            logging.getLogger("dependency_metrics").error(
-                "Error during analysis: %s", e
-            )
+            logging.getLogger("dependency_metrics").error("Error during analysis: %s", e)
             import traceback
+
             traceback.print_exc()
             sys.exit(1)
 

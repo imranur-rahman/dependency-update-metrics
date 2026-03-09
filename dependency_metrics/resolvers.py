@@ -67,6 +67,7 @@ def resolve_pypi_version_locally(
             # Normalize before_date to UTC for comparison
             if before_date.tzinfo is None:
                 from datetime import timezone as _tz
+
                 cmp_date = before_date.replace(tzinfo=_tz.utc)
             else:
                 cmp_date = before_date
@@ -83,7 +84,9 @@ def resolve_pypi_version_locally(
     return str(max(valid))
 
 
-def npm_semver_key(version: str) -> Optional[Tuple[int, int, int, int, Tuple[Tuple[int, object], ...]]]:
+def npm_semver_key(
+    version: str,
+) -> Optional[Tuple[int, int, int, int, Tuple[Tuple[int, object], ...]]]:
     """Return a sortable key for npm semver strings or None if invalid."""
     if version is None:
         return None
@@ -282,7 +285,7 @@ class NpmResolver(PackageResolver):
                 if valid_versions:
                     valid_versions.sort(key=lambda x: x[1], reverse=True)
                     latest_version = valid_versions[0][0]
-                    versions = metadata.get('versions', {})
+                    versions = metadata.get("versions", {})
                     version_data = versions.get(latest_version, {})
                     return latest_version, version_data
         except (subprocess.TimeoutExpired, json.JSONDecodeError, FileNotFoundError) as e:
@@ -304,21 +307,25 @@ class NpmResolver(PackageResolver):
                             if pub_date is None:
                                 continue
                             if self.start_date <= pub_date <= self.end_date:
-                                version_dates.append(PackageVersion(
-                                    name=package_name,
-                                    version=ver,
-                                    released_at=pub_date,
-                                ))
+                                version_dates.append(
+                                    PackageVersion(
+                                        name=package_name,
+                                        version=ver,
+                                        released_at=pub_date,
+                                    )
+                                )
                         except (ValueError, AttributeError):
                             continue
                     return sorted(version_dates, key=lambda x: x.released_at)
             except (subprocess.TimeoutExpired, json.JSONDecodeError, FileNotFoundError) as e:
-                logger.warning("npm view time failed for %s, falling back to metadata: %s", package_name, e)
+                logger.warning(
+                    "npm view time failed for %s, falling back to metadata: %s", package_name, e
+                )
 
-        versions = metadata.get('versions', {})
+        versions = metadata.get("versions", {})
         version_dates = []
         for ver, ver_data in versions.items():
-            published = ver_data.get('dist', {}).get('published')
+            published = ver_data.get("dist", {}).get("published")
             if not published:
                 continue
             try:
@@ -326,11 +333,13 @@ class NpmResolver(PackageResolver):
                 if pub_date is None:
                     continue
                 if self.start_date <= pub_date <= self.end_date:
-                    version_dates.append(PackageVersion(
-                        name=package_name or self.package,
-                        version=ver,
-                        released_at=pub_date,
-                    ))
+                    version_dates.append(
+                        PackageVersion(
+                            name=package_name or self.package,
+                            version=ver,
+                            released_at=pub_date,
+                        )
+                    )
             except (ValueError, AttributeError):
                 continue
         return sorted(version_dates, key=lambda x: x.released_at)
@@ -353,18 +362,15 @@ class NpmResolver(PackageResolver):
 
         try:
             cmd = [
-                'npm', 'view',
-                f'{dependency}@{constraint}',
-                'version',
-                '--json',
-                '--before', before_date.isoformat()
+                "npm",
+                "view",
+                f"{dependency}@{constraint}",
+                "version",
+                "--json",
+                "--before",
+                before_date.isoformat(),
             ]
-            result = subprocess.run(
-                cmd,
-                capture_output=True,
-                text=True,
-                timeout=30
-            )
+            result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
             if result.returncode == 0:
                 output = result.stdout.strip()
                 if output:
@@ -404,12 +410,14 @@ class NpmResolver(PackageResolver):
                         except (ValueError, AttributeError):
                             continue
             except (subprocess.TimeoutExpired, json.JSONDecodeError, FileNotFoundError) as e:
-                logger.warning("npm view time failed for %s, falling back to metadata: %s", package_name, e)
+                logger.warning(
+                    "npm view time failed for %s, falling back to metadata: %s", package_name, e
+                )
 
             if not valid_versions:
-                versions = metadata.get('versions', {})
+                versions = metadata.get("versions", {})
                 for ver, ver_data in versions.items():
-                    published = ver_data.get('dist', {}).get('published')
+                    published = ver_data.get("dist", {}).get("published")
                     if not published:
                         continue
                     try:
@@ -442,12 +450,12 @@ class NpmResolver(PackageResolver):
         return None
 
     def extract_dependencies(self, version_data: Dict) -> Dict[str, str]:
-        return version_data.get('dependencies', {})
+        return version_data.get("dependencies", {})
 
     def get_version_dependencies(self, package: str, version: str) -> Dict[str, str]:
         metadata = self.fetch_package_metadata(package)
-        ver_data = metadata.get('versions', {}).get(version, {})
-        return ver_data.get('dependencies', {})
+        ver_data = metadata.get("versions", {}).get(version, {})
+        return ver_data.get("dependencies", {})
 
     def _get_npm_time_data(self, package_name: str) -> Optional[Dict[str, str]]:
         if package_name in self.cache.npm_time_cache:
@@ -460,29 +468,24 @@ class NpmResolver(PackageResolver):
             self.cache.npm_time_cache[package_name] = cached
             return cached
 
-        cmd = ['npm', 'view', package_name, 'time', '--json']
-        result = subprocess.run(
-            cmd,
-            capture_output=True,
-            text=True,
-            timeout=30
-        )
+        cmd = ["npm", "view", package_name, "time", "--json"]
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
         if result.returncode != 0:
             return None
 
         time_data = json.loads(result.stdout)
-        time_data.pop('modified', None)
-        time_data.pop('created', None)
+        time_data.pop("modified", None)
+        time_data.pop("created", None)
         self.cache.npm_time_cache[package_name] = time_data
         self.cache.save_json("npm_time", disk_key, time_data)
         return time_data
 
     def _parse_versions_from_metadata(self, metadata: Dict) -> Tuple[str, Dict]:
-        versions = metadata.get('versions', {})
+        versions = metadata.get("versions", {})
         valid_versions = []
 
         for ver, ver_data in versions.items():
-            published = ver_data.get('dist', {}).get('published')
+            published = ver_data.get("dist", {}).get("published")
             if not published:
                 continue
 
@@ -552,14 +555,14 @@ class PyPIResolver(PackageResolver):
             return data
 
     def get_package_version_at_date(self, metadata: Dict) -> Tuple[str, Dict]:
-        releases = metadata.get('releases', {})
+        releases = metadata.get("releases", {})
         valid_versions = []
 
         for ver, release_files in releases.items():
             if not release_files:
                 continue
 
-            upload_time = release_files[0].get('upload_time')
+            upload_time = release_files[0].get("upload_time")
             if not upload_time:
                 continue
 
@@ -581,25 +584,28 @@ class PyPIResolver(PackageResolver):
         try:
             version_metadata = self._get_pypi_version_metadata(self.package, latest_version)
             version_data = {
-                'upload_time': valid_versions[0][1].isoformat(),
-                'requires_dist': version_metadata.get('info', {}).get('requires_dist', [])
+                "upload_time": valid_versions[0][1].isoformat(),
+                "requires_dist": version_metadata.get("info", {}).get("requires_dist", []),
             }
             return latest_version, version_data
         except Exception as e:
             logger.warning("Failed to fetch version-specific data: %s", e)
-            return latest_version, {'upload_time': valid_versions[0][1].isoformat(), 'requires_dist': []}
+            return latest_version, {
+                "upload_time": valid_versions[0][1].isoformat(),
+                "requires_dist": [],
+            }
 
     def get_all_versions_with_dates(
         self, metadata: Dict, package_name: Optional[str] = None
     ) -> Iterable[PackageVersion]:
-        releases = metadata.get('releases', {})
+        releases = metadata.get("releases", {})
         version_dates = []
 
         for ver, ver_data in releases.items():
             if isinstance(ver_data, list) and ver_data:
-                published = ver_data[0].get('upload_time')
+                published = ver_data[0].get("upload_time")
             else:
-                published = ver_data.get('upload_time') if isinstance(ver_data, dict) else None
+                published = ver_data.get("upload_time") if isinstance(ver_data, dict) else None
 
             if not published:
                 continue
@@ -609,11 +615,13 @@ class PyPIResolver(PackageResolver):
                 if pub_date is None:
                     continue
                 if self.start_date <= pub_date <= self.end_date:
-                    version_dates.append(PackageVersion(
-                        name=package_name or self.package,
-                        version=ver,
-                        released_at=pub_date,
-                    ))
+                    version_dates.append(
+                        PackageVersion(
+                            name=package_name or self.package,
+                            version=ver,
+                            released_at=pub_date,
+                        )
+                    )
             except (ValueError, AttributeError):
                 continue
 
@@ -636,11 +644,11 @@ class PyPIResolver(PackageResolver):
                 metadata = self.fetch_package_metadata(package_name)
 
             valid_versions = []
-            releases = metadata.get('releases', {})
+            releases = metadata.get("releases", {})
             for ver, release_files in releases.items():
                 if not release_files:
                     continue
-                upload_time = release_files[0].get('upload_time')
+                upload_time = release_files[0].get("upload_time")
                 if not upload_time:
                     continue
                 try:
@@ -663,7 +671,7 @@ class PyPIResolver(PackageResolver):
         return None
 
     def extract_dependencies(self, version_data: Dict) -> Dict[str, str]:
-        requires_dist = version_data.get('requires_dist', [])
+        requires_dist = version_data.get("requires_dist", [])
         deps = {}
         for req in requires_dist or []:
             try:
@@ -686,7 +694,7 @@ class PyPIResolver(PackageResolver):
         try:
             version_metadata = self._get_pypi_version_metadata(package, version)
             version_data = {
-                'requires_dist': version_metadata.get('info', {}).get('requires_dist', [])
+                "requires_dist": version_metadata.get("info", {}).get("requires_dist", [])
             }
             deps = self.extract_dependencies(version_data)
         except Exception as e:

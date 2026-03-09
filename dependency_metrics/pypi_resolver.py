@@ -15,7 +15,6 @@ from typing import Optional
 _FINDER_CACHE_MAX_SIZE = 50
 
 
-
 _PIP_VENDOR_PATH = Path(__file__).resolve().parents[1] / "vendor" / "pip" / "src"
 
 

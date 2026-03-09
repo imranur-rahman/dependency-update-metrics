@@ -43,6 +43,7 @@ class OSVService:
             return result
 
         from .time_utils import ensure_utc
+
         interval_start = ensure_utc(interval_start)
 
         if osv_index is not None:
@@ -59,16 +60,16 @@ class OSVService:
 
             for vuln in dep_vulns_list:
                 try:
-                    intro_ver = pkg_version.parse(vuln['vul_introduced'])
-                    fixed_ver = pkg_version.parse(vuln['vul_fixed'])
+                    intro_ver = pkg_version.parse(vuln["vul_introduced"])
+                    fixed_ver = pkg_version.parse(vuln["vul_fixed"])
 
                     if intro_ver <= current_ver < fixed_ver:
                         fixed_date = self.get_version_release_date(
-                            ecosystem, dependency, vuln['vul_fixed'], dependency_metadata
+                            ecosystem, dependency, vuln["vul_fixed"], dependency_metadata
                         )
 
                         if fixed_date and fixed_date <= interval_start:
-                            severity_of_vuln = vuln.get('severity', 'None')
+                            severity_of_vuln = vuln.get("severity", "None")
                             if severity_of_vuln in SEVERITY_LEVELS:
                                 result[severity_of_vuln] = False
                             result["all_severities"] = False
@@ -78,10 +79,10 @@ class OSVService:
             return result
 
         # Fallback: DataFrame linear scan
-        if len(osv_df) == 0 or 'package' not in osv_df.columns:
+        if len(osv_df) == 0 or "package" not in osv_df.columns:
             return result
 
-        dep_vulns = osv_df[osv_df['package'] == dependency]
+        dep_vulns = osv_df[osv_df["package"] == dependency]
         if len(dep_vulns) == 0:
             return result
 
@@ -94,16 +95,16 @@ class OSVService:
 
         for _, vuln in dep_vulns.iterrows():
             try:
-                intro_ver = pkg_version.parse(vuln['vul_introduced'])
-                fixed_ver = pkg_version.parse(vuln['vul_fixed'])
+                intro_ver = pkg_version.parse(vuln["vul_introduced"])
+                fixed_ver = pkg_version.parse(vuln["vul_fixed"])
 
                 if intro_ver <= current_ver < fixed_ver:
                     fixed_date = self.get_version_release_date(
-                        ecosystem, dependency, vuln['vul_fixed'], dependency_metadata
+                        ecosystem, dependency, vuln["vul_fixed"], dependency_metadata
                     )
 
                     if fixed_date and fixed_date <= interval_start:
-                        severity_of_vuln = vuln.get('severity', 'None')
+                        severity_of_vuln = vuln.get("severity", "None")
                         if severity_of_vuln in SEVERITY_LEVELS:
                             result[severity_of_vuln] = False
                         result["all_severities"] = False
@@ -139,12 +140,12 @@ class OSVService:
 
             for vuln in dep_vulns_list:
                 try:
-                    intro_ver = pkg_version.parse(vuln['vul_introduced'])
-                    fixed_ver = pkg_version.parse(vuln['vul_fixed'])
+                    intro_ver = pkg_version.parse(vuln["vul_introduced"])
+                    fixed_ver = pkg_version.parse(vuln["vul_fixed"])
 
                     if intro_ver <= current_ver < fixed_ver:
                         fixed_date = self.get_version_release_date(
-                            ecosystem, dependency, vuln['vul_fixed'], dependency_metadata
+                            ecosystem, dependency, vuln["vul_fixed"], dependency_metadata
                         )
 
                         if fixed_date and fixed_date <= interval_start:
@@ -155,10 +156,10 @@ class OSVService:
             return True
 
         # Fallback: DataFrame linear scan (legacy path)
-        if len(osv_df) == 0 or 'package' not in osv_df.columns:
+        if len(osv_df) == 0 or "package" not in osv_df.columns:
             return True
 
-        dep_vulns = osv_df[osv_df['package'] == dependency]
+        dep_vulns = osv_df[osv_df["package"] == dependency]
         if len(dep_vulns) == 0:
             return True
 
@@ -169,12 +170,12 @@ class OSVService:
 
         for _, vuln in dep_vulns.iterrows():
             try:
-                intro_ver = pkg_version.parse(vuln['vul_introduced'])
-                fixed_ver = pkg_version.parse(vuln['vul_fixed'])
+                intro_ver = pkg_version.parse(vuln["vul_introduced"])
+                fixed_ver = pkg_version.parse(vuln["vul_fixed"])
 
                 if intro_ver <= current_ver < fixed_ver:
                     fixed_date = self.get_version_release_date(
-                        ecosystem, dependency, vuln['vul_fixed'], dependency_metadata
+                        ecosystem, dependency, vuln["vul_fixed"], dependency_metadata
                     )
 
                     if fixed_date and fixed_date <= interval_start:
@@ -183,7 +184,6 @@ class OSVService:
                 continue
 
         return True
-
 
     def get_version_release_date(
         self,
@@ -194,18 +194,18 @@ class OSVService:
     ) -> Optional[datetime]:
         try:
             if ecosystem == "npm":
-                versions = metadata.get('versions', {})
+                versions = metadata.get("versions", {})
                 ver_data = versions.get(version)
                 if ver_data:
-                    published = ver_data.get('dist', {}).get('published')
+                    published = ver_data.get("dist", {}).get("published")
                     if published:
                         return parse_timestamp(published)
 
             elif ecosystem == "pypi":
-                releases = metadata.get('releases', {})
+                releases = metadata.get("releases", {})
                 release_files = releases.get(version, [])
                 if release_files:
-                    upload_time = release_files[0].get('upload_time')
+                    upload_time = release_files[0].get("upload_time")
                     if upload_time:
                         return parse_timestamp(upload_time)
         except Exception:
