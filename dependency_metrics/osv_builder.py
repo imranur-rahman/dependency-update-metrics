@@ -9,7 +9,6 @@ import re
 import shutil
 import zipfile
 from pathlib import Path
-from typing import Optional
 
 import pandas as pd
 import requests
@@ -132,7 +131,8 @@ class OSVBuilder:
                             package_name = affected["package"].get("name", "")
                             ecosystem = affected["package"].get("ecosystem", "").upper()
 
-                            # Extract severity: try per-package, then top-level database_specific, then severity[0].score
+                            # Extract severity: try per-package, then top-level
+                            # database_specific, then severity[0].score
                             raw_severity = affected.get("database_specific", {}).get("severity", "")
                             if not raw_severity:
                                 raw_severity = data.get("database_specific", {}).get("severity", "")
@@ -210,7 +210,8 @@ class OSVBuilder:
             if "severity" not in osv_df.columns:
                 osv_df["severity"] = "None"
                 logger.warning(
-                    "OSV database missing 'severity' column — rebuild with --build-osv for severity support."
+                    "OSV database missing 'severity' column — "
+                    "rebuild with --build-osv for severity support."
                 )
             return osv_df
 

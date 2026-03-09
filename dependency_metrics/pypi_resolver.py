@@ -7,7 +7,7 @@ from __future__ import annotations
 import sys
 import threading
 from collections import OrderedDict
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
@@ -61,7 +61,7 @@ class PyPIResolver:
 
         return SpecifierSet(constraint)
 
-    def _get_finder(self, before: datetime) -> "PackageFinder":
+    def _get_finder(self, before: datetime):
         with self._finder_lock:
             if before in self._finder_cache:
                 self._finder_cache.move_to_end(before)

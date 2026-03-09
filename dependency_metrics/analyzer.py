@@ -5,7 +5,7 @@ Core dependency analyzer for calculating TTU and TTR metrics.
 import logging
 import math
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Any
 
@@ -1158,7 +1158,7 @@ class DependencyAnalyzer:
         if remediated_col not in dep_df.columns:
             return 0.0
 
-        not_remediated = dep_df[dep_df[remediated_col] == False]
+        not_remediated = dep_df[~dep_df[remediated_col]]
         if self.weighting_type != "disable" and len(not_remediated) > 0:
             return (
                 not_remediated["weight"] * not_remediated["interval_duration"]
@@ -1198,7 +1198,7 @@ class DependencyAnalyzer:
         ).dt.total_seconds() / 86400
 
         # Calculate TTU
-        not_updated = df[df["updated"] == False]
+        not_updated = df[~df["updated"]]
         if self.weighting_type != "disable" and len(not_updated) > 0:
             ttu = (not_updated["weight"] * not_updated["interval_duration"]).sum() / not_updated[
                 "weight"
@@ -1207,7 +1207,7 @@ class DependencyAnalyzer:
             ttu = not_updated["interval_duration"].sum() if len(not_updated) > 0 else 0.0
 
         # Calculate TTR
-        not_remediated = df[df["remediated"] == False]
+        not_remediated = df[~df["remediated"]]
         if self.weighting_type != "disable" and len(not_remediated) > 0:
             ttr = (
                 not_remediated["weight"] * not_remediated["interval_duration"]

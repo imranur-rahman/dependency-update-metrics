@@ -3,7 +3,6 @@ Command-line interface for the dependency metrics tool.
 """
 
 import argparse
-import csv
 import io
 import os
 import sys
@@ -256,7 +255,8 @@ def main():
             deps_file_path = output_dir / f"{input_label}_dependency_details.csv"
 
         existing_status = {}
-        # For per-release resume: track (ecosystem, package_name, window_start, package_version) already written
+        # For per-release resume: track
+        # (ecosystem, package_name, window_start, package_version) already written
         existing_per_release: set = set()
         if args.resume and summary_file_path.exists():
             try:
@@ -334,7 +334,8 @@ def main():
 
             input_rows = filtered_rows
             logging.getLogger("dependency_metrics").warning(
-                "Resume enabled: skipping %s completed rows, retrying %s error rows, processing %s new rows.",
+                "Resume enabled: skipping %s completed rows, "
+                "retrying %s error rows, processing %s new rows.",
                 skipped,
                 retried,
                 new_rows,
@@ -352,7 +353,8 @@ def main():
         if "severity" not in osv_df.columns:
             osv_df["severity"] = "None"
             logging.getLogger("dependency_metrics").warning(
-                "OSV database missing 'severity' column — rebuild with --build-osv for severity support."
+                "OSV database missing 'severity' column — "
+                "rebuild with --build-osv for severity support."
             )
         ecosystems = sorted(
             {row["ecosystem"].lower() for row in input_rows if row.get("ecosystem")}
