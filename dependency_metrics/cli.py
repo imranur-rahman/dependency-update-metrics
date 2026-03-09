@@ -186,6 +186,12 @@ def main():
     )
 
     parser.add_argument(
+        "--severity-breakdown",
+        action="store_true",
+        help="Report MTTR separately for Critical, High, Medium, Low, and all_severities",
+    )
+
+    parser.add_argument(
         "--verbose",
         action="store_true",
         help="Enable debug logging"
@@ -352,6 +358,11 @@ def main():
         # Build OSV database automatically if missing
         osv_builder = OSVBuilder(output_dir)
         osv_df = osv_builder.build_database()
+        if "severity" not in osv_df.columns:
+            osv_df["severity"] = "None"
+            logging.getLogger("dependency_metrics").warning(
+                "OSV database missing 'severity' column — rebuild with --build-osv for severity support."
+            )
         ecosystems = sorted({row["ecosystem"].lower() for row in input_rows if row.get("ecosystem")})
         osv_by_ecosystem: Dict[str, object] = {}
         for ecosystem in ecosystems:
@@ -406,9 +417,24 @@ def main():
                     except ValueError:
                         end_date = datetime.today()
 
-                    error_results.append({
-                        "row_num": row_num,
-                        "summary": {
+                    if args.severity_breakdown:
+                        err_summary = {
+                            "ecosystem": ecosystem,
+                            "package_name": package_name,
+                            "start_date": start_date.date().isoformat(),
+                            "end_date": end_date.date().isoformat(),
+                            "mttu": -1.0,
+                            "mttr_critical": -1.0,
+                            "mttr_high": -1.0,
+                            "mttr_medium": -1.0,
+                            "mttr_low": -1.0,
+                            "mttr_all_severities": -1.0,
+                            "num_dependencies": 0,
+                            "status": "error",
+                            "error": f"\"{exc}\"",
+                        }
+                    else:
+                        err_summary = {
                             "ecosystem": ecosystem,
                             "package_name": package_name,
                             "start_date": start_date.date().isoformat(),
@@ -418,7 +444,10 @@ def main():
                             "num_dependencies": 0,
                             "status": "error",
                             "error": f"\"{exc}\"",
-                        },
+                        }
+                    error_results.append({
+                        "row_num": row_num,
+                        "summary": err_summary,
                         "dependency_frames": [],
                     })
 
@@ -439,6 +468,7 @@ def main():
                 half_life=args.half_life,
                 output_dir=output_dir,
                 resolver_cache=resolver_cache,
+                severity_breakdown=args.severity_breakdown,
             )
 
             try:
@@ -446,9 +476,24 @@ def main():
             except Exception as exc:
                 error = f"\"{exc}\""
                 for row in valid_rows:
-                    error_results.append({
-                        "row_num": row["row_num"],
-                        "summary": {
+                    if args.severity_breakdown:
+                        exc_summary = {
+                            "ecosystem": ecosystem,
+                            "package_name": package_name,
+                            "start_date": row["start_date"].date().isoformat(),
+                            "end_date": row["end_date"].date().isoformat(),
+                            "mttu": -1.0,
+                            "mttr_critical": -1.0,
+                            "mttr_high": -1.0,
+                            "mttr_medium": -1.0,
+                            "mttr_low": -1.0,
+                            "mttr_all_severities": -1.0,
+                            "num_dependencies": 0,
+                            "status": "error",
+                            "error": error,
+                        }
+                    else:
+                        exc_summary = {
                             "ecosystem": ecosystem,
                             "package_name": package_name,
                             "start_date": row["start_date"].date().isoformat(),
@@ -458,7 +503,10 @@ def main():
                             "num_dependencies": 0,
                             "status": "error",
                             "error": error,
-                        },
+                        }
+                    error_results.append({
+                        "row_num": row["row_num"],
+                        "summary": exc_summary,
                         "dependency_frames": [],
                     })
                 return error_results
@@ -505,9 +553,26 @@ def main():
                     except ValueError:
                         end_date = datetime.today()
 
-                    error_results.append({
-                        "row_num": row_num,
-                        "summary": {
+                    if args.severity_breakdown:
+                        pr_err_summary = {
+                            "ecosystem": ecosystem,
+                            "package_name": package_name,
+                            "package_version": "",
+                            "package_release_date": "",
+                            "window_start": start_date.date().isoformat(),
+                            "window_end": end_date.date().isoformat(),
+                            "mttu": -1.0,
+                            "mttr_critical": -1.0,
+                            "mttr_high": -1.0,
+                            "mttr_medium": -1.0,
+                            "mttr_low": -1.0,
+                            "mttr_all_severities": -1.0,
+                            "num_dependencies": 0,
+                            "status": "error",
+                            "error": f"\"{exc}\"",
+                        }
+                    else:
+                        pr_err_summary = {
                             "ecosystem": ecosystem,
                             "package_name": package_name,
                             "package_version": "",
@@ -519,7 +584,10 @@ def main():
                             "num_dependencies": 0,
                             "status": "error",
                             "error": f"\"{exc}\"",
-                        },
+                        }
+                    error_results.append({
+                        "row_num": row_num,
+                        "summary": pr_err_summary,
                         "dependency_frames": [],
                     })
 
@@ -540,6 +608,7 @@ def main():
                 half_life=args.half_life,
                 output_dir=output_dir,
                 resolver_cache=resolver_cache,
+                severity_breakdown=args.severity_breakdown,
             )
 
             all_results = []
@@ -551,9 +620,26 @@ def main():
                     all_results.extend(release_results)
                 except Exception as exc:
                     error = f"\"{exc}\""
-                    error_results.append({
-                        "row_num": row["row_num"],
-                        "summary": {
+                    if args.severity_breakdown:
+                        pr_exc_summary = {
+                            "ecosystem": ecosystem,
+                            "package_name": package_name,
+                            "package_version": "",
+                            "package_release_date": "",
+                            "window_start": row["start_date"].date().isoformat(),
+                            "window_end": row["end_date"].date().isoformat(),
+                            "mttu": -1.0,
+                            "mttr_critical": -1.0,
+                            "mttr_high": -1.0,
+                            "mttr_medium": -1.0,
+                            "mttr_low": -1.0,
+                            "mttr_all_severities": -1.0,
+                            "num_dependencies": 0,
+                            "status": "error",
+                            "error": error,
+                        }
+                    else:
+                        pr_exc_summary = {
                             "ecosystem": ecosystem,
                             "package_name": package_name,
                             "package_version": "",
@@ -565,7 +651,10 @@ def main():
                             "num_dependencies": 0,
                             "status": "error",
                             "error": error,
-                        },
+                        }
+                    error_results.append({
+                        "row_num": row["row_num"],
+                        "summary": pr_exc_summary,
                         "dependency_frames": [],
                     })
 
@@ -591,7 +680,25 @@ def main():
             if deps_file_path.exists() and not args.resume:
                 deps_file_path.unlink()
 
-            if args.per_release:
+            if args.per_release and args.severity_breakdown:
+                summary_columns = [
+                    "ecosystem",
+                    "package_name",
+                    "package_version",
+                    "package_release_date",
+                    "window_start",
+                    "window_end",
+                    "mttu",
+                    "mttr_critical",
+                    "mttr_high",
+                    "mttr_medium",
+                    "mttr_low",
+                    "mttr_all_severities",
+                    "num_dependencies",
+                    "status",
+                    "error",
+                ]
+            elif args.per_release:
                 summary_columns = [
                     "ecosystem",
                     "package_name",
@@ -601,6 +708,22 @@ def main():
                     "window_end",
                     "mttu",
                     "mttr",
+                    "num_dependencies",
+                    "status",
+                    "error",
+                ]
+            elif args.severity_breakdown:
+                summary_columns = [
+                    "ecosystem",
+                    "package_name",
+                    "start_date",
+                    "end_date",
+                    "mttu",
+                    "mttr_critical",
+                    "mttr_high",
+                    "mttr_medium",
+                    "mttr_low",
+                    "mttr_all_severities",
                     "num_dependencies",
                     "status",
                     "error",

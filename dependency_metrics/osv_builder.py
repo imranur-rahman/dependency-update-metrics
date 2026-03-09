@@ -19,6 +19,27 @@ from tqdm import tqdm
 logger = logging.getLogger(__name__)
 
 
+def _normalize_severity(raw: str) -> str:
+    """Map raw severity string to normalized label.
+
+    Args:
+        raw: Raw severity string (e.g. "CRITICAL", "HIGH", "MODERATE", "MEDIUM", "LOW")
+
+    Returns:
+        Normalized severity label: "Critical", "High", "Medium", "Low", or "None"
+    """
+    upper = raw.upper() if raw else ""
+    if upper == "CRITICAL":
+        return "Critical"
+    elif upper == "HIGH":
+        return "High"
+    elif upper in ("MODERATE", "MEDIUM"):
+        return "Medium"
+    elif upper == "LOW":
+        return "Low"
+    return "None"
+
+
 class OSVBuilder:
     """Build and manage OSV vulnerability database."""
     
@@ -112,27 +133,52 @@ class OSVBuilder:
                             package_name = affected['package'].get('name', '')
                             ecosystem = affected['package'].get('ecosystem', '').upper()
                             
+                            # Extract severity: try per-package, then top-level database_specific, then severity[0].score
+                            raw_severity = affected.get('database_specific', {}).get('severity', '')
+                            if not raw_severity:
+                                raw_severity = data.get('database_specific', {}).get('severity', '')
+                            if not raw_severity:
+                                top_severity = data.get('severity', [{}])
+                                if top_severity:
+                                    score_val = top_severity[0].get('score', '')
+                                    # Only use numeric scores; skip CVSS vector strings
+                                    if score_val and not str(score_val).startswith('CVSS:'):
+                                        try:
+                                            score_float = float(score_val)
+                                            if score_float >= 9.0:
+                                                raw_severity = "CRITICAL"
+                                            elif score_float >= 7.0:
+                                                raw_severity = "HIGH"
+                                            elif score_float >= 4.0:
+                                                raw_severity = "MEDIUM"
+                                            else:
+                                                raw_severity = "LOW"
+                                        except (ValueError, TypeError):
+                                            raw_severity = ''
+                            severity = _normalize_severity(raw_severity)
+
                             ranges = affected['ranges']
                             for range_data in ranges:
                                 if 'events' not in range_data:
                                     continue
-                                
+
                                 events = range_data['events']
                                 vul_introduced = None
-                                
+
                                 for event in events:
                                     if 'introduced' in event:
                                         vul_introduced = event['introduced']
                                     elif 'fixed' in event and vul_introduced is not None:
                                         vul_fixed = event['fixed']
-                                        
+
                                         # Add record
                                         records.append({
                                             'vul_id': vul_id,
                                             'ecosystem': ecosystem,
                                             'package': package_name,
                                             'vul_introduced': vul_introduced,
-                                            'vul_fixed': vul_fixed
+                                            'vul_fixed': vul_fixed,
+                                            'severity': severity,
                                         })
                                         
             except (json.JSONDecodeError, KeyError) as e:
@@ -159,7 +205,13 @@ class OSVBuilder:
         if self.osv_db_file.exists():
             logger.info(f"Loading existing OSV database from {self.osv_db_file}")
             logger.info("Loading existing OSV database...")
-            return pd.read_parquet(self.osv_db_file)
+            osv_df = pd.read_parquet(self.osv_db_file)
+            if 'severity' not in osv_df.columns:
+                osv_df['severity'] = 'None'
+                logger.warning(
+                    "OSV database missing 'severity' column — rebuild with --build-osv for severity support."
+                )
+            return osv_df
         
         # Download and extract if needed
         if not self.osv_zip.exists():

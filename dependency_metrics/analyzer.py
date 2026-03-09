@@ -20,6 +20,8 @@ from .time_utils import build_intervals, parse_timestamp
 
 logger = logging.getLogger(__name__)
 
+SEVERITY_LEVELS = ["Critical", "High", "Medium", "Low"]
+
 
 class DependencyAnalyzer:
     """Analyze dependency update and remediation metrics."""
@@ -34,9 +36,10 @@ class DependencyAnalyzer:
         half_life: Optional[float] = None,
         output_dir: Path = Path("./output"),
         resolver_cache: Optional[ResolverCache] = None,
+        severity_breakdown: bool = False,
     ):
         """Initialize dependency analyzer.
-        
+
         Args:
             ecosystem: Ecosystem name (npm, pypi)
             package: Package name to analyze
@@ -46,6 +49,7 @@ class DependencyAnalyzer:
             half_life: Half-life in days (for exponential weighting)
             output_dir: Output directory for results
             resolver_cache: Shared resolver cache for minimizing network calls
+            severity_breakdown: Whether to compute per-severity MTTR metrics
         """
         self.ecosystem = ecosystem.lower()
         self.package = package
@@ -67,6 +71,7 @@ class DependencyAnalyzer:
         self.osv_builder = OSVBuilder(output_dir)
         self.osv_service = OSVService()
         self._resolver_cache = resolver_cache or ResolverCache(cache_dir=self.output_dir / "cache")
+        self.severity_breakdown = severity_breakdown
         
         # Registry URLs
         self.registry_urls = {
@@ -344,20 +349,40 @@ class DependencyAnalyzer:
                     else False
                 )
                 # OPT-2: Pass pre-built osv_index for O(1) vulnerability lookup
-                remediated = self._check_remediation(
-                    dep_name,
-                    dep_version,
-                    date,
-                    osv_df if osv_df is not None else pd.DataFrame(),
-                    dep_metadata,
-                    osv_index=osv_index,
-                )
-                per_date[date] = {
-                    "dependency_version": dep_version,
-                    "dependency_highest_version": highest_dep_version,
-                    "updated": updated,
-                    "remediated": remediated,
-                }
+                if self.severity_breakdown:
+                    rem_dict = self._check_remediation_by_severity(
+                        dep_name,
+                        dep_version,
+                        date,
+                        osv_df if osv_df is not None else pd.DataFrame(),
+                        dep_metadata,
+                        osv_index=osv_index,
+                    )
+                    per_date[date] = {
+                        "dependency_version": dep_version,
+                        "dependency_highest_version": highest_dep_version,
+                        "updated": updated,
+                        "remediated": rem_dict["all_severities"],
+                        "remediated_Critical": rem_dict["Critical"],
+                        "remediated_High": rem_dict["High"],
+                        "remediated_Medium": rem_dict["Medium"],
+                        "remediated_Low": rem_dict["Low"],
+                    }
+                else:
+                    remediated = self._check_remediation(
+                        dep_name,
+                        dep_version,
+                        date,
+                        osv_df if osv_df is not None else pd.DataFrame(),
+                        dep_metadata,
+                        osv_index=osv_index,
+                    )
+                    per_date[date] = {
+                        "dependency_version": dep_version,
+                        "dependency_highest_version": highest_dep_version,
+                        "updated": updated,
+                        "remediated": remediated,
+                    }
             dep_cache[dep_name] = per_date
 
         results = []
@@ -386,7 +411,7 @@ class DependencyAnalyzer:
                     age_of_interval = (end_date - interval_start).days
                     weight = self.calculate_weight(age_of_interval)
                     pkg_version_at_interval = _package_version_for_date(interval_start)
-                    records.append({
+                    record = {
                         "ecosystem": self.ecosystem,
                         "package": self.package,
                         "package_version": pkg_version_at_interval or latest_pkg_version,
@@ -401,7 +426,13 @@ class DependencyAnalyzer:
                         "age_of_interval": age_of_interval,
                         "weight": weight,
                         "analysis_end_date": end_date,
-                    })
+                    }
+                    if self.severity_breakdown:
+                        record["remediated_Critical"] = info["remediated_Critical"]
+                        record["remediated_High"] = info["remediated_High"]
+                        record["remediated_Medium"] = info["remediated_Medium"]
+                        record["remediated_Low"] = info["remediated_Low"]
+                    records.append(record)
                 dep_df = pd.DataFrame(records)
                 if len(dep_df) == 0:
                     continue
@@ -414,11 +445,34 @@ class DependencyAnalyzer:
             self.end_date = original_end_row
 
             avg_ttu = sum(ttu_values) / len(ttu_values) if ttu_values else 0.0
-            avg_ttr = sum(ttr_values) / len(ttr_values) if ttr_values else 0.0
 
-            results.append({
-                "row_num": row["row_num"],
-                "summary": {
+            if self.severity_breakdown:
+                sev_mttr: Dict[str, List[float]] = {sev: [] for sev in SEVERITY_LEVELS}
+                all_sev_ttr_values: List[float] = []
+                for dep_df in dep_frames:
+                    for sev in SEVERITY_LEVELS:
+                        col = f"remediated_{sev}"
+                        sev_mttr[sev].append(self._calculate_mttr_for_column(dep_df, col))
+                    all_sev_ttr_values.append(self._calculate_mttr_for_column(dep_df, "remediated"))
+
+                summary_dict: Dict[str, Any] = {
+                    "ecosystem": self.ecosystem,
+                    "package_name": self.package,
+                    "start_date": start_date.date().isoformat(),
+                    "end_date": end_date.date().isoformat(),
+                    "mttu": avg_ttu,
+                    "mttr_critical": sum(sev_mttr["Critical"]) / len(sev_mttr["Critical"]) if sev_mttr["Critical"] else 0.0,
+                    "mttr_high": sum(sev_mttr["High"]) / len(sev_mttr["High"]) if sev_mttr["High"] else 0.0,
+                    "mttr_medium": sum(sev_mttr["Medium"]) / len(sev_mttr["Medium"]) if sev_mttr["Medium"] else 0.0,
+                    "mttr_low": sum(sev_mttr["Low"]) / len(sev_mttr["Low"]) if sev_mttr["Low"] else 0.0,
+                    "mttr_all_severities": sum(all_sev_ttr_values) / len(all_sev_ttr_values) if all_sev_ttr_values else 0.0,
+                    "num_dependencies": len(dependencies),
+                    "status": "ok",
+                    "error": "",
+                }
+            else:
+                avg_ttr = sum(ttr_values) / len(ttr_values) if ttr_values else 0.0
+                summary_dict = {
                     "ecosystem": self.ecosystem,
                     "package_name": self.package,
                     "start_date": start_date.date().isoformat(),
@@ -428,7 +482,11 @@ class DependencyAnalyzer:
                     "num_dependencies": len(dependencies),
                     "status": "ok",
                     "error": "",
-                },
+                }
+
+            results.append({
+                "row_num": row["row_num"],
+                "summary": summary_dict,
                 "dependency_frames": dep_frames,
             })
 
@@ -618,33 +676,64 @@ class DependencyAnalyzer:
                         if dep_version and highest_dep_version
                         else False
                     )
-                    remediated = self._check_remediation(
-                        dep_name,
-                        dep_version,
-                        interval_start,
-                        osv_df if osv_df is not None else pd.DataFrame(),
-                        dep_metadata,
-                        osv_index=osv_index,
-                    )
                     age_of_interval = (window_end - interval_start).days
                     weight = self._calculate_weight_with_window(age_of_interval, start_date, window_end)
 
-                    records.append({
-                        "ecosystem": self.ecosystem,
-                        "package": self.package,
-                        "package_version": ver,
-                        "dependency": dep_name,
-                        "dependency_constraint": dep_constraint,
-                        "dependency_version": dep_version,
-                        "dependency_highest_version": highest_dep_version,
-                        "interval_start": interval_start,
-                        "interval_end": interval_end,
-                        "updated": updated,
-                        "remediated": remediated,
-                        "age_of_interval": age_of_interval,
-                        "weight": weight,
-                        "analysis_end_date": window_end,
-                    })
+                    if self.severity_breakdown:
+                        rem_dict = self._check_remediation_by_severity(
+                            dep_name,
+                            dep_version,
+                            interval_start,
+                            osv_df if osv_df is not None else pd.DataFrame(),
+                            dep_metadata,
+                            osv_index=osv_index,
+                        )
+                        record = {
+                            "ecosystem": self.ecosystem,
+                            "package": self.package,
+                            "package_version": ver,
+                            "dependency": dep_name,
+                            "dependency_constraint": dep_constraint,
+                            "dependency_version": dep_version,
+                            "dependency_highest_version": highest_dep_version,
+                            "interval_start": interval_start,
+                            "interval_end": interval_end,
+                            "updated": updated,
+                            "remediated": rem_dict["all_severities"],
+                            "remediated_Critical": rem_dict["Critical"],
+                            "remediated_High": rem_dict["High"],
+                            "remediated_Medium": rem_dict["Medium"],
+                            "remediated_Low": rem_dict["Low"],
+                            "age_of_interval": age_of_interval,
+                            "weight": weight,
+                            "analysis_end_date": window_end,
+                        }
+                    else:
+                        remediated = self._check_remediation(
+                            dep_name,
+                            dep_version,
+                            interval_start,
+                            osv_df if osv_df is not None else pd.DataFrame(),
+                            dep_metadata,
+                            osv_index=osv_index,
+                        )
+                        record = {
+                            "ecosystem": self.ecosystem,
+                            "package": self.package,
+                            "package_version": ver,
+                            "dependency": dep_name,
+                            "dependency_constraint": dep_constraint,
+                            "dependency_version": dep_version,
+                            "dependency_highest_version": highest_dep_version,
+                            "interval_start": interval_start,
+                            "interval_end": interval_end,
+                            "updated": updated,
+                            "remediated": remediated,
+                            "age_of_interval": age_of_interval,
+                            "weight": weight,
+                            "analysis_end_date": window_end,
+                        }
+                    records.append(record)
 
                 dep_df = pd.DataFrame(records)
                 if len(dep_df) == 0:
@@ -655,11 +744,36 @@ class DependencyAnalyzer:
                 dep_frames.append(dep_df)
 
             avg_ttu = sum(ttu_values) / len(ttu_values) if ttu_values else 0.0
-            avg_ttr = sum(ttr_values) / len(ttr_values) if ttr_values else 0.0
 
-            results.append({
-                "row_num": row.get("row_num"),
-                "summary": {
+            if self.severity_breakdown:
+                sev_mttr_rel: Dict[str, List[float]] = {sev: [] for sev in SEVERITY_LEVELS}
+                all_sev_ttr_rel: List[float] = []
+                for dep_df in dep_frames:
+                    for sev in SEVERITY_LEVELS:
+                        col = f"remediated_{sev}"
+                        sev_mttr_rel[sev].append(self._calculate_mttr_for_column(dep_df, col))
+                    all_sev_ttr_rel.append(self._calculate_mttr_for_column(dep_df, "remediated"))
+
+                release_summary: Dict[str, Any] = {
+                    "ecosystem": self.ecosystem,
+                    "package_name": self.package,
+                    "package_version": ver,
+                    "package_release_date": release_date.date().isoformat(),
+                    "window_start": start_date.date().isoformat(),
+                    "window_end": release_date.date().isoformat(),
+                    "mttu": avg_ttu,
+                    "mttr_critical": sum(sev_mttr_rel["Critical"]) / len(sev_mttr_rel["Critical"]) if sev_mttr_rel["Critical"] else 0.0,
+                    "mttr_high": sum(sev_mttr_rel["High"]) / len(sev_mttr_rel["High"]) if sev_mttr_rel["High"] else 0.0,
+                    "mttr_medium": sum(sev_mttr_rel["Medium"]) / len(sev_mttr_rel["Medium"]) if sev_mttr_rel["Medium"] else 0.0,
+                    "mttr_low": sum(sev_mttr_rel["Low"]) / len(sev_mttr_rel["Low"]) if sev_mttr_rel["Low"] else 0.0,
+                    "mttr_all_severities": sum(all_sev_ttr_rel) / len(all_sev_ttr_rel) if all_sev_ttr_rel else 0.0,
+                    "num_dependencies": len(pkg_deps),
+                    "status": "ok",
+                    "error": "",
+                }
+            else:
+                avg_ttr = sum(ttr_values) / len(ttr_values) if ttr_values else 0.0
+                release_summary = {
                     "ecosystem": self.ecosystem,
                     "package_name": self.package,
                     "package_version": ver,
@@ -671,7 +785,11 @@ class DependencyAnalyzer:
                     "num_dependencies": len(pkg_deps),
                     "status": "ok",
                     "error": "",
-                },
+                }
+
+            results.append({
+                "row_num": row.get("row_num"),
+                "summary": release_summary,
                 "dependency_frames": dep_frames,
             })
 
@@ -947,10 +1065,54 @@ class DependencyAnalyzer:
             osv_index=osv_index,
         )
     
+    def _check_remediation_by_severity(
+        self,
+        dependency: str,
+        dep_version: Optional[str],
+        interval_start: datetime,
+        osv_df: pd.DataFrame,
+        dep_metadata: Dict,
+        osv_index: Optional[Dict[str, List[Dict]]] = None,
+    ) -> Dict[str, bool]:
+        """Check if dependency version is remediated, broken down by severity level.
+
+        Returns a dict with keys: Critical, High, Medium, Low, all_severities.
+        """
+        return self.osv_service.is_remediated_by_severity(
+            dependency=dependency,
+            dependency_version=dep_version,
+            interval_start=interval_start,
+            osv_df=osv_df,
+            dependency_metadata=dep_metadata,
+            ecosystem=self.ecosystem,
+            osv_index=osv_index,
+        )
+
+    def _calculate_mttr_for_column(self, dep_df: pd.DataFrame, remediated_col: str) -> float:
+        """Calculate MTTR using an arbitrary boolean remediated column.
+
+        Args:
+            dep_df: DataFrame with per-interval dependency data.
+            remediated_col: Column name containing the boolean remediated flag.
+
+        Returns:
+            MTTR in days.
+        """
+        dep_df = dep_df.copy()
+        dep_df['interval_duration'] = (dep_df['interval_end'] - dep_df['interval_start']).dt.total_seconds() / 86400
+
+        if remediated_col not in dep_df.columns:
+            return 0.0
+
+        not_remediated = dep_df[dep_df[remediated_col] == False]
+        if self.weighting_type != "disable" and len(not_remediated) > 0:
+            return (not_remediated['weight'] * not_remediated['interval_duration']).sum() / not_remediated['weight'].sum()
+        return not_remediated['interval_duration'].sum() if len(not_remediated) > 0 else 0.0
+
     def _get_version_release_date(
-        self, 
-        package: str, 
-        version: str, 
+        self,
+        package: str,
+        version: str,
         metadata: Dict
     ) -> Optional[datetime]:
         """Get release date for a specific version.
