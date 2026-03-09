@@ -13,7 +13,7 @@ from urllib.parse import quote
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, Iterable, Optional, Tuple, Any
+from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 import requests
 from requests.adapters import HTTPAdapter
@@ -104,13 +104,13 @@ def npm_semver_key(
         base, prerelease = cleaned.split("-", 1)
         is_release = 0
         identifiers = prerelease.split(".") if prerelease else []
-        parts = []
+        pre_parts: List[Any] = []
         for ident in identifiers:
             if ident.isdigit():
-                parts.append((0, int(ident)))
+                pre_parts.append((0, int(ident)))
             else:
-                parts.append((1, ident))
-        prerelease_key = tuple(parts)
+                pre_parts.append((1, ident))
+        prerelease_key = tuple(pre_parts)
     else:
         base = cleaned
 

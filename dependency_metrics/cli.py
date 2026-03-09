@@ -9,7 +9,7 @@ import sys
 import logging
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Any, Dict, List, Optional
 
 import pandas as pd
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -33,7 +33,7 @@ def _parse_date(value: str, field: str, row_num: Optional[int] = None) -> dateti
         raise ValueError(f"Invalid {field} format{location}. Use YYYY-MM-DD.")
 
 
-def _load_input_csv(path: Path) -> List[Dict[str, object]]:
+def _load_input_csv(path: Path) -> List[Dict[str, Any]]:
     raw = path.read_bytes()
     if raw.lstrip().startswith(b"{\\rtf"):
         raise ValueError("Input file appears to be RTF. Please export as CSV.")
@@ -72,14 +72,14 @@ def _load_input_csv(path: Path) -> List[Dict[str, object]]:
             f"Found columns: {available}."
         )
 
-    rows: List[Dict[str, object]] = []
+    rows: List[Dict[str, Any]] = []
     for idx, record in df.iterrows():
         row_num = int(idx) + 2
         cleaned = {
             str(k).strip().lstrip("\ufeff"): ("" if pd.isna(v) else str(v).strip())
             for k, v in record.items()
         }
-        normalized = {
+        normalized: Dict[str, Any] = {
             "ecosystem": cleaned.get(field_map["ecosystem"], ""),
             "package_name": cleaned.get(field_map["package_name"], ""),
             "end_date": cleaned.get(field_map["end_date"], ""),
@@ -359,7 +359,7 @@ def main():
         ecosystems = sorted(
             {row["ecosystem"].lower() for row in input_rows if row.get("ecosystem")}
         )
-        osv_by_ecosystem: Dict[str, object] = {}
+        osv_by_ecosystem: Dict[str, Any] = {}
         for ecosystem in ecosystems:
             if len(osv_df) > 0 and "ecosystem" in osv_df.columns:
                 osv_by_ecosystem[ecosystem] = osv_df[
@@ -375,9 +375,9 @@ def main():
         if worker_count is None or worker_count <= 0:
             worker_count = min(8, os.cpu_count() or 4)
 
-        def _process_group(rows: List[Dict[str, object]]) -> List[Dict[str, object]]:
-            error_results = []
-            valid_rows = []
+        def _process_group(rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+            error_results: List[Dict[str, Any]] = []
+            valid_rows: List[Dict[str, Any]] = []
 
             for row in rows:
                 row_num = row.get("_row_num")
@@ -518,10 +518,10 @@ def main():
 
             return results + error_results
 
-        def _process_group_per_release(rows: List[Dict[str, object]]) -> List[Dict[str, object]]:
+        def _process_group_per_release(rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
             """Process a group of rows (same package) in per-release mode."""
-            error_results = []
-            valid_rows = []
+            error_results: List[Dict[str, Any]] = []
+            valid_rows: List[Dict[str, Any]] = []
 
             for row in rows:
                 row_num = row.get("_row_num")
@@ -672,7 +672,7 @@ def main():
             return all_results + error_results
 
         # Group rows by package to maximize cache reuse within a package
-        grouped_rows: Dict[tuple[str, str], List[Dict[str, object]]] = {}
+        grouped_rows: Dict[tuple[str, str], List[Dict[str, Any]]] = {}
         for row in input_rows:
             key = (
                 str(row.get("ecosystem", "")).strip().lower(),

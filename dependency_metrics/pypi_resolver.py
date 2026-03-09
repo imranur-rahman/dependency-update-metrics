@@ -81,7 +81,7 @@ class PyPIResolver:
             no_index=False,
         )
         link_collector = LinkCollector(session=session, search_scope=search_scope)
-        selection_prefs = SelectionPreferences(
+        selection_prefs = SelectionPreferences(  # type: ignore[call-arg]
             allow_yanked=True,
             allow_all_prereleases=False,
             format_control=None,

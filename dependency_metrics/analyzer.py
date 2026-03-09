@@ -7,7 +7,7 @@ import math
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple, Any
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 import pandas as pd
 from packaging import version as pkg_version
@@ -80,6 +80,7 @@ class DependencyAnalyzer:
 
         # Registry URLs
         self.registry_urls = {"npm": "https://registry.npmjs.org", "pypi": "https://pypi.org/pypi"}
+        self.resolver: Union[NpmResolver, PyPIResolver]
         if self.ecosystem == "npm":
             self.resolver = NpmResolver(
                 package=self.package,
@@ -201,6 +202,7 @@ class DependencyAnalyzer:
                         latest_date = pub_date
 
             try:
+                assert isinstance(self.resolver, PyPIResolver)
                 version_metadata = self.resolver._get_pypi_version_metadata(
                     self.package, latest_version
                 )
@@ -534,6 +536,8 @@ class DependencyAnalyzer:
             max_age = (window_end - window_start).days
             return 1.0 - (age_of_interval / max_age) if max_age > 0 else 1.0
         elif self.weighting_type == "exponential":
+            if self.half_life is None:
+                return 1.0
             lambda_val = math.log(2) / self.half_life
             return math.exp(-lambda_val * age_of_interval)
         elif self.weighting_type == "inverse":
