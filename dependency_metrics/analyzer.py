@@ -23,7 +23,6 @@ from .resolvers import (
 )
 from .time_utils import build_intervals, parse_timestamp
 
-
 logger = logging.getLogger(__name__)
 
 SEVERITY_LEVELS = ["Critical", "High", "Medium", "Low"]

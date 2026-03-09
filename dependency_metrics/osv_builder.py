@@ -15,7 +15,6 @@ import pandas as pd
 import requests
 from tqdm import tqdm
 
-
 logger = logging.getLogger(__name__)
 
 

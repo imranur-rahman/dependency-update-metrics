@@ -27,7 +27,6 @@ from .models import PackageVersion
 from .pypi_resolver import resolve_pypi_version
 from .time_utils import parse_timestamp
 
-
 logger = logging.getLogger(__name__)
 
 

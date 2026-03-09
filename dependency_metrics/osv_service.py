@@ -12,7 +12,6 @@ from packaging import version as pkg_version
 
 from .time_utils import ensure_utc, parse_timestamp
 
-
 SEVERITY_LEVELS = ["Critical", "High", "Medium", "Low"]
 
 
