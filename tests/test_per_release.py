@@ -31,6 +31,7 @@ def _utc(year: int, month: int, day: int) -> datetime:
 # 1. One result row per release in window
 # ---------------------------------------------------------------------------
 
+
 def test_analyze_at_release_points_returns_one_row_per_release(tmp_path):
     analyzer = _make_analyzer(tmp_path)
     row = {
@@ -58,6 +59,7 @@ def test_analyze_at_release_points_returns_one_row_per_release(tmp_path):
 # ---------------------------------------------------------------------------
 # 2. window_end equals release date for each result
 # ---------------------------------------------------------------------------
+
 
 def test_window_end_equals_release_date(tmp_path):
     analyzer = _make_analyzer(tmp_path)
@@ -88,6 +90,7 @@ def test_window_end_equals_release_date(tmp_path):
 # 3. No releases in window → empty list
 # ---------------------------------------------------------------------------
 
+
 def test_no_releases_returns_empty(tmp_path):
     analyzer = _make_analyzer(tmp_path)
     row = {
@@ -108,6 +111,7 @@ def test_no_releases_returns_empty(tmp_path):
 # ---------------------------------------------------------------------------
 # 4. Package version with no deps → mttu=0, mttr=0, num_dependencies=0
 # ---------------------------------------------------------------------------
+
 
 def test_no_deps_returns_zero_metrics(tmp_path):
     analyzer = _make_analyzer(tmp_path)
@@ -137,6 +141,7 @@ def test_no_deps_returns_zero_metrics(tmp_path):
 # 5. _calculate_weight_with_window linear formula
 # ---------------------------------------------------------------------------
 
+
 def test_calculate_weight_with_window_linear(tmp_path):
     analyzer = _make_analyzer(tmp_path)
     analyzer.weighting_type = "linear"
@@ -148,11 +153,15 @@ def test_calculate_weight_with_window_linear(tmp_path):
     # age=5 → weight 0.5
     assert analyzer._calculate_weight_with_window(5, window_start, window_end) == pytest.approx(0.5)
     # age=10 → weight 0.0
-    assert analyzer._calculate_weight_with_window(10, window_start, window_end) == pytest.approx(0.0)
+    assert analyzer._calculate_weight_with_window(10, window_start, window_end) == pytest.approx(
+        0.0
+    )
 
     # disable weighting always returns 1.0
     analyzer.weighting_type = "disable"
-    assert analyzer._calculate_weight_with_window(999, window_start, window_end) == pytest.approx(1.0)
+    assert analyzer._calculate_weight_with_window(999, window_start, window_end) == pytest.approx(
+        1.0
+    )
 
     # inverse weighting
     analyzer.weighting_type = "inverse"

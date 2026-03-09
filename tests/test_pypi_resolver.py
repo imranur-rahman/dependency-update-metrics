@@ -86,6 +86,7 @@ def test_pypi_analyzer_produces_intervals_with_stubbed_versions(monkeypatch):
         return {"dep": ">=0.9.0"}
 
     from datetime import timezone
+
     threshold = datetime(2020, 1, 3, tzinfo=timezone.utc)
 
     def fake_highest(dep, at_date, metadata=None):

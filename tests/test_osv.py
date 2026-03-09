@@ -16,17 +16,15 @@ def test_check_remediation_false_when_fix_available_before_interval(tmp_path: Pa
     )
 
     osv_df = pd.DataFrame(
-        [{
-            "package": "dep",
-            "vul_introduced": "1.0.0",
-            "vul_fixed": "2.0.0",
-        }]
+        [
+            {
+                "package": "dep",
+                "vul_introduced": "1.0.0",
+                "vul_fixed": "2.0.0",
+            }
+        ]
     )
-    dep_metadata = {
-        "releases": {
-            "2.0.0": [{"upload_time": "2020-01-02T00:00:00Z"}]
-        }
-    }
+    dep_metadata = {"releases": {"2.0.0": [{"upload_time": "2020-01-02T00:00:00Z"}]}}
 
     remediated = analyzer._check_remediation(
         dependency="dep",
@@ -49,17 +47,15 @@ def test_check_remediation_true_when_fix_after_interval(tmp_path: Path):
     )
 
     osv_df = pd.DataFrame(
-        [{
-            "package": "dep",
-            "vul_introduced": "1.0.0",
-            "vul_fixed": "2.0.0",
-        }]
+        [
+            {
+                "package": "dep",
+                "vul_introduced": "1.0.0",
+                "vul_fixed": "2.0.0",
+            }
+        ]
     )
-    dep_metadata = {
-        "releases": {
-            "2.0.0": [{"upload_time": "2020-01-09T00:00:00Z"}]
-        }
-    }
+    dep_metadata = {"releases": {"2.0.0": [{"upload_time": "2020-01-09T00:00:00Z"}]}}
 
     remediated = analyzer._check_remediation(
         dependency="dep",

@@ -15,10 +15,10 @@ from dependency_metrics.osv_service import OSVService, SEVERITY_LEVELS
 from dependency_metrics.analyzer import DependencyAnalyzer
 from dependency_metrics.resolvers import ResolverCache
 
-
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
 
 def _utc(year: int, month: int, day: int) -> datetime:
     return datetime(year, month, day, tzinfo=timezone.utc)
@@ -49,6 +49,7 @@ def _make_osv_service() -> OSVService:
 # 1. _normalize_severity maps correctly
 # ---------------------------------------------------------------------------
 
+
 def test_severity_normalization():
     assert _normalize_severity("CRITICAL") == "Critical"
     assert _normalize_severity("critical") == "Critical"  # case-insensitive
@@ -67,6 +68,7 @@ def test_severity_normalization():
 # ---------------------------------------------------------------------------
 # 2. is_remediated_by_severity — dep with no OSV entries → all True
 # ---------------------------------------------------------------------------
+
 
 def test_is_remediated_by_severity_no_vulns():
     svc = _make_osv_service()
@@ -89,6 +91,7 @@ def test_is_remediated_by_severity_no_vulns():
 # ---------------------------------------------------------------------------
 # 3. is_remediated_by_severity — Critical unpatched vuln → Critical=False
 # ---------------------------------------------------------------------------
+
 
 def test_is_remediated_by_severity_critical_unpatched():
     svc = _make_osv_service()
@@ -138,6 +141,7 @@ def test_is_remediated_by_severity_critical_unpatched():
 # 4. is_remediated_by_severity — High vuln only → High=False, others True
 # ---------------------------------------------------------------------------
 
+
 def test_is_remediated_by_severity_strict_buckets():
     svc = _make_osv_service()
 
@@ -182,6 +186,7 @@ def test_is_remediated_by_severity_strict_buckets():
 #    mttr_critical == 0.0 in summary
 # ---------------------------------------------------------------------------
 
+
 def test_no_vuln_for_severity_zero_mttr(tmp_path):
     analyzer = _make_analyzer(tmp_path, severity_breakdown=True)
 
@@ -213,7 +218,9 @@ def test_no_vuln_for_severity_zero_mttr(tmp_path):
                 pkg_releases if package_name == "mypackage" else dep_releases
             ),
         ),
-        patch.object(analyzer.resolver, "get_version_dependencies", return_value={"dep-a": ">=0.1.0"}),
+        patch.object(
+            analyzer.resolver, "get_version_dependencies", return_value={"dep-a": ">=0.1.0"}
+        ),
         patch.object(analyzer, "_check_remediation_by_severity", return_value=all_true),
         patch.object(analyzer, "get_highest_semver_version_at_date", return_value="0.1.0"),
     ):
@@ -227,6 +234,7 @@ def test_no_vuln_for_severity_zero_mttr(tmp_path):
 # ---------------------------------------------------------------------------
 # 6. analyze_bulk_rows with severity_breakdown=True → summary has correct keys
 # ---------------------------------------------------------------------------
+
 
 def test_severity_breakdown_summary_keys(tmp_path):
     analyzer = _make_analyzer(tmp_path, severity_breakdown=True)
@@ -258,7 +266,9 @@ def test_severity_breakdown_summary_keys(tmp_path):
                 pkg_releases if package_name == "mypackage" else dep_releases
             ),
         ),
-        patch.object(analyzer.resolver, "get_version_dependencies", return_value={"dep-a": ">=0.1.0"}),
+        patch.object(
+            analyzer.resolver, "get_version_dependencies", return_value={"dep-a": ">=0.1.0"}
+        ),
         patch.object(analyzer, "_check_remediation_by_severity", return_value=all_true),
         patch.object(analyzer, "get_highest_semver_version_at_date", return_value="0.1.0"),
     ):
@@ -277,6 +287,7 @@ def test_severity_breakdown_summary_keys(tmp_path):
 # ---------------------------------------------------------------------------
 # 7. analyze_at_release_points with severity_breakdown=True → correct keys
 # ---------------------------------------------------------------------------
+
 
 def test_severity_breakdown_with_per_release(tmp_path):
     analyzer = _make_analyzer(tmp_path, severity_breakdown=True)
