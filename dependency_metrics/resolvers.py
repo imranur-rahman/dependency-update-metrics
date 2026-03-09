@@ -13,7 +13,7 @@ from urllib.parse import quote
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, Tuple
+from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
 
 import requests
 from requests.adapters import HTTPAdapter
@@ -139,6 +139,7 @@ class ResolverCache:
     pypi_version_deps_cache: Dict[str, Dict[str, str]] = field(default_factory=dict)
     npm_time_cache: Dict[str, Dict[str, str]] = field(default_factory=dict)
     npm_resolve_cache: Dict[Tuple[str, str, str], Optional[str]] = field(default_factory=dict)
+    invalid_version_strings: Dict[Tuple[str, str], Set[str]] = field(default_factory=dict)
     cache_dir: Optional[Path] = None
     request_timeout: Tuple[float, float] = (5.0, 30.0)
     _thread_local: threading.local = field(default_factory=threading.local, init=False, repr=False)
@@ -215,6 +216,27 @@ class ResolverCache:
                 json.dump(data, handle)
         except OSError:
             return
+
+    def load_invalid_versions(self, ecosystem: str, package_name: str) -> Set[str]:
+        """Load known-invalid version strings from disk into memory, return the set."""
+        cache_key = (ecosystem, package_name)
+        if cache_key in self.invalid_version_strings:
+            return self.invalid_version_strings[cache_key]
+        disk_key = f"{ecosystem}:{package_name}"
+        data = self.load_json("invalid_versions", disk_key)
+        result: Set[str] = set(data.get("invalid", [])) if data else set()
+        self.invalid_version_strings[cache_key] = result
+        return result
+
+    def record_invalid_version(self, ecosystem: str, package_name: str, version: str) -> None:
+        """Mark a version string as invalid in memory and persist to disk."""
+        cache_key = (ecosystem, package_name)
+        s = self.invalid_version_strings.setdefault(cache_key, set())
+        if version in s:
+            return  # already recorded
+        s.add(version)
+        disk_key = f"{ecosystem}:{package_name}"
+        self.save_json("invalid_versions", disk_key, {"invalid": sorted(s)})
 
 
 class NpmResolver(PackageResolver):
@@ -660,12 +682,22 @@ class PyPIResolver(PackageResolver):
                     continue
 
             if valid_versions:
-                valid_versions.sort(key=lambda v: pkg_version.parse(v))
-                return valid_versions[-1]
+                known_invalid = self.cache.load_invalid_versions(self.ecosystem, package_name)
+                parseable: list[tuple[Any, str]] = []
+                for v in valid_versions:
+                    if v in known_invalid:
+                        continue
+                    try:
+                        parseable.append((pkg_version.parse(v), v))
+                    except Exception:
+                        logger.debug("Skipping non-PEP440 version %s for %s", v, package_name)
+                        self.cache.record_invalid_version(self.ecosystem, package_name, v)
+
+                if parseable:
+                    parseable.sort(key=lambda x: x[0])
+                    return parseable[-1][1]
         except Exception as e:
-            message = f"Error getting highest semver version for {package_name}: {e}"
-            logger.warning(message)
-            raise RuntimeError(message) from e
+            logger.warning("Error getting highest semver version for %s: %s", package_name, e)
 
         return None
 
