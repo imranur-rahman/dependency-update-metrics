@@ -693,7 +693,7 @@ class PyPIResolver(PackageResolver):
             logger.warning("Error resolving pypi version for %s: %s", dependency, e)
             return None
 
-    def _get_preprocessed_versions(self, package_name: str) -> Tuple[List, List]:
+    def _get_preprocessed_versions(self, package_name: str) -> Tuple[List, List, List]:
         cache_key = (self.ecosystem, package_name)
         if cache_key in self.cache.version_prefix_cache:
             return self.cache.version_prefix_cache[cache_key]  # type: ignore[return-value]

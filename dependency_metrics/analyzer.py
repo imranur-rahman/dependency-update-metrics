@@ -333,7 +333,11 @@ class DependencyAnalyzer:
             per_date = {}
             for date in dates:
                 # OPT-1: For PyPI, use pre-parsed version entries (no pkg_version.parse per call)
-                if self.ecosystem == "pypi" and dep_metadata:
+                if (
+                    self.ecosystem == "pypi"
+                    and dep_metadata
+                    and isinstance(self.resolver, PyPIResolver)
+                ):
                     dep_version = self.resolver.resolve_constraint_at_date(
                         dep_name, dep_constraint, date
                     )
@@ -661,7 +665,11 @@ class DependencyAnalyzer:
             dep_metadata = dep_metadata_cache.get(dep_name, {})
             for date in dep_dates_cache.get(dep_name, []):
                 key = (dep_name, dep_constraint, date)
-                if self.ecosystem == "pypi" and dep_metadata:
+                if (
+                    self.ecosystem == "pypi"
+                    and dep_metadata
+                    and isinstance(self.resolver, PyPIResolver)
+                ):
                     dep_version_cache[key] = self.resolver.resolve_constraint_at_date(
                         dep_name, dep_constraint, date
                     )
@@ -1059,7 +1067,11 @@ class DependencyAnalyzer:
                 continue
 
             # OPT-1: For PyPI, use pre-parsed version entries (no pkg_version.parse per call)
-            if self.ecosystem == "pypi" and dep_metadata:
+            if (
+                self.ecosystem == "pypi"
+                and dep_metadata
+                and isinstance(self.resolver, PyPIResolver)
+            ):
                 dep_version = self.resolver.resolve_constraint_at_date(
                     dependency, constraint_at_interval, interval_start
                 )
