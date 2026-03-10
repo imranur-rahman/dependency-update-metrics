@@ -2,6 +2,7 @@
 Core dependency analyzer for calculating TTU and TTR metrics.
 """
 
+import bisect
 import logging
 import math
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -9,6 +10,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple, Union
 
+import numpy as np
 import pandas as pd
 from packaging import version as pkg_version
 
@@ -668,6 +670,82 @@ class DependencyAnalyzer:
                         dep_name, dep_constraint, date
                     )
 
+        # Precompute per-(dep, constraint) base DataFrames for the full [start_date, end_date]
+        # range. The per-release loop slices these with bisect instead of rebuilding each time.
+        # key: (dep_name, dep_constraint) → (base_df, int_starts)
+        base_df_cache: Dict[Tuple[str, str], Tuple[pd.DataFrame, List]] = {}
+        osv_df_arg = osv_df if osv_df is not None else pd.DataFrame()
+
+        for dep_name, dep_constraint in dep_constraint_pairs:
+            dep_dates_full = dep_dates_cache.get(dep_name, [])
+            if not dep_dates_full:
+                continue
+            intervals_full = build_intervals(dep_dates_full, start_date, end_date)
+            if not intervals_full:
+                continue
+            dep_metadata = dep_metadata_cache.get(dep_name, {})
+            records = []
+            for interval_start, interval_end in intervals_full:
+                cached = dep_cache[dep_name].get(interval_start)
+                if cached is None:
+                    continue
+                dep_version = dep_version_cache.get((dep_name, dep_constraint, interval_start))
+                highest_dep_version = cached["highest_dep_version"]
+                updated = (
+                    dep_version == highest_dep_version
+                    if dep_version and highest_dep_version
+                    else False
+                )
+                if self.severity_breakdown:
+                    rem_dict = self._check_remediation_by_severity(
+                        dep_name,
+                        dep_version,
+                        interval_start,
+                        osv_df_arg,
+                        dep_metadata,
+                        osv_index=osv_index,
+                    )
+                    record = {
+                        "dependency": dep_name,
+                        "dependency_constraint": dep_constraint,
+                        "dependency_version": dep_version,
+                        "dependency_highest_version": highest_dep_version,
+                        "interval_start": interval_start,
+                        "interval_end": interval_end,
+                        "updated": updated,
+                        "remediated": rem_dict["all_severities"],
+                        "remediated_Critical": rem_dict["Critical"],
+                        "remediated_High": rem_dict["High"],
+                        "remediated_Medium": rem_dict["Medium"],
+                        "remediated_Low": rem_dict["Low"],
+                    }
+                else:
+                    record = {
+                        "dependency": dep_name,
+                        "dependency_constraint": dep_constraint,
+                        "dependency_version": dep_version,
+                        "dependency_highest_version": highest_dep_version,
+                        "interval_start": interval_start,
+                        "interval_end": interval_end,
+                        "updated": updated,
+                        "remediated": self._check_remediation(
+                            dep_name,
+                            dep_version,
+                            interval_start,
+                            osv_df_arg,
+                            dep_metadata,
+                            osv_index=osv_index,
+                        ),
+                    }
+                records.append(record)
+            if not records:
+                continue
+            base_df = pd.DataFrame(records)
+            base_df_cache[(dep_name, dep_constraint)] = (
+                base_df,
+                base_df["interval_start"].tolist(),
+            )
+
         # For each release point, build intervals and compute MTTU/MTTR
         results = []
         for ver, release_date in releases_in_window:
@@ -678,96 +756,57 @@ class DependencyAnalyzer:
             dep_frames = []
 
             for dep_name, dep_constraint in pkg_deps.items():
-                dep_metadata = dep_metadata_cache.get(dep_name, {})
-                dates = [
-                    d for d in dep_dates_cache.get(dep_name, []) if start_date <= d <= window_end
-                ]
-                intervals = build_intervals(dates, start_date, window_end)
-                if not intervals:
+                entry = base_df_cache.get((dep_name, dep_constraint))
+                if entry is None:
+                    continue
+                base_df, int_starts = entry
+
+                # Prefix slice: all intervals whose interval_start < window_end.
+                # Because window_end is always a package release date (and thus an
+                # interval_start boundary in the full list), bisect_left correctly
+                # excludes the interval starting AT window_end. The last included
+                # interval always ends exactly at window_end — no clipping needed.
+                k = bisect.bisect_left(int_starts, window_end)
+                if k == 0:
                     continue
 
-                records = []
-                for interval_start, interval_end in intervals:
-                    cached = dep_cache[dep_name].get(interval_start)
-                    if cached is None:
-                        continue
+                release_df = base_df.iloc[:k].copy()
 
-                    dep_version = dep_version_cache.get((dep_name, dep_constraint, interval_start))
+                # Vectorized per-release columns.
+                release_df["age_of_interval"] = (window_end - release_df["interval_start"]).dt.days
 
-                    highest_dep_version = cached["highest_dep_version"]
-                    updated = (
-                        dep_version == highest_dep_version
-                        if dep_version and highest_dep_version
-                        else False
+                if self.weighting_type == "disable":
+                    release_df["weight"] = 1.0
+                elif self.weighting_type == "linear":
+                    max_age = (window_end - start_date).days
+                    release_df["weight"] = (
+                        1.0 - release_df["age_of_interval"] / max_age if max_age > 0 else 1.0
                     )
-                    age_of_interval = (window_end - interval_start).days
-                    weight = self._calculate_weight_with_window(
-                        age_of_interval, start_date, window_end
-                    )
-
-                    if self.severity_breakdown:
-                        rem_dict = self._check_remediation_by_severity(
-                            dep_name,
-                            dep_version,
-                            interval_start,
-                            osv_df if osv_df is not None else pd.DataFrame(),
-                            dep_metadata,
-                            osv_index=osv_index,
+                elif self.weighting_type == "exponential":
+                    if self.half_life:
+                        lam = math.log(2) / self.half_life
+                        release_df["weight"] = np.exp(
+                            -lam * release_df["age_of_interval"].to_numpy()
                         )
-                        record = {
-                            "ecosystem": self.ecosystem,
-                            "package": self.package,
-                            "package_version": ver,
-                            "dependency": dep_name,
-                            "dependency_constraint": dep_constraint,
-                            "dependency_version": dep_version,
-                            "dependency_highest_version": highest_dep_version,
-                            "interval_start": interval_start,
-                            "interval_end": interval_end,
-                            "updated": updated,
-                            "remediated": rem_dict["all_severities"],
-                            "remediated_Critical": rem_dict["Critical"],
-                            "remediated_High": rem_dict["High"],
-                            "remediated_Medium": rem_dict["Medium"],
-                            "remediated_Low": rem_dict["Low"],
-                            "age_of_interval": age_of_interval,
-                            "weight": weight,
-                            "analysis_end_date": window_end,
-                        }
                     else:
-                        remediated = self._check_remediation(
-                            dep_name,
-                            dep_version,
-                            interval_start,
-                            osv_df if osv_df is not None else pd.DataFrame(),
-                            dep_metadata,
-                            osv_index=osv_index,
-                        )
-                        record = {
-                            "ecosystem": self.ecosystem,
-                            "package": self.package,
-                            "package_version": ver,
-                            "dependency": dep_name,
-                            "dependency_constraint": dep_constraint,
-                            "dependency_version": dep_version,
-                            "dependency_highest_version": highest_dep_version,
-                            "interval_start": interval_start,
-                            "interval_end": interval_end,
-                            "updated": updated,
-                            "remediated": remediated,
-                            "age_of_interval": age_of_interval,
-                            "weight": weight,
-                            "analysis_end_date": window_end,
-                        }
-                    records.append(record)
+                        release_df["weight"] = 1.0
+                elif self.weighting_type == "inverse":
+                    release_df["weight"] = 1.0 / (1.0 + release_df["age_of_interval"])
+                else:
+                    release_df["weight"] = 1.0
 
-                dep_df = pd.DataFrame(records)
-                if len(dep_df) == 0:
+                release_df["ecosystem"] = self.ecosystem
+                release_df["package"] = self.package
+                release_df["package_version"] = ver
+                release_df["analysis_end_date"] = window_end
+
+                if len(release_df) == 0:
                     continue
-                ttu, ttr = self.calculate_ttu_ttr(dep_df)
+
+                ttu, ttr = self.calculate_ttu_ttr(release_df)
                 ttu_values.append(ttu)
                 ttr_values.append(ttr)
-                dep_frames.append(dep_df)
+                dep_frames.append(release_df)
 
             avg_ttu = sum(ttu_values) / len(ttu_values) if ttu_values else 0.0
 
