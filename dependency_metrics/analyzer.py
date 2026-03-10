@@ -19,7 +19,6 @@ from .resolvers import (
     PyPIResolver,
     ResolverCache,
     npm_semver_key,
-    resolve_pypi_version_locally,
 )
 from .time_utils import build_intervals, parse_timestamp
 
@@ -293,31 +292,6 @@ class DependencyAnalyzer:
         pkg_versions = [(ver, date) for ver, date in pkg_versions]
         pkg_versions.sort(key=lambda item: item[1])
 
-        pkg_version_at_date = {}
-        for ver, date in pkg_versions:
-            pkg_version_at_date[date] = ver
-
-        # Precompute package version available at each interval start
-        def _package_version_for_date(at_date: datetime) -> Optional[str]:
-            available = [(ver, d) for ver, d in pkg_versions if d <= at_date]
-            if not available:
-                return None
-            if self.ecosystem == "npm":
-                semver_candidates = []
-                for ver, _ in available:
-                    key = npm_semver_key(ver)
-                    if key is not None:
-                        semver_candidates.append((key, ver))
-                if semver_candidates:
-                    semver_candidates.sort(key=lambda item: item[0])
-                    return semver_candidates[-1][1]
-                return available[-1][0]
-            try:
-                available.sort(key=lambda item: pkg_version.parse(item[0]))
-                return available[-1][0]
-            except Exception:
-                return available[-1][0]
-
         dep_cache: Dict[str, Dict[datetime, Dict[str, Any]]] = {}
         dep_metadata_cache: Dict[str, Dict] = {}
         dep_dates_cache: Dict[str, List[datetime]] = {}
@@ -356,9 +330,11 @@ class DependencyAnalyzer:
 
             per_date = {}
             for date in dates:
-                # OPT-1: For PyPI, resolve locally from cached metadata (eliminates network calls)
+                # OPT-1: For PyPI, use pre-parsed version entries (eliminates pkg_version.parse per call)
                 if self.ecosystem == "pypi" and dep_metadata:
-                    dep_version = resolve_pypi_version_locally(dep_metadata, dep_constraint, date)
+                    dep_version = self.resolver.resolve_constraint_at_date(
+                        dep_name, dep_constraint, date
+                    )
                 else:
                     dep_version = self.resolve_dependency_version(dep_name, dep_constraint, date)
                 highest_dep_version = self.get_highest_semver_version_at_date(
@@ -431,7 +407,9 @@ class DependencyAnalyzer:
                         continue
                     age_of_interval = (end_date - interval_start).days
                     weight = self.calculate_weight(age_of_interval)
-                    pkg_version_at_interval = _package_version_for_date(interval_start)
+                    pkg_version_at_interval = self.resolver.get_highest_semver_version_at_date(
+                        self.package, interval_start
+                    )
                     record = {
                         "ecosystem": self.ecosystem,
                         "package": self.package,
@@ -668,6 +646,28 @@ class DependencyAnalyzer:
                 per_date[date] = {"highest_dep_version": highest_dep_version}
             dep_cache[dep_name] = per_date
 
+        # Precompute dep version resolution for all unique (dep, constraint, date) combos.
+        # Multiple package releases may share the same constraint for a dependency; precomputing
+        # here avoids redundant work in the per-release hot loop below.
+        dep_constraint_pairs: set = set()
+        for deps in per_version_deps.values():
+            for dep_name, constraint in deps.items():
+                dep_constraint_pairs.add((dep_name, constraint))
+
+        dep_version_cache: Dict[Tuple[str, str, datetime], Optional[str]] = {}
+        for dep_name, dep_constraint in dep_constraint_pairs:
+            dep_metadata = dep_metadata_cache.get(dep_name, {})
+            for date in dep_dates_cache.get(dep_name, []):
+                key = (dep_name, dep_constraint, date)
+                if self.ecosystem == "pypi" and dep_metadata:
+                    dep_version_cache[key] = self.resolver.resolve_constraint_at_date(
+                        dep_name, dep_constraint, date
+                    )
+                else:
+                    dep_version_cache[key] = self.resolve_dependency_version(
+                        dep_name, dep_constraint, date
+                    )
+
         # For each release point, build intervals and compute MTTU/MTTR
         results = []
         for ver, release_date in releases_in_window:
@@ -692,14 +692,7 @@ class DependencyAnalyzer:
                     if cached is None:
                         continue
 
-                    if self.ecosystem == "pypi" and dep_metadata:
-                        dep_version = resolve_pypi_version_locally(
-                            dep_metadata, dep_constraint, interval_start
-                        )
-                    else:
-                        dep_version = self.resolve_dependency_version(
-                            dep_name, dep_constraint, interval_start
-                        )
+                    dep_version = dep_version_cache.get((dep_name, dep_constraint, interval_start))
 
                     highest_dep_version = cached["highest_dep_version"]
                     updated = (
@@ -1026,10 +1019,10 @@ class DependencyAnalyzer:
             if constraint_at_interval is None:
                 continue
 
-            # OPT-1: For PyPI, resolve locally from cached metadata (eliminates network calls)
+            # OPT-1: For PyPI, use pre-parsed version entries (eliminates pkg_version.parse per call)
             if self.ecosystem == "pypi" and dep_metadata:
-                dep_version = resolve_pypi_version_locally(
-                    dep_metadata, constraint_at_interval, interval_start
+                dep_version = self.resolver.resolve_constraint_at_date(
+                    dependency, constraint_at_interval, interval_start
                 )
             else:
                 dep_version = self.resolve_dependency_version(

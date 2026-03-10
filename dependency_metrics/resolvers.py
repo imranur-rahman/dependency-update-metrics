@@ -12,7 +12,7 @@ import hashlib
 import threading
 from urllib.parse import quote
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
 
@@ -729,24 +729,56 @@ class PyPIResolver(PackageResolver):
         entries.sort(key=lambda e: e[0])
 
         sorted_dates: List[datetime] = []
+        sorted_parsed: List[Optional[Any]] = []
         prefix_best_semver: List[Optional[str]] = []
         best_semver: Optional[Tuple] = None  # (parsed_version, ver_str)
 
         for pub_date, parsed, ver in entries:
             sorted_dates.append(pub_date)
+            sorted_parsed.append(parsed)
             if parsed is not None and (best_semver is None or parsed > best_semver[0]):
                 best_semver = (parsed, ver)
             prefix_best_semver.append(best_semver[1] if best_semver else None)
 
-        result = (sorted_dates, prefix_best_semver)
+        result = (sorted_dates, prefix_best_semver, sorted_parsed)
         self.cache.version_prefix_cache[cache_key] = result
         return result
+
+    def resolve_constraint_at_date(
+        self, package_name: str, constraint: str, at_date: datetime
+    ) -> Optional[str]:
+        """Return the highest version of package_name satisfying constraint at at_date.
+
+        Uses pre-parsed version objects from _get_preprocessed_versions to avoid
+        repeated pkg_version.parse() calls across multiple (constraint, date) queries.
+        """
+        cmp_date = at_date.replace(tzinfo=timezone.utc) if at_date.tzinfo is None else at_date
+        try:
+            sorted_dates, _, sorted_parsed = self._get_preprocessed_versions(package_name)
+        except Exception as e:
+            logger.warning("Error getting preprocessed versions for %s: %s", package_name, e)
+            return None
+        if not sorted_dates:
+            return None
+        idx = bisect.bisect_right(sorted_dates, cmp_date) - 1
+        if idx < 0:
+            return None
+        specifier = (
+            SpecifierSet(constraint) if constraint and constraint != "*" else SpecifierSet("")
+        )
+        best = None
+        for i in range(idx + 1):
+            parsed = sorted_parsed[i]
+            if parsed is not None and parsed in specifier:
+                if best is None or parsed > best:
+                    best = parsed
+        return str(best) if best is not None else None
 
     def get_highest_semver_version_at_date(
         self, package_name: str, at_date: datetime, metadata: Optional[Dict] = None
     ) -> Optional[str]:
         try:
-            sorted_dates, prefix_best_semver = self._get_preprocessed_versions(package_name)
+            sorted_dates, prefix_best_semver, _ = self._get_preprocessed_versions(package_name)
             if not sorted_dates:
                 return None
             idx = bisect.bisect_right(sorted_dates, at_date) - 1
