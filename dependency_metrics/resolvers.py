@@ -4,6 +4,7 @@ Ecosystem-specific package resolvers.
 
 from __future__ import annotations
 
+import bisect
 import json
 import logging
 import subprocess
@@ -140,6 +141,7 @@ class ResolverCache:
     npm_time_cache: Dict[str, Dict[str, str]] = field(default_factory=dict)
     npm_resolve_cache: Dict[Tuple[str, str, str], Optional[str]] = field(default_factory=dict)
     invalid_version_strings: Dict[Tuple[str, str], Set[str]] = field(default_factory=dict)
+    version_prefix_cache: Dict[Tuple[str, str], tuple] = field(default_factory=dict)
     cache_dir: Optional[Path] = None
     request_timeout: Tuple[float, float] = (5.0, 30.0)
     _thread_local: threading.local = field(default_factory=threading.local, init=False, repr=False)
@@ -410,71 +412,99 @@ class NpmResolver(PackageResolver):
         self.cache.save_json("resolve_npm", disk_key, {"version": None})
         return None
 
-    def get_highest_semver_version_at_date(
-        self, package_name: str, at_date: datetime, metadata: Optional[Dict] = None
-    ) -> Optional[str]:
+    def _get_preprocessed_versions(self, package_name: str) -> Tuple[List, List, List]:
+        cache_key = (self.ecosystem, package_name)
+        if cache_key in self.cache.version_prefix_cache:
+            return self.cache.version_prefix_cache[cache_key]  # type: ignore[return-value]
+
+        known_invalid = self.cache.load_invalid_versions(self.ecosystem, package_name)
+        entries: List[Tuple] = []  # (pub_date, semver_key_or_None, ver_str)
+
+        time_data = None
         try:
-            if metadata is None:
-                metadata = self.fetch_package_metadata(package_name)
+            time_data = self._get_npm_time_data(package_name)
+        except (subprocess.TimeoutExpired, json.JSONDecodeError, FileNotFoundError) as e:
+            logger.warning(
+                "npm view time failed for %s, falling back to metadata: %s", package_name, e
+            )
 
-            valid_versions = []
-            try:
-                time_data = self._get_npm_time_data(package_name)
-                if time_data:
-                    for ver, timestamp in time_data.items():
-                        try:
-                            pub_date = parse_timestamp(timestamp)
-                            if pub_date is None:
-                                continue
-                            if pub_date <= at_date:
-                                valid_versions.append(ver)
-                        except (ValueError, AttributeError):
-                            continue
-            except (subprocess.TimeoutExpired, json.JSONDecodeError, FileNotFoundError) as e:
-                logger.warning(
-                    "npm view time failed for %s, falling back to metadata: %s", package_name, e
-                )
-
-            if not valid_versions:
-                versions = metadata.get("versions", {})
-                for ver, ver_data in versions.items():
-                    published = ver_data.get("dist", {}).get("published")
-                    if not published:
+        if time_data:
+            for ver, timestamp in time_data.items():
+                try:
+                    pub_date = parse_timestamp(timestamp)
+                    if pub_date is None:
                         continue
-                    try:
-                        pub_date = parse_timestamp(published)
-                        if pub_date is None:
-                            continue
-                        if pub_date <= at_date:
-                            valid_versions.append(ver)
-                    except (ValueError, AttributeError):
-                        continue
-
-            if valid_versions:
-                known_invalid = self.cache.load_invalid_versions(self.ecosystem, package_name)
-                semver_candidates = []
-                for ver in valid_versions:
-                    if ver in known_invalid:
-                        continue
+                except (ValueError, AttributeError):
+                    continue
+                if ver in known_invalid:
+                    key = None
+                else:
                     key = npm_semver_key(ver)
                     if key is None:
                         logger.debug("Skipping invalid npm semver %s for %s", ver, package_name)
                         self.cache.record_invalid_version(self.ecosystem, package_name, ver)
+                entries.append((pub_date, key, ver))
+        else:
+            metadata = self.fetch_package_metadata(package_name)
+            for ver, ver_data in metadata.get("versions", {}).items():
+                published = ver_data.get("dist", {}).get("published")
+                if not published:
+                    continue
+                try:
+                    pub_date = parse_timestamp(published)
+                    if pub_date is None:
                         continue
-                    semver_candidates.append((key, ver))
+                except (ValueError, AttributeError):
+                    continue
+                if ver in known_invalid:
+                    key = None
+                else:
+                    key = npm_semver_key(ver)
+                    if key is None:
+                        logger.debug("Skipping invalid npm semver %s for %s", ver, package_name)
+                        self.cache.record_invalid_version(self.ecosystem, package_name, ver)
+                entries.append((pub_date, key, ver))
 
-                if semver_candidates:
-                    semver_candidates.sort(key=lambda item: item[0])
-                    return semver_candidates[-1][1]
+        entries.sort(key=lambda e: e[0])
 
-                valid_versions.sort()
-                return valid_versions[-1]
+        sorted_dates: List[datetime] = []
+        prefix_best_semver: List[Optional[str]] = []
+        prefix_best_alpha: List[Optional[str]] = []
+        best_semver: Optional[Tuple] = None  # (key_tuple, ver_str)
+        best_alpha: Optional[str] = None
+
+        for pub_date, key, ver in entries:
+            sorted_dates.append(pub_date)
+            if key is not None and (best_semver is None or key > best_semver[0]):
+                best_semver = (key, ver)
+            if best_alpha is None or ver > best_alpha:
+                best_alpha = ver
+            prefix_best_semver.append(best_semver[1] if best_semver else None)
+            prefix_best_alpha.append(best_alpha)
+
+        result = (sorted_dates, prefix_best_semver, prefix_best_alpha)
+        self.cache.version_prefix_cache[cache_key] = result
+        return result
+
+    def get_highest_semver_version_at_date(
+        self, package_name: str, at_date: datetime, metadata: Optional[Dict] = None
+    ) -> Optional[str]:
+        try:
+            sorted_dates, prefix_best_semver, prefix_best_alpha = self._get_preprocessed_versions(
+                package_name
+            )
+            if not sorted_dates:
+                return None
+            idx = bisect.bisect_right(sorted_dates, at_date) - 1
+            if idx < 0:
+                return None
+            if prefix_best_semver[idx] is not None:
+                return prefix_best_semver[idx]
+            return prefix_best_alpha[idx]
         except Exception as e:
             message = f"Error getting highest semver version for {package_name}: {e}"
             logger.warning(message)
             raise RuntimeError(message) from e
-
-        return None
 
     def extract_dependencies(self, version_data: Dict) -> Dict[str, str]:
         return version_data.get("dependencies", {})
@@ -663,45 +693,66 @@ class PyPIResolver(PackageResolver):
             logger.warning("Error resolving pypi version for %s: %s", dependency, e)
             return None
 
+    def _get_preprocessed_versions(self, package_name: str) -> Tuple[List, List]:
+        cache_key = (self.ecosystem, package_name)
+        if cache_key in self.cache.version_prefix_cache:
+            return self.cache.version_prefix_cache[cache_key]  # type: ignore[return-value]
+
+        known_invalid = self.cache.load_invalid_versions(self.ecosystem, package_name)
+        metadata = self.fetch_package_metadata(package_name)
+        entries: List[Tuple] = []  # (pub_date, parsed_version_or_None, ver_str)
+
+        releases = metadata.get("releases", {})
+        for ver, release_files in releases.items():
+            if not release_files:
+                continue
+            upload_time = release_files[0].get("upload_time")
+            if not upload_time:
+                continue
+            try:
+                pub_date = parse_timestamp(upload_time)
+                if pub_date is None:
+                    continue
+            except (ValueError, AttributeError):
+                continue
+            if ver in known_invalid:
+                parsed = None
+            else:
+                try:
+                    parsed = pkg_version.parse(ver)
+                except Exception:
+                    logger.debug("Skipping non-PEP440 version %s for %s", ver, package_name)
+                    self.cache.record_invalid_version(self.ecosystem, package_name, ver)
+                    parsed = None
+            entries.append((pub_date, parsed, ver))
+
+        entries.sort(key=lambda e: e[0])
+
+        sorted_dates: List[datetime] = []
+        prefix_best_semver: List[Optional[str]] = []
+        best_semver: Optional[Tuple] = None  # (parsed_version, ver_str)
+
+        for pub_date, parsed, ver in entries:
+            sorted_dates.append(pub_date)
+            if parsed is not None and (best_semver is None or parsed > best_semver[0]):
+                best_semver = (parsed, ver)
+            prefix_best_semver.append(best_semver[1] if best_semver else None)
+
+        result = (sorted_dates, prefix_best_semver)
+        self.cache.version_prefix_cache[cache_key] = result
+        return result
+
     def get_highest_semver_version_at_date(
         self, package_name: str, at_date: datetime, metadata: Optional[Dict] = None
     ) -> Optional[str]:
         try:
-            if metadata is None:
-                metadata = self.fetch_package_metadata(package_name)
-
-            valid_versions = []
-            releases = metadata.get("releases", {})
-            for ver, release_files in releases.items():
-                if not release_files:
-                    continue
-                upload_time = release_files[0].get("upload_time")
-                if not upload_time:
-                    continue
-                try:
-                    upload_date = parse_timestamp(upload_time)
-                    if upload_date is None:
-                        continue
-                    if upload_date <= at_date:
-                        valid_versions.append(ver)
-                except (ValueError, AttributeError):
-                    continue
-
-            if valid_versions:
-                known_invalid = self.cache.load_invalid_versions(self.ecosystem, package_name)
-                parseable: list[tuple[Any, str]] = []
-                for v in valid_versions:
-                    if v in known_invalid:
-                        continue
-                    try:
-                        parseable.append((pkg_version.parse(v), v))
-                    except Exception:
-                        logger.debug("Skipping non-PEP440 version %s for %s", v, package_name)
-                        self.cache.record_invalid_version(self.ecosystem, package_name, v)
-
-                if parseable:
-                    parseable.sort(key=lambda x: x[0])
-                    return parseable[-1][1]
+            sorted_dates, prefix_best_semver = self._get_preprocessed_versions(package_name)
+            if not sorted_dates:
+                return None
+            idx = bisect.bisect_right(sorted_dates, at_date) - 1
+            if idx < 0:
+                return None
+            return prefix_best_semver[idx]
         except Exception as e:
             logger.warning("Error getting highest semver version for %s: %s", package_name, e)
 
