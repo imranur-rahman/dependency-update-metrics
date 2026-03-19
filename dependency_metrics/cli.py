@@ -250,14 +250,17 @@ def main():
         if args.per_release:
             summary_file_path = output_dir / f"{input_label}_per_release_results.csv"
             deps_file_path = output_dir / f"{input_label}_per_release_dependency_details.csv"
+            completed_file_path = output_dir / f"{input_label}_per_release_completed.csv"
         else:
             summary_file_path = output_dir / f"{input_label}_bulk_results.csv"
             deps_file_path = output_dir / f"{input_label}_dependency_details.csv"
+            completed_file_path = None
 
         existing_status = {}
         # For per-release resume: track
         # (ecosystem, package_name, window_start, package_version) already written
         existing_per_release: set = set()
+        completed_input_rows: set = set()
         if args.resume and summary_file_path.exists():
             try:
                 summary_df = pd.read_csv(summary_file_path)
@@ -293,6 +296,22 @@ def main():
                 )
                 existing_status = {}
                 existing_per_release = set()
+
+        if args.per_release and completed_file_path is not None and completed_file_path.exists():
+            try:
+                ledger_df = pd.read_csv(completed_file_path)
+                for _, rec in ledger_df.iterrows():
+                    eco = str(rec.get("ecosystem", "")).strip().lower()
+                    pkg = str(rec.get("package_name", "")).strip().lower()
+                    ws = str(rec.get("window_start", "")).strip()
+                    we = str(rec.get("window_end", "")).strip()
+                    if eco and pkg and ws and we:
+                        completed_input_rows.add((eco, pkg, ws, we))
+            except Exception as exc:
+                logging.getLogger("dependency_metrics").warning(
+                    "Failed to read per-release completion ledger: %s", exc
+                )
+                completed_input_rows = set()
 
         if args.resume and existing_status and not args.per_release:
             filtered_rows = []
@@ -344,6 +363,46 @@ def main():
             if not input_rows:
                 logging.getLogger("dependency_metrics").warning(
                     "Resume enabled: no rows to process (all completed)."
+                )
+                sys.exit(0)
+
+        elif args.resume and args.per_release and completed_input_rows:
+            filtered_rows = []
+            skipped = 0
+            for row in input_rows:
+                row_num = row.get("_row_num")
+                ecosystem = str(row.get("ecosystem", "")).strip().lower()
+                package_name = str(row.get("package_name", "")).strip().lower()
+                end_date_raw = str(row.get("end_date", "")).strip()
+                start_date_raw = str(row.get("start_date", "")).strip()
+                try:
+                    start_date = default_start_date
+                    if start_date_raw:
+                        start_date = _parse_date(start_date_raw, "start_date", row_num)
+                    end_date = _parse_date(end_date_raw, "end_date", row_num)
+                except Exception:
+                    filtered_rows.append(row)
+                    continue
+                key = (
+                    ecosystem,
+                    package_name,
+                    start_date.date().isoformat(),
+                    end_date.date().isoformat(),
+                )
+                if key in completed_input_rows:
+                    skipped += 1
+                else:
+                    filtered_rows.append(row)
+            input_rows = filtered_rows
+            logging.getLogger("dependency_metrics").warning(
+                "Resume (per-release): skipping %s fully-completed packages, "
+                "processing %s remaining.",
+                skipped,
+                len(input_rows),
+            )
+            if not input_rows:
+                logging.getLogger("dependency_metrics").warning(
+                    "Resume (per-release): no packages to process (all completed)."
                 )
                 sys.exit(0)
 
@@ -765,6 +824,25 @@ def main():
                 "append" if summary_mode == "a" else "write",
             )
             summary_handle = summary_file_path.open(summary_mode, newline="")
+            ledger_writer = None
+            ledger_handle = None
+            if args.per_release and completed_file_path is not None:
+                ledger_exists = completed_file_path.exists()
+                ledger_handle = completed_file_path.open("a", newline="")
+                import csv as _csv
+
+                ledger_writer = _csv.DictWriter(
+                    ledger_handle,
+                    fieldnames=[
+                        "ecosystem",
+                        "package_name",
+                        "window_start",
+                        "window_end",
+                        "status",
+                    ],
+                )
+                if not ledger_exists:
+                    ledger_writer.writeheader()
             try:
                 import csv as _csv
 
@@ -837,8 +915,26 @@ def main():
                         )
                         deps_header_written = True
                     summary_handle.flush()
+                    if args.per_release and ledger_writer is not None and results:
+                        group_statuses = {r["summary"].get("status", "error") for r in results}
+                        group_status = "ok" if "ok" in group_statuses else "error"
+                        first = results[0]["summary"]
+                        ledger_writer.writerow(
+                            {
+                                "ecosystem": first.get("ecosystem", "").lower(),
+                                "package_name": first.get("package_name", "").lower(),
+                                "window_start": first.get("window_start", ""),
+                                "window_end": max(
+                                    r["summary"].get("window_end", "") for r in results
+                                ),
+                                "status": group_status,
+                            }
+                        )
+                        ledger_handle.flush()
             finally:
                 summary_handle.close()
+                if ledger_handle is not None:
+                    ledger_handle.close()
 
         logging.getLogger("dependency_metrics").info("Bulk results saved to: %s", summary_file_path)
         if deps_header_written:
