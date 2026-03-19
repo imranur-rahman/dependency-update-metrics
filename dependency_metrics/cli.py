@@ -246,7 +246,7 @@ def main():
                 duplicates,
             )
 
-        input_label = input_csv.name
+        input_label = input_csv.stem
         if args.per_release:
             summary_file_path = output_dir / f"{input_label}_per_release_results.csv"
             deps_file_path = output_dir / f"{input_label}_per_release_dependency_details.csv"
