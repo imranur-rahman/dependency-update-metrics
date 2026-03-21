@@ -3,6 +3,7 @@
 from pathlib import Path
 
 import pandas as pd
+import pytest
 
 from dependency_metrics.cli import _load_input_csv
 
@@ -26,3 +27,37 @@ def test_load_input_csv_parses_headers(tmp_path: Path) -> None:
 
     df = pd.DataFrame(rows)
     assert "extra" in df.columns
+
+
+def test_load_input_csv_missing_required_column(tmp_path: Path) -> None:
+    csv_path = tmp_path / "missing_col.csv"
+    csv_path.write_text("ecosystem,end_date\npypi,2024-01-01\n", encoding="utf-8")
+    with pytest.raises(ValueError, match="package_name"):
+        _load_input_csv(csv_path)
+
+
+def test_load_input_csv_bom_header(tmp_path: Path) -> None:
+    csv_path = tmp_path / "bom.csv"
+    csv_path.write_bytes(b"\xef\xbb\xbfecosystem,package_name,end_date\npypi,requests,2024-01-01\n")
+    rows = _load_input_csv(csv_path)
+    assert len(rows) == 1
+    assert rows[0]["ecosystem"] == "pypi"
+
+
+def test_load_input_csv_case_insensitive_columns(tmp_path: Path) -> None:
+    csv_path = tmp_path / "upper.csv"
+    csv_path.write_text(
+        "ECOSYSTEM,PACKAGE_NAME,END_DATE\nnpm,express,2024-01-01\n", encoding="utf-8"
+    )
+    rows = _load_input_csv(csv_path)
+    assert len(rows) == 1
+    assert rows[0]["ecosystem"] == "npm"
+    assert rows[0]["package_name"] == "express"
+    assert rows[0]["end_date"] == "2024-01-01"
+
+
+def test_load_input_csv_empty_file_raises(tmp_path: Path) -> None:
+    csv_path = tmp_path / "empty.csv"
+    csv_path.write_text("ecosystem,package_name,end_date\n", encoding="utf-8")
+    with pytest.raises(ValueError, match="no data rows"):
+        _load_input_csv(csv_path)
