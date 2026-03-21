@@ -147,6 +147,7 @@ class ResolverCache:
     _thread_local: threading.local = field(default_factory=threading.local, init=False, repr=False)
     _lock: threading.Lock = field(default_factory=threading.Lock, init=False, repr=False)
     _metadata_locks: Dict[Any, threading.Lock] = field(default_factory=dict, init=False, repr=False)
+    _disk_preload: Dict[str, Dict[str, Any]] = field(default_factory=dict, init=False, repr=False)
 
     def get_key_lock(self, key: Any) -> threading.Lock:
         """Return a per-cache-key Lock, creating one on first use.
@@ -164,6 +165,24 @@ class ResolverCache:
             return None
         digest = hashlib.sha256(key.encode("utf-8")).hexdigest()
         return self.cache_dir / namespace / f"{digest}.json"
+
+    def warm_from_disk(self) -> None:
+        """Load all on-disk cache JSON files into memory to eliminate disk I/O during analysis."""
+        if self.cache_dir is None or not self.cache_dir.exists():
+            return
+        for namespace_dir in self.cache_dir.iterdir():
+            if not namespace_dir.is_dir():
+                continue
+            ns = namespace_dir.name
+            self._disk_preload.setdefault(ns, {})
+            for cache_file in namespace_dir.glob("*.json"):
+                try:
+                    with cache_file.open(encoding="utf-8") as fh:
+                        self._disk_preload[ns][cache_file.stem] = json.load(fh)
+                except Exception:
+                    pass
+        total = sum(len(v) for v in self._disk_preload.values())
+        logger.info("Cache warm-up: loaded %d entries from disk", total)
 
     def get_session(self) -> requests.Session:
         """Get or create a thread-local HTTP session with bounded pooling and retries."""
@@ -200,7 +219,13 @@ class ResolverCache:
 
     def load_json(self, namespace: str, key: str) -> Optional[Dict[str, Any]]:
         path = self._cache_path(namespace, key)
-        if path is None or not path.exists():
+        if path is None:
+            return None
+        # Check in-memory preload before hitting disk
+        preloaded = self._disk_preload.get(namespace, {}).get(path.stem)
+        if preloaded is not None:
+            return preloaded
+        if not path.exists():
             return None
         try:
             with path.open("r", encoding="utf-8") as handle:

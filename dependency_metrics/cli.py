@@ -14,7 +14,7 @@ from typing import Any, Dict, List, Optional
 import pandas as pd
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-from .analyzer import DependencyAnalyzer
+from .analyzer import DependencyAnalyzer, build_osv_index
 from .osv_builder import OSVBuilder
 from .resolvers import ResolverCache
 from .reporting import (
@@ -427,7 +427,56 @@ def main():
             else:
                 osv_by_ecosystem[ecosystem] = osv_df
 
+        # Build OSV index once per ecosystem (not once per package worker)
+        osv_index_by_ecosystem: Dict[str, Dict] = {
+            eco: build_osv_index(df) for eco, df in osv_by_ecosystem.items()
+        }
+
         resolver_cache = ResolverCache(cache_dir=output_dir / "cache")
+        resolver_cache.warm_from_disk()
+
+        # Pre-fetch all unique package metadata before workers start (eliminates thundering herd)
+        from .resolvers import NpmResolver, PyPIResolver as _PyPIResolverCls
+
+        _registry_urls = {"npm": "https://registry.npmjs.org", "pypi": "https://pypi.org/pypi"}
+
+        def _make_resolver(eco: str, pkg: str):
+            if eco == "npm":
+                return NpmResolver(
+                    package=pkg,
+                    start_date=default_start_date,
+                    end_date=datetime.today(),
+                    registry_urls=_registry_urls,
+                    cache=resolver_cache,
+                )
+            return _PyPIResolverCls(
+                package=pkg,
+                start_date=default_start_date,
+                end_date=datetime.today(),
+                registry_urls=_registry_urls,
+                cache=resolver_cache,
+            )
+
+        unique_packages = {
+            (str(r.get("ecosystem", "")).strip().lower(), str(r.get("package_name", "")).strip())
+            for r in input_rows
+            if r.get("ecosystem") and r.get("package_name")
+        }
+        prefetch_workers = min(64, max(1, len(unique_packages)))
+        with ThreadPoolExecutor(max_workers=prefetch_workers) as prefetch_exec:
+            prefetch_futs = {
+                prefetch_exec.submit(_make_resolver(eco, pkg).fetch_package_metadata, pkg): (
+                    eco,
+                    pkg,
+                )
+                for eco, pkg in unique_packages
+                if eco in {"npm", "pypi"}
+            }
+            for f in as_completed(prefetch_futs):
+                try:
+                    f.result()
+                except Exception:
+                    pass  # errors will surface again during analysis
 
         total_rows = len(input_rows)
         worker_count = args.workers
@@ -530,6 +579,8 @@ def main():
                 resolver_cache=resolver_cache,
                 severity_breakdown=args.severity_breakdown,
             )
+            analyzer._osv_index = osv_index_by_ecosystem.get(ecosystem, {})
+            analyzer._osv_df = osv_by_ecosystem.get(ecosystem, pd.DataFrame())
 
             try:
                 results = analyzer.analyze_bulk_rows(
@@ -678,6 +729,8 @@ def main():
                 resolver_cache=resolver_cache,
                 severity_breakdown=args.severity_breakdown,
             )
+            analyzer._osv_index = osv_index_by_ecosystem.get(ecosystem, {})
+            analyzer._osv_df = osv_by_ecosystem.get(ecosystem, pd.DataFrame())
 
             all_results = []
             for row in valid_rows:

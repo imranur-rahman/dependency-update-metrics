@@ -29,6 +29,15 @@ logger = logging.getLogger(__name__)
 SEVERITY_LEVELS = ["Critical", "High", "Medium", "Low"]
 
 
+def build_osv_index(osv_df: pd.DataFrame) -> Dict[str, List[Dict]]:
+    """Build package→records index from an already-ecosystem-filtered OSV DataFrame."""
+    index: Dict[str, List[Dict]] = {}
+    if osv_df is not None and len(osv_df) > 0 and "package" in osv_df.columns:
+        for pkg_name, group in osv_df.groupby("package"):
+            index[pkg_name] = group.to_dict("records")
+    return index
+
+
 class DependencyAnalyzer:
     """Analyze dependency update and remediation metrics."""
 
@@ -104,10 +113,18 @@ class DependencyAnalyzer:
             raise ValueError(f"Unsupported ecosystem: {self.ecosystem}")
 
     def _get_osv_index(
-        self, osv_df: Optional[pd.DataFrame] = None
+        self,
+        osv_df: Optional[pd.DataFrame] = None,
+        prebuilt_index: Optional[Dict[str, List[Dict]]] = None,
     ) -> Tuple[pd.DataFrame, Dict[str, List[Dict]]]:
         """Return (filtered_osv_df, osv_index), using the instance cache when available."""
         if self._osv_index is not None:
+            return self._osv_df, self._osv_index
+
+        if prebuilt_index is not None:
+            self._osv_index = prebuilt_index
+            self._osv_df = osv_df if osv_df is not None else pd.DataFrame()
+            logger.debug("OSV index injected: %d packages", len(prebuilt_index))
             return self._osv_df, self._osv_index
 
         if osv_df is None:

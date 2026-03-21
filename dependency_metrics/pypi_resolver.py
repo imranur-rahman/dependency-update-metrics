@@ -12,7 +12,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
 
-_FINDER_CACHE_MAX_SIZE = 50
+_FINDER_CACHE_MAX_SIZE = 0  # 0 = unlimited
 
 
 _PIP_VENDOR_PATH = Path(__file__).resolve().parents[1] / "vendor" / "pip" / "src"
@@ -97,9 +97,10 @@ class PyPIResolver:
         with self._finder_lock:
             self._finder_cache[before] = finder
             self._finder_cache.move_to_end(before)
-            # Evict oldest entries beyond the size cap (OPT-6: prevent memory leak)
-            while len(self._finder_cache) > _FINDER_CACHE_MAX_SIZE:
-                self._finder_cache.popitem(last=False)
+            # Evict oldest entries beyond the size cap; 0 = unlimited
+            if _FINDER_CACHE_MAX_SIZE > 0:
+                while len(self._finder_cache) > _FINDER_CACHE_MAX_SIZE:
+                    self._finder_cache.popitem(last=False)
         return finder
 
 
