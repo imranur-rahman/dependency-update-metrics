@@ -141,6 +141,7 @@ class ResolverCache:
     npm_time_cache: Dict[str, Dict[str, str]] = field(default_factory=dict)
     npm_resolve_cache: Dict[Tuple[str, str, str], Optional[str]] = field(default_factory=dict)
     invalid_version_strings: Dict[Tuple[str, str], Set[str]] = field(default_factory=dict)
+    missing_packages: Set[Tuple[str, str]] = field(default_factory=set)
     version_prefix_cache: Dict[Tuple[str, str], tuple] = field(default_factory=dict)
     cache_dir: Optional[Path] = None
     request_timeout: Tuple[float, float] = (5.0, 30.0)
@@ -291,6 +292,8 @@ class NpmResolver(PackageResolver):
         if cache_key in self.cache.metadata_cache:
             logger.debug("Cache hit: metadata %s:%s", self.ecosystem, package_name)
             return self.cache.metadata_cache[cache_key]
+        if cache_key in self.cache.missing_packages:
+            raise requests.HTTPError(f"Package not found (cached): {package_name}")
 
         # Serialize concurrent fetches for the same key (thundering-herd fix)
         with self.cache.get_key_lock(cache_key):
@@ -298,6 +301,8 @@ class NpmResolver(PackageResolver):
             if cache_key in self.cache.metadata_cache:
                 logger.debug("Cache hit (post-lock): metadata %s:%s", self.ecosystem, package_name)
                 return self.cache.metadata_cache[cache_key]
+            if cache_key in self.cache.missing_packages:
+                raise requests.HTTPError(f"Package not found (cached): {package_name}")
 
             disk_key = f"{self.ecosystem}:{package_name}"
             cached = self.cache.load_json("metadata", disk_key)
@@ -308,9 +313,18 @@ class NpmResolver(PackageResolver):
             encoded_package = quote(package_name, safe="")
             url = f"{self.registry_urls['npm']}/{encoded_package}"
             logger.info("Fetching metadata for %s", package_name)
-            with self.cache.get(url) as response:
-                response.raise_for_status()
-                data = response.json()
+            try:
+                with self.cache.get(url) as response:
+                    response.raise_for_status()
+                    data = response.json()
+            except requests.HTTPError as exc:
+                if exc.response is not None and exc.response.status_code == 404:
+                    self.cache.missing_packages.add(cache_key)
+                    logger.warning(
+                        "Package not found on registry, skipping further requests: %s",
+                        package_name,
+                    )
+                raise
             self.cache.metadata_cache[cache_key] = data
             self.cache.save_json("metadata", disk_key, data)
             return data
@@ -514,6 +528,8 @@ class NpmResolver(PackageResolver):
     def get_highest_semver_version_at_date(
         self, package_name: str, at_date: datetime, metadata: Optional[Dict] = None
     ) -> Optional[str]:
+        if (self.ecosystem, package_name) in self.cache.missing_packages:
+            return None
         try:
             sorted_dates, prefix_best_semver, prefix_best_alpha = self._get_preprocessed_versions(
                 package_name
@@ -612,6 +628,8 @@ class PyPIResolver(PackageResolver):
         if cache_key in self.cache.metadata_cache:
             logger.debug("Cache hit: metadata %s:%s", self.ecosystem, package_name)
             return self.cache.metadata_cache[cache_key]
+        if cache_key in self.cache.missing_packages:
+            raise requests.HTTPError(f"Package not found (cached): {package_name}")
 
         # Serialize concurrent fetches for the same key (thundering-herd fix)
         with self.cache.get_key_lock(cache_key):
@@ -619,6 +637,8 @@ class PyPIResolver(PackageResolver):
             if cache_key in self.cache.metadata_cache:
                 logger.debug("Cache hit (post-lock): metadata %s:%s", self.ecosystem, package_name)
                 return self.cache.metadata_cache[cache_key]
+            if cache_key in self.cache.missing_packages:
+                raise requests.HTTPError(f"Package not found (cached): {package_name}")
 
             disk_key = f"{self.ecosystem}:{package_name}"
             cached = self.cache.load_json("metadata", disk_key)
@@ -629,9 +649,18 @@ class PyPIResolver(PackageResolver):
             encoded_package = quote(package_name, safe="")
             url = f"{self.registry_urls['pypi']}/{encoded_package}/json"
             logger.info("Fetching metadata for %s", package_name)
-            with self.cache.get(url) as response:
-                response.raise_for_status()
-                data = response.json()
+            try:
+                with self.cache.get(url) as response:
+                    response.raise_for_status()
+                    data = response.json()
+            except requests.HTTPError as exc:
+                if exc.response is not None and exc.response.status_code == 404:
+                    self.cache.missing_packages.add(cache_key)
+                    logger.warning(
+                        "Package not found on registry, skipping further requests: %s",
+                        package_name,
+                    )
+                raise
             self.cache.metadata_cache[cache_key] = data
             self.cache.save_json("metadata", disk_key, data)
             return data
@@ -777,6 +806,8 @@ class PyPIResolver(PackageResolver):
         Uses pre-parsed version objects from _get_preprocessed_versions to avoid
         repeated pkg_version.parse() calls across multiple (constraint, date) queries.
         """
+        if (self.ecosystem, package_name) in self.cache.missing_packages:
+            return None
         cmp_date = at_date.replace(tzinfo=timezone.utc) if at_date.tzinfo is None else at_date
         try:
             sorted_dates, _, sorted_parsed = self._get_preprocessed_versions(package_name)
@@ -802,6 +833,8 @@ class PyPIResolver(PackageResolver):
     def get_highest_semver_version_at_date(
         self, package_name: str, at_date: datetime, metadata: Optional[Dict] = None
     ) -> Optional[str]:
+        if (self.ecosystem, package_name) in self.cache.missing_packages:
+            return None
         try:
             sorted_dates, prefix_best_semver, _ = self._get_preprocessed_versions(package_name)
             if not sorted_dates:
