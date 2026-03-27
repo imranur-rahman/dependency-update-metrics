@@ -462,7 +462,7 @@ def main():
             for r in input_rows
             if r.get("ecosystem") and r.get("package_name")
         }
-        prefetch_workers = min(64, max(1, len(unique_packages)))
+        prefetch_workers = min(16, max(1, len(unique_packages)))
         with ThreadPoolExecutor(max_workers=prefetch_workers) as prefetch_exec:
             prefetch_futs = {
                 prefetch_exec.submit(_make_resolver(eco, pkg).fetch_package_metadata, pkg): (
