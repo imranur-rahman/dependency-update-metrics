@@ -4,6 +4,7 @@ Resolve PyPI versions using patched pip's --before support.
 
 from __future__ import annotations
 
+import subprocess
 import sys
 import threading
 from collections import OrderedDict
@@ -14,16 +15,54 @@ from typing import Optional
 
 _FINDER_CACHE_MAX_SIZE = 0  # 0 = unlimited
 
+_PIP_REPO_URL = "https://github.com/imranur-rahman/pip"
 
-_PIP_VENDOR_PATH = Path(__file__).resolve().parents[1] / "vendor" / "pip" / "src"
+# Primary: vendor/pip in the source tree (git submodule / editable install)
+_LOCAL_VENDOR_PATH = Path(__file__).resolve().parents[1] / "vendor" / "pip" / "src"
+
+# Fallback: user home dir (PyPI-installed users, or source users without submodule)
+_USER_VENDOR_PATH = Path.home() / ".dependency_metrics" / "vendor" / "pip" / "src"
 
 
 def _ensure_pip_on_path() -> None:
-    """Ensure the vendored pip is available for imports."""
-    if _PIP_VENDOR_PATH.exists():
-        sys.path.insert(0, str(_PIP_VENDOR_PATH))
+    """Ensure the patched pip is importable, auto-cloning it on first use if needed."""
+    # Fast path: already inserted by a prior call
+    local_str = str(_LOCAL_VENDOR_PATH)
+    user_str = str(_USER_VENDOR_PATH)
+    if local_str in sys.path or user_str in sys.path:
         return
-    raise FileNotFoundError(f"Vendored pip not found at {_PIP_VENDOR_PATH}")
+
+    if _LOCAL_VENDOR_PATH.exists():
+        sys.path.insert(0, local_str)
+        return
+
+    if _USER_VENDOR_PATH.exists():
+        sys.path.insert(0, user_str)
+        return
+
+    # Neither location exists — clone once to the user cache dir
+    clone_target = _USER_VENDOR_PATH.parent  # ~/.dependency_metrics/vendor/pip
+    print(
+        f"[dependency-metrics] Patched pip not found. Cloning from {_PIP_REPO_URL} "
+        f"to {clone_target} (one-time setup)..."
+    )
+    clone_target.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        subprocess.run(
+            ["git", "clone", "--depth=1", _PIP_REPO_URL, str(clone_target)],
+            check=True,
+        )
+    except subprocess.CalledProcessError as exc:
+        raise RuntimeError(
+            f"Failed to clone patched pip from {_PIP_REPO_URL}. "
+            "Ensure git is installed and you have internet access, or clone manually: "
+            f"git clone {_PIP_REPO_URL} vendor/pip"
+        ) from exc
+
+    if not _USER_VENDOR_PATH.exists():
+        raise RuntimeError(f"Cloned pip repo but expected src/ not found at {_USER_VENDOR_PATH}")
+    sys.path.insert(0, user_str)
+    print("[dependency-metrics] Patched pip installed successfully.")
 
 
 @dataclass

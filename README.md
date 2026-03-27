@@ -193,23 +193,14 @@ The tool generates several outputs in the specified output directory:
 
 ## Requirements
 
-- Python 3.8+
+- Python 3.10+
+- git (for auto-installing the patched pip on first PyPI analysis)
 - npm CLI (for npm ecosystem analysis) `sudo apt install nodejs npm`
 - Internet connection (for fetching package metadata and OSV data)
-- Vendored patched pip for PyPI `--before` resolution (see below)
 
-## Vendored pip setup (PyPI `--before`)
-
-This project uses a patched pip to resolve the highest PyPI version available
-before a specific date. To make the package standalone, clone the patched pip
-repo into `vendor/pip`:
-
-```bash
-git clone https://github.com/imranur-rahman/pip vendor/pip
-```
-
-The resolver imports pip from `vendor/pip/src`, so the `vendor/pip` directory
-must exist before running PyPI analyses.
+> **Note:** PyPI analysis uses a patched pip fork that adds date-bounded version
+> resolution. The tool clones it automatically to `~/.dependency_metrics/vendor/pip`
+> on first use — no manual setup required.
 
 ## Development
 
