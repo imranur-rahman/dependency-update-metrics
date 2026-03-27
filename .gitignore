@@ -135,6 +135,9 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+# Input/output data files
+*.csv
+
 # Output directories
 output/
 osv-data/
