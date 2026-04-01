@@ -18,8 +18,6 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
 
-import psutil
-
 from .cache_config import RESOLVE_CACHE_MAX, WARM_DISK_FRACTION, warm_disk_max_bytes
 
 import requests
