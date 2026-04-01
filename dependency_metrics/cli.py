@@ -11,6 +11,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
+import psutil
+
 import pandas as pd
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -185,6 +187,13 @@ def main():
 
     parser.add_argument("--verbose", action="store_true", help="Enable debug logging")
 
+    parser.add_argument(
+        "--log-file",
+        default=None,
+        help="Mirror all log output to this file (survives tmux/terminal death). "
+        "Default: <output-dir>/run.log",
+    )
+
     args = parser.parse_args()
 
     # Validate arguments
@@ -206,6 +215,19 @@ def main():
     if args.verbose:
         logging.basicConfig(level=logging.INFO, force=True)
         logging.getLogger("dependency_metrics").setLevel(logging.DEBUG)
+
+    # Mirror logs to a file so output survives tmux/terminal death
+    log_file_path = Path(args.log_file) if args.log_file else output_dir / "run.log"
+    _dm_logger = logging.getLogger("dependency_metrics")
+    _file_handler = logging.FileHandler(log_file_path, encoding="utf-8")
+    _file_handler.setFormatter(logging.Formatter("%(asctime)s %(levelname)s %(name)s: %(message)s"))
+    _file_handler.setLevel(logging.DEBUG)
+    _dm_logger.addHandler(_file_handler)
+    if not _dm_logger.handlers or all(
+        isinstance(h, logging.FileHandler) for h in _dm_logger.handlers
+    ):
+        # Ensure there's also a stream handler if not already configured
+        logging.basicConfig(level=logging.WARNING)
 
     if args.input_csv:
         if not args.verbose:
@@ -434,6 +456,10 @@ def main():
 
         resolver_cache = ResolverCache(cache_dir=output_dir / "cache")
         resolver_cache.warm_from_disk()
+        _rss_mb = psutil.Process().memory_info().rss / 1024 / 1024
+        logging.getLogger("dependency_metrics").warning(
+            "Memory after cache warm-up: %.0f MB RSS", _rss_mb
+        )
 
         # Pre-fetch all unique package metadata before workers start (eliminates thundering herd)
         from .resolvers import NpmResolver, PyPIResolver as _PyPIResolverCls
@@ -477,6 +503,11 @@ def main():
                     f.result()
                 except Exception:
                     pass  # errors will surface again during analysis
+
+        _rss_mb = psutil.Process().memory_info().rss / 1024 / 1024
+        logging.getLogger("dependency_metrics").warning(
+            "Memory after prefetch (%d packages): %.0f MB RSS", len(unique_packages), _rss_mb
+        )
 
         total_rows = len(input_rows)
         worker_count = args.workers
@@ -910,6 +941,11 @@ def main():
 
                     if args.per_release:
                         packages_done += 1
+                        if packages_done % 10 == 0:
+                            _rss_mb = psutil.Process().memory_info().rss / 1024 / 1024
+                            logging.getLogger("dependency_metrics").warning(
+                                "Memory after %d packages: %.0f MB RSS", packages_done, _rss_mb
+                            )
                         if results:
                             first_summary = results[0]["summary"]
                             first_row_num = results[0]["row_num"]
@@ -933,6 +969,11 @@ def main():
                                 result["summary"]["ecosystem"],
                                 result["summary"]["package_name"],
                             )
+                            if processed % 10 == 0:
+                                _rss_mb = psutil.Process().memory_info().rss / 1024 / 1024
+                                logging.getLogger("dependency_metrics").warning(
+                                    "Memory after %d rows: %.0f MB RSS", processed, _rss_mb
+                                )
 
                     pending_dep_frames: list = []
                     for result in results:

@@ -7,14 +7,20 @@ from __future__ import annotations
 import bisect
 import json
 import logging
+import os
 import subprocess
 import hashlib
 import threading
+from collections import OrderedDict
 from urllib.parse import quote
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
+
+import psutil
+
+from .cache_config import RESOLVE_CACHE_MAX, WARM_DISK_FRACTION, warm_disk_max_bytes
 
 import requests
 from requests.adapters import HTTPAdapter
@@ -139,7 +145,7 @@ class ResolverCache:
     pypi_version_metadata_cache: Dict[str, Dict] = field(default_factory=dict)
     pypi_version_deps_cache: Dict[str, Dict[str, str]] = field(default_factory=dict)
     npm_time_cache: Dict[str, Dict[str, str]] = field(default_factory=dict)
-    npm_resolve_cache: Dict[Tuple[str, str, str], Optional[str]] = field(default_factory=dict)
+    npm_resolve_cache: OrderedDict = field(default_factory=OrderedDict)
     invalid_version_strings: Dict[Tuple[str, str], Set[str]] = field(default_factory=dict)
     missing_packages: Set[Tuple[str, str]] = field(default_factory=set)
     version_prefix_cache: Dict[Tuple[str, str], tuple] = field(default_factory=dict)
@@ -161,6 +167,20 @@ class ResolverCache:
                 self._metadata_locks[key] = threading.Lock()
             return self._metadata_locks[key]
 
+    def npm_resolve_set(self, key: Tuple[str, str, str], value: Optional[str]) -> None:
+        """Write an entry to npm_resolve_cache with FIFO eviction when the cap is reached."""
+        max_size = RESOLVE_CACHE_MAX.get("npm")
+        with self._lock:
+            self.npm_resolve_cache[key] = value
+            if max_size is not None and len(self.npm_resolve_cache) > max_size:
+                # Evict oldest 10% to avoid per-entry lock overhead
+                evict_count = max(1, max_size // 10)
+                for _ in range(evict_count):
+                    try:
+                        self.npm_resolve_cache.popitem(last=False)
+                    except KeyError:
+                        break
+
     def _cache_path(self, namespace: str, key: str) -> Optional[Path]:
         if self.cache_dir is None:
             return None
@@ -168,22 +188,45 @@ class ResolverCache:
         return self.cache_dir / namespace / f"{digest}.json"
 
     def warm_from_disk(self) -> None:
-        """Load all on-disk cache JSON files into memory to eliminate disk I/O during analysis."""
+        """Load on-disk cache JSON files into memory up to 30% of total RAM."""
         if self.cache_dir is None or not self.cache_dir.exists():
             return
+        max_bytes = warm_disk_max_bytes()
+        loaded_bytes = 0
+        truncated = False
         for namespace_dir in self.cache_dir.iterdir():
             if not namespace_dir.is_dir():
                 continue
             ns = namespace_dir.name
             self._disk_preload.setdefault(ns, {})
             for cache_file in namespace_dir.glob("*.json"):
+                if truncated:
+                    break
                 try:
+                    file_size = os.path.getsize(cache_file)
+                    if loaded_bytes + file_size > max_bytes:
+                        logger.warning(
+                            "Cache warm-up: reached %.0f MB limit (%.0f%% of total RAM). "
+                            "Remaining entries will be read from disk on demand.",
+                            max_bytes / 1024 / 1024,
+                            WARM_DISK_FRACTION * 100,
+                        )
+                        truncated = True
+                        break
                     with cache_file.open(encoding="utf-8") as fh:
                         self._disk_preload[ns][cache_file.stem] = json.load(fh)
+                    loaded_bytes += file_size
                 except Exception:
                     pass
+            if truncated:
+                break
         total = sum(len(v) for v in self._disk_preload.values())
-        logger.info("Cache warm-up: loaded %d entries from disk", total)
+        logger.info(
+            "Cache warm-up: loaded %d entries (%.1f MB) from disk%s",
+            total,
+            loaded_bytes / 1024 / 1024,
+            " [truncated at RAM cap]" if truncated else "",
+        )
 
     def get_session(self) -> requests.Session:
         """Get or create a thread-local HTTP session with bounded pooling and retries."""
@@ -419,7 +462,7 @@ class NpmResolver(PackageResolver):
         cached = self.cache.load_json("resolve_npm", disk_key)
         if cached is not None:
             result = cached.get("version")
-            self.cache.npm_resolve_cache[cache_key] = result
+            self.cache.npm_resolve_set(cache_key, result)
             return result
 
         try:
@@ -441,13 +484,13 @@ class NpmResolver(PackageResolver):
                         resolved = versions[-1]
                     else:
                         resolved = versions
-                    self.cache.npm_resolve_cache[cache_key] = resolved
+                    self.cache.npm_resolve_set(cache_key, resolved)
                     self.cache.save_json("resolve_npm", disk_key, {"version": resolved})
                     return resolved
         except (subprocess.TimeoutExpired, json.JSONDecodeError, FileNotFoundError) as e:
             logger.warning("Error resolving npm version for %s: %s", dependency, e)
 
-        self.cache.npm_resolve_cache[cache_key] = None
+        self.cache.npm_resolve_set(cache_key, None)
         self.cache.save_json("resolve_npm", disk_key, {"version": None})
         return None
 

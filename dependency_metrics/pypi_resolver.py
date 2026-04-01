@@ -13,7 +13,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
 
-_FINDER_CACHE_MAX_SIZE = 0  # 0 = unlimited
+from .cache_config import RESOLVE_CACHE_MAX as _RESOLVE_CACHE_MAX
+
+_FINDER_CACHE_MAX_SIZE: int | None = _RESOLVE_CACHE_MAX.get("pypi", 500)
 
 _PIP_REPO_URL = "https://github.com/imranur-rahman/pip"
 
@@ -136,8 +138,8 @@ class PyPIResolver:
         with self._finder_lock:
             self._finder_cache[before] = finder
             self._finder_cache.move_to_end(before)
-            # Evict oldest entries beyond the size cap; 0 = unlimited
-            if _FINDER_CACHE_MAX_SIZE > 0:
+            # Evict oldest entries beyond the size cap; None = unlimited
+            if _FINDER_CACHE_MAX_SIZE is not None:
                 while len(self._finder_cache) > _FINDER_CACHE_MAX_SIZE:
                     self._finder_cache.popitem(last=False)
         return finder
