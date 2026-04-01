@@ -211,27 +211,23 @@ def main():
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    # Configure logging
-    if args.verbose:
-        logging.basicConfig(level=logging.INFO, force=True)
-        logging.getLogger("dependency_metrics").setLevel(logging.DEBUG)
-
-    # Mirror logs to a file so output survives tmux/terminal death
-    log_file_path = Path(args.log_file) if args.log_file else output_dir / "run.log"
+    # Configure logging — explicit handlers with propagate=False to prevent double-printing
     _dm_logger = logging.getLogger("dependency_metrics")
+    _dm_logger.propagate = False
+    _dm_logger.setLevel(logging.DEBUG)
+
+    _stream_handler = logging.StreamHandler()
+    _stream_handler.setFormatter(logging.Formatter("%(levelname)s: %(message)s"))
+    _stream_handler.setLevel(logging.DEBUG if args.verbose else logging.WARNING)
+    _dm_logger.addHandler(_stream_handler)
+
+    log_file_path = Path(args.log_file) if args.log_file else output_dir / "run.log"
     _file_handler = logging.FileHandler(log_file_path, encoding="utf-8")
     _file_handler.setFormatter(logging.Formatter("%(asctime)s %(levelname)s %(name)s: %(message)s"))
     _file_handler.setLevel(logging.DEBUG)
     _dm_logger.addHandler(_file_handler)
-    if not _dm_logger.handlers or all(
-        isinstance(h, logging.FileHandler) for h in _dm_logger.handlers
-    ):
-        # Ensure there's also a stream handler if not already configured
-        logging.basicConfig(level=logging.WARNING)
 
     if args.input_csv:
-        if not args.verbose:
-            logging.getLogger("dependency_metrics").setLevel(logging.WARNING)
 
         input_csv = Path(args.input_csv)
         if not input_csv.exists():
