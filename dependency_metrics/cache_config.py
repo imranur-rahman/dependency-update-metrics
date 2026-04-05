@@ -18,6 +18,18 @@ def warm_disk_max_bytes() -> int:
     return int(psutil.virtual_memory().total * WARM_DISK_FRACTION)
 
 
+# Namespaces to skip during warm_from_disk.
+# "metadata" is excluded because the prefetch phase loads it into metadata_cache
+# anyway; warming it into _disk_preload would pin all objects in memory for the
+# entire run with no way to GC them, causing the bulk of the observed OOM kills.
+WARM_SKIP_NAMESPACES: frozenset = frozenset({"metadata"})
+
+# Max entries in metadata_cache (combined across all ecosystems).
+# Each npm entry is ~1-2 MB; each PyPI entry ~100-500 KB.
+# 500 entries ≈ 500 MB–1 GB — enough for 8 workers and their active dependencies.
+# None = unlimited.
+METADATA_CACHE_MAX: int | None = 500
+
 # Per-ecosystem in-memory resolve-cache caps (max number of entries).
 # None means unlimited.
 #

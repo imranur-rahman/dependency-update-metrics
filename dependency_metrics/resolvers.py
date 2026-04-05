@@ -18,7 +18,15 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
 
-from .cache_config import RESOLVE_CACHE_MAX, WARM_DISK_FRACTION, warm_disk_max_bytes
+import psutil
+
+from .cache_config import (
+    METADATA_CACHE_MAX,
+    RESOLVE_CACHE_MAX,
+    WARM_DISK_FRACTION,
+    WARM_SKIP_NAMESPACES,
+    warm_disk_max_bytes,
+)
 
 import requests
 from requests.adapters import HTTPAdapter
@@ -139,7 +147,7 @@ def npm_semver_key(
 class ResolverCache:
     """Shared in-memory caches for resolver operations."""
 
-    metadata_cache: Dict[Tuple[str, str], Dict] = field(default_factory=dict)
+    metadata_cache: OrderedDict = field(default_factory=OrderedDict)
     pypi_version_metadata_cache: Dict[str, Dict] = field(default_factory=dict)
     pypi_version_deps_cache: Dict[str, Dict[str, str]] = field(default_factory=dict)
     npm_time_cache: Dict[str, Dict[str, str]] = field(default_factory=dict)
@@ -179,6 +187,19 @@ class ResolverCache:
                     except KeyError:
                         break
 
+    def metadata_set(self, key: Tuple[str, str], value: Dict) -> None:
+        """Write an entry to metadata_cache with FIFO eviction when the cap is reached."""
+        max_size = METADATA_CACHE_MAX
+        with self._lock:
+            self.metadata_cache[key] = value
+            if max_size is not None and len(self.metadata_cache) > max_size:
+                evict_count = max(1, max_size // 10)
+                for _ in range(evict_count):
+                    try:
+                        self.metadata_cache.popitem(last=False)
+                    except KeyError:
+                        break
+
     def _cache_path(self, namespace: str, key: str) -> Optional[Path]:
         if self.cache_dir is None:
             return None
@@ -186,43 +207,57 @@ class ResolverCache:
         return self.cache_dir / namespace / f"{digest}.json"
 
     def warm_from_disk(self) -> None:
-        """Load on-disk cache JSON files into memory up to 30% of total RAM."""
+        """Load on-disk cache JSON files into memory up to 30% of total RAM (by RSS delta).
+
+        The "metadata" namespace is skipped — it is populated by the prefetch phase
+        into metadata_cache and warming it into _disk_preload would pin all metadata
+        objects in memory for the entire run with no way to evict them.
+        """
         if self.cache_dir is None or not self.cache_dir.exists():
             return
         max_bytes = warm_disk_max_bytes()
-        loaded_bytes = 0
+        proc = psutil.Process()
+        initial_rss = proc.memory_info().rss
+        files_since_check = 0
         truncated = False
+        total = 0
         for namespace_dir in self.cache_dir.iterdir():
             if not namespace_dir.is_dir():
                 continue
             ns = namespace_dir.name
+            if ns in WARM_SKIP_NAMESPACES:
+                logger.debug("Cache warm-up: skipping namespace '%s' (excluded).", ns)
+                continue
             self._disk_preload.setdefault(ns, {})
             for cache_file in namespace_dir.glob("*.json"):
                 if truncated:
                     break
                 try:
-                    file_size = os.path.getsize(cache_file)
-                    if loaded_bytes + file_size > max_bytes:
-                        logger.warning(
-                            "Cache warm-up: reached %.0f MB limit (%.0f%% of total RAM). "
-                            "Remaining entries will be read from disk on demand.",
-                            max_bytes / 1024 / 1024,
-                            WARM_DISK_FRACTION * 100,
-                        )
-                        truncated = True
-                        break
                     with cache_file.open(encoding="utf-8") as fh:
                         self._disk_preload[ns][cache_file.stem] = json.load(fh)
-                    loaded_bytes += file_size
+                    total += 1
+                    files_since_check += 1
+                    if files_since_check >= 500:
+                        files_since_check = 0
+                        rss_delta = proc.memory_info().rss - initial_rss
+                        if rss_delta > max_bytes:
+                            logger.warning(
+                                "Cache warm-up: reached %.0f MB RSS limit (%.0f%% of total RAM). "
+                                "Remaining entries will be read from disk on demand.",
+                                max_bytes / 1024 / 1024,
+                                WARM_DISK_FRACTION * 100,
+                            )
+                            truncated = True
+                            break
                 except Exception:
                     pass
             if truncated:
                 break
-        total = sum(len(v) for v in self._disk_preload.values())
+        rss_delta_mb = (proc.memory_info().rss - initial_rss) / 1024 / 1024
         logger.info(
-            "Cache warm-up: loaded %d entries (%.1f MB) from disk%s",
+            "Cache warm-up: loaded %d entries (+%.0f MB RSS)%s",
             total,
-            loaded_bytes / 1024 / 1024,
+            rss_delta_mb,
             " [truncated at RAM cap]" if truncated else "",
         )
 
@@ -348,7 +383,7 @@ class NpmResolver(PackageResolver):
             disk_key = f"{self.ecosystem}:{package_name}"
             cached = self.cache.load_json("metadata", disk_key)
             if cached is not None:
-                self.cache.metadata_cache[cache_key] = cached
+                self.cache.metadata_set(cache_key, cached)
                 return cached
 
             encoded_package = quote(package_name, safe="")
@@ -366,7 +401,7 @@ class NpmResolver(PackageResolver):
                         package_name,
                     )
                 raise
-            self.cache.metadata_cache[cache_key] = data
+            self.cache.metadata_set(cache_key, data)
             self.cache.save_json("metadata", disk_key, data)
             return data
 
@@ -684,7 +719,7 @@ class PyPIResolver(PackageResolver):
             disk_key = f"{self.ecosystem}:{package_name}"
             cached = self.cache.load_json("metadata", disk_key)
             if cached is not None:
-                self.cache.metadata_cache[cache_key] = cached
+                self.cache.metadata_set(cache_key, cached)
                 return cached
 
             encoded_package = quote(package_name, safe="")
@@ -702,7 +737,7 @@ class PyPIResolver(PackageResolver):
                         package_name,
                     )
                 raise
-            self.cache.metadata_cache[cache_key] = data
+            self.cache.metadata_set(cache_key, data)
             self.cache.save_json("metadata", disk_key, data)
             return data
 
