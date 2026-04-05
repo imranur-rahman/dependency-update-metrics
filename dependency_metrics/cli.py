@@ -387,6 +387,7 @@ def main():
         elif args.resume and args.per_release and completed_input_rows:
             filtered_rows = []
             skipped = 0
+            skipped_pkg_keys: set = set()
             for row in input_rows:
                 row_num = row.get("_row_num")
                 ecosystem = str(row.get("ecosystem", "")).strip().lower()
@@ -409,14 +410,26 @@ def main():
                 )
                 if key in completed_input_rows:
                     skipped += 1
+                    skipped_pkg_keys.add((ecosystem, package_name))
                 else:
                     filtered_rows.append(row)
             input_rows = filtered_rows
+            remaining_packages = len(
+                {
+                    (
+                        str(r.get("ecosystem", "")).strip().lower(),
+                        str(r.get("package_name", "")).strip().lower(),
+                    )
+                    for r in input_rows
+                }
+            )
             logging.getLogger("dependency_metrics").warning(
-                "Resume (per-release): skipping %s fully-completed packages, "
-                "processing %s remaining.",
+                "Resume (per-release): skipping %s completed entries (%s unique packages), "
+                "processing %s remaining entries (%s unique packages).",
                 skipped,
+                len(skipped_pkg_keys),
                 len(input_rows),
+                remaining_packages,
             )
             if not input_rows:
                 logging.getLogger("dependency_metrics").warning(
