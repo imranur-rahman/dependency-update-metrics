@@ -281,7 +281,7 @@ def main():
         completed_input_rows: set = set()
         if args.resume and summary_file_path.exists():
             try:
-                summary_df = pd.read_csv(summary_file_path)
+                summary_df = pd.read_csv(summary_file_path, dtype=str, low_memory=False)
                 if args.per_release:
                     for _, record in summary_df.iterrows():
                         ecosystem_r = str(record.get("ecosystem", "")).strip().lower()
