@@ -400,30 +400,16 @@ def main():
                 sys.exit(0)
 
         elif args.resume and args.per_release and completed_input_rows:
+            # The ledger has one entry per package (not per release row), so match
+            # at the package level to correctly skip all rows for a completed package.
+            completed_pkgs: set = {(eco, pkg) for eco, pkg, _ws, _we in completed_input_rows}
             filtered_rows = []
             skipped = 0
             skipped_pkg_keys: set = set()
             for row in input_rows:
-                row_num = row.get("_row_num")
                 ecosystem = str(row.get("ecosystem", "")).strip().lower()
                 package_name = str(row.get("package_name", "")).strip().lower()
-                end_date_raw = str(row.get("end_date", "")).strip()
-                start_date_raw = str(row.get("start_date", "")).strip()
-                try:
-                    start_date = default_start_date
-                    if start_date_raw:
-                        start_date = _parse_date(start_date_raw, "start_date", row_num)
-                    end_date = _parse_date(end_date_raw, "end_date", row_num)
-                except Exception:
-                    filtered_rows.append(row)
-                    continue
-                key = (
-                    ecosystem,
-                    package_name,
-                    start_date.date().isoformat(),
-                    end_date.date().isoformat(),
-                )
-                if key in completed_input_rows:
+                if (ecosystem, package_name) in completed_pkgs:
                     skipped += 1
                     skipped_pkg_keys.add((ecosystem, package_name))
                 else:
