@@ -331,6 +331,20 @@ def main():
                 )
                 completed_input_rows = set()
 
+        # Capture pre-filter totals so resume runs show cumulative progress.
+        total_rows_all = len(input_rows)
+        total_unique_packages_all = len(
+            {
+                (
+                    str(r.get("ecosystem", "")).strip().lower(),
+                    str(r.get("package_name", "")).strip().lower(),
+                )
+                for r in input_rows
+            }
+        )
+        processed_before_resume = 0
+        packages_done_before_resume = 0
+
         if args.resume and existing_status and not args.per_release:
             filtered_rows = []
             skipped = 0
@@ -370,6 +384,7 @@ def main():
                 filtered_rows.append(row)
 
             input_rows = filtered_rows
+            processed_before_resume = skipped
             logging.getLogger("dependency_metrics").warning(
                 "Resume enabled: skipping %s completed rows, "
                 "retrying %s error rows, processing %s new rows.",
@@ -414,6 +429,7 @@ def main():
                 else:
                     filtered_rows.append(row)
             input_rows = filtered_rows
+            packages_done_before_resume = len(skipped_pkg_keys)
             remaining_packages = len(
                 {
                     (
@@ -518,7 +534,7 @@ def main():
             "Memory after prefetch (%d packages): %.0f MB RSS", len(unique_packages), _rss_mb
         )
 
-        total_rows = len(input_rows)
+        total_rows = total_rows_all
         worker_count = args.workers
         if worker_count is None or worker_count <= 0:
             worker_count = min(8, os.cpu_count() or 4)
@@ -832,7 +848,7 @@ def main():
             )
             grouped_rows.setdefault(key, []).append(row)
 
-        total_unique_packages = len(grouped_rows)
+        total_unique_packages = total_unique_packages_all
 
         with ThreadPoolExecutor(max_workers=worker_count) as executor:
             futures = []
@@ -943,8 +959,8 @@ def main():
                 if summary_mode == "w":
                     summary_writer.writeheader()
 
-                processed = 0
-                packages_done = 0
+                processed = processed_before_resume
+                packages_done = packages_done_before_resume
                 for future in as_completed(futures):
                     results = future.result()
 
