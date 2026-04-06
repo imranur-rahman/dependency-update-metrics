@@ -45,3 +45,19 @@ RESOLVE_CACHE_MAX: dict[str, int | None] = {
     "npm": 200_000,  # (dep, constraint, date) strings; ~1 KB each → ~150 MB max
     # "maven": 100_000,
 }
+
+# Per-version PyPI metadata blobs (100-500 KB each).
+# 2 000 entries ≈ 200–500 MB.
+PYPI_VERSION_METADATA_CACHE_MAX: int | None = 2_000
+
+# Extracted dependency dicts per version (1-10 KB each).
+# 5 000 entries ≈ 5–50 MB.
+PYPI_VERSION_DEPS_CACHE_MAX: int | None = 5_000
+
+# Preprocessed version prefix lists per package (50-200 KB each).
+# 1 000 entries ≈ 50–200 MB.
+VERSION_PREFIX_CACHE_MAX: int | None = 1_000
+
+# npm version→timestamp maps per package (50-500 KB each).
+# 1 000 entries ≈ 50–500 MB.
+NPM_TIME_CACHE_MAX: int | None = 1_000

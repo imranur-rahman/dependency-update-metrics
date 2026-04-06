@@ -21,7 +21,11 @@ import psutil
 
 from .cache_config import (
     METADATA_CACHE_MAX,
+    NPM_TIME_CACHE_MAX,
+    PYPI_VERSION_DEPS_CACHE_MAX,
+    PYPI_VERSION_METADATA_CACHE_MAX,
     RESOLVE_CACHE_MAX,
+    VERSION_PREFIX_CACHE_MAX,
     WARM_DISK_FRACTION,
     WARM_SKIP_NAMESPACES,
     warm_disk_max_bytes,
@@ -147,13 +151,13 @@ class ResolverCache:
     """Shared in-memory caches for resolver operations."""
 
     metadata_cache: OrderedDict = field(default_factory=OrderedDict)
-    pypi_version_metadata_cache: Dict[str, Dict] = field(default_factory=dict)
-    pypi_version_deps_cache: Dict[str, Dict[str, str]] = field(default_factory=dict)
-    npm_time_cache: Dict[str, Dict[str, str]] = field(default_factory=dict)
+    pypi_version_metadata_cache: OrderedDict = field(default_factory=OrderedDict)
+    pypi_version_deps_cache: OrderedDict = field(default_factory=OrderedDict)
+    npm_time_cache: OrderedDict = field(default_factory=OrderedDict)
     npm_resolve_cache: OrderedDict = field(default_factory=OrderedDict)
     invalid_version_strings: Dict[Tuple[str, str], Set[str]] = field(default_factory=dict)
     missing_packages: Set[Tuple[str, str]] = field(default_factory=set)
-    version_prefix_cache: Dict[Tuple[str, str], tuple] = field(default_factory=dict)
+    version_prefix_cache: OrderedDict = field(default_factory=OrderedDict)
     cache_dir: Optional[Path] = None
     request_timeout: Tuple[float, float] = (5.0, 30.0)
     _thread_local: threading.local = field(default_factory=threading.local, init=False, repr=False)
@@ -172,32 +176,45 @@ class ResolverCache:
                 self._metadata_locks[key] = threading.Lock()
             return self._metadata_locks[key]
 
-    def npm_resolve_set(self, key: Tuple[str, str, str], value: Optional[str]) -> None:
-        """Write an entry to npm_resolve_cache with FIFO eviction when the cap is reached."""
-        max_size = RESOLVE_CACHE_MAX.get("npm")
+    def _capped_set(
+        self, cache: OrderedDict, key: Any, value: Any, max_size: Optional[int]
+    ) -> None:
+        """Write key→value into an OrderedDict cache, evicting oldest 10% when cap is reached."""
         with self._lock:
-            self.npm_resolve_cache[key] = value
-            if max_size is not None and len(self.npm_resolve_cache) > max_size:
-                # Evict oldest 10% to avoid per-entry lock overhead
+            cache[key] = value
+            if max_size is not None and len(cache) > max_size:
                 evict_count = max(1, max_size // 10)
                 for _ in range(evict_count):
                     try:
-                        self.npm_resolve_cache.popitem(last=False)
+                        cache.popitem(last=False)
                     except KeyError:
                         break
 
+    def npm_resolve_set(self, key: Tuple[str, str, str], value: Optional[str]) -> None:
+        """Write an entry to npm_resolve_cache with FIFO eviction when the cap is reached."""
+        self._capped_set(self.npm_resolve_cache, key, value, RESOLVE_CACHE_MAX.get("npm"))
+
     def metadata_set(self, key: Tuple[str, str], value: Dict) -> None:
         """Write an entry to metadata_cache with FIFO eviction when the cap is reached."""
-        max_size = METADATA_CACHE_MAX
-        with self._lock:
-            self.metadata_cache[key] = value
-            if max_size is not None and len(self.metadata_cache) > max_size:
-                evict_count = max(1, max_size // 10)
-                for _ in range(evict_count):
-                    try:
-                        self.metadata_cache.popitem(last=False)
-                    except KeyError:
-                        break
+        self._capped_set(self.metadata_cache, key, value, METADATA_CACHE_MAX)
+
+    def pypi_version_metadata_set(self, key: str, value: Dict) -> None:
+        """Write an entry to pypi_version_metadata_cache with FIFO eviction."""
+        self._capped_set(
+            self.pypi_version_metadata_cache, key, value, PYPI_VERSION_METADATA_CACHE_MAX
+        )
+
+    def pypi_version_deps_set(self, key: str, value: Dict) -> None:
+        """Write an entry to pypi_version_deps_cache with FIFO eviction."""
+        self._capped_set(self.pypi_version_deps_cache, key, value, PYPI_VERSION_DEPS_CACHE_MAX)
+
+    def npm_time_set(self, key: str, value: Dict) -> None:
+        """Write an entry to npm_time_cache with FIFO eviction."""
+        self._capped_set(self.npm_time_cache, key, value, NPM_TIME_CACHE_MAX)
+
+    def version_prefix_set(self, key: Tuple, value: Any) -> None:
+        """Write an entry to version_prefix_cache with FIFO eviction."""
+        self._capped_set(self.version_prefix_cache, key, value, VERSION_PREFIX_CACHE_MAX)
 
     def _cache_path(self, namespace: str, key: str) -> Optional[Path]:
         if self.cache_dir is None:
@@ -597,7 +614,7 @@ class NpmResolver(PackageResolver):
             prefix_best_alpha.append(best_alpha)
 
         result = (sorted_dates, prefix_best_semver, prefix_best_alpha)
-        self.cache.version_prefix_cache[cache_key] = result
+        self.cache.version_prefix_set(cache_key, result)
         return result
 
     def get_highest_semver_version_at_date(
@@ -638,7 +655,7 @@ class NpmResolver(PackageResolver):
         disk_key = f"npm:{package_name}"
         cached = self.cache.load_json("npm_time", disk_key)
         if cached is not None:
-            self.cache.npm_time_cache[package_name] = cached
+            self.cache.npm_time_set(package_name, cached)
             return cached
 
         cmd = ["npm", "view", package_name, "time", "--json"]
@@ -649,7 +666,7 @@ class NpmResolver(PackageResolver):
         time_data = json.loads(result.stdout)
         time_data.pop("modified", None)
         time_data.pop("created", None)
-        self.cache.npm_time_cache[package_name] = time_data
+        self.cache.npm_time_set(package_name, time_data)
         self.cache.save_json("npm_time", disk_key, time_data)
         return time_data
 
@@ -870,7 +887,7 @@ class PyPIResolver(PackageResolver):
             prefix_best_semver.append(best_semver[1] if best_semver else None)
 
         result = (sorted_dates, prefix_best_semver, sorted_parsed)
-        self.cache.version_prefix_cache[cache_key] = result
+        self.cache.version_prefix_set(cache_key, result)
         return result
 
     def resolve_constraint_at_date(
@@ -953,7 +970,7 @@ class PyPIResolver(PackageResolver):
         except Exception as e:
             logger.warning("Failed to fetch dependencies for %s==%s: %s", package, version, e)
 
-        self.cache.pypi_version_deps_cache[cache_key] = deps
+        self.cache.pypi_version_deps_set(cache_key, deps)
         return deps
 
     def _get_pypi_version_metadata(self, package: str, version: str) -> Dict:
@@ -965,7 +982,7 @@ class PyPIResolver(PackageResolver):
         disk_key = f"{package}:{version}"
         cached = self.cache.load_json("pypi_version", disk_key)
         if cached is not None:
-            self.cache.pypi_version_metadata_cache[cache_key] = cached
+            self.cache.pypi_version_metadata_set(cache_key, cached)
             return cached
 
         encoded_package = quote(package, safe="")
@@ -974,6 +991,6 @@ class PyPIResolver(PackageResolver):
         with self.cache.get(version_url) as response:
             response.raise_for_status()
             data = response.json()
-        self.cache.pypi_version_metadata_cache[cache_key] = data
+        self.cache.pypi_version_metadata_set(cache_key, data)
         self.cache.save_json("pypi_version", disk_key, data)
         return data
