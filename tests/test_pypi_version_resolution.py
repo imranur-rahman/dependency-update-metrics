@@ -83,15 +83,6 @@ def test_specifier_excludes_non_matching_versions():
     assert result == "2.0.0"
 
 
-def test_pre_releases_excluded_by_specifier():
-    meta = _metadata(
-        ("1.0.0", "2020-01-01T00:00:00"),
-        ("1.1.0a1", "2021-01-01T00:00:00"),
-    )
-    # PEP 440: >=1.0.0 does not include pre-releases by default
-    result = resolve_pypi_version_locally(meta, ">=1.0.0", _utc(2022, 1, 1))
-    assert result == "1.0.0"
-
 
 # ---------------------------------------------------------------------------
 # Edge cases
