@@ -3,6 +3,7 @@ Command-line interface for the dependency metrics tool.
 """
 
 import argparse
+import gc
 import io
 import os
 import sys
@@ -523,7 +524,7 @@ def main():
         total_rows = total_rows_all
         worker_count = args.workers
         if worker_count is None or worker_count <= 0:
-            worker_count = min(8, os.cpu_count() or 4)
+            worker_count = min(4, os.cpu_count() or 2)
 
         def _process_group(rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
             error_results: List[Dict[str, Any]] = []
@@ -957,6 +958,8 @@ def main():
                             logging.getLogger("dependency_metrics").warning(
                                 "Memory after %d packages: %.0f MB RSS", packages_done, _rss_mb
                             )
+                        if packages_done % 50 == 0:
+                            gc.collect()
                         if results:
                             first_summary = results[0]["summary"]
                             first_row_num = results[0]["row_num"]
@@ -985,6 +988,8 @@ def main():
                                 logging.getLogger("dependency_metrics").warning(
                                     "Memory after %d rows: %.0f MB RSS", processed, _rss_mb
                                 )
+                            if processed % 50 == 0:
+                                gc.collect()
 
                     pending_dep_frames: list = []
                     for result in results:

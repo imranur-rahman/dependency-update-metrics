@@ -9,12 +9,13 @@ from __future__ import annotations
 import psutil
 
 # Fraction of *total* RAM to use for disk-cache warm-up.
-# Keeping this below 0.5 leaves headroom for metadata + worker caches during analysis.
-WARM_DISK_FRACTION: float = 0.30
+# Kept at 0.10 so the warm-up pins only ~3 GB on a 30 GB machine, leaving
+# headroom for metadata cache + per-worker analysis state.
+WARM_DISK_FRACTION: float = 0.10
 
 
 def warm_disk_max_bytes() -> int:
-    """Return the byte cap for disk-cache warm-up (30% of total RAM)."""
+    """Return the byte cap for disk-cache warm-up (10% of total RAM)."""
     return int(psutil.virtual_memory().total * WARM_DISK_FRACTION)
 
 
