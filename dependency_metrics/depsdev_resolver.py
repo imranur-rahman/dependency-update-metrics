@@ -149,16 +149,16 @@ def _best_semver(system: str, versions: List[str]) -> Optional[str]:
     except ImportError:
         return versions[-1] if versions else None
 
-    parsed = []
+    sv_parsed = []
     for v in versions:
         try:
-            parsed.append((semantic_version.Version.coerce(v), v))
+            sv_parsed.append((semantic_version.Version.coerce(v), v))
         except ValueError:
             continue
-    if not parsed:
+    if not sv_parsed:
         return versions[-1] if versions else None
-    stable = [(sv, s) for sv, s in parsed if not sv.prerelease]
-    pool = stable if stable else parsed
+    stable = [(sv, s) for sv, s in sv_parsed if not sv.prerelease]
+    pool = stable if stable else sv_parsed
     return max(pool, key=lambda t: t[0])[1]
 
 

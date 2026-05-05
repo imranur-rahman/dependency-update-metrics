@@ -16,6 +16,8 @@ class PackageResolver(Protocol):
     """Resolve package versions and dependencies for an ecosystem."""
 
     ecosystem: str
+    start_date: datetime
+    end_date: datetime
 
     def fetch_package_metadata(self, package_name: str) -> Dict: ...
 
