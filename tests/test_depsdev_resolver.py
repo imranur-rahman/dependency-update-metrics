@@ -1,0 +1,584 @@
+"""Tests for DepsDevResolver in dependency_metrics/depsdev_resolver.py."""
+
+from datetime import datetime, timezone
+from pathlib import Path
+from unittest.mock import MagicMock
+
+import pytest
+
+from dependency_metrics.depsdev_client import DepsDevClient
+from dependency_metrics.depsdev_resolver import (
+    DepsDevResolver,
+    _best_semver,
+    _match_constraint,
+    _match_npm_or_cargo,
+    _match_pypi,
+)
+from dependency_metrics.models import PackageVersion
+from dependency_metrics.resolvers import ResolverCache
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+
+
+def _utc(year: int, month: int, day: int) -> datetime:
+    return datetime(year, month, day, tzinfo=timezone.utc)
+
+
+def _make_resolver(system: str = "NPM", package: str = "express") -> DepsDevResolver:
+    client = MagicMock(spec=DepsDevClient)
+    return DepsDevResolver(
+        system=system,
+        package=package,
+        start_date=_utc(2020, 1, 1),
+        end_date=_utc(2023, 1, 1),
+        client=client,
+    )
+
+
+def _package_response(*entries) -> dict:
+    """Build a minimal GetPackage response dict.
+
+    Each entry is (version_str, published_at_str).
+    """
+    return {
+        "packageKey": {"system": "NPM", "name": "express"},
+        "versions": [
+            {"versionKey": {"system": "NPM", "name": "express", "version": v}, "publishedAt": d}
+            for v, d in entries
+        ],
+    }
+
+
+def _requirements_response(*deps) -> dict:
+    """Build a minimal GetRequirements response dict.
+
+    Each dep is (name, constraint, relation).
+    """
+    return {
+        "nodes": [
+            {
+                "versionKey": {"system": "NPM", "name": name, "version": constraint},
+                "relation": relation,
+            }
+            for name, constraint, relation in deps
+        ]
+    }
+
+
+# ---------------------------------------------------------------------------
+# _match_npm_or_cargo
+# ---------------------------------------------------------------------------
+
+
+def test_match_npm_caret_returns_highest_compatible(tmp_path):
+    versions = ["1.0.0", "1.2.3", "1.9.9", "2.0.0"]
+    result = _match_npm_or_cargo(versions, "^1.0.0")
+    assert result == "1.9.9"
+
+
+def test_match_npm_tilde_restricts_to_patch(tmp_path):
+    versions = ["1.2.0", "1.2.5", "1.3.0"]
+    result = _match_npm_or_cargo(versions, "~1.2.0")
+    assert result == "1.2.5"
+
+
+def test_match_npm_wildcard_returns_highest(tmp_path):
+    versions = ["1.0.0", "2.0.0", "3.0.0"]
+    result = _match_npm_or_cargo(versions, "*")
+    assert result == "3.0.0"
+
+
+def test_match_npm_empty_constraint_returns_highest(tmp_path):
+    versions = ["1.0.0", "2.0.0"]
+    result = _match_npm_or_cargo(versions, "")
+    assert result == "2.0.0"
+
+
+def test_match_npm_range_respects_upper_bound(tmp_path):
+    versions = ["1.0.0", "1.5.0", "2.0.0", "2.5.0"]
+    result = _match_npm_or_cargo(versions, ">=1.0.0 <2.0.0")
+    assert result == "1.5.0"
+
+
+def test_match_npm_exact_version(tmp_path):
+    versions = ["1.0.0", "1.1.0", "2.0.0"]
+    result = _match_npm_or_cargo(versions, "1.0.0")
+    assert result == "1.0.0"
+
+
+def test_match_npm_returns_none_when_no_match(tmp_path):
+    versions = ["1.0.0", "1.1.0"]
+    result = _match_npm_or_cargo(versions, "^2.0.0")
+    assert result is None
+
+
+def test_match_npm_skips_unparseable_versions(tmp_path):
+    versions = ["not-semver", "1.0.0", "also-bad"]
+    result = _match_npm_or_cargo(versions, "*")
+    assert result == "1.0.0"
+
+
+def test_match_npm_returns_none_for_empty_list(tmp_path):
+    assert _match_npm_or_cargo([], "^1.0.0") is None
+
+
+# ---------------------------------------------------------------------------
+# _match_pypi
+# ---------------------------------------------------------------------------
+
+
+def test_match_pypi_gte_returns_highest(tmp_path):
+    versions = ["1.0.0", "2.0.0", "3.0.0"]
+    result = _match_pypi(versions, ">=2.0.0")
+    assert result == "3.0.0"
+
+
+def test_match_pypi_range_respects_upper_bound(tmp_path):
+    versions = ["1.0.0", "1.5.0", "2.0.0"]
+    result = _match_pypi(versions, ">=1.0.0,<2.0.0")
+    assert result == "1.5.0"
+
+
+def test_match_pypi_exact_pin(tmp_path):
+    versions = ["1.0.0", "1.1.0", "2.0.0"]
+    result = _match_pypi(versions, "==1.1.0")
+    assert result == "1.1.0"
+
+
+def test_match_pypi_wildcard_returns_highest(tmp_path):
+    versions = ["0.9.0", "1.0.0", "2.0.0"]
+    result = _match_pypi(versions, "*")
+    assert result == "2.0.0"
+
+
+def test_match_pypi_empty_constraint_returns_highest(tmp_path):
+    versions = ["1.0.0", "2.0.0"]
+    result = _match_pypi(versions, "")
+    assert result == "2.0.0"
+
+
+def test_match_pypi_excludes_version_with_ne(tmp_path):
+    versions = ["1.0.0", "1.1.0", "2.0.0"]
+    result = _match_pypi(versions, "!=1.1.0,<2.0.0")
+    assert result == "1.0.0"
+
+
+def test_match_pypi_returns_none_when_no_match(tmp_path):
+    versions = ["1.0.0", "1.5.0"]
+    result = _match_pypi(versions, ">=2.0.0")
+    assert result is None
+
+
+def test_match_pypi_skips_unparseable_version_strings(tmp_path):
+    versions = ["bad-version", "1.0.0"]
+    result = _match_pypi(versions, ">=1.0.0")
+    assert result == "1.0.0"
+
+
+# ---------------------------------------------------------------------------
+# _match_constraint dispatch
+# ---------------------------------------------------------------------------
+
+
+def test_match_constraint_routes_pypi(tmp_path):
+    result = _match_constraint("PYPI", ["1.0.0", "2.0.0"], ">=1.0.0,<2.0.0")
+    assert result == "1.0.0"
+
+
+def test_match_constraint_routes_npm(tmp_path):
+    result = _match_constraint("NPM", ["1.0.0", "1.5.0", "2.0.0"], "^1.0.0")
+    assert result == "1.5.0"
+
+
+def test_match_constraint_routes_cargo_same_as_npm(tmp_path):
+    # Cargo uses the same caret semantics as npm
+    result = _match_constraint("CARGO", ["0.1.0", "0.1.9", "0.2.0"], "^0.1.0")
+    assert result == "0.1.9"
+
+
+# ---------------------------------------------------------------------------
+# _best_semver
+# ---------------------------------------------------------------------------
+
+
+def test_best_semver_npm_prefers_stable_over_prerelease(tmp_path):
+    versions = ["1.0.0-alpha", "1.0.0", "2.0.0-beta"]
+    assert _best_semver("NPM", versions) == "1.0.0"
+
+
+def test_best_semver_npm_falls_back_to_prerelease_when_no_stable(tmp_path):
+    versions = ["1.0.0-alpha", "2.0.0-beta"]
+    assert _best_semver("NPM", versions) == "2.0.0-beta"
+
+
+def test_best_semver_pypi_prefers_stable(tmp_path):
+    versions = ["1.0.0a1", "1.0.0", "2.0.0b1"]
+    assert _best_semver("PYPI", versions) == "1.0.0"
+
+
+def test_best_semver_returns_none_for_empty_list(tmp_path):
+    assert _best_semver("NPM", []) is None
+
+
+def test_best_semver_cargo_highest_stable(tmp_path):
+    versions = ["0.9.0", "1.0.0", "1.1.0-rc1", "1.0.5"]
+    assert _best_semver("CARGO", versions) == "1.0.5"
+
+
+# ---------------------------------------------------------------------------
+# DepsDevResolver.fetch_package_metadata
+# ---------------------------------------------------------------------------
+
+
+def test_fetch_package_metadata_calls_client(tmp_path):
+    resolver = _make_resolver()
+    data = _package_response(("1.0.0", "2020-01-01T00:00:00Z"))
+    resolver._client.get_package.return_value = data
+
+    result = resolver.fetch_package_metadata("express")
+
+    resolver._client.get_package.assert_called_once_with("NPM", "express")
+    assert result == data
+
+
+def test_fetch_package_metadata_memoises_result(tmp_path):
+    resolver = _make_resolver()
+    resolver._client.get_package.return_value = _package_response()
+
+    resolver.fetch_package_metadata("express")
+    resolver.fetch_package_metadata("express")
+
+    assert resolver._client.get_package.call_count == 1
+
+
+def test_fetch_package_metadata_returns_empty_versions_on_error(tmp_path):
+    resolver = _make_resolver()
+    resolver._client.get_package.side_effect = Exception("network error")
+
+    result = resolver.fetch_package_metadata("no-such-pkg")
+    assert result == {"versions": []}
+
+
+# ---------------------------------------------------------------------------
+# DepsDevResolver.get_all_versions_with_dates
+# ---------------------------------------------------------------------------
+
+
+def test_get_all_versions_with_dates_yields_package_versions(tmp_path):
+    resolver = _make_resolver()
+    metadata = _package_response(
+        ("1.0.0", "2020-01-01T00:00:00Z"),
+        ("2.0.0", "2021-06-01T00:00:00Z"),
+    )
+
+    versions = list(resolver.get_all_versions_with_dates(metadata, package_name="express"))
+
+    assert len(versions) == 2
+    assert all(isinstance(v, PackageVersion) for v in versions)
+    assert versions[0].version == "1.0.0"
+    assert versions[1].version == "2.0.0"
+    assert versions[0].released_at == _utc(2020, 1, 1)
+
+
+def test_get_all_versions_with_dates_skips_missing_published_at(tmp_path):
+    resolver = _make_resolver()
+    metadata = {
+        "versions": [
+            {"versionKey": {"version": "1.0.0"}, "publishedAt": ""},
+            {"versionKey": {"version": "2.0.0"}, "publishedAt": "2021-01-01T00:00:00Z"},
+        ]
+    }
+
+    versions = list(resolver.get_all_versions_with_dates(metadata))
+    assert len(versions) == 1
+    assert versions[0].version == "2.0.0"
+
+
+def test_get_all_versions_with_dates_skips_entries_missing_version(tmp_path):
+    resolver = _make_resolver()
+    metadata = {
+        "versions": [
+            {"versionKey": {"version": ""}, "publishedAt": "2020-01-01T00:00:00Z"},
+            {"versionKey": {"version": "1.0.0"}, "publishedAt": "2020-06-01T00:00:00Z"},
+        ]
+    }
+
+    versions = list(resolver.get_all_versions_with_dates(metadata))
+    assert len(versions) == 1
+    assert versions[0].version == "1.0.0"
+
+
+# ---------------------------------------------------------------------------
+# DepsDevResolver.get_package_version_at_date
+# ---------------------------------------------------------------------------
+
+
+def test_get_package_version_at_date_returns_highest_stable_before_end(tmp_path):
+    resolver = DepsDevResolver(
+        system="NPM",
+        package="express",
+        start_date=_utc(2020, 1, 1),
+        end_date=_utc(2022, 1, 1),
+        client=MagicMock(),
+    )
+    metadata = _package_response(
+        ("1.0.0", "2020-01-01T00:00:00Z"),
+        ("2.0.0", "2021-06-01T00:00:00Z"),
+        ("3.0.0", "2023-01-02T00:00:00Z"),  # after end_date
+    )
+
+    version, stub = resolver.get_package_version_at_date(metadata)
+
+    assert version == "2.0.0"
+    assert stub["_version"] == "2.0.0"
+    assert stub["_package"] == "express"
+
+
+def test_get_package_version_at_date_raises_when_all_versions_in_future(tmp_path):
+    resolver = DepsDevResolver(
+        system="NPM",
+        package="express",
+        start_date=_utc(2020, 1, 1),
+        end_date=_utc(2021, 1, 1),
+        client=MagicMock(),
+    )
+    metadata = _package_response(("1.0.0", "2022-01-01T00:00:00Z"))
+
+    with pytest.raises(ValueError, match="No version"):
+        resolver.get_package_version_at_date(metadata)
+
+
+def test_get_package_version_at_date_prefers_stable_over_prerelease(tmp_path):
+    resolver = DepsDevResolver(
+        system="NPM",
+        package="pkg",
+        start_date=_utc(2020, 1, 1),
+        end_date=_utc(2023, 1, 1),
+        client=MagicMock(),
+    )
+    metadata = _package_response(
+        ("1.0.0", "2021-01-01T00:00:00Z"),
+        ("2.0.0-beta.1", "2022-01-01T00:00:00Z"),
+    )
+
+    version, _ = resolver.get_package_version_at_date(metadata)
+    assert version == "1.0.0"
+
+
+# ---------------------------------------------------------------------------
+# DepsDevResolver.extract_dependencies / get_version_dependencies
+# ---------------------------------------------------------------------------
+
+
+def test_extract_dependencies_calls_get_requirements_via_stub(tmp_path):
+    resolver = _make_resolver()
+    resolver._client.get_requirements.return_value = _requirements_response(
+        ("body-parser", "^1.20.0", "DIRECT"),
+        ("accepts", "~1.3.8", "DIRECT"),
+    )
+    stub = {"_package": "express", "_version": "4.18.0"}
+
+    deps = resolver.extract_dependencies(stub)
+
+    resolver._client.get_requirements.assert_called_once_with("NPM", "express", "4.18.0")
+    assert deps == {"body-parser": "^1.20.0", "accepts": "~1.3.8"}
+
+
+def test_extract_dependencies_filters_out_indirect(tmp_path):
+    resolver = _make_resolver()
+    resolver._client.get_requirements.return_value = _requirements_response(
+        ("direct-dep", "^1.0.0", "DIRECT"),
+        ("indirect-dep", "^2.0.0", "INDIRECT"),
+    )
+
+    deps = resolver.extract_dependencies({"_package": "pkg", "_version": "1.0.0"})
+
+    assert "indirect-dep" not in deps
+    assert deps == {"direct-dep": "^1.0.0"}
+
+
+def test_extract_dependencies_returns_empty_on_client_error(tmp_path):
+    resolver = _make_resolver()
+    resolver._client.get_requirements.side_effect = Exception("timeout")
+
+    deps = resolver.extract_dependencies({"_package": "pkg", "_version": "1.0.0"})
+    assert deps == {}
+
+
+def test_extract_dependencies_returns_empty_when_version_missing_from_stub(tmp_path):
+    resolver = _make_resolver()
+    deps = resolver.extract_dependencies({"_package": "pkg"})
+    assert deps == {}
+    resolver._client.get_requirements.assert_not_called()
+
+
+def test_get_version_dependencies_returns_direct_only(tmp_path):
+    resolver = _make_resolver()
+    resolver._client.get_requirements.return_value = _requirements_response(
+        ("dep-a", "^1.0.0", "DIRECT"),
+        ("dep-b", "^2.0.0", "INDIRECT"),
+    )
+
+    result = resolver.get_version_dependencies("express", "4.18.0")
+    assert result == {"dep-a": "^1.0.0"}
+
+
+def test_get_version_dependencies_empty_nodes(tmp_path):
+    resolver = _make_resolver()
+    resolver._client.get_requirements.return_value = {"nodes": []}
+
+    result = resolver.get_version_dependencies("express", "4.18.0")
+    assert result == {}
+
+
+# ---------------------------------------------------------------------------
+# DepsDevResolver.resolve_dependency_version
+# ---------------------------------------------------------------------------
+
+
+def test_resolve_dependency_version_npm_caret(tmp_path):
+    resolver = _make_resolver("NPM")
+    resolver._client.get_package.return_value = _package_response(
+        ("4.17.0", "2021-01-01T00:00:00Z"),
+        ("4.18.2", "2022-01-01T00:00:00Z"),
+        ("5.0.0", "2022-06-01T00:00:00Z"),
+    )
+
+    result = resolver.resolve_dependency_version("express", "^4.0.0", _utc(2022, 3, 1))
+    assert result == "4.18.2"
+
+
+def test_resolve_dependency_version_filters_future_releases(tmp_path):
+    resolver = _make_resolver("NPM")
+    resolver._client.get_package.return_value = _package_response(
+        ("1.0.0", "2020-01-01T00:00:00Z"),
+        ("2.0.0", "2025-01-01T00:00:00Z"),  # future
+    )
+
+    result = resolver.resolve_dependency_version("pkg", "^1.0.0", _utc(2021, 1, 1))
+    assert result == "1.0.0"
+
+
+def test_resolve_dependency_version_returns_none_when_no_match(tmp_path):
+    resolver = _make_resolver("NPM")
+    resolver._client.get_package.return_value = _package_response(
+        ("1.0.0", "2020-01-01T00:00:00Z"),
+    )
+
+    result = resolver.resolve_dependency_version("pkg", "^2.0.0", _utc(2022, 1, 1))
+    assert result is None
+
+
+def test_resolve_dependency_version_memoises_result(tmp_path):
+    resolver = _make_resolver("NPM")
+    resolver._client.get_package.return_value = _package_response(
+        ("1.0.0", "2020-01-01T00:00:00Z"),
+    )
+
+    resolver.resolve_dependency_version("pkg", "*", _utc(2021, 1, 1))
+    resolver.resolve_dependency_version("pkg", "*", _utc(2021, 1, 1))
+
+    # get_package only called once for the same dep (in-memory cache)
+    assert resolver._client.get_package.call_count == 1
+
+
+def test_resolve_dependency_version_pypi_specifier(tmp_path):
+    resolver = _make_resolver("PYPI", "requests")
+    resolver._client.get_package.return_value = _package_response(
+        ("2.27.0", "2021-01-01T00:00:00Z"),
+        ("2.28.0", "2022-01-01T00:00:00Z"),
+        ("3.0.0", "2022-06-01T00:00:00Z"),
+    )
+
+    result = resolver.resolve_dependency_version("urllib3", ">=1.21.1,<3", _utc(2022, 3, 1))
+    # All three pass >=1.21.1,<3 but 3.0.0 is excluded by <3
+    assert result == "2.28.0"
+
+
+def test_resolve_dependency_version_cargo_caret(tmp_path):
+    resolver = _make_resolver("CARGO", "serde")
+    resolver._client.get_package.return_value = _package_response(
+        ("1.0.100", "2021-01-01T00:00:00Z"),
+        ("1.0.196", "2022-01-01T00:00:00Z"),
+        ("2.0.0", "2022-06-01T00:00:00Z"),
+    )
+
+    result = resolver.resolve_dependency_version("serde_json", "^1.0", _utc(2022, 3, 1))
+    assert result == "1.0.196"
+
+
+# ---------------------------------------------------------------------------
+# DepsDevResolver.get_highest_semver_version_at_date
+# ---------------------------------------------------------------------------
+
+
+def test_get_highest_semver_version_at_date_returns_latest_stable(tmp_path):
+    resolver = _make_resolver("NPM")
+    resolver._client.get_package.return_value = _package_response(
+        ("1.0.0", "2020-01-01T00:00:00Z"),
+        ("2.0.0", "2021-01-01T00:00:00Z"),
+        ("3.0.0-rc1", "2021-06-01T00:00:00Z"),
+        ("4.0.0", "2025-01-01T00:00:00Z"),  # after query date
+    )
+
+    result = resolver.get_highest_semver_version_at_date("express", _utc(2022, 1, 1))
+    assert result == "2.0.0"
+
+
+def test_get_highest_semver_version_at_date_falls_back_to_prerelease(tmp_path):
+    resolver = _make_resolver("NPM")
+    resolver._client.get_package.return_value = _package_response(
+        ("1.0.0-beta", "2020-01-01T00:00:00Z"),
+    )
+
+    result = resolver.get_highest_semver_version_at_date("pkg", _utc(2022, 1, 1))
+    assert result == "1.0.0-beta"
+
+
+def test_get_highest_semver_version_at_date_returns_none_when_nothing_before_date(tmp_path):
+    resolver = _make_resolver("NPM")
+    resolver._client.get_package.return_value = _package_response(
+        ("1.0.0", "2025-01-01T00:00:00Z"),
+    )
+
+    result = resolver.get_highest_semver_version_at_date("pkg", _utc(2022, 1, 1))
+    assert result is None
+
+
+def test_get_highest_semver_version_at_date_uses_provided_metadata(tmp_path):
+    resolver = _make_resolver("NPM")
+    preloaded_metadata = _package_response(
+        ("1.0.0", "2020-01-01T00:00:00Z"),
+        ("2.0.0", "2021-01-01T00:00:00Z"),
+    )
+
+    result = resolver.get_highest_semver_version_at_date(
+        "express", _utc(2022, 1, 1), metadata=preloaded_metadata
+    )
+
+    resolver._client.get_package.assert_not_called()
+    assert result == "2.0.0"
+
+
+# ---------------------------------------------------------------------------
+# System / ecosystem attributes
+# ---------------------------------------------------------------------------
+
+
+def test_resolver_ecosystem_attribute_is_lowercase():
+    resolver = _make_resolver("NPM")
+    assert resolver.ecosystem == "npm"
+
+
+def test_resolver_system_attribute_is_uppercase():
+    resolver = _make_resolver("cargo")
+    assert resolver.system == "CARGO"
+    assert resolver.ecosystem == "cargo"
+
+
+def test_resolver_pypi_ecosystem():
+    resolver = _make_resolver("PYPI")
+    assert resolver.ecosystem == "pypi"
+    assert resolver.system == "PYPI"
