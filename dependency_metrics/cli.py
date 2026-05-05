@@ -20,6 +20,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from .analyzer import DependencyAnalyzer, build_osv_index
 from .osv_builder import OSVBuilder
 from .resolvers import ResolverCache
+from .depsdev_client import DepsDevClient
+from .depsdev_resolver import DepsDevResolver
 from .reporting import (
     export_osv_data,
     export_worksheets,
@@ -107,7 +109,18 @@ def main():
     )
 
     parser.add_argument(
-        "--ecosystem", choices=["npm", "pypi"], help="The ecosystem to analyze (npm or pypi)"
+        "--ecosystem",
+        choices=["npm", "pypi", "cargo"],
+        help="The ecosystem to analyze (npm, pypi, or cargo). cargo requires --depsdev.",
+    )
+
+    parser.add_argument(
+        "--depsdev",
+        action="store_true",
+        help=(
+            "Use the deps.dev API for all package and dependency data. "
+            "Supports npm, pypi, and cargo. No calls are made to native registries."
+        ),
     )
 
     parser.add_argument("--package", help="The name of the package to analyze")
@@ -201,6 +214,9 @@ def main():
     if args.weighting_type == "exponential" and args.half_life is None:
         parser.error("--half-life is required when --weighting-type is exponential")
 
+    if args.ecosystem == "cargo" and not args.depsdev:
+        parser.error("--ecosystem cargo requires --depsdev")
+
     # Parse default start date
     try:
         default_start_date = _parse_date(args.start_date, "start_date")
@@ -266,13 +282,20 @@ def main():
             )
 
         input_label = input_csv.stem
+        _depsdev_suffix = "_depsdev" if args.depsdev else ""
         if args.per_release:
-            summary_file_path = output_dir / f"{input_label}_per_release_results.csv"
-            deps_file_path = output_dir / f"{input_label}_per_release_dependency_details.csv"
-            completed_file_path = output_dir / f"{input_label}_per_release_completed.csv"
+            summary_file_path = (
+                output_dir / f"{input_label}{_depsdev_suffix}_per_release_results.csv"
+            )
+            deps_file_path = (
+                output_dir / f"{input_label}{_depsdev_suffix}_per_release_dependency_details.csv"
+            )
+            completed_file_path = (
+                output_dir / f"{input_label}{_depsdev_suffix}_per_release_completed.csv"
+            )
         else:
-            summary_file_path = output_dir / f"{input_label}_bulk_results.csv"
-            deps_file_path = output_dir / f"{input_label}_dependency_details.csv"
+            summary_file_path = output_dir / f"{input_label}{_depsdev_suffix}_bulk_results.csv"
+            deps_file_path = output_dir / f"{input_label}{_depsdev_suffix}_dependency_details.csv"
             completed_file_path = None
 
         existing_status = {}
@@ -452,12 +475,18 @@ def main():
         ecosystems = sorted(
             {row["ecosystem"].lower() for row in input_rows if row.get("ecosystem")}
         )
+        # Cargo vulnerabilities are stored under "crates.io" in the OSV dataset,
+        # not "CARGO". All other ecosystems use their uppercased name.
+        _osv_ecosystem_name: Dict[str, str] = {
+            "npm": "NPM",
+            "pypi": "PYPI",
+            "cargo": "crates.io",
+        }
         osv_by_ecosystem: Dict[str, Any] = {}
         for ecosystem in ecosystems:
+            osv_filter = _osv_ecosystem_name.get(ecosystem, ecosystem.upper())
             if len(osv_df) > 0 and "ecosystem" in osv_df.columns:
-                osv_by_ecosystem[ecosystem] = osv_df[
-                    osv_df["ecosystem"] == ecosystem.upper()
-                ].copy()
+                osv_by_ecosystem[ecosystem] = osv_df[osv_df["ecosystem"] == osv_filter].copy()
             else:
                 osv_by_ecosystem[ecosystem] = osv_df
 
@@ -478,19 +507,36 @@ def main():
 
         _registry_urls = {"npm": "https://registry.npmjs.org", "pypi": "https://pypi.org/pypi"}
 
-        def _make_resolver(eco: str, pkg: str):
+        # Shared deps.dev client (created once; thread-safe via ResolverCache session)
+        _depsdev_client: Optional[DepsDevClient] = None
+        if args.depsdev:
+            _depsdev_client = DepsDevClient(cache=resolver_cache)
+
+        _eco_to_system = {"npm": "NPM", "pypi": "PYPI", "cargo": "CARGO"}
+
+        def _make_resolver(eco: str, pkg: str, start=None, end=None):
+            _start = start or default_start_date
+            _end = end or datetime.today()
+            if args.depsdev and _depsdev_client is not None:
+                return DepsDevResolver(
+                    system=_eco_to_system.get(eco, eco.upper()),
+                    package=pkg,
+                    start_date=_start,
+                    end_date=_end,
+                    client=_depsdev_client,
+                )
             if eco == "npm":
                 return NpmResolver(
                     package=pkg,
-                    start_date=default_start_date,
-                    end_date=datetime.today(),
+                    start_date=_start,
+                    end_date=_end,
                     registry_urls=_registry_urls,
                     cache=resolver_cache,
                 )
             return _PyPIResolverCls(
                 package=pkg,
-                start_date=default_start_date,
-                end_date=datetime.today(),
+                start_date=_start,
+                end_date=_end,
                 registry_urls=_registry_urls,
                 cache=resolver_cache,
             )
@@ -501,6 +547,7 @@ def main():
             if r.get("ecosystem") and r.get("package_name")
         }
         prefetch_workers = min(16, max(1, len(unique_packages)))
+        _valid_prefetch_ecosystems = {"npm", "pypi", "cargo"} if args.depsdev else {"npm", "pypi"}
         with ThreadPoolExecutor(max_workers=prefetch_workers) as prefetch_exec:
             prefetch_futs = {
                 prefetch_exec.submit(_make_resolver(eco, pkg).fetch_package_metadata, pkg): (
@@ -508,7 +555,7 @@ def main():
                     pkg,
                 )
                 for eco, pkg in unique_packages
-                if eco in {"npm", "pypi"}
+                if eco in _valid_prefetch_ecosystems
             }
             for f in as_completed(prefetch_futs):
                 try:
@@ -540,8 +587,13 @@ def main():
                 try:
                     if not ecosystem or not package_name or not end_date_raw:
                         raise ValueError("ecosystem, package_name, and end_date are required.")
-                    if ecosystem not in {"npm", "pypi"}:
+                    _valid_ecosystems = (
+                        {"npm", "pypi", "cargo"} if args.depsdev else {"npm", "pypi"}
+                    )
+                    if ecosystem not in _valid_ecosystems:
                         raise ValueError(f"Unsupported ecosystem: {ecosystem}.")
+                    if ecosystem == "cargo" and not args.depsdev:
+                        raise ValueError("ecosystem 'cargo' requires --depsdev.")
 
                     start_date = default_start_date
                     if start_date_raw:
@@ -611,6 +663,11 @@ def main():
             min_start = min(row["start_date"] for row in valid_rows)
             max_end = max(row["end_date"] for row in valid_rows)
 
+            _injected_resolver = (
+                _make_resolver(ecosystem, package_name, min_start, max_end)
+                if args.depsdev
+                else None
+            )
             analyzer = DependencyAnalyzer(
                 ecosystem=ecosystem,
                 package=package_name,
@@ -621,6 +678,7 @@ def main():
                 output_dir=output_dir,
                 resolver_cache=resolver_cache,
                 severity_breakdown=args.severity_breakdown,
+                resolver=_injected_resolver,
             )
             analyzer._osv_index = osv_index_by_ecosystem.get(ecosystem, {})
             analyzer._osv_df = osv_by_ecosystem.get(ecosystem, pd.DataFrame())
@@ -686,8 +744,13 @@ def main():
                 try:
                     if not ecosystem or not package_name or not end_date_raw:
                         raise ValueError("ecosystem, package_name, and end_date are required.")
-                    if ecosystem not in {"npm", "pypi"}:
+                    _valid_ecosystems_pr = (
+                        {"npm", "pypi", "cargo"} if args.depsdev else {"npm", "pypi"}
+                    )
+                    if ecosystem not in _valid_ecosystems_pr:
                         raise ValueError(f"Unsupported ecosystem: {ecosystem}.")
+                    if ecosystem == "cargo" and not args.depsdev:
+                        raise ValueError("ecosystem 'cargo' requires --depsdev.")
 
                     start_date = default_start_date
                     if start_date_raw:
@@ -761,6 +824,11 @@ def main():
             min_start = min(row["start_date"] for row in valid_rows)
             max_end = max(row["end_date"] for row in valid_rows)
 
+            _injected_resolver_pr = (
+                _make_resolver(ecosystem, package_name, min_start, max_end)
+                if args.depsdev
+                else None
+            )
             analyzer = DependencyAnalyzer(
                 ecosystem=ecosystem,
                 package=package_name,
@@ -771,6 +839,7 @@ def main():
                 output_dir=output_dir,
                 resolver_cache=resolver_cache,
                 severity_breakdown=args.severity_breakdown,
+                resolver=_injected_resolver_pr,
             )
             analyzer._osv_index = osv_index_by_ecosystem.get(ecosystem, {})
             analyzer._osv_df = osv_by_ecosystem.get(ecosystem, pd.DataFrame())
@@ -1081,6 +1150,19 @@ def main():
         logging.getLogger("dependency_metrics").info(
             "Analyzing %s package: %s", args.ecosystem, args.package
         )
+        _single_resolver = None
+        if args.depsdev:
+            _single_cache = ResolverCache(cache_dir=output_dir / "cache")
+            _single_client = DepsDevClient(cache=_single_cache)
+            _single_resolver = DepsDevResolver(
+                system={"npm": "NPM", "pypi": "PYPI", "cargo": "CARGO"}.get(
+                    args.ecosystem, args.ecosystem.upper()
+                ),
+                package=args.package,
+                start_date=start_date,
+                end_date=end_date,
+                client=_single_client,
+            )
         analyzer = DependencyAnalyzer(
             ecosystem=args.ecosystem,
             package=args.package,
@@ -1089,6 +1171,7 @@ def main():
             weighting_type=args.weighting_type,
             half_life=args.half_life,
             output_dir=output_dir,
+            resolver=_single_resolver,
         )
 
         try:

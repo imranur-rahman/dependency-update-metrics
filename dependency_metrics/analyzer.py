@@ -16,6 +16,7 @@ from packaging import version as pkg_version
 
 from .osv_builder import OSVBuilder
 from .osv_service import OSVService
+from .interfaces import PackageResolver
 from .resolvers import (
     NpmResolver,
     PyPIResolver,
@@ -52,11 +53,12 @@ class DependencyAnalyzer:
         output_dir: Path = Path("./output"),
         resolver_cache: Optional[ResolverCache] = None,
         severity_breakdown: bool = False,
+        resolver: Optional[PackageResolver] = None,
     ):
         """Initialize dependency analyzer.
 
         Args:
-            ecosystem: Ecosystem name (npm, pypi)
+            ecosystem: Ecosystem name (npm, pypi, cargo)
             package: Package name to analyze
             start_date: Start date for analysis
             end_date: End date for analysis
@@ -65,6 +67,8 @@ class DependencyAnalyzer:
             output_dir: Output directory for results
             resolver_cache: Shared resolver cache for minimizing network calls
             severity_breakdown: Whether to compute per-severity MTTR metrics
+            resolver: Optional pre-built resolver; when provided the ecosystem
+                      does not need to be npm or pypi (e.g. cargo via deps.dev).
         """
         self.ecosystem = ecosystem.lower()
         self.package = package
@@ -90,10 +94,12 @@ class DependencyAnalyzer:
         self._osv_df: Optional[pd.DataFrame] = None
         self._osv_index: Optional[Dict[str, List[Dict]]] = None
 
-        # Registry URLs
+        # Registry URLs (used by native resolvers only)
         self.registry_urls = {"npm": "https://registry.npmjs.org", "pypi": "https://pypi.org/pypi"}
-        self.resolver: Union[NpmResolver, PyPIResolver]
-        if self.ecosystem == "npm":
+        if resolver is not None:
+            # Injected resolver (e.g. DepsDevResolver) — no native registry calls.
+            self.resolver = resolver
+        elif self.ecosystem == "npm":
             self.resolver = NpmResolver(
                 package=self.package,
                 start_date=self.start_date,
@@ -245,23 +251,32 @@ class DependencyAnalyzer:
                     if latest_date is None or pub_date > latest_date:
                         latest_date = pub_date
 
-            try:
-                assert isinstance(self.resolver, PyPIResolver)
-                version_metadata = self.resolver._get_pypi_version_metadata(
-                    self.package, latest_version
-                )
-                version_data = {
-                    "upload_time": latest_date.isoformat() if latest_date else None,
-                    "requires_dist": version_metadata.get("info", {}).get("requires_dist", []),
-                }
-            except Exception:
-                version_data = {
-                    "upload_time": latest_date.isoformat() if latest_date else None,
-                    "requires_dist": [],
-                }
+            if isinstance(self.resolver, PyPIResolver):
+                try:
+                    version_metadata = self.resolver._get_pypi_version_metadata(
+                        self.package, latest_version
+                    )
+                    version_data = {
+                        "upload_time": latest_date.isoformat() if latest_date else None,
+                        "requires_dist": version_metadata.get("info", {}).get("requires_dist", []),
+                    }
+                except Exception:
+                    version_data = {
+                        "upload_time": latest_date.isoformat() if latest_date else None,
+                        "requires_dist": [],
+                    }
+            else:
+                # Generic path: build a stub dict that extract_dependencies can use
+                version_data = {"_package": self.package, "_version": latest_version}
             return latest_version, version_data
 
-        raise ValueError(f"Unsupported ecosystem: {self.ecosystem}")
+        # Generic path for injected resolvers (e.g. DepsDevResolver for cargo)
+        versions = list(self.resolver.get_all_versions_with_dates(metadata))
+        if not versions:
+            raise ValueError(f"No versions found in metadata for {self.package}")
+        latest_pv = max(versions, key=lambda pv: pv.released_at)
+        stub = {"_package": self.package, "_version": latest_pv.version}
+        return latest_pv.version, stub
 
     def analyze_bulk_rows(
         self,
