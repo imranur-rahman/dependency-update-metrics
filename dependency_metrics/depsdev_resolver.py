@@ -309,7 +309,8 @@ class DepsDevResolver:
     def resolve_dependency_version(
         self, dependency: str, constraint: str, before_date: datetime
     ) -> Optional[str]:
-        """Resolve *constraint* for *dependency* to the highest matching version before *before_date*.
+        """Resolve *constraint* for *dependency* to the highest matching version
+        released on or before *before_date*.
 
         Results are memoised per ``(dependency, constraint, date)`` key.
         """

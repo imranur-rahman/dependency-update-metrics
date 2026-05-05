@@ -8,10 +8,8 @@ from deps.dev — no calls are made to npm, PyPI, or crates.io registries.
 from __future__ import annotations
 
 import logging
-from typing import TYPE_CHECKING, Dict, Optional
+from typing import TYPE_CHECKING, Dict
 from urllib.parse import quote
-
-import requests
 
 if TYPE_CHECKING:
     from .resolvers import ResolverCache
