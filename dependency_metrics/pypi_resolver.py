@@ -127,7 +127,7 @@ class PyPIResolver:
             allow_all_prereleases=False,
             format_control=None,
             prefer_binary=False,
-            ignore_requires_python=None,
+            ignore_requires_python=False,
             before=before,
         )
         finder = PackageFinder.create(
