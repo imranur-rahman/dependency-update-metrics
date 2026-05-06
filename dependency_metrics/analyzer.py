@@ -620,22 +620,38 @@ class DependencyAnalyzer:
             all_dep_names.update(deps.keys())
 
         if not all_dep_names:
+
+            def _empty_summary(ver, release_date):
+                base = {
+                    "ecosystem": self.ecosystem,
+                    "package_name": self.package,
+                    "package_version": ver,
+                    "package_release_date": release_date.date().isoformat(),
+                    "window_start": start_date.date().isoformat(),
+                    "window_end": release_date.date().isoformat(),
+                    "mttu": 0.0,
+                    "num_dependencies": 0,
+                    "status": "ok",
+                    "error": "",
+                }
+                if self.severity_breakdown:
+                    base.update(
+                        {
+                            "mttr_critical": 0.0,
+                            "mttr_high": 0.0,
+                            "mttr_medium": 0.0,
+                            "mttr_low": 0.0,
+                            "mttr_all_severities": 0.0,
+                        }
+                    )
+                else:
+                    base["mttr"] = 0.0
+                return base
+
             return [
                 {
                     "row_num": row.get("row_num"),
-                    "summary": {
-                        "ecosystem": self.ecosystem,
-                        "package_name": self.package,
-                        "package_version": ver,
-                        "package_release_date": release_date.date().isoformat(),
-                        "window_start": start_date.date().isoformat(),
-                        "window_end": release_date.date().isoformat(),
-                        "mttu": 0.0,
-                        "mttr": 0.0,
-                        "num_dependencies": 0,
-                        "status": "ok",
-                        "error": "",
-                    },
+                    "summary": _empty_summary(ver, release_date),
                     "dependency_frames": [],
                 }
                 for ver, release_date in releases_in_window
