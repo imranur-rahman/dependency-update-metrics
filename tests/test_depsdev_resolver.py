@@ -1,5 +1,6 @@
 """Tests for DepsDevResolver in dependency_metrics/depsdev_resolver.py."""
 
+import threading
 from datetime import datetime, timezone
 from pathlib import Path
 from unittest.mock import MagicMock
@@ -583,3 +584,145 @@ def test_resolver_pypi_ecosystem():
     resolver = _make_resolver("PYPI")
     assert resolver.ecosystem == "pypi"
     assert resolver.system == "PYPI"
+
+
+# ---------------------------------------------------------------------------
+# Cross-worker cache sharing via fetch_package_metadata
+# ---------------------------------------------------------------------------
+
+
+def _make_shared_client() -> MagicMock:
+    """Return a mock DepsDevClient whose _cache is a real shared ResolverCache."""
+    from dependency_metrics.resolvers import ResolverCache
+
+    client = MagicMock(spec=DepsDevClient)
+    client._cache = ResolverCache(cache_dir=None)
+    return client
+
+
+def _make_resolver_with_client(client, system="NPM", package="express") -> DepsDevResolver:
+    return DepsDevResolver(
+        system=system,
+        package=package,
+        start_date=_utc(2020, 1, 1),
+        end_date=_utc(2023, 1, 1),
+        client=client,
+    )
+
+
+def test_fetch_package_metadata_populates_shared_metadata_cache():
+    """After a network fetch, the result is stored in the shared metadata_cache."""
+    client = _make_shared_client()
+    client.get_package.return_value = _package_response(("1.0.0", "2021-01-01T00:00:00Z"))
+    resolver = _make_resolver_with_client(client)
+
+    resolver.fetch_package_metadata("lodash")
+
+    assert ("NPM", "lodash") in client._cache.metadata_cache
+
+
+def test_second_resolver_reads_from_shared_cache_without_api_call():
+    """A second resolver sharing the same client cache skips the network call."""
+    client = _make_shared_client()
+    client.get_package.return_value = _package_response(("1.0.0", "2021-01-01T00:00:00Z"))
+
+    resolver1 = _make_resolver_with_client(client, package="pkg-a")
+    resolver2 = _make_resolver_with_client(client, package="pkg-b")
+
+    # Worker 1 fetches lodash — triggers one API call
+    result1 = resolver1.fetch_package_metadata("lodash")
+
+    # Worker 2 fetches lodash — should hit the shared metadata_cache, not the API
+    result2 = resolver2.fetch_package_metadata("lodash")
+
+    assert client.get_package.call_count == 1
+    assert result1 == result2
+
+
+def test_instance_cache_takes_priority_over_shared_cache():
+    """Once a result is in the per-instance cache, the shared cache is not consulted."""
+    client = _make_shared_client()
+    instance_data = {"versions": [{"from": "instance_cache"}]}
+    resolver = _make_resolver_with_client(client)
+
+    # Pre-populate the per-instance cache directly
+    resolver._package_cache["lodash"] = instance_data
+
+    # Also put different data in the shared cache to confirm it is not checked
+    client._cache.metadata_set(("NPM", "lodash"), {"versions": [{"from": "shared_cache"}]})
+
+    result = resolver.fetch_package_metadata("lodash")
+
+    assert result == instance_data
+    client.get_package.assert_not_called()
+
+
+def test_fetch_package_metadata_on_error_stores_empty_in_both_caches():
+    """On API failure, an empty versions dict is stored in both caches."""
+    client = _make_shared_client()
+    client.get_package.side_effect = RuntimeError("network error")
+    resolver = _make_resolver_with_client(client)
+
+    result = resolver.fetch_package_metadata("broken-pkg")
+
+    assert result == {"versions": []}
+    # Per-instance cache should have it
+    assert resolver._package_cache["broken-pkg"] == {"versions": []}
+    # Shared metadata_cache should also have it (prevents other workers retrying)
+    assert client._cache.metadata_cache.get(("NPM", "broken-pkg")) == {"versions": []}
+
+
+def test_concurrent_workers_make_only_one_api_call_for_shared_dependency():
+    """When N workers concurrently fetch the same dependency, get_package is called once.
+
+    The first thread to resolve the key populates the shared metadata_cache; all
+    subsequent threads find the cached entry and skip the network call.
+    """
+    client = _make_shared_client()
+    client.get_package.return_value = _package_response(("4.17.21", "2021-01-01T00:00:00Z"))
+
+    num_workers = 8
+    barrier = threading.Barrier(num_workers)
+    results = [None] * num_workers
+    errors = []
+
+    def worker(idx):
+        resolver = _make_resolver_with_client(client, package=f"pkg-{idx}")
+        barrier.wait()  # all threads start fetching simultaneously
+        try:
+            results[idx] = resolver.fetch_package_metadata("lodash")
+        except Exception as exc:
+            errors.append(exc)
+
+    threads = [threading.Thread(target=worker, args=(i,)) for i in range(num_workers)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+
+    assert not errors
+    # All workers should get the correct data
+    expected = _package_response(("4.17.21", "2021-01-01T00:00:00Z"))
+    for r in results:
+        assert r == expected
+    # Only one real API call should have been made (the rest hit shared cache)
+    assert client.get_package.call_count == 1
+
+
+def test_shared_cache_is_keyed_by_system_and_package_name():
+    """Entries in the shared metadata_cache use (system, package_name) as the key."""
+    client = _make_shared_client()
+    npm_data = _package_response(("1.0.0", "2021-01-01T00:00:00Z"))
+    pypi_data = _package_response(("2.0.0", "2021-01-01T00:00:00Z"))
+
+    client.get_package.return_value = npm_data
+    npm_resolver = _make_resolver_with_client(client, system="NPM")
+    npm_resolver.fetch_package_metadata("requests")
+
+    client.get_package.return_value = pypi_data
+    pypi_resolver = _make_resolver_with_client(client, system="PYPI")
+    pypi_resolver.fetch_package_metadata("requests")
+
+    # Different systems → different cache entries, no cross-contamination
+    assert client._cache.metadata_cache[("NPM", "requests")] == npm_data
+    assert client._cache.metadata_cache[("PYPI", "requests")] == pypi_data

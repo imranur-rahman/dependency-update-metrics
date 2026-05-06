@@ -1,6 +1,8 @@
 """Tests for ResolverCache in dependency_metrics/resolvers.py."""
 
 import json
+import sqlite3
+import threading
 from collections import OrderedDict
 from pathlib import Path
 
@@ -214,3 +216,192 @@ def test_warm_from_disk_no_cache_dir_is_noop():
     cache = ResolverCache(cache_dir=None)
     cache.warm_from_disk()  # should not raise
     assert cache._disk_preload == {}
+
+
+# ---------------------------------------------------------------------------
+# SQLite backend — storage, schema, and WAL mode
+# ---------------------------------------------------------------------------
+
+
+def test_sqlite_db_created_at_expected_path(tmp_path):
+    cache = _make_cache(tmp_path)
+    cache.save_json("depsdev_package", "NPM:lodash", {"versions": []})
+
+    db_path = tmp_path / "cache" / "cache.db"
+    assert db_path.exists(), "cache.db should be created on first save_json call"
+
+
+def test_sqlite_wal_mode_is_enabled(tmp_path):
+    cache = _make_cache(tmp_path)
+    cache.save_json("depsdev_package", "NPM:lodash", {"versions": []})
+
+    db_path = tmp_path / "cache" / "cache.db"
+    conn = sqlite3.connect(str(db_path))
+    row = conn.execute("PRAGMA journal_mode").fetchone()
+    conn.close()
+    assert row[0] == "wal"
+
+
+def test_sqlite_table_has_expected_schema(tmp_path):
+    cache = _make_cache(tmp_path)
+    cache.save_json("ns", "k", {})
+
+    db_path = tmp_path / "cache" / "cache.db"
+    conn = sqlite3.connect(str(db_path))
+    cols = {row[1] for row in conn.execute("PRAGMA table_info(cache)").fetchall()}
+    conn.close()
+    assert cols == {"namespace", "key", "value"}
+
+
+def test_save_json_overwrites_existing_key(tmp_path):
+    cache = _make_cache(tmp_path)
+    cache.save_json("ns", "k", {"v": 1})
+    cache.save_json("ns", "k", {"v": 2})
+
+    result = cache.load_json("ns", "k")
+    assert result == {"v": 2}
+
+
+def test_namespaces_are_isolated(tmp_path):
+    cache = _make_cache(tmp_path)
+    cache.save_json("ns_a", "key", {"source": "a"})
+    cache.save_json("ns_b", "key", {"source": "b"})
+
+    assert cache.load_json("ns_a", "key") == {"source": "a"}
+    assert cache.load_json("ns_b", "key") == {"source": "b"}
+
+
+def test_many_keys_across_namespaces_all_retrievable(tmp_path):
+    cache = _make_cache(tmp_path)
+    written = {}
+    for ns in ("depsdev_package", "depsdev_req", "npm_time"):
+        for i in range(10):
+            key = f"{ns}:pkg{i}"
+            data = {"ns": ns, "i": i}
+            cache.save_json(ns, key, data)
+            written[(ns, key)] = data
+
+    for (ns, key), expected in written.items():
+        assert cache.load_json(ns, key) == expected
+
+
+def test_concurrent_reads_from_multiple_threads(tmp_path):
+    """Multiple threads can read the same key from SQLite simultaneously."""
+    cache = _make_cache(tmp_path)
+    cache.save_json("depsdev_package", "NPM:lodash", {"versions": ["1.0.0"]})
+
+    results = {}
+    errors = []
+
+    def reader(tid):
+        try:
+            results[tid] = cache.load_json("depsdev_package", "NPM:lodash")
+        except Exception as exc:
+            errors.append(exc)
+
+    threads = [threading.Thread(target=reader, args=(i,)) for i in range(8)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+
+    assert not errors
+    for i in range(8):
+        assert results[i] == {"versions": ["1.0.0"]}
+
+
+def test_concurrent_writes_from_multiple_threads_all_persist(tmp_path):
+    """Each thread writes a unique key; all keys survive after all threads finish."""
+    cache = _make_cache(tmp_path)
+    errors = []
+
+    def writer(tid):
+        try:
+            cache.save_json("depsdev_package", f"NPM:pkg{tid}", {"tid": tid})
+        except Exception as exc:
+            errors.append(exc)
+
+    threads = [threading.Thread(target=writer, args=(i,)) for i in range(8)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+
+    assert not errors
+    for i in range(8):
+        assert cache.load_json("depsdev_package", f"NPM:pkg{i}") == {"tid": i}
+
+
+def test_each_thread_gets_its_own_sqlite_connection(tmp_path):
+    """_get_sqlite_conn() returns different Connection objects per thread."""
+    cache = _make_cache(tmp_path)
+    connections = {}
+
+    def grab_conn(tid):
+        connections[tid] = id(cache._get_sqlite_conn())
+
+    threads = [threading.Thread(target=grab_conn, args=(i,)) for i in range(4)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+
+    # All thread-local connection IDs should be distinct
+    assert len(set(connections.values())) == 4
+
+
+# ---------------------------------------------------------------------------
+# warm_from_disk — SQLite-backed behaviour
+# ---------------------------------------------------------------------------
+
+
+def test_warm_from_disk_noop_when_db_file_absent(tmp_path):
+    """warm_from_disk() does nothing when cache.db does not exist yet."""
+    cache = ResolverCache(cache_dir=tmp_path / "cache")
+    cache.warm_from_disk()
+    assert cache._disk_preload == {}
+
+
+def test_warm_from_disk_loads_multiple_target_namespaces(tmp_path):
+    cache = ResolverCache(cache_dir=tmp_path / "cache")
+    cache.save_json("depsdev_package", "NPM:express", {"versions": []})
+    cache.save_json("depsdev_req", "NPM:express:4.0.0", {"nodes": []})
+    cache.save_json("npm_time", "npm:express", {"4.0.0": "2020-01-01"})
+    cache._disk_preload.clear()
+
+    cache.warm_from_disk()
+
+    assert ("depsdev_package", "NPM:express") in cache._disk_preload
+    assert ("depsdev_req", "NPM:express:4.0.0") in cache._disk_preload
+    assert ("npm_time", "npm:express") in cache._disk_preload
+
+
+def test_warm_from_disk_values_match_saved_data(tmp_path):
+    data = {"versions": [{"versionKey": {"version": "1.0.0"}}]}
+    cache = ResolverCache(cache_dir=tmp_path / "cache")
+    cache.save_json("depsdev_package", "NPM:lodash", data)
+    cache._disk_preload.clear()
+
+    cache.warm_from_disk()
+
+    assert cache._disk_preload[("depsdev_package", "NPM:lodash")] == data
+
+
+def test_warm_from_disk_preloaded_entry_bypasses_sqlite_on_load(tmp_path):
+    """After warm_from_disk, load_json returns the preloaded value without a SQLite query."""
+    cache = ResolverCache(cache_dir=tmp_path / "cache")
+    original = {"versions": ["1.0.0"]}
+    cache.save_json("depsdev_package", "NPM:lodash", original)
+    cache._disk_preload.clear()
+    cache.warm_from_disk()
+
+    # Overwrite the DB entry so a live SQLite read would return something different
+    cache._get_sqlite_conn().execute(
+        "UPDATE cache SET value=? WHERE namespace=? AND key=?",
+        (json.dumps({"versions": ["9.9.9"]}), "depsdev_package", "NPM:lodash"),
+    )
+    cache._get_sqlite_conn().commit()
+
+    # load_json should serve the preloaded (original) value, not the updated one
+    result = cache.load_json("depsdev_package", "NPM:lodash")
+    assert result == original
