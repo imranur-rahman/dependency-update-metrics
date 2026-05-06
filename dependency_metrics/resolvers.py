@@ -7,8 +7,8 @@ from __future__ import annotations
 import bisect
 import json
 import logging
+import sqlite3
 import subprocess
-import hashlib
 import threading
 from collections import OrderedDict
 from urllib.parse import quote
@@ -163,7 +163,7 @@ class ResolverCache:
     _thread_local: threading.local = field(default_factory=threading.local, init=False, repr=False)
     _lock: threading.Lock = field(default_factory=threading.Lock, init=False, repr=False)
     _metadata_locks: Dict[Any, threading.Lock] = field(default_factory=dict, init=False, repr=False)
-    _disk_preload: Dict[str, Dict[str, Any]] = field(default_factory=dict, init=False, repr=False)
+    _disk_preload: Dict[Tuple[str, str], Any] = field(default_factory=dict, init=False, repr=False)
 
     def get_key_lock(self, key: Any) -> threading.Lock:
         """Return a per-cache-key Lock, creating one on first use.
@@ -216,59 +216,83 @@ class ResolverCache:
         """Write an entry to version_prefix_cache with FIFO eviction."""
         self._capped_set(self.version_prefix_cache, key, value, VERSION_PREFIX_CACHE_MAX)
 
-    def _cache_path(self, namespace: str, key: str) -> Optional[Path]:
-        if self.cache_dir is None:
-            return None
-        digest = hashlib.sha256(key.encode("utf-8")).hexdigest()
-        return self.cache_dir / namespace / f"{digest}.json"
+    def _get_sqlite_conn(self) -> sqlite3.Connection:
+        """Get or create a thread-local SQLite connection to the cache DB.
+
+        Uses WAL mode so multiple reader threads can query concurrently while
+        a writer commits without blocking reads.
+        """
+        conn = getattr(self._thread_local, "sqlite_conn", None)
+        if conn is not None:
+            return conn
+        assert self.cache_dir is not None
+        self.cache_dir.mkdir(parents=True, exist_ok=True)
+        db_path = self.cache_dir / "cache.db"
+        conn = sqlite3.connect(str(db_path), check_same_thread=False)
+        conn.execute("PRAGMA journal_mode=WAL")
+        conn.execute("PRAGMA synchronous=NORMAL")
+        conn.execute(
+            "CREATE TABLE IF NOT EXISTS cache "
+            "(namespace TEXT NOT NULL, key TEXT NOT NULL, value TEXT NOT NULL, "
+            "PRIMARY KEY (namespace, key))"
+        )
+        conn.commit()
+        self._thread_local.sqlite_conn = conn
+        return conn
 
     def warm_from_disk(self) -> None:
-        """Load on-disk cache JSON files into memory up to 30% of total RAM (by RSS delta).
+        """Pre-load hot cache namespaces from SQLite into _disk_preload.
 
-        The "metadata" namespace is skipped — it is populated by the prefetch phase
-        into metadata_cache and warming it into _disk_preload would pin all metadata
-        objects in memory for the entire run with no way to evict them.
+        Reads up to WARM_DISK_FRACTION of total RAM worth of entries.
+        The "metadata" namespace is skipped — it is populated by the prefetch
+        phase into metadata_cache and warming it into _disk_preload would pin
+        all metadata objects in memory with no way to evict them.
         """
-        if self.cache_dir is None or not self.cache_dir.exists():
+        if self.cache_dir is None:
+            return
+        db_path = self.cache_dir / "cache.db"
+        if not db_path.exists():
             return
         max_bytes = warm_disk_max_bytes()
         proc = psutil.Process()
         initial_rss = proc.memory_info().rss
-        files_since_check = 0
-        truncated = False
+        target_namespaces = tuple(
+            ns
+            for ns in (
+                "depsdev_package",
+                "depsdev_req",
+                "npm_time",
+                "resolve_npm",
+                "invalid_versions",
+            )
+            if ns not in WARM_SKIP_NAMESPACES
+        )
         total = 0
-        for namespace_dir in self.cache_dir.iterdir():
-            if not namespace_dir.is_dir():
-                continue
-            ns = namespace_dir.name
-            if ns in WARM_SKIP_NAMESPACES:
-                logger.debug("Cache warm-up: skipping namespace '%s' (excluded).", ns)
-                continue
-            self._disk_preload.setdefault(ns, {})
-            for cache_file in namespace_dir.glob("*.json"):
-                if truncated:
-                    break
-                try:
-                    with cache_file.open(encoding="utf-8") as fh:
-                        self._disk_preload[ns][cache_file.stem] = json.load(fh)
-                    total += 1
-                    files_since_check += 1
-                    if files_since_check >= 500:
-                        files_since_check = 0
-                        rss_delta = proc.memory_info().rss - initial_rss
-                        if rss_delta > max_bytes:
-                            logger.warning(
-                                "Cache warm-up: reached %.0f MB RSS limit (%.0f%% of total RAM). "
-                                "Remaining entries will be read from disk on demand.",
-                                max_bytes / 1024 / 1024,
-                                WARM_DISK_FRACTION * 100,
-                            )
-                            truncated = True
-                            break
-                except Exception:
-                    pass
-            if truncated:
-                break
+        truncated = False
+        try:
+            conn = self._get_sqlite_conn()
+            placeholders = ",".join("?" * len(target_namespaces))
+            rows = conn.execute(
+                f"SELECT namespace, key, value FROM cache " f"WHERE namespace IN ({placeholders})",
+                target_namespaces,
+            ).fetchall()
+            for ns, k, raw in rows:
+                self._disk_preload[(ns, k)] = json.loads(raw)
+                total += 1
+                if total % 500 == 0:
+                    rss_delta = proc.memory_info().rss - initial_rss
+                    if rss_delta > max_bytes:
+                        logger.warning(
+                            "Cache warm-up: reached %.0f MB RSS limit (%.0f%% of total RAM). "
+                            "Remaining entries will be read from SQLite on demand.",
+                            max_bytes / 1024 / 1024,
+                            WARM_DISK_FRACTION * 100,
+                        )
+                        truncated = True
+                        break
+        except Exception as exc:
+            logger.warning("Cache warm-up failed: %s", exc)
+            return
         rss_delta_mb = (proc.memory_info().rss - initial_rss) / 1024 / 1024
         logger.info(
             "Cache warm-up: loaded %d entries (+%.0f MB RSS)%s",
@@ -311,30 +335,32 @@ class ResolverCache:
         return self.get_session().get(url, **kwargs)
 
     def load_json(self, namespace: str, key: str) -> Optional[Dict[str, Any]]:
-        path = self._cache_path(namespace, key)
-        if path is None:
+        if self.cache_dir is None:
             return None
-        # Check in-memory preload before hitting disk
-        preloaded = self._disk_preload.get(namespace, {}).get(path.stem)
+        # Check in-memory preload before hitting SQLite
+        preloaded = self._disk_preload.get((namespace, key))
         if preloaded is not None:
             return preloaded
-        if not path.exists():
-            return None
         try:
-            with path.open("r", encoding="utf-8") as handle:
-                return json.load(handle)
-        except (OSError, json.JSONDecodeError):
+            conn = self._get_sqlite_conn()
+            row = conn.execute(
+                "SELECT value FROM cache WHERE namespace=? AND key=?", (namespace, key)
+            ).fetchone()
+            return json.loads(row[0]) if row else None
+        except Exception:
             return None
 
     def save_json(self, namespace: str, key: str, data: Dict[str, Any]) -> None:
-        path = self._cache_path(namespace, key)
-        if path is None:
+        if self.cache_dir is None:
             return
         try:
-            path.parent.mkdir(parents=True, exist_ok=True)
-            with path.open("w", encoding="utf-8") as handle:
-                json.dump(data, handle)
-        except OSError:
+            conn = self._get_sqlite_conn()
+            conn.execute(
+                "INSERT OR REPLACE INTO cache(namespace, key, value) VALUES (?,?,?)",
+                (namespace, key, json.dumps(data)),
+            )
+            conn.commit()
+        except Exception:
             return
 
     def load_invalid_versions(self, ecosystem: str, package_name: str) -> Set[str]:

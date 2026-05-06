@@ -28,6 +28,7 @@ def _utc(year: int, month: int, day: int) -> datetime:
 
 def _make_resolver(system: str = "NPM", package: str = "express") -> DepsDevResolver:
     client = MagicMock(spec=DepsDevClient)
+    client._cache = ResolverCache(cache_dir=None)
     return DepsDevResolver(
         system=system,
         package=package,

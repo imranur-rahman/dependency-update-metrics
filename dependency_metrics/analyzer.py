@@ -5,6 +5,7 @@ Core dependency analyzer for calculating TTU and TTR metrics.
 import bisect
 import logging
 import math
+import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
@@ -332,7 +333,8 @@ class DependencyAnalyzer:
 
         # OPT-4: Fetch all dependency metadata in parallel (independent HTTP calls)
         if dependencies:
-            with ThreadPoolExecutor(max_workers=min(8, len(dependencies))) as inner_pool:
+            _inner_workers = min(len(dependencies), min((os.cpu_count() or 4) * 2, 32))
+            with ThreadPoolExecutor(max_workers=_inner_workers) as inner_pool:
                 meta_futures = {
                     inner_pool.submit(self.fetch_package_metadata, dep_name): dep_name
                     for dep_name in dependencies

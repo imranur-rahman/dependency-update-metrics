@@ -9,9 +9,9 @@ from __future__ import annotations
 import psutil
 
 # Fraction of *total* RAM to use for disk-cache warm-up.
-# Kept at 0.10 so the warm-up pins only ~3 GB on a 30 GB machine, leaving
-# headroom for metadata cache + per-worker analysis state.
-WARM_DISK_FRACTION: float = 0.10
+# 0.25 gives ~8 GB on a 32 GB machine; the SQLite-backed warm-up is cheap
+# enough (single SELECT) that a larger preload doesn't meaningfully delay startup.
+WARM_DISK_FRACTION: float = 0.25
 
 
 def warm_disk_max_bytes() -> int:
@@ -27,9 +27,10 @@ WARM_SKIP_NAMESPACES: frozenset = frozenset({"metadata"})
 
 # Max entries in metadata_cache (combined across all ecosystems).
 # Each npm entry is ~1-2 MB; each PyPI entry ~100-500 KB.
-# 500 entries ≈ 500 MB–1 GB — enough for 8 workers and their active dependencies.
+# 5 000 entries ≈ 5–10 GB — covers the working set for a 10k-package batch run
+# on a laptop/workstation with 16–64 GB RAM. LRU eviction protects smaller machines.
 # None = unlimited.
-METADATA_CACHE_MAX: int | None = 500
+METADATA_CACHE_MAX: int | None = 5_000
 
 # Per-ecosystem in-memory resolve-cache caps (max number of entries).
 # None means unlimited.

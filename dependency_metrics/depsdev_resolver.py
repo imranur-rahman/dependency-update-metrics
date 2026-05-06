@@ -199,11 +199,26 @@ class DepsDevResolver:
     def fetch_package_metadata(self, package_name: str) -> Dict:
         """Fetch and cache the GetPackage response for *package_name*.
 
+        Checks caches in priority order:
+          1. Per-instance dict (zero-cost, thread-local)
+          2. Shared ResolverCache.metadata_cache (cross-worker in-memory)
+          3. SQLite disk cache / network (via DepsDevClient)
+
         Returns a dict whose ``"versions"`` list contains entries with
         ``"versionKey"`` (system, name, version) and ``"publishedAt"``.
         """
         if package_name in self._package_cache:
             return self._package_cache[package_name]
+
+        # Check the shared in-memory cache populated by other workers
+        shared_key = (self.system, package_name)
+        shared_cache = self._client._cache.metadata_cache
+        with self._client._cache._lock:
+            shared = shared_cache.get(shared_key)
+        if shared is not None:
+            self._package_cache[package_name] = shared
+            return shared
+
         try:
             data = self._client.get_package(self.system, package_name)
         except Exception as exc:
@@ -211,7 +226,9 @@ class DepsDevResolver:
                 "deps.dev GetPackage failed for %s/%s: %s", self.system, package_name, exc
             )
             data = {"versions": []}
+
         self._package_cache[package_name] = data
+        self._client._cache.metadata_set(shared_key, data)
         return data
 
     def get_all_versions_with_dates(

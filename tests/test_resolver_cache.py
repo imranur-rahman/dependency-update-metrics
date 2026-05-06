@@ -141,14 +141,13 @@ def test_load_json_no_cache_dir_returns_none():
 
 
 def test_load_json_serves_disk_preload(tmp_path):
-    """load_json() returns from _disk_preload without reading the file."""
+    """load_json() returns from _disk_preload without hitting SQLite."""
     cache = _make_cache(tmp_path)
     preloaded = {"preloaded": True}
-    # Write a different value to disk
+    # Write a different value to SQLite
     cache.save_json("npm_time", "npm:lodash", {"preloaded": False})
     # Inject into _disk_preload — this is what warm_from_disk populates
-    cache_path = cache._cache_path("npm_time", "npm:lodash")
-    cache._disk_preload.setdefault("npm_time", {})[cache_path.stem] = preloaded
+    cache._disk_preload[("npm_time", "npm:lodash")] = preloaded
 
     result = cache.load_json("npm_time", "npm:lodash")
     assert result == {"preloaded": True}
@@ -189,31 +188,26 @@ def test_record_invalid_version_is_idempotent(tmp_path):
 
 
 def test_warm_from_disk_skips_metadata_namespace(tmp_path):
-    cache_dir = tmp_path / "cache"
-    (cache_dir / "metadata").mkdir(parents=True)
-    (cache_dir / "metadata" / "abc.json").write_text('{"name": "pkg"}')
+    cache = ResolverCache(cache_dir=tmp_path / "cache")
+    cache.save_json("metadata", "npm:pkg", {"name": "pkg"})
+    cache.save_json("npm_time", "npm:lodash", {"1.0.0": "2020-01-01"})
+    cache._disk_preload.clear()
 
-    (cache_dir / "npm_time").mkdir(parents=True)
-    (cache_dir / "npm_time" / "def.json").write_text('{"1.0.0": "2020-01-01"}')
-
-    cache = ResolverCache(cache_dir=cache_dir)
     cache.warm_from_disk()
 
-    assert "metadata" not in cache._disk_preload
-    assert "npm_time" in cache._disk_preload
+    assert not any(k[0] == "metadata" for k in cache._disk_preload)
+    assert ("npm_time", "npm:lodash") in cache._disk_preload
 
 
 def test_warm_from_disk_loads_non_metadata_files(tmp_path):
-    cache_dir = tmp_path / "cache"
-    npm_dir = cache_dir / "npm_time"
-    npm_dir.mkdir(parents=True)
+    cache = ResolverCache(cache_dir=tmp_path / "cache")
     data = {"1.0.0": "2020-01-01T00:00:00Z"}
-    (npm_dir / "somekey.json").write_text(json.dumps(data))
+    cache.save_json("npm_time", "npm:somekey", data)
+    cache._disk_preload.clear()
 
-    cache = ResolverCache(cache_dir=cache_dir)
     cache.warm_from_disk()
 
-    assert cache._disk_preload.get("npm_time", {}).get("somekey") == data
+    assert cache._disk_preload.get(("npm_time", "npm:somekey")) == data
 
 
 def test_warm_from_disk_no_cache_dir_is_noop():

@@ -571,7 +571,7 @@ def main():
         total_rows = total_rows_all
         worker_count = args.workers
         if worker_count is None or worker_count <= 0:
-            worker_count = min(4, os.cpu_count() or 2)
+            worker_count = min(os.cpu_count() or 2, 16)
 
         def _process_group(rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
             error_results: List[Dict[str, Any]] = []
