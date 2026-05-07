@@ -298,7 +298,16 @@ class DepsDevResolver:
         return self.get_version_dependencies(package, version)
 
     def get_version_dependencies(self, package: str, version: str) -> Dict[str, str]:
-        """Call GetRequirements and return ``{dep_name: constraint}`` for DIRECT deps only."""
+        """Return ``{dep_name: constraint}`` for direct runtime deps of *package*@*version*.
+
+        Parses the system-specific GetRequirements response format from deps.dev:
+
+        * **PYPI** — ``{"pypi": {"dependencies": [{projectName, versionSpecifier, …}]}}``
+        * **NPM**  — ``{"npm":  {"dependencies": {"dependencies": [{name, requirement}]}}}``
+        * **CARGO**— ``{"cargo":{"dependencies": [{name, requirement, kind, optional}]}}``
+
+        Returns an empty dict on API failure or when no runtime deps are found.
+        """
         try:
             data = self._client.get_requirements(self.system, package, version)
         except Exception as exc:
@@ -311,16 +320,61 @@ class DepsDevResolver:
             )
             return {}
 
+        if self.system == "PYPI":
+            return self._parse_pypi_requirements(data)
+        if self.system == "NPM":
+            return self._parse_npm_requirements(data)
+        if self.system == "CARGO":
+            return self._parse_cargo_requirements(data)
+        logger.warning(
+            "deps.dev GetRequirements: unknown system %s — cannot parse response", self.system
+        )
+        return {}
+
+    def _parse_pypi_requirements(self, data: Dict) -> Dict[str, str]:
+        """Parse the PyPI-specific GetRequirements response.
+
+        Excludes extras-gated optional dependencies (``environmentMarker`` contains
+        ``"extra =="``). Includes version-conditional deps (e.g. ``python_version < '3.10'``).
+        """
         deps: Dict[str, str] = {}
-        for node in data.get("nodes", []):
-            relation = node.get("relation", "")
-            if relation != "DIRECT":
+        for dep in data.get("pypi", {}).get("dependencies", []):
+            if "extra ==" in dep.get("environmentMarker", ""):
                 continue
-            vk = node.get("versionKey", {})
-            dep_name = vk.get("name", "")
-            constraint = vk.get("version", "")
-            if dep_name:
-                deps[dep_name] = constraint
+            name = dep.get("projectName", "")
+            if name:
+                deps[name] = dep.get("versionSpecifier", "")
+        return deps
+
+    def _parse_npm_requirements(self, data: Dict) -> Dict[str, str]:
+        """Parse the npm-specific GetRequirements response.
+
+        Includes only ``dependencies`` (runtime). Excludes ``devDependencies``,
+        ``optionalDependencies``, ``peerDependencies``, and ``bundleDependencies``.
+        """
+        npm_deps = data.get("npm", {}).get("dependencies", {})
+        deps: Dict[str, str] = {}
+        for dep in npm_deps.get("dependencies", []):
+            name = dep.get("name", "")
+            if name:
+                deps[name] = dep.get("requirement", "")
+        return deps
+
+    def _parse_cargo_requirements(self, data: Dict) -> Dict[str, str]:
+        """Parse the Cargo-specific GetRequirements response.
+
+        Includes only ``kind == "normal"`` and non-optional deps. Excludes dev/build deps
+        and optional deps.
+        """
+        deps: Dict[str, str] = {}
+        for dep in data.get("cargo", {}).get("dependencies", []):
+            if dep.get("kind", "normal") not in ("normal", ""):
+                continue
+            if dep.get("optional", False):
+                continue
+            name = dep.get("name", "")
+            if name:
+                deps[name] = dep.get("requirement", "")
         return deps
 
     def resolve_dependency_version(

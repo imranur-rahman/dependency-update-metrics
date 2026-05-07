@@ -633,7 +633,7 @@ class DependencyAnalyzer:
                     "window_end": release_date.date().isoformat(),
                     "mttu": 0.0,
                     "num_dependencies": 0,
-                    "status": "ok",
+                    "status": "no_deps",
                     "error": "",
                 }
                 if self.severity_breakdown:

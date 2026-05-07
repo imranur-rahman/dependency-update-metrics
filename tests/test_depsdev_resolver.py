@@ -53,19 +53,63 @@ def _package_response(*entries) -> dict:
     }
 
 
-def _requirements_response(*deps) -> dict:
-    """Build a minimal GetRequirements response dict.
+def _npm_requirements_response(*runtime_deps, dev_deps=(), optional_deps=()) -> dict:
+    """Build an npm-format GetRequirements response.
 
-    Each dep is (name, constraint, relation).
+    Each dep is a ``(name, requirement)`` tuple.
     """
     return {
-        "nodes": [
-            {
-                "versionKey": {"system": "NPM", "name": name, "version": constraint},
-                "relation": relation,
-            }
-            for name, constraint, relation in deps
-        ]
+        "npm": {
+            "dependencies": {
+                "dependencies": [{"name": n, "requirement": r} for n, r in runtime_deps],
+                "devDependencies": [{"name": n, "requirement": r} for n, r in dev_deps],
+                "optionalDependencies": [{"name": n, "requirement": r} for n, r in optional_deps],
+                "peerDependencies": [],
+                "bundleDependencies": [],
+                "peerDependencyMetadata": [],
+            },
+            "bundled": [],
+            "os": [],
+            "cpu": [],
+        }
+    }
+
+
+def _pypi_requirements_response(*deps) -> dict:
+    """Build a PyPI-format GetRequirements response.
+
+    Each dep is a ``(project_name, version_specifier, environment_marker)`` tuple.
+    """
+    return {
+        "pypi": {
+            "dependencies": [
+                {
+                    "projectName": name,
+                    "versionSpecifier": spec,
+                    "environmentMarker": marker,
+                    "extras": "",
+                }
+                for name, spec, marker in deps
+            ],
+            "providedExtras": [],
+            "externalDependencies": [],
+            "requiredPythonVersion": ">=3.8",
+        }
+    }
+
+
+def _cargo_requirements_response(*deps) -> dict:
+    """Build a Cargo-format GetRequirements response.
+
+    Each dep is a ``(name, requirement, kind)`` tuple where kind is one of
+    ``"normal"``, ``"dev"``, or ``"build"``.
+    """
+    return {
+        "cargo": {
+            "dependencies": [
+                {"name": n, "requirement": r, "kind": k, "optional": False} for n, r, k in deps
+            ]
+        }
     }
 
 
@@ -376,9 +420,9 @@ def test_get_package_version_at_date_prefers_stable_over_prerelease(tmp_path):
 
 def test_extract_dependencies_calls_get_requirements_via_stub(tmp_path):
     resolver = _make_resolver()
-    resolver._client.get_requirements.return_value = _requirements_response(
-        ("body-parser", "^1.20.0", "DIRECT"),
-        ("accepts", "~1.3.8", "DIRECT"),
+    resolver._client.get_requirements.return_value = _npm_requirements_response(
+        ("body-parser", "^1.20.0"),
+        ("accepts", "~1.3.8"),
     )
     stub = {"_package": "express", "_version": "4.18.0"}
 
@@ -388,17 +432,17 @@ def test_extract_dependencies_calls_get_requirements_via_stub(tmp_path):
     assert deps == {"body-parser": "^1.20.0", "accepts": "~1.3.8"}
 
 
-def test_extract_dependencies_filters_out_indirect(tmp_path):
+def test_extract_dependencies_excludes_dev_deps(tmp_path):
     resolver = _make_resolver()
-    resolver._client.get_requirements.return_value = _requirements_response(
-        ("direct-dep", "^1.0.0", "DIRECT"),
-        ("indirect-dep", "^2.0.0", "INDIRECT"),
+    resolver._client.get_requirements.return_value = _npm_requirements_response(
+        ("express", "^4.18.0"),
+        dev_deps=[("typescript", "^5.0.0")],
     )
 
     deps = resolver.extract_dependencies({"_package": "pkg", "_version": "1.0.0"})
 
-    assert "indirect-dep" not in deps
-    assert deps == {"direct-dep": "^1.0.0"}
+    assert "typescript" not in deps
+    assert deps == {"express": "^4.18.0"}
 
 
 def test_extract_dependencies_returns_empty_on_client_error(tmp_path):
@@ -416,23 +460,122 @@ def test_extract_dependencies_returns_empty_when_version_missing_from_stub(tmp_p
     resolver._client.get_requirements.assert_not_called()
 
 
-def test_get_version_dependencies_returns_direct_only(tmp_path):
+def test_get_version_dependencies_npm_runtime_deps(tmp_path):
     resolver = _make_resolver()
-    resolver._client.get_requirements.return_value = _requirements_response(
-        ("dep-a", "^1.0.0", "DIRECT"),
-        ("dep-b", "^2.0.0", "INDIRECT"),
+    resolver._client.get_requirements.return_value = _npm_requirements_response(
+        ("dep-a", "^1.0.0"),
+        ("dep-b", "^2.0.0"),
     )
 
     result = resolver.get_version_dependencies("express", "4.18.0")
-    assert result == {"dep-a": "^1.0.0"}
+    assert result == {"dep-a": "^1.0.0", "dep-b": "^2.0.0"}
 
 
-def test_get_version_dependencies_empty_nodes(tmp_path):
+def test_get_version_dependencies_npm_excludes_dev_deps(tmp_path):
     resolver = _make_resolver()
-    resolver._client.get_requirements.return_value = {"nodes": []}
+    resolver._client.get_requirements.return_value = _npm_requirements_response(
+        ("express", "^4.18.0"),
+        dev_deps=[("typescript", "^5.0.0")],
+    )
+
+    result = resolver.get_version_dependencies("myapp", "1.0.0")
+    assert result == {"express": "^4.18.0"}
+    assert "typescript" not in result
+
+
+def test_get_version_dependencies_npm_excludes_optional_deps(tmp_path):
+    resolver = _make_resolver()
+    resolver._client.get_requirements.return_value = _npm_requirements_response(
+        ("express", "^4.18.0"),
+        optional_deps=[("colors", "^1.0.0")],
+    )
+
+    result = resolver.get_version_dependencies("myapp", "1.0.0")
+    assert result == {"express": "^4.18.0"}
+    assert "colors" not in result
+
+
+def test_get_version_dependencies_npm_empty(tmp_path):
+    resolver = _make_resolver()
+    resolver._client.get_requirements.return_value = _npm_requirements_response()
 
     result = resolver.get_version_dependencies("express", "4.18.0")
     assert result == {}
+
+
+def test_get_version_dependencies_pypi_runtime_deps(tmp_path):
+    resolver = _make_resolver(system="PYPI", package="mypackage")
+    resolver._client.get_requirements.return_value = _pypi_requirements_response(
+        ("click", ">=7.0", ""),
+        ("numpy", "", ""),
+        ("scipy", ">=1.0", ""),
+    )
+
+    result = resolver.get_version_dependencies("mypackage", "1.0.0")
+    assert result == {"click": ">=7.0", "numpy": "", "scipy": ">=1.0"}
+
+
+def test_get_version_dependencies_pypi_excludes_extras_gated(tmp_path):
+    resolver = _make_resolver(system="PYPI", package="mypackage")
+    resolver._client.get_requirements.return_value = _pypi_requirements_response(
+        ("click", ">=7.0", ""),
+        ("pyarrow", ">=4.0", "extra == 'pandas'"),
+        ("torch", ">=1.1", ""),
+    )
+
+    result = resolver.get_version_dependencies("mypackage", "1.0.0")
+    assert "pyarrow" not in result
+    assert result == {"click": ">=7.0", "torch": ">=1.1"}
+
+
+def test_get_version_dependencies_pypi_includes_version_conditional(tmp_path):
+    resolver = _make_resolver(system="PYPI", package="mypackage")
+    resolver._client.get_requirements.return_value = _pypi_requirements_response(
+        ("typing-extensions", ">=4.0", "python_version < '3.10'"),
+        ("numpy", "", ""),
+    )
+
+    result = resolver.get_version_dependencies("mypackage", "1.0.0")
+    assert "typing-extensions" in result  # conditional but still required
+    assert "numpy" in result
+
+
+def test_get_version_dependencies_pypi_empty(tmp_path):
+    resolver = _make_resolver(system="PYPI", package="mypackage")
+    resolver._client.get_requirements.return_value = {"pypi": {"dependencies": []}}
+
+    result = resolver.get_version_dependencies("mypackage", "1.0.0")
+    assert result == {}
+
+
+def test_get_version_dependencies_cargo_normal_deps(tmp_path):
+    resolver = _make_resolver(system="CARGO", package="mycrate")
+    resolver._client.get_requirements.return_value = _cargo_requirements_response(
+        ("libc", "^0.2", "normal"),
+        ("serde", "^1.0", "dev"),
+        ("tokio", "^1.0", "build"),
+    )
+
+    result = resolver.get_version_dependencies("mycrate", "1.0.0")
+    assert "libc" in result
+    assert "serde" not in result  # dev dep excluded
+    assert "tokio" not in result  # build dep excluded
+
+
+def test_get_version_dependencies_cargo_excludes_optional(tmp_path):
+    resolver = _make_resolver(system="CARGO", package="mycrate")
+    resolver._client.get_requirements.return_value = {
+        "cargo": {
+            "dependencies": [
+                {"name": "libc", "requirement": "^0.2", "kind": "normal", "optional": False},
+                {"name": "serde", "requirement": "^1.0", "kind": "normal", "optional": True},
+            ]
+        }
+    }
+
+    result = resolver.get_version_dependencies("mycrate", "1.0.0")
+    assert "libc" in result
+    assert "serde" not in result  # optional dep excluded
 
 
 # ---------------------------------------------------------------------------
