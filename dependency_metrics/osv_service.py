@@ -37,8 +37,9 @@ class OSVService:
         result["all_severities"] = True
 
         if dependency_version is None:
-            for k in result:
-                result[k] = False
+            # Version resolution failed — we can't determine which specific CVEs apply,
+            # so only penalise the aggregate bucket, not individual severity levels.
+            result["all_severities"] = False
             return result
 
         from .time_utils import ensure_utc

@@ -844,54 +844,62 @@ def main():
             analyzer._osv_index = osv_index_by_ecosystem.get(ecosystem, {})
             analyzer._osv_df = osv_by_ecosystem.get(ecosystem, pd.DataFrame())
 
+            # All valid_rows for this package are merged into a single analysis window
+            # [min_start, max_end]. This avoids redundant recomputation when the input
+            # CSV contains multiple rows for the same package (e.g. duplicates or
+            # overlapping date ranges that cover the same release points).
+            merged_row = {
+                "row_num": valid_rows[0]["row_num"],
+                "start_date": min_start,
+                "end_date": max_end,
+            }
             all_results = []
-            for row in valid_rows:
-                try:
-                    release_results = analyzer.analyze_at_release_points(
-                        row, osv_df=osv_by_ecosystem.get(ecosystem)
-                    )
-                    all_results.extend(release_results)
-                except Exception as exc:
-                    error = f'"{exc}"'
-                    if args.severity_breakdown:
-                        pr_exc_summary = {
-                            "ecosystem": ecosystem,
-                            "package_name": package_name,
-                            "package_version": "",
-                            "package_release_date": "",
-                            "window_start": row["start_date"].date().isoformat(),
-                            "window_end": row["end_date"].date().isoformat(),
-                            "mttu": -1.0,
-                            "mttr_critical": -1.0,
-                            "mttr_high": -1.0,
-                            "mttr_medium": -1.0,
-                            "mttr_low": -1.0,
-                            "mttr_all_severities": -1.0,
-                            "num_dependencies": 0,
-                            "status": "error",
-                            "error": error,
-                        }
-                    else:
-                        pr_exc_summary = {
-                            "ecosystem": ecosystem,
-                            "package_name": package_name,
-                            "package_version": "",
-                            "package_release_date": "",
-                            "window_start": row["start_date"].date().isoformat(),
-                            "window_end": row["end_date"].date().isoformat(),
-                            "mttu": -1.0,
-                            "mttr": -1.0,
-                            "num_dependencies": 0,
-                            "status": "error",
-                            "error": error,
-                        }
-                    error_results.append(
-                        {
-                            "row_num": row["row_num"],
-                            "summary": pr_exc_summary,
-                            "dependency_frames": [],
-                        }
-                    )
+            try:
+                release_results = analyzer.analyze_at_release_points(
+                    merged_row, osv_df=osv_by_ecosystem.get(ecosystem)
+                )
+                all_results.extend(release_results)
+            except Exception as exc:
+                error = f'"{exc}"'
+                if args.severity_breakdown:
+                    pr_exc_summary = {
+                        "ecosystem": ecosystem,
+                        "package_name": package_name,
+                        "package_version": "",
+                        "package_release_date": "",
+                        "window_start": min_start.date().isoformat(),
+                        "window_end": max_end.date().isoformat(),
+                        "mttu": -1.0,
+                        "mttr_critical": -1.0,
+                        "mttr_high": -1.0,
+                        "mttr_medium": -1.0,
+                        "mttr_low": -1.0,
+                        "mttr_all_severities": -1.0,
+                        "num_dependencies": 0,
+                        "status": "error",
+                        "error": error,
+                    }
+                else:
+                    pr_exc_summary = {
+                        "ecosystem": ecosystem,
+                        "package_name": package_name,
+                        "package_version": "",
+                        "package_release_date": "",
+                        "window_start": min_start.date().isoformat(),
+                        "window_end": max_end.date().isoformat(),
+                        "mttu": -1.0,
+                        "mttr": -1.0,
+                        "num_dependencies": 0,
+                        "status": "error",
+                        "error": error,
+                    }
+                error_results.append(
+                    {
+                        "row_num": merged_row["row_num"],
+                        "summary": pr_exc_summary,
+                        "dependency_frames": [],
+                    }
+                )
 
             return all_results + error_results
 
