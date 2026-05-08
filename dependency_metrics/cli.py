@@ -41,7 +41,7 @@ _WORKER_STATE: Dict[str, Any] = {}
 
 def _init_worker_process(
     cache_dir_str: Optional[str],
-    osv_index_by_ecosystem: Dict[str, Any],
+    osv_index_path_str: str,
     use_depsdev: bool,
     severity_breakdown: bool,
     weighting_type: str,
@@ -54,15 +54,18 @@ def _init_worker_process(
 
     Called once per worker process at startup (via *initializer* kwarg).
 
-    The OSV index is pre-built in the main process and passed directly here to
-    avoid each worker independently loading the full parquet (which would
-    multiply peak RSS by worker_count and cause OOM kills on large runs).
+    The OSV index is written to a temp file by the main process and loaded here
+    by path string.  This avoids pickling the index dict 35× via IPC pipes
+    (which caused OOM when the index is several hundred MB).  The OS page cache
+    means every worker after the first reads from RAM rather than disk.
 
     SQLite warm-up is intentionally skipped: workers open their own thread-local
-    connections and the OS page cache (primed by the main process warm-up) makes
-    on-demand reads nearly as fast as the in-memory Python dict, without paying
-    the per-process 25%-of-RAM penalty.
+    connections on demand.  The OS page cache (primed by the main-process
+    warm-up) makes these reads fast without paying the 25%-of-RAM warm-up cost
+    in every worker process.
     """
+    import pickle
+
     global _WORKER_STATE
 
     # Worker logging — write to the same file as the main process (append mode).
@@ -83,9 +86,13 @@ def _init_worker_process(
     cache_dir = Path(cache_dir_str) if cache_dir_str else None
     cache = ResolverCache(cache_dir=cache_dir)
 
-    # OSV: index handed over from main process; empty DataFrames as fallback
-    # (the index path is taken whenever osv_index is non-empty, so the DataFrame
-    # fallback is effectively unused in normal operation).
+    # Load the pre-built OSV index from the temp file written by the main process.
+    # Subsequent workers benefit from the OS page cache — effectively free.
+    with open(osv_index_path_str, "rb") as _f:
+        osv_index_by_ecosystem: Dict[str, Any] = pickle.load(_f)
+
+    # Empty DataFrames as fallback (index path is taken whenever osv_index is
+    # non-empty, so the DataFrame fallback is unused in normal operation).
     osv_by_eco: Dict[str, Any] = {eco: pd.DataFrame() for eco in osv_index_by_ecosystem}
 
     depsdev_client: Optional[DepsDevClient] = DepsDevClient(cache=cache) if use_depsdev else None
@@ -929,6 +936,12 @@ def main():
             eco: build_osv_index(df) for eco, df in osv_by_ecosystem.items()
         }
 
+        # Free the raw OSV DataFrame — the index is all we need from here on.
+        # This reclaims 1-3 GB from the main process before worker processes start.
+        del osv_df
+        osv_by_ecosystem = {eco: pd.DataFrame() for eco in osv_by_ecosystem}
+        gc.collect()
+
         resolver_cache = ResolverCache(cache_dir=output_dir / "cache")
         resolver_cache.warm_from_disk()
         _rss_mb = psutil.Process().memory_info().rss / 1024 / 1024
@@ -1349,14 +1362,24 @@ def main():
 
         total_unique_packages = total_unique_packages_all
 
-        # Build the initializer args.
-        # Pass the pre-built OSV index (Dict[str, Dict[str, List[Dict]]]) rather
-        # than a parquet path so workers do not each re-load the full OSV dataset.
-        # The index is pickled once per worker at startup; typical size is
-        # 20-200 MB, which is far cheaper than each worker loading the parquet.
+        # Serialise the OSV index to a temp file so workers load it by path
+        # (avoiding IPC-pipe pickling of a potentially large dict 35+ times).
+        import pickle as _pickle
+        import tempfile as _tempfile
+
+        _osv_index_tmp = _tempfile.NamedTemporaryFile(
+            delete=False, suffix="_osv_index.pkl", dir=output_dir / "cache"
+        )
+        try:
+            _pickle.dump(osv_index_by_ecosystem, _osv_index_tmp)
+            _osv_index_tmp.flush()
+            _osv_index_tmp_path = _osv_index_tmp.name
+        finally:
+            _osv_index_tmp.close()
+
         _worker_init_args = (
             str(output_dir / "cache"),
-            osv_index_by_ecosystem,
+            _osv_index_tmp_path,
             args.depsdev,
             args.severity_breakdown,
             args.weighting_type,
@@ -1581,6 +1604,12 @@ def main():
                 summary_handle.close()
                 if ledger_handle is not None:
                     ledger_handle.close()
+
+        # Clean up the OSV index temp file now that all workers are done.
+        try:
+            os.unlink(_osv_index_tmp_path)
+        except OSError:
+            pass
 
         logging.getLogger("dependency_metrics").info("Bulk results saved to: %s", summary_file_path)
         if deps_header_written:
