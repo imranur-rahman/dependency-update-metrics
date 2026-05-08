@@ -17,6 +17,7 @@ import psutil
 
 import pandas as pd
 from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor, as_completed
+from concurrent.futures.process import BrokenProcessPool
 
 from .analyzer import DependencyAnalyzer, build_osv_index
 from .osv_builder import OSVBuilder
@@ -1507,8 +1508,21 @@ def main():
 
                 processed = processed_before_resume
                 packages_done = packages_done_before_resume
+                _pool_broken = False
                 for future in as_completed(futures):
-                    results = future.result()
+                    try:
+                        results = future.result()
+                    except BrokenProcessPool:
+                        _pool_broken = True
+                        logging.getLogger("dependency_metrics").error(
+                            "Worker process killed (likely OOM). "
+                            "Partial results flushed. Re-run with --resume to continue."
+                        )
+                        sys.stderr.write(
+                            "\nERROR: A worker process was killed (likely out of memory).\n"
+                            "Partial results have been saved. Re-run with --resume to continue.\n\n"
+                        )
+                        break
 
                     if args.per_release:
                         packages_done += 1
@@ -1613,6 +1627,9 @@ def main():
                 summary_handle.close()
                 if ledger_handle is not None:
                     ledger_handle.close()
+
+        if _pool_broken:
+            sys.exit(1)
 
         # Clean up the OSV index temp file now that all workers are done.
         try:
