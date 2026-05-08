@@ -13,10 +13,11 @@ from __future__ import annotations
 
 import logging
 from datetime import datetime, timezone
+from functools import lru_cache
 from typing import Dict, Iterable, List, Optional, Tuple
 
 from packaging.specifiers import InvalidSpecifier, SpecifierSet
-from packaging.version import InvalidVersion
+from packaging.version import InvalidVersion, Version as PkgVersion
 from packaging import version as pkg_version
 
 from .depsdev_client import DepsDevClient
@@ -24,6 +25,21 @@ from .models import PackageVersion
 from .time_utils import parse_timestamp
 
 logger = logging.getLogger(__name__)
+
+
+@lru_cache(maxsize=32768)
+def _cached_pkg_version_parse(v: str) -> PkgVersion:
+    """Parse a PEP 440 version string, cached to avoid repeated work."""
+    return pkg_version.parse(v)
+
+
+@lru_cache(maxsize=16384)
+def _cached_coerce_semver(v: str):
+    """Coerce a semver string to a semantic_version.Version, cached."""
+    import semantic_version  # type: ignore[import]
+
+    return semantic_version.Version.coerce(v)
+
 
 # deps.dev system name → canonical lowercase ecosystem used internally
 _SYSTEM_TO_ECOSYSTEM: Dict[str, str] = {
@@ -49,10 +65,11 @@ def _is_prerelease_semver(version_str: str) -> bool:
     return "-" in version_str
 
 
+@lru_cache(maxsize=16384)
 def _is_prerelease_pypi(version_str: str) -> bool:
     """Return True if the PyPI version is a pre-release according to PEP 440."""
     try:
-        return pkg_version.parse(version_str).is_prerelease
+        return _cached_pkg_version_parse(version_str).is_prerelease
     except InvalidVersion:
         return False
 
@@ -89,8 +106,8 @@ def _match_npm_or_cargo(versions: List[str], constraint: str) -> Optional[str]:
     best: Optional[semantic_version.Version] = None
     for ver_str in versions:
         try:
-            v = semantic_version.Version.coerce(ver_str)
-        except ValueError:
+            v = _cached_coerce_semver(ver_str)
+        except (ValueError, ImportError):
             continue
         if v in spec:
             if best is None or v > best:
@@ -107,10 +124,10 @@ def _match_pypi(versions: List[str], constraint: str) -> Optional[str]:
         logger.debug("Cannot parse PyPI constraint %r — skipping", constraint)
         return None
 
-    best: Optional[pkg_version.Version] = None
+    best: Optional[PkgVersion] = None
     for ver_str in versions:
         try:
-            v = pkg_version.parse(ver_str)
+            v = _cached_pkg_version_parse(ver_str)
         except InvalidVersion:
             continue
         if v in spec:
@@ -133,7 +150,7 @@ def _best_semver(system: str, versions: List[str]) -> Optional[str]:
         candidates = []
         for v in versions:
             try:
-                parsed = pkg_version.parse(v)
+                parsed = _cached_pkg_version_parse(v)
                 candidates.append((parsed, v))
             except InvalidVersion:
                 continue
@@ -152,8 +169,8 @@ def _best_semver(system: str, versions: List[str]) -> Optional[str]:
     sv_parsed = []
     for v in versions:
         try:
-            sv_parsed.append((semantic_version.Version.coerce(v), v))
-        except ValueError:
+            sv_parsed.append((_cached_coerce_semver(v), v))
+        except (ValueError, ImportError):
             continue
     if not sv_parsed:
         return versions[-1] if versions else None

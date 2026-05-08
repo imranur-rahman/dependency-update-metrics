@@ -5,12 +5,21 @@ OSV remediation logic wrapper.
 from __future__ import annotations
 
 from datetime import datetime
+from functools import lru_cache
 from typing import Dict, List, Optional
 
 import pandas as pd
 from packaging import version as pkg_version
+from packaging.version import InvalidVersion, Version as PkgVersion
 
 from .time_utils import ensure_utc, parse_timestamp
+
+
+@lru_cache(maxsize=32768)
+def _cached_pkg_version_parse(v: str) -> PkgVersion:
+    """Parse a PEP 440 version string, cached to avoid repeated work in OSV checks."""
+    return pkg_version.parse(v)
+
 
 SEVERITY_LEVELS = ["Critical", "High", "Medium", "Low"]
 
@@ -52,7 +61,7 @@ class OSVService:
                 return result
 
             try:
-                current_ver = pkg_version.parse(dependency_version)
+                current_ver = _cached_pkg_version_parse(dependency_version)
             except Exception:
                 for k in result:
                     result[k] = False
@@ -60,8 +69,8 @@ class OSVService:
 
             for vuln in dep_vulns_list:
                 try:
-                    intro_ver = pkg_version.parse(vuln["vul_introduced"])
-                    fixed_ver = pkg_version.parse(vuln["vul_fixed"])
+                    intro_ver = _cached_pkg_version_parse(vuln["vul_introduced"])
+                    fixed_ver = _cached_pkg_version_parse(vuln["vul_fixed"])
 
                     if intro_ver <= current_ver < fixed_ver:
                         fixed_date = self.get_version_release_date(
@@ -87,7 +96,7 @@ class OSVService:
             return result
 
         try:
-            current_ver = pkg_version.parse(dependency_version)
+            current_ver = _cached_pkg_version_parse(dependency_version)
         except Exception:
             for k in result:
                 result[k] = False
@@ -95,8 +104,8 @@ class OSVService:
 
         for vuln in dep_vulns.itertuples(index=False):
             try:
-                intro_ver = pkg_version.parse(vuln.vul_introduced)
-                fixed_ver = pkg_version.parse(vuln.vul_fixed)
+                intro_ver = _cached_pkg_version_parse(vuln.vul_introduced)
+                fixed_ver = _cached_pkg_version_parse(vuln.vul_fixed)
 
                 if intro_ver <= current_ver < fixed_ver:
                     fixed_date = self.get_version_release_date(
@@ -134,14 +143,14 @@ class OSVService:
                 return True
 
             try:
-                current_ver = pkg_version.parse(dependency_version)
+                current_ver = _cached_pkg_version_parse(dependency_version)
             except Exception:
                 return False
 
             for vuln in dep_vulns_list:
                 try:
-                    intro_ver = pkg_version.parse(vuln["vul_introduced"])
-                    fixed_ver = pkg_version.parse(vuln["vul_fixed"])
+                    intro_ver = _cached_pkg_version_parse(vuln["vul_introduced"])
+                    fixed_ver = _cached_pkg_version_parse(vuln["vul_fixed"])
 
                     if intro_ver <= current_ver < fixed_ver:
                         fixed_date = self.get_version_release_date(
@@ -164,14 +173,14 @@ class OSVService:
             return True
 
         try:
-            current_ver = pkg_version.parse(dependency_version)
+            current_ver = _cached_pkg_version_parse(dependency_version)
         except Exception:
             return False
 
         for vuln in dep_vulns.itertuples(index=False):
             try:
-                intro_ver = pkg_version.parse(vuln.vul_introduced)
-                fixed_ver = pkg_version.parse(vuln.vul_fixed)
+                intro_ver = _cached_pkg_version_parse(vuln.vul_introduced)
+                fixed_ver = _cached_pkg_version_parse(vuln.vul_fixed)
 
                 if intro_ver <= current_ver < fixed_ver:
                     fixed_date = self.get_version_release_date(

@@ -5,6 +5,7 @@ Command-line interface for the dependency metrics tool.
 import argparse
 import gc
 import io
+import multiprocessing
 import os
 import sys
 import logging
@@ -15,7 +16,7 @@ from typing import Any, Dict, List, Optional
 import psutil
 
 import pandas as pd
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor, as_completed
 
 from .analyzer import DependencyAnalyzer, build_osv_index
 from .osv_builder import OSVBuilder
@@ -28,6 +29,453 @@ from .reporting import (
     print_summary,
     save_results_json,
 )
+
+# ---------------------------------------------------------------------------
+# Module-level worker state — populated by _init_worker_process() in each
+# child process spawned by ProcessPoolExecutor.  Using a plain dict keeps
+# init simple and avoids any pickling of non-serialisable objects.
+# ---------------------------------------------------------------------------
+
+_WORKER_STATE: Dict[str, Any] = {}
+
+
+def _init_worker_process(
+    cache_dir_str: Optional[str],
+    osv_parquet_path_str: str,
+    use_depsdev: bool,
+    severity_breakdown: bool,
+    weighting_type: str,
+    half_life: Optional[float],
+    output_dir_str: str,
+    default_start_date: datetime,
+    log_file_str: Optional[str],
+) -> None:
+    """Initialise per-process state for ProcessPoolExecutor workers.
+
+    Called once per worker process at startup (via *initializer* kwarg).
+    Builds a fresh ``ResolverCache``, warms it from the shared SQLite file,
+    loads the OSV database, and stores everything in ``_WORKER_STATE``.
+    """
+    global _WORKER_STATE
+
+    # Worker logging — write to the same file as the main process (append mode).
+    _wlogger = logging.getLogger("dependency_metrics")
+    _wlogger.propagate = False
+    _wlogger.setLevel(logging.WARNING)
+    if not _wlogger.handlers:
+        _sh = logging.StreamHandler()
+        _sh.setFormatter(logging.Formatter("%(levelname)s: %(message)s"))
+        _wlogger.addHandler(_sh)
+        if log_file_str:
+            _fh = logging.FileHandler(log_file_str, encoding="utf-8")
+            _fh.setFormatter(logging.Formatter("%(asctime)s %(levelname)s %(name)s: %(message)s"))
+            _wlogger.addHandler(_fh)
+
+    # Per-process ResolverCache (thread-safe internally; no sharing needed).
+    cache_dir = Path(cache_dir_str) if cache_dir_str else None
+    cache = ResolverCache(cache_dir=cache_dir)
+    if cache_dir and (cache_dir / "cache.db").exists():
+        cache.warm_from_disk()
+
+    # Load OSV database (fast — OS page cache after first worker).
+    osv_df = pd.DataFrame()
+    osv_parquet_path = Path(osv_parquet_path_str)
+    if osv_parquet_path.exists():
+        osv_df = pd.read_parquet(osv_parquet_path_str)
+        if "severity" not in osv_df.columns:
+            osv_df["severity"] = "None"
+
+    _osv_eco_map: Dict[str, str] = {"npm": "NPM", "pypi": "PYPI", "cargo": "crates.io"}
+    ecosystems_in_osv: set = (
+        set(osv_df["ecosystem"].unique())
+        if len(osv_df) > 0 and "ecosystem" in osv_df.columns
+        else set()
+    )
+    osv_by_eco: Dict[str, Any] = {}
+    osv_index_by_eco: Dict[str, Any] = {}
+    for eco_key, osv_filter in _osv_eco_map.items():
+        eco_df = (
+            osv_df[osv_df["ecosystem"] == osv_filter].copy()
+            if osv_filter in ecosystems_in_osv
+            else pd.DataFrame()
+        )
+        osv_by_eco[eco_key] = eco_df
+        osv_index_by_eco[eco_key] = build_osv_index(eco_df)
+
+    depsdev_client: Optional[DepsDevClient] = DepsDevClient(cache=cache) if use_depsdev else None
+
+    _WORKER_STATE.update(
+        {
+            "cache": cache,
+            "depsdev_client": depsdev_client,
+            "osv_by_ecosystem": osv_by_eco,
+            "osv_index_by_ecosystem": osv_index_by_eco,
+            "use_depsdev": use_depsdev,
+            "severity_breakdown": severity_breakdown,
+            "weighting_type": weighting_type,
+            "half_life": half_life,
+            "output_dir": Path(output_dir_str),
+            "default_start_date": default_start_date,
+        }
+    )
+
+
+def _worker_make_resolver(eco: str, pkg: str, start: datetime, end: datetime):
+    """Create a resolver for *pkg* using the worker-process ``_WORKER_STATE``."""
+    from .resolvers import NpmResolver, PyPIResolver as _PyPIResolverCls
+
+    ws = _WORKER_STATE
+    _registry_urls = {"npm": "https://registry.npmjs.org", "pypi": "https://pypi.org/pypi"}
+    _eco_to_system = {"npm": "NPM", "pypi": "PYPI", "cargo": "CARGO"}
+
+    if ws["use_depsdev"] and ws["depsdev_client"] is not None:
+        return DepsDevResolver(
+            system=_eco_to_system.get(eco, eco.upper()),
+            package=pkg,
+            start_date=start,
+            end_date=end,
+            client=ws["depsdev_client"],
+        )
+    if eco == "npm":
+        return NpmResolver(
+            package=pkg,
+            start_date=start,
+            end_date=end,
+            registry_urls=_registry_urls,
+            cache=ws["cache"],
+        )
+    return _PyPIResolverCls(
+        package=pkg,
+        start_date=start,
+        end_date=end,
+        registry_urls=_registry_urls,
+        cache=ws["cache"],
+    )
+
+
+def _worker_run_group(task: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """Module-level worker for ``analyze_bulk_rows`` (non-per-release mode).
+
+    Mirrors the ``_process_group`` closure from the main function but reads
+    configuration from ``_WORKER_STATE`` instead of captured variables.
+    """
+    ws = _WORKER_STATE
+    rows: List[Dict[str, Any]] = task["rows"]
+    default_start_date: datetime = ws["default_start_date"]
+    severity_breakdown: bool = ws["severity_breakdown"]
+    weighting_type: str = ws["weighting_type"]
+    half_life: Optional[float] = ws["half_life"]
+    output_dir: Path = ws["output_dir"]
+    osv_by_ecosystem: Dict[str, Any] = ws["osv_by_ecosystem"]
+    osv_index_by_ecosystem: Dict[str, Any] = ws["osv_index_by_ecosystem"]
+    use_depsdev: bool = ws["use_depsdev"]
+
+    error_results: List[Dict[str, Any]] = []
+    valid_rows: List[Dict[str, Any]] = []
+
+    for row in rows:
+        row_num = row.get("_row_num")
+        ecosystem = str(row.get("ecosystem", "")).lower()
+        package_name = str(row.get("package_name", ""))
+        end_date_raw = str(row.get("end_date", ""))
+        start_date_raw = str(row.get("start_date", ""))
+
+        try:
+            if not ecosystem or not package_name or not end_date_raw:
+                raise ValueError("ecosystem, package_name, and end_date are required.")
+            _valid_ecosystems = {"npm", "pypi", "cargo"} if use_depsdev else {"npm", "pypi"}
+            if ecosystem not in _valid_ecosystems:
+                raise ValueError(f"Unsupported ecosystem: {ecosystem}.")
+            if ecosystem == "cargo" and not use_depsdev:
+                raise ValueError("ecosystem 'cargo' requires --depsdev.")
+
+            start_date = default_start_date
+            if start_date_raw:
+                start_date = _parse_date(start_date_raw, "start_date", row_num)
+            end_date = _parse_date(end_date_raw, "end_date", row_num)
+
+            valid_rows.append({"row_num": row_num, "start_date": start_date, "end_date": end_date})
+        except Exception as exc:
+            start_date = default_start_date
+            if start_date_raw:
+                try:
+                    start_date = _parse_date(start_date_raw, "start_date", row_num)
+                except ValueError:
+                    start_date = default_start_date
+            try:
+                end_date = _parse_date(end_date_raw, "end_date", row_num)
+            except ValueError:
+                end_date = datetime.today()
+
+            if severity_breakdown:
+                err_summary: Dict[str, Any] = {
+                    "ecosystem": ecosystem,
+                    "package_name": package_name,
+                    "start_date": start_date.date().isoformat(),
+                    "end_date": end_date.date().isoformat(),
+                    "mttu": -1.0,
+                    "mttr_critical": -1.0,
+                    "mttr_high": -1.0,
+                    "mttr_medium": -1.0,
+                    "mttr_low": -1.0,
+                    "mttr_all_severities": -1.0,
+                    "num_dependencies": 0,
+                    "status": "error",
+                    "error": f'"{exc}"',
+                }
+            else:
+                err_summary = {
+                    "ecosystem": ecosystem,
+                    "package_name": package_name,
+                    "start_date": start_date.date().isoformat(),
+                    "end_date": end_date.date().isoformat(),
+                    "mttu": -1.0,
+                    "mttr": -1.0,
+                    "num_dependencies": 0,
+                    "status": "error",
+                    "error": f'"{exc}"',
+                }
+            error_results.append(
+                {"row_num": row_num, "summary": err_summary, "dependency_frames": []}
+            )
+
+    if not valid_rows:
+        return error_results
+
+    ecosystem = str(rows[0].get("ecosystem", "")).lower()
+    package_name = str(rows[0].get("package_name", ""))
+    min_start = min(r["start_date"] for r in valid_rows)
+    max_end = max(r["end_date"] for r in valid_rows)
+
+    _injected_resolver = (
+        _worker_make_resolver(ecosystem, package_name, min_start, max_end) if use_depsdev else None
+    )
+    analyzer = DependencyAnalyzer(
+        ecosystem=ecosystem,
+        package=package_name,
+        start_date=min_start,
+        end_date=max_end,
+        weighting_type=weighting_type,
+        half_life=half_life,
+        output_dir=output_dir,
+        resolver_cache=ws["cache"],
+        severity_breakdown=severity_breakdown,
+        resolver=_injected_resolver,
+    )
+    analyzer._osv_index = osv_index_by_ecosystem.get(ecosystem, {})
+    analyzer._osv_df = osv_by_ecosystem.get(ecosystem, pd.DataFrame())
+
+    try:
+        results = analyzer.analyze_bulk_rows(valid_rows, osv_df=osv_by_ecosystem.get(ecosystem))
+    except Exception as exc:
+        error = f'"{exc}"'
+        for row in valid_rows:
+            if severity_breakdown:
+                exc_summary: Dict[str, Any] = {
+                    "ecosystem": ecosystem,
+                    "package_name": package_name,
+                    "start_date": row["start_date"].date().isoformat(),
+                    "end_date": row["end_date"].date().isoformat(),
+                    "mttu": -1.0,
+                    "mttr_critical": -1.0,
+                    "mttr_high": -1.0,
+                    "mttr_medium": -1.0,
+                    "mttr_low": -1.0,
+                    "mttr_all_severities": -1.0,
+                    "num_dependencies": 0,
+                    "status": "error",
+                    "error": error,
+                }
+            else:
+                exc_summary = {
+                    "ecosystem": ecosystem,
+                    "package_name": package_name,
+                    "start_date": row["start_date"].date().isoformat(),
+                    "end_date": row["end_date"].date().isoformat(),
+                    "mttu": -1.0,
+                    "mttr": -1.0,
+                    "num_dependencies": 0,
+                    "status": "error",
+                    "error": error,
+                }
+            error_results.append(
+                {"row_num": row["row_num"], "summary": exc_summary, "dependency_frames": []}
+            )
+        return error_results
+
+    return results + error_results
+
+
+def _worker_run_group_per_release(task: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """Module-level worker for ``analyze_at_release_points`` (per-release mode).
+
+    Mirrors the ``_process_group_per_release`` closure but reads configuration
+    from ``_WORKER_STATE`` instead of captured variables.
+    """
+    ws = _WORKER_STATE
+    rows: List[Dict[str, Any]] = task["rows"]
+    default_start_date: datetime = ws["default_start_date"]
+    severity_breakdown: bool = ws["severity_breakdown"]
+    weighting_type: str = ws["weighting_type"]
+    half_life: Optional[float] = ws["half_life"]
+    output_dir: Path = ws["output_dir"]
+    osv_by_ecosystem: Dict[str, Any] = ws["osv_by_ecosystem"]
+    osv_index_by_ecosystem: Dict[str, Any] = ws["osv_index_by_ecosystem"]
+    use_depsdev: bool = ws["use_depsdev"]
+
+    error_results: List[Dict[str, Any]] = []
+    valid_rows: List[Dict[str, Any]] = []
+
+    for row in rows:
+        row_num = row.get("_row_num")
+        ecosystem = str(row.get("ecosystem", "")).lower()
+        package_name = str(row.get("package_name", ""))
+        end_date_raw = str(row.get("end_date", ""))
+        start_date_raw = str(row.get("start_date", ""))
+
+        try:
+            if not ecosystem or not package_name or not end_date_raw:
+                raise ValueError("ecosystem, package_name, and end_date are required.")
+            _valid_ecosystems_pr = {"npm", "pypi", "cargo"} if use_depsdev else {"npm", "pypi"}
+            if ecosystem not in _valid_ecosystems_pr:
+                raise ValueError(f"Unsupported ecosystem: {ecosystem}.")
+            if ecosystem == "cargo" and not use_depsdev:
+                raise ValueError("ecosystem 'cargo' requires --depsdev.")
+
+            start_date = default_start_date
+            if start_date_raw:
+                start_date = _parse_date(start_date_raw, "start_date", row_num)
+            end_date = _parse_date(end_date_raw, "end_date", row_num)
+
+            valid_rows.append({"row_num": row_num, "start_date": start_date, "end_date": end_date})
+        except Exception as exc:
+            start_date = default_start_date
+            if start_date_raw:
+                try:
+                    start_date = _parse_date(start_date_raw, "start_date", row_num)
+                except ValueError:
+                    start_date = default_start_date
+            try:
+                end_date = _parse_date(end_date_raw, "end_date", row_num)
+            except ValueError:
+                end_date = datetime.today()
+
+            if severity_breakdown:
+                pr_err_summary: Dict[str, Any] = {
+                    "ecosystem": ecosystem,
+                    "package_name": package_name,
+                    "package_version": "",
+                    "package_release_date": "",
+                    "window_start": start_date.date().isoformat(),
+                    "window_end": end_date.date().isoformat(),
+                    "mttu": -1.0,
+                    "mttr_critical": -1.0,
+                    "mttr_high": -1.0,
+                    "mttr_medium": -1.0,
+                    "mttr_low": -1.0,
+                    "mttr_all_severities": -1.0,
+                    "num_dependencies": 0,
+                    "status": "error",
+                    "error": f'"{exc}"',
+                }
+            else:
+                pr_err_summary = {
+                    "ecosystem": ecosystem,
+                    "package_name": package_name,
+                    "package_version": "",
+                    "package_release_date": "",
+                    "window_start": start_date.date().isoformat(),
+                    "window_end": end_date.date().isoformat(),
+                    "mttu": -1.0,
+                    "mttr": -1.0,
+                    "num_dependencies": 0,
+                    "status": "error",
+                    "error": f'"{exc}"',
+                }
+            error_results.append(
+                {"row_num": row_num, "summary": pr_err_summary, "dependency_frames": []}
+            )
+
+    if not valid_rows:
+        return error_results
+
+    ecosystem = str(rows[0].get("ecosystem", "")).lower()
+    package_name = str(rows[0].get("package_name", ""))
+    min_start = min(r["start_date"] for r in valid_rows)
+    max_end = max(r["end_date"] for r in valid_rows)
+
+    _injected_resolver_pr = (
+        _worker_make_resolver(ecosystem, package_name, min_start, max_end) if use_depsdev else None
+    )
+    analyzer = DependencyAnalyzer(
+        ecosystem=ecosystem,
+        package=package_name,
+        start_date=min_start,
+        end_date=max_end,
+        weighting_type=weighting_type,
+        half_life=half_life,
+        output_dir=output_dir,
+        resolver_cache=ws["cache"],
+        severity_breakdown=severity_breakdown,
+        resolver=_injected_resolver_pr,
+    )
+    analyzer._osv_index = osv_index_by_ecosystem.get(ecosystem, {})
+    analyzer._osv_df = osv_by_ecosystem.get(ecosystem, pd.DataFrame())
+
+    merged_row = {
+        "row_num": valid_rows[0]["row_num"],
+        "start_date": min_start,
+        "end_date": max_end,
+    }
+    all_results: List[Dict[str, Any]] = []
+    try:
+        release_results = analyzer.analyze_at_release_points(
+            merged_row, osv_df=osv_by_ecosystem.get(ecosystem)
+        )
+        all_results.extend(release_results)
+    except Exception as exc:
+        error = f'"{exc}"'
+        if severity_breakdown:
+            pr_exc_summary: Dict[str, Any] = {
+                "ecosystem": ecosystem,
+                "package_name": package_name,
+                "package_version": "",
+                "package_release_date": "",
+                "window_start": min_start.date().isoformat(),
+                "window_end": max_end.date().isoformat(),
+                "mttu": -1.0,
+                "mttr_critical": -1.0,
+                "mttr_high": -1.0,
+                "mttr_medium": -1.0,
+                "mttr_low": -1.0,
+                "mttr_all_severities": -1.0,
+                "num_dependencies": 0,
+                "status": "error",
+                "error": error,
+            }
+        else:
+            pr_exc_summary = {
+                "ecosystem": ecosystem,
+                "package_name": package_name,
+                "package_version": "",
+                "package_release_date": "",
+                "window_start": min_start.date().isoformat(),
+                "window_end": max_end.date().isoformat(),
+                "mttu": -1.0,
+                "mttr": -1.0,
+                "num_dependencies": 0,
+                "status": "error",
+                "error": error,
+            }
+        error_results.append(
+            {
+                "row_num": merged_row["row_num"],
+                "summary": pr_exc_summary,
+                "dependency_frames": [],
+            }
+        )
+
+    return all_results + error_results
 
 
 def _parse_date(value: str, field: str, row_num: Optional[int] = None) -> datetime:
@@ -178,7 +626,7 @@ def main():
         "--workers",
         type=int,
         default=None,
-        help="Number of parallel workers for bulk CSV mode. Default: min(8, CPU count)",
+        help="Number of parallel workers for bulk CSV mode. Default: CPU count",
     )
 
     parser.add_argument(
@@ -571,7 +1019,8 @@ def main():
         total_rows = total_rows_all
         worker_count = args.workers
         if worker_count is None or worker_count <= 0:
-            worker_count = min(os.cpu_count() or 2, 16)
+            # ProcessPoolExecutor gives true CPU parallelism — no cap needed.
+            worker_count = os.cpu_count() or 4
 
         def _process_group(rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
             error_results: List[Dict[str, Any]] = []
@@ -914,13 +1363,33 @@ def main():
 
         total_unique_packages = total_unique_packages_all
 
-        with ThreadPoolExecutor(max_workers=worker_count) as executor:
+        # Build the initializer args — all primitive/picklable types.
+        _worker_init_args = (
+            str(output_dir / "cache"),
+            str(output_dir / "osv_database.parquet"),
+            args.depsdev,
+            args.severity_breakdown,
+            args.weighting_type,
+            args.half_life,
+            str(output_dir),
+            default_start_date,
+            str(log_file_path),
+        )
+        _mp_ctx = multiprocessing.get_context("spawn")
+
+        with ProcessPoolExecutor(
+            max_workers=worker_count,
+            mp_context=_mp_ctx,
+            initializer=_init_worker_process,
+            initargs=_worker_init_args,
+        ) as executor:
             futures = []
             for rows in grouped_rows.values():
+                task: Dict[str, Any] = {"rows": rows}
                 if args.per_release:
-                    futures.append(executor.submit(_process_group_per_release, rows))
+                    futures.append(executor.submit(_worker_run_group_per_release, task))
                 else:
-                    futures.append(executor.submit(_process_group, rows))
+                    futures.append(executor.submit(_worker_run_group, task))
 
             if deps_file_path.exists() and not args.resume:
                 deps_file_path.unlink()
