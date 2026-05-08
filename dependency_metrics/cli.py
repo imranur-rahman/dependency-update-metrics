@@ -41,7 +41,7 @@ _WORKER_STATE: Dict[str, Any] = {}
 
 def _init_worker_process(
     cache_dir_str: Optional[str],
-    osv_parquet_path_str: str,
+    osv_index_by_ecosystem: Dict[str, Any],
     use_depsdev: bool,
     severity_breakdown: bool,
     weighting_type: str,
@@ -53,8 +53,15 @@ def _init_worker_process(
     """Initialise per-process state for ProcessPoolExecutor workers.
 
     Called once per worker process at startup (via *initializer* kwarg).
-    Builds a fresh ``ResolverCache``, warms it from the shared SQLite file,
-    loads the OSV database, and stores everything in ``_WORKER_STATE``.
+
+    The OSV index is pre-built in the main process and passed directly here to
+    avoid each worker independently loading the full parquet (which would
+    multiply peak RSS by worker_count and cause OOM kills on large runs).
+
+    SQLite warm-up is intentionally skipped: workers open their own thread-local
+    connections and the OS page cache (primed by the main process warm-up) makes
+    on-demand reads nearly as fast as the in-memory Python dict, without paying
+    the per-process 25%-of-RAM penalty.
     """
     global _WORKER_STATE
 
@@ -71,36 +78,15 @@ def _init_worker_process(
             _fh.setFormatter(logging.Formatter("%(asctime)s %(levelname)s %(name)s: %(message)s"))
             _wlogger.addHandler(_fh)
 
-    # Per-process ResolverCache (thread-safe internally; no sharing needed).
+    # Per-process ResolverCache.  No warm_from_disk() here — the main process
+    # already primed the OS page cache; on-demand SQLite reads are fast enough.
     cache_dir = Path(cache_dir_str) if cache_dir_str else None
     cache = ResolverCache(cache_dir=cache_dir)
-    if cache_dir and (cache_dir / "cache.db").exists():
-        cache.warm_from_disk()
 
-    # Load OSV database (fast — OS page cache after first worker).
-    osv_df = pd.DataFrame()
-    osv_parquet_path = Path(osv_parquet_path_str)
-    if osv_parquet_path.exists():
-        osv_df = pd.read_parquet(osv_parquet_path_str)
-        if "severity" not in osv_df.columns:
-            osv_df["severity"] = "None"
-
-    _osv_eco_map: Dict[str, str] = {"npm": "NPM", "pypi": "PYPI", "cargo": "crates.io"}
-    ecosystems_in_osv: set = (
-        set(osv_df["ecosystem"].unique())
-        if len(osv_df) > 0 and "ecosystem" in osv_df.columns
-        else set()
-    )
-    osv_by_eco: Dict[str, Any] = {}
-    osv_index_by_eco: Dict[str, Any] = {}
-    for eco_key, osv_filter in _osv_eco_map.items():
-        eco_df = (
-            osv_df[osv_df["ecosystem"] == osv_filter].copy()
-            if osv_filter in ecosystems_in_osv
-            else pd.DataFrame()
-        )
-        osv_by_eco[eco_key] = eco_df
-        osv_index_by_eco[eco_key] = build_osv_index(eco_df)
+    # OSV: index handed over from main process; empty DataFrames as fallback
+    # (the index path is taken whenever osv_index is non-empty, so the DataFrame
+    # fallback is effectively unused in normal operation).
+    osv_by_eco: Dict[str, Any] = {eco: pd.DataFrame() for eco in osv_index_by_ecosystem}
 
     depsdev_client: Optional[DepsDevClient] = DepsDevClient(cache=cache) if use_depsdev else None
 
@@ -109,7 +95,7 @@ def _init_worker_process(
             "cache": cache,
             "depsdev_client": depsdev_client,
             "osv_by_ecosystem": osv_by_eco,
-            "osv_index_by_ecosystem": osv_index_by_eco,
+            "osv_index_by_ecosystem": osv_index_by_ecosystem,
             "use_depsdev": use_depsdev,
             "severity_breakdown": severity_breakdown,
             "weighting_type": weighting_type,
@@ -1363,10 +1349,14 @@ def main():
 
         total_unique_packages = total_unique_packages_all
 
-        # Build the initializer args — all primitive/picklable types.
+        # Build the initializer args.
+        # Pass the pre-built OSV index (Dict[str, Dict[str, List[Dict]]]) rather
+        # than a parquet path so workers do not each re-load the full OSV dataset.
+        # The index is pickled once per worker at startup; typical size is
+        # 20-200 MB, which is far cheaper than each worker loading the parquet.
         _worker_init_args = (
             str(output_dir / "cache"),
-            str(output_dir / "osv_database.parquet"),
+            osv_index_by_ecosystem,
             args.depsdev,
             args.severity_breakdown,
             args.weighting_type,
