@@ -1576,6 +1576,15 @@ def main():
                         import pandas as _pd
 
                         combined = _pd.concat(pending_dep_frames, ignore_index=True)
+                        # Workaround: pyarrow ChunkedArray.to_numpy() raises "Unknown error:
+                        # Wrapping" for nullable string columns. Convert via list() instead.
+                        arrow_cols = [
+                            c
+                            for c in combined.columns
+                            if isinstance(combined[c].dtype, _pd.ArrowDtype)
+                        ]
+                        if arrow_cols:
+                            combined = combined.assign(**{c: list(combined[c]) for c in arrow_cols})
                         combined.to_csv(
                             deps_file_path,
                             mode="a",
