@@ -342,7 +342,7 @@ class DependencyAnalyzer:
                 for fut in as_completed(meta_futures):
                     dep_name = meta_futures[fut]
                     try:
-                        dep_metadata_cache[dep_name] = fut.result()
+                        dep_metadata_cache[dep_name] = fut.result(timeout=120)
                     except Exception as exc:
                         logger.warning("Failed to fetch metadata for %s: %s", dep_name, exc)
                         dep_metadata_cache[dep_name] = {}

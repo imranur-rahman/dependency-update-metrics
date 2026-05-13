@@ -16,7 +16,13 @@ from typing import Any, Dict, List, Optional
 import psutil
 
 import pandas as pd
-from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor, as_completed
+from concurrent.futures import (
+    FIRST_COMPLETED,
+    ProcessPoolExecutor,
+    ThreadPoolExecutor,
+    as_completed,
+    wait,
+)
 from concurrent.futures.process import BrokenProcessPool
 
 from .analyzer import DependencyAnalyzer, build_osv_index
@@ -1005,11 +1011,22 @@ def main():
                 for eco, pkg in unique_packages
                 if eco in _valid_prefetch_ecosystems
             }
-            for f in as_completed(prefetch_futs):
-                try:
-                    f.result()
-                except Exception:
-                    pass  # errors will surface again during analysis
+            _prefetch_pending = set(prefetch_futs)
+            while _prefetch_pending:
+                _pf_done, _prefetch_pending = wait(
+                    _prefetch_pending, timeout=60, return_when=FIRST_COMPLETED
+                )
+                if not _pf_done:
+                    logging.getLogger("dependency_metrics").warning(
+                        "Prefetch: still waiting for %d package(s)...",
+                        len(_prefetch_pending),
+                    )
+                    continue
+                for f in _pf_done:
+                    try:
+                        f.result()
+                    except Exception:
+                        pass  # errors will surface again during analysis
 
         _rss_mb = psutil.Process().memory_info().rss / 1024 / 1024
         logging.getLogger("dependency_metrics").warning(
@@ -1398,12 +1415,15 @@ def main():
             initargs=_worker_init_args,
         ) as executor:
             futures = []
-            for rows in grouped_rows.values():
+            future_to_pkg: Dict[Any, str] = {}
+            for (eco, pkg), rows in grouped_rows.items():
                 task: Dict[str, Any] = {"rows": rows}
                 if args.per_release:
-                    futures.append(executor.submit(_worker_run_group_per_release, task))
+                    f = executor.submit(_worker_run_group_per_release, task)
                 else:
-                    futures.append(executor.submit(_worker_run_group, task))
+                    f = executor.submit(_worker_run_group, task)
+                futures.append(f)
+                future_to_pkg[f] = f"{eco}/{pkg}"
 
             if deps_file_path.exists() and not args.resume:
                 deps_file_path.unlink()
@@ -1509,120 +1529,141 @@ def main():
                 processed = processed_before_resume
                 packages_done = packages_done_before_resume
                 _pool_broken = False
-                for future in as_completed(futures):
-                    try:
-                        results = future.result()
-                    except BrokenProcessPool:
-                        _pool_broken = True
-                        logging.getLogger("dependency_metrics").error(
-                            "Worker process killed (likely OOM). "
-                            "Partial results flushed. Re-run with --resume to continue."
+                _pending_futures = set(futures)
+                _HEARTBEAT_SECS = 120
+                while _pending_futures:
+                    _done_futures, _pending_futures = wait(
+                        _pending_futures, timeout=_HEARTBEAT_SECS, return_when=FIRST_COMPLETED
+                    )
+                    if not _done_futures:
+                        _in_flight = [
+                            future_to_pkg[f]
+                            for f in _pending_futures
+                            if f in future_to_pkg
+                        ]
+                        logging.getLogger("dependency_metrics").warning(
+                            "Still waiting for %d package(s): %s",
+                            len(_pending_futures),
+                            ", ".join(_in_flight[:20]),
                         )
-                        sys.stderr.write(
-                            "\nERROR: A worker process was killed (likely out of memory).\n"
-                            "Partial results have been saved. Re-run with --resume to continue.\n\n"
-                        )
-                        break
+                        continue
+                    for future in _done_futures:
+                        try:
+                            results = future.result()
+                        except BrokenProcessPool:
+                            _pool_broken = True
+                            logging.getLogger("dependency_metrics").error(
+                                "Worker process killed (likely OOM). "
+                                "Partial results flushed. Re-run with --resume to continue."
+                            )
+                            sys.stderr.write(
+                                "\nERROR: A worker process was killed (likely out of memory).\n"
+                                "Partial results have been saved. Re-run with --resume to continue.\n\n"
+                            )
+                            _pending_futures.clear()
+                            break
 
-                    if args.per_release:
-                        packages_done += 1
-                        if packages_done % 10 == 0:
-                            _rss_mb = psutil.Process().memory_info().rss / 1024 / 1024
-                            logging.getLogger("dependency_metrics").warning(
-                                "Memory after %d packages: %.0f MB RSS", packages_done, _rss_mb
-                            )
-                        if packages_done % 50 == 0:
-                            gc.collect()
-                        if results:
-                            first_summary = results[0]["summary"]
-                            first_row_num = results[0]["row_num"]
-                            logging.getLogger("dependency_metrics").warning(
-                                "Completed package %s/%s (CSV line %s): %s %s (%s release points)",
-                                packages_done,
-                                total_unique_packages,
-                                first_row_num,
-                                first_summary["ecosystem"],
-                                first_summary["package_name"],
-                                len(results),
-                            )
-                    else:
-                        for result in results:
-                            processed += 1
-                            logging.getLogger("dependency_metrics").warning(
-                                "Processing row %s/%s (CSV line %s): %s %s",
-                                processed,
-                                total_rows,
-                                result["row_num"],
-                                result["summary"]["ecosystem"],
-                                result["summary"]["package_name"],
-                            )
-                            if processed % 10 == 0:
+                        if args.per_release:
+                            packages_done += 1
+                            if packages_done % 10 == 0:
                                 _rss_mb = psutil.Process().memory_info().rss / 1024 / 1024
                                 logging.getLogger("dependency_metrics").warning(
-                                    "Memory after %d rows: %.0f MB RSS", processed, _rss_mb
+                                    "Memory after %d packages: %.0f MB RSS", packages_done, _rss_mb
                                 )
-                            if processed % 50 == 0:
+                            if packages_done % 50 == 0:
                                 gc.collect()
+                            if results:
+                                first_summary = results[0]["summary"]
+                                first_row_num = results[0]["row_num"]
+                                logging.getLogger("dependency_metrics").warning(
+                                    "Completed package %s/%s (CSV line %s): %s %s (%s release points)",
+                                    packages_done,
+                                    total_unique_packages,
+                                    first_row_num,
+                                    first_summary["ecosystem"],
+                                    first_summary["package_name"],
+                                    len(results),
+                                )
+                        else:
+                            for result in results:
+                                processed += 1
+                                logging.getLogger("dependency_metrics").warning(
+                                    "Processing row %s/%s (CSV line %s): %s %s",
+                                    processed,
+                                    total_rows,
+                                    result["row_num"],
+                                    result["summary"]["ecosystem"],
+                                    result["summary"]["package_name"],
+                                )
+                                if processed % 10 == 0:
+                                    _rss_mb = psutil.Process().memory_info().rss / 1024 / 1024
+                                    logging.getLogger("dependency_metrics").warning(
+                                        "Memory after %d rows: %.0f MB RSS", processed, _rss_mb
+                                    )
+                                if processed % 50 == 0:
+                                    gc.collect()
 
-                    pending_dep_frames: list = []
-                    for result in results:
-                        if result["summary"]["status"] == "error":
-                            logging.getLogger("dependency_metrics").error(
-                                "Error (CSV line %s): %s",
-                                result["row_num"],
-                                result["summary"]["error"],
+                        pending_dep_frames: list = []
+                        for result in results:
+                            if result["summary"]["status"] == "error":
+                                logging.getLogger("dependency_metrics").error(
+                                    "Error (CSV line %s): %s",
+                                    result["row_num"],
+                                    result["summary"]["error"],
+                                )
+                            # Skip already-written per-release entries in resume mode
+                            if args.per_release and args.resume and existing_per_release:
+                                release_key = (
+                                    result["summary"]["ecosystem"].lower(),
+                                    result["summary"]["package_name"].lower(),
+                                    result["summary"]["window_start"],
+                                    result["summary"]["package_version"],
+                                )
+                                if release_key in existing_per_release:
+                                    continue
+                            summary_writer.writerow(result["summary"])
+                            pending_dep_frames.extend(result["dependency_frames"])
+
+                        # Flush once per package to preserve results on interruption
+                        if pending_dep_frames:
+                            import pandas as _pd
+
+                            combined = _pd.concat(pending_dep_frames, ignore_index=True)
+                            # Workaround: pyarrow ChunkedArray.to_numpy() raises "Unknown error:
+                            # Wrapping" for nullable string columns. Convert via list() instead.
+                            arrow_cols = [
+                                c
+                                for c in combined.columns
+                                if isinstance(combined[c].dtype, _pd.ArrowDtype)
+                            ]
+                            if arrow_cols:
+                                combined = combined.assign(
+                                    **{c: list(combined[c]) for c in arrow_cols}
+                                )
+                            combined.to_csv(
+                                deps_file_path,
+                                mode="a",
+                                header=not deps_header_written,
+                                index=False,
                             )
-                        # Skip already-written per-release entries in resume mode
-                        if args.per_release and args.resume and existing_per_release:
-                            release_key = (
-                                result["summary"]["ecosystem"].lower(),
-                                result["summary"]["package_name"].lower(),
-                                result["summary"]["window_start"],
-                                result["summary"]["package_version"],
+                            deps_header_written = True
+                        summary_handle.flush()
+                        if args.per_release and ledger_writer is not None and results:
+                            group_statuses = {r["summary"].get("status", "error") for r in results}
+                            group_status = "ok" if "ok" in group_statuses else "error"
+                            first = results[0]["summary"]
+                            ledger_writer.writerow(
+                                {
+                                    "ecosystem": first.get("ecosystem", "").lower(),
+                                    "package_name": first.get("package_name", "").lower(),
+                                    "window_start": first.get("window_start", ""),
+                                    "window_end": max(
+                                        r["summary"].get("window_end", "") for r in results
+                                    ),
+                                    "status": group_status,
+                                }
                             )
-                            if release_key in existing_per_release:
-                                continue
-                        summary_writer.writerow(result["summary"])
-                        pending_dep_frames.extend(result["dependency_frames"])
-
-                    # Flush once per package to preserve results on interruption
-                    if pending_dep_frames:
-                        import pandas as _pd
-
-                        combined = _pd.concat(pending_dep_frames, ignore_index=True)
-                        # Workaround: pyarrow ChunkedArray.to_numpy() raises "Unknown error:
-                        # Wrapping" for nullable string columns. Convert via list() instead.
-                        arrow_cols = [
-                            c
-                            for c in combined.columns
-                            if isinstance(combined[c].dtype, _pd.ArrowDtype)
-                        ]
-                        if arrow_cols:
-                            combined = combined.assign(**{c: list(combined[c]) for c in arrow_cols})
-                        combined.to_csv(
-                            deps_file_path,
-                            mode="a",
-                            header=not deps_header_written,
-                            index=False,
-                        )
-                        deps_header_written = True
-                    summary_handle.flush()
-                    if args.per_release and ledger_writer is not None and results:
-                        group_statuses = {r["summary"].get("status", "error") for r in results}
-                        group_status = "ok" if "ok" in group_statuses else "error"
-                        first = results[0]["summary"]
-                        ledger_writer.writerow(
-                            {
-                                "ecosystem": first.get("ecosystem", "").lower(),
-                                "package_name": first.get("package_name", "").lower(),
-                                "window_start": first.get("window_start", ""),
-                                "window_end": max(
-                                    r["summary"].get("window_end", "") for r in results
-                                ),
-                                "status": group_status,
-                            }
-                        )
-                        ledger_handle.flush()
+                            ledger_handle.flush()
             finally:
                 summary_handle.close()
                 if ledger_handle is not None:
