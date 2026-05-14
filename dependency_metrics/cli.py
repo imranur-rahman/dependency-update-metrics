@@ -57,6 +57,7 @@ def _init_worker_process(
     output_dir_str: str,
     default_start_date: datetime,
     log_file_str: Optional[str],
+    max_worker_memory_mb: int = 0,
 ) -> None:
     """Initialise per-process state for ProcessPoolExecutor workers.
 
@@ -117,6 +118,7 @@ def _init_worker_process(
             "half_life": half_life,
             "output_dir": Path(output_dir_str),
             "default_start_date": default_start_date,
+            "max_worker_memory_mb": max_worker_memory_mb,
         }
     )
 
@@ -170,6 +172,7 @@ def _worker_run_group(task: Dict[str, Any]) -> List[Dict[str, Any]]:
     osv_by_ecosystem: Dict[str, Any] = ws["osv_by_ecosystem"]
     osv_index_by_ecosystem: Dict[str, Any] = ws["osv_index_by_ecosystem"]
     use_depsdev: bool = ws["use_depsdev"]
+    max_worker_memory_mb: int = ws.get("max_worker_memory_mb", 0)
 
     error_results: List[Dict[str, Any]] = []
     valid_rows: List[Dict[str, Any]] = []
@@ -323,6 +326,7 @@ def _worker_run_group_per_release(task: Dict[str, Any]) -> List[Dict[str, Any]]:
     osv_by_ecosystem: Dict[str, Any] = ws["osv_by_ecosystem"]
     osv_index_by_ecosystem: Dict[str, Any] = ws["osv_index_by_ecosystem"]
     use_depsdev: bool = ws["use_depsdev"]
+    max_worker_memory_mb: int = ws.get("max_worker_memory_mb", 0)
 
     error_results: List[Dict[str, Any]] = []
     valid_rows: List[Dict[str, Any]] = []
@@ -438,7 +442,9 @@ def _worker_run_group_per_release(task: Dict[str, Any]) -> List[Dict[str, Any]]:
     all_results: List[Dict[str, Any]] = []
     try:
         release_results = analyzer.analyze_at_release_points(
-            merged_row, osv_df=osv_by_ecosystem.get(ecosystem)
+            merged_row,
+            osv_df=osv_by_ecosystem.get(ecosystem),
+            max_memory_mb=max_worker_memory_mb,
         )
         all_results.extend(release_results)
         _wlogger.warning(
@@ -645,6 +651,16 @@ def main():
         type=int,
         default=None,
         help="Number of parallel workers for bulk CSV mode. Default: CPU count",
+    )
+    parser.add_argument(
+        "--max-worker-memory-mb",
+        type=int,
+        default=3000,
+        help=(
+            "Per-worker RSS memory limit in MB. If a worker exceeds this during analysis "
+            "it exits cleanly with an error result (resumable via --resume) instead of "
+            "being OOM-killed. Default: 3000 MB. Set to 0 to disable."
+        ),
     )
 
     parser.add_argument(
@@ -1423,6 +1439,7 @@ def main():
             str(output_dir),
             default_start_date,
             str(log_file_path),
+            args.max_worker_memory_mb,
         )
         _mp_ctx = multiprocessing.get_context("spawn")
 

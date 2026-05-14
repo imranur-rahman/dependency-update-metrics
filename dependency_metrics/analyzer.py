@@ -7,6 +7,8 @@ import logging
 import math
 import os
 import time
+
+import psutil
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
@@ -580,6 +582,7 @@ class DependencyAnalyzer:
         self,
         row: Dict[str, Any],
         osv_df: Optional[pd.DataFrame] = None,
+        max_memory_mb: int = 0,
     ) -> List[Dict[str, Any]]:
         """Compute MTTU/MTTR at every release of the parent package within [start_date, end_date].
 
@@ -746,11 +749,19 @@ class DependencyAnalyzer:
                         dep_name, dep_constraint, date
                     )
 
+        _rss_mb = psutil.Process().memory_info().rss / 1024 / 1024
         logger.warning(
-            "Worker %d: %s/%s — constraints resolved (%.1fs, %d unique pairs), building interval frames...",
+            "Worker %d: %s/%s — constraints resolved (%.1fs, %d unique pairs), "
+            "worker RSS %.0f MB, building interval frames...",
             os.getpid(), self.ecosystem, self.package,
-            time.monotonic() - _t0, len(dep_constraint_pairs),
+            time.monotonic() - _t0, len(dep_constraint_pairs), _rss_mb,
         )
+        if max_memory_mb > 0 and _rss_mb > max_memory_mb:
+            raise MemoryError(
+                f"Worker RSS {_rss_mb:.0f} MB exceeds --max-worker-memory-mb {max_memory_mb} MB "
+                f"({len(dep_constraint_pairs)} dep×constraint pairs). "
+                f"Re-run with --resume to retry, or increase --max-worker-memory-mb."
+            )
 
         # Precompute per-(dep, constraint) base DataFrames for the full [start_date, end_date]
         # range. The per-release loop slices these with bisect instead of rebuilding each time.
@@ -830,11 +841,19 @@ class DependencyAnalyzer:
 
         # For each release point, build intervals and compute MTTU/MTTR
         _n_releases = len(releases_in_window)
+        _rss_mb = psutil.Process().memory_info().rss / 1024 / 1024
         logger.warning(
-            "Worker %d: %s/%s — interval frames built (%.1fs), scoring %d releases...",
+            "Worker %d: %s/%s — interval frames built (%.1fs), "
+            "worker RSS %.0f MB, scoring %d releases...",
             os.getpid(), self.ecosystem, self.package,
-            time.monotonic() - _t0, _n_releases,
+            time.monotonic() - _t0, _rss_mb, _n_releases,
         )
+        if max_memory_mb > 0 and _rss_mb > max_memory_mb:
+            raise MemoryError(
+                f"Worker RSS {_rss_mb:.0f} MB exceeds --max-worker-memory-mb {max_memory_mb} MB "
+                f"after building {len(base_df_cache)} interval frames. "
+                f"Re-run with --resume to retry, or increase --max-worker-memory-mb."
+            )
         results = []
         for _rel_idx, (ver, release_date) in enumerate(releases_in_window):
             if _rel_idx > 0 and _rel_idx % 25 == 0:
