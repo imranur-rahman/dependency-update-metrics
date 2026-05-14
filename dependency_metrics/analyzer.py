@@ -763,10 +763,11 @@ class DependencyAnalyzer:
                 f"Re-run with --resume to retry, or increase --max-worker-memory-mb."
             )
 
-        # Precompute per-(dep, constraint) base DataFrames for the full [start_date, end_date]
+        # Precompute per-(dep, constraint) numpy arrays for the full [start_date, end_date]
         # range. The per-release loop slices these with bisect instead of rebuilding each time.
-        # key: (dep_name, dep_constraint) → (base_df, int_starts)
-        base_df_cache: Dict[Tuple[str, str], Tuple[pd.DataFrame, List]] = {}
+        # key: (dep_name, dep_constraint) → (int_starts, start_ns, durations, updated_arr,
+        #                                     remediated_arr, sev_arrs)
+        base_df_cache: Dict[Tuple[str, str], Tuple] = {}
         osv_df_arg = osv_df if osv_df is not None else pd.DataFrame()
 
         for dep_name, dep_constraint in dep_constraint_pairs:
@@ -833,10 +834,24 @@ class DependencyAnalyzer:
                 records.append(record)
             if not records:
                 continue
-            base_df = pd.DataFrame(records)
+            int_starts = [r["interval_start"] for r in records]
+            start_ns = np.array(
+                [int(r["interval_start"].timestamp() * 1e9) for r in records], dtype=np.int64
+            )
+            durations = np.array(
+                [(r["interval_end"] - r["interval_start"]).days for r in records],
+                dtype=np.float64,
+            )
+            updated_arr = np.array([r["updated"] for r in records], dtype=bool)
+            remediated_arr = np.array([r["remediated"] for r in records], dtype=bool)
+            sev_arrs: Dict[str, np.ndarray] = {}
+            if self.severity_breakdown:
+                for sev in SEVERITY_LEVELS:
+                    sev_arrs[sev] = np.array(
+                        [r[f"remediated_{sev}"] for r in records], dtype=bool
+                    )
             base_df_cache[(dep_name, dep_constraint)] = (
-                base_df,
-                base_df["interval_start"].tolist(),
+                int_starts, start_ns, durations, updated_arr, remediated_arr, sev_arrs
             )
 
         # For each release point, build intervals and compute MTTU/MTTR
@@ -866,71 +881,36 @@ class DependencyAnalyzer:
             pkg_deps = per_version_deps[ver]
             ttu_values = []
             ttr_values = []
-            dep_frames = []
+            if self.severity_breakdown:
+                sev_mttr_rel: Dict[str, List[float]] = {sev: [] for sev in SEVERITY_LEVELS}
+                all_sev_ttr_rel: List[float] = []
 
             for dep_name, dep_constraint in pkg_deps.items():
                 entry = base_df_cache.get((dep_name, dep_constraint))
                 if entry is None:
                     continue
-                base_df, int_starts = entry
+                int_starts, start_ns, durations, updated_arr, remediated_arr, sev_arrs = entry
 
                 # Prefix slice: all intervals whose interval_start < window_end.
-                # Because window_end is always a package release date (and thus an
-                # interval_start boundary in the full list), bisect_left correctly
-                # excludes the interval starting AT window_end. The last included
-                # interval always ends exactly at window_end — no clipping needed.
                 k = bisect.bisect_left(int_starts, window_end)
                 if k == 0:
                     continue
 
-                release_df = base_df.iloc[:k].copy()
-
-                # Vectorized per-release columns.
-                release_df["age_of_interval"] = (window_end - release_df["interval_start"]).dt.days
-
-                if self.weighting_type == "disable":
-                    release_df["weight"] = 1.0
-                elif self.weighting_type == "linear":
-                    max_age = (window_end - start_date).days
-                    release_df["weight"] = (
-                        1.0 - release_df["age_of_interval"] / max_age if max_age > 0 else 1.0
-                    )
-                elif self.weighting_type == "exponential":
-                    if self.half_life:
-                        lam = math.log(2) / self.half_life
-                        release_df["weight"] = np.exp(
-                            -lam * release_df["age_of_interval"].to_numpy()
-                        )
-                    else:
-                        release_df["weight"] = 1.0
-                elif self.weighting_type == "inverse":
-                    release_df["weight"] = 1.0 / (1.0 + release_df["age_of_interval"])
-                else:
-                    release_df["weight"] = 1.0
-
-                release_df["ecosystem"] = self.ecosystem
-                release_df["package"] = self.package
-                release_df["package_version"] = ver
-                release_df["analysis_end_date"] = window_end
-
-                if len(release_df) == 0:
-                    continue
-
-                ttu, ttr = self.calculate_ttu_ttr(release_df)
+                ttu, ttr, sev_mttr = self._ttu_ttr_numpy(
+                    start_ns, durations, updated_arr, remediated_arr, sev_arrs,
+                    k, window_end, start_date,
+                )
                 ttu_values.append(ttu)
-                ttr_values.append(ttr)
-                dep_frames.append(release_df)
+                if self.severity_breakdown:
+                    for sev in SEVERITY_LEVELS:
+                        sev_mttr_rel[sev].append(sev_mttr[sev])
+                    all_sev_ttr_rel.append(ttr)
+                else:
+                    ttr_values.append(ttr)
 
             avg_ttu = sum(ttu_values) / len(ttu_values) if ttu_values else 0.0
 
             if self.severity_breakdown:
-                sev_mttr_rel: Dict[str, List[float]] = {sev: [] for sev in SEVERITY_LEVELS}
-                all_sev_ttr_rel: List[float] = []
-                for dep_df in dep_frames:
-                    for sev in SEVERITY_LEVELS:
-                        col = f"remediated_{sev}"
-                        sev_mttr_rel[sev].append(self._calculate_mttr_for_column(dep_df, col))
-                    all_sev_ttr_rel.append(self._calculate_mttr_for_column(dep_df, "remediated"))
 
                 release_summary: Dict[str, Any] = {
                     "ecosystem": self.ecosystem,
@@ -987,7 +967,7 @@ class DependencyAnalyzer:
                 {
                     "row_num": row.get("row_num"),
                     "summary": release_summary,
-                    "dependency_frames": dep_frames,
+                    "dependency_frames": [],
                 }
             )
 
@@ -1063,6 +1043,68 @@ class DependencyAnalyzer:
             return 1.0 / (1.0 + age_of_interval)
 
         return 1.0
+
+    def _weights_numpy(
+        self,
+        start_ns_slice: np.ndarray,
+        window_end: datetime,
+        start_date: datetime,
+    ) -> np.ndarray:
+        """Return weight array for a bisect-sliced block of intervals."""
+        k = len(start_ns_slice)
+        if self.weighting_type == "disable" or k == 0:
+            return np.ones(k, dtype=np.float64)
+        window_ns = np.int64(window_end.timestamp() * 1e9)
+        ages = (window_ns - start_ns_slice) / np.float64(86_400 * 1_000_000_000)
+        if self.weighting_type == "exponential" and self.half_life:
+            lam = math.log(2) / self.half_life
+            return np.exp(-lam * ages)
+        if self.weighting_type == "linear":
+            max_age = float((window_end - start_date).days)
+            return (1.0 - ages / max_age) if max_age > 0 else np.ones(k, dtype=np.float64)
+        if self.weighting_type == "inverse":
+            return 1.0 / (1.0 + ages)
+        return np.ones(k, dtype=np.float64)
+
+    def _weighted_sum_numpy(
+        self,
+        durations: np.ndarray,
+        weights: np.ndarray,
+        mask: np.ndarray,
+    ) -> float:
+        """Weighted sum of durations[mask] / sum(weights[mask]), or plain sum if disabled."""
+        d, w = durations[mask], weights[mask]
+        if d.size == 0:
+            return 0.0
+        if self.weighting_type == "disable":
+            return float(d.sum())
+        total_w = w.sum()
+        return float((d * w).sum() / total_w) if total_w > 0 else 0.0
+
+    def _ttu_ttr_numpy(
+        self,
+        start_ns: np.ndarray,
+        durations: np.ndarray,
+        updated: np.ndarray,
+        remediated: np.ndarray,
+        sev_arrs: Dict[str, np.ndarray],
+        k: int,
+        window_end: datetime,
+        start_date: datetime,
+    ) -> Tuple[float, float, Dict[str, float]]:
+        """Compute (ttu, ttr, sev_mttr_dict) from numpy arrays up to index k."""
+        sn = start_ns[:k]
+        d = durations[:k]
+        u = updated[:k]
+        r = remediated[:k]
+        w = self._weights_numpy(sn, window_end, start_date)
+        ttu = self._weighted_sum_numpy(d, w, ~u)
+        ttr = self._weighted_sum_numpy(d, w, ~r)
+        sev_mttr: Dict[str, float] = {}
+        if self.severity_breakdown:
+            for sev, arr in sev_arrs.items():
+                sev_mttr[sev] = self._weighted_sum_numpy(d, w, ~arr[:k])
+        return ttu, ttr, sev_mttr
 
     def analyze_dependency(
         self, dependency: str, pkg_metadata: Dict, dep_metadata: Dict, osv_df: pd.DataFrame
