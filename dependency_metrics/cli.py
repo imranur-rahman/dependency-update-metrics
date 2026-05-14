@@ -9,6 +9,7 @@ import multiprocessing
 import os
 import sys
 import logging
+import time
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional
@@ -427,12 +428,24 @@ def _worker_run_group_per_release(task: Dict[str, Any]) -> List[Dict[str, Any]]:
         "start_date": min_start,
         "end_date": max_end,
     }
+    _wlogger = logging.getLogger("dependency_metrics")
+    _wlogger.warning(
+        "Worker %d: starting %s/%s [%s → %s]",
+        os.getpid(), ecosystem, package_name,
+        min_start.date(), max_end.date(),
+    )
+    _w_t0 = time.monotonic()
     all_results: List[Dict[str, Any]] = []
     try:
         release_results = analyzer.analyze_at_release_points(
             merged_row, osv_df=osv_by_ecosystem.get(ecosystem)
         )
         all_results.extend(release_results)
+        _wlogger.warning(
+            "Worker %d: finished %s/%s — %d release points in %.1fs",
+            os.getpid(), ecosystem, package_name,
+            len(all_results), time.monotonic() - _w_t0,
+        )
     except Exception as exc:
         error = f'"{exc}"'
         if severity_breakdown:
@@ -467,6 +480,11 @@ def _worker_run_group_per_release(task: Dict[str, Any]) -> List[Dict[str, Any]]:
                 "status": "error",
                 "error": error,
             }
+        _wlogger.warning(
+            "Worker %d: error on %s/%s after %.1fs — %s",
+            os.getpid(), ecosystem, package_name,
+            time.monotonic() - _w_t0, exc,
+        )
         error_results.append(
             {
                 "row_num": merged_row["row_num"],

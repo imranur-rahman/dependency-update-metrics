@@ -6,6 +6,7 @@ import bisect
 import logging
 import math
 import os
+import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
@@ -609,6 +610,12 @@ class DependencyAnalyzer:
         if not releases_in_window:
             return []
 
+        _t0 = time.monotonic()
+        logger.warning(
+            "Worker %d: %s/%s — %d releases in window, fetching per-version deps...",
+            os.getpid(), self.ecosystem, self.package, len(releases_in_window),
+        )
+
         osv_df, osv_index = self._get_osv_index(osv_df)
 
         # Fetch per-version deps for each release
@@ -620,6 +627,12 @@ class DependencyAnalyzer:
         all_dep_names: set = set()
         for deps in per_version_deps.values():
             all_dep_names.update(deps.keys())
+
+        logger.warning(
+            "Worker %d: %s/%s — per-version deps done (%.1fs), fetching metadata for %d unique deps...",
+            os.getpid(), self.ecosystem, self.package,
+            time.monotonic() - _t0, len(all_dep_names),
+        )
 
         if not all_dep_names:
 
@@ -702,6 +715,11 @@ class DependencyAnalyzer:
                 per_date[date] = {"highest_dep_version": highest_dep_version}
             dep_cache[dep_name] = per_date
 
+        logger.warning(
+            "Worker %d: %s/%s — dep metadata done (%.1fs), resolving constraints...",
+            os.getpid(), self.ecosystem, self.package, time.monotonic() - _t0,
+        )
+
         # Precompute dep version resolution for all unique (dep, constraint, date) combos.
         # Multiple package releases may share the same constraint for a dependency; precomputing
         # here avoids redundant work in the per-release hot loop below.
@@ -727,6 +745,12 @@ class DependencyAnalyzer:
                     dep_version_cache[key] = self.resolve_dependency_version(
                         dep_name, dep_constraint, date
                     )
+
+        logger.warning(
+            "Worker %d: %s/%s — constraints resolved (%.1fs, %d unique pairs), building interval frames...",
+            os.getpid(), self.ecosystem, self.package,
+            time.monotonic() - _t0, len(dep_constraint_pairs),
+        )
 
         # Precompute per-(dep, constraint) base DataFrames for the full [start_date, end_date]
         # range. The per-release loop slices these with bisect instead of rebuilding each time.
@@ -805,8 +829,20 @@ class DependencyAnalyzer:
             )
 
         # For each release point, build intervals and compute MTTU/MTTR
+        _n_releases = len(releases_in_window)
+        logger.warning(
+            "Worker %d: %s/%s — interval frames built (%.1fs), scoring %d releases...",
+            os.getpid(), self.ecosystem, self.package,
+            time.monotonic() - _t0, _n_releases,
+        )
         results = []
-        for ver, release_date in releases_in_window:
+        for _rel_idx, (ver, release_date) in enumerate(releases_in_window):
+            if _rel_idx > 0 and _rel_idx % 25 == 0:
+                logger.warning(
+                    "Worker %d: %s/%s — scored %d/%d releases (%.1fs elapsed)",
+                    os.getpid(), self.ecosystem, self.package,
+                    _rel_idx, _n_releases, time.monotonic() - _t0,
+                )
             window_end = release_date
             pkg_deps = per_version_deps[ver]
             ttu_values = []
