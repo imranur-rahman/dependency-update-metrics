@@ -33,6 +33,7 @@ from .depsdev_client import DepsDevClient
 from .depsdev_resolver import DepsDevResolver
 from .reporting import (
     export_osv_data,
+    export_per_release_worksheets,
     export_worksheets,
     print_summary,
     save_results_json,
@@ -1773,35 +1774,72 @@ def main():
         )
 
         try:
-            results = analyzer.analyze()
+            _logger = logging.getLogger("dependency_metrics")
+            if args.per_release:
+                row = {"start_date": start_date, "end_date": end_date}
+                release_results = analyzer.analyze_at_release_points(row)
+                if not release_results:
+                    _logger.info("No releases found in window for %s", args.package)
+                else:
+                    _logger.info("\n" + "=" * 60)
+                    _logger.info("PER-RELEASE ANALYSIS RESULTS")
+                    _logger.info("=" * 60)
+                    _logger.info("Package: %s", args.package)
+                    _logger.info("Ecosystem: %s", args.ecosystem)
+                    _logger.info("Period: %s to %s", start_date.date(), end_date.date())
+                    _logger.info("-" * 60)
+                    for r in release_results:
+                        s = r["summary"]
+                        mttr = s.get("mttr", s.get("mttr_all_severities", 0.0))
+                        _logger.info(
+                            "  v%-20s  MTTU=%.2f  MTTR=%.2f  deps=%s  status=%s",
+                            s.get("package_version", ""),
+                            s.get("mttu", 0.0),
+                            mttr,
+                            s.get("num_dependencies", 0),
+                            s.get("status", ""),
+                        )
+                    _logger.info("=" * 60)
 
-            # Output results
-            print_summary(
-                package=args.package,
-                ecosystem=args.ecosystem,
-                start_date=start_date,
-                end_date=end_date,
-                weighting_type=args.weighting_type,
-                half_life=args.half_life,
-                results=results,
-            )
+                    summary_df = pd.DataFrame([r["summary"] for r in release_results])
+                    csv_path = output_dir / f"{args.package}_per_release_results.csv"
+                    summary_df.to_csv(csv_path, index=False)
+                    _logger.info("Per-release results saved to: %s", csv_path)
 
-            results_file = save_results_json(results, output_dir, args.package)
-            logging.getLogger("dependency_metrics").info("Results saved to: %s", results_file)
+                    if args.get_worksheets:
+                        excel_file = export_per_release_worksheets(
+                            release_results, output_dir, args.package
+                        )
+                        if excel_file is not None:
+                            _logger.info("Per-release worksheets saved to: %s", excel_file)
+            else:
+                results = analyzer.analyze()
 
-            # Export OSV data if requested
-            if args.get_osv:
-                osv_file = export_osv_data(results, output_dir, args.package)
-                if osv_file is not None:
-                    logging.getLogger("dependency_metrics").info("OSV data saved to: %s", osv_file)
+                # Output results
+                print_summary(
+                    package=args.package,
+                    ecosystem=args.ecosystem,
+                    start_date=start_date,
+                    end_date=end_date,
+                    weighting_type=args.weighting_type,
+                    half_life=args.half_life,
+                    results=results,
+                )
 
-            # Export worksheets if requested
-            if args.get_worksheets:
-                excel_file = export_worksheets(results, output_dir, args.package)
-                if excel_file is not None:
-                    logging.getLogger("dependency_metrics").info(
-                        "Worksheets saved to: %s", excel_file
-                    )
+                results_file = save_results_json(results, output_dir, args.package)
+                _logger.info("Results saved to: %s", results_file)
+
+                # Export OSV data if requested
+                if args.get_osv:
+                    osv_file = export_osv_data(results, output_dir, args.package)
+                    if osv_file is not None:
+                        _logger.info("OSV data saved to: %s", osv_file)
+
+                # Export worksheets if requested
+                if args.get_worksheets:
+                    excel_file = export_worksheets(results, output_dir, args.package)
+                    if excel_file is not None:
+                        _logger.info("Worksheets saved to: %s", excel_file)
 
         except Exception as e:
             logging.getLogger("dependency_metrics").error("Error during analysis: %s", e)
