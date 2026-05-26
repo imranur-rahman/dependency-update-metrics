@@ -76,7 +76,7 @@ def _fake_osv_df():
 # ---------------------------------------------------------------------------
 
 
-def test_bulk_resume_skips_ok_rows(tmp_path: Path) -> None:
+def test_bulk_resume_skips_ok_rows(tmp_path: Path, in_process_executor) -> None:
     input_csv = tmp_path / "input.csv"
     input_csv.write_text(
         "ecosystem,package_name,end_date\n" "pypi,requests,2024-01-01\n" "pypi,flask,2024-01-01\n"
@@ -101,7 +101,7 @@ def test_bulk_resume_skips_ok_rows(tmp_path: Path) -> None:
     assert mock_inst.analyze_bulk_rows.call_count == 1
 
 
-def test_bulk_resume_retries_error_rows(tmp_path: Path) -> None:
+def test_bulk_resume_retries_error_rows(tmp_path: Path, in_process_executor) -> None:
     input_csv = tmp_path / "input.csv"
     input_csv.write_text(
         "ecosystem,package_name,end_date\n" "pypi,requests,2024-01-01\n" "pypi,flask,2024-01-01\n"
@@ -196,7 +196,7 @@ def test_per_release_creates_ledger(tmp_path: Path) -> None:
     assert df.iloc[0]["package_name"] == "pkg_a"
 
 
-def test_per_release_resume_skips_ledger_entries(tmp_path: Path) -> None:
+def test_per_release_resume_skips_ledger_entries(tmp_path: Path, in_process_executor) -> None:
     input_csv = tmp_path / "input.csv"
     input_csv.write_text(
         "ecosystem,package_name,end_date\n" "pypi,pkg_a,2024-01-01\n" "pypi,pkg_b,2024-01-01\n"

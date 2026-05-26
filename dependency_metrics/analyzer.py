@@ -635,7 +635,8 @@ class DependencyAnalyzer:
             all_dep_names.update(deps.keys())
 
         logger.warning(
-            "Worker %d: %s/%s — per-version deps done (%.1fs), fetching metadata for %d unique deps...",
+            "Worker %d: %s/%s — per-version deps done (%.1fs),"
+            " fetching metadata for %d unique deps...",
             os.getpid(),
             self.ecosystem,
             self.package,

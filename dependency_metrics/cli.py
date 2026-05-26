@@ -21,7 +21,6 @@ from concurrent.futures import (
     FIRST_COMPLETED,
     ProcessPoolExecutor,
     ThreadPoolExecutor,
-    as_completed,
     wait,
 )
 from concurrent.futures.process import BrokenProcessPool
@@ -75,8 +74,6 @@ def _init_worker_process(
     in every worker process.
     """
     import pickle
-
-    global _WORKER_STATE
 
     # Worker logging — write to the same file as the main process (append mode).
     _wlogger = logging.getLogger("dependency_metrics")
@@ -173,7 +170,6 @@ def _worker_run_group(task: Dict[str, Any]) -> List[Dict[str, Any]]:
     osv_by_ecosystem: Dict[str, Any] = ws["osv_by_ecosystem"]
     osv_index_by_ecosystem: Dict[str, Any] = ws["osv_index_by_ecosystem"]
     use_depsdev: bool = ws["use_depsdev"]
-    max_worker_memory_mb: int = ws.get("max_worker_memory_mb", 0)
 
     error_results: List[Dict[str, Any]] = []
     valid_rows: List[Dict[str, Any]] = []
@@ -1617,7 +1613,7 @@ def main():
                             )
                             sys.stderr.write(
                                 "\nERROR: A worker process was killed (likely out of memory).\n"
-                                "Partial results have been saved. Re-run with --resume to continue.\n\n"
+                                "Partial results saved. Re-run with --resume to continue.\n\n"
                             )
                             _pending_futures.clear()
                             break
@@ -1635,7 +1631,7 @@ def main():
                                 first_summary = results[0]["summary"]
                                 first_row_num = results[0]["row_num"]
                                 logging.getLogger("dependency_metrics").warning(
-                                    "Completed package %s/%s (CSV line %s): %s %s (%s release points)",
+                                    "Completed %s/%s (CSV line %s): %s %s (%s release points)",
                                     packages_done,
                                     total_unique_packages,
                                     first_row_num,

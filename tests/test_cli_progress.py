@@ -118,7 +118,7 @@ def test_per_release_resume_skips_all_rows_for_completed_package(tmp_path: Path)
     mock_inst.analyze_at_release_points.assert_not_called()
 
 
-def test_per_release_resume_package_level_not_row_level(tmp_path: Path):
+def test_per_release_resume_package_level_not_row_level(tmp_path: Path, in_process_executor):
     """Regression: old code matched at row level (end_date), so only the row whose
     end_date == ledger window_end was skipped.  Now all rows for the package are
     skipped and only the other package is analysed."""
@@ -160,7 +160,7 @@ def test_per_release_resume_package_level_not_row_level(tmp_path: Path):
     assert mock_inst.analyze_at_release_points.call_count == 1
 
 
-def test_per_release_resume_different_packages_partially_done(tmp_path: Path):
+def test_per_release_resume_different_packages_partially_done(tmp_path: Path, in_process_executor):
     """One package done, one not done → only the undone package is analysed."""
     input_csv = tmp_path / "input.csv"
     input_csv.write_text(

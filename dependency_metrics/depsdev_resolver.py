@@ -171,11 +171,6 @@ def _best_semver(system: str, versions: List[str]) -> Optional[str]:
         return max(pool, key=lambda t: t[0])[1]
 
     # NPM / CARGO — use semantic_version
-    try:
-        import semantic_version  # type: ignore[import]
-    except ImportError:
-        return versions[-1] if versions else None
-
     sv_parsed = []
     for v in versions:
         try:

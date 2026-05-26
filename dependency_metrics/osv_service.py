@@ -10,7 +10,7 @@ from typing import Dict, List, Optional
 
 import pandas as pd
 from packaging import version as pkg_version
-from packaging.version import InvalidVersion, Version as PkgVersion
+from packaging.version import Version as PkgVersion
 
 from .time_utils import ensure_utc, parse_timestamp
 
