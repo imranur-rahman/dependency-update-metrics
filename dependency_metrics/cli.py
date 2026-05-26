@@ -184,6 +184,7 @@ def _worker_run_group(task: Dict[str, Any]) -> List[Dict[str, Any]]:
         package_name = str(row.get("package_name", ""))
         end_date_raw = str(row.get("end_date", ""))
         start_date_raw = str(row.get("start_date", ""))
+        first_release_date_raw = str(row.get("first_release_date", ""))
 
         try:
             if not ecosystem or not package_name or not end_date_raw:
@@ -197,6 +198,8 @@ def _worker_run_group(task: Dict[str, Any]) -> List[Dict[str, Any]]:
             start_date = default_start_date
             if start_date_raw:
                 start_date = _parse_date(start_date_raw, "start_date", row_num)
+            elif first_release_date_raw:
+                start_date = _parse_date(first_release_date_raw, "first_release_date", row_num)
             end_date = _parse_date(end_date_raw, "end_date", row_num)
 
             valid_rows.append({"row_num": row_num, "start_date": start_date, "end_date": end_date})
@@ -338,6 +341,7 @@ def _worker_run_group_per_release(task: Dict[str, Any]) -> List[Dict[str, Any]]:
         package_name = str(row.get("package_name", ""))
         end_date_raw = str(row.get("end_date", ""))
         start_date_raw = str(row.get("start_date", ""))
+        first_release_date_raw = str(row.get("first_release_date", ""))
 
         try:
             if not ecosystem or not package_name or not end_date_raw:
@@ -351,6 +355,8 @@ def _worker_run_group_per_release(task: Dict[str, Any]) -> List[Dict[str, Any]]:
             start_date = default_start_date
             if start_date_raw:
                 start_date = _parse_date(start_date_raw, "start_date", row_num)
+            elif first_release_date_raw:
+                start_date = _parse_date(first_release_date_raw, "first_release_date", row_num)
             end_date = _parse_date(end_date_raw, "end_date", row_num)
 
             valid_rows.append({"row_num": row_num, "start_date": start_date, "end_date": end_date})
@@ -436,8 +442,11 @@ def _worker_run_group_per_release(task: Dict[str, Any]) -> List[Dict[str, Any]]:
     _wlogger = logging.getLogger("dependency_metrics")
     _wlogger.warning(
         "Worker %d: starting %s/%s [%s → %s]",
-        os.getpid(), ecosystem, package_name,
-        min_start.date(), max_end.date(),
+        os.getpid(),
+        ecosystem,
+        package_name,
+        min_start.date(),
+        max_end.date(),
     )
     _w_t0 = time.monotonic()
     all_results: List[Dict[str, Any]] = []
@@ -450,8 +459,11 @@ def _worker_run_group_per_release(task: Dict[str, Any]) -> List[Dict[str, Any]]:
         all_results.extend(release_results)
         _wlogger.warning(
             "Worker %d: finished %s/%s — %d release points in %.1fs",
-            os.getpid(), ecosystem, package_name,
-            len(all_results), time.monotonic() - _w_t0,
+            os.getpid(),
+            ecosystem,
+            package_name,
+            len(all_results),
+            time.monotonic() - _w_t0,
         )
     except Exception as exc:
         error = f'"{exc}"'
@@ -489,8 +501,11 @@ def _worker_run_group_per_release(task: Dict[str, Any]) -> List[Dict[str, Any]]:
             }
         _wlogger.warning(
             "Worker %d: error on %s/%s after %.1fs — %s",
-            os.getpid(), ecosystem, package_name,
-            time.monotonic() - _w_t0, exc,
+            os.getpid(),
+            ecosystem,
+            package_name,
+            time.monotonic() - _w_t0,
+            exc,
         )
         error_results.append(
             {
@@ -1084,6 +1099,7 @@ def main():
                 package_name = str(row.get("package_name", ""))
                 end_date_raw = str(row.get("end_date", ""))
                 start_date_raw = str(row.get("start_date", ""))
+                first_release_date_raw = str(row.get("first_release_date", ""))
 
                 try:
                     if not ecosystem or not package_name or not end_date_raw:
@@ -1099,6 +1115,10 @@ def main():
                     start_date = default_start_date
                     if start_date_raw:
                         start_date = _parse_date(start_date_raw, "start_date", row_num)
+                    elif first_release_date_raw:
+                        start_date = _parse_date(
+                            first_release_date_raw, "first_release_date", row_num
+                        )
                     end_date = _parse_date(end_date_raw, "end_date", row_num)
 
                     valid_rows.append(
@@ -1241,6 +1261,7 @@ def main():
                 package_name = str(row.get("package_name", ""))
                 end_date_raw = str(row.get("end_date", ""))
                 start_date_raw = str(row.get("start_date", ""))
+                first_release_date_raw = str(row.get("first_release_date", ""))
 
                 try:
                     if not ecosystem or not package_name or not end_date_raw:
@@ -1256,6 +1277,10 @@ def main():
                     start_date = default_start_date
                     if start_date_raw:
                         start_date = _parse_date(start_date_raw, "start_date", row_num)
+                    elif first_release_date_raw:
+                        start_date = _parse_date(
+                            first_release_date_raw, "first_release_date", row_num
+                        )
                     end_date = _parse_date(end_date_raw, "end_date", row_num)
 
                     valid_rows.append(
@@ -1573,9 +1598,7 @@ def main():
                     )
                     if not _done_futures:
                         _in_flight = [
-                            future_to_pkg[f]
-                            for f in _pending_futures
-                            if f in future_to_pkg
+                            future_to_pkg[f] for f in _pending_futures if f in future_to_pkg
                         ]
                         logging.getLogger("dependency_metrics").warning(
                             "Still waiting for %d package(s): %s",

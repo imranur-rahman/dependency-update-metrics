@@ -386,7 +386,7 @@ class DependencyAnalyzer:
                 updated = (
                     dep_version == highest_dep_version
                     if dep_version and highest_dep_version
-                    else False
+                    else dep_version is None
                 )
                 # OPT-2: Pass pre-built osv_index for O(1) vulnerability lookup
                 if self.severity_breakdown:
@@ -616,7 +616,10 @@ class DependencyAnalyzer:
         _t0 = time.monotonic()
         logger.warning(
             "Worker %d: %s/%s — %d releases in window, fetching per-version deps...",
-            os.getpid(), self.ecosystem, self.package, len(releases_in_window),
+            os.getpid(),
+            self.ecosystem,
+            self.package,
+            len(releases_in_window),
         )
 
         osv_df, osv_index = self._get_osv_index(osv_df)
@@ -633,8 +636,11 @@ class DependencyAnalyzer:
 
         logger.warning(
             "Worker %d: %s/%s — per-version deps done (%.1fs), fetching metadata for %d unique deps...",
-            os.getpid(), self.ecosystem, self.package,
-            time.monotonic() - _t0, len(all_dep_names),
+            os.getpid(),
+            self.ecosystem,
+            self.package,
+            time.monotonic() - _t0,
+            len(all_dep_names),
         )
 
         if not all_dep_names:
@@ -720,7 +726,10 @@ class DependencyAnalyzer:
 
         logger.warning(
             "Worker %d: %s/%s — dep metadata done (%.1fs), resolving constraints...",
-            os.getpid(), self.ecosystem, self.package, time.monotonic() - _t0,
+            os.getpid(),
+            self.ecosystem,
+            self.package,
+            time.monotonic() - _t0,
         )
 
         # Precompute dep version resolution for all unique (dep, constraint, date) combos.
@@ -753,8 +762,12 @@ class DependencyAnalyzer:
         logger.warning(
             "Worker %d: %s/%s — constraints resolved (%.1fs, %d unique pairs), "
             "worker RSS %.0f MB, building interval frames...",
-            os.getpid(), self.ecosystem, self.package,
-            time.monotonic() - _t0, len(dep_constraint_pairs), _rss_mb,
+            os.getpid(),
+            self.ecosystem,
+            self.package,
+            time.monotonic() - _t0,
+            len(dep_constraint_pairs),
+            _rss_mb,
         )
         if max_memory_mb > 0 and _rss_mb > max_memory_mb:
             raise MemoryError(
@@ -788,7 +801,7 @@ class DependencyAnalyzer:
                 updated = (
                     dep_version == highest_dep_version
                     if dep_version and highest_dep_version
-                    else False
+                    else dep_version is None
                 )
                 if self.severity_breakdown:
                     rem_dict = self._check_remediation_by_severity(
@@ -847,11 +860,14 @@ class DependencyAnalyzer:
             sev_arrs: Dict[str, np.ndarray] = {}
             if self.severity_breakdown:
                 for sev in SEVERITY_LEVELS:
-                    sev_arrs[sev] = np.array(
-                        [r[f"remediated_{sev}"] for r in records], dtype=bool
-                    )
+                    sev_arrs[sev] = np.array([r[f"remediated_{sev}"] for r in records], dtype=bool)
             base_df_cache[(dep_name, dep_constraint)] = (
-                int_starts, start_ns, durations, updated_arr, remediated_arr, sev_arrs
+                int_starts,
+                start_ns,
+                durations,
+                updated_arr,
+                remediated_arr,
+                sev_arrs,
             )
 
         # For each release point, build intervals and compute MTTU/MTTR
@@ -860,8 +876,12 @@ class DependencyAnalyzer:
         logger.warning(
             "Worker %d: %s/%s — interval frames built (%.1fs), "
             "worker RSS %.0f MB, scoring %d releases...",
-            os.getpid(), self.ecosystem, self.package,
-            time.monotonic() - _t0, _rss_mb, _n_releases,
+            os.getpid(),
+            self.ecosystem,
+            self.package,
+            time.monotonic() - _t0,
+            _rss_mb,
+            _n_releases,
         )
         if max_memory_mb > 0 and _rss_mb > max_memory_mb:
             raise MemoryError(
@@ -874,8 +894,12 @@ class DependencyAnalyzer:
             if _rel_idx > 0 and _rel_idx % 25 == 0:
                 logger.warning(
                     "Worker %d: %s/%s — scored %d/%d releases (%.1fs elapsed)",
-                    os.getpid(), self.ecosystem, self.package,
-                    _rel_idx, _n_releases, time.monotonic() - _t0,
+                    os.getpid(),
+                    self.ecosystem,
+                    self.package,
+                    _rel_idx,
+                    _n_releases,
+                    time.monotonic() - _t0,
                 )
             window_end = release_date
             pkg_deps = per_version_deps[ver]
@@ -897,8 +921,14 @@ class DependencyAnalyzer:
                     continue
 
                 ttu, ttr, sev_mttr = self._ttu_ttr_numpy(
-                    start_ns, durations, updated_arr, remediated_arr, sev_arrs,
-                    k, window_end, start_date,
+                    start_ns,
+                    durations,
+                    updated_arr,
+                    remediated_arr,
+                    sev_arrs,
+                    k,
+                    window_end,
+                    start_date,
                 )
                 ttu_values.append(ttu)
                 if self.severity_breakdown:
@@ -1231,7 +1261,7 @@ class DependencyAnalyzer:
             updated = (
                 (dep_version == highest_dep_version)
                 if dep_version and highest_dep_version
-                else False
+                else dep_version is None
             )
 
             # Calculate age

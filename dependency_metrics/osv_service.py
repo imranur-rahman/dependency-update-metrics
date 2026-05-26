@@ -45,12 +45,6 @@ class OSVService:
         result: Dict[str, bool] = {level: True for level in SEVERITY_LEVELS}
         result["all_severities"] = True
 
-        if dependency_version is None:
-            # Version resolution failed — we can't determine which specific CVEs apply,
-            # so only penalise the aggregate bucket, not individual severity levels.
-            result["all_severities"] = False
-            return result
-
         from .time_utils import ensure_utc
 
         interval_start = ensure_utc(interval_start)
@@ -58,6 +52,9 @@ class OSVService:
         if osv_index is not None:
             dep_vulns_list = osv_index.get(dependency)
             if not dep_vulns_list:
+                return result
+
+            if dependency_version is None:
                 return result
 
             try:
@@ -93,6 +90,9 @@ class OSVService:
 
         dep_vulns = osv_df[osv_df["package"] == dependency]
         if len(dep_vulns) == 0:
+            return result
+
+        if dependency_version is None:
             return result
 
         try:
@@ -132,14 +132,15 @@ class OSVService:
         ecosystem: str,
         osv_index: Optional[Dict[str, List[Dict]]] = None,
     ) -> bool:
-        if dependency_version is None:
-            return False
         interval_start = ensure_utc(interval_start)
 
         # Fast path: use pre-built index (O(1) lookup) when available
         if osv_index is not None:
             dep_vulns_list = osv_index.get(dependency)
             if not dep_vulns_list:
+                return True
+
+            if dependency_version is None:
                 return True
 
             try:
@@ -170,6 +171,9 @@ class OSVService:
 
         dep_vulns = osv_df[osv_df["package"] == dependency]
         if len(dep_vulns) == 0:
+            return True
+
+        if dependency_version is None:
             return True
 
         try:

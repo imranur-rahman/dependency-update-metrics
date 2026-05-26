@@ -7,6 +7,7 @@ from __future__ import annotations
 import bisect
 import json
 import logging
+import re
 import sqlite3
 import subprocess
 import threading
@@ -97,6 +98,41 @@ def resolve_pypi_version_locally(
     if not valid:
         return None
     return str(max(valid))
+
+
+def _npm_match_constraint(versions: List[str], constraint: str) -> Optional[str]:
+    """Return the highest version in *versions* satisfying *constraint* (npm semver semantics).
+
+    Returns None if no version matches or if semantic_version is unavailable.
+    Pre-releases are excluded unless the constraint itself contains a pre-release tag.
+    """
+    try:
+        import semantic_version as _sv  # type: ignore[import]
+    except ImportError:
+        logger.warning("semantic_version not installed; npm constraint resolution unavailable")
+        return None
+
+    raw = constraint.strip()
+    spec_str = "*" if raw in ("", "*") else raw
+    try:
+        spec = _sv.NpmSpec(spec_str)
+    except ValueError:
+        logger.debug("Cannot parse npm constraint %r — skipping", constraint)
+        return None
+
+    constraint_has_prerelease = bool(re.search(r"\d-", constraint))
+    best = None
+    for ver_str in versions:
+        try:
+            v = _sv.Version.coerce(ver_str)
+        except (ValueError, TypeError):
+            continue
+        if v.prerelease and not constraint_has_prerelease:
+            continue
+        if v in spec:
+            if best is None or v > best:
+                best = v
+    return str(best) if best is not None else None
 
 
 def npm_semver_key(
@@ -540,6 +576,32 @@ class NpmResolver(PackageResolver):
             self.cache.npm_resolve_set(cache_key, result)
             return result
 
+        # Python-based resolution: inclusive <= semantics, consistent with
+        # get_highest_semver_version_at_date which uses bisect_right (inclusive).
+        # The npm CLI --before flag uses strict < and would wrongly exclude a version
+        # released at exactly before_date, causing updated=False on interval boundaries.
+        time_data = None
+        try:
+            time_data = self._get_npm_time_data(dependency)
+        except (subprocess.TimeoutExpired, json.JSONDecodeError, FileNotFoundError) as e:
+            logger.warning(
+                "npm time data unavailable for %s, falling back to CLI: %s", dependency, e
+            )
+
+        if time_data:
+            eligible: List[str] = []
+            for ver, timestamp in time_data.items():
+                pub_date = parse_timestamp(timestamp)
+                if pub_date is None:
+                    continue
+                if pub_date <= before_date:
+                    eligible.append(ver)
+            resolved = _npm_match_constraint(eligible, constraint)
+            self.cache.npm_resolve_set(cache_key, resolved)
+            self.cache.save_json("resolve_npm", disk_key, {"version": resolved})
+            return resolved
+
+        # Fallback: npm CLI (strict < semantics; only reached if time data unavailable)
         try:
             cmd = [
                 "npm",

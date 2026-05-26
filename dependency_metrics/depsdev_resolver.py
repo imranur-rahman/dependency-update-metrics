@@ -414,7 +414,7 @@ class DepsDevResolver:
         """
         if before_date.tzinfo is None:
             before_date = before_date.replace(tzinfo=timezone.utc)
-        date_key = before_date.date().isoformat()
+        date_key = before_date.isoformat()
         cache_key = (dependency, constraint, date_key)
         if cache_key in self._resolve_cache:
             return self._resolve_cache[cache_key]
