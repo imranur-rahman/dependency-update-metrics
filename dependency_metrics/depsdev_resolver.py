@@ -12,6 +12,7 @@ Constraint matching is done locally in Python:
 from __future__ import annotations
 
 import logging
+import re
 from datetime import datetime, timezone
 from functools import lru_cache
 from typing import Dict, Iterable, List, Optional, Tuple
@@ -103,11 +104,20 @@ def _match_npm_or_cargo(versions: List[str], constraint: str) -> Optional[str]:
         logger.debug("Cannot parse npm/cargo constraint %r — skipping", constraint)
         return None
 
+    # npm excludes pre-releases from range matching unless the range itself
+    # contains a pre-release tag (e.g. "^5.0.0-beta.1").  The Python
+    # semantic_version library follows strict semver and would otherwise match
+    # "5.0.0-beta.1" against "^4.7.5" because 5.0.0-beta.1 < 5.0.0 in semver
+    # precedence, placing it inside the [4.7.5, 5.0.0) window.
+    constraint_has_prerelease = bool(re.search(r"\d-", constraint))
+
     best: Optional[semantic_version.Version] = None
     for ver_str in versions:
         try:
             v = _cached_coerce_semver(ver_str)
         except (ValueError, ImportError):
+            continue
+        if v.prerelease and not constraint_has_prerelease:
             continue
         if v in spec:
             if best is None or v > best:

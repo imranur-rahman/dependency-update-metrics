@@ -170,6 +170,25 @@ def test_match_npm_returns_none_for_empty_list(tmp_path):
     assert _match_npm_or_cargo([], "^1.0.0") is None
 
 
+def test_match_npm_caret_excludes_prerelease():
+    """^4.7.5 must not resolve to 5.0.0-beta.* even though semver places them < 5.0.0."""
+    versions = ["4.7.5", "4.14.0", "5.0.0-beta.1", "5.0.0-beta.5"]
+    assert _match_npm_or_cargo(versions, "^4.7.5") == "4.14.0"
+
+
+def test_match_npm_prerelease_constraint_includes_prerelease():
+    """^5.0.0-beta.1 should still match pre-release versions (explicit pre-release range)."""
+    versions = ["4.14.0", "5.0.0-beta.1", "5.0.0-beta.2"]
+    result = _match_npm_or_cargo(versions, "^5.0.0-beta.1")
+    assert result in ("5.0.0-beta.1", "5.0.0-beta.2")
+
+
+def test_match_npm_wildcard_excludes_prerelease_when_stable_exists():
+    """`*` returns highest stable version, not a pre-release."""
+    versions = ["1.0.0", "2.0.0", "3.0.0-rc.1"]
+    assert _match_npm_or_cargo(versions, "*") == "2.0.0"
+
+
 # ---------------------------------------------------------------------------
 # _match_pypi
 # ---------------------------------------------------------------------------

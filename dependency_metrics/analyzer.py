@@ -1160,14 +1160,9 @@ class DependencyAnalyzer:
         # Build lookup for package versions: date -> (version, constraint for this dependency)
         pkg_version_info = []  # List of (version, date, constraint_for_dep)
         for ver, date in pkg_versions:
-            # Get dependencies for this version
-            if self.ecosystem == "npm":
-                ver_data = pkg_metadata.get("versions", {}).get(ver, {})
-                deps = ver_data.get("dependencies", {})
-            elif self.ecosystem == "pypi":
-                deps = self.resolver.get_version_dependencies(self.package, ver)
-            else:
-                deps = {}
+            # Get dependencies for this version via the resolver so both the
+            # npm-registry and depsdev paths return the same dict shape.
+            deps = self.resolver.get_version_dependencies(self.package, ver)
 
             constraint = deps.get(dependency, None)
             if constraint is not None:
