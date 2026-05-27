@@ -338,7 +338,11 @@ def test_each_thread_gets_its_own_sqlite_connection(tmp_path):
     connections = {}
 
     def grab_conn(tid):
-        connections[tid] = id(cache._get_sqlite_conn())
+        # Store the object itself so it stays alive after the thread exits.
+        # Storing only id() is unreliable: once a thread exits its TLS is
+        # cleaned up and the connection may be GC'd, allowing a later thread
+        # to reuse the same memory address.
+        connections[tid] = cache._get_sqlite_conn()
 
     threads = [threading.Thread(target=grab_conn, args=(i,)) for i in range(4)]
     for t in threads:
@@ -347,7 +351,7 @@ def test_each_thread_gets_its_own_sqlite_connection(tmp_path):
         t.join()
 
     # All thread-local connection IDs should be distinct
-    assert len(set(connections.values())) == 4
+    assert len(set(id(c) for c in connections.values())) == 4
 
 
 # ---------------------------------------------------------------------------

@@ -890,7 +890,7 @@ class DependencyAnalyzer:
                 f"after building {len(base_df_cache)} interval frames. "
                 f"Re-run with --resume to retry, or increase --max-worker-memory-mb."
             )
-        results = []
+        results: List[Dict[str, Any]] = []
         for _rel_idx, (ver, release_date) in enumerate(releases_in_window):
             if _rel_idx > 0 and _rel_idx % 25 == 0:
                 logger.warning(
