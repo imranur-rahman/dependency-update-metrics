@@ -583,6 +583,7 @@ class DependencyAnalyzer:
         row: Dict[str, Any],
         osv_df: Optional[pd.DataFrame] = None,
         max_memory_mb: int = 0,
+        generate_dep_frames: bool = False,
     ) -> List[Dict[str, Any]]:
         """Compute MTTU/MTTR at every release of the parent package within [start_date, end_date].
 
@@ -849,6 +850,9 @@ class DependencyAnalyzer:
             if not records:
                 continue
             int_starts = [r["interval_start"] for r in records]
+            int_ends = [r["interval_end"] for r in records]
+            dep_versions_list = [r["dependency_version"] for r in records]
+            highest_versions_list = [r["dependency_highest_version"] for r in records]
             start_ns = np.array(
                 [int(r["interval_start"].timestamp() * 1e9) for r in records], dtype=np.int64
             )
@@ -864,11 +868,14 @@ class DependencyAnalyzer:
                     sev_arrs[sev] = np.array([r[f"remediated_{sev}"] for r in records], dtype=bool)
             base_df_cache[(dep_name, dep_constraint)] = (
                 int_starts,
+                int_ends,
                 start_ns,
                 durations,
                 updated_arr,
                 remediated_arr,
                 sev_arrs,
+                dep_versions_list,
+                highest_versions_list,
             )
 
         # For each release point, build intervals and compute MTTU/MTTR
@@ -906,6 +913,7 @@ class DependencyAnalyzer:
             pkg_deps = per_version_deps[ver]
             ttu_values = []
             ttr_values = []
+            dep_frames_for_release: List[pd.DataFrame] = []
             if self.severity_breakdown:
                 sev_mttr_rel: Dict[str, List[float]] = {sev: [] for sev in SEVERITY_LEVELS}
                 all_sev_ttr_rel: List[float] = []
@@ -914,7 +922,17 @@ class DependencyAnalyzer:
                 entry = base_df_cache.get((dep_name, dep_constraint))
                 if entry is None:
                     continue
-                int_starts, start_ns, durations, updated_arr, remediated_arr, sev_arrs = entry
+                (
+                    int_starts,
+                    int_ends,
+                    start_ns,
+                    durations,
+                    updated_arr,
+                    remediated_arr,
+                    sev_arrs,
+                    dep_versions_list,
+                    highest_versions_list,
+                ) = entry
 
                 # Prefix slice: all intervals whose interval_start < window_end.
                 k = bisect.bisect_left(int_starts, window_end)
@@ -938,6 +956,37 @@ class DependencyAnalyzer:
                     all_sev_ttr_rel.append(ttr)
                 else:
                     ttr_values.append(ttr)
+
+                if generate_dep_frames:
+                    w = self._weights_numpy(start_ns[:k], window_end, start_date)
+                    rel_records: List[Dict[str, Any]] = []
+                    for i in range(k):
+                        i_start = int_starts[i]
+                        i_end = int_ends[i]
+                        raw_dur = (i_end - i_start).total_seconds() / 86400
+                        cap_dur = (window_end - i_start).total_seconds() / 86400
+                        rec: Dict[str, Any] = {
+                            "ecosystem": self.ecosystem,
+                            "package": self.package,
+                            "package_version": ver,
+                            "dependency": dep_name,
+                            "dependency_constraint": dep_constraint,
+                            "dependency_version": dep_versions_list[i],
+                            "dependency_highest_version": highest_versions_list[i],
+                            "interval_start": i_start,
+                            "interval_end": i_end,
+                            "updated": bool(updated_arr[i]),
+                            "remediated": bool(remediated_arr[i]),
+                            "age_of_interval": (window_end - i_start).days,
+                            "weight": float(w[i]),
+                            "interval_duration": min(raw_dur, cap_dur),
+                        }
+                        if self.severity_breakdown:
+                            for sev in SEVERITY_LEVELS:
+                                rec[f"remediated_{sev}"] = bool(sev_arrs[sev][i])
+                        rel_records.append(rec)
+                    if rel_records:
+                        dep_frames_for_release.append(pd.DataFrame(rel_records))
 
             avg_ttu = sum(ttu_values) / len(ttu_values) if ttu_values else 0.0
 
@@ -998,7 +1047,7 @@ class DependencyAnalyzer:
                 {
                     "row_num": row.get("row_num"),
                     "summary": release_summary,
-                    "dependency_frames": [],
+                    "dependency_frames": dep_frames_for_release,
                 }
             )
 
@@ -1128,6 +1177,14 @@ class DependencyAnalyzer:
         d = durations[:k]
         u = updated[:k]
         r = remediated[:k]
+        # Cap the last interval's duration at (window_end - interval_start) so that
+        # an interval extending beyond the release date doesn't inflate MTTU/MTTR.
+        if k > 0:
+            window_ns_int = np.int64(window_end.timestamp() * 1e9)
+            max_dur_last = float(window_ns_int - sn[-1]) / (86_400 * 1_000_000_000)
+            if d[-1] > max_dur_last:
+                d = d.copy()
+                d[-1] = max_dur_last
         w = self._weights_numpy(sn, window_end, start_date)
         ttu = self._weighted_sum_numpy(d, w, ~u)
         ttr = self._weighted_sum_numpy(d, w, ~r)

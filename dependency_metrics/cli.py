@@ -1796,7 +1796,9 @@ def main():
             _logger = logging.getLogger("dependency_metrics")
             if args.per_release:
                 row = {"start_date": start_date, "end_date": end_date}
-                release_results = analyzer.analyze_at_release_points(row)
+                release_results = analyzer.analyze_at_release_points(
+                    row, generate_dep_frames=args.get_worksheets
+                )
                 if not release_results:
                     _logger.info("No releases found in window for %s", args.package)
                 else:
@@ -1826,14 +1828,10 @@ def main():
                     _logger.info("Per-release results saved to: %s", csv_path)
 
                     if args.get_worksheets:
-                        _logger.info("Running full-window analysis for worksheet export...")
-                        _full_results = analyzer.analyze()
-                        _regular_dep_data = _full_results.get("dependency_data")
                         excel_file = export_per_release_worksheets(
                             release_results,
                             output_dir,
                             args.package,
-                            regular_dep_data=_regular_dep_data,
                         )
                         if excel_file is not None:
                             _logger.info("Per-release worksheets saved to: %s", excel_file)

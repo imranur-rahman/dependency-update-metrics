@@ -82,6 +82,36 @@ def test_get_highest_semver_version_at_date_prefers_stable_over_prerelease(tmp_p
     assert result == "1.0.0"
 
 
+def test_get_highest_semver_version_at_date_stable_beats_cross_version_prerelease(tmp_path):
+    resolver = _make_resolver(tmp_path)
+    # A pre-release at a higher major version must NOT displace an existing stable release.
+    # Before fix: npm_semver_key(2.0.0-alpha) = (2,0,0,0,...) > (1,0,0,1,()) for 1.0.0,
+    # so the pre-release would incorrectly win.
+    time_data = {
+        "1.0.0": "2020-01-01T00:00:00Z",
+        "2.0.0-alpha": "2020-06-01T00:00:00Z",
+    }
+
+    with patch.object(resolver, "_get_npm_time_data", return_value=time_data):
+        result = resolver.get_highest_semver_version_at_date("lodash", _utc(2021, 1, 1))
+
+    assert result == "1.0.0"
+
+
+def test_get_highest_semver_version_at_date_falls_back_to_prerelease_when_no_stable(tmp_path):
+    resolver = _make_resolver(tmp_path)
+    # When no stable release exists at all, fall back to the highest pre-release.
+    time_data = {
+        "1.0.0-alpha": "2020-01-01T00:00:00Z",
+        "2.0.0-beta": "2020-06-01T00:00:00Z",
+    }
+
+    with patch.object(resolver, "_get_npm_time_data", return_value=time_data):
+        result = resolver.get_highest_semver_version_at_date("lodash", _utc(2021, 1, 1))
+
+    assert result == "2.0.0-beta"
+
+
 def test_get_highest_semver_version_at_date_missing_package_returns_none(tmp_path):
     resolver = _make_resolver(tmp_path)
     resolver.cache.missing_packages.add(("npm", "no-such-pkg"))

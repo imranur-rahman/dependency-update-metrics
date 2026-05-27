@@ -689,16 +689,24 @@ class NpmResolver(PackageResolver):
         sorted_dates: List[datetime] = []
         prefix_best_semver: List[Optional[str]] = []
         prefix_best_alpha: List[Optional[str]] = []
-        best_semver: Optional[Tuple] = None  # (key_tuple, ver_str)
+        best_stable_semver: Optional[Tuple] = None  # (key_tuple, ver_str) — stable only
+        best_any_semver: Optional[Tuple] = None  # (key_tuple, ver_str) — pre-release fallback
         best_alpha: Optional[str] = None
 
         for pub_date, key, ver in entries:
             sorted_dates.append(pub_date)
-            if key is not None and (best_semver is None or key > best_semver[0]):
-                best_semver = (key, ver)
+            if key is not None:
+                # key[3] is is_release: 1 for stable, 0 for pre-release.
+                # Track stable and any-valid separately so a pre-release at a higher
+                # major version never displaces an existing stable release.
+                if key[3] == 1 and (best_stable_semver is None or key > best_stable_semver[0]):
+                    best_stable_semver = (key, ver)
+                if best_any_semver is None or key > best_any_semver[0]:
+                    best_any_semver = (key, ver)
             if best_alpha is None or ver > best_alpha:
                 best_alpha = ver
-            prefix_best_semver.append(best_semver[1] if best_semver else None)
+            best = best_stable_semver or best_any_semver
+            prefix_best_semver.append(best[1] if best else None)
             prefix_best_alpha.append(best_alpha)
 
         result = (sorted_dates, prefix_best_semver, prefix_best_alpha)
@@ -965,14 +973,21 @@ class PyPIResolver(PackageResolver):
         sorted_dates: List[datetime] = []
         sorted_parsed: List[Optional[Any]] = []
         prefix_best_semver: List[Optional[str]] = []
-        best_semver: Optional[Tuple] = None  # (parsed_version, ver_str)
+        best_stable: Optional[Tuple] = None  # (parsed_version, ver_str) — stable only
+        best_any: Optional[Tuple] = None  # (parsed_version, ver_str) — pre-release fallback
 
         for pub_date, parsed, ver in entries:
             sorted_dates.append(pub_date)
             sorted_parsed.append(parsed)
-            if parsed is not None and (best_semver is None or parsed > best_semver[0]):
-                best_semver = (parsed, ver)
-            prefix_best_semver.append(best_semver[1] if best_semver else None)
+            if parsed is not None:
+                # Prefer the highest stable (non-pre-release) version; fall back to
+                # the highest of any valid version when no stable exists yet.
+                if not parsed.is_prerelease and (best_stable is None or parsed > best_stable[0]):
+                    best_stable = (parsed, ver)
+                if best_any is None or parsed > best_any[0]:
+                    best_any = (parsed, ver)
+            best = best_stable or best_any
+            prefix_best_semver.append(best[1] if best else None)
 
         result = (sorted_dates, prefix_best_semver, sorted_parsed)
         self.cache.version_prefix_set(cache_key, result)

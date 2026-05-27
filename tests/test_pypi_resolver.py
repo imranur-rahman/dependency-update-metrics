@@ -127,6 +127,68 @@ def test_resolve_pypi_version_locally_basic():
     assert resolve_pypi_version_locally(dep_metadata, "*", before_all) == "3.0.0"
 
 
+def _make_pypi_resolver(tmp_path):
+    from datetime import timezone
+
+    from dependency_metrics.resolvers import PyPIResolver, ResolverCache
+
+    cache = ResolverCache(cache_dir=tmp_path / "cache")
+    return PyPIResolver(
+        package="demo",
+        start_date=datetime(2018, 1, 1, tzinfo=timezone.utc),
+        end_date=datetime(2023, 1, 1, tzinfo=timezone.utc),
+        registry_urls={},
+        cache=cache,
+    )
+
+
+def _pypi_metadata(releases: dict) -> dict:
+    """Build minimal PyPI metadata dict with the given {ver: upload_time} map."""
+    return {
+        "releases": {
+            ver: [{"upload_time": ts}] for ver, ts in releases.items()
+        }
+    }
+
+
+def test_pypi_get_highest_semver_stable_beats_higher_prerelease(tmp_path):
+    from datetime import timezone
+    from unittest.mock import patch
+
+    resolver = _make_pypi_resolver(tmp_path)
+    metadata = _pypi_metadata(
+        {
+            "1.0.0": "2020-01-01T00:00:00Z",
+            "2.0.0a1": "2020-06-01T00:00:00Z",  # pre-release at higher version
+        }
+    )
+    at_date = datetime(2021, 1, 1, tzinfo=timezone.utc)
+
+    with patch.object(resolver, "fetch_package_metadata", return_value=metadata):
+        result = resolver.get_highest_semver_version_at_date("requests", at_date, metadata=metadata)
+
+    assert result == "1.0.0"
+
+
+def test_pypi_get_highest_semver_falls_back_to_prerelease_when_no_stable(tmp_path):
+    from datetime import timezone
+    from unittest.mock import patch
+
+    resolver = _make_pypi_resolver(tmp_path)
+    metadata = _pypi_metadata(
+        {
+            "1.0.0a1": "2020-01-01T00:00:00Z",
+            "2.0.0b1": "2020-06-01T00:00:00Z",
+        }
+    )
+    at_date = datetime(2021, 1, 1, tzinfo=timezone.utc)
+
+    with patch.object(resolver, "fetch_package_metadata", return_value=metadata):
+        result = resolver.get_highest_semver_version_at_date("requests", at_date, metadata=metadata)
+
+    assert result == "2.0.0b1"
+
+
 def test_build_intervals_uses_unique_sorted_dates():
     from dependency_metrics.time_utils import build_intervals
 
