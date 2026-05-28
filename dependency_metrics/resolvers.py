@@ -264,15 +264,22 @@ class ResolverCache:
         assert self.cache_dir is not None
         self.cache_dir.mkdir(parents=True, exist_ok=True)
         db_path = self.cache_dir / "cache.db"
-        conn = sqlite3.connect(str(db_path), check_same_thread=False)
-        conn.execute("PRAGMA journal_mode=WAL")
-        conn.execute("PRAGMA synchronous=NORMAL")
-        conn.execute(
-            "CREATE TABLE IF NOT EXISTS cache "
-            "(namespace TEXT NOT NULL, key TEXT NOT NULL, value TEXT NOT NULL, "
-            "PRIMARY KEY (namespace, key))"
-        )
-        conn.commit()
+        # Serialize first-time setup across threads: concurrent PRAGMA journal_mode=WAL
+        # and CREATE TABLE calls require an exclusive DB lock; without serialization they
+        # race and the loser's save_json silently swallows the OperationalError.
+        with self._lock:
+            conn = sqlite3.connect(str(db_path), check_same_thread=False)
+            conn.execute("PRAGMA journal_mode=WAL")
+            conn.execute("PRAGMA synchronous=NORMAL")
+            # Let SQLite retry for up to 10 s when another writer holds the WAL lock,
+            # instead of immediately raising OperationalError: database is locked.
+            conn.execute("PRAGMA busy_timeout=10000")
+            conn.execute(
+                "CREATE TABLE IF NOT EXISTS cache "
+                "(namespace TEXT NOT NULL, key TEXT NOT NULL, value TEXT NOT NULL, "
+                "PRIMARY KEY (namespace, key))"
+            )
+            conn.commit()
         self._thread_local.sqlite_conn = conn
         return conn
 
