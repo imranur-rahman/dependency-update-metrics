@@ -121,6 +121,92 @@ def _init_worker_process(
     )
 
 
+def _make_timeout_result(
+    row: Dict[str, Any],
+    seconds: int,
+    severity_breakdown: bool,
+    per_release: bool,
+) -> Dict[str, Any]:
+    """Build an error result dict for a package that exceeded ``--package-timeout``."""
+    ecosystem = str(row.get("ecosystem", "")).lower()
+    package_name = str(row.get("package_name", ""))
+    row_num = row.get("_row_num") or row.get("row_num")
+    error_msg = f'"Package timed out after {seconds}s"'
+
+    try:
+        start_raw = str(row.get("start_date", ""))
+        start_str = start_raw if start_raw else ""
+    except Exception:
+        start_str = ""
+    try:
+        end_raw = str(row.get("end_date", ""))
+        end_str = end_raw if end_raw else ""
+    except Exception:
+        end_str = ""
+
+    if per_release and severity_breakdown:
+        summary: Dict[str, Any] = {
+            "ecosystem": ecosystem,
+            "package_name": package_name,
+            "package_version": "",
+            "package_release_date": "",
+            "window_start": start_str,
+            "window_end": end_str,
+            "mttu": -1.0,
+            "mttr_critical": -1.0,
+            "mttr_high": -1.0,
+            "mttr_medium": -1.0,
+            "mttr_low": -1.0,
+            "mttr_all_severities": -1.0,
+            "num_dependencies": 0,
+            "status": "error",
+            "error": error_msg,
+        }
+    elif per_release:
+        summary = {
+            "ecosystem": ecosystem,
+            "package_name": package_name,
+            "package_version": "",
+            "package_release_date": "",
+            "window_start": start_str,
+            "window_end": end_str,
+            "mttu": -1.0,
+            "mttr": -1.0,
+            "num_dependencies": 0,
+            "status": "error",
+            "error": error_msg,
+        }
+    elif severity_breakdown:
+        summary = {
+            "ecosystem": ecosystem,
+            "package_name": package_name,
+            "start_date": start_str,
+            "end_date": end_str,
+            "mttu": -1.0,
+            "mttr_critical": -1.0,
+            "mttr_high": -1.0,
+            "mttr_medium": -1.0,
+            "mttr_low": -1.0,
+            "mttr_all_severities": -1.0,
+            "num_dependencies": 0,
+            "status": "error",
+            "error": error_msg,
+        }
+    else:
+        summary = {
+            "ecosystem": ecosystem,
+            "package_name": package_name,
+            "start_date": start_str,
+            "end_date": end_str,
+            "mttu": -1.0,
+            "mttr": -1.0,
+            "num_dependencies": 0,
+            "status": "error",
+            "error": error_msg,
+        }
+    return {"row_num": row_num, "summary": summary, "dependency_frames": []}
+
+
 def _worker_make_resolver(eco: str, pkg: str, start: datetime, end: datetime):
     """Create a resolver for *pkg* using the worker-process ``_WORKER_STATE``."""
     from .resolvers import NpmResolver, PyPIResolver as _PyPIResolverCls
@@ -672,6 +758,18 @@ def main():
             "Per-worker RSS memory limit in MB. If a worker exceeds this during analysis "
             "it exits cleanly with an error result (resumable via --resume) instead of "
             "being OOM-killed. Default: 3000 MB. Set to 0 to disable."
+        ),
+    )
+
+    parser.add_argument(
+        "--package-timeout",
+        type=int,
+        default=None,
+        metavar="SECONDS",
+        help=(
+            "Per-package analysis timeout in seconds (bulk CSV mode only). "
+            "If a package's analysis exceeds this time, an error row is written "
+            "and the next package is processed. Default: disabled."
         ),
     )
 
@@ -1473,6 +1571,8 @@ def main():
         ) as executor:
             futures = []
             future_to_pkg: Dict[Any, str] = {}
+            future_to_rows: Dict[Any, List[Dict[str, Any]]] = {}
+            future_submit_time: Dict[Any, float] = {}
             for (eco, pkg), rows in grouped_rows.items():
                 task: Dict[str, Any] = {"rows": rows}
                 if args.per_release:
@@ -1481,6 +1581,8 @@ def main():
                     f = executor.submit(_worker_run_group, task)
                 futures.append(f)
                 future_to_pkg[f] = f"{eco}/{pkg}"
+                future_to_rows[f] = rows
+                future_submit_time[f] = time.monotonic()
 
             if deps_file_path.exists() and not args.resume:
                 deps_file_path.unlink()
@@ -1588,10 +1690,39 @@ def main():
                 _pool_broken = False
                 _pending_futures = set(futures)
                 _HEARTBEAT_SECS = 120
+                if args.package_timeout is not None:
+                    _HEARTBEAT_SECS = min(120, max(10, args.package_timeout // 2))
                 while _pending_futures:
                     _done_futures, _pending_futures = wait(
                         _pending_futures, timeout=_HEARTBEAT_SECS, return_when=FIRST_COMPLETED
                     )
+                    if args.package_timeout is not None:
+                        _now = time.monotonic()
+                        _timed_out = {
+                            f
+                            for f in _pending_futures
+                            if _now - future_submit_time[f] > args.package_timeout
+                        }
+                        for f in _timed_out:
+                            _pkg_label = future_to_pkg.get(f, "unknown")
+                            logging.getLogger("dependency_metrics").warning(
+                                "Package %s timed out after %ds — writing error row and skipping.",
+                                _pkg_label,
+                                args.package_timeout,
+                            )
+                            for trow in future_to_rows.get(f, []):
+                                err_result = _make_timeout_result(
+                                    trow,
+                                    args.package_timeout,
+                                    args.severity_breakdown,
+                                    args.per_release,
+                                )
+                                summary_writer.writerow(err_result["summary"])
+                                summary_handle.flush()
+                                processed += 1
+                        _pending_futures -= _timed_out
+                    if not _done_futures and not _pending_futures:
+                        break
                     if not _done_futures:
                         _in_flight = [
                             future_to_pkg[f] for f in _pending_futures if f in future_to_pkg
