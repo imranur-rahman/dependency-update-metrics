@@ -12,7 +12,7 @@ import psutil
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 import numpy as np
 import pandas as pd
@@ -330,6 +330,14 @@ class DependencyAnalyzer:
         pkg_versions = [(ver, date) for ver, date in pkg_versions]
         pkg_versions.sort(key=lambda item: item[1])
 
+        # `dependencies` is a single constant snapshot (from the latest version), but a
+        # dependency relationship can't predate the first release that actually declared
+        # it — bound each dependency's interval frame by its own first-use date.
+        first_use = self._first_use_dates(pkg_versions, dependencies.keys())
+        effective_start_for_dep = {
+            name: max(min_start, first_use.get(name, min_start)) for name in dependencies
+        }
+
         dep_cache: Dict[str, Dict[datetime, Dict[str, Any]]] = {}
         dep_metadata_cache: Dict[str, Dict] = {}
         dep_dates_cache: Dict[str, List[datetime]] = {}
@@ -355,13 +363,14 @@ class DependencyAnalyzer:
             dep_metadata = dep_metadata_cache.get(dep_name, {})
             dep_versions = self.get_all_versions_with_dates(dep_metadata, package_name=dep_name)
             dep_versions = [(ver, date) for ver, date in dep_versions]
+            dep_start = effective_start_for_dep[dep_name]
 
             dates = []
             for _, date in pkg_versions:
-                if min_start <= date <= max_end:
+                if dep_start <= date <= max_end:
                     dates.append(date)
             for _, date in dep_versions:
-                if min_start <= date <= max_end:
+                if dep_start <= date <= max_end:
                     dates.append(date)
 
             dates = sorted(set(dates))
@@ -439,8 +448,9 @@ class DependencyAnalyzer:
             self.end_date = end_date
 
             for dep_name, dep_constraint in dependencies.items():
-                dates = [d for d in dep_dates_cache[dep_name] if start_date <= d <= end_date]
-                intervals = build_intervals(dates, start_date, end_date)
+                eff_start = max(start_date, effective_start_for_dep[dep_name])
+                dates = [d for d in dep_dates_cache[dep_name] if eff_start <= d <= end_date]
+                intervals = build_intervals(dates, eff_start, end_date)
                 if not intervals:
                     continue
                 records = []
@@ -607,6 +617,7 @@ class DependencyAnalyzer:
 
         all_pkg_versions = self.get_all_versions_with_dates(pkg_metadata, package_name=self.package)
         all_pkg_versions.sort(key=lambda item: item[1])
+
         releases_in_window = [
             (ver, date) for ver, date in all_pkg_versions if start_date <= date <= end_date
         ]
@@ -625,15 +636,79 @@ class DependencyAnalyzer:
 
         osv_df, osv_index = self._get_osv_index(osv_df)
 
-        # Fetch per-version deps for each release
-        per_version_deps: Dict[str, Dict[str, str]] = {}
-        for ver, _ in releases_in_window:
-            per_version_deps[ver] = self.resolver.get_version_dependencies(self.package, ver)
+        # Fetch per-version deps across the package's FULL history — not just
+        # releases_in_window. A release's retrospective frame must resolve every
+        # interval against the version/constraint that ACTUALLY governed at that
+        # point in history (see version_history below), which can require knowing
+        # the constraint declared by a version released before start_date; and a
+        # dependency's first-use date can only be found by walking from the start.
+        full_per_version_deps: Dict[str, Dict[str, str]] = {}
+        for ver, _ in all_pkg_versions:
+            full_per_version_deps[ver] = self.resolver.get_version_dependencies(self.package, ver)
+        per_version_deps: Dict[str, Dict[str, str]] = {
+            ver: full_per_version_deps[ver] for ver, _ in releases_in_window
+        }
 
-        # Union of all dep names across all releases
+        # Union of all dep names across all releases in the analysis window
         all_dep_names: set = set()
         for deps in per_version_deps.values():
             all_dep_names.update(deps.keys())
+
+        # For each dependency, the chronological sequence of "breakpoints" where
+        # the highest-SEMVER package version that has ever declared it changes —
+        # (dates, versions, constraints) parallel lists, monotonically increasing
+        # by semver. Bisecting this on an interval's start gives, together,
+        # (pkg_version_at_interval, constraint_at_interval): the package version
+        # that actually GOVERNED that interval — "the highest available version"
+        # at that point in time, exactly mirroring analyze_dependency's
+        # pkg_version_at_interval / constraint_at_interval (analyzer.py:1364-1394)
+        # — and that SAME version's own declared constraint, so the two are
+        # guaranteed to agree by construction (a single manifest is immutable).
+        # This is deliberately the highest-semver-so-far, not merely the most
+        # recently published version: an out-of-order patch release to an old
+        # line (e.g. 1.5.2 published after 2.0.0) must not override 2.0.0's
+        # declarations, since 2.0.0 remains "the highest available version".
+        def _version_sort_key(ver: str) -> Optional[Any]:
+            if self.ecosystem == "npm":
+                return npm_semver_key(ver)
+            try:
+                return pkg_version.parse(ver)
+            except Exception:
+                return None
+
+        version_history: Dict[str, Tuple[List[datetime], List[str], List[str]]] = {
+            name: ([], [], []) for name in all_dep_names
+        }
+        first_use: Dict[str, datetime] = {}
+        running_best_key: Dict[str, Any] = {}
+        for ver, date in all_pkg_versions:
+            deps = full_per_version_deps[ver]
+            sort_key = _version_sort_key(ver)
+            if sort_key is None:
+                continue
+            for name in all_dep_names:
+                constraint = deps.get(name)
+                if constraint is None:
+                    continue
+                if name not in first_use:
+                    first_use[name] = date
+                if name not in running_best_key or sort_key > running_best_key[name]:
+                    running_best_key[name] = sort_key
+                    dates_list, versions_list, constraints_list = version_history[name]
+                    dates_list.append(date)
+                    versions_list.append(ver)
+                    constraints_list.append(constraint)
+
+        # A dependency relationship can't predate the first release of the package
+        # that actually declared it — bound each dependency's interval frame by its
+        # own first-use date rather than the package's first release ever (early
+        # versions may not have declared this particular dependency at all). The
+        # per-interval None-check above is what guarantees correctness for edge
+        # cases (e.g. drop/re-add gaps); this bound is just an efficiency floor so
+        # we don't generate intervals that would all be skipped anyway.
+        effective_start_for_dep = {
+            name: max(start_date, first_use.get(name, start_date)) for name in all_dep_names
+        }
 
         logger.warning(
             "Worker %d: %s/%s — per-version deps done (%.1fs),"
@@ -706,13 +781,14 @@ class DependencyAnalyzer:
         for dep_name in all_dep_names:
             dep_metadata = dep_metadata_cache.get(dep_name, {})
             dep_versions = self.get_all_versions_with_dates(dep_metadata, package_name=dep_name)
+            dep_start = effective_start_for_dep[dep_name]
 
             dates = []
             for _, date in all_pkg_versions:
-                if start_date <= date <= end_date:
+                if dep_start <= date <= end_date:
                     dates.append(date)
             for _, date in dep_versions:
-                if start_date <= date <= end_date:
+                if dep_start <= date <= end_date:
                     dates.append(date)
 
             dates = sorted(set(dates))
@@ -734,19 +810,26 @@ class DependencyAnalyzer:
             time.monotonic() - _t0,
         )
 
-        # Precompute dep version resolution for all unique (dep, constraint, date) combos.
-        # Multiple package releases may share the same constraint for a dependency; precomputing
-        # here avoids redundant work in the per-release hot loop below.
-        dep_constraint_pairs: set = set()
-        for deps in per_version_deps.values():
-            for dep_name, constraint in deps.items():
-                dep_constraint_pairs.add((dep_name, constraint))
-
+        # Resolve each dependency's version at every candidate interval date using
+        # the constraint declared by whichever package version actually GOVERNED
+        # at that point in history (version_history) — the highest available
+        # version as of that date, not the constraint declared by whichever
+        # release's frame happens to be sliced later. Each (dep_name, date) needs
+        # exactly one resolution; dep_version_cache dedupes by the resulting
+        # (name, constraint, date) key in case several dates shared the same
+        # historically-governing constraint.
         dep_version_cache: Dict[Tuple[str, str, datetime], Optional[str]] = {}
-        for dep_name, dep_constraint in dep_constraint_pairs:
+        for dep_name in all_dep_names:
             dep_metadata = dep_metadata_cache.get(dep_name, {})
+            vh_dates, _vh_versions, vh_constraints = version_history[dep_name]
             for date in dep_dates_cache.get(dep_name, []):
+                idx = bisect.bisect_right(vh_dates, date) - 1
+                dep_constraint = vh_constraints[idx] if idx >= 0 else None
+                if dep_constraint is None:
+                    continue
                 key = (dep_name, dep_constraint, date)
+                if key in dep_version_cache:
+                    continue
                 if (
                     self.ecosystem == "pypi"
                     and dep_metadata
@@ -762,42 +845,65 @@ class DependencyAnalyzer:
 
         _rss_mb = psutil.Process().memory_info().rss / 1024 / 1024
         logger.warning(
-            "Worker %d: %s/%s — constraints resolved (%.1fs, %d unique pairs), "
+            "Worker %d: %s/%s — constraints resolved (%.1fs, %d resolutions), "
             "worker RSS %.0f MB, building interval frames...",
             os.getpid(),
             self.ecosystem,
             self.package,
             time.monotonic() - _t0,
-            len(dep_constraint_pairs),
+            len(dep_version_cache),
             _rss_mb,
         )
         if max_memory_mb > 0 and _rss_mb > max_memory_mb:
             raise MemoryError(
                 f"Worker RSS {_rss_mb:.0f} MB exceeds --max-worker-memory-mb {max_memory_mb} MB "
-                f"({len(dep_constraint_pairs)} dep×constraint pairs). "
+                f"({len(dep_version_cache)} dep resolutions). "
                 f"Re-run with --resume to retry, or increase --max-worker-memory-mb."
             )
 
-        # Precompute per-(dep, constraint) numpy arrays for the full [start_date, end_date]
-        # range. The per-release loop slices these with bisect instead of rebuilding each time.
-        # key: (dep_name, dep_constraint) → (int_starts, start_ns, durations, updated_arr,
-        #                                     remediated_arr, sev_arrs)
-        base_df_cache: Dict[Tuple[str, str], Tuple] = {}
+        # Build ONE continuous timeline per dependency for the full
+        # [start_date, end_date] range — each interval appears exactly once,
+        # tagged with whichever package version actually GOVERNED it (the
+        # highest available at that point — version_history) and that SAME
+        # version's own declared constraint. package_version and
+        # dependency_constraint therefore always agree by construction: a
+        # single manifest's declared constraint is immutable, so there is no
+        # way for one package_version to appear with two different constraints.
+        # This doubles as both (a) the records emitted in dependency_frames
+        # (built once, not replayed inside every release's retrospective slice
+        # — mirrors analyze_dependency's single-timeline output, including
+        # end_date-relative age_of_interval/weight) and (b) the numpy arrays
+        # the per-release loop slices with bisect for MTTU/MTTR scoring.
+        # key: dep_name → (int_starts, start_ns, durations, updated_arr,
+        #                   remediated_arr, sev_arrs)
+        base_df_cache: Dict[str, Tuple] = {}
+        dep_frames: Dict[str, pd.DataFrame] = {}
         osv_df_arg = osv_df if osv_df is not None else pd.DataFrame()
 
-        for dep_name, dep_constraint in dep_constraint_pairs:
+        for dep_name in all_dep_names:
             dep_dates_full = dep_dates_cache.get(dep_name, [])
             if not dep_dates_full:
                 continue
-            intervals_full = build_intervals(dep_dates_full, start_date, end_date)
+            intervals_full = build_intervals(
+                dep_dates_full, effective_start_for_dep[dep_name], end_date
+            )
             if not intervals_full:
                 continue
             dep_metadata = dep_metadata_cache.get(dep_name, {})
+            vh_dates, vh_versions, vh_constraints = version_history[dep_name]
             records = []
             for interval_start, interval_end in intervals_full:
                 cached = dep_cache[dep_name].get(interval_start)
                 if cached is None:
                     continue
+                idx = bisect.bisect_right(vh_dates, interval_start) - 1
+                if idx < 0:
+                    # No version had declared this dependency yet at this point
+                    # (before first use, or mid drop/re-add gap) — exclude from
+                    # the timeline.
+                    continue
+                pkg_version_at_interval = vh_versions[idx]
+                dep_constraint = vh_constraints[idx]
                 dep_version = dep_version_cache.get((dep_name, dep_constraint, interval_start))
                 highest_dep_version = cached["highest_dep_version"]
                 updated = (
@@ -805,6 +911,22 @@ class DependencyAnalyzer:
                     if dep_version and highest_dep_version
                     else dep_version is None
                 )
+                age_of_interval = (end_date - interval_start).days
+                weight = self.calculate_weight(age_of_interval)
+                base_record = {
+                    "ecosystem": self.ecosystem,
+                    "package": self.package,
+                    "package_version": pkg_version_at_interval,
+                    "dependency": dep_name,
+                    "dependency_constraint": dep_constraint,
+                    "dependency_version": dep_version,
+                    "dependency_highest_version": highest_dep_version,
+                    "interval_start": interval_start,
+                    "interval_end": interval_end,
+                    "updated": updated,
+                    "age_of_interval": age_of_interval,
+                    "weight": weight,
+                }
                 if self.severity_breakdown:
                     rem_dict = self._check_remediation_by_severity(
                         dep_name,
@@ -815,13 +937,7 @@ class DependencyAnalyzer:
                         osv_index=osv_index,
                     )
                     record = {
-                        "dependency": dep_name,
-                        "dependency_constraint": dep_constraint,
-                        "dependency_version": dep_version,
-                        "dependency_highest_version": highest_dep_version,
-                        "interval_start": interval_start,
-                        "interval_end": interval_end,
-                        "updated": updated,
+                        **base_record,
                         "remediated": rem_dict["all_severities"],
                         "remediated_Critical": rem_dict["Critical"],
                         "remediated_High": rem_dict["High"],
@@ -830,13 +946,7 @@ class DependencyAnalyzer:
                     }
                 else:
                     record = {
-                        "dependency": dep_name,
-                        "dependency_constraint": dep_constraint,
-                        "dependency_version": dep_version,
-                        "dependency_highest_version": highest_dep_version,
-                        "interval_start": interval_start,
-                        "interval_end": interval_end,
-                        "updated": updated,
+                        **base_record,
                         "remediated": self._check_remediation(
                             dep_name,
                             dep_version,
@@ -850,9 +960,6 @@ class DependencyAnalyzer:
             if not records:
                 continue
             int_starts = [r["interval_start"] for r in records]
-            int_ends = [r["interval_end"] for r in records]
-            dep_versions_list = [r["dependency_version"] for r in records]
-            highest_versions_list = [r["dependency_highest_version"] for r in records]
             start_ns = np.array(
                 [int(r["interval_start"].timestamp() * 1e9) for r in records], dtype=np.int64
             )
@@ -866,17 +973,16 @@ class DependencyAnalyzer:
             if self.severity_breakdown:
                 for sev in SEVERITY_LEVELS:
                     sev_arrs[sev] = np.array([r[f"remediated_{sev}"] for r in records], dtype=bool)
-            base_df_cache[(dep_name, dep_constraint)] = (
+            base_df_cache[dep_name] = (
                 int_starts,
-                int_ends,
                 start_ns,
                 durations,
                 updated_arr,
                 remediated_arr,
                 sev_arrs,
-                dep_versions_list,
-                highest_versions_list,
             )
+            if generate_dep_frames:
+                dep_frames[dep_name] = pd.DataFrame(records)
 
         # For each release point, build intervals and compute MTTU/MTTR
         _n_releases = len(releases_in_window)
@@ -913,25 +1019,21 @@ class DependencyAnalyzer:
             pkg_deps = per_version_deps[ver]
             ttu_values = []
             ttr_values = []
-            dep_frames_for_release: List[pd.DataFrame] = []
             if self.severity_breakdown:
                 sev_mttr_rel: Dict[str, List[float]] = {sev: [] for sev in SEVERITY_LEVELS}
                 all_sev_ttr_rel: List[float] = []
 
-            for dep_name, dep_constraint in pkg_deps.items():
-                entry = base_df_cache.get((dep_name, dep_constraint))
+            for dep_name in pkg_deps:
+                entry = base_df_cache.get(dep_name)
                 if entry is None:
                     continue
                 (
                     int_starts,
-                    int_ends,
                     start_ns,
                     durations,
                     updated_arr,
                     remediated_arr,
                     sev_arrs,
-                    dep_versions_list,
-                    highest_versions_list,
                 ) = entry
 
                 # Prefix slice: all intervals whose interval_start < window_end.
@@ -947,7 +1049,7 @@ class DependencyAnalyzer:
                     sev_arrs,
                     k,
                     window_end,
-                    start_date,
+                    effective_start_for_dep[dep_name],
                 )
                 ttu_values.append(ttu)
                 if self.severity_breakdown:
@@ -956,37 +1058,6 @@ class DependencyAnalyzer:
                     all_sev_ttr_rel.append(ttr)
                 else:
                     ttr_values.append(ttr)
-
-                if generate_dep_frames:
-                    w = self._weights_numpy(start_ns[:k], window_end, start_date)
-                    rel_records: List[Dict[str, Any]] = []
-                    for i in range(k):
-                        i_start = int_starts[i]
-                        i_end = int_ends[i]
-                        raw_dur = (i_end - i_start).total_seconds() / 86400
-                        cap_dur = (window_end - i_start).total_seconds() / 86400
-                        rec: Dict[str, Any] = {
-                            "ecosystem": self.ecosystem,
-                            "package": self.package,
-                            "package_version": ver,
-                            "dependency": dep_name,
-                            "dependency_constraint": dep_constraint,
-                            "dependency_version": dep_versions_list[i],
-                            "dependency_highest_version": highest_versions_list[i],
-                            "interval_start": i_start,
-                            "interval_end": i_end,
-                            "updated": bool(updated_arr[i]),
-                            "remediated": bool(remediated_arr[i]),
-                            "age_of_interval": (window_end - i_start).days,
-                            "weight": float(w[i]),
-                            "interval_duration": min(raw_dur, cap_dur),
-                        }
-                        if self.severity_breakdown:
-                            for sev in SEVERITY_LEVELS:
-                                rec[f"remediated_{sev}"] = bool(sev_arrs[sev][i])
-                        rel_records.append(rec)
-                    if rel_records:
-                        dep_frames_for_release.append(pd.DataFrame(rel_records))
 
             avg_ttu = sum(ttu_values) / len(ttu_values) if ttu_values else 0.0
 
@@ -1043,11 +1114,18 @@ class DependencyAnalyzer:
                     "error": "",
                 }
 
+            # dependency_frames is a single continuous timeline per dependency
+            # (built once above, not replayed inside every release's
+            # retrospective slice — see base_df_cache/dep_frames) — attach it
+            # to exactly one result so downstream consumers, which simply
+            # concatenate every release-result's dependency_frames into one
+            # combined output, emit each (dependency, interval) exactly once.
+            is_last_release = _rel_idx == _n_releases - 1
             results.append(
                 {
                     "row_num": row.get("row_num"),
                     "summary": release_summary,
-                    "dependency_frames": dep_frames_for_release,
+                    "dependency_frames": list(dep_frames.values()) if is_last_release else [],
                 }
             )
 
@@ -1194,6 +1272,27 @@ class DependencyAnalyzer:
                 sev_mttr[sev] = self._weighted_sum_numpy(d, w, ~arr[:k])
         return ttu, ttr, sev_mttr
 
+    def _first_use_dates(
+        self,
+        pkg_versions: List[Tuple[str, datetime]],
+        dep_names: Iterable[str],
+    ) -> Dict[str, datetime]:
+        """Earliest release date at which each dep_name first appears in the
+        package's declared dependencies, walking the full version history in
+        chronological order. A dependency relationship can't exist before this
+        date, so it's used to bound dependency interval frames."""
+        remaining = set(dep_names)
+        first_use: Dict[str, datetime] = {}
+        for ver, date in sorted(pkg_versions, key=lambda item: item[1]):
+            if not remaining:
+                break
+            deps = self.resolver.get_version_dependencies(self.package, ver)
+            for dep_name in list(remaining):
+                if dep_name in deps:
+                    first_use[dep_name] = date
+                    remaining.discard(dep_name)
+        return first_use
+
     def analyze_dependency(
         self, dependency: str, pkg_metadata: Dict, dep_metadata: Dict, osv_df: pd.DataFrame
     ) -> pd.DataFrame:
@@ -1224,27 +1323,6 @@ class DependencyAnalyzer:
         # Get all version release dates for the dependency
         dep_versions = self.get_all_versions_with_dates(dep_metadata, package_name=dependency)
 
-        # Determine effective start date: max of analysis start_date and first release dates
-        effective_start = self.start_date
-        if pkg_versions:
-            first_pkg_date = pkg_versions[0][1]
-            effective_start = max(effective_start, first_pkg_date)
-        if dep_versions:
-            first_dep_date = dep_versions[0][1]
-            effective_start = max(effective_start, first_dep_date)
-
-        dates = []
-        for _, date in pkg_versions:
-            if effective_start <= date <= self.end_date:
-                dates.append(date)
-        for _, date in dep_versions:
-            if effective_start <= date <= self.end_date:
-                dates.append(date)
-
-        intervals = build_intervals(dates, effective_start, self.end_date)
-        if not intervals:
-            return pd.DataFrame()
-
         # Build lookup for package versions: date -> (version, constraint for this dependency)
         pkg_version_info = []  # List of (version, date, constraint_for_dep)
         for ver, date in pkg_versions:
@@ -1258,6 +1336,26 @@ class DependencyAnalyzer:
 
         # Sort by date
         pkg_version_info.sort(key=lambda x: x[1])
+
+        # Effective start: the package can't have depended on `dependency` before
+        # the first release that actually declared it (this subsumes both "first
+        # package release" and "first dependency release" — you can't declare a
+        # dependency before either party exists).
+        effective_start = self.start_date
+        if pkg_version_info:
+            effective_start = max(effective_start, pkg_version_info[0][1])
+
+        dates = []
+        for _, date in pkg_versions:
+            if effective_start <= date <= self.end_date:
+                dates.append(date)
+        for _, date in dep_versions:
+            if effective_start <= date <= self.end_date:
+                dates.append(date)
+
+        intervals = build_intervals(dates, effective_start, self.end_date)
+        if not intervals:
+            return pd.DataFrame()
 
         records = []
         for interval_start, interval_end in intervals:
