@@ -1540,21 +1540,6 @@ class DependencyAnalyzer:
             ).sum() / not_remediated["weight"].sum()
         return not_remediated["interval_duration"].sum() if len(not_remediated) > 0 else 0.0
 
-    def _get_version_release_date(
-        self, package: str, version: str, metadata: Dict
-    ) -> Optional[datetime]:
-        """Get release date for a specific version.
-
-        Args:
-            package: Package name
-            version: Version string
-            metadata: Package metadata
-
-        Returns:
-            Release date or None
-        """
-        return self.osv_service.get_version_release_date(self.ecosystem, package, version, metadata)
-
     def calculate_ttu_ttr(self, df: pd.DataFrame) -> Tuple[float, float]:
         """Calculate TTU and TTR metrics.
 

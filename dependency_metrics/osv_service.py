@@ -205,16 +205,38 @@ class OSVService:
         version: str,
         metadata: Dict,
     ) -> Optional[datetime]:
+        """Look up *version*'s registry publish date from raw package metadata.
+
+        Metadata can come from two shapes depending on the resolver:
+          - Native registries (npm/PyPI): "versions"/"releases" is a dict keyed
+            by version string, e.g. versions[version]["dist"]["published"].
+          - deps.dev's GetPackage response (used by ``DepsDevResolver`` for any
+            ecosystem, including cargo): "versions" is a list of entries like
+            {"versionKey": {"version": ...}, "publishedAt": ...}.
+
+        Detect the shape structurally (dict vs list) rather than branching on
+        *ecosystem*, since --depsdev returns the same list shape for every
+        ecosystem it supports.
+        """
         try:
-            if ecosystem == "npm":
-                versions = metadata.get("versions", {})
+            versions = metadata.get("versions")
+
+            if isinstance(versions, dict):
                 ver_data = versions.get(version)
                 if ver_data:
                     published = ver_data.get("dist", {}).get("published")
                     if published:
                         return parse_timestamp(published)
 
-            elif ecosystem == "pypi":
+            elif isinstance(versions, list):
+                for entry in versions:
+                    if entry.get("versionKey", {}).get("version") == version:
+                        published = entry.get("publishedAt")
+                        if published:
+                            return parse_timestamp(published)
+                        break
+
+            if ecosystem == "pypi":
                 releases = metadata.get("releases", {})
                 release_files = releases.get(version, [])
                 if release_files:
