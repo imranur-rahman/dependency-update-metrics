@@ -12,6 +12,13 @@ import logging
 import pandas as pd
 
 
+def safe_filename_stem(name: str) -> str:
+    """Replace path separators in a name (e.g. scoped npm packages like
+    "@scope/pkg") so it can be used as a single filename component instead of
+    being interpreted as a (non-existent) subdirectory by Path / to_csv."""
+    return name.replace("/", "__").replace("\\", "__")
+
+
 def print_summary(
     package: str,
     ecosystem: str,
@@ -39,7 +46,7 @@ def print_summary(
 
 def save_results_json(results: Dict, output_dir: Path, package: str) -> Path:
     output_dir.mkdir(parents=True, exist_ok=True)
-    results_file = output_dir / f"{package}_results.json"
+    results_file = output_dir / f"{safe_filename_stem(package)}_results.json"
     with open(results_file, "w") as f:
         json.dump(results, f, indent=2, default=str)
     return results_file
@@ -48,7 +55,7 @@ def save_results_json(results: Dict, output_dir: Path, package: str) -> Path:
 def export_osv_data(results: Dict, output_dir: Path, package: str) -> Path | None:
     if "osv_data" not in results:
         return None
-    osv_file = output_dir / f"{package}_osv.csv"
+    osv_file = output_dir / f"{safe_filename_stem(package)}_osv.csv"
     results["osv_data"].to_csv(osv_file, index=False)
     return osv_file
 
@@ -56,7 +63,7 @@ def export_osv_data(results: Dict, output_dir: Path, package: str) -> Path | Non
 def export_worksheets(results: Dict, output_dir: Path, package: str) -> Path | None:
     if "dependency_data" not in results:
         return None
-    excel_file = output_dir / f"{package}_worksheets.xlsx"
+    excel_file = output_dir / f"{safe_filename_stem(package)}_worksheets.xlsx"
     with pd.ExcelWriter(excel_file, engine="openpyxl") as writer:
         for dep_name, dep_df in results["dependency_data"].items():
             sheet_name = dep_name[:31]
@@ -95,7 +102,7 @@ def export_per_release_worksheets(
             dep_name = df["dependency"].iloc[0] if "dependency" in df.columns else "unknown"
             per_release_frames.setdefault(dep_name, []).append(df)
 
-    excel_file = output_dir / f"{package}_per_release_worksheets.xlsx"
+    excel_file = output_dir / f"{safe_filename_stem(package)}_per_release_worksheets.xlsx"
     with pd.ExcelWriter(excel_file, engine="openpyxl") as writer:
         pd.DataFrame(summaries).to_excel(writer, sheet_name="Summary", index=False)
 

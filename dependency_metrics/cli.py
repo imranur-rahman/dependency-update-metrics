@@ -35,6 +35,7 @@ from .reporting import (
     export_per_release_worksheets,
     export_worksheets,
     print_summary,
+    safe_filename_stem,
     save_results_json,
 )
 
@@ -1954,7 +1955,9 @@ def main():
                     _logger.info("=" * 60)
 
                     summary_df = pd.DataFrame([r["summary"] for r in release_results])
-                    csv_path = output_dir / f"{args.package}_per_release_results.csv"
+                    csv_path = (
+                        output_dir / f"{safe_filename_stem(args.package)}_per_release_results.csv"
+                    )
                     summary_df.to_csv(csv_path, index=False)
                     _logger.info("Per-release results saved to: %s", csv_path)
 
