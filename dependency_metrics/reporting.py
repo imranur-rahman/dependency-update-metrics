@@ -19,6 +19,18 @@ def safe_filename_stem(name: str) -> str:
     return name.replace("/", "__").replace("\\", "__")
 
 
+_INVALID_SHEET_CHARS = "[]:*?/\\"
+
+
+def safe_sheet_name(name: str, suffix: str = "") -> str:
+    """Excel worksheet titles forbid []:*?/\\ and are capped at 31 chars —
+    scoped package/dependency names like "@scope/pkg" violate the former.
+    Replace forbidden characters before truncating, leaving room for any
+    disambiguation suffix (e.g. "_PR")."""
+    cleaned = "".join("_" if c in _INVALID_SHEET_CHARS else c for c in name)
+    return (cleaned[: 31 - len(suffix)] + suffix)[:31]
+
+
 def print_summary(
     package: str,
     ecosystem: str,
@@ -66,7 +78,7 @@ def export_worksheets(results: Dict, output_dir: Path, package: str) -> Path | N
     excel_file = output_dir / f"{safe_filename_stem(package)}_worksheets.xlsx"
     with pd.ExcelWriter(excel_file, engine="openpyxl") as writer:
         for dep_name, dep_df in results["dependency_data"].items():
-            sheet_name = dep_name[:31]
+            sheet_name = safe_sheet_name(dep_name)
 
             df_copy = dep_df.copy()
             for col in df_copy.columns:
@@ -112,7 +124,7 @@ def export_per_release_worksheets(
                 for col in df_copy.columns:
                     if pd.api.types.is_datetime64tz_dtype(df_copy[col]):
                         df_copy[col] = df_copy[col].dt.tz_convert("UTC").dt.tz_localize(None)
-                df_copy.to_excel(writer, sheet_name=dep_name[:31], index=False)
+                df_copy.to_excel(writer, sheet_name=safe_sheet_name(dep_name), index=False)
 
         regular_names = set((regular_dep_data or {}).keys())
         for dep_name, frames in per_release_frames.items():
@@ -121,9 +133,9 @@ def export_per_release_worksheets(
                 if pd.api.types.is_datetime64tz_dtype(combined[col]):
                     combined[col] = combined[col].dt.tz_convert("UTC").dt.tz_localize(None)
             if dep_name in regular_names:
-                sheet_name = (dep_name[:28] + "_PR")[:31]
+                sheet_name = safe_sheet_name(dep_name, "_PR")
             else:
-                sheet_name = dep_name[:31]
+                sheet_name = safe_sheet_name(dep_name)
             combined.to_excel(writer, sheet_name=sheet_name, index=False)
     return excel_file
 
