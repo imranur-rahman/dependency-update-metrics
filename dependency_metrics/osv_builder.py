@@ -7,6 +7,7 @@ import logging
 import os
 import re
 import shutil
+import time
 import zipfile
 from pathlib import Path
 
@@ -54,23 +55,53 @@ class OSVBuilder:
         self.osv_zip = self.output_dir / "osv-all.zip"
         self.osv_db_file = self.output_dir / "osv_database.parquet"
 
-    def download_osv_data(self) -> None:
-        """Download OSV vulnerability data."""
+    def _is_valid_zip(self) -> bool:
+        """Return True if self.osv_zip exists and is a valid zip file."""
+        if not self.osv_zip.exists():
+            return False
+        return zipfile.is_zipfile(self.osv_zip)
+
+    def download_osv_data(self, max_retries: int = 5) -> None:
+        """Download OSV vulnerability data with retry on connection errors."""
         logger.warning(f"Downloading OSV data from {self.OSV_URL}")
         logger.warning("Downloading OSV vulnerability database...")
 
-        response = requests.get(self.OSV_URL, stream=True)
-        response.raise_for_status()
+        for attempt in range(1, max_retries + 1):
+            try:
+                response = requests.get(self.OSV_URL, stream=True, timeout=60)
+                response.raise_for_status()
 
-        total_size = int(response.headers.get("content-length", 0))
+                total_size = int(response.headers.get("content-length", 0))
 
-        with open(self.osv_zip, "wb") as f:
-            with tqdm(total=total_size, unit="B", unit_scale=True) as pbar:
-                for chunk in response.iter_content(chunk_size=8192):
-                    f.write(chunk)
-                    pbar.update(len(chunk))
+                with open(self.osv_zip, "wb") as f:
+                    with tqdm(total=total_size, unit="B", unit_scale=True) as pbar:
+                        for chunk in response.iter_content(chunk_size=8192):
+                            f.write(chunk)
+                            pbar.update(len(chunk))
 
-        logger.warning(f"Downloaded OSV data to {self.osv_zip}")
+                if not self._is_valid_zip():
+                    raise zipfile.BadZipFile("Downloaded file is not a valid zip")
+
+                logger.warning(f"Downloaded OSV data to {self.osv_zip}")
+                return
+
+            except (requests.exceptions.ChunkedEncodingError,
+                    requests.exceptions.ConnectionError,
+                    requests.exceptions.Timeout,
+                    zipfile.BadZipFile) as e:
+                if self.osv_zip.exists():
+                    os.remove(self.osv_zip)
+                if attempt < max_retries:
+                    wait = 2 ** attempt
+                    logger.warning(
+                        f"Download attempt {attempt}/{max_retries} failed ({e}); "
+                        f"retrying in {wait}s..."
+                    )
+                    time.sleep(wait)
+                else:
+                    raise RuntimeError(
+                        f"OSV download failed after {max_retries} attempts: {e}"
+                    ) from e
 
     def extract_osv_data(self) -> None:
         """Extract OSV zip file."""
@@ -216,7 +247,10 @@ class OSVBuilder:
             return osv_df
 
         # Download and extract if needed
-        if not self.osv_zip.exists():
+        if not self._is_valid_zip():
+            if self.osv_zip.exists():
+                logger.warning("Existing OSV zip is corrupt or incomplete; re-downloading...")
+                os.remove(self.osv_zip)
             self.download_osv_data()
 
         if not self.osv_dir.exists():
