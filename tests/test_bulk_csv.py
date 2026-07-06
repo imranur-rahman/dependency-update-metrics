@@ -36,6 +36,23 @@ def test_load_input_csv_missing_required_column(tmp_path: Path) -> None:
         _load_input_csv(csv_path)
 
 
+def test_load_input_csv_uses_default_end_date_when_column_missing(tmp_path: Path) -> None:
+    csv_path = tmp_path / "missing_end_date.csv"
+    csv_path.write_text("ecosystem,package_name\npypi,requests\nnpm,express\n", encoding="utf-8")
+
+    rows = _load_input_csv(csv_path, default_end_date="2024-12-31")
+
+    assert [row["end_date"] for row in rows] == ["2024-12-31", "2024-12-31"]
+
+
+def test_load_input_csv_missing_end_date_without_default_raises(tmp_path: Path) -> None:
+    csv_path = tmp_path / "missing_end_date.csv"
+    csv_path.write_text("ecosystem,package_name\npypi,requests\n", encoding="utf-8")
+
+    with pytest.raises(ValueError, match="end_date"):
+        _load_input_csv(csv_path)
+
+
 def test_load_input_csv_bom_header(tmp_path: Path) -> None:
     csv_path = tmp_path / "bom.csv"
     csv_path.write_bytes(b"\xef\xbb\xbfecosystem,package_name,end_date\npypi,requests,2024-01-01\n")

@@ -106,7 +106,9 @@ dependency-metrics \
 
 ### Bulk CSV input (parallel processing)
 
-Input CSV must include `ecosystem`, `package_name`, `end_date` and can include `start_date`.
+Input CSV must include `ecosystem`, `package_name` and can include `start_date` and `end_date`.
+If the CSV omits the `end_date` column, the CLI `--end-date` value is used for every row.
+When `--end-date` is also omitted, it defaults to today.
 Extra columns are allowed. The tool automatically removes duplicate rows by
 `ecosystem`, `package_name`, and `end_date`.
 Bulk mode computes metrics per package using the latest dependency set.

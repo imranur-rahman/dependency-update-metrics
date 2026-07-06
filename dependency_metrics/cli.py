@@ -609,7 +609,7 @@ def _parse_date(value: str, field: str, row_num: Optional[int] = None) -> dateti
         raise ValueError(f"Invalid {field} format{location}. Use YYYY-MM-DD.")
 
 
-def _load_input_csv(path: Path) -> List[Dict[str, Any]]:
+def _load_input_csv(path: Path, default_end_date: Optional[str] = None) -> List[Dict[str, Any]]:
     raw = path.read_bytes()
     if raw.lstrip().startswith(b"{\\rtf"):
         raise ValueError("Input file appears to be RTF. Please export as CSV.")
@@ -639,8 +639,10 @@ def _load_input_csv(path: Path) -> List[Dict[str, Any]]:
         normalized_fields.append(str(name).strip().lstrip("\ufeff"))
 
     field_map = {name.lower(): name for name in normalized_fields}
-    required = {"ecosystem", "package_name", "end_date"}
+    required = {"ecosystem", "package_name"}
     missing = required.difference(field_map.keys())
+    if "end_date" not in field_map and not default_end_date:
+        missing.add("end_date")
     if missing:
         available = ", ".join(normalized_fields) if normalized_fields else "none"
         raise ValueError(
@@ -658,7 +660,11 @@ def _load_input_csv(path: Path) -> List[Dict[str, Any]]:
         normalized: Dict[str, Any] = {
             "ecosystem": cleaned.get(field_map["ecosystem"], ""),
             "package_name": cleaned.get(field_map["package_name"], ""),
-            "end_date": cleaned.get(field_map["end_date"], ""),
+            "end_date": (
+                cleaned.get(field_map["end_date"], "")
+                if "end_date" in field_map
+                else default_end_date
+            ),
             "start_date": cleaned.get(field_map.get("start_date", ""), ""),
         }
         for key, value in cleaned.items():
@@ -698,7 +704,10 @@ def main():
 
     parser.add_argument(
         "--input-csv",
-        help="CSV file with columns: ecosystem, package_name, end_date, optional start_date",
+        help=(
+            "CSV file with columns: ecosystem, package_name, optional start_date, "
+            "optional end_date. If end_date is omitted, --end-date is used."
+        ),
     )
 
     parser.add_argument(
@@ -816,6 +825,13 @@ def main():
     except ValueError as exc:
         logging.getLogger("dependency_metrics").error("Error: %s", exc)
         sys.exit(1)
+    try:
+        default_end_date = (
+            _parse_date(args.end_date, "end_date") if args.end_date else datetime.today()
+        )
+    except ValueError as exc:
+        logging.getLogger("dependency_metrics").error("Error: %s", exc)
+        sys.exit(1)
 
     # Create output directory
     output_dir = Path(args.output_dir)
@@ -847,7 +863,7 @@ def main():
             sys.exit(1)
 
         try:
-            input_rows = _load_input_csv(input_csv)
+            input_rows = _load_input_csv(input_csv, default_end_date.date().isoformat())
         except ValueError as exc:
             logging.getLogger("dependency_metrics").error("Error: %s", exc)
             sys.exit(1)

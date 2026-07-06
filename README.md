@@ -72,7 +72,8 @@ dependency-metrics --ecosystem pypi --package requests \
 dependency-metrics --input-csv ./input.csv --per-release --workers 4
 ```
 
-Input CSV columns: `ecosystem`, `package_name`, `end_date`, optional `start_date`.
+Input CSV columns: `ecosystem`, `package_name`, optional `start_date`, optional `end_date`.
+If `end_date` is omitted, the CLI `--end-date` value is used; when `--end-date` is also omitted, it defaults to today.
 Extra columns are allowed; duplicates are removed by `ecosystem, package_name, end_date`.
 Bulk mode computes metrics per package using the latest dependency set.
 
@@ -105,7 +106,7 @@ print(f"Average TTR: {results['ttr']:.2f} days")
 
 - `--ecosystem`: Ecosystem to analyze (`npm` or `pypi`) [Required unless `--input-csv`]
 - `--package`: Package name to analyze [Required unless `--input-csv`]
-- `--input-csv`: CSV file with columns `ecosystem, package_name, end_date` and optional `start_date`
+- `--input-csv`: CSV file with columns `ecosystem, package_name`, optional `start_date`, and optional `end_date`. If `end_date` is omitted, `--end-date` is used.
 - `--start-date`: Start date for analysis (YYYY-MM-DD) [Default: 1900-01-01]
 - `--end-date`: End date for analysis (YYYY-MM-DD) [Default: today]
 - `--weighting-type`: Weighting method (`linear`, `exponential`, `inverse`, `disable`) [Default: disable]
