@@ -171,3 +171,14 @@ def test_get_version_release_date_handles_both_npm_registry_and_depsdev_shapes()
     # Unknown version in either shape -> None, not an exception
     assert service.get_version_release_date("npm", "dep", "9.9.9", npm_registry_metadata) is None
     assert service.get_version_release_date("npm", "dep", "9.9.9", depsdev_metadata) is None
+
+
+def test_get_version_release_date_handles_native_crates_metadata():
+    service = OSVService()
+    crates_metadata = {
+        "versions": [{"num": "1.0.0", "created_at": "2020-01-02T00:00:00Z", "yanked": False}]
+    }
+
+    assert service.get_version_release_date("cargo", "dep", "1.0.0", crates_metadata) == datetime(
+        2020, 1, 2, tzinfo=timezone.utc
+    )

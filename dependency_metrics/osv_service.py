@@ -230,8 +230,10 @@ class OSVService:
 
             elif isinstance(versions, list):
                 for entry in versions:
-                    if entry.get("versionKey", {}).get("version") == version:
-                        published = entry.get("publishedAt")
+                    entry_version = entry.get("versionKey", {}).get("version")
+                    entry_version = entry_version or entry.get("num") or entry.get("version")
+                    if entry_version == version:
+                        published = entry.get("publishedAt") or entry.get("created_at")
                         if published:
                             return parse_timestamp(published)
                         break

@@ -45,6 +45,7 @@ METADATA_CACHE_MAX: int | None = 5_000
 RESOLVE_CACHE_MAX: dict[str, int | None] = {
     "pypi": 500,  # PackageFinder objects; ~1-5 MB each → ~1 GB max
     "npm": 200_000,  # (dep, constraint, date) strings; ~1 KB each → ~150 MB max
+    "cargo": 200_000,  # (dep, constraint, date) strings; ~1 KB each → ~150 MB max
     # "maven": 100_000,
 }
 
@@ -55,6 +56,9 @@ PYPI_VERSION_METADATA_CACHE_MAX: int | None = 2_000
 # Extracted dependency dicts per version (1-10 KB each).
 # 5 000 entries ≈ 5–50 MB.
 PYPI_VERSION_DEPS_CACHE_MAX: int | None = 5_000
+
+# Extracted Cargo dependency dicts per version (1-10 KB each).
+CARGO_VERSION_DEPS_CACHE_MAX: int | None = 5_000
 
 # Preprocessed version prefix lists per package (50-200 KB each).
 # 1 000 entries ≈ 50–200 MB.

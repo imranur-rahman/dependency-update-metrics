@@ -46,6 +46,12 @@ dependency-metrics --ecosystem npm --package express
 dependency-metrics --ecosystem pypi --package requests
 ```
 
+### Analyze a Cargo/crates.io package
+
+```bash
+dependency-metrics --ecosystem cargo --package serde
+```
+
 ## Advanced Usage
 
 ### Specify date range
@@ -107,6 +113,7 @@ dependency-metrics \
 ### Bulk CSV input (parallel processing)
 
 Input CSV must include `ecosystem`, `package_name` and can include `start_date` and `end_date`.
+Accepted ecosystem values are `npm`, `pypi`, `cargo`, and `crates.io`; `crates.io` is normalized to `cargo` in outputs.
 If the CSV omits the `end_date` column, the CLI `--end-date` value is used for every row.
 When `--end-date` is also omitted, it defaults to today.
 Extra columns are allowed. The tool automatically removes duplicate rows by

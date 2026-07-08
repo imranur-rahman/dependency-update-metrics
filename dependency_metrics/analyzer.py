@@ -22,6 +22,7 @@ from .osv_builder import OSVBuilder
 from .osv_service import OSVService
 from .interfaces import PackageResolver
 from .resolvers import (
+    CratesResolver,
     NpmResolver,
     PyPIResolver,
     ResolverCache,
@@ -71,10 +72,9 @@ class DependencyAnalyzer:
             output_dir: Output directory for results
             resolver_cache: Shared resolver cache for minimizing network calls
             severity_breakdown: Whether to compute per-severity MTTR metrics
-            resolver: Optional pre-built resolver; when provided the ecosystem
-                      does not need to be npm or pypi (e.g. cargo via deps.dev).
+            resolver: Optional pre-built resolver, such as a deps.dev-backed resolver.
         """
-        self.ecosystem = ecosystem.lower()
+        self.ecosystem = "cargo" if ecosystem.lower() == "crates.io" else ecosystem.lower()
         self.package = package
         # Ensure dates are timezone-aware (UTC)
         if start_date.tzinfo is None:
@@ -99,7 +99,11 @@ class DependencyAnalyzer:
         self._osv_index: Optional[Dict[str, List[Dict]]] = None
 
         # Registry URLs (used by native resolvers only)
-        self.registry_urls = {"npm": "https://registry.npmjs.org", "pypi": "https://pypi.org/pypi"}
+        self.registry_urls = {
+            "npm": "https://registry.npmjs.org",
+            "pypi": "https://pypi.org/pypi",
+            "cargo": "https://crates.io",
+        }
         if resolver is not None:
             # Injected resolver (e.g. DepsDevResolver) — no native registry calls.
             self.resolver = resolver
@@ -113,6 +117,14 @@ class DependencyAnalyzer:
             )
         elif self.ecosystem == "pypi":
             self.resolver = PyPIResolver(
+                package=self.package,
+                start_date=self.start_date,
+                end_date=self.end_date,
+                registry_urls=self.registry_urls,
+                cache=self._resolver_cache,
+            )
+        elif self.ecosystem == "cargo":
+            self.resolver = CratesResolver(
                 package=self.package,
                 start_date=self.start_date,
                 end_date=self.end_date,

@@ -1,10 +1,10 @@
 # Dependency Update Metrics
 
-A Python tool for analyzing time-to-update (TTU) and time-to-remediate (TTR) metrics for package dependencies across different ecosystems (npm, PyPI).
+A Python tool for analyzing time-to-update (TTU) and time-to-remediate (TTR) metrics for package dependencies across different ecosystems (npm, PyPI, Cargo/crates.io).
 
 ## Features
 
-- **Multi-ecosystem support**: Analyze packages from npm and PyPI
+- **Multi-ecosystem support**: Analyze packages from npm, PyPI, and Cargo/crates.io
 - **Time-to-Update (TTU)**: Measure how long dependencies stay behind the latest version
 - **Time-to-Remediate (TTR)**: Measure how long known vulnerabilities remain unpatched
 - **Flexible weighting**: Support for linear, exponential, inverse, or no weighting
@@ -57,6 +57,9 @@ dependency-metrics --ecosystem npm --package express --get-osv
 # Test a PyPI package
 dependency-metrics --ecosystem pypi --package requests --start-date 2020-01-01 --end-date 2021-01-01 --get-worksheets
 
+# Test a Cargo/crates.io package
+dependency-metrics --ecosystem cargo --package serde --start-date 2020-01-01 --end-date 2024-01-01
+
 # Bulk CSV input (parallel by default)
 dependency-metrics --input-csv ./input.csv --workers 8 --output-dir ./output
 
@@ -73,6 +76,7 @@ dependency-metrics --input-csv ./input.csv --per-release --workers 4
 ```
 
 Input CSV columns: `ecosystem`, `package_name`, optional `start_date`, optional `end_date`.
+Accepted ecosystem values are `npm`, `pypi`, `cargo`, and `crates.io`; `crates.io` is normalized to `cargo` in outputs.
 If `end_date` is omitted, the CLI `--end-date` value is used; when `--end-date` is also omitted, it defaults to today.
 Extra columns are allowed; duplicates are removed by `ecosystem, package_name, end_date`.
 Bulk mode computes metrics per package using the latest dependency set.
@@ -104,7 +108,7 @@ print(f"Average TTR: {results['ttr']:.2f} days")
 
 ## Command-line Arguments
 
-- `--ecosystem`: Ecosystem to analyze (`npm` or `pypi`) [Required unless `--input-csv`]
+- `--ecosystem`: Ecosystem to analyze (`npm`, `pypi`, `cargo`, or `crates.io`) [Required unless `--input-csv`]
 - `--package`: Package name to analyze [Required unless `--input-csv`]
 - `--input-csv`: CSV file with columns `ecosystem, package_name`, optional `start_date`, and optional `end_date`. If `end_date` is omitted, `--end-date` is used.
 - `--start-date`: Start date for analysis (YYYY-MM-DD) [Default: 1900-01-01]

@@ -21,6 +21,7 @@ from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
 import psutil
 
 from .cache_config import (
+    CARGO_VERSION_DEPS_CACHE_MAX,
     METADATA_CACHE_MAX,
     NPM_TIME_CACHE_MAX,
     PYPI_VERSION_DEPS_CACHE_MAX,
@@ -189,8 +190,10 @@ class ResolverCache:
     metadata_cache: OrderedDict = field(default_factory=OrderedDict)
     pypi_version_metadata_cache: OrderedDict = field(default_factory=OrderedDict)
     pypi_version_deps_cache: OrderedDict = field(default_factory=OrderedDict)
+    cargo_version_deps_cache: OrderedDict = field(default_factory=OrderedDict)
     npm_time_cache: OrderedDict = field(default_factory=OrderedDict)
     npm_resolve_cache: OrderedDict = field(default_factory=OrderedDict)
+    cargo_resolve_cache: OrderedDict = field(default_factory=OrderedDict)
     invalid_version_strings: Dict[Tuple[str, str], Set[str]] = field(default_factory=dict)
     missing_packages: Set[Tuple[str, str]] = field(default_factory=set)
     version_prefix_cache: OrderedDict = field(default_factory=OrderedDict)
@@ -230,6 +233,10 @@ class ResolverCache:
         """Write an entry to npm_resolve_cache with FIFO eviction when the cap is reached."""
         self._capped_set(self.npm_resolve_cache, key, value, RESOLVE_CACHE_MAX.get("npm"))
 
+    def cargo_resolve_set(self, key: Tuple[str, str, str], value: Optional[str]) -> None:
+        """Write an entry to cargo_resolve_cache with FIFO eviction when the cap is reached."""
+        self._capped_set(self.cargo_resolve_cache, key, value, RESOLVE_CACHE_MAX.get("cargo"))
+
     def metadata_set(self, key: Tuple[str, str], value: Dict) -> None:
         """Write an entry to metadata_cache with FIFO eviction when the cap is reached."""
         self._capped_set(self.metadata_cache, key, value, METADATA_CACHE_MAX)
@@ -243,6 +250,10 @@ class ResolverCache:
     def pypi_version_deps_set(self, key: str, value: Dict) -> None:
         """Write an entry to pypi_version_deps_cache with FIFO eviction."""
         self._capped_set(self.pypi_version_deps_cache, key, value, PYPI_VERSION_DEPS_CACHE_MAX)
+
+    def cargo_version_deps_set(self, key: str, value: Dict) -> None:
+        """Write an entry to cargo_version_deps_cache with FIFO eviction."""
+        self._capped_set(self.cargo_version_deps_cache, key, value, CARGO_VERSION_DEPS_CACHE_MAX)
 
     def npm_time_set(self, key: str, value: Dict) -> None:
         """Write an entry to npm_time_cache with FIFO eviction."""
@@ -306,6 +317,7 @@ class ResolverCache:
                 "depsdev_req",
                 "npm_time",
                 "resolve_npm",
+                "resolve_cargo",
                 "invalid_versions",
             )
             if ns not in WARM_SKIP_NAMESPACES
@@ -1104,3 +1116,202 @@ class PyPIResolver(PackageResolver):
         self.cache.pypi_version_metadata_set(cache_key, data)
         self.cache.save_json("pypi_version", disk_key, data)
         return data
+
+
+class CratesResolver(PackageResolver):
+    """Resolver for crates.io packages."""
+
+    ecosystem = "cargo"
+
+    def __init__(
+        self,
+        package: str,
+        start_date: datetime,
+        end_date: datetime,
+        registry_urls: Dict[str, str],
+        cache: ResolverCache,
+    ) -> None:
+        self.package = package
+        self.start_date = start_date
+        self.end_date = end_date
+        self.registry_urls = registry_urls
+        self.cache = cache
+
+    def fetch_package_metadata(self, package_name: str) -> Dict:
+        cache_key = (self.ecosystem, package_name)
+        if cache_key in self.cache.metadata_cache:
+            logger.debug("Cache hit: metadata %s:%s", self.ecosystem, package_name)
+            return self.cache.metadata_cache[cache_key]
+        if cache_key in self.cache.missing_packages:
+            raise requests.HTTPError(f"Package not found (cached): {package_name}")
+
+        with self.cache.get_key_lock(cache_key):
+            if cache_key in self.cache.metadata_cache:
+                logger.debug("Cache hit (post-lock): metadata %s:%s", self.ecosystem, package_name)
+                return self.cache.metadata_cache[cache_key]
+            if cache_key in self.cache.missing_packages:
+                raise requests.HTTPError(f"Package not found (cached): {package_name}")
+
+            disk_key = f"{self.ecosystem}:{package_name}"
+            cached = self.cache.load_json("metadata", disk_key)
+            if cached is not None:
+                self.cache.metadata_set(cache_key, cached)
+                return cached
+
+            encoded_package = quote(package_name, safe="")
+            url = f"{self.registry_urls['cargo']}/api/v1/crates/{encoded_package}"
+            logger.info("Fetching metadata for %s", package_name)
+            try:
+                with self.cache.get(
+                    url, headers={"User-Agent": "dependency-update-metrics"}
+                ) as response:
+                    response.raise_for_status()
+                    data = response.json()
+            except requests.HTTPError as exc:
+                if exc.response is not None and exc.response.status_code == 404:
+                    self.cache.missing_packages.add(cache_key)
+                    logger.warning(
+                        "Package not found on registry, skipping further requests: %s",
+                        package_name,
+                    )
+                raise
+            self.cache.metadata_set(cache_key, data)
+            self.cache.save_json("metadata", disk_key, data)
+            return data
+
+    def _iter_versions(
+        self, metadata: Dict, package_name: Optional[str] = None
+    ) -> List[PackageVersion]:
+        name = package_name or metadata.get("crate", {}).get("id", self.package)
+        result: List[PackageVersion] = []
+        for entry in metadata.get("versions", []):
+            if entry.get("yanked", False):
+                continue
+            ver = entry.get("num") or entry.get("version")
+            published = entry.get("created_at") or entry.get("publishedAt")
+            if not ver or not published:
+                continue
+            pub_date = parse_timestamp(published)
+            if pub_date is None:
+                continue
+            result.append(PackageVersion(name=name, version=ver, released_at=pub_date))
+        return sorted(result, key=lambda x: x.released_at)
+
+    def get_package_version_at_date(self, metadata: Dict) -> Tuple[str, Dict]:
+        versions = [pv for pv in self._iter_versions(metadata) if pv.released_at <= self.end_date]
+        if not versions:
+            raise ValueError(f"No versions found before {self.end_date}")
+        chosen = self._best_cargo_version([pv.version for pv in versions])
+        if chosen is None:
+            chosen = versions[-1].version
+        return chosen, {"_package": self.package, "_version": chosen}
+
+    def get_all_versions_with_dates(
+        self, metadata: Dict, package_name: Optional[str] = None
+    ) -> Iterable[PackageVersion]:
+        return [
+            pv
+            for pv in self._iter_versions(metadata, package_name=package_name)
+            if self.start_date <= pv.released_at <= self.end_date
+        ]
+
+    def resolve_dependency_version(
+        self, dependency: str, constraint: str, before_date: datetime
+    ) -> Optional[str]:
+        cmp_date = (
+            before_date.replace(tzinfo=timezone.utc) if before_date.tzinfo is None else before_date
+        )
+        cache_key = (dependency, constraint, cmp_date.isoformat())
+        if cache_key in self.cache.cargo_resolve_cache:
+            logger.debug("Cache hit: cargo resolve %s %s %s", dependency, constraint, cmp_date)
+            return self.cache.cargo_resolve_cache[cache_key]
+
+        disk_key = f"cargo:{dependency}|{constraint}|{cmp_date.isoformat()}"
+        cached = self.cache.load_json("resolve_cargo", disk_key)
+        if cached is not None:
+            result = cached.get("version")
+            self.cache.cargo_resolve_set(cache_key, result)
+            return result
+
+        metadata = self.fetch_package_metadata(dependency)
+        eligible = [
+            pv.version
+            for pv in self._iter_versions(metadata, package_name=dependency)
+            if pv.released_at <= cmp_date
+        ]
+        resolved = self._match_cargo_constraint(eligible, constraint)
+        self.cache.cargo_resolve_set(cache_key, resolved)
+        self.cache.save_json("resolve_cargo", disk_key, {"version": resolved})
+        return resolved
+
+    def get_highest_semver_version_at_date(
+        self, package_name: str, at_date: datetime, metadata: Optional[Dict] = None
+    ) -> Optional[str]:
+        cmp_date = at_date.replace(tzinfo=timezone.utc) if at_date.tzinfo is None else at_date
+        if metadata is None:
+            metadata = self.fetch_package_metadata(package_name)
+        eligible = [
+            pv.version
+            for pv in self._iter_versions(metadata, package_name=package_name)
+            if pv.released_at <= cmp_date
+        ]
+        return self._best_cargo_version(eligible)
+
+    def extract_dependencies(self, version_data: Dict) -> Dict[str, str]:
+        package = version_data.get("_package", self.package)
+        version = version_data.get("_version", "")
+        if not version:
+            return {}
+        return self.get_version_dependencies(package, version)
+
+    def get_version_dependencies(self, package: str, version: str) -> Dict[str, str]:
+        cache_key = f"{package}@{version}"
+        if cache_key in self.cache.cargo_version_deps_cache:
+            logger.debug("Cache hit: cargo deps %s", cache_key)
+            return self.cache.cargo_version_deps_cache[cache_key]
+
+        disk_key = f"{package}:{version}"
+        cached = self.cache.load_json("cargo_deps", disk_key)
+        if cached is not None:
+            self.cache.cargo_version_deps_set(cache_key, cached)
+            return cached
+
+        encoded_package = quote(package, safe="")
+        encoded_version = quote(version, safe="")
+        url = (
+            f"{self.registry_urls['cargo']}/api/v1/crates/"
+            f"{encoded_package}/{encoded_version}/dependencies"
+        )
+        deps: Dict[str, str] = {}
+        try:
+            with self.cache.get(
+                url, headers={"User-Agent": "dependency-update-metrics"}
+            ) as response:
+                response.raise_for_status()
+                data = response.json()
+            deps = self._parse_dependencies(data)
+        except Exception as exc:
+            logger.warning("Failed to fetch dependencies for %s==%s: %s", package, version, exc)
+
+        self.cache.cargo_version_deps_set(cache_key, deps)
+        self.cache.save_json("cargo_deps", disk_key, deps)
+        return deps
+
+    def _parse_dependencies(self, data: Dict) -> Dict[str, str]:
+        deps: Dict[str, str] = {}
+        for dep in data.get("dependencies", []):
+            if dep.get("kind", "normal") not in ("normal", ""):
+                continue
+            if dep.get("optional", False):
+                continue
+            name = dep.get("crate_id") or dep.get("name")
+            if name:
+                deps[name] = dep.get("req") or dep.get("requirement") or "*"
+        return deps
+
+    def _match_cargo_constraint(self, versions: List[str], constraint: str) -> Optional[str]:
+        normalized = " ".join(part.strip() for part in constraint.split(","))
+        return _npm_match_constraint(versions, normalized)
+
+    def _best_cargo_version(self, versions: List[str]) -> Optional[str]:
+        return _npm_match_constraint(versions, "*")

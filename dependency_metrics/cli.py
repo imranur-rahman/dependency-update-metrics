@@ -46,6 +46,14 @@ from .reporting import (
 # ---------------------------------------------------------------------------
 
 _WORKER_STATE: Dict[str, Any] = {}
+_VALID_ECOSYSTEMS = {"npm", "pypi", "cargo"}
+_ECOSYSTEM_ALIASES = {"crates.io": "cargo"}
+
+
+def _normalize_ecosystem(value: Any) -> str:
+    """Normalize supported ecosystem aliases to internal names."""
+    raw = str(value or "").strip().lower()
+    return _ECOSYSTEM_ALIASES.get(raw, raw)
 
 
 def _init_worker_process(
@@ -129,7 +137,7 @@ def _make_timeout_result(
     per_release: bool,
 ) -> Dict[str, Any]:
     """Build an error result dict for a package that exceeded ``--package-timeout``."""
-    ecosystem = str(row.get("ecosystem", "")).lower()
+    ecosystem = _normalize_ecosystem(row.get("ecosystem", ""))
     package_name = str(row.get("package_name", ""))
     row_num = row.get("_row_num") or row.get("row_num")
     error_msg = f'"Package timed out after {seconds}s"'
@@ -210,10 +218,14 @@ def _make_timeout_result(
 
 def _worker_make_resolver(eco: str, pkg: str, start: datetime, end: datetime):
     """Create a resolver for *pkg* using the worker-process ``_WORKER_STATE``."""
-    from .resolvers import NpmResolver, PyPIResolver as _PyPIResolverCls
+    from .resolvers import CratesResolver, NpmResolver, PyPIResolver as _PyPIResolverCls
 
     ws = _WORKER_STATE
-    _registry_urls = {"npm": "https://registry.npmjs.org", "pypi": "https://pypi.org/pypi"}
+    _registry_urls = {
+        "npm": "https://registry.npmjs.org",
+        "pypi": "https://pypi.org/pypi",
+        "cargo": "https://crates.io",
+    }
     _eco_to_system = {"npm": "NPM", "pypi": "PYPI", "cargo": "CARGO"}
 
     if ws["use_depsdev"] and ws["depsdev_client"] is not None:
@@ -226,6 +238,14 @@ def _worker_make_resolver(eco: str, pkg: str, start: datetime, end: datetime):
         )
     if eco == "npm":
         return NpmResolver(
+            package=pkg,
+            start_date=start,
+            end_date=end,
+            registry_urls=_registry_urls,
+            cache=ws["cache"],
+        )
+    if eco == "cargo":
+        return CratesResolver(
             package=pkg,
             start_date=start,
             end_date=end,
@@ -263,7 +283,7 @@ def _worker_run_group(task: Dict[str, Any]) -> List[Dict[str, Any]]:
 
     for row in rows:
         row_num = row.get("_row_num")
-        ecosystem = str(row.get("ecosystem", "")).lower()
+        ecosystem = _normalize_ecosystem(row.get("ecosystem", ""))
         package_name = str(row.get("package_name", ""))
         end_date_raw = str(row.get("end_date", ""))
         start_date_raw = str(row.get("start_date", ""))
@@ -272,11 +292,8 @@ def _worker_run_group(task: Dict[str, Any]) -> List[Dict[str, Any]]:
         try:
             if not ecosystem or not package_name or not end_date_raw:
                 raise ValueError("ecosystem, package_name, and end_date are required.")
-            _valid_ecosystems = {"npm", "pypi", "cargo"} if use_depsdev else {"npm", "pypi"}
-            if ecosystem not in _valid_ecosystems:
+            if ecosystem not in _VALID_ECOSYSTEMS:
                 raise ValueError(f"Unsupported ecosystem: {ecosystem}.")
-            if ecosystem == "cargo" and not use_depsdev:
-                raise ValueError("ecosystem 'cargo' requires --depsdev.")
 
             start_date = default_start_date
             if start_date_raw:
@@ -333,7 +350,7 @@ def _worker_run_group(task: Dict[str, Any]) -> List[Dict[str, Any]]:
     if not valid_rows:
         return error_results
 
-    ecosystem = str(rows[0].get("ecosystem", "")).lower()
+    ecosystem = _normalize_ecosystem(rows[0].get("ecosystem", ""))
     package_name = str(rows[0].get("package_name", ""))
     min_start = min(r["start_date"] for r in valid_rows)
     max_end = max(r["end_date"] for r in valid_rows)
@@ -420,7 +437,7 @@ def _worker_run_group_per_release(task: Dict[str, Any]) -> List[Dict[str, Any]]:
 
     for row in rows:
         row_num = row.get("_row_num")
-        ecosystem = str(row.get("ecosystem", "")).lower()
+        ecosystem = _normalize_ecosystem(row.get("ecosystem", ""))
         package_name = str(row.get("package_name", ""))
         end_date_raw = str(row.get("end_date", ""))
         start_date_raw = str(row.get("start_date", ""))
@@ -429,11 +446,8 @@ def _worker_run_group_per_release(task: Dict[str, Any]) -> List[Dict[str, Any]]:
         try:
             if not ecosystem or not package_name or not end_date_raw:
                 raise ValueError("ecosystem, package_name, and end_date are required.")
-            _valid_ecosystems_pr = {"npm", "pypi", "cargo"} if use_depsdev else {"npm", "pypi"}
-            if ecosystem not in _valid_ecosystems_pr:
+            if ecosystem not in _VALID_ECOSYSTEMS:
                 raise ValueError(f"Unsupported ecosystem: {ecosystem}.")
-            if ecosystem == "cargo" and not use_depsdev:
-                raise ValueError("ecosystem 'cargo' requires --depsdev.")
 
             start_date = default_start_date
             if start_date_raw:
@@ -494,7 +508,7 @@ def _worker_run_group_per_release(task: Dict[str, Any]) -> List[Dict[str, Any]]:
     if not valid_rows:
         return error_results
 
-    ecosystem = str(rows[0].get("ecosystem", "")).lower()
+    ecosystem = _normalize_ecosystem(rows[0].get("ecosystem", ""))
     package_name = str(rows[0].get("package_name", ""))
     min_start = min(r["start_date"] for r in valid_rows)
     max_end = max(r["end_date"] for r in valid_rows)
@@ -658,7 +672,7 @@ def _load_input_csv(path: Path, default_end_date: Optional[str] = None) -> List[
             for k, v in record.items()
         }
         normalized: Dict[str, Any] = {
-            "ecosystem": cleaned.get(field_map["ecosystem"], ""),
+            "ecosystem": _normalize_ecosystem(cleaned.get(field_map["ecosystem"], "")),
             "package_name": cleaned.get(field_map["package_name"], ""),
             "end_date": (
                 cleaned.get(field_map["end_date"], "")
@@ -687,8 +701,8 @@ def main():
 
     parser.add_argument(
         "--ecosystem",
-        choices=["npm", "pypi", "cargo"],
-        help="The ecosystem to analyze (npm, pypi, or cargo). cargo requires --depsdev.",
+        choices=["npm", "pypi", "cargo", "crates.io"],
+        help="The ecosystem to analyze (npm, pypi, cargo, or crates.io).",
     )
 
     parser.add_argument(
@@ -816,8 +830,8 @@ def main():
     if args.weighting_type == "exponential" and args.half_life is None:
         parser.error("--half-life is required when --weighting-type is exponential")
 
-    if args.ecosystem == "cargo" and not args.depsdev:
-        parser.error("--ecosystem cargo requires --depsdev")
+    if args.ecosystem:
+        args.ecosystem = _normalize_ecosystem(args.ecosystem)
 
     # Parse default start date
     try:
@@ -874,7 +888,7 @@ def main():
         duplicates = 0
         for row in input_rows:
             key = (
-                str(row.get("ecosystem", "")).strip().lower(),
+                _normalize_ecosystem(row.get("ecosystem", "")),
                 str(row.get("package_name", "")).strip().lower(),
                 str(row.get("end_date", "")).strip(),
             )
@@ -917,7 +931,7 @@ def main():
                 summary_df = pd.read_csv(summary_file_path, dtype=str, low_memory=False)
                 if args.per_release:
                     for _, record in summary_df.iterrows():
-                        ecosystem_r = str(record.get("ecosystem", "")).strip().lower()
+                        ecosystem_r = _normalize_ecosystem(record.get("ecosystem", ""))
                         package_r = str(record.get("package_name", "")).strip().lower()
                         window_start_r = str(record.get("window_start", "")).strip()
                         pkg_ver_r = str(record.get("package_version", "")).strip()
@@ -932,7 +946,7 @@ def main():
                     for _, record in summary_df.iterrows():
                         ecosystem_raw = str(record.get("ecosystem", "")).strip()
                         package_name_raw = str(record.get("package_name", "")).strip()
-                        ecosystem = ecosystem_raw.lower()
+                        ecosystem = _normalize_ecosystem(ecosystem_raw)
                         package_name = package_name_raw.lower()
                         start_date = str(record.get("start_date", "")).strip()
                         end_date = str(record.get("end_date", "")).strip()
@@ -952,7 +966,7 @@ def main():
             try:
                 ledger_df = pd.read_csv(completed_file_path)
                 for _, rec in ledger_df.iterrows():
-                    eco = str(rec.get("ecosystem", "")).strip().lower()
+                    eco = _normalize_ecosystem(rec.get("ecosystem", ""))
                     pkg = str(rec.get("package_name", "")).strip().lower()
                     ws = str(rec.get("window_start", "")).strip()
                     we = str(rec.get("window_end", "")).strip()
@@ -969,7 +983,7 @@ def main():
         total_unique_packages_all = len(
             {
                 (
-                    str(r.get("ecosystem", "")).strip().lower(),
+                    _normalize_ecosystem(r.get("ecosystem", "")),
                     str(r.get("package_name", "")).strip().lower(),
                 )
                 for r in input_rows
@@ -985,7 +999,7 @@ def main():
             new_rows = 0
             for row in input_rows:
                 row_num = row.get("_row_num")
-                ecosystem = str(row.get("ecosystem", "")).strip().lower()
+                ecosystem = _normalize_ecosystem(row.get("ecosystem", ""))
                 package_name = str(row.get("package_name", "")).strip().lower()
                 end_date_raw = str(row.get("end_date", "")).strip()
                 start_date_raw = str(row.get("start_date", "")).strip()
@@ -1040,7 +1054,7 @@ def main():
             skipped = 0
             skipped_pkg_keys: set = set()
             for row in input_rows:
-                ecosystem = str(row.get("ecosystem", "")).strip().lower()
+                ecosystem = _normalize_ecosystem(row.get("ecosystem", ""))
                 package_name = str(row.get("package_name", "")).strip().lower()
                 if (ecosystem, package_name) in completed_pkgs:
                     skipped += 1
@@ -1052,7 +1066,7 @@ def main():
             remaining_packages = len(
                 {
                     (
-                        str(r.get("ecosystem", "")).strip().lower(),
+                        _normalize_ecosystem(r.get("ecosystem", "")),
                         str(r.get("package_name", "")).strip().lower(),
                     )
                     for r in input_rows
@@ -1082,7 +1096,7 @@ def main():
                 "rebuild with --build-osv for severity support."
             )
         ecosystems = sorted(
-            {row["ecosystem"].lower() for row in input_rows if row.get("ecosystem")}
+            {_normalize_ecosystem(row["ecosystem"]) for row in input_rows if row.get("ecosystem")}
         )
         # Cargo vulnerabilities are stored under "crates.io" in the OSV dataset,
         # not "CARGO". All other ecosystems use their uppercased name.
@@ -1118,9 +1132,13 @@ def main():
         )
 
         # Pre-fetch all unique package metadata before workers start (eliminates thundering herd)
-        from .resolvers import NpmResolver, PyPIResolver as _PyPIResolverCls
+        from .resolvers import CratesResolver, NpmResolver, PyPIResolver as _PyPIResolverCls
 
-        _registry_urls = {"npm": "https://registry.npmjs.org", "pypi": "https://pypi.org/pypi"}
+        _registry_urls = {
+            "npm": "https://registry.npmjs.org",
+            "pypi": "https://pypi.org/pypi",
+            "cargo": "https://crates.io",
+        }
 
         # Shared deps.dev client (created once; thread-safe via ResolverCache session)
         _depsdev_client: Optional[DepsDevClient] = None
@@ -1148,6 +1166,14 @@ def main():
                     registry_urls=_registry_urls,
                     cache=resolver_cache,
                 )
+            if eco == "cargo":
+                return CratesResolver(
+                    package=pkg,
+                    start_date=_start,
+                    end_date=_end,
+                    registry_urls=_registry_urls,
+                    cache=resolver_cache,
+                )
             return _PyPIResolverCls(
                 package=pkg,
                 start_date=_start,
@@ -1157,12 +1183,15 @@ def main():
             )
 
         unique_packages = {
-            (str(r.get("ecosystem", "")).strip().lower(), str(r.get("package_name", "")).strip())
+            (
+                _normalize_ecosystem(r.get("ecosystem", "")),
+                str(r.get("package_name", "")).strip(),
+            )
             for r in input_rows
             if r.get("ecosystem") and r.get("package_name")
         }
         prefetch_workers = min(16, max(1, len(unique_packages)))
-        _valid_prefetch_ecosystems = {"npm", "pypi", "cargo"} if args.depsdev else {"npm", "pypi"}
+        _valid_prefetch_ecosystems = _VALID_ECOSYSTEMS
         with ThreadPoolExecutor(max_workers=prefetch_workers) as prefetch_exec:
             prefetch_futs = {
                 prefetch_exec.submit(_make_resolver(eco, pkg).fetch_package_metadata, pkg): (
@@ -1206,7 +1235,7 @@ def main():
 
             for row in rows:
                 row_num = row.get("_row_num")
-                ecosystem = str(row.get("ecosystem", "")).lower()
+                ecosystem = _normalize_ecosystem(row.get("ecosystem", ""))
                 package_name = str(row.get("package_name", ""))
                 end_date_raw = str(row.get("end_date", ""))
                 start_date_raw = str(row.get("start_date", ""))
@@ -1215,13 +1244,8 @@ def main():
                 try:
                     if not ecosystem or not package_name or not end_date_raw:
                         raise ValueError("ecosystem, package_name, and end_date are required.")
-                    _valid_ecosystems = (
-                        {"npm", "pypi", "cargo"} if args.depsdev else {"npm", "pypi"}
-                    )
-                    if ecosystem not in _valid_ecosystems:
+                    if ecosystem not in _VALID_ECOSYSTEMS:
                         raise ValueError(f"Unsupported ecosystem: {ecosystem}.")
-                    if ecosystem == "cargo" and not args.depsdev:
-                        raise ValueError("ecosystem 'cargo' requires --depsdev.")
 
                     start_date = default_start_date
                     if start_date_raw:
@@ -1290,7 +1314,7 @@ def main():
             if not valid_rows:
                 return error_results
 
-            ecosystem = str(rows[0].get("ecosystem", "")).lower()
+            ecosystem = _normalize_ecosystem(rows[0].get("ecosystem", ""))
             package_name = str(rows[0].get("package_name", ""))
             min_start = min(row["start_date"] for row in valid_rows)
             max_end = max(row["end_date"] for row in valid_rows)
@@ -1368,7 +1392,7 @@ def main():
 
             for row in rows:
                 row_num = row.get("_row_num")
-                ecosystem = str(row.get("ecosystem", "")).lower()
+                ecosystem = _normalize_ecosystem(row.get("ecosystem", ""))
                 package_name = str(row.get("package_name", ""))
                 end_date_raw = str(row.get("end_date", ""))
                 start_date_raw = str(row.get("start_date", ""))
@@ -1377,13 +1401,8 @@ def main():
                 try:
                     if not ecosystem or not package_name or not end_date_raw:
                         raise ValueError("ecosystem, package_name, and end_date are required.")
-                    _valid_ecosystems_pr = (
-                        {"npm", "pypi", "cargo"} if args.depsdev else {"npm", "pypi"}
-                    )
-                    if ecosystem not in _valid_ecosystems_pr:
+                    if ecosystem not in _VALID_ECOSYSTEMS:
                         raise ValueError(f"Unsupported ecosystem: {ecosystem}.")
-                    if ecosystem == "cargo" and not args.depsdev:
-                        raise ValueError("ecosystem 'cargo' requires --depsdev.")
 
                     start_date = default_start_date
                     if start_date_raw:
@@ -1456,7 +1475,7 @@ def main():
             if not valid_rows:
                 return error_results
 
-            ecosystem = str(rows[0].get("ecosystem", "")).lower()
+            ecosystem = _normalize_ecosystem(rows[0].get("ecosystem", ""))
             package_name = str(rows[0].get("package_name", ""))
             min_start = min(row["start_date"] for row in valid_rows)
             max_end = max(row["end_date"] for row in valid_rows)
@@ -1544,7 +1563,7 @@ def main():
         grouped_rows: Dict[tuple[str, str], List[Dict[str, Any]]] = {}
         for row in input_rows:
             key = (
-                str(row.get("ecosystem", "")).strip().lower(),
+                _normalize_ecosystem(row.get("ecosystem", "")),
                 str(row.get("package_name", "")).strip().lower(),
             )
             grouped_rows.setdefault(key, []).append(row)

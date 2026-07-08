@@ -73,6 +73,17 @@ def test_load_input_csv_case_insensitive_columns(tmp_path: Path) -> None:
     assert rows[0]["end_date"] == "2024-01-01"
 
 
+def test_load_input_csv_normalizes_crates_io_alias(tmp_path: Path) -> None:
+    csv_path = tmp_path / "cargo.csv"
+    csv_path.write_text(
+        "ecosystem,package_name,end_date\ncrates.io,serde,2024-01-01\n", encoding="utf-8"
+    )
+
+    rows = _load_input_csv(csv_path)
+
+    assert rows[0]["ecosystem"] == "cargo"
+
+
 def test_load_input_csv_empty_file_raises(tmp_path: Path) -> None:
     csv_path = tmp_path / "empty.csv"
     csv_path.write_text("ecosystem,package_name,end_date\n", encoding="utf-8")
