@@ -8,6 +8,7 @@ from unittest.mock import MagicMock
 import pytest
 
 from dependency_metrics.depsdev_client import DepsDevClient
+from dependency_metrics.analyzer import DependencyAnalyzer
 from dependency_metrics.depsdev_resolver import (
     DepsDevResolver,
     _best_semver,
@@ -290,6 +291,62 @@ def test_best_semver_returns_none_for_empty_list(tmp_path):
 def test_best_semver_cargo_highest_stable(tmp_path):
     versions = ["0.9.0", "1.0.0", "1.1.0-rc1", "1.0.5"]
     assert _best_semver("CARGO", versions) == "1.0.5"
+
+
+# ---------------------------------------------------------------------------
+# DependencyAnalyzer latest-version helper with deps.dev metadata
+# ---------------------------------------------------------------------------
+
+
+def test_analyzer_latest_version_handles_depsdev_npm_metadata(tmp_path):
+    resolver = _make_resolver(system="NPM", package="express")
+    analyzer = DependencyAnalyzer(
+        ecosystem="npm",
+        package="express",
+        start_date=_utc(2020, 1, 1),
+        end_date=_utc(2024, 1, 1),
+        output_dir=tmp_path,
+        resolver=resolver,
+    )
+    metadata = _package_response(
+        ("1.0.0", "2020-01-01T00:00:00Z"),
+        ("2.0.0", "2021-01-01T00:00:00Z"),
+    )
+
+    latest_version, version_data = analyzer._get_latest_package_version_data(metadata)
+
+    assert latest_version == "2.0.0"
+    assert version_data == {"_package": "express", "_version": "2.0.0"}
+
+
+def test_analyzer_latest_version_handles_depsdev_pypi_metadata(tmp_path):
+    resolver = _make_resolver(system="PYPI", package="requests")
+    analyzer = DependencyAnalyzer(
+        ecosystem="pypi",
+        package="requests",
+        start_date=_utc(2020, 1, 1),
+        end_date=_utc(2024, 1, 1),
+        output_dir=tmp_path,
+        resolver=resolver,
+    )
+    metadata = {
+        "packageKey": {"system": "PYPI", "name": "requests"},
+        "versions": [
+            {
+                "versionKey": {"system": "PYPI", "name": "requests", "version": "2.31.0"},
+                "publishedAt": "2023-05-22T00:00:00Z",
+            },
+            {
+                "versionKey": {"system": "PYPI", "name": "requests", "version": "2.32.0"},
+                "publishedAt": "2024-05-20T00:00:00Z",
+            },
+        ],
+    }
+
+    latest_version, version_data = analyzer._get_latest_package_version_data(metadata)
+
+    assert latest_version == "2.32.0"
+    assert version_data == {"_package": "requests", "_version": "2.32.0"}
 
 
 # ---------------------------------------------------------------------------

@@ -189,7 +189,7 @@ class DependencyAnalyzer:
 
     def _get_latest_package_version_data(self, metadata: Dict) -> Tuple[str, Dict]:
         """Get latest package version and its metadata (regardless of end_date)."""
-        if self.ecosystem == "npm":
+        if self.ecosystem == "npm" and isinstance(self.resolver, NpmResolver):
             versions = metadata.get("versions", {})
             semver_candidates = []
             for ver in versions.keys():
@@ -209,7 +209,7 @@ class DependencyAnalyzer:
                 raise ValueError("No versions found in npm metadata.")
             return latest_version, versions.get(latest_version, {})
 
-        if self.ecosystem == "pypi":
+        if self.ecosystem == "pypi" and isinstance(self.resolver, PyPIResolver):
             releases = metadata.get("releases", {})
             valid_versions = []
             for ver in releases.keys():
