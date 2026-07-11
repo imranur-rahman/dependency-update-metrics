@@ -161,7 +161,7 @@ def test_bulk_resume_all_done_exits(tmp_path: Path) -> None:
 # ---------------------------------------------------------------------------
 
 
-def test_per_release_creates_ledger(tmp_path: Path) -> None:
+def test_per_release_creates_ledger(tmp_path: Path, in_process_executor) -> None:
     input_csv = tmp_path / "input.csv"
     input_csv.write_text("ecosystem,package_name,end_date\npypi,pkg_a,2024-01-01\n")
 

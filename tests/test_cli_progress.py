@@ -201,7 +201,7 @@ def test_per_release_resume_different_packages_partially_done(tmp_path: Path, in
 # ---------------------------------------------------------------------------
 
 
-def test_log_file_created_when_specified(tmp_path: Path):
+def test_log_file_created_when_specified(tmp_path: Path, in_process_executor):
     input_csv = tmp_path / "input.csv"
     input_csv.write_text("ecosystem,package_name,end_date\npypi,requests,2024-01-01\n")
     log_file = tmp_path / "run.log"
@@ -232,7 +232,7 @@ def test_log_file_created_when_specified(tmp_path: Path):
     assert log_file.stat().st_size > 0
 
 
-def test_log_file_default_location(tmp_path: Path):
+def test_log_file_default_location(tmp_path: Path, in_process_executor):
     """Without --log-file, run.log is created inside the output dir."""
     input_csv = tmp_path / "input.csv"
     input_csv.write_text("ecosystem,package_name,end_date\npypi,requests,2024-01-01\n")
