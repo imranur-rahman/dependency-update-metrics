@@ -137,7 +137,15 @@ dependency-metrics \
 
 Bulk outputs:
 - `<input_filename>_bulk_results.csv` (summary)
-- `<input_filename>_dependency_details.csv` (per-interval dependency data)
+- `<input_filename>_dependency_details.csv` (per-interval dependency data; written only with `--write-dependency-details`)
+
+To write dependency details:
+```bash
+dependency-metrics \
+  --input-csv ./input.csv \
+  --output-dir ./output \
+  --write-dependency-details
+```
 
 Resume behavior:
 - Rows with `status=ok` in the summary are skipped.
@@ -170,7 +178,8 @@ dependency-metrics \
   --input-csv ./input.csv \
   --per-release \
   --workers 4 \
-  --output-dir ./output
+  --output-dir ./output \
+  --write-dependency-details
 ```
 
 **Resume an interrupted per-release bulk run:**
@@ -184,7 +193,7 @@ dependency-metrics \
 
 Per-release outputs:
 - `<input_filename>_per_release_results.csv` — one row per package release with columns: `ecosystem`, `package_name`, `package_version`, `package_release_date`, `window_start`, `window_end`, `mttu`, `mttr`, `num_dependencies`, `status`, `error`
-- `<input_filename>_per_release_dependency_details.csv` — per-interval dependency data for all release windows
+- `<input_filename>_per_release_dependency_details.csv` — per-interval dependency data for all release windows; written only with `--write-dependency-details`
 
 Resume behavior in per-release mode:
 - Already-written `(ecosystem, package_name, window_start, package_version)` entries are skipped.

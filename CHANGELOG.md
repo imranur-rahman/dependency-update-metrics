@@ -33,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- `--write-dependency-details` CLI flag: opt in to writing per-interval dependency detail CSVs for bulk and per-release runs; these files are skipped by default.
 - `--per-release` CLI flag: computes MTTU/MTTR at every release of the parent package within the analysis window, producing one output row per release instead of one per input row.
 - `DependencyAnalyzer.analyze_at_release_points()`: new method that fetches per-version dependency sets, builds a shared dep-cache for the full window, and slices it for each release sub-window `[start_date, release_date]`.
 - `DependencyAnalyzer._calculate_weight_with_window()`: private helper that computes interval weights using the sub-window span as `max_age` (avoids mutating `self.end_date` for each release point).

@@ -43,7 +43,7 @@ def _pr_result(
     }
 
 
-def _bulk_result(ecosystem="pypi", package_name="pkg", row_num=2):
+def _bulk_result(ecosystem="pypi", package_name="pkg", row_num=2, dependency_frames=None):
     return {
         "summary": {
             "ecosystem": ecosystem,
@@ -56,7 +56,7 @@ def _bulk_result(ecosystem="pypi", package_name="pkg", row_num=2):
             "status": "ok",
             "error": "",
         },
-        "dependency_frames": [],
+        "dependency_frames": dependency_frames or [],
         "row_num": row_num,
     }
 
@@ -257,3 +257,135 @@ def test_log_file_default_location(tmp_path: Path):
         main()
 
     assert (tmp_path / "run.log").exists()
+
+
+# ---------------------------------------------------------------------------
+# Optional dependency-details output
+# ---------------------------------------------------------------------------
+
+
+def _dependency_frame(package_name="dep"):
+    return pd.DataFrame([{"dependency": package_name, "interval_start": "2020-01-01"}])
+
+
+def test_dependency_details_disabled_by_default_preserves_existing_file(
+    tmp_path: Path, in_process_executor
+):
+    input_csv = tmp_path / "input.csv"
+    input_csv.write_text("ecosystem,package_name,end_date\npypi,requests,2024-01-01\n")
+    details_file = tmp_path / "input_dependency_details.csv"
+    details_file.write_text("existing data\n")
+
+    with (
+        patch("dependency_metrics.cli.OSVBuilder") as mock_osv,
+        patch("dependency_metrics.cli.DependencyAnalyzer") as mock_analyzer_cls,
+        patch(
+            "sys.argv",
+            ["cli", "--input-csv", str(input_csv), "--output-dir", str(tmp_path)],
+        ),
+    ):
+        mock_osv.return_value.build_database.return_value = _fake_osv_df()
+        mock_analyzer_cls.return_value.analyze_bulk_rows.return_value = [
+            _bulk_result(dependency_frames=[_dependency_frame()])
+        ]
+        main()
+
+    assert details_file.read_text() == "existing data\n"
+
+
+def test_write_dependency_details_creates_bulk_file(tmp_path: Path, in_process_executor):
+    input_csv = tmp_path / "input.csv"
+    input_csv.write_text("ecosystem,package_name,end_date\npypi,requests,2024-01-01\n")
+
+    with (
+        patch("dependency_metrics.cli.OSVBuilder") as mock_osv,
+        patch("dependency_metrics.cli.DependencyAnalyzer") as mock_analyzer_cls,
+        patch(
+            "sys.argv",
+            [
+                "cli",
+                "--input-csv",
+                str(input_csv),
+                "--output-dir",
+                str(tmp_path),
+                "--write-dependency-details",
+            ],
+        ),
+    ):
+        mock_osv.return_value.build_database.return_value = _fake_osv_df()
+        mock_analyzer_cls.return_value.analyze_bulk_rows.return_value = [
+            _bulk_result(dependency_frames=[_dependency_frame()])
+        ]
+        main()
+
+    details = pd.read_csv(tmp_path / "input_dependency_details.csv")
+    assert details.to_dict("records") == [
+        {"dependency": "dep", "interval_start": "2020-01-01"}
+    ]
+
+
+def test_write_dependency_details_creates_per_release_file(
+    tmp_path: Path, in_process_executor
+):
+    input_csv = tmp_path / "input.csv"
+    input_csv.write_text("ecosystem,package_name,end_date\nnpm,express,2024-01-01\n")
+    result = _pr_result("npm", "express")
+    result["dependency_frames"] = [_dependency_frame()]
+
+    with (
+        patch("dependency_metrics.cli.OSVBuilder") as mock_osv,
+        patch("dependency_metrics.cli.DependencyAnalyzer") as mock_analyzer_cls,
+        patch(
+            "sys.argv",
+            [
+                "cli",
+                "--input-csv",
+                str(input_csv),
+                "--output-dir",
+                str(tmp_path),
+                "--per-release",
+                "--write-dependency-details",
+            ],
+        ),
+    ):
+        mock_osv.return_value.build_database.return_value = _fake_osv_df()
+        mock_analyzer_cls.return_value.analyze_at_release_points.return_value = [result]
+        main()
+
+    assert (tmp_path / "input_per_release_dependency_details.csv").exists()
+
+
+def test_resume_dependency_details_appends_without_duplicate_header(
+    tmp_path: Path, in_process_executor
+):
+    input_csv = tmp_path / "input.csv"
+    input_csv.write_text("ecosystem,package_name,end_date\npypi,requests,2024-01-01\n")
+    details_file = tmp_path / "input_dependency_details.csv"
+    details_file.write_text("dependency,interval_start\nold-dep,2019-01-01\n")
+
+    with (
+        patch("dependency_metrics.cli.OSVBuilder") as mock_osv,
+        patch("dependency_metrics.cli.DependencyAnalyzer") as mock_analyzer_cls,
+        patch(
+            "sys.argv",
+            [
+                "cli",
+                "--input-csv",
+                str(input_csv),
+                "--output-dir",
+                str(tmp_path),
+                "--resume",
+                "--write-dependency-details",
+            ],
+        ),
+    ):
+        mock_osv.return_value.build_database.return_value = _fake_osv_df()
+        mock_analyzer_cls.return_value.analyze_bulk_rows.return_value = [
+            _bulk_result(dependency_frames=[_dependency_frame("new-dep")])
+        ]
+        main()
+
+    contents = details_file.read_text()
+    assert contents.count("dependency,interval_start") == 1
+    assert "old-dep,2019-01-01" in contents
+    assert "new-dep,2020-01-01" in contents

@@ -155,7 +155,7 @@ The tool generates several outputs in the specified output directory:
 1. **JSON results file**: Contains TTU, TTR, and metadata
 2. **OSV data** (with `--get-osv`): CSV file with vulnerability information
 3. **Excel worksheets** (with `--get-worksheets`): Detailed analysis for each dependency
-4. **Bulk CSV results** (with `--input-csv`): Summary CSV and dependency details CSV
+4. **Bulk CSV results** (with `--input-csv`): Summary CSV, plus an optional dependency details CSV with `--write-dependency-details`
 5. **Per-release results** (with `--per-release`): One row per package release with `package_version`, `package_release_date`, `window_start`, `window_end`, `mttu`, `mttr`
 
 ### Example JSON output

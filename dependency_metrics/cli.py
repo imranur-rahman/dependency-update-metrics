@@ -769,6 +769,15 @@ def main():
     )
 
     parser.add_argument(
+        "--write-dependency-details",
+        action="store_true",
+        help=(
+            "Write the per-interval dependency details CSV in bulk mode. "
+            "Disabled by default."
+        ),
+    )
+
+    parser.add_argument(
         "--workers",
         type=int,
         default=None,
@@ -1620,7 +1629,7 @@ def main():
                 future_to_rows[f] = rows
                 future_submit_time[f] = time.monotonic()
 
-            if deps_file_path.exists() and not args.resume:
+            if args.write_dependency_details and deps_file_path.exists() and not args.resume:
                 deps_file_path.unlink()
 
             if args.per_release and args.severity_breakdown:
@@ -1685,7 +1694,7 @@ def main():
                 ]
             summary_file_path.parent.mkdir(parents=True, exist_ok=True)
             summary_writer = None
-            deps_header_written = deps_file_path.exists()
+            deps_header_written = args.write_dependency_details and deps_file_path.exists()
 
             summary_exists = summary_file_path.exists()
             summary_mode = "a" if args.resume and summary_exists else "w"
@@ -1844,7 +1853,8 @@ def main():
                                 if release_key in existing_per_release:
                                     continue
                             summary_writer.writerow(result["summary"])
-                            pending_dep_frames.extend(result["dependency_frames"])
+                            if args.write_dependency_details:
+                                pending_dep_frames.extend(result["dependency_frames"])
 
                         # Flush once per package to preserve results on interruption
                         if pending_dep_frames:
