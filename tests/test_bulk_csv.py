@@ -5,7 +5,12 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
-from dependency_metrics.cli import _load_input_csv
+from dependency_metrics.cli import _OSV_ECOSYSTEM_NAMES, _load_input_csv
+
+
+def test_cargo_osv_ecosystem_name_matches_database_casing() -> None:
+    """OSVBuilder stores ecosystem names uppercased, including CRATES.IO."""
+    assert _OSV_ECOSYSTEM_NAMES["cargo"] == "CRATES.IO"
 
 
 def test_load_input_csv_parses_headers(tmp_path: Path) -> None:

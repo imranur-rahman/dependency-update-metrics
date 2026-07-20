@@ -48,6 +48,11 @@ from .reporting import (
 _WORKER_STATE: Dict[str, Any] = {}
 _VALID_ECOSYSTEMS = {"npm", "pypi", "cargo"}
 _ECOSYSTEM_ALIASES = {"crates.io": "cargo"}
+_OSV_ECOSYSTEM_NAMES = {
+    "npm": "NPM",
+    "pypi": "PYPI",
+    "cargo": "CRATES.IO",
+}
 
 
 def _normalize_ecosystem(value: Any) -> str:
@@ -1109,14 +1114,9 @@ def main():
         )
         # Cargo vulnerabilities are stored under "crates.io" in the OSV dataset,
         # not "CARGO". All other ecosystems use their uppercased name.
-        _osv_ecosystem_name: Dict[str, str] = {
-            "npm": "NPM",
-            "pypi": "PYPI",
-            "cargo": "crates.io",
-        }
         osv_by_ecosystem: Dict[str, Any] = {}
         for ecosystem in ecosystems:
-            osv_filter = _osv_ecosystem_name.get(ecosystem, ecosystem.upper())
+            osv_filter = _OSV_ECOSYSTEM_NAMES.get(ecosystem, ecosystem.upper())
             if len(osv_df) > 0 and "ecosystem" in osv_df.columns:
                 osv_by_ecosystem[ecosystem] = osv_df[osv_df["ecosystem"] == osv_filter].copy()
             else:
