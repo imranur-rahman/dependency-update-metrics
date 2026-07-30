@@ -1,0 +1,5482 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "higlass"
+  },
+  "purl": "pkg:npm/higlass",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.10.0"
+    },
+    "purl": "pkg:npm/higlass@0.10.0",
+    "publishedAt": "2017-12-06T15:36:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.10.0-0"
+    },
+    "purl": "pkg:npm/higlass@0.10.0-0",
+    "publishedAt": "2017-11-13T18:23:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.10.1"
+    },
+    "purl": "pkg:npm/higlass@0.10.1",
+    "publishedAt": "2017-12-06T21:46:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.10.1-0"
+    },
+    "purl": "pkg:npm/higlass@0.10.1-0",
+    "publishedAt": "2017-11-13T23:12:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.10.10"
+    },
+    "purl": "pkg:npm/higlass@0.10.10",
+    "publishedAt": "2018-01-17T21:28:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.10.11"
+    },
+    "purl": "pkg:npm/higlass@0.10.11",
+    "publishedAt": "2018-01-17T22:21:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.10.12"
+    },
+    "purl": "pkg:npm/higlass@0.10.12",
+    "publishedAt": "2018-01-21T00:05:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.10.13"
+    },
+    "purl": "pkg:npm/higlass@0.10.13",
+    "publishedAt": "2018-01-21T16:13:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.10.14"
+    },
+    "purl": "pkg:npm/higlass@0.10.14",
+    "publishedAt": "2018-01-25T14:16:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.10.15"
+    },
+    "purl": "pkg:npm/higlass@0.10.15",
+    "publishedAt": "2018-01-30T15:35:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.10.16"
+    },
+    "purl": "pkg:npm/higlass@0.10.16",
+    "publishedAt": "2018-02-05T19:02:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.10.17"
+    },
+    "purl": "pkg:npm/higlass@0.10.17",
+    "publishedAt": "2018-02-05T19:01:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.10.19"
+    },
+    "purl": "pkg:npm/higlass@0.10.19",
+    "publishedAt": "2018-02-12T19:28:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.10.2"
+    },
+    "purl": "pkg:npm/higlass@0.10.2",
+    "publishedAt": "2017-12-12T18:56:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.10.20"
+    },
+    "purl": "pkg:npm/higlass@0.10.20",
+    "publishedAt": "2018-02-20T19:48:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.10.21"
+    },
+    "purl": "pkg:npm/higlass@0.10.21",
+    "publishedAt": "2018-02-21T15:25:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.10.22"
+    },
+    "purl": "pkg:npm/higlass@0.10.22",
+    "publishedAt": "2018-03-15T15:26:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.10.3"
+    },
+    "purl": "pkg:npm/higlass@0.10.3",
+    "publishedAt": "2017-12-16T05:16:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.10.4"
+    },
+    "purl": "pkg:npm/higlass@0.10.4",
+    "publishedAt": "2017-12-17T23:57:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.10.5"
+    },
+    "purl": "pkg:npm/higlass@0.10.5",
+    "publishedAt": "2017-12-28T02:01:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.10.6"
+    },
+    "purl": "pkg:npm/higlass@0.10.6",
+    "publishedAt": "2017-12-28T23:22:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.10.9"
+    },
+    "purl": "pkg:npm/higlass@0.10.9",
+    "publishedAt": "2018-01-13T14:54:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.0"
+    },
+    "purl": "pkg:npm/higlass@0.4.0",
+    "publishedAt": "2017-01-24T16:00:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.10"
+    },
+    "purl": "pkg:npm/higlass@0.4.10",
+    "publishedAt": "2017-01-26T22:41:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.11"
+    },
+    "purl": "pkg:npm/higlass@0.4.11",
+    "publishedAt": "2017-01-27T03:52:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.12"
+    },
+    "purl": "pkg:npm/higlass@0.4.12",
+    "publishedAt": "2017-01-27T14:57:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.13"
+    },
+    "purl": "pkg:npm/higlass@0.4.13",
+    "publishedAt": "2017-01-27T18:55:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.14"
+    },
+    "purl": "pkg:npm/higlass@0.4.14",
+    "publishedAt": "2017-01-30T22:23:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.15"
+    },
+    "purl": "pkg:npm/higlass@0.4.15",
+    "publishedAt": "2017-02-01T01:17:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.16"
+    },
+    "purl": "pkg:npm/higlass@0.4.16",
+    "publishedAt": "2017-02-01T01:24:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.17"
+    },
+    "purl": "pkg:npm/higlass@0.4.17",
+    "publishedAt": "2017-02-02T16:34:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.18"
+    },
+    "purl": "pkg:npm/higlass@0.4.18",
+    "publishedAt": "2017-02-02T18:06:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.19"
+    },
+    "purl": "pkg:npm/higlass@0.4.19",
+    "publishedAt": "2017-02-02T18:52:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.20"
+    },
+    "purl": "pkg:npm/higlass@0.4.20",
+    "publishedAt": "2017-02-02T20:36:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.21"
+    },
+    "purl": "pkg:npm/higlass@0.4.21",
+    "publishedAt": "2017-02-02T22:39:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.22"
+    },
+    "purl": "pkg:npm/higlass@0.4.22",
+    "publishedAt": "2017-02-02T22:46:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.23"
+    },
+    "purl": "pkg:npm/higlass@0.4.23",
+    "publishedAt": "2017-02-03T16:28:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.24"
+    },
+    "purl": "pkg:npm/higlass@0.4.24",
+    "publishedAt": "2017-02-06T02:39:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.25"
+    },
+    "purl": "pkg:npm/higlass@0.4.25",
+    "publishedAt": "2017-02-06T23:08:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.26"
+    },
+    "purl": "pkg:npm/higlass@0.4.26",
+    "publishedAt": "2017-02-06T23:18:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.27"
+    },
+    "purl": "pkg:npm/higlass@0.4.27",
+    "publishedAt": "2017-02-07T23:38:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.28"
+    },
+    "purl": "pkg:npm/higlass@0.4.28",
+    "publishedAt": "2017-02-08T04:14:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.29"
+    },
+    "purl": "pkg:npm/higlass@0.4.29",
+    "publishedAt": "2017-02-09T15:41:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.30"
+    },
+    "purl": "pkg:npm/higlass@0.4.30",
+    "publishedAt": "2017-02-10T03:07:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.31"
+    },
+    "purl": "pkg:npm/higlass@0.4.31",
+    "publishedAt": "2017-02-10T05:02:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.32"
+    },
+    "purl": "pkg:npm/higlass@0.4.32",
+    "publishedAt": "2017-02-17T16:13:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.33"
+    },
+    "purl": "pkg:npm/higlass@0.4.33",
+    "publishedAt": "2017-02-17T23:22:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.34"
+    },
+    "purl": "pkg:npm/higlass@0.4.34",
+    "publishedAt": "2017-02-21T11:08:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.35"
+    },
+    "purl": "pkg:npm/higlass@0.4.35",
+    "publishedAt": "2017-02-21T11:21:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.36"
+    },
+    "purl": "pkg:npm/higlass@0.4.36",
+    "publishedAt": "2017-02-21T11:43:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.37"
+    },
+    "purl": "pkg:npm/higlass@0.4.37",
+    "publishedAt": "2017-02-21T12:16:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.38"
+    },
+    "purl": "pkg:npm/higlass@0.4.38",
+    "publishedAt": "2017-02-21T12:26:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.39"
+    },
+    "purl": "pkg:npm/higlass@0.4.39",
+    "publishedAt": "2017-02-26T22:21:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.8"
+    },
+    "purl": "pkg:npm/higlass@0.4.8",
+    "publishedAt": "2017-01-25T16:20:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.4.9"
+    },
+    "purl": "pkg:npm/higlass@0.4.9",
+    "publishedAt": "2017-01-26T04:29:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.5.0"
+    },
+    "purl": "pkg:npm/higlass@0.5.0",
+    "publishedAt": "2017-03-01T21:06:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.5.1"
+    },
+    "purl": "pkg:npm/higlass@0.5.1",
+    "publishedAt": "2017-03-02T16:52:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.5.10"
+    },
+    "purl": "pkg:npm/higlass@0.5.10",
+    "publishedAt": "2017-03-29T01:25:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.5.11"
+    },
+    "purl": "pkg:npm/higlass@0.5.11",
+    "publishedAt": "2017-03-29T02:04:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.5.12"
+    },
+    "purl": "pkg:npm/higlass@0.5.12",
+    "publishedAt": "2017-03-29T06:55:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.5.13"
+    },
+    "purl": "pkg:npm/higlass@0.5.13",
+    "publishedAt": "2017-03-29T10:40:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.5.14"
+    },
+    "purl": "pkg:npm/higlass@0.5.14",
+    "publishedAt": "2017-03-31T00:10:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.5.15"
+    },
+    "purl": "pkg:npm/higlass@0.5.15",
+    "publishedAt": "2017-03-31T01:26:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.5.16"
+    },
+    "purl": "pkg:npm/higlass@0.5.16",
+    "publishedAt": "2017-03-31T16:33:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.5.3"
+    },
+    "purl": "pkg:npm/higlass@0.5.3",
+    "publishedAt": "2017-03-08T18:28:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.5.4"
+    },
+    "purl": "pkg:npm/higlass@0.5.4",
+    "publishedAt": "2017-03-09T18:02:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.5.5"
+    },
+    "purl": "pkg:npm/higlass@0.5.5",
+    "publishedAt": "2017-03-09T23:25:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.5.6"
+    },
+    "purl": "pkg:npm/higlass@0.5.6",
+    "publishedAt": "2017-03-13T18:38:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.5.7"
+    },
+    "purl": "pkg:npm/higlass@0.5.7",
+    "publishedAt": "2017-03-13T19:07:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.5.8"
+    },
+    "purl": "pkg:npm/higlass@0.5.8",
+    "publishedAt": "2017-03-14T22:39:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.5.9"
+    },
+    "purl": "pkg:npm/higlass@0.5.9",
+    "publishedAt": "2017-03-15T18:03:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.6.0"
+    },
+    "purl": "pkg:npm/higlass@0.6.0",
+    "publishedAt": "2017-04-12T15:02:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.6.1"
+    },
+    "purl": "pkg:npm/higlass@0.6.1",
+    "publishedAt": "2017-04-12T18:19:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.6.2"
+    },
+    "purl": "pkg:npm/higlass@0.6.2",
+    "publishedAt": "2017-04-14T17:23:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.6.3"
+    },
+    "purl": "pkg:npm/higlass@0.6.3",
+    "publishedAt": "2017-04-19T20:13:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.6.4"
+    },
+    "purl": "pkg:npm/higlass@0.6.4",
+    "publishedAt": "2017-04-25T14:35:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.6.5"
+    },
+    "purl": "pkg:npm/higlass@0.6.5",
+    "publishedAt": "2017-04-26T23:35:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.6.6"
+    },
+    "purl": "pkg:npm/higlass@0.6.6",
+    "publishedAt": "2017-05-04T15:07:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.6.7"
+    },
+    "purl": "pkg:npm/higlass@0.6.7",
+    "publishedAt": "2017-05-09T16:21:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.6.8"
+    },
+    "purl": "pkg:npm/higlass@0.6.8",
+    "publishedAt": "2017-05-09T21:10:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.7.0"
+    },
+    "purl": "pkg:npm/higlass@0.7.0",
+    "publishedAt": "2017-05-19T19:43:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.7.1"
+    },
+    "purl": "pkg:npm/higlass@0.7.1",
+    "publishedAt": "2017-05-21T21:38:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.7.2"
+    },
+    "purl": "pkg:npm/higlass@0.7.2",
+    "publishedAt": "2017-05-22T18:06:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.7.3"
+    },
+    "purl": "pkg:npm/higlass@0.7.3",
+    "publishedAt": "2017-05-23T18:27:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.0"
+    },
+    "purl": "pkg:npm/higlass@0.8.0",
+    "publishedAt": "2017-06-01T13:36:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.1"
+    },
+    "purl": "pkg:npm/higlass@0.8.1",
+    "publishedAt": "2017-06-01T15:08:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.10"
+    },
+    "purl": "pkg:npm/higlass@0.8.10",
+    "publishedAt": "2017-06-25T21:46:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.11"
+    },
+    "purl": "pkg:npm/higlass@0.8.11",
+    "publishedAt": "2017-06-26T15:59:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.12"
+    },
+    "purl": "pkg:npm/higlass@0.8.12",
+    "publishedAt": "2017-06-26T16:37:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.13"
+    },
+    "purl": "pkg:npm/higlass@0.8.13",
+    "publishedAt": "2017-06-26T20:02:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.14"
+    },
+    "purl": "pkg:npm/higlass@0.8.14",
+    "publishedAt": "2017-06-26T21:19:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.15"
+    },
+    "purl": "pkg:npm/higlass@0.8.15",
+    "publishedAt": "2017-06-26T21:48:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.16"
+    },
+    "purl": "pkg:npm/higlass@0.8.16",
+    "publishedAt": "2017-06-27T16:08:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.17"
+    },
+    "purl": "pkg:npm/higlass@0.8.17",
+    "publishedAt": "2017-06-28T19:51:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.18"
+    },
+    "purl": "pkg:npm/higlass@0.8.18",
+    "publishedAt": "2017-06-29T19:39:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.19"
+    },
+    "purl": "pkg:npm/higlass@0.8.19",
+    "publishedAt": "2017-07-10T14:21:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.2"
+    },
+    "purl": "pkg:npm/higlass@0.8.2",
+    "publishedAt": "2017-06-01T15:26:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.20"
+    },
+    "purl": "pkg:npm/higlass@0.8.20",
+    "publishedAt": "2017-07-10T15:46:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.21"
+    },
+    "purl": "pkg:npm/higlass@0.8.21",
+    "publishedAt": "2017-07-10T19:36:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.22"
+    },
+    "purl": "pkg:npm/higlass@0.8.22",
+    "publishedAt": "2017-07-13T14:44:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.23"
+    },
+    "purl": "pkg:npm/higlass@0.8.23",
+    "publishedAt": "2017-07-14T15:43:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.24"
+    },
+    "purl": "pkg:npm/higlass@0.8.24",
+    "publishedAt": "2017-07-18T12:59:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.25"
+    },
+    "purl": "pkg:npm/higlass@0.8.25",
+    "publishedAt": "2017-07-19T14:42:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.26"
+    },
+    "purl": "pkg:npm/higlass@0.8.26",
+    "publishedAt": "2017-07-21T00:31:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.27"
+    },
+    "purl": "pkg:npm/higlass@0.8.27",
+    "publishedAt": "2017-07-21T06:41:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.29"
+    },
+    "purl": "pkg:npm/higlass@0.8.29",
+    "publishedAt": "2017-08-04T19:11:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.3"
+    },
+    "purl": "pkg:npm/higlass@0.8.3",
+    "publishedAt": "2017-06-06T15:23:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.30"
+    },
+    "purl": "pkg:npm/higlass@0.8.30",
+    "publishedAt": "2017-08-21T17:13:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.32"
+    },
+    "purl": "pkg:npm/higlass@0.8.32",
+    "publishedAt": "2017-08-27T20:28:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.33"
+    },
+    "purl": "pkg:npm/higlass@0.8.33",
+    "publishedAt": "2017-08-28T01:57:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.34"
+    },
+    "purl": "pkg:npm/higlass@0.8.34",
+    "publishedAt": "2017-08-28T20:28:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.35"
+    },
+    "purl": "pkg:npm/higlass@0.8.35",
+    "publishedAt": "2017-09-07T19:05:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.36"
+    },
+    "purl": "pkg:npm/higlass@0.8.36",
+    "publishedAt": "2017-09-07T19:24:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.37"
+    },
+    "purl": "pkg:npm/higlass@0.8.37",
+    "publishedAt": "2017-09-07T20:09:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.38"
+    },
+    "purl": "pkg:npm/higlass@0.8.38",
+    "publishedAt": "2017-09-07T23:31:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.39"
+    },
+    "purl": "pkg:npm/higlass@0.8.39",
+    "publishedAt": "2017-09-07T23:44:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.4"
+    },
+    "purl": "pkg:npm/higlass@0.8.4",
+    "publishedAt": "2017-06-13T15:51:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.40"
+    },
+    "purl": "pkg:npm/higlass@0.8.40",
+    "publishedAt": "2017-09-09T00:29:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.41"
+    },
+    "purl": "pkg:npm/higlass@0.8.41",
+    "publishedAt": "2017-09-13T16:19:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.42"
+    },
+    "purl": "pkg:npm/higlass@0.8.42",
+    "publishedAt": "2017-09-27T03:10:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.43"
+    },
+    "purl": "pkg:npm/higlass@0.8.43",
+    "publishedAt": "2017-09-27T04:03:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.44"
+    },
+    "purl": "pkg:npm/higlass@0.8.44",
+    "publishedAt": "2017-09-27T19:35:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.45"
+    },
+    "purl": "pkg:npm/higlass@0.8.45",
+    "publishedAt": "2017-09-28T13:39:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.5"
+    },
+    "purl": "pkg:npm/higlass@0.8.5",
+    "publishedAt": "2017-06-16T14:38:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.6"
+    },
+    "purl": "pkg:npm/higlass@0.8.6",
+    "publishedAt": "2017-06-18T20:03:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.7"
+    },
+    "purl": "pkg:npm/higlass@0.8.7",
+    "publishedAt": "2017-06-19T01:46:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.8"
+    },
+    "purl": "pkg:npm/higlass@0.8.8",
+    "publishedAt": "2017-06-20T21:08:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.8.9"
+    },
+    "purl": "pkg:npm/higlass@0.8.9",
+    "publishedAt": "2017-06-22T13:12:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.9.0"
+    },
+    "purl": "pkg:npm/higlass@0.9.0",
+    "publishedAt": "2017-10-21T17:26:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.9.1"
+    },
+    "purl": "pkg:npm/higlass@0.9.1",
+    "publishedAt": "2017-10-23T15:03:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.9.10"
+    },
+    "purl": "pkg:npm/higlass@0.9.10",
+    "publishedAt": "2017-11-02T04:37:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.9.11"
+    },
+    "purl": "pkg:npm/higlass@0.9.11",
+    "publishedAt": "2017-11-09T04:55:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.9.12"
+    },
+    "purl": "pkg:npm/higlass@0.9.12",
+    "publishedAt": "2017-11-09T06:49:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.9.13"
+    },
+    "purl": "pkg:npm/higlass@0.9.13",
+    "publishedAt": "2017-11-09T18:49:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.9.14"
+    },
+    "purl": "pkg:npm/higlass@0.9.14",
+    "publishedAt": "2017-11-12T04:54:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.9.15"
+    },
+    "purl": "pkg:npm/higlass@0.9.15",
+    "publishedAt": "2017-11-22T16:59:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.9.2"
+    },
+    "purl": "pkg:npm/higlass@0.9.2",
+    "publishedAt": "2017-10-23T16:30:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.9.3"
+    },
+    "purl": "pkg:npm/higlass@0.9.3",
+    "publishedAt": "2017-10-23T18:07:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.9.4"
+    },
+    "purl": "pkg:npm/higlass@0.9.4",
+    "publishedAt": "2017-10-27T00:17:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.9.6"
+    },
+    "purl": "pkg:npm/higlass@0.9.6",
+    "publishedAt": "2017-10-31T22:12:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.9.7"
+    },
+    "purl": "pkg:npm/higlass@0.9.7",
+    "publishedAt": "2017-10-31T22:56:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.9.8"
+    },
+    "purl": "pkg:npm/higlass@0.9.8",
+    "publishedAt": "2017-10-31T23:14:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "0.9.9"
+    },
+    "purl": "pkg:npm/higlass@0.9.9",
+    "publishedAt": "2017-11-01T14:25:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.0.0"
+    },
+    "purl": "pkg:npm/higlass@1.0.0",
+    "publishedAt": "2018-06-07T19:29:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.0.0-alpha.1"
+    },
+    "purl": "pkg:npm/higlass@1.0.0-alpha.1",
+    "publishedAt": "2018-04-29T16:45:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.0.0-alpha.10"
+    },
+    "purl": "pkg:npm/higlass@1.0.0-alpha.10",
+    "publishedAt": "2018-05-30T05:17:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.0.0-alpha.11"
+    },
+    "purl": "pkg:npm/higlass@1.0.0-alpha.11",
+    "publishedAt": "2018-05-31T02:53:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.0.0-alpha.12"
+    },
+    "purl": "pkg:npm/higlass@1.0.0-alpha.12",
+    "publishedAt": "2018-06-01T01:03:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.0.0-alpha.2"
+    },
+    "purl": "pkg:npm/higlass@1.0.0-alpha.2",
+    "publishedAt": "2018-04-29T20:39:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.0.0-alpha.4"
+    },
+    "purl": "pkg:npm/higlass@1.0.0-alpha.4",
+    "publishedAt": "2018-05-19T23:31:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.0.0-alpha.5"
+    },
+    "purl": "pkg:npm/higlass@1.0.0-alpha.5",
+    "publishedAt": "2018-05-20T19:38:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.0.0-alpha.6"
+    },
+    "purl": "pkg:npm/higlass@1.0.0-alpha.6",
+    "publishedAt": "2018-05-24T16:59:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.0.0-alpha.7"
+    },
+    "purl": "pkg:npm/higlass@1.0.0-alpha.7",
+    "publishedAt": "2018-05-29T18:39:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.0.0-alpha.8"
+    },
+    "purl": "pkg:npm/higlass@1.0.0-alpha.8",
+    "publishedAt": "2018-05-30T00:25:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.0.0-alpha.9"
+    },
+    "purl": "pkg:npm/higlass@1.0.0-alpha.9",
+    "publishedAt": "2018-05-30T04:26:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.0.1"
+    },
+    "purl": "pkg:npm/higlass@1.0.1",
+    "publishedAt": "2018-06-15T01:18:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.0.2"
+    },
+    "purl": "pkg:npm/higlass@1.0.2",
+    "publishedAt": "2018-06-19T18:03:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.0.4"
+    },
+    "purl": "pkg:npm/higlass@1.0.4",
+    "publishedAt": "2018-06-22T15:53:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.1.0"
+    },
+    "purl": "pkg:npm/higlass@1.1.0",
+    "publishedAt": "2018-07-08T02:29:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.1.1"
+    },
+    "purl": "pkg:npm/higlass@1.1.1",
+    "publishedAt": "2018-07-08T02:34:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.1.2"
+    },
+    "purl": "pkg:npm/higlass@1.1.2",
+    "publishedAt": "2018-07-09T01:37:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.1.3"
+    },
+    "purl": "pkg:npm/higlass@1.1.3",
+    "publishedAt": "2018-07-09T14:36:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.1.4"
+    },
+    "purl": "pkg:npm/higlass@1.1.4",
+    "publishedAt": "2018-07-10T14:43:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.1.5"
+    },
+    "purl": "pkg:npm/higlass@1.1.5",
+    "publishedAt": "2018-07-11T13:54:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.10.0"
+    },
+    "purl": "pkg:npm/higlass@1.10.0",
+    "publishedAt": "2020-07-01T04:29:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.10.1"
+    },
+    "purl": "pkg:npm/higlass@1.10.1",
+    "publishedAt": "2020-07-06T21:08:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.10.2"
+    },
+    "purl": "pkg:npm/higlass@1.10.2",
+    "publishedAt": "2020-07-17T21:11:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.11.0"
+    },
+    "purl": "pkg:npm/higlass@1.11.0",
+    "publishedAt": "2020-08-08T16:54:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.11.1"
+    },
+    "purl": "pkg:npm/higlass@1.11.1",
+    "publishedAt": "2020-08-11T16:15:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.11.10"
+    },
+    "purl": "pkg:npm/higlass@1.11.10",
+    "publishedAt": "2022-04-25T04:37:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.11.11"
+    },
+    "purl": "pkg:npm/higlass@1.11.11",
+    "publishedAt": "2022-04-25T17:36:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.11.2"
+    },
+    "purl": "pkg:npm/higlass@1.11.2",
+    "publishedAt": "2020-08-18T20:04:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.11.3"
+    },
+    "purl": "pkg:npm/higlass@1.11.3",
+    "publishedAt": "2020-10-29T13:56:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.11.4"
+    },
+    "purl": "pkg:npm/higlass@1.11.4",
+    "publishedAt": "2020-11-26T03:31:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.11.5"
+    },
+    "purl": "pkg:npm/higlass@1.11.5",
+    "publishedAt": "2020-12-05T00:52:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.11.6"
+    },
+    "purl": "pkg:npm/higlass@1.11.6",
+    "publishedAt": "2021-01-22T00:42:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.11.7"
+    },
+    "purl": "pkg:npm/higlass@1.11.7",
+    "publishedAt": "2021-03-01T00:59:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.11.8"
+    },
+    "purl": "pkg:npm/higlass@1.11.8",
+    "publishedAt": "2021-08-14T21:03:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.11.9"
+    },
+    "purl": "pkg:npm/higlass@1.11.9",
+    "publishedAt": "2021-11-08T13:09:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.12.0"
+    },
+    "purl": "pkg:npm/higlass@1.12.0",
+    "publishedAt": "2023-02-09T01:59:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.12.1"
+    },
+    "purl": "pkg:npm/higlass@1.12.1",
+    "publishedAt": "2023-02-24T19:22:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.12.2"
+    },
+    "purl": "pkg:npm/higlass@1.12.2",
+    "publishedAt": "2023-02-28T16:38:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.12.3"
+    },
+    "purl": "pkg:npm/higlass@1.12.3",
+    "publishedAt": "2023-05-11T19:34:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.12.4"
+    },
+    "purl": "pkg:npm/higlass@1.12.4",
+    "publishedAt": "2023-05-16T17:55:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.13.0"
+    },
+    "purl": "pkg:npm/higlass@1.13.0",
+    "publishedAt": "2023-10-24T01:16:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.13.1"
+    },
+    "purl": "pkg:npm/higlass@1.13.1",
+    "publishedAt": "2023-10-26T16:51:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.13.2"
+    },
+    "purl": "pkg:npm/higlass@1.13.2",
+    "publishedAt": "2023-10-26T20:38:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.13.3"
+    },
+    "purl": "pkg:npm/higlass@1.13.3",
+    "publishedAt": "2023-11-28T21:47:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.13.4"
+    },
+    "purl": "pkg:npm/higlass@1.13.4",
+    "publishedAt": "2024-01-17T20:01:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.13.5"
+    },
+    "purl": "pkg:npm/higlass@1.13.5",
+    "publishedAt": "2024-12-29T05:10:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.13.6"
+    },
+    "purl": "pkg:npm/higlass@1.13.6",
+    "publishedAt": "2025-04-06T19:54:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.2.2"
+    },
+    "purl": "pkg:npm/higlass@1.2.2",
+    "publishedAt": "2018-09-15T15:41:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.2.3"
+    },
+    "purl": "pkg:npm/higlass@1.2.3",
+    "publishedAt": "2018-09-15T16:05:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.2.4"
+    },
+    "purl": "pkg:npm/higlass@1.2.4",
+    "publishedAt": "2018-10-14T22:05:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.2.5"
+    },
+    "purl": "pkg:npm/higlass@1.2.5",
+    "publishedAt": "2018-10-15T16:44:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.2.6"
+    },
+    "purl": "pkg:npm/higlass@1.2.6",
+    "publishedAt": "2018-10-17T00:31:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.2.7"
+    },
+    "purl": "pkg:npm/higlass@1.2.7",
+    "publishedAt": "2018-10-18T18:14:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.2.8"
+    },
+    "purl": "pkg:npm/higlass@1.2.8",
+    "publishedAt": "2018-10-19T16:13:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.3.0"
+    },
+    "purl": "pkg:npm/higlass@1.3.0",
+    "publishedAt": "2019-01-20T06:53:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.3.0-rc.2"
+    },
+    "purl": "pkg:npm/higlass@1.3.0-rc.2",
+    "publishedAt": "2018-11-28T04:20:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.3.0-rc.3"
+    },
+    "purl": "pkg:npm/higlass@1.3.0-rc.3",
+    "publishedAt": "2018-12-04T23:24:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.3.0-rc.5"
+    },
+    "purl": "pkg:npm/higlass@1.3.0-rc.5",
+    "publishedAt": "2018-12-12T03:43:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.3.0-rc1"
+    },
+    "purl": "pkg:npm/higlass@1.3.0-rc1",
+    "publishedAt": "2018-11-28T03:44:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.3.0-rc2"
+    },
+    "purl": "pkg:npm/higlass@1.3.0-rc2",
+    "publishedAt": "2018-12-04T16:07:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.3.1"
+    },
+    "purl": "pkg:npm/higlass@1.3.1",
+    "publishedAt": "2019-01-28T23:49:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.4.0"
+    },
+    "purl": "pkg:npm/higlass@1.4.0",
+    "publishedAt": "2019-01-30T01:58:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.4.1"
+    },
+    "purl": "pkg:npm/higlass@1.4.1",
+    "publishedAt": "2019-02-04T16:50:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.4.2"
+    },
+    "purl": "pkg:npm/higlass@1.4.2",
+    "publishedAt": "2019-02-22T21:41:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.5.0"
+    },
+    "purl": "pkg:npm/higlass@1.5.0",
+    "publishedAt": "2019-03-11T13:48:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.5.1"
+    },
+    "purl": "pkg:npm/higlass@1.5.1",
+    "publishedAt": "2019-03-18T14:19:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.5.2"
+    },
+    "purl": "pkg:npm/higlass@1.5.2",
+    "publishedAt": "2019-03-29T15:09:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.5.3"
+    },
+    "purl": "pkg:npm/higlass@1.5.3",
+    "publishedAt": "2019-04-08T05:41:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.5.4"
+    },
+    "purl": "pkg:npm/higlass@1.5.4",
+    "publishedAt": "2019-04-13T04:44:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.5.5"
+    },
+    "purl": "pkg:npm/higlass@1.5.5",
+    "publishedAt": "2019-04-22T02:06:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.5.6"
+    },
+    "purl": "pkg:npm/higlass@1.5.6",
+    "publishedAt": "2019-04-27T05:37:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.5.7"
+    },
+    "purl": "pkg:npm/higlass@1.5.7",
+    "publishedAt": "2019-05-01T04:15:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.5.8"
+    },
+    "purl": "pkg:npm/higlass@1.5.8",
+    "publishedAt": "2019-06-20T05:18:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.6.0"
+    },
+    "purl": "pkg:npm/higlass@1.6.0",
+    "publishedAt": "2019-07-02T18:28:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.6.1"
+    },
+    "purl": "pkg:npm/higlass@1.6.1",
+    "publishedAt": "2019-07-04T20:15:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.6.10"
+    },
+    "purl": "pkg:npm/higlass@1.6.10",
+    "publishedAt": "2019-09-10T16:44:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.6.11"
+    },
+    "purl": "pkg:npm/higlass@1.6.11",
+    "publishedAt": "2019-09-20T02:02:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.6.12"
+    },
+    "purl": "pkg:npm/higlass@1.6.12",
+    "publishedAt": "2019-10-30T04:59:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.6.2"
+    },
+    "purl": "pkg:npm/higlass@1.6.2",
+    "publishedAt": "2019-07-05T17:42:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.6.3"
+    },
+    "purl": "pkg:npm/higlass@1.6.3",
+    "publishedAt": "2019-07-06T04:03:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.6.4"
+    },
+    "purl": "pkg:npm/higlass@1.6.4",
+    "publishedAt": "2019-07-06T17:00:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.6.5"
+    },
+    "purl": "pkg:npm/higlass@1.6.5",
+    "publishedAt": "2019-07-08T04:02:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.6.6"
+    },
+    "purl": "pkg:npm/higlass@1.6.6",
+    "publishedAt": "2019-07-17T22:17:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.6.7"
+    },
+    "purl": "pkg:npm/higlass@1.6.7",
+    "publishedAt": "2019-08-13T18:56:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.6.8"
+    },
+    "purl": "pkg:npm/higlass@1.6.8",
+    "publishedAt": "2019-09-03T01:55:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.6.9"
+    },
+    "purl": "pkg:npm/higlass@1.6.9",
+    "publishedAt": "2019-09-06T01:45:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.7.1"
+    },
+    "purl": "pkg:npm/higlass@1.7.1",
+    "publishedAt": "2019-11-01T03:50:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.7.2"
+    },
+    "purl": "pkg:npm/higlass@1.7.2",
+    "publishedAt": "2019-11-07T15:41:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.8.0"
+    },
+    "purl": "pkg:npm/higlass@1.8.0",
+    "publishedAt": "2020-01-13T00:50:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.8.1"
+    },
+    "purl": "pkg:npm/higlass@1.8.1",
+    "publishedAt": "2020-01-26T00:35:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.8.2"
+    },
+    "purl": "pkg:npm/higlass@1.8.2",
+    "publishedAt": "2020-01-27T04:29:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.8.3"
+    },
+    "purl": "pkg:npm/higlass@1.8.3",
+    "publishedAt": "2020-02-08T20:25:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.8.4"
+    },
+    "purl": "pkg:npm/higlass@1.8.4",
+    "publishedAt": "2020-02-14T00:38:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.8.5"
+    },
+    "purl": "pkg:npm/higlass@1.8.5",
+    "publishedAt": "2020-02-19T21:08:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.9.0"
+    },
+    "purl": "pkg:npm/higlass@1.9.0",
+    "publishedAt": "2020-03-09T17:34:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.9.1"
+    },
+    "purl": "pkg:npm/higlass@1.9.1",
+    "publishedAt": "2020-03-22T20:49:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.9.2"
+    },
+    "purl": "pkg:npm/higlass@1.9.2",
+    "publishedAt": "2020-04-16T19:16:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.9.3"
+    },
+    "purl": "pkg:npm/higlass@1.9.3",
+    "publishedAt": "2020-04-23T04:04:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.9.4"
+    },
+    "purl": "pkg:npm/higlass@1.9.4",
+    "publishedAt": "2020-06-10T04:38:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "1.9.5"
+    },
+    "purl": "pkg:npm/higlass@1.9.5",
+    "publishedAt": "2020-06-12T04:51:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "2.0.0"
+    },
+    "purl": "pkg:npm/higlass@2.0.0",
+    "publishedAt": "2025-06-22T17:01:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "2.0.1"
+    },
+    "purl": "pkg:npm/higlass@2.0.1",
+    "publishedAt": "2025-07-20T03:31:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "2.1.0"
+    },
+    "purl": "pkg:npm/higlass@2.1.0",
+    "publishedAt": "2025-07-26T17:55:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "2.1.1"
+    },
+    "purl": "pkg:npm/higlass@2.1.1",
+    "publishedAt": "2025-08-17T05:59:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "2.1.2"
+    },
+    "purl": "pkg:npm/higlass@2.1.2",
+    "publishedAt": "2025-08-18T03:49:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "2.1.3"
+    },
+    "purl": "pkg:npm/higlass@2.1.3",
+    "publishedAt": "2025-08-26T22:11:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "2.1.4"
+    },
+    "purl": "pkg:npm/higlass@2.1.4",
+    "publishedAt": "2025-10-19T05:36:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "2.1.5"
+    },
+    "purl": "pkg:npm/higlass@2.1.5",
+    "publishedAt": "2025-10-19T05:36:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "2.1.9"
+    },
+    "purl": "pkg:npm/higlass@2.1.9",
+    "publishedAt": "2026-01-07T05:54:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "2.2.0"
+    },
+    "purl": "pkg:npm/higlass@2.2.0",
+    "publishedAt": "2026-02-08T19:29:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "2.2.1"
+    },
+    "purl": "pkg:npm/higlass@2.2.1",
+    "publishedAt": "2026-02-14T05:31:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "2.2.2"
+    },
+    "purl": "pkg:npm/higlass@2.2.2",
+    "publishedAt": "2026-02-28T16:52:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "2.2.3"
+    },
+    "purl": "pkg:npm/higlass@2.2.3",
+    "publishedAt": "2026-02-28T22:42:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "2.3.0"
+    },
+    "purl": "pkg:npm/higlass@2.3.0",
+    "publishedAt": "2026-03-09T02:29:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "2.3.1"
+    },
+    "purl": "pkg:npm/higlass@2.3.1",
+    "publishedAt": "2026-03-17T04:26:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "2.3.2"
+    },
+    "purl": "pkg:npm/higlass@2.3.2",
+    "publishedAt": "2026-03-19T05:31:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "2.3.3"
+    },
+    "purl": "pkg:npm/higlass@2.3.3",
+    "publishedAt": "2026-04-21T03:36:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "2.3.4"
+    },
+    "purl": "pkg:npm/higlass@2.3.4",
+    "publishedAt": "2026-05-15T00:47:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "2.3.5"
+    },
+    "purl": "pkg:npm/higlass@2.3.5",
+    "publishedAt": "2026-06-17T04:39:13Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "NPM",
+   "name": "higlass",
+   "version": "2.3.5"
+  },
+  "purl": "pkg:npm/higlass@2.3.5",
+  "publishedAt": "2026-06-17T04:39:13Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "MIT",
+    "spdx": "MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "HOMEPAGE",
+    "url": "https://github.com/higlass/higlass#readme"
+   },
+   {
+    "label": "ISSUE_TRACKER",
+    "url": "https://github.com/higlass/higlass/issues"
+   },
+   {
+    "label": "ORIGIN",
+    "url": "https://registry.npmjs.org/higlass/2.3.5"
+   },
+   {
+    "label": "SOURCE_REPO",
+    "url": "git+https://github.com/higlass/higlass.git"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://registry.npmjs.org/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/higlass/higlass"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "ISSUE_TRACKER"
+   },
+   {
+    "projectKey": {
+     "id": "github.com/higlass/higlass"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "higlass",
+    "versionString": "2.3.5",
+    "source": "NPM_NPMJS_ORG"
+   }
+  ],
+  "cooldown": {
+   "end": "2026-07-02T04:39:13Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "higlass",
+     "version": "2.3.5"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@dnd-kit/core",
+     "version": "6.3.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@dnd-kit/sortable",
+     "version": "10.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@dnd-kit/utilities",
+     "version": "3.2.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "ajv",
+     "version": "6.15.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "area-polygon",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "box-intersect",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "buffer",
+     "version": "6.0.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cheerio",
+     "version": "1.0.0-rc.10"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "clsx",
+     "version": "1.2.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "css-element-queries",
+     "version": "1.2.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "d3-array",
+     "version": "2.12.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "d3-axis",
+     "version": "2.1.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "d3-brush",
+     "version": "2.1.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "d3-color",
+     "version": "2.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "d3-drag",
+     "version": "2.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "d3-dsv",
+     "version": "2.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "d3-format",
+     "version": "2.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "d3-geo",
+     "version": "2.0.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "d3-queue",
+     "version": "3.0.7"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "d3-request",
+     "version": "1.0.6"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "d3-scale",
+     "version": "4.0.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "d3-selection",
+     "version": "2.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "d3-transition",
+     "version": "3.0.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "d3-zoom",
+     "version": "3.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "genbank-parser",
+     "version": "1.2.4"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "ndarray",
+     "version": "1.0.19"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prismjs",
+     "version": "1.30.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prop-types",
+     "version": "15.8.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "pub-sub-es",
+     "version": "2.1.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "react-checkbox-tree",
+     "version": "1.8.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "react-color",
+     "version": "2.19.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "react-grid-layout",
+     "version": "2.2.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "react-simple-code-editor",
+     "version": "0.13.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "reactcss",
+     "version": "1.2.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "robust-point-in-polygon",
+     "version": "1.0.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "slugid",
+     "version": "3.2.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "vkbeautify",
+     "version": "0.99.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@dnd-kit/accessibility",
+     "version": "3.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslib",
+     "version": "2.8.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "fast-deep-equal",
+     "version": "3.1.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "fast-json-stable-stringify",
+     "version": "2.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "json-schema-traverse",
+     "version": "0.4.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "uri-js",
+     "version": "4.4.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "bit-twiddle",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "typedarray-pool",
+     "version": "1.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "base64-js",
+     "version": "1.5.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "ieee754",
+     "version": "1.2.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cheerio-select",
+     "version": "1.6.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dom-serializer",
+     "version": "1.4.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "domhandler",
+     "version": "4.3.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "htmlparser2",
+     "version": "6.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "parse5",
+     "version": "6.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "parse5-htmlparser2-tree-adapter",
+     "version": "6.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "internmap",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "d3-dispatch",
+     "version": "2.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "d3-interpolate",
+     "version": "2.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "d3-transition",
+     "version": "2.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "commander",
+     "version": "2.20.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "iconv-lite",
+     "version": "0.4.24"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "rw",
+     "version": "1.3.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "d3-collection",
+     "version": "1.0.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "d3-dispatch",
+     "version": "1.0.6"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "d3-dsv",
+     "version": "1.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "xmlhttprequest",
+     "version": "1.8.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "d3-time",
+     "version": "3.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "d3-time-format",
+     "version": "4.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "d3-ease",
+     "version": "2.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "d3-timer",
+     "version": "2.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "iota-array",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-buffer",
+     "version": "1.1.6"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "loose-envify",
+     "version": "1.4.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "object-assign",
+     "version": "4.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "react-is",
+     "version": "16.13.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "classnames",
+     "version": "2.5.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "lodash",
+     "version": "4.18.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "nanoid",
+     "version": "3.3.15"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@icons/material",
+     "version": "0.2.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "lodash-es",
+     "version": "4.18.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "material-colors",
+     "version": "1.2.6"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tinycolor2",
+     "version": "1.6.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "clsx",
+     "version": "2.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "fast-equals",
+     "version": "4.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "react-draggable",
+     "version": "4.7.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "react-resizable",
+     "version": "3.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "resize-observer-polyfill",
+     "version": "1.5.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "robust-orientation",
+     "version": "1.2.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "uuid",
+     "version": "8.3.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "punycode",
+     "version": "2.3.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dup",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "css-select",
+     "version": "4.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "css-what",
+     "version": "6.2.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "domelementtype",
+     "version": "2.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "domutils",
+     "version": "2.8.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "entities",
+     "version": "2.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "safer-buffer",
+     "version": "2.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "js-tokens",
+     "version": "4.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "clsx",
+     "version": "2.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "robust-scale",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "robust-subtract",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "robust-sum",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "two-product",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "boolbase",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "nth-check",
+     "version": "2.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "two-sum",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 1,
+    "requirement": "^6.3.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 2,
+    "requirement": "^10.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 3,
+    "requirement": "^3.2.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 4,
+    "requirement": "^6.10.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 5,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 6,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 7,
+    "requirement": "^6.0.3"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 8,
+    "requirement": "1.0.0-rc.10"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 9,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 10,
+    "requirement": "^1.2.3"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 11,
+    "requirement": "^2.7.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 12,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 13,
+    "requirement": "^2.1.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 14,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 15,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 16,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 17,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 18,
+    "requirement": "^2.0.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 19,
+    "requirement": "^3.0.7"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 20,
+    "requirement": "^1.0.6"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 21,
+    "requirement": "^4.0.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 22,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 23,
+    "requirement": "^3.0.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 24,
+    "requirement": "^3.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 25,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 26,
+    "requirement": "^1.0.18"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 27,
+    "requirement": "^1.16.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 28,
+    "requirement": "^15.6.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 29,
+    "requirement": "^2.0.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 30,
+    "requirement": "^1.7.3"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 31,
+    "requirement": "^2.13.8"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 32,
+    "requirement": "^2.2.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 33,
+    "requirement": "^0.13.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 34,
+    "requirement": "^1.2.3"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 35,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 36,
+    "requirement": "^3.2.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 37,
+    "requirement": "^0.99.3"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 3,
+    "requirement": "^3.2.2"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 38,
+    "requirement": "^3.1.1"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 39,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 3,
+    "requirement": "^3.2.2"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 39,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 39,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 40,
+    "requirement": "^3.1.1"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 41,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 42,
+    "requirement": "^0.4.1"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 43,
+    "requirement": "^4.2.2"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 44,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 45,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 46,
+    "requirement": "^1.3.1"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 47,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 39,
+    "requirement": "^2.2.0"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 48,
+    "requirement": "^1.5.0"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 49,
+    "requirement": "^1.3.2"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 50,
+    "requirement": "^4.2.0"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 51,
+    "requirement": "^6.1.0"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 52,
+    "requirement": "^6.0.1"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 53,
+    "requirement": "^6.0.1"
+   },
+   {
+    "fromNode": 11,
+    "toNode": 54,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 15,
+    "requirement": "2"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 22,
+    "requirement": "2"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 55,
+    "requirement": "1 - 2"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 56,
+    "requirement": "1 - 2"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 57,
+    "requirement": "2"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 22,
+    "requirement": "2"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 55,
+    "requirement": "1 - 2"
+   },
+   {
+    "fromNode": 16,
+    "toNode": 58,
+    "requirement": "2"
+   },
+   {
+    "fromNode": 16,
+    "toNode": 59,
+    "requirement": "0.4"
+   },
+   {
+    "fromNode": 16,
+    "toNode": 60,
+    "requirement": "1"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 11,
+    "requirement": "^2.5.0"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 61,
+    "requirement": "1"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 62,
+    "requirement": "1"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 63,
+    "requirement": "1"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 64,
+    "requirement": "1"
+   },
+   {
+    "fromNode": 21,
+    "toNode": 11,
+    "requirement": "2.10.0 - 3"
+   },
+   {
+    "fromNode": 21,
+    "toNode": 17,
+    "requirement": "1 - 3"
+   },
+   {
+    "fromNode": 21,
+    "toNode": 56,
+    "requirement": "1.2.0 - 3"
+   },
+   {
+    "fromNode": 21,
+    "toNode": 65,
+    "requirement": "2.1.1 - 3"
+   },
+   {
+    "fromNode": 21,
+    "toNode": 66,
+    "requirement": "2 - 4"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 14,
+    "requirement": "1 - 3"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 55,
+    "requirement": "1 - 3"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 56,
+    "requirement": "1 - 3"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 67,
+    "requirement": "1 - 3"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 68,
+    "requirement": "1 - 3"
+   },
+   {
+    "fromNode": 24,
+    "toNode": 15,
+    "requirement": "2 - 3"
+   },
+   {
+    "fromNode": 24,
+    "toNode": 22,
+    "requirement": "2 - 3"
+   },
+   {
+    "fromNode": 24,
+    "toNode": 23,
+    "requirement": "2 - 3"
+   },
+   {
+    "fromNode": 24,
+    "toNode": 55,
+    "requirement": "1 - 3"
+   },
+   {
+    "fromNode": 24,
+    "toNode": 56,
+    "requirement": "1 - 3"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 69,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 70,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 28,
+    "toNode": 71,
+    "requirement": "^1.4.0"
+   },
+   {
+    "fromNode": 28,
+    "toNode": 72,
+    "requirement": "^4.1.1"
+   },
+   {
+    "fromNode": 28,
+    "toNode": 73,
+    "requirement": "^16.13.1"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 28,
+    "requirement": "^15.5.8"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 74,
+    "requirement": "^2.2.5"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 75,
+    "requirement": "^4.17.10"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 76,
+    "requirement": "^3.0.0"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 28,
+    "requirement": "^15.5.10"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 34,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 75,
+    "requirement": "^4.17.15"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 77,
+    "requirement": "^0.2.4"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 78,
+    "requirement": "^4.17.15"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 79,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 80,
+    "requirement": "^1.4.1"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 28,
+    "requirement": "^15.8.1"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 81,
+    "requirement": "^2.1.1"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 82,
+    "requirement": "^4.0.3"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 83,
+    "requirement": "^4.4.6"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 84,
+    "requirement": "^3.1.3"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 85,
+    "requirement": "^1.5.1"
+   },
+   {
+    "fromNode": 34,
+    "toNode": 75,
+    "requirement": "^4.0.1"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 86,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 87,
+    "requirement": "^8.3.2"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 39,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 43,
+    "toNode": 88,
+    "requirement": "^2.1.0"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 44,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 89,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 48,
+    "toNode": 50,
+    "requirement": "^4.3.1"
+   },
+   {
+    "fromNode": 48,
+    "toNode": 90,
+    "requirement": "^4.3.0"
+   },
+   {
+    "fromNode": 48,
+    "toNode": 91,
+    "requirement": "^6.0.1"
+   },
+   {
+    "fromNode": 48,
+    "toNode": 92,
+    "requirement": "^2.2.0"
+   },
+   {
+    "fromNode": 48,
+    "toNode": 93,
+    "requirement": "^2.8.0"
+   },
+   {
+    "fromNode": 49,
+    "toNode": 50,
+    "requirement": "^4.2.0"
+   },
+   {
+    "fromNode": 49,
+    "toNode": 92,
+    "requirement": "^2.0.1"
+   },
+   {
+    "fromNode": 49,
+    "toNode": 94,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 50,
+    "toNode": 92,
+    "requirement": "^2.2.0"
+   },
+   {
+    "fromNode": 51,
+    "toNode": 50,
+    "requirement": "^4.0.0"
+   },
+   {
+    "fromNode": 51,
+    "toNode": 92,
+    "requirement": "^2.0.1"
+   },
+   {
+    "fromNode": 51,
+    "toNode": 93,
+    "requirement": "^2.5.2"
+   },
+   {
+    "fromNode": 51,
+    "toNode": 94,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 53,
+    "toNode": 52,
+    "requirement": "^6.0.1"
+   },
+   {
+    "fromNode": 56,
+    "toNode": 14,
+    "requirement": "1 - 2"
+   },
+   {
+    "fromNode": 57,
+    "toNode": 14,
+    "requirement": "1 - 2"
+   },
+   {
+    "fromNode": 57,
+    "toNode": 55,
+    "requirement": "1 - 2"
+   },
+   {
+    "fromNode": 57,
+    "toNode": 56,
+    "requirement": "1 - 2"
+   },
+   {
+    "fromNode": 57,
+    "toNode": 67,
+    "requirement": "1 - 2"
+   },
+   {
+    "fromNode": 57,
+    "toNode": 68,
+    "requirement": "1 - 2"
+   },
+   {
+    "fromNode": 59,
+    "toNode": 95,
+    "requirement": ">= 2.1.2 < 3"
+   },
+   {
+    "fromNode": 63,
+    "toNode": 58,
+    "requirement": "2"
+   },
+   {
+    "fromNode": 63,
+    "toNode": 59,
+    "requirement": "0.4"
+   },
+   {
+    "fromNode": 63,
+    "toNode": 60,
+    "requirement": "1"
+   },
+   {
+    "fromNode": 65,
+    "toNode": 11,
+    "requirement": "2 - 3"
+   },
+   {
+    "fromNode": 66,
+    "toNode": 65,
+    "requirement": "1 - 3"
+   },
+   {
+    "fromNode": 71,
+    "toNode": 96,
+    "requirement": "^3.0.0 || ^4.0.0"
+   },
+   {
+    "fromNode": 83,
+    "toNode": 28,
+    "requirement": "^15.8.1"
+   },
+   {
+    "fromNode": 83,
+    "toNode": 97,
+    "requirement": "^2.1.1"
+   },
+   {
+    "fromNode": 84,
+    "toNode": 28,
+    "requirement": "15.x"
+   },
+   {
+    "fromNode": 84,
+    "toNode": 83,
+    "requirement": "^4.5.0"
+   },
+   {
+    "fromNode": 86,
+    "toNode": 98,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 86,
+    "toNode": 99,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 86,
+    "toNode": 100,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 86,
+    "toNode": 101,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 90,
+    "toNode": 50,
+    "requirement": "^4.3.1"
+   },
+   {
+    "fromNode": 90,
+    "toNode": 91,
+    "requirement": "^6.0.1"
+   },
+   {
+    "fromNode": 90,
+    "toNode": 93,
+    "requirement": "^2.8.0"
+   },
+   {
+    "fromNode": 90,
+    "toNode": 102,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 90,
+    "toNode": 103,
+    "requirement": "^2.0.1"
+   },
+   {
+    "fromNode": 93,
+    "toNode": 49,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 93,
+    "toNode": 50,
+    "requirement": "^4.2.0"
+   },
+   {
+    "fromNode": 93,
+    "toNode": 92,
+    "requirement": "^2.2.0"
+   },
+   {
+    "fromNode": 98,
+    "toNode": 101,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 98,
+    "toNode": 104,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 103,
+    "toNode": 102,
+    "requirement": "^1.0.0"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 7,
+  "directDependentCount": 2,
+  "indirectDependentCount": 5
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/higlass/higlass"
+  },
+  "openIssuesCount": 43,
+  "starsCount": 341,
+  "forksCount": 55,
+  "license": "MIT",
+  "description": "Fast, flexible and extensible genome browser.",
+  "homepage": "http://higlass.io",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/higlass/higlass",
+    "commit": "b35461175d6593aaa94147ec4885200c7f1f5e5a"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 5,
+     "reason": "6 commit(s) and 0 issue activity found in the last 90 days -- score normalized to 5",
+     "details": []
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 1,
+     "reason": "Found 4/27 approved changesets -- score normalized to 1",
+     "details": []
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected",
+     "details": []
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": 0,
+     "reason": "detected GitHub workflow tokens with excessive permissions",
+     "details": [
+      "Warn: no topLevel permission defined: .github/workflows/ci.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/docs.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/npmpublish.yml:1",
+      "Info: no jobLevel write permissions found"
+     ]
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 0,
+     "reason": "security policy file not detected",
+     "details": [
+      "Warn: no security policy file detected",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze"
+     ]
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 10,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE:0",
+      "Info: FSF or OSI recognized license: MIT License: LICENSE:0"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": 3,
+     "reason": "dependency not pinned by hash detected -- score normalized to 3",
+     "details": [
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yml:18: update your workflow using https://app.stepsecurity.io/secureworkflow/higlass/higlass/ci.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yml:19: update your workflow using https://app.stepsecurity.io/secureworkflow/higlass/higlass/ci.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yml:29: update your workflow using https://app.stepsecurity.io/secureworkflow/higlass/higlass/ci.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/ci.yml:30: update your workflow using https://app.stepsecurity.io/secureworkflow/higlass/higlass/ci.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yml:36: update your workflow using https://app.stepsecurity.io/secureworkflow/higlass/higlass/ci.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yml:37: update your workflow using https://app.stepsecurity.io/secureworkflow/higlass/higlass/ci.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yml:51: update your workflow using https://app.stepsecurity.io/secureworkflow/higlass/higlass/ci.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yml:52: update your workflow using https://app.stepsecurity.io/secureworkflow/higlass/higlass/ci.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/docs.yml:13: update your workflow using https://app.stepsecurity.io/secureworkflow/higlass/higlass/docs.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/docs.yml:14: update your workflow using https://app.stepsecurity.io/secureworkflow/higlass/higlass/docs.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/docs.yml:19: update your workflow using https://app.stepsecurity.io/secureworkflow/higlass/higlass/docs.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/docs.yml:29: update your workflow using https://app.stepsecurity.io/secureworkflow/higlass/higlass/docs.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/npmpublish.yml:15: update your workflow using https://app.stepsecurity.io/secureworkflow/higlass/higlass/npmpublish.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/npmpublish.yml:16: update your workflow using https://app.stepsecurity.io/secureworkflow/higlass/higlass/npmpublish.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/npmpublish.yml:28: update your workflow using https://app.stepsecurity.io/secureworkflow/higlass/higlass/npmpublish.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/npmpublish.yml:29: update your workflow using https://app.stepsecurity.io/secureworkflow/higlass/higlass/npmpublish.yml/main?enable=pin",
+      "Warn: npmCommand not pinned by hash: .github/workflows/ci.yml:41",
+      "Warn: npmCommand not pinned by hash: .github/workflows/docs.yml:18",
+      "Warn: pipCommand not pinned by hash: .github/workflows/docs.yml:24",
+      "Warn: pipCommand not pinned by hash: .github/workflows/docs.yml:25",
+      "Info:   0 out of  14 GitHub-owned GitHubAction dependencies pinned",
+      "Info:   0 out of   2 third-party GitHubAction dependencies pinned",
+      "Info:   4 out of   6 npmCommand dependencies pinned",
+      "Info:   0 out of   2 pipCommand dependencies pinned"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": 0,
+     "reason": "branch protection not enabled on development/release branches",
+     "details": [
+      "Warn: branch protection not enabled for branch 'main'",
+      "Warn: branch protection not enabled for branch 'develop'"
+     ]
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0",
+     "details": [
+      "Warn: 0 commits out of 13 are checked with a SAST tool"
+     ]
+    }
+   ],
+   "overallScore": 3.6,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 56026057,
+  "node_id": "MDEwOlJlcG9zaXRvcnk1NjAyNjA1Nw==",
+  "name": "higlass",
+  "full_name": "higlass/higlass",
+  "private": false,
+  "owner": {
+   "login": "higlass",
+   "id": 44274216,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjQ0Mjc0MjE2",
+   "avatar_url": "https://avatars.githubusercontent.com/u/44274216?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/higlass",
+   "html_url": "https://github.com/higlass",
+   "followers_url": "https://api.github.com/users/higlass/followers",
+   "following_url": "https://api.github.com/users/higlass/following{/other_user}",
+   "gists_url": "https://api.github.com/users/higlass/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/higlass/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/higlass/subscriptions",
+   "organizations_url": "https://api.github.com/users/higlass/orgs",
+   "repos_url": "https://api.github.com/users/higlass/repos",
+   "events_url": "https://api.github.com/users/higlass/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/higlass/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/higlass/higlass",
+  "description": "Fast, flexible and extensible genome browser.",
+  "fork": false,
+  "url": "https://api.github.com/repos/higlass/higlass",
+  "forks_url": "https://api.github.com/repos/higlass/higlass/forks",
+  "keys_url": "https://api.github.com/repos/higlass/higlass/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/higlass/higlass/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/higlass/higlass/teams",
+  "hooks_url": "https://api.github.com/repos/higlass/higlass/hooks",
+  "issue_events_url": "https://api.github.com/repos/higlass/higlass/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/higlass/higlass/events",
+  "assignees_url": "https://api.github.com/repos/higlass/higlass/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/higlass/higlass/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/higlass/higlass/tags",
+  "blobs_url": "https://api.github.com/repos/higlass/higlass/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/higlass/higlass/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/higlass/higlass/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/higlass/higlass/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/higlass/higlass/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/higlass/higlass/languages",
+  "stargazers_url": "https://api.github.com/repos/higlass/higlass/stargazers",
+  "contributors_url": "https://api.github.com/repos/higlass/higlass/contributors",
+  "subscribers_url": "https://api.github.com/repos/higlass/higlass/subscribers",
+  "subscription_url": "https://api.github.com/repos/higlass/higlass/subscription",
+  "commits_url": "https://api.github.com/repos/higlass/higlass/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/higlass/higlass/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/higlass/higlass/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/higlass/higlass/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/higlass/higlass/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/higlass/higlass/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/higlass/higlass/merges",
+  "archive_url": "https://api.github.com/repos/higlass/higlass/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/higlass/higlass/downloads",
+  "issues_url": "https://api.github.com/repos/higlass/higlass/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/higlass/higlass/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/higlass/higlass/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/higlass/higlass/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/higlass/higlass/labels{/name}",
+  "releases_url": "https://api.github.com/repos/higlass/higlass/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/higlass/higlass/deployments",
+  "created_at": "2016-04-12T02:58:30Z",
+  "updated_at": "2026-07-07T17:15:18Z",
+  "pushed_at": "2026-06-17T04:37:44Z",
+  "git_url": "git://github.com/higlass/higlass.git",
+  "ssh_url": "git@github.com:higlass/higlass.git",
+  "clone_url": "https://github.com/higlass/higlass.git",
+  "svn_url": "https://github.com/higlass/higlass",
+  "homepage": "http://higlass.io",
+  "size": 162203,
+  "stargazers_count": 341,
+  "watchers_count": 341,
+  "language": "JavaScript",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 55,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 43,
+  "license": {
+   "key": "mit",
+   "name": "MIT License",
+   "spdx_id": "MIT",
+   "url": "https://api.github.com/licenses/mit",
+   "node_id": "MDc6TGljZW5zZTEz"
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [
+   "genomics",
+   "hi-c",
+   "hidivelab",
+   "higlass",
+   "visualization"
+  ],
+  "visibility": "public",
+  "forks": 55,
+  "open_issues": 43,
+  "watchers": 341,
+  "default_branch": "main",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "higlass",
+   "id": 44274216,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjQ0Mjc0MjE2",
+   "avatar_url": "https://avatars.githubusercontent.com/u/44274216?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/higlass",
+   "html_url": "https://github.com/higlass",
+   "followers_url": "https://api.github.com/users/higlass/followers",
+   "following_url": "https://api.github.com/users/higlass/following{/other_user}",
+   "gists_url": "https://api.github.com/users/higlass/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/higlass/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/higlass/subscriptions",
+   "organizations_url": "https://api.github.com/users/higlass/orgs",
+   "repos_url": "https://api.github.com/users/higlass/repos",
+   "events_url": "https://api.github.com/users/higlass/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/higlass/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 55,
+  "subscribers_count": 19
+ },
+ "funding": []
+}

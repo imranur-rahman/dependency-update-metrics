@@ -1,0 +1,2116 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "PYPI",
+   "name": "jupyterlab-robotmode"
+  },
+  "purl": "pkg:pypi/jupyterlab-robotmode",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jupyterlab-robotmode",
+     "version": "0.2.0"
+    },
+    "purl": "pkg:pypi/jupyterlab-robotmode@0.2.0",
+    "publishedAt": "2021-01-05T10:30:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jupyterlab-robotmode",
+     "version": "0.3.0"
+    },
+    "purl": "pkg:pypi/jupyterlab-robotmode@0.3.0",
+    "publishedAt": "2021-03-15T08:28:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jupyterlab-robotmode",
+     "version": "0.3.1"
+    },
+    "purl": "pkg:pypi/jupyterlab-robotmode@0.3.1",
+    "publishedAt": "2021-03-17T12:37:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jupyterlab-robotmode",
+     "version": "0.4.0"
+    },
+    "purl": "pkg:pypi/jupyterlab-robotmode@0.4.0",
+    "publishedAt": "2023-07-27T13:17:37Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "PYPI",
+   "name": "jupyterlab-robotmode",
+   "version": "0.4.0"
+  },
+  "purl": "pkg:pypi/jupyterlab-robotmode@0.4.0",
+  "publishedAt": "2023-07-27T13:17:37Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "BSD-3-Clause"
+  ],
+  "licenseDetails": [
+   {
+    "license": "BSD-3-Clause",
+    "spdx": "BSD-3-Clause"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/MarketSquare/jupyterlab_robotmode"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://pypi.org/simple"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/marketsquare/jupyterlab_robotmode"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "jupyterlab_robotmode",
+    "versionString": "0.4.0",
+    "source": "PYPI_RELEASE_FILENAME"
+   },
+   {
+    "packageName": "jupyterlab-robotmode",
+    "versionString": "0.4.0",
+    "source": "PYPI_METADATA_FILE"
+   }
+  ],
+  "cooldown": {
+   "end": "2023-08-01T13:17:37Z",
+   "description": ""
+  },
+  "projectStatus": {
+   "status": "active",
+   "reason": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jupyterlab-robotmode",
+     "version": "0.4.0"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "anyio",
+     "version": "4.14.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "argon2-cffi",
+     "version": "25.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "argon2-cffi-bindings",
+     "version": "25.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "arrow",
+     "version": "1.4.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "asttokens",
+     "version": "3.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "async-lru",
+     "version": "2.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "attrs",
+     "version": "26.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "babel",
+     "version": "2.18.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "beautifulsoup4",
+     "version": "4.15.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "bleach",
+     "version": "6.4.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certifi",
+     "version": "2026.6.17"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cffi",
+     "version": "2.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "charset-normalizer",
+     "version": "3.4.9"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "comm",
+     "version": "0.2.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "debugpy",
+     "version": "1.8.21"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "decorator",
+     "version": "5.3.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "defusedxml",
+     "version": "0.7.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "executing",
+     "version": "2.2.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fastjsonschema",
+     "version": "2.21.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fqdn",
+     "version": "1.5.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "idna",
+     "version": "3.18.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "ipykernel",
+     "version": "7.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "ipython",
+     "version": "9.15.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "ipython-pygments-lexers",
+     "version": "1.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "isoduration",
+     "version": "20.11.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jedi",
+     "version": "0.20.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jinja2",
+     "version": "3.1.6"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "json5",
+     "version": "0.15.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jsonpointer",
+     "version": "3.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jsonschema",
+     "version": "4.26.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jsonschema-specifications",
+     "version": "2025.9.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jupyter-client",
+     "version": "8.9.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jupyter-core",
+     "version": "5.9.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jupyter-events",
+     "version": "0.12.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jupyter-lsp",
+     "version": "2.3.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jupyter-server",
+     "version": "2.20.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jupyter-server-terminals",
+     "version": "0.5.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jupyterlab",
+     "version": "4.0.0rc1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jupyterlab-pygments",
+     "version": "0.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jupyterlab-server",
+     "version": "2.28.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "lark",
+     "version": "1.3.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "markupsafe",
+     "version": "3.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "matplotlib-inline",
+     "version": "0.2.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mistune",
+     "version": "3.3.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "nbclient",
+     "version": "0.11.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "nbconvert",
+     "version": "7.17.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "nbformat",
+     "version": "5.10.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "nest-asyncio2",
+     "version": "1.7.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "notebook-shim",
+     "version": "0.2.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "packaging",
+     "version": "26.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pandocfilters",
+     "version": "1.5.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "parso",
+     "version": "0.8.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pexpect",
+     "version": "4.9.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "platformdirs",
+     "version": "4.10.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "prometheus-client",
+     "version": "0.25.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "prompt-toolkit",
+     "version": "3.0.52"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "psutil",
+     "version": "7.2.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "ptyprocess",
+     "version": "0.7.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pure-eval",
+     "version": "0.2.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pycparser",
+     "version": "3.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygments",
+     "version": "2.20.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "python-dateutil",
+     "version": "2.9.0.post0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "python-json-logger",
+     "version": "4.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyyaml",
+     "version": "6.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyzmq",
+     "version": "27.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "referencing",
+     "version": "0.37.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "requests",
+     "version": "2.34.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "rfc3339-validator",
+     "version": "0.1.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "rfc3986-validator",
+     "version": "0.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "rfc3987-syntax",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "rpds-py",
+     "version": "2026.6.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "send2trash",
+     "version": "2.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "six",
+     "version": "1.17.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "soupsieve",
+     "version": "2.8.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "stack-data",
+     "version": "0.6.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "terminado",
+     "version": "0.18.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tinycss2",
+     "version": "1.5.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tornado",
+     "version": "6.5.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "traitlets",
+     "version": "5.15.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "typing-extensions",
+     "version": "4.16.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tzdata",
+     "version": "2026.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "uri-template",
+     "version": "1.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "urllib3",
+     "version": "2.7.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wcwidth",
+     "version": "0.8.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "webcolors",
+     "version": "25.10.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "webencodings",
+     "version": "0.5.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "websocket-client",
+     "version": "1.9.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 38,
+    "requirement": "<4,>=3"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 21,
+    "requirement": ">=2.8"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 3,
+    "requirement": ""
+   },
+   {
+    "fromNode": 3,
+    "toNode": 12,
+    "requirement": ">=2.0.0b1"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 62,
+    "requirement": ">=2.7.0"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 81,
+    "requirement": ""
+   },
+   {
+    "fromNode": 9,
+    "toNode": 74,
+    "requirement": ">=1.6.1"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 80,
+    "requirement": ">=4.0.0"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 77,
+    "requirement": ">=1.1.0"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 86,
+    "requirement": ""
+   },
+   {
+    "fromNode": 12,
+    "toNode": 60,
+    "requirement": ""
+   },
+   {
+    "fromNode": 22,
+    "toNode": 14,
+    "requirement": ">=0.1.1"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 15,
+    "requirement": ">=1.6.5"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 23,
+    "requirement": ">=7.23.1"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 32,
+    "requirement": ">=8.9.0"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 33,
+    "requirement": "!=6.0.*,>=5.1"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 43,
+    "requirement": ">=0.1"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 48,
+    "requirement": ">=1.7.0"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 50,
+    "requirement": ">=22"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 57,
+    "requirement": ">=5.7"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 65,
+    "requirement": ">=25"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 78,
+    "requirement": ">=6.4.1"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 79,
+    "requirement": ">=5.4.0"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 16,
+    "requirement": ">=5.1.0"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 24,
+    "requirement": ">=1.0.0"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 26,
+    "requirement": ">=0.18.2"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 43,
+    "requirement": ">=0.1.6"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 53,
+    "requirement": ">4.6"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 56,
+    "requirement": "<3.1.0,>=3.0.41"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 57,
+    "requirement": ">=7"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 61,
+    "requirement": ">=2.14.0"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 75,
+    "requirement": ">=0.6.0"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 79,
+    "requirement": ">=5.13.0"
+   },
+   {
+    "fromNode": 24,
+    "toNode": 61,
+    "requirement": ""
+   },
+   {
+    "fromNode": 25,
+    "toNode": 4,
+    "requirement": ">=0.15.0"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 52,
+    "requirement": "<0.9.0,>=0.8.6"
+   },
+   {
+    "fromNode": 27,
+    "toNode": 42,
+    "requirement": ">=2.0"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 7,
+    "requirement": ">=22.2.0"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 20,
+    "requirement": ""
+   },
+   {
+    "fromNode": 30,
+    "toNode": 21,
+    "requirement": ""
+   },
+   {
+    "fromNode": 30,
+    "toNode": 25,
+    "requirement": ""
+   },
+   {
+    "fromNode": 30,
+    "toNode": 29,
+    "requirement": ">1.13"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 31,
+    "requirement": ">=2023.03.6"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 66,
+    "requirement": ">=0.28.4"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 68,
+    "requirement": ""
+   },
+   {
+    "fromNode": 30,
+    "toNode": 69,
+    "requirement": ">0.1.0"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 70,
+    "requirement": ">=1.1.0"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 71,
+    "requirement": ">=0.25.0"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 82,
+    "requirement": ""
+   },
+   {
+    "fromNode": 30,
+    "toNode": 85,
+    "requirement": ">=24.6.0"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 66,
+    "requirement": ">=0.31.0"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 33,
+    "requirement": ">=5.1"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 62,
+    "requirement": ">=2.8.2"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 65,
+    "requirement": ">=25.0"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 78,
+    "requirement": ">=6.4.1"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 79,
+    "requirement": ">=5.3"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 80,
+    "requirement": ">=4.13.0"
+   },
+   {
+    "fromNode": 33,
+    "toNode": 54,
+    "requirement": ">=2.5"
+   },
+   {
+    "fromNode": 33,
+    "toNode": 79,
+    "requirement": ">=5.3"
+   },
+   {
+    "fromNode": 34,
+    "toNode": 30,
+    "requirement": ">=4.18.0"
+   },
+   {
+    "fromNode": 34,
+    "toNode": 50,
+    "requirement": ""
+   },
+   {
+    "fromNode": 34,
+    "toNode": 63,
+    "requirement": ">=2.0.4"
+   },
+   {
+    "fromNode": 34,
+    "toNode": 64,
+    "requirement": ">=5.3"
+   },
+   {
+    "fromNode": 34,
+    "toNode": 66,
+    "requirement": ""
+   },
+   {
+    "fromNode": 34,
+    "toNode": 68,
+    "requirement": ""
+   },
+   {
+    "fromNode": 34,
+    "toNode": 69,
+    "requirement": ">=0.1.1"
+   },
+   {
+    "fromNode": 34,
+    "toNode": 79,
+    "requirement": ">=5.3"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 36,
+    "requirement": ">=1.1.2"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 1,
+    "requirement": ">=3.1.0"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 2,
+    "requirement": ">=21.1"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 27,
+    "requirement": ">=3.0.3"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 32,
+    "requirement": ">=7.4.4"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 33,
+    "requirement": "!=5.0.*,>=4.12"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 34,
+    "requirement": ">=0.11.0"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 37,
+    "requirement": ">=0.4.4"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 46,
+    "requirement": ">=6.4.4"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 47,
+    "requirement": ">=5.3.0"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 50,
+    "requirement": ">=22.0"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 55,
+    "requirement": ">=0.9"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 65,
+    "requirement": ">=24"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 72,
+    "requirement": ">=1.8.2"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 76,
+    "requirement": ">=0.8.3"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 78,
+    "requirement": ">=6.2.0"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 79,
+    "requirement": ">=5.6.0"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 87,
+    "requirement": ">=1.7"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 76,
+    "requirement": ">=0.8.3"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 6,
+    "requirement": ">=1.0.0"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 22,
+    "requirement": ""
+   },
+   {
+    "fromNode": 38,
+    "toNode": 23,
+    "requirement": ""
+   },
+   {
+    "fromNode": 38,
+    "toNode": 27,
+    "requirement": ">=2.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 27,
+    "requirement": ">=3.0.3"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 33,
+    "requirement": ""
+   },
+   {
+    "fromNode": 38,
+    "toNode": 33,
+    "requirement": ""
+   },
+   {
+    "fromNode": 38,
+    "toNode": 35,
+    "requirement": ">=2.0.0"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 36,
+    "requirement": "<3,>=1.16.0"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 36,
+    "requirement": "<3,>=2.4.0"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 40,
+    "requirement": "<3,>=2.19.0"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 40,
+    "requirement": "~=2.19"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 49,
+    "requirement": ">=0.2"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 50,
+    "requirement": ""
+   },
+   {
+    "fromNode": 38,
+    "toNode": 50,
+    "requirement": ""
+   },
+   {
+    "fromNode": 38,
+    "toNode": 78,
+    "requirement": ">=6.1.0"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 78,
+    "requirement": ">=6.2.0"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 79,
+    "requirement": ""
+   },
+   {
+    "fromNode": 40,
+    "toNode": 8,
+    "requirement": ">=2.10"
+   },
+   {
+    "fromNode": 40,
+    "toNode": 27,
+    "requirement": ">=3.0.3"
+   },
+   {
+    "fromNode": 40,
+    "toNode": 28,
+    "requirement": ">=0.9.0"
+   },
+   {
+    "fromNode": 40,
+    "toNode": 30,
+    "requirement": ">=4.18.0"
+   },
+   {
+    "fromNode": 40,
+    "toNode": 36,
+    "requirement": "<3,>=1.21"
+   },
+   {
+    "fromNode": 40,
+    "toNode": 50,
+    "requirement": ">=21.3"
+   },
+   {
+    "fromNode": 40,
+    "toNode": 67,
+    "requirement": ">=2.31"
+   },
+   {
+    "fromNode": 43,
+    "toNode": 79,
+    "requirement": ""
+   },
+   {
+    "fromNode": 45,
+    "toNode": 32,
+    "requirement": ">=7.0.0"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 33,
+    "requirement": ">=5.4.0"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 47,
+    "requirement": ">=5.2.0"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 79,
+    "requirement": ">=5.13"
+   },
+   {
+    "fromNode": 46,
+    "toNode": 9,
+    "requirement": ""
+   },
+   {
+    "fromNode": 46,
+    "toNode": 10,
+    "requirement": "!=5.0.0"
+   },
+   {
+    "fromNode": 46,
+    "toNode": 17,
+    "requirement": ""
+   },
+   {
+    "fromNode": 46,
+    "toNode": 27,
+    "requirement": ">=3.0"
+   },
+   {
+    "fromNode": 46,
+    "toNode": 33,
+    "requirement": ">=4.7"
+   },
+   {
+    "fromNode": 46,
+    "toNode": 39,
+    "requirement": ""
+   },
+   {
+    "fromNode": 46,
+    "toNode": 42,
+    "requirement": ">=2.0"
+   },
+   {
+    "fromNode": 46,
+    "toNode": 44,
+    "requirement": "<4,>=2.0.3"
+   },
+   {
+    "fromNode": 46,
+    "toNode": 45,
+    "requirement": ">=0.5.0"
+   },
+   {
+    "fromNode": 46,
+    "toNode": 47,
+    "requirement": ">=5.7"
+   },
+   {
+    "fromNode": 46,
+    "toNode": 50,
+    "requirement": ""
+   },
+   {
+    "fromNode": 46,
+    "toNode": 51,
+    "requirement": ">=1.4.1"
+   },
+   {
+    "fromNode": 46,
+    "toNode": 61,
+    "requirement": ">=2.4.1"
+   },
+   {
+    "fromNode": 46,
+    "toNode": 79,
+    "requirement": ">=5.1"
+   },
+   {
+    "fromNode": 47,
+    "toNode": 19,
+    "requirement": ">=2.15"
+   },
+   {
+    "fromNode": 47,
+    "toNode": 30,
+    "requirement": ">=2.6"
+   },
+   {
+    "fromNode": 47,
+    "toNode": 33,
+    "requirement": "!=5.0.*,>=4.12"
+   },
+   {
+    "fromNode": 47,
+    "toNode": 79,
+    "requirement": ">=5.1"
+   },
+   {
+    "fromNode": 49,
+    "toNode": 36,
+    "requirement": "<3,>=1.8"
+   },
+   {
+    "fromNode": 53,
+    "toNode": 58,
+    "requirement": ">=0.5"
+   },
+   {
+    "fromNode": 56,
+    "toNode": 84,
+    "requirement": ""
+   },
+   {
+    "fromNode": 62,
+    "toNode": 73,
+    "requirement": ">=1.5"
+   },
+   {
+    "fromNode": 66,
+    "toNode": 7,
+    "requirement": ">=22.2.0"
+   },
+   {
+    "fromNode": 66,
+    "toNode": 71,
+    "requirement": ">=0.7.0"
+   },
+   {
+    "fromNode": 67,
+    "toNode": 11,
+    "requirement": ">=2023.5.7"
+   },
+   {
+    "fromNode": 67,
+    "toNode": 13,
+    "requirement": "<4,>=2"
+   },
+   {
+    "fromNode": 67,
+    "toNode": 21,
+    "requirement": "<4,>=2.5"
+   },
+   {
+    "fromNode": 67,
+    "toNode": 83,
+    "requirement": "<3,>=1.26"
+   },
+   {
+    "fromNode": 68,
+    "toNode": 73,
+    "requirement": ""
+   },
+   {
+    "fromNode": 70,
+    "toNode": 41,
+    "requirement": ">=1.2.2"
+   },
+   {
+    "fromNode": 75,
+    "toNode": 5,
+    "requirement": ">=2.1.0"
+   },
+   {
+    "fromNode": 75,
+    "toNode": 18,
+    "requirement": ">=1.2.0"
+   },
+   {
+    "fromNode": 75,
+    "toNode": 59,
+    "requirement": ""
+   },
+   {
+    "fromNode": 76,
+    "toNode": 58,
+    "requirement": ""
+   },
+   {
+    "fromNode": 76,
+    "toNode": 78,
+    "requirement": ">=6.1.0"
+   },
+   {
+    "fromNode": 77,
+    "toNode": 86,
+    "requirement": ">=0.4"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 7,
+  "directDependentCount": 4,
+  "indirectDependentCount": 3
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/marketsquare/jupyterlab_robotmode"
+  },
+  "openIssuesCount": 3,
+  "starsCount": 6,
+  "forksCount": 4,
+  "license": "BSD-3-Clause",
+  "description": "Robot mode for Jupyterlab",
+  "homepage": "",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/MarketSquare/jupyterlab_robotmode",
+    "commit": "d7735258aac9f8e4fcfaeedc619a79ebab31180f"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 5,
+     "reason": "Found 2/4 approved changesets -- score normalized to 5",
+     "details": []
+    },
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 0,
+     "reason": "0 commit(s) and 0 issue activity found in the last 90 days -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected",
+     "details": []
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": 0,
+     "reason": "detected GitHub workflow tokens with excessive permissions",
+     "details": [
+      "Warn: no topLevel permission defined: .github/workflows/main.yml:1",
+      "Info: no jobLevel write permissions found"
+     ]
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": 2,
+     "reason": "dependency not pinned by hash detected -- score normalized to 2",
+     "details": [
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/main.yml:23: update your workflow using https://app.stepsecurity.io/secureworkflow/MarketSquare/jupyterlab_robotmode/main.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/main.yml:26: update your workflow using https://app.stepsecurity.io/secureworkflow/MarketSquare/jupyterlab_robotmode/main.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/main.yml:33: update your workflow using https://app.stepsecurity.io/secureworkflow/MarketSquare/jupyterlab_robotmode/main.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/main.yml:58: update your workflow using https://app.stepsecurity.io/secureworkflow/MarketSquare/jupyterlab_robotmode/main.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/main.yml:98: update your workflow using https://app.stepsecurity.io/secureworkflow/MarketSquare/jupyterlab_robotmode/main.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/main.yml:103: update your workflow using https://app.stepsecurity.io/secureworkflow/MarketSquare/jupyterlab_robotmode/main.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/main.yml:109: update your workflow using https://app.stepsecurity.io/secureworkflow/MarketSquare/jupyterlab_robotmode/main.yml/main?enable=pin",
+      "Warn: pipCommand not pinned by hash: .github/workflows/main.yml:131",
+      "Warn: pipCommand not pinned by hash: .github/workflows/main.yml:136",
+      "Info:   0 out of   6 GitHub-owned GitHubAction dependencies pinned",
+      "Info:   0 out of   1 third-party GitHubAction dependencies pinned",
+      "Info:   1 out of   3 pipCommand dependencies pinned"
+     ]
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 0,
+     "reason": "security policy file not detected",
+     "details": [
+      "Warn: no security policy file detected",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 10,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE:0",
+      "Info: FSF or OSI recognized license: BSD 3-Clause \"New\" or \"Revised\" License: LICENSE:0"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": 0,
+     "reason": "Project has not signed or included provenance with any releases.",
+     "details": [
+      "Warn: release artifact 0.4.0 not signed: https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/releases/114664677",
+      "Warn: release artifact 0.4.0 does not have provenance: https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/releases/114664677"
+     ]
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": 0,
+     "reason": "branch protection not enabled on development/release branches",
+     "details": [
+      "Warn: branch protection not enabled for branch 'main'"
+     ]
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0",
+     "details": [
+      "Warn: 0 commits out of 29 are checked with a SAST tool"
+     ]
+    }
+   ],
+   "overallScore": 3.1,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 318494461,
+  "node_id": "MDEwOlJlcG9zaXRvcnkzMTg0OTQ0NjE=",
+  "name": "jupyterlab_robotmode",
+  "full_name": "MarketSquare/jupyterlab_robotmode",
+  "private": false,
+  "owner": {
+   "login": "MarketSquare",
+   "id": 57290362,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjU3MjkwMzYy",
+   "avatar_url": "https://avatars.githubusercontent.com/u/57290362?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/MarketSquare",
+   "html_url": "https://github.com/MarketSquare",
+   "followers_url": "https://api.github.com/users/MarketSquare/followers",
+   "following_url": "https://api.github.com/users/MarketSquare/following{/other_user}",
+   "gists_url": "https://api.github.com/users/MarketSquare/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/MarketSquare/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/MarketSquare/subscriptions",
+   "organizations_url": "https://api.github.com/users/MarketSquare/orgs",
+   "repos_url": "https://api.github.com/users/MarketSquare/repos",
+   "events_url": "https://api.github.com/users/MarketSquare/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/MarketSquare/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/MarketSquare/jupyterlab_robotmode",
+  "description": "Robot mode for Jupyterlab",
+  "fork": false,
+  "url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode",
+  "forks_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/forks",
+  "keys_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/teams",
+  "hooks_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/hooks",
+  "issue_events_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/events",
+  "assignees_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/tags",
+  "blobs_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/languages",
+  "stargazers_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/stargazers",
+  "contributors_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/contributors",
+  "subscribers_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/subscribers",
+  "subscription_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/subscription",
+  "commits_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/merges",
+  "archive_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/downloads",
+  "issues_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/labels{/name}",
+  "releases_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/MarketSquare/jupyterlab_robotmode/deployments",
+  "created_at": "2020-12-04T11:23:07Z",
+  "updated_at": "2023-06-29T14:38:27Z",
+  "pushed_at": "2023-08-01T14:33:35Z",
+  "git_url": "git://github.com/MarketSquare/jupyterlab_robotmode.git",
+  "ssh_url": "git@github.com:MarketSquare/jupyterlab_robotmode.git",
+  "clone_url": "https://github.com/MarketSquare/jupyterlab_robotmode.git",
+  "svn_url": "https://github.com/MarketSquare/jupyterlab_robotmode",
+  "homepage": null,
+  "size": 398,
+  "stargazers_count": 6,
+  "watchers_count": 6,
+  "language": "TypeScript",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 4,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 1,
+  "license": {
+   "key": "bsd-3-clause",
+   "name": "BSD 3-Clause \"New\" or \"Revised\" License",
+   "spdx_id": "BSD-3-Clause",
+   "url": "https://api.github.com/licenses/bsd-3-clause",
+   "node_id": "MDc6TGljZW5zZTU="
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [],
+  "visibility": "public",
+  "forks": 4,
+  "open_issues": 1,
+  "watchers": 6,
+  "default_branch": "main",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "MarketSquare",
+   "id": 57290362,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjU3MjkwMzYy",
+   "avatar_url": "https://avatars.githubusercontent.com/u/57290362?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/MarketSquare",
+   "html_url": "https://github.com/MarketSquare",
+   "followers_url": "https://api.github.com/users/MarketSquare/followers",
+   "following_url": "https://api.github.com/users/MarketSquare/following{/other_user}",
+   "gists_url": "https://api.github.com/users/MarketSquare/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/MarketSquare/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/MarketSquare/subscriptions",
+   "organizations_url": "https://api.github.com/users/MarketSquare/orgs",
+   "repos_url": "https://api.github.com/users/MarketSquare/repos",
+   "events_url": "https://api.github.com/users/MarketSquare/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/MarketSquare/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 4,
+  "subscribers_count": 3
+ },
+ "funding": []
+}

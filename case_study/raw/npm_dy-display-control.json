@@ -1,0 +1,1338 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "dy-display-control"
+  },
+  "purl": "pkg:npm/dy-display-control",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.1.0"
+    },
+    "purl": "pkg:npm/dy-display-control@0.1.0",
+    "publishedAt": "2021-11-30T03:46:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.1.1"
+    },
+    "purl": "pkg:npm/dy-display-control@0.1.1",
+    "publishedAt": "2021-12-01T04:11:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.1.2"
+    },
+    "purl": "pkg:npm/dy-display-control@0.1.2",
+    "publishedAt": "2021-12-01T04:21:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.1.3"
+    },
+    "purl": "pkg:npm/dy-display-control@0.1.3",
+    "publishedAt": "2021-12-05T07:55:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.1.4"
+    },
+    "purl": "pkg:npm/dy-display-control@0.1.4",
+    "publishedAt": "2021-12-06T05:49:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.1.5"
+    },
+    "purl": "pkg:npm/dy-display-control@0.1.5",
+    "publishedAt": "2021-12-15T09:05:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.1.6"
+    },
+    "purl": "pkg:npm/dy-display-control@0.1.6",
+    "publishedAt": "2022-01-05T09:09:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.1.7"
+    },
+    "purl": "pkg:npm/dy-display-control@0.1.7",
+    "publishedAt": "2022-01-05T09:24:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.1"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.1",
+    "publishedAt": "2022-02-22T08:03:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.10"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.10",
+    "publishedAt": "2022-03-30T03:43:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.11"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.11",
+    "publishedAt": "2022-03-30T08:05:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.13"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.13",
+    "publishedAt": "2022-04-01T08:17:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.14"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.14",
+    "publishedAt": "2022-04-03T17:29:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.15"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.15",
+    "publishedAt": "2022-04-04T04:15:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.16"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.16",
+    "publishedAt": "2022-04-04T04:43:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.17"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.17",
+    "publishedAt": "2022-04-06T07:59:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.18"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.18",
+    "publishedAt": "2022-04-06T11:04:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.19"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.19",
+    "publishedAt": "2022-04-15T08:05:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.2"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.2",
+    "publishedAt": "2022-02-25T04:21:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.20"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.20",
+    "publishedAt": "2022-04-29T03:41:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.21"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.21",
+    "publishedAt": "2022-05-06T08:44:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.22"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.22",
+    "publishedAt": "2022-05-07T08:14:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.23"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.23",
+    "publishedAt": "2022-05-09T07:00:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.24"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.24",
+    "publishedAt": "2022-05-12T07:56:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.25"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.25",
+    "publishedAt": "2022-07-21T08:37:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.26"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.26",
+    "publishedAt": "2022-07-25T10:21:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.27"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.27",
+    "publishedAt": "2022-07-25T10:32:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.28"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.28",
+    "publishedAt": "2022-07-26T07:03:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.29"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.29",
+    "publishedAt": "2022-08-02T10:14:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.3"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.3",
+    "publishedAt": "2022-02-25T06:59:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.30"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.30",
+    "publishedAt": "2022-08-05T02:06:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.31"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.31",
+    "publishedAt": "2022-08-11T02:01:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.32"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.32",
+    "publishedAt": "2022-09-08T09:20:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.33"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.33",
+    "publishedAt": "2022-09-08T10:31:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.34"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.34",
+    "publishedAt": "2022-10-19T14:05:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.35"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.35",
+    "publishedAt": "2022-11-02T07:38:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.36"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.36",
+    "publishedAt": "2022-11-02T07:51:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.37"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.37",
+    "publishedAt": "2022-11-03T03:00:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.38"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.38",
+    "publishedAt": "2022-11-04T09:40:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.39"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.39",
+    "publishedAt": "2022-11-08T08:04:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.4"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.4",
+    "publishedAt": "2022-03-23T06:19:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.40"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.40",
+    "publishedAt": "2022-11-08T09:50:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.41"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.41",
+    "publishedAt": "2022-11-08T10:36:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.42"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.42",
+    "publishedAt": "2022-11-08T10:40:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.43"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.43",
+    "publishedAt": "2022-11-08T11:03:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.44"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.44",
+    "publishedAt": "2022-11-09T02:08:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.45"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.45",
+    "publishedAt": "2022-11-09T02:31:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.46"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.46",
+    "publishedAt": "2023-01-04T01:43:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.47"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.47",
+    "publishedAt": "2023-02-20T08:45:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.48"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.48",
+    "publishedAt": "2023-03-08T07:20:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.49"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.49",
+    "publishedAt": "2023-03-08T08:35:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.5"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.5",
+    "publishedAt": "2022-03-23T07:25:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.50"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.50",
+    "publishedAt": "2023-03-15T07:38:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.51"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.51",
+    "publishedAt": "2023-03-17T06:14:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.52"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.52",
+    "publishedAt": "2023-03-23T09:50:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.53"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.53",
+    "publishedAt": "2023-08-29T06:00:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.54"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.54",
+    "publishedAt": "2023-08-29T06:17:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.55"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.55",
+    "publishedAt": "2023-09-21T09:41:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.56"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.56",
+    "publishedAt": "2023-09-22T06:36:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.57"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.57",
+    "publishedAt": "2023-09-25T03:43:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.58"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.58",
+    "publishedAt": "2023-11-08T09:08:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.59"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.59",
+    "publishedAt": "2023-11-09T04:16:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.6"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.6",
+    "publishedAt": "2022-03-23T08:01:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.60"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.60",
+    "publishedAt": "2023-12-06T08:16:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.61"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.61",
+    "publishedAt": "2024-03-28T06:46:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.62"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.62",
+    "publishedAt": "2024-05-10T06:20:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.63"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.63",
+    "publishedAt": "2024-05-28T07:27:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.64"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.64",
+    "publishedAt": "2024-05-29T03:54:04Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.8"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.8",
+    "publishedAt": "2022-03-25T04:39:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.9"
+    },
+    "purl": "pkg:npm/dy-display-control@0.2.9",
+    "publishedAt": "2022-03-29T08:22:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "NPM",
+   "name": "dy-display-control",
+   "version": "0.2.64"
+  },
+  "purl": "pkg:npm/dy-display-control@0.2.64",
+  "publishedAt": "2024-05-29T03:54:04Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "MIT",
+    "spdx": "MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "ORIGIN",
+    "url": "https://registry.npmjs.org/dy-display-control/0.2.64"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://registry.npmjs.org/"
+  ],
+  "relatedProjects": [],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "dy-display-control",
+    "versionString": "0.2.64",
+    "source": "NPM_NPMJS_ORG"
+   }
+  ],
+  "cooldown": {
+   "end": "2024-06-13T03:54:04Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dy-display-control",
+     "version": "0.2.64"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/helper-string-parser",
+     "version": "7.29.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/helper-validator-identifier",
+     "version": "7.29.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/parser",
+     "version": "7.29.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/types",
+     "version": "7.29.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@vue/compiler-sfc",
+     "version": "2.7.16"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "async-validator",
+     "version": "1.8.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "babel-helper-vue-jsx-merge-props",
+     "version": "2.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "babel-runtime",
+     "version": "6.26.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "core-js",
+     "version": "2.6.12"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "core-js",
+     "version": "3.49.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "csstype",
+     "version": "3.2.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "deepmerge",
+     "version": "1.5.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "element-ui",
+     "version": "2.15.14"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "gsap",
+     "version": "3.15.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "jquery",
+     "version": "3.7.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "nanoid",
+     "version": "3.3.15"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "normalize-wheel",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "picocolors",
+     "version": "1.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "postcss",
+     "version": "8.5.16"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prettier",
+     "version": "2.8.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "regenerator-runtime",
+     "version": "0.11.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "resize-observer-polyfill",
+     "version": "1.5.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "source-map",
+     "version": "0.6.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "source-map-js",
+     "version": "1.2.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "three",
+     "version": "0.135.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "throttle-debounce",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "vue",
+     "version": "2.7.16"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "vue-router",
+     "version": "3.6.5"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 10,
+    "requirement": "^3.6.5"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 13,
+    "requirement": "^2.15.5"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 14,
+    "requirement": "^3.7.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 15,
+    "requirement": "^3.6.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 25,
+    "requirement": "^0.135.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 27,
+    "requirement": "^2.6.11"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 28,
+    "requirement": "^3.5.3"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 4,
+    "requirement": "^7.29.7"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 1,
+    "requirement": "^7.29.7"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 2,
+    "requirement": "^7.29.7"
+   },
+   {
+    "fromNode": 5,
+    "toNode": 3,
+    "requirement": "^7.23.5"
+   },
+   {
+    "fromNode": 5,
+    "toNode": 19,
+    "requirement": "^8.4.14"
+   },
+   {
+    "fromNode": 5,
+    "toNode": 20,
+    "requirement": "^1.18.2 || ^2.0.0"
+   },
+   {
+    "fromNode": 5,
+    "toNode": 23,
+    "requirement": "^0.6.1"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 8,
+    "requirement": "6.x"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 9,
+    "requirement": "^2.4.0"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 21,
+    "requirement": "^0.11.0"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 6,
+    "requirement": "~1.8.1"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 7,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 12,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 17,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 22,
+    "requirement": "^1.5.0"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 26,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 19,
+    "toNode": 16,
+    "requirement": "^3.3.12"
+   },
+   {
+    "fromNode": 19,
+    "toNode": 18,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 19,
+    "toNode": 24,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 27,
+    "toNode": 5,
+    "requirement": "2.7.16"
+   },
+   {
+    "fromNode": 27,
+    "toNode": 11,
+    "requirement": "^3.1.0"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ }
+}

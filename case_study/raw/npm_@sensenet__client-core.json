@@ -1,0 +1,978 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "@sensenet/client-core"
+  },
+  "purl": "pkg:npm/%40sensenet/client-core",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.0.0"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.0.0",
+    "publishedAt": "2018-02-08T15:48:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.0.0-development.1"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.0.0-development.1",
+    "publishedAt": "2018-01-15T14:08:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.0.0-development.10"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.0.0-development.10",
+    "publishedAt": "2018-02-06T10:07:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.0.0-development.11"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.0.0-development.11",
+    "publishedAt": "2018-02-07T14:02:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.0.0-development.12"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.0.0-development.12",
+    "publishedAt": "2018-02-07T14:34:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.0.0-development.2"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.0.0-development.2",
+    "publishedAt": "2018-01-17T10:49:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.0.0-development.3"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.0.0-development.3",
+    "publishedAt": "2018-01-18T12:58:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.0.0-development.4"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.0.0-development.4",
+    "publishedAt": "2018-01-22T14:07:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.0.0-development.5"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.0.0-development.5",
+    "publishedAt": "2018-01-29T15:11:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.0.0-development.6"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.0.0-development.6",
+    "publishedAt": "2018-01-30T13:15:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.0.0-development.7"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.0.0-development.7",
+    "publishedAt": "2018-01-31T14:39:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.0.0-development.8"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.0.0-development.8",
+    "publishedAt": "2018-01-31T14:51:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.0.0-development.9"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.0.0-development.9",
+    "publishedAt": "2018-02-02T17:50:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.0.1"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.0.1",
+    "publishedAt": "2018-03-14T13:11:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.0.2"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.0.2",
+    "publishedAt": "2018-03-14T13:31:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.1.0"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.1.0",
+    "publishedAt": "2018-05-28T09:19:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.2.0"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.2.0",
+    "publishedAt": "2018-06-14T12:53:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.2.1"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.2.1",
+    "publishedAt": "2018-07-09T10:47:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.2.2"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.2.2",
+    "publishedAt": "2018-07-19T09:16:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.2.2-development.1"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.2.2-development.1",
+    "publishedAt": "2018-07-19T09:09:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.2.3"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.2.3",
+    "publishedAt": "2018-07-23T08:28:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.2.4"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.2.4",
+    "publishedAt": "2018-07-31T08:10:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.2.5"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.2.5",
+    "publishedAt": "2018-08-03T07:26:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.2.6"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.2.6",
+    "publishedAt": "2018-08-27T11:07:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.3.0"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.3.0",
+    "publishedAt": "2018-08-28T07:33:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.3.1"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.3.1",
+    "publishedAt": "2018-11-05T14:21:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.3.2"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.3.2",
+    "publishedAt": "2019-01-09T12:50:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.3.2-alpha.0"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.3.2-alpha.0",
+    "publishedAt": "2018-12-10T12:23:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.4.0"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.4.0",
+    "publishedAt": "2019-02-06T13:20:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.4.1"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.4.1",
+    "publishedAt": "2019-03-06T10:48:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "1.5.1"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@1.5.1",
+    "publishedAt": "2019-04-03T09:41:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "2.0.0"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@2.0.0",
+    "publishedAt": "2019-05-02T09:09:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "2.0.1"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@2.0.1",
+    "publishedAt": "2019-05-29T09:30:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "2.1.0"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@2.1.0",
+    "publishedAt": "2019-06-26T09:47:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "2.1.1"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@2.1.1",
+    "publishedAt": "2019-07-24T10:19:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "2.2.0"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@2.2.0",
+    "publishedAt": "2019-08-21T11:01:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "2.2.1"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@2.2.1",
+    "publishedAt": "2019-09-18T12:39:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "2.2.2"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@2.2.2",
+    "publishedAt": "2019-10-16T07:33:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "2.2.3"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@2.2.3",
+    "publishedAt": "2019-11-13T13:43:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "2.2.4"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@2.2.4",
+    "publishedAt": "2019-11-15T16:00:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "2.2.5"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@2.2.5",
+    "publishedAt": "2019-12-11T10:10:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "2.2.6"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@2.2.6",
+    "publishedAt": "2020-01-15T13:03:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "2.3.0"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@2.3.0",
+    "publishedAt": "2020-01-27T20:36:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "2.4.0"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@2.4.0",
+    "publishedAt": "2020-03-11T11:00:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "2.4.1"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@2.4.1",
+    "publishedAt": "2020-04-08T10:50:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "3.0.0"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@3.0.0",
+    "publishedAt": "2020-05-07T08:07:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "3.0.0-alfa"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@3.0.0-alfa",
+    "publishedAt": "2020-04-24T14:16:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "3.0.1"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@3.0.1",
+    "publishedAt": "2020-06-05T12:02:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "3.1.0"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@3.1.0",
+    "publishedAt": "2020-07-01T13:25:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "3.10.0"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@3.10.0",
+    "publishedAt": "2021-04-19T13:05:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "3.2.0"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@3.2.0",
+    "publishedAt": "2020-08-07T06:08:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "3.3.0"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@3.3.0",
+    "publishedAt": "2020-08-26T12:52:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "3.4.0"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@3.4.0",
+    "publishedAt": "2020-09-29T13:33:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "3.6.0"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@3.6.0",
+    "publishedAt": "2020-11-23T13:28:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "3.7.0"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@3.7.0",
+    "publishedAt": "2020-12-14T11:13:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "3.8.0"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@3.8.0",
+    "publishedAt": "2021-01-25T14:38:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "3.8.1"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@3.8.1",
+    "publishedAt": "2021-02-22T16:31:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "3.9.0"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@3.9.0",
+    "publishedAt": "2021-03-22T14:30:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "4.0.0"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@4.0.0",
+    "publishedAt": "2021-06-14T09:33:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "4.0.1"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@4.0.1",
+    "publishedAt": "2021-07-21T08:10:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "4.0.2"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@4.0.2",
+    "publishedAt": "2022-08-26T16:35:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "4.1.0"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@4.1.0",
+    "publishedAt": "2023-06-26T11:15:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "4.2.0"
+    },
+    "purl": "pkg:npm/%40sensenet/client-core@4.2.0",
+    "publishedAt": "2024-04-03T13:14:35Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "NPM",
+   "name": "@sensenet/client-core",
+   "version": "4.2.0"
+  },
+  "purl": "pkg:npm/%40sensenet/client-core@4.2.0",
+  "publishedAt": "2024-04-03T13:14:35Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "GPL-2.0"
+  ],
+  "licenseDetails": [
+   {
+    "license": "GPL-2.0",
+    "spdx": "GPL-2.0"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "HOMEPAGE",
+    "url": "https://sensenet.com"
+   },
+   {
+    "label": "ORIGIN",
+    "url": "https://registry.npmjs.org/@sensenet%2Fclient-core/4.2.0"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://registry.npmjs.org/"
+  ],
+  "relatedProjects": [],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "@sensenet/client-core",
+    "versionString": "4.2.0",
+    "source": "NPM_NPMJS_ORG"
+   }
+  ],
+  "cooldown": {
+   "end": "2024-04-18T13:14:35Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-core",
+     "version": "4.2.0"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/runtime",
+     "version": "7.29.7"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/client-utils",
+     "version": "2.3.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/default-content-types",
+     "version": "5.1.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sensenet/query",
+     "version": "2.1.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "reflect-metadata",
+     "version": "0.1.14"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "semaphore-async-await",
+     "version": "1.5.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslib",
+     "version": "2.8.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "uuid",
+     "version": "8.3.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 1,
+    "requirement": "^7.18.9"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 2,
+    "requirement": "^2.3.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 3,
+    "requirement": "^5.1.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 4,
+    "requirement": "^2.1.3"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 6,
+    "requirement": "^1.5.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 7,
+    "requirement": "^2.4.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 8,
+    "requirement": "^8.3.2"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 1,
+    "requirement": "^7.18.9"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 5,
+    "requirement": "^0.1.13"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 7,
+    "requirement": "^2.4.0"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 1,
+    "requirement": "^7.15.3"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 7,
+    "requirement": "^2.4.0"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 11,
+  "directDependentCount": 10,
+  "indirectDependentCount": 5
+ }
+}

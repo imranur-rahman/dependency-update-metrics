@@ -1,0 +1,826 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "datatables.net-fixedcolumns-bs"
+  },
+  "purl": "pkg:npm/datatables.net-fixedcolumns-bs",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "3.1.0"
+    },
+    "purl": "pkg:npm/datatables.net-fixedcolumns-bs@3.1.0",
+    "publishedAt": "2015-10-07T14:23:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "3.2.0"
+    },
+    "purl": "pkg:npm/datatables.net-fixedcolumns-bs@3.2.0",
+    "publishedAt": "2015-11-07T10:47:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "3.2.1"
+    },
+    "purl": "pkg:npm/datatables.net-fixedcolumns-bs@3.2.1",
+    "publishedAt": "2016-02-11T11:41:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "3.2.2"
+    },
+    "purl": "pkg:npm/datatables.net-fixedcolumns-bs@3.2.2",
+    "publishedAt": "2016-05-20T11:01:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "3.2.3"
+    },
+    "purl": "pkg:npm/datatables.net-fixedcolumns-bs@3.2.3",
+    "publishedAt": "2017-09-12T13:26:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "3.2.4"
+    },
+    "purl": "pkg:npm/datatables.net-fixedcolumns-bs@3.2.4",
+    "publishedAt": "2017-12-08T15:06:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "3.2.5"
+    },
+    "purl": "pkg:npm/datatables.net-fixedcolumns-bs@3.2.5",
+    "publishedAt": "2018-06-19T13:50:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "3.2.6"
+    },
+    "purl": "pkg:npm/datatables.net-fixedcolumns-bs@3.2.6",
+    "publishedAt": "2018-06-22T15:59:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "3.3.0"
+    },
+    "purl": "pkg:npm/datatables.net-fixedcolumns-bs@3.3.0",
+    "publishedAt": "2019-10-01T10:46:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "3.3.1"
+    },
+    "purl": "pkg:npm/datatables.net-fixedcolumns-bs@3.3.1",
+    "publishedAt": "2020-05-11T13:02:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "3.3.2"
+    },
+    "purl": "pkg:npm/datatables.net-fixedcolumns-bs@3.3.2",
+    "publishedAt": "2020-09-18T14:36:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "3.3.3"
+    },
+    "purl": "pkg:npm/datatables.net-fixedcolumns-bs@3.3.3",
+    "publishedAt": "2021-06-04T13:19:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "4.0.0"
+    },
+    "purl": "pkg:npm/datatables.net-fixedcolumns-bs@4.0.0",
+    "publishedAt": "2021-09-23T10:36:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "4.0.1"
+    },
+    "purl": "pkg:npm/datatables.net-fixedcolumns-bs@4.0.1",
+    "publishedAt": "2021-10-25T10:57:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "4.0.2"
+    },
+    "purl": "pkg:npm/datatables.net-fixedcolumns-bs@4.0.2",
+    "publishedAt": "2022-02-18T13:57:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "4.1.0"
+    },
+    "purl": "pkg:npm/datatables.net-fixedcolumns-bs@4.1.0",
+    "publishedAt": "2022-05-12T11:22:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "4.2.0"
+    },
+    "purl": "pkg:npm/datatables.net-fixedcolumns-bs@4.2.0",
+    "publishedAt": "2022-11-07T14:42:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "4.2.1"
+    },
+    "purl": "pkg:npm/datatables.net-fixedcolumns-bs@4.2.1",
+    "publishedAt": "2022-11-07T16:12:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "4.2.2"
+    },
+    "purl": "pkg:npm/datatables.net-fixedcolumns-bs@4.2.2",
+    "publishedAt": "2023-03-10T16:26:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "4.3.0"
+    },
+    "purl": "pkg:npm/datatables.net-fixedcolumns-bs@4.3.0",
+    "publishedAt": "2023-07-04T11:31:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "4.3.1"
+    },
+    "purl": "pkg:npm/datatables.net-fixedcolumns-bs@4.3.1",
+    "publishedAt": "2024-02-16T22:01:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "5.0.0"
+    },
+    "purl": "pkg:npm/datatables.net-fixedcolumns-bs@5.0.0",
+    "publishedAt": "2024-02-16T21:55:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "5.0.2"
+    },
+    "purl": "pkg:npm/datatables.net-fixedcolumns-bs@5.0.2",
+    "publishedAt": "2024-09-25T08:51:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "5.0.3"
+    },
+    "purl": "pkg:npm/datatables.net-fixedcolumns-bs@5.0.3",
+    "publishedAt": "2024-10-04T10:06:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "5.0.4"
+    },
+    "purl": "pkg:npm/datatables.net-fixedcolumns-bs@5.0.4",
+    "publishedAt": "2024-10-23T09:16:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "5.0.5"
+    },
+    "purl": "pkg:npm/datatables.net-fixedcolumns-bs@5.0.5",
+    "publishedAt": "2025-09-09T10:11:18Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "6.0.0-beta.1"
+    },
+    "purl": "pkg:npm/datatables.net-fixedcolumns-bs@6.0.0-beta.1",
+    "publishedAt": "2026-04-07T13:43:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "NPM",
+   "name": "datatables.net-fixedcolumns-bs",
+   "version": "5.0.5"
+  },
+  "purl": "pkg:npm/datatables.net-fixedcolumns-bs@5.0.5",
+  "publishedAt": "2025-09-09T10:11:18Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "MIT",
+    "spdx": "MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "HOMEPAGE",
+    "url": "https://datatables.net"
+   },
+   {
+    "label": "ISSUE_TRACKER",
+    "url": "https://datatables.net/forums"
+   },
+   {
+    "label": "ORIGIN",
+    "url": "https://registry.npmjs.org/datatables.net-fixedcolumns-bs/5.0.5"
+   },
+   {
+    "label": "SOURCE_REPO",
+    "url": "git+https://github.com/DataTables/Dist-DataTables-FixedColumns-Bootstrap.git"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://registry.npmjs.org/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/datatables/dist-datatables-fixedcolumns-bootstrap"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "datatables.net-fixedcolumns-bs",
+    "versionString": "5.0.5",
+    "source": "NPM_NPMJS_ORG"
+   }
+  ],
+  "cooldown": {
+   "end": "2025-09-24T10:11:18Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns-bs",
+     "version": "5.0.5"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net",
+     "version": "2.3.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-bs",
+     "version": "2.3.8"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "datatables.net-fixedcolumns",
+     "version": "5.0.5"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "jquery",
+     "version": "4.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 2,
+    "requirement": "^2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 3,
+    "requirement": "5.0.5"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 4,
+    "requirement": ">=1.7"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 4,
+    "requirement": ">=1.7"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 1,
+    "requirement": "2.3.8"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 4,
+    "requirement": ">=1.7"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 1,
+    "requirement": "^2"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 4,
+    "requirement": ">=1.7"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/datatables/dist-datatables-fixedcolumns-bootstrap"
+  },
+  "openIssuesCount": 0,
+  "starsCount": 3,
+  "forksCount": 3,
+  "license": "non-standard",
+  "description": "",
+  "homepage": "",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/DataTables/Dist-DataTables-FixedColumns-Bootstrap",
+    "commit": "4dc8fd10044bf65e0afa5e3932f2e661c7f472f0"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": -1,
+     "reason": "no workflows found",
+     "details": []
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": -1,
+     "reason": "No tokens found",
+     "details": []
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": -1,
+     "reason": "no dependencies found",
+     "details": []
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 1,
+     "reason": "2 commit(s) and 0 issue activity found in the last 90 days -- score normalized to 1",
+     "details": []
+    },
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 0,
+     "reason": "Found 0/30 approved changesets -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "no SAST tool detected",
+     "details": [
+      "Warn: no pull requests merged into dev branch"
+     ]
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 0,
+     "reason": "security policy file not detected",
+     "details": [
+      "Warn: no security policy file detected",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze"
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 9,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: License.txt:0",
+      "Warn: project license file does not contain an FSF or OSI license."
+     ]
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": 0,
+     "reason": "branch protection not enabled on development/release branches",
+     "details": [
+      "Warn: branch protection not enabled for branch 'master'"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    }
+   ],
+   "overallScore": 2.1,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 43820992,
+  "node_id": "MDEwOlJlcG9zaXRvcnk0MzgyMDk5Mg==",
+  "name": "Dist-DataTables-FixedColumns-Bootstrap",
+  "full_name": "DataTables/Dist-DataTables-FixedColumns-Bootstrap",
+  "private": false,
+  "owner": {
+   "login": "DataTables",
+   "id": 278219,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjI3ODIxOQ==",
+   "avatar_url": "https://avatars.githubusercontent.com/u/278219?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/DataTables",
+   "html_url": "https://github.com/DataTables",
+   "followers_url": "https://api.github.com/users/DataTables/followers",
+   "following_url": "https://api.github.com/users/DataTables/following{/other_user}",
+   "gists_url": "https://api.github.com/users/DataTables/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/DataTables/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/DataTables/subscriptions",
+   "organizations_url": "https://api.github.com/users/DataTables/orgs",
+   "repos_url": "https://api.github.com/users/DataTables/repos",
+   "events_url": "https://api.github.com/users/DataTables/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/DataTables/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/DataTables/Dist-DataTables-FixedColumns-Bootstrap",
+  "description": null,
+  "fork": false,
+  "url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap",
+  "forks_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/forks",
+  "keys_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/teams",
+  "hooks_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/hooks",
+  "issue_events_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/events",
+  "assignees_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/tags",
+  "blobs_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/languages",
+  "stargazers_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/stargazers",
+  "contributors_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/contributors",
+  "subscribers_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/subscribers",
+  "subscription_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/subscription",
+  "commits_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/merges",
+  "archive_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/downloads",
+  "issues_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/labels{/name}",
+  "releases_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/DataTables/Dist-DataTables-FixedColumns-Bootstrap/deployments",
+  "created_at": "2015-10-07T14:22:50Z",
+  "updated_at": "2026-07-19T13:56:28Z",
+  "pushed_at": "2026-07-19T13:56:24Z",
+  "git_url": "git://github.com/DataTables/Dist-DataTables-FixedColumns-Bootstrap.git",
+  "ssh_url": "git@github.com:DataTables/Dist-DataTables-FixedColumns-Bootstrap.git",
+  "clone_url": "https://github.com/DataTables/Dist-DataTables-FixedColumns-Bootstrap.git",
+  "svn_url": "https://github.com/DataTables/Dist-DataTables-FixedColumns-Bootstrap",
+  "homepage": null,
+  "size": 137,
+  "stargazers_count": 3,
+  "watchers_count": 3,
+  "language": "CSS",
+  "has_issues": false,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": false,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 3,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 0,
+  "license": {
+   "key": "other",
+   "name": "Other",
+   "spdx_id": "NOASSERTION",
+   "url": null,
+   "node_id": "MDc6TGljZW5zZTA="
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [],
+  "visibility": "public",
+  "forks": 3,
+  "open_issues": 0,
+  "watchers": 3,
+  "default_branch": "master",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "DataTables",
+   "id": 278219,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjI3ODIxOQ==",
+   "avatar_url": "https://avatars.githubusercontent.com/u/278219?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/DataTables",
+   "html_url": "https://github.com/DataTables",
+   "followers_url": "https://api.github.com/users/DataTables/followers",
+   "following_url": "https://api.github.com/users/DataTables/following{/other_user}",
+   "gists_url": "https://api.github.com/users/DataTables/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/DataTables/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/DataTables/subscriptions",
+   "organizations_url": "https://api.github.com/users/DataTables/orgs",
+   "repos_url": "https://api.github.com/users/DataTables/repos",
+   "events_url": "https://api.github.com/users/DataTables/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/DataTables/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 3,
+  "subscribers_count": 2
+ },
+ "funding": []
+}

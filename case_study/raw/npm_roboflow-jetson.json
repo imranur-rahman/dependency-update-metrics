@@ -1,0 +1,2892 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "roboflow-jetson"
+  },
+  "purl": "pkg:npm/roboflow-jetson",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "roboflow-jetson",
+     "version": "0.2.10"
+    },
+    "purl": "pkg:npm/roboflow-jetson@0.2.10",
+    "publishedAt": "2021-07-15T21:46:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "roboflow-jetson",
+     "version": "0.2.11"
+    },
+    "purl": "pkg:npm/roboflow-jetson@0.2.11",
+    "publishedAt": "2021-07-15T22:04:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "roboflow-jetson",
+     "version": "0.2.12"
+    },
+    "purl": "pkg:npm/roboflow-jetson@0.2.12",
+    "publishedAt": "2021-07-20T20:38:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "roboflow-jetson",
+     "version": "0.2.13"
+    },
+    "purl": "pkg:npm/roboflow-jetson@0.2.13",
+    "publishedAt": "2021-07-20T23:11:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "roboflow-jetson",
+     "version": "0.2.14"
+    },
+    "purl": "pkg:npm/roboflow-jetson@0.2.14",
+    "publishedAt": "2021-07-20T23:39:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "roboflow-jetson",
+     "version": "0.2.15"
+    },
+    "purl": "pkg:npm/roboflow-jetson@0.2.15",
+    "publishedAt": "2021-07-27T18:26:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "roboflow-jetson",
+     "version": "0.2.16"
+    },
+    "purl": "pkg:npm/roboflow-jetson@0.2.16",
+    "publishedAt": "2021-07-27T18:32:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "roboflow-jetson",
+     "version": "0.2.17"
+    },
+    "purl": "pkg:npm/roboflow-jetson@0.2.17",
+    "publishedAt": "2021-11-12T23:53:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "roboflow-jetson",
+     "version": "0.2.18"
+    },
+    "purl": "pkg:npm/roboflow-jetson@0.2.18",
+    "publishedAt": "2021-11-16T01:39:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "roboflow-jetson",
+     "version": "0.2.2"
+    },
+    "purl": "pkg:npm/roboflow-jetson@0.2.2",
+    "publishedAt": "2021-02-28T21:43:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "roboflow-jetson",
+     "version": "0.2.20"
+    },
+    "purl": "pkg:npm/roboflow-jetson@0.2.20",
+    "publishedAt": "2022-02-22T01:44:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "roboflow-jetson",
+     "version": "0.2.21"
+    },
+    "purl": "pkg:npm/roboflow-jetson@0.2.21",
+    "publishedAt": "2022-03-04T20:45:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "roboflow-jetson",
+     "version": "0.2.22"
+    },
+    "purl": "pkg:npm/roboflow-jetson@0.2.22",
+    "publishedAt": "2022-07-25T22:56:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "roboflow-jetson",
+     "version": "0.2.25"
+    },
+    "purl": "pkg:npm/roboflow-jetson@0.2.25",
+    "publishedAt": "2023-01-31T22:01:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "roboflow-jetson",
+     "version": "0.2.26"
+    },
+    "purl": "pkg:npm/roboflow-jetson@0.2.26",
+    "publishedAt": "2023-08-17T17:23:32Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "roboflow-jetson",
+     "version": "0.2.3"
+    },
+    "purl": "pkg:npm/roboflow-jetson@0.2.3",
+    "publishedAt": "2021-03-03T19:33:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "roboflow-jetson",
+     "version": "0.2.4"
+    },
+    "purl": "pkg:npm/roboflow-jetson@0.2.4",
+    "publishedAt": "2021-03-09T21:18:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "roboflow-jetson",
+     "version": "0.2.5"
+    },
+    "purl": "pkg:npm/roboflow-jetson@0.2.5",
+    "publishedAt": "2021-03-09T21:48:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "roboflow-jetson",
+     "version": "0.2.6"
+    },
+    "purl": "pkg:npm/roboflow-jetson@0.2.6",
+    "publishedAt": "2021-03-09T23:47:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "roboflow-jetson",
+     "version": "0.2.7"
+    },
+    "purl": "pkg:npm/roboflow-jetson@0.2.7",
+    "publishedAt": "2021-07-15T16:13:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "roboflow-jetson",
+     "version": "0.2.8"
+    },
+    "purl": "pkg:npm/roboflow-jetson@0.2.8",
+    "publishedAt": "2021-07-15T16:41:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "roboflow-jetson",
+     "version": "0.2.9"
+    },
+    "purl": "pkg:npm/roboflow-jetson@0.2.9",
+    "publishedAt": "2021-07-15T16:46:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "NPM",
+   "name": "roboflow-jetson",
+   "version": "0.2.26"
+  },
+  "purl": "pkg:npm/roboflow-jetson@0.2.26",
+  "publishedAt": "2023-08-17T17:23:32Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "non-standard"
+  ],
+  "licenseDetails": [
+   {
+    "license": "SEE LICENSE IN roboflow-license.txt",
+    "spdx": "non-standard"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "ORIGIN",
+    "url": "https://registry.npmjs.org/roboflow-jetson/0.2.26"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://registry.npmjs.org/"
+  ],
+  "relatedProjects": [],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "roboflow-jetson",
+    "versionString": "0.2.26",
+    "source": "NPM_NPMJS_ORG"
+   }
+  ],
+  "cooldown": {
+   "end": "2023-09-01T17:23:32Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "roboflow-jetson",
+     "version": "0.2.26"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@roboflow/tfjs-jetson",
+     "version": "3.2.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@tensorflow/tfjs-converter",
+     "version": "3.21.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@tensorflow/tfjs-core",
+     "version": "3.21.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "axios",
+     "version": "0.21.4"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-fetch",
+     "version": "2.7.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "rimraf",
+     "version": "3.0.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@tensorflow/tfjs",
+     "version": "3.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "adm-zip",
+     "version": "0.4.16"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-protobuf",
+     "version": "3.21.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "https-proxy-agent",
+     "version": "2.2.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-pre-gyp",
+     "version": "0.14.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "progress",
+     "version": "2.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "rimraf",
+     "version": "2.7.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tar",
+     "version": "4.4.19"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@types/long",
+     "version": "4.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@types/offscreencanvas",
+     "version": "2019.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@types/seedrandom",
+     "version": "2.4.34"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@types/webgl-ext",
+     "version": "0.0.30"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@webgpu/types",
+     "version": "0.1.16"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "long",
+     "version": "4.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-fetch",
+     "version": "2.6.13"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "seedrandom",
+     "version": "3.0.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "follow-redirects",
+     "version": "1.16.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "whatwg-url",
+     "version": "5.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "glob",
+     "version": "7.2.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@tensorflow/tfjs-backend-cpu",
+     "version": "3.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@tensorflow/tfjs-backend-webgl",
+     "version": "3.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@tensorflow/tfjs-converter",
+     "version": "3.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@tensorflow/tfjs-core",
+     "version": "3.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@tensorflow/tfjs-data",
+     "version": "3.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@tensorflow/tfjs-layers",
+     "version": "3.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "argparse",
+     "version": "1.0.10"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "chalk",
+     "version": "4.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "core-js",
+     "version": "3.49.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "regenerator-runtime",
+     "version": "0.13.11"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "yargs",
+     "version": "16.2.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "agent-base",
+     "version": "4.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "debug",
+     "version": "3.2.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "detect-libc",
+     "version": "1.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "mkdirp",
+     "version": "0.5.6"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "needle",
+     "version": "2.9.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "nopt",
+     "version": "4.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "npm-packlist",
+     "version": "1.4.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "npmlog",
+     "version": "4.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "rc",
+     "version": "1.2.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "rimraf",
+     "version": "2.7.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "semver",
+     "version": "5.7.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "chownr",
+     "version": "1.1.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "fs-minipass",
+     "version": "1.2.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "minipass",
+     "version": "2.9.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "minizlib",
+     "version": "1.3.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "safe-buffer",
+     "version": "5.2.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "yallist",
+     "version": "3.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tr46",
+     "version": "0.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "webidl-conversions",
+     "version": "3.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "fs.realpath",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "inflight",
+     "version": "1.0.6"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "inherits",
+     "version": "2.0.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "minimatch",
+     "version": "3.1.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "once",
+     "version": "1.4.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "path-is-absolute",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@types/seedrandom",
+     "version": "2.4.27"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "seedrandom",
+     "version": "2.4.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@types/webgl2",
+     "version": "0.0.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-fetch",
+     "version": "2.6.13"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@types/node-fetch",
+     "version": "2.6.13"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-fetch",
+     "version": "2.6.13"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sprintf-js",
+     "version": "1.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "ansi-styles",
+     "version": "4.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "supports-color",
+     "version": "7.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cliui",
+     "version": "7.0.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "escalade",
+     "version": "3.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "get-caller-file",
+     "version": "2.0.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "require-directory",
+     "version": "2.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "string-width",
+     "version": "4.2.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "y18n",
+     "version": "5.0.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "yargs-parser",
+     "version": "20.2.9"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "es6-promisify",
+     "version": "5.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "ms",
+     "version": "2.1.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "minimist",
+     "version": "1.2.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "iconv-lite",
+     "version": "0.4.24"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sax",
+     "version": "1.6.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "abbrev",
+     "version": "1.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "osenv",
+     "version": "0.1.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "ignore-walk",
+     "version": "3.0.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "npm-bundled",
+     "version": "1.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "npm-normalize-package-bin",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "are-we-there-yet",
+     "version": "1.1.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "console-control-strings",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "gauge",
+     "version": "2.7.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "set-blocking",
+     "version": "2.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "deep-extend",
+     "version": "0.6.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "ini",
+     "version": "1.3.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "strip-json-comments",
+     "version": "2.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "safe-buffer",
+     "version": "5.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "wrappy",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "brace-expansion",
+     "version": "1.1.16"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@types/node",
+     "version": "26.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "form-data",
+     "version": "4.0.6"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "color-convert",
+     "version": "2.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "has-flag",
+     "version": "4.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "strip-ansi",
+     "version": "6.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "wrap-ansi",
+     "version": "7.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "emoji-regex",
+     "version": "8.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-fullwidth-code-point",
+     "version": "3.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "es6-promise",
+     "version": "4.2.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "safer-buffer",
+     "version": "2.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "os-homedir",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "os-tmpdir",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "delegates",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "readable-stream",
+     "version": "2.3.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "aproba",
+     "version": "1.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "has-unicode",
+     "version": "2.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "object-assign",
+     "version": "4.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "signal-exit",
+     "version": "3.0.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "string-width",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "strip-ansi",
+     "version": "3.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "wide-align",
+     "version": "1.1.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "balanced-match",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "concat-map",
+     "version": "0.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "undici-types",
+     "version": "8.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "asynckit",
+     "version": "0.4.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "combined-stream",
+     "version": "1.0.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "es-set-tostringtag",
+     "version": "2.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "hasown",
+     "version": "2.0.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "mime-types",
+     "version": "2.1.35"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "color-name",
+     "version": "1.1.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "ansi-regex",
+     "version": "5.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "core-util-is",
+     "version": "1.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "isarray",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "process-nextick-args",
+     "version": "2.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "string_decoder",
+     "version": "1.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "util-deprecate",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "code-point-at",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-fullwidth-code-point",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "ansi-regex",
+     "version": "2.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "delayed-stream",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "es-errors",
+     "version": "1.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "get-intrinsic",
+     "version": "1.3.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "has-tostringtag",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "function-bind",
+     "version": "1.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "mime-db",
+     "version": "1.52.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "number-is-nan",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "async-function",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "async-generator-function",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "call-bind-apply-helpers",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "es-define-property",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "es-object-atoms",
+     "version": "1.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "generator-function",
+     "version": "2.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "get-proto",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "gopd",
+     "version": "1.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "has-symbols",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "math-intrinsics",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dunder-proto",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 1,
+    "requirement": "^3.2.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 2,
+    "requirement": "^3.2.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 3,
+    "requirement": "^3.2.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 4,
+    "requirement": "^0.21.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 5,
+    "requirement": "^2.6.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 6,
+    "requirement": "^3.0.2"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 7,
+    "requirement": "3.2.0"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 8,
+    "requirement": "^0.4.11"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 9,
+    "requirement": "^3.9.2"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 10,
+    "requirement": "^2.2.1"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 11,
+    "requirement": "0.14.0"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 12,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 13,
+    "requirement": "^2.6.2"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 14,
+    "requirement": "^4.4.6"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 15,
+    "requirement": "^4.0.1"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 16,
+    "requirement": "~2019.3.0"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 17,
+    "requirement": "^2.4.28"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 18,
+    "requirement": "0.0.30"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 19,
+    "requirement": "0.1.16"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 20,
+    "requirement": "4.0.0"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 21,
+    "requirement": "~2.6.1"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 22,
+    "requirement": "^3.0.5"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 23,
+    "requirement": "^1.14.0"
+   },
+   {
+    "fromNode": 5,
+    "toNode": 24,
+    "requirement": "^5.0.0"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 25,
+    "requirement": "^7.1.3"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 26,
+    "requirement": "3.2.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 27,
+    "requirement": "3.2.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 28,
+    "requirement": "3.2.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 29,
+    "requirement": "3.2.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 30,
+    "requirement": "3.2.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 31,
+    "requirement": "3.2.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 32,
+    "requirement": "^1.0.10"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 33,
+    "requirement": "^4.1.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 34,
+    "requirement": "3"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 35,
+    "requirement": "^0.13.5"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 36,
+    "requirement": "^16.0.3"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 37,
+    "requirement": "^4.3.0"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 38,
+    "requirement": "^3.1.0"
+   },
+   {
+    "fromNode": 11,
+    "toNode": 14,
+    "requirement": "^4.4.2"
+   },
+   {
+    "fromNode": 11,
+    "toNode": 39,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 11,
+    "toNode": 40,
+    "requirement": "^0.5.1"
+   },
+   {
+    "fromNode": 11,
+    "toNode": 41,
+    "requirement": "^2.2.1"
+   },
+   {
+    "fromNode": 11,
+    "toNode": 42,
+    "requirement": "^4.0.1"
+   },
+   {
+    "fromNode": 11,
+    "toNode": 43,
+    "requirement": "^1.1.6"
+   },
+   {
+    "fromNode": 11,
+    "toNode": 44,
+    "requirement": "^4.0.2"
+   },
+   {
+    "fromNode": 11,
+    "toNode": 45,
+    "requirement": "^1.2.7"
+   },
+   {
+    "fromNode": 11,
+    "toNode": 46,
+    "requirement": "^2.6.1"
+   },
+   {
+    "fromNode": 11,
+    "toNode": 47,
+    "requirement": "^5.3.0"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 25,
+    "requirement": "^7.1.3"
+   },
+   {
+    "fromNode": 14,
+    "toNode": 40,
+    "requirement": "^0.5.5"
+   },
+   {
+    "fromNode": 14,
+    "toNode": 48,
+    "requirement": "^1.1.4"
+   },
+   {
+    "fromNode": 14,
+    "toNode": 49,
+    "requirement": "^1.2.7"
+   },
+   {
+    "fromNode": 14,
+    "toNode": 50,
+    "requirement": "^2.9.0"
+   },
+   {
+    "fromNode": 14,
+    "toNode": 51,
+    "requirement": "^1.3.3"
+   },
+   {
+    "fromNode": 14,
+    "toNode": 52,
+    "requirement": "^5.2.1"
+   },
+   {
+    "fromNode": 14,
+    "toNode": 53,
+    "requirement": "^3.1.1"
+   },
+   {
+    "fromNode": 21,
+    "toNode": 24,
+    "requirement": "^5.0.0"
+   },
+   {
+    "fromNode": 24,
+    "toNode": 54,
+    "requirement": "~0.0.3"
+   },
+   {
+    "fromNode": 24,
+    "toNode": 55,
+    "requirement": "^3.0.0"
+   },
+   {
+    "fromNode": 25,
+    "toNode": 56,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 25,
+    "toNode": 57,
+    "requirement": "^1.0.4"
+   },
+   {
+    "fromNode": 25,
+    "toNode": 58,
+    "requirement": "2"
+   },
+   {
+    "fromNode": 25,
+    "toNode": 59,
+    "requirement": "^3.1.1"
+   },
+   {
+    "fromNode": 25,
+    "toNode": 60,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 25,
+    "toNode": 61,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 62,
+    "requirement": "2.4.27"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 63,
+    "requirement": "2.4.3"
+   },
+   {
+    "fromNode": 27,
+    "toNode": 16,
+    "requirement": "~2019.3.0"
+   },
+   {
+    "fromNode": 27,
+    "toNode": 18,
+    "requirement": "0.0.30"
+   },
+   {
+    "fromNode": 27,
+    "toNode": 26,
+    "requirement": "3.2.0"
+   },
+   {
+    "fromNode": 27,
+    "toNode": 62,
+    "requirement": "2.4.27"
+   },
+   {
+    "fromNode": 27,
+    "toNode": 63,
+    "requirement": "2.4.3"
+   },
+   {
+    "fromNode": 27,
+    "toNode": 64,
+    "requirement": "0.0.5"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 16,
+    "requirement": "~2019.3.0"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 18,
+    "requirement": "0.0.30"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 62,
+    "requirement": "2.4.27"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 63,
+    "requirement": "2.4.3"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 65,
+    "requirement": "~2.6.1"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 66,
+    "requirement": "^2.1.2"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 67,
+    "requirement": "~2.6.1"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 68,
+    "requirement": "~1.0.2"
+   },
+   {
+    "fromNode": 33,
+    "toNode": 69,
+    "requirement": "^4.1.0"
+   },
+   {
+    "fromNode": 33,
+    "toNode": 70,
+    "requirement": "^7.1.0"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 71,
+    "requirement": "^7.0.2"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 72,
+    "requirement": "^3.1.1"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 73,
+    "requirement": "^2.0.5"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 74,
+    "requirement": "^2.1.1"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 75,
+    "requirement": "^4.2.0"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 76,
+    "requirement": "^5.0.5"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 77,
+    "requirement": "^20.2.2"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 78,
+    "requirement": "^5.0.0"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 79,
+    "requirement": "^2.1.1"
+   },
+   {
+    "fromNode": 40,
+    "toNode": 80,
+    "requirement": "^1.2.6"
+   },
+   {
+    "fromNode": 41,
+    "toNode": 38,
+    "requirement": "^3.2.6"
+   },
+   {
+    "fromNode": 41,
+    "toNode": 81,
+    "requirement": "^0.4.4"
+   },
+   {
+    "fromNode": 41,
+    "toNode": 82,
+    "requirement": "^1.2.4"
+   },
+   {
+    "fromNode": 42,
+    "toNode": 83,
+    "requirement": "1"
+   },
+   {
+    "fromNode": 42,
+    "toNode": 84,
+    "requirement": "^0.1.4"
+   },
+   {
+    "fromNode": 43,
+    "toNode": 85,
+    "requirement": "^3.0.1"
+   },
+   {
+    "fromNode": 43,
+    "toNode": 86,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 43,
+    "toNode": 87,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 88,
+    "requirement": "~1.1.2"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 89,
+    "requirement": "~1.1.0"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 90,
+    "requirement": "~2.7.3"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 91,
+    "requirement": "~2.0.0"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 80,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 92,
+    "requirement": "^0.6.0"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 93,
+    "requirement": "~1.3.0"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 94,
+    "requirement": "~2.0.1"
+   },
+   {
+    "fromNode": 46,
+    "toNode": 25,
+    "requirement": "^7.1.3"
+   },
+   {
+    "fromNode": 49,
+    "toNode": 50,
+    "requirement": "^2.6.0"
+   },
+   {
+    "fromNode": 50,
+    "toNode": 53,
+    "requirement": "^3.0.0"
+   },
+   {
+    "fromNode": 50,
+    "toNode": 95,
+    "requirement": "^5.1.2"
+   },
+   {
+    "fromNode": 51,
+    "toNode": 50,
+    "requirement": "^2.9.0"
+   },
+   {
+    "fromNode": 57,
+    "toNode": 60,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 57,
+    "toNode": 96,
+    "requirement": "1"
+   },
+   {
+    "fromNode": 59,
+    "toNode": 97,
+    "requirement": "^1.1.7"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 96,
+    "requirement": "1"
+   },
+   {
+    "fromNode": 65,
+    "toNode": 24,
+    "requirement": "^5.0.0"
+   },
+   {
+    "fromNode": 66,
+    "toNode": 98,
+    "requirement": "*"
+   },
+   {
+    "fromNode": 66,
+    "toNode": 99,
+    "requirement": "^4.0.4"
+   },
+   {
+    "fromNode": 67,
+    "toNode": 24,
+    "requirement": "^5.0.0"
+   },
+   {
+    "fromNode": 69,
+    "toNode": 100,
+    "requirement": "^2.0.1"
+   },
+   {
+    "fromNode": 70,
+    "toNode": 101,
+    "requirement": "^4.0.0"
+   },
+   {
+    "fromNode": 71,
+    "toNode": 75,
+    "requirement": "^4.2.0"
+   },
+   {
+    "fromNode": 71,
+    "toNode": 102,
+    "requirement": "^6.0.0"
+   },
+   {
+    "fromNode": 71,
+    "toNode": 103,
+    "requirement": "^7.0.0"
+   },
+   {
+    "fromNode": 75,
+    "toNode": 102,
+    "requirement": "^6.0.1"
+   },
+   {
+    "fromNode": 75,
+    "toNode": 104,
+    "requirement": "^8.0.0"
+   },
+   {
+    "fromNode": 75,
+    "toNode": 105,
+    "requirement": "^3.0.0"
+   },
+   {
+    "fromNode": 78,
+    "toNode": 106,
+    "requirement": "^4.0.3"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 107,
+    "requirement": ">= 2.1.2 < 3"
+   },
+   {
+    "fromNode": 84,
+    "toNode": 108,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 84,
+    "toNode": 109,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 85,
+    "toNode": 59,
+    "requirement": "^3.0.4"
+   },
+   {
+    "fromNode": 86,
+    "toNode": 87,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 88,
+    "toNode": 110,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 88,
+    "toNode": 111,
+    "requirement": "^2.0.6"
+   },
+   {
+    "fromNode": 90,
+    "toNode": 89,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 90,
+    "toNode": 112,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 90,
+    "toNode": 113,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 90,
+    "toNode": 114,
+    "requirement": "^4.1.0"
+   },
+   {
+    "fromNode": 90,
+    "toNode": 115,
+    "requirement": "^3.0.0"
+   },
+   {
+    "fromNode": 90,
+    "toNode": 116,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 90,
+    "toNode": 117,
+    "requirement": "^3.0.1"
+   },
+   {
+    "fromNode": 90,
+    "toNode": 118,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 97,
+    "toNode": 119,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 97,
+    "toNode": 120,
+    "requirement": "0.0.1"
+   },
+   {
+    "fromNode": 98,
+    "toNode": 121,
+    "requirement": "~8.3.0"
+   },
+   {
+    "fromNode": 99,
+    "toNode": 122,
+    "requirement": "^0.4.0"
+   },
+   {
+    "fromNode": 99,
+    "toNode": 123,
+    "requirement": "^1.0.8"
+   },
+   {
+    "fromNode": 99,
+    "toNode": 124,
+    "requirement": "^2.1.0"
+   },
+   {
+    "fromNode": 99,
+    "toNode": 125,
+    "requirement": "^2.0.4"
+   },
+   {
+    "fromNode": 99,
+    "toNode": 126,
+    "requirement": "^2.1.35"
+   },
+   {
+    "fromNode": 100,
+    "toNode": 127,
+    "requirement": "~1.1.4"
+   },
+   {
+    "fromNode": 102,
+    "toNode": 128,
+    "requirement": "^5.0.1"
+   },
+   {
+    "fromNode": 103,
+    "toNode": 69,
+    "requirement": "^4.0.0"
+   },
+   {
+    "fromNode": 103,
+    "toNode": 75,
+    "requirement": "^4.1.0"
+   },
+   {
+    "fromNode": 103,
+    "toNode": 102,
+    "requirement": "^6.0.0"
+   },
+   {
+    "fromNode": 111,
+    "toNode": 58,
+    "requirement": "~2.0.3"
+   },
+   {
+    "fromNode": 111,
+    "toNode": 95,
+    "requirement": "~5.1.1"
+   },
+   {
+    "fromNode": 111,
+    "toNode": 129,
+    "requirement": "~1.0.0"
+   },
+   {
+    "fromNode": 111,
+    "toNode": 130,
+    "requirement": "~1.0.0"
+   },
+   {
+    "fromNode": 111,
+    "toNode": 131,
+    "requirement": "~2.0.0"
+   },
+   {
+    "fromNode": 111,
+    "toNode": 132,
+    "requirement": "~1.1.1"
+   },
+   {
+    "fromNode": 111,
+    "toNode": 133,
+    "requirement": "~1.0.1"
+   },
+   {
+    "fromNode": 116,
+    "toNode": 117,
+    "requirement": "^3.0.0"
+   },
+   {
+    "fromNode": 116,
+    "toNode": 134,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 116,
+    "toNode": 135,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 117,
+    "toNode": 136,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 118,
+    "toNode": 75,
+    "requirement": "^1.0.2 || 2 || 3 || 4"
+   },
+   {
+    "fromNode": 123,
+    "toNode": 137,
+    "requirement": "~1.0.0"
+   },
+   {
+    "fromNode": 124,
+    "toNode": 125,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 124,
+    "toNode": 138,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 124,
+    "toNode": 139,
+    "requirement": "^1.2.6"
+   },
+   {
+    "fromNode": 124,
+    "toNode": 140,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 125,
+    "toNode": 141,
+    "requirement": "^1.1.2"
+   },
+   {
+    "fromNode": 126,
+    "toNode": 142,
+    "requirement": "1.52.0"
+   },
+   {
+    "fromNode": 132,
+    "toNode": 95,
+    "requirement": "~5.1.0"
+   },
+   {
+    "fromNode": 135,
+    "toNode": 143,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 139,
+    "toNode": 125,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 139,
+    "toNode": 138,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 139,
+    "toNode": 141,
+    "requirement": "^1.1.2"
+   },
+   {
+    "fromNode": 139,
+    "toNode": 144,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 139,
+    "toNode": 145,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 139,
+    "toNode": 146,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 139,
+    "toNode": 147,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 139,
+    "toNode": 148,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 139,
+    "toNode": 149,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 139,
+    "toNode": 150,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 139,
+    "toNode": 151,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 139,
+    "toNode": 152,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 139,
+    "toNode": 153,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 140,
+    "toNode": 152,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 146,
+    "toNode": 138,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 146,
+    "toNode": 141,
+    "requirement": "^1.1.2"
+   },
+   {
+    "fromNode": 148,
+    "toNode": 138,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 150,
+    "toNode": 148,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 150,
+    "toNode": 154,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 154,
+    "toNode": 138,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 154,
+    "toNode": 146,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 154,
+    "toNode": 151,
+    "requirement": "^1.2.0"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ }
+}

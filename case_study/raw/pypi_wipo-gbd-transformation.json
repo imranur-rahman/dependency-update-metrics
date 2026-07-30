@@ -1,0 +1,1441 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "PYPI",
+   "name": "wipo-gbd-transformation"
+  },
+  "purl": "pkg:pypi/wipo-gbd-transformation",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.0.17"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.0.17",
+    "publishedAt": "2022-01-12T08:26:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.0.18"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.0.18",
+    "publishedAt": "2022-03-01T10:46:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.0.20"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.0.20",
+    "publishedAt": "2022-03-01T10:54:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.0.21"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.0.21",
+    "publishedAt": "2022-03-29T14:24:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.0.22"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.0.22",
+    "publishedAt": "2022-03-30T12:44:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.0.23"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.0.23",
+    "publishedAt": "2022-07-08T13:57:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.0.24"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.0.24",
+    "publishedAt": "2022-07-12T13:54:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.0.25"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.0.25",
+    "publishedAt": "2022-08-08T08:08:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.0.26"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.0.26",
+    "publishedAt": "2022-08-17T07:41:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.0.27"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.0.27",
+    "publishedAt": "2022-08-29T14:17:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.100"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.100",
+    "publishedAt": "2025-12-09T09:25:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.101"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.101",
+    "publishedAt": "2025-12-09T10:42:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.102"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.102",
+    "publishedAt": "2025-12-09T12:40:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.103"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.103",
+    "publishedAt": "2025-12-12T15:42:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.104"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.104",
+    "publishedAt": "2026-01-12T10:47:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.105"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.105",
+    "publishedAt": "2026-01-22T13:35:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.106"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.106",
+    "publishedAt": "2026-02-26T15:47:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.107"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.107",
+    "publishedAt": "2026-03-03T08:11:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.108"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.108",
+    "publishedAt": "2026-03-26T08:41:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.109"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.109",
+    "publishedAt": "2026-03-27T14:09:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.110"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.110",
+    "publishedAt": "2026-04-07T09:41:06Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.28"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.28",
+    "publishedAt": "2022-10-31T15:01:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.29"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.29",
+    "publishedAt": "2022-11-04T09:05:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.30"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.30",
+    "publishedAt": "2022-11-21T15:19:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.31"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.31",
+    "publishedAt": "2022-11-25T08:55:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.32"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.32",
+    "publishedAt": "2022-12-02T09:28:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.33"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.33",
+    "publishedAt": "2022-12-02T10:13:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.34"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.34",
+    "publishedAt": "2022-12-07T16:19:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.35"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.35",
+    "publishedAt": "2023-04-03T07:52:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.36"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.36",
+    "publishedAt": "2023-04-04T12:41:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.37"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.37",
+    "publishedAt": "2024-02-15T06:32:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.38"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.38",
+    "publishedAt": "2024-02-20T10:12:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.39"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.39",
+    "publishedAt": "2024-02-24T10:57:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.40"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.40",
+    "publishedAt": "2024-02-26T15:44:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.42"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.42",
+    "publishedAt": "2024-02-27T10:34:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.44"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.44",
+    "publishedAt": "2024-03-04T07:21:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.45"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.45",
+    "publishedAt": "2024-03-08T09:53:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.46"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.46",
+    "publishedAt": "2024-03-11T13:35:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.47"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.47",
+    "publishedAt": "2024-03-12T13:50:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.48"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.48",
+    "publishedAt": "2024-04-11T05:51:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.49"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.49",
+    "publishedAt": "2024-04-18T06:15:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.50"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.50",
+    "publishedAt": "2024-06-07T13:03:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.51"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.51",
+    "publishedAt": "2024-06-26T06:39:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.52"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.52",
+    "publishedAt": "2024-07-10T12:28:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.53"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.53",
+    "publishedAt": "2024-08-22T12:52:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.54"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.54",
+    "publishedAt": "2024-09-19T08:23:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.55"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.55",
+    "publishedAt": "2024-11-21T13:40:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.56"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.56",
+    "publishedAt": "2024-11-22T07:34:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.57"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.57",
+    "publishedAt": "2024-11-22T09:39:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.58"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.58",
+    "publishedAt": "2024-11-26T13:44:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.59"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.59",
+    "publishedAt": "2025-01-14T09:37:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.60"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.60",
+    "publishedAt": "2025-02-07T09:54:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.61"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.61",
+    "publishedAt": "2025-03-04T09:28:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.62"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.62",
+    "publishedAt": "2025-03-06T07:48:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.63"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.63",
+    "publishedAt": "2025-03-10T13:58:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.64"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.64",
+    "publishedAt": "2025-03-10T15:08:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.65"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.65",
+    "publishedAt": "2025-03-10T16:16:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.66"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.66",
+    "publishedAt": "2025-03-11T14:54:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.67"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.67",
+    "publishedAt": "2025-03-14T07:45:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.68"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.68",
+    "publishedAt": "2025-03-25T11:00:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.69"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.69",
+    "publishedAt": "2025-03-27T09:36:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.70"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.70",
+    "publishedAt": "2025-03-28T13:36:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.71"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.71",
+    "publishedAt": "2025-04-05T13:32:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.72"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.72",
+    "publishedAt": "2025-04-06T16:01:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.73"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.73",
+    "publishedAt": "2025-04-07T07:52:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.74"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.74",
+    "publishedAt": "2025-04-07T09:47:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.75"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.75",
+    "publishedAt": "2025-04-14T13:46:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.76"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.76",
+    "publishedAt": "2025-04-23T14:53:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.77"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.77",
+    "publishedAt": "2025-05-05T15:24:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.78"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.78",
+    "publishedAt": "2025-05-07T15:16:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.79"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.79",
+    "publishedAt": "2025-05-23T14:14:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.80"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.80",
+    "publishedAt": "2025-05-26T08:36:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.81"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.81",
+    "publishedAt": "2025-06-03T12:05:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.82"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.82",
+    "publishedAt": "2025-06-19T12:55:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.84"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.84",
+    "publishedAt": "2025-07-02T14:42:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.85"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.85",
+    "publishedAt": "2025-07-03T08:47:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.86"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.86",
+    "publishedAt": "2025-08-11T08:40:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.87"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.87",
+    "publishedAt": "2025-08-11T09:54:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.88"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.88",
+    "publishedAt": "2025-08-11T13:38:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.89"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.89",
+    "publishedAt": "2025-08-11T14:38:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.90"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.90",
+    "publishedAt": "2025-08-14T08:04:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.91"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.91",
+    "publishedAt": "2025-08-15T06:16:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.92"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.92",
+    "publishedAt": "2025-09-17T08:05:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.93"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.93",
+    "publishedAt": "2025-10-02T10:19:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.94"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.94",
+    "publishedAt": "2025-10-03T09:01:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.95"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.95",
+    "publishedAt": "2025-11-10T08:33:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.96"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.96",
+    "publishedAt": "2025-11-10T14:34:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.97"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.97",
+    "publishedAt": "2025-11-10T15:40:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.98"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.98",
+    "publishedAt": "2025-11-11T13:38:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.99"
+    },
+    "purl": "pkg:pypi/wipo-gbd-transformation@1.1.99",
+    "publishedAt": "2025-12-09T07:16:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "PYPI",
+   "name": "wipo-gbd-transformation",
+   "version": "1.1.110"
+  },
+  "purl": "pkg:pypi/wipo-gbd-transformation@1.1.110",
+  "publishedAt": "2026-04-07T09:41:06Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "GPL-3.0-or-later",
+   "GPL-3.0"
+  ],
+  "licenseDetails": [
+   {
+    "license": "GPL-3.0-or-later",
+    "spdx": "GPL-3.0-or-later"
+   },
+   {
+    "license": "GPL-3.0",
+    "spdx": "GPL-3.0"
+   },
+   {
+    "license": "GPL-3.0-or-later",
+    "spdx": "GPL-3.0-or-later"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/GBD-Wipo/xmlE"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://pypi.org/simple"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/gbd-wipo/xmle"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "wipo_gbd_transformation",
+    "versionString": "1.1.110",
+    "source": "PYPI_RELEASE_FILENAME"
+   },
+   {
+    "packageName": "wipo-gbd-transformation",
+    "versionString": "1.1.110",
+    "source": "PYPI_METADATA_FILE"
+   }
+  ],
+  "cooldown": {
+   "end": "2026-04-12T09:41:06Z",
+   "description": ""
+  },
+  "projectStatus": {
+   "status": "active",
+   "reason": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wipo-gbd-transformation",
+     "version": "1.1.110"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "boto3",
+     "version": "1.43.46"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "botocore",
+     "version": "1.43.46"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dicttoxml",
+     "version": "1.7.16"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jinja2",
+     "version": "2.11.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jmespath",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "lingua-language-detector",
+     "version": "2.2.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "lxml",
+     "version": "6.1.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "markupsafe",
+     "version": "2.0.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "munch",
+     "version": "4.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "python-dateutil",
+     "version": "2.9.0.post0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyyaml",
+     "version": "6.0.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "s3transfer",
+     "version": "0.19.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "six",
+     "version": "1.17.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tabulate",
+     "version": "0.10.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "urllib3",
+     "version": "2.7.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "xmltodict",
+     "version": "1.0.4"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 1,
+    "requirement": ">=1.16.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 3,
+    "requirement": ">=1.7.4"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 4,
+    "requirement": "==2.11.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 6,
+    "requirement": ""
+   },
+   {
+    "fromNode": 0,
+    "toNode": 7,
+    "requirement": ">=4.6.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 8,
+    "requirement": "==2.0.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 9,
+    "requirement": ">=2.5.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 11,
+    "requirement": ">=5.3.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 14,
+    "requirement": ">=0.8.7"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 16,
+    "requirement": ">=0.12.0"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 2,
+    "requirement": "<1.44.0,>=1.43.46"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 5,
+    "requirement": "<2.0.0,>=0.7.1"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 12,
+    "requirement": "<0.20.0,>=0.19.0"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 5,
+    "requirement": "<2.0.0,>=0.7.1"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 10,
+    "requirement": "<3.0.0,>=2.1"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 15,
+    "requirement": "!=2.2.0,<3,>=1.25.4"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 8,
+    "requirement": ">=0.23"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 13,
+    "requirement": ">=1.5"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 2,
+    "requirement": "<2.0a.0,>=1.37.4"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": null,
+ "github_repo_api": null
+}

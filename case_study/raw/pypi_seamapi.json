@@ -1,0 +1,1121 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "PYPI",
+   "name": "seamapi"
+  },
+  "purl": "pkg:pypi/seamapi",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "0.1.0"
+    },
+    "purl": "pkg:pypi/seamapi@0.1.0",
+    "publishedAt": "2022-01-02T21:36:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "0.1.1"
+    },
+    "purl": "pkg:pypi/seamapi@0.1.1",
+    "publishedAt": "2022-01-07T02:17:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "0.1.2"
+    },
+    "purl": "pkg:pypi/seamapi@0.1.2",
+    "publishedAt": "2022-01-08T00:55:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "0.2.2"
+    },
+    "purl": "pkg:pypi/seamapi@0.2.2",
+    "publishedAt": "2022-01-20T11:55:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "0.3.0"
+    },
+    "purl": "pkg:pypi/seamapi@0.3.0",
+    "publishedAt": "2022-01-22T10:12:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "0.4.0"
+    },
+    "purl": "pkg:pypi/seamapi@0.4.0",
+    "publishedAt": "2022-02-12T17:43:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "0.4.1"
+    },
+    "purl": "pkg:pypi/seamapi@0.4.1",
+    "publishedAt": "2022-02-12T17:54:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "0.4.2"
+    },
+    "purl": "pkg:pypi/seamapi@0.4.2",
+    "publishedAt": "2022-03-14T09:02:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "0.4.3"
+    },
+    "purl": "pkg:pypi/seamapi@0.4.3",
+    "publishedAt": "2022-03-15T08:31:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "0.4.4"
+    },
+    "purl": "pkg:pypi/seamapi@0.4.4",
+    "publishedAt": "2022-03-21T19:56:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "1.0.1"
+    },
+    "purl": "pkg:pypi/seamapi@1.0.1",
+    "publishedAt": "2022-04-12T14:55:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "1.1.0"
+    },
+    "purl": "pkg:pypi/seamapi@1.1.0",
+    "publishedAt": "2022-07-11T14:46:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "1.1.1"
+    },
+    "purl": "pkg:pypi/seamapi@1.1.1",
+    "publishedAt": "2022-07-30T19:32:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "1.1.2"
+    },
+    "purl": "pkg:pypi/seamapi@1.1.2",
+    "publishedAt": "2022-08-05T21:14:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "1.1.3"
+    },
+    "purl": "pkg:pypi/seamapi@1.1.3",
+    "publishedAt": "2022-08-10T20:26:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "1.1.4"
+    },
+    "purl": "pkg:pypi/seamapi@1.1.4",
+    "publishedAt": "2022-08-14T21:43:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "1.1.5"
+    },
+    "purl": "pkg:pypi/seamapi@1.1.5",
+    "publishedAt": "2022-09-13T21:16:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "1.2.0"
+    },
+    "purl": "pkg:pypi/seamapi@1.2.0",
+    "publishedAt": "2022-09-16T22:18:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "1.3.0"
+    },
+    "purl": "pkg:pypi/seamapi@1.3.0",
+    "publishedAt": "2022-09-19T14:37:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "1.4.0"
+    },
+    "purl": "pkg:pypi/seamapi@1.4.0",
+    "publishedAt": "2022-09-19T20:53:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "1.5.0"
+    },
+    "purl": "pkg:pypi/seamapi@1.5.0",
+    "publishedAt": "2022-09-20T21:30:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "1.6.0"
+    },
+    "purl": "pkg:pypi/seamapi@1.6.0",
+    "publishedAt": "2022-10-08T15:06:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.0.0"
+    },
+    "purl": "pkg:pypi/seamapi@2.0.0",
+    "publishedAt": "2022-10-12T16:57:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.1.0"
+    },
+    "purl": "pkg:pypi/seamapi@2.1.0",
+    "publishedAt": "2022-10-12T18:46:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.10.0"
+    },
+    "purl": "pkg:pypi/seamapi@2.10.0",
+    "publishedAt": "2023-03-30T16:56:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.11.0"
+    },
+    "purl": "pkg:pypi/seamapi@2.11.0",
+    "publishedAt": "2023-04-04T17:18:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.12.0"
+    },
+    "purl": "pkg:pypi/seamapi@2.12.0",
+    "publishedAt": "2023-05-17T10:00:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.12.1"
+    },
+    "purl": "pkg:pypi/seamapi@2.12.1",
+    "publishedAt": "2023-05-19T16:01:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.12.2"
+    },
+    "purl": "pkg:pypi/seamapi@2.12.2",
+    "publishedAt": "2023-05-25T14:21:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.12.3"
+    },
+    "purl": "pkg:pypi/seamapi@2.12.3",
+    "publishedAt": "2023-06-05T23:49:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.12.4"
+    },
+    "purl": "pkg:pypi/seamapi@2.12.4",
+    "publishedAt": "2023-06-06T00:13:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.13.0"
+    },
+    "purl": "pkg:pypi/seamapi@2.13.0",
+    "publishedAt": "2023-06-07T18:26:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.13.1"
+    },
+    "purl": "pkg:pypi/seamapi@2.13.1",
+    "publishedAt": "2023-06-13T11:21:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.13.2"
+    },
+    "purl": "pkg:pypi/seamapi@2.13.2",
+    "publishedAt": "2023-06-14T12:36:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.14.0"
+    },
+    "purl": "pkg:pypi/seamapi@2.14.0",
+    "publishedAt": "2023-07-26T02:40:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.15.0"
+    },
+    "purl": "pkg:pypi/seamapi@2.15.0",
+    "publishedAt": "2023-09-14T17:08:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.15.1"
+    },
+    "purl": "pkg:pypi/seamapi@2.15.1",
+    "publishedAt": "2023-09-26T21:58:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.16.0"
+    },
+    "purl": "pkg:pypi/seamapi@2.16.0",
+    "publishedAt": "2023-11-06T20:51:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.16.1"
+    },
+    "purl": "pkg:pypi/seamapi@2.16.1",
+    "publishedAt": "2023-11-06T21:33:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.16.2"
+    },
+    "purl": "pkg:pypi/seamapi@2.16.2",
+    "publishedAt": "2023-11-07T03:44:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.17.0"
+    },
+    "purl": "pkg:pypi/seamapi@2.17.0",
+    "publishedAt": "2023-11-10T18:38:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.17.1"
+    },
+    "purl": "pkg:pypi/seamapi@2.17.1",
+    "publishedAt": "2023-11-28T21:10:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.17.2"
+    },
+    "purl": "pkg:pypi/seamapi@2.17.2",
+    "publishedAt": "2023-12-05T15:44:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.17.4"
+    },
+    "purl": "pkg:pypi/seamapi@2.17.4",
+    "publishedAt": "2023-12-06T18:53:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.17.5"
+    },
+    "purl": "pkg:pypi/seamapi@2.17.5",
+    "publishedAt": "2023-12-06T19:01:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.18.0"
+    },
+    "purl": "pkg:pypi/seamapi@2.18.0",
+    "publishedAt": "2023-12-13T12:57:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.19.0"
+    },
+    "purl": "pkg:pypi/seamapi@2.19.0",
+    "publishedAt": "2024-02-08T19:51:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.2.0"
+    },
+    "purl": "pkg:pypi/seamapi@2.2.0",
+    "publishedAt": "2022-10-13T18:01:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.20.0"
+    },
+    "purl": "pkg:pypi/seamapi@2.20.0",
+    "publishedAt": "2024-06-27T20:50:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.20.1"
+    },
+    "purl": "pkg:pypi/seamapi@2.20.1",
+    "publishedAt": "2024-06-27T20:57:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.3.0"
+    },
+    "purl": "pkg:pypi/seamapi@2.3.0",
+    "publishedAt": "2022-11-16T19:41:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.4.0"
+    },
+    "purl": "pkg:pypi/seamapi@2.4.0",
+    "publishedAt": "2022-11-23T00:48:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.5.0"
+    },
+    "purl": "pkg:pypi/seamapi@2.5.0",
+    "publishedAt": "2022-12-01T01:21:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.6.0"
+    },
+    "purl": "pkg:pypi/seamapi@2.6.0",
+    "publishedAt": "2022-12-01T22:29:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.7.0"
+    },
+    "purl": "pkg:pypi/seamapi@2.7.0",
+    "publishedAt": "2023-02-28T15:23:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.8.0"
+    },
+    "purl": "pkg:pypi/seamapi@2.8.0",
+    "publishedAt": "2023-03-09T23:05:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.9.0"
+    },
+    "purl": "pkg:pypi/seamapi@2.9.0",
+    "publishedAt": "2023-03-17T18:41:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "2.9.1"
+    },
+    "purl": "pkg:pypi/seamapi@2.9.1",
+    "publishedAt": "2023-03-17T18:48:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "3.0.0"
+    },
+    "purl": "pkg:pypi/seamapi@3.0.0",
+    "publishedAt": "2024-06-27T21:15:30Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "PYPI",
+   "name": "seamapi",
+   "version": "3.0.0"
+  },
+  "purl": "pkg:pypi/seamapi@3.0.0",
+  "publishedAt": "2024-06-27T21:15:30Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "MIT",
+    "spdx": "MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://pypi.org/simple"
+  ],
+  "relatedProjects": [],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "seamapi",
+    "versionString": "3.0.0",
+    "source": "PYPI_RELEASE_FILENAME"
+   },
+   {
+    "packageName": "seamapi",
+    "versionString": "3.0.0",
+    "source": "PYPI_METADATA_FILE"
+   }
+  ],
+  "cooldown": {
+   "end": "2024-07-02T21:15:30Z",
+   "description": ""
+  },
+  "projectStatus": {
+   "status": "active",
+   "reason": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "seamapi",
+     "version": "3.0.0"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certifi",
+     "version": "2026.6.17"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "charset-normalizer",
+     "version": "3.4.9"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dataclasses-json",
+     "version": "0.5.14"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "idna",
+     "version": "3.18.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "marshmallow",
+     "version": "3.26.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mypy-extensions",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "packaging",
+     "version": "26.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "requests",
+     "version": "2.34.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "sentry-sdk",
+     "version": "1.45.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "typing-extensions",
+     "version": "4.16.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "typing-inspect",
+     "version": "0.9.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "urllib3",
+     "version": "2.7.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 3,
+    "requirement": ">=0.5.6,<0.6.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 8,
+    "requirement": ">=2.26.0,<3.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 9,
+    "requirement": ">=1.9.10,<2.0.0"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 5,
+    "requirement": ">=3.18.0,<4.0.0"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 11,
+    "requirement": ">=0.4.0,<1"
+   },
+   {
+    "fromNode": 5,
+    "toNode": 7,
+    "requirement": ">=17.0"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 1,
+    "requirement": ">=2023.5.7"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 2,
+    "requirement": "<4,>=2"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 4,
+    "requirement": "<4,>=2.5"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 12,
+    "requirement": "<3,>=1.26"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 1,
+    "requirement": ""
+   },
+   {
+    "fromNode": 9,
+    "toNode": 12,
+    "requirement": ">=1.26.11"
+   },
+   {
+    "fromNode": 11,
+    "toNode": 6,
+    "requirement": ">=0.3.0"
+   },
+   {
+    "fromNode": 11,
+    "toNode": 10,
+    "requirement": ">=3.7.4"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "github_repo_api_fallback": {
+  "id": 781045227,
+  "node_id": "R_kgDOLo3N6w",
+  "name": "python",
+  "full_name": "seamapi/python",
+  "private": false,
+  "owner": {
+   "login": "seamapi",
+   "id": 63884939,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjYzODg0OTM5",
+   "avatar_url": "https://avatars.githubusercontent.com/u/63884939?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/seamapi",
+   "html_url": "https://github.com/seamapi",
+   "followers_url": "https://api.github.com/users/seamapi/followers",
+   "following_url": "https://api.github.com/users/seamapi/following{/other_user}",
+   "gists_url": "https://api.github.com/users/seamapi/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/seamapi/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/seamapi/subscriptions",
+   "organizations_url": "https://api.github.com/users/seamapi/orgs",
+   "repos_url": "https://api.github.com/users/seamapi/repos",
+   "events_url": "https://api.github.com/users/seamapi/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/seamapi/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/seamapi/python",
+  "description": "SDK for the Seam API written in Python.",
+  "fork": false,
+  "url": "https://api.github.com/repos/seamapi/python",
+  "forks_url": "https://api.github.com/repos/seamapi/python/forks",
+  "keys_url": "https://api.github.com/repos/seamapi/python/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/seamapi/python/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/seamapi/python/teams",
+  "hooks_url": "https://api.github.com/repos/seamapi/python/hooks",
+  "issue_events_url": "https://api.github.com/repos/seamapi/python/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/seamapi/python/events",
+  "assignees_url": "https://api.github.com/repos/seamapi/python/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/seamapi/python/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/seamapi/python/tags",
+  "blobs_url": "https://api.github.com/repos/seamapi/python/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/seamapi/python/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/seamapi/python/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/seamapi/python/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/seamapi/python/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/seamapi/python/languages",
+  "stargazers_url": "https://api.github.com/repos/seamapi/python/stargazers",
+  "contributors_url": "https://api.github.com/repos/seamapi/python/contributors",
+  "subscribers_url": "https://api.github.com/repos/seamapi/python/subscribers",
+  "subscription_url": "https://api.github.com/repos/seamapi/python/subscription",
+  "commits_url": "https://api.github.com/repos/seamapi/python/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/seamapi/python/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/seamapi/python/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/seamapi/python/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/seamapi/python/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/seamapi/python/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/seamapi/python/merges",
+  "archive_url": "https://api.github.com/repos/seamapi/python/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/seamapi/python/downloads",
+  "issues_url": "https://api.github.com/repos/seamapi/python/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/seamapi/python/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/seamapi/python/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/seamapi/python/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/seamapi/python/labels{/name}",
+  "releases_url": "https://api.github.com/repos/seamapi/python/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/seamapi/python/deployments",
+  "created_at": "2024-04-02T16:41:59Z",
+  "updated_at": "2026-07-21T21:01:11Z",
+  "pushed_at": "2026-07-21T21:00:35Z",
+  "git_url": "git://github.com/seamapi/python.git",
+  "ssh_url": "git@github.com:seamapi/python.git",
+  "clone_url": "https://github.com/seamapi/python.git",
+  "svn_url": "https://github.com/seamapi/python",
+  "homepage": "https://pypi.org/project/seam/",
+  "size": 1161,
+  "stargazers_count": 18,
+  "watchers_count": 18,
+  "language": "Python",
+  "has_issues": true,
+  "has_projects": false,
+  "has_downloads": false,
+  "has_wiki": false,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 3,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 9,
+  "license": {
+   "key": "mit",
+   "name": "MIT License",
+   "spdx_id": "MIT",
+   "url": "https://api.github.com/licenses/mit",
+   "node_id": "MDc6TGljZW5zZTEz"
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [],
+  "visibility": "public",
+  "forks": 3,
+  "open_issues": 9,
+  "watchers": 18,
+  "default_branch": "main",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "seamapi",
+   "id": 63884939,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjYzODg0OTM5",
+   "avatar_url": "https://avatars.githubusercontent.com/u/63884939?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/seamapi",
+   "html_url": "https://github.com/seamapi",
+   "followers_url": "https://api.github.com/users/seamapi/followers",
+   "following_url": "https://api.github.com/users/seamapi/following{/other_user}",
+   "gists_url": "https://api.github.com/users/seamapi/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/seamapi/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/seamapi/subscriptions",
+   "organizations_url": "https://api.github.com/users/seamapi/orgs",
+   "repos_url": "https://api.github.com/users/seamapi/repos",
+   "events_url": "https://api.github.com/users/seamapi/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/seamapi/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 3,
+  "subscribers_count": 4
+ }
+}

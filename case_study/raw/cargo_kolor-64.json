@@ -1,0 +1,683 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "CARGO",
+   "name": "kolor-64"
+  },
+  "purl": "pkg:cargo/kolor-64",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "kolor-64",
+     "version": "0.1.0"
+    },
+    "purl": "pkg:cargo/kolor-64@0.1.0",
+    "publishedAt": "2021-04-04T01:39:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "kolor-64",
+     "version": "0.1.1"
+    },
+    "purl": "pkg:cargo/kolor-64@0.1.1",
+    "publishedAt": "2021-04-05T01:18:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "kolor-64",
+     "version": "0.1.2"
+    },
+    "purl": "pkg:cargo/kolor-64@0.1.2",
+    "publishedAt": "2021-04-11T16:18:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "kolor-64",
+     "version": "0.1.3"
+    },
+    "purl": "pkg:cargo/kolor-64@0.1.3",
+    "publishedAt": "2021-05-08T16:18:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "kolor-64",
+     "version": "0.1.4"
+    },
+    "purl": "pkg:cargo/kolor-64@0.1.4",
+    "publishedAt": "2021-05-09T15:09:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "kolor-64",
+     "version": "0.1.5"
+    },
+    "purl": "pkg:cargo/kolor-64@0.1.5",
+    "publishedAt": "2021-05-16T20:36:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "kolor-64",
+     "version": "0.1.6"
+    },
+    "purl": "pkg:cargo/kolor-64@0.1.6",
+    "publishedAt": "2021-07-11T19:01:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "kolor-64",
+     "version": "0.1.7"
+    },
+    "purl": "pkg:cargo/kolor-64@0.1.7",
+    "publishedAt": "2021-10-20T15:38:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "kolor-64",
+     "version": "0.1.8"
+    },
+    "purl": "pkg:cargo/kolor-64@0.1.8",
+    "publishedAt": "2021-11-13T19:24:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "kolor-64",
+     "version": "0.1.9"
+    },
+    "purl": "pkg:cargo/kolor-64@0.1.9",
+    "publishedAt": "2023-04-25T19:59:22Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "CARGO",
+   "name": "kolor-64",
+   "version": "0.1.9"
+  },
+  "purl": "pkg:cargo/kolor-64@0.1.9",
+  "publishedAt": "2023-04-25T19:59:22Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "Apache-2.0 OR MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "Apache-2.0 OR MIT",
+    "spdx": "Apache-2.0 OR MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/kabergstrom/kolor"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://crates.io/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/kabergstrom/kolor"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "kolor-64",
+    "versionString": "0.1.9",
+    "source": "CARGO_CRATES_IO"
+   }
+  ],
+  "cooldown": {
+   "end": "2023-05-05T19:59:22Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "kolor-64",
+     "version": "0.1.9"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "autocfg",
+     "version": "1.5.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "glam",
+     "version": "0.23.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "num-traits",
+     "version": "0.2.19"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "proc-macro2",
+     "version": "1.0.106"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "quote",
+     "version": "1.0.46"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "serde",
+     "version": "1.0.210"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "serde_derive",
+     "version": "1.0.210"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "syn",
+     "version": "2.0.56"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "unicode-ident",
+     "version": "1.0.24"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 2,
+    "requirement": "^0.23"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 3,
+    "requirement": "^0.2.15"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 6,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 1,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 9,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 5,
+    "toNode": 4,
+    "requirement": "^1.0.80"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 7,
+    "requirement": "=1.0.210"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 7,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 4,
+    "requirement": "^1.0.74"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 5,
+    "requirement": "^1.0.35"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 8,
+    "requirement": "^2.0.46"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 4,
+    "requirement": "^1.0.75"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 5,
+    "requirement": "^1.0.35"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 9,
+    "requirement": "^1"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/kabergstrom/kolor"
+  },
+  "openIssuesCount": 1,
+  "starsCount": 40,
+  "forksCount": 8,
+  "license": "",
+  "description": "Color space conversion math made simple",
+  "homepage": "",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/kabergstrom/kolor",
+    "commit": "48be9001495dbe1757c75b10e8b954af60b64ba2"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 0,
+     "reason": "0 commit(s) and 0 issue activity found in the last 90 days -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 4,
+     "reason": "Found 7/16 approved changesets -- score normalized to 4",
+     "details": []
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": -1,
+     "reason": "no workflows found",
+     "details": []
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": -1,
+     "reason": "No tokens found",
+     "details": []
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": -1,
+     "reason": "no dependencies found",
+     "details": []
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 0,
+     "reason": "security policy file not detected",
+     "details": [
+      "Warn: no security policy file detected",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 0,
+     "reason": "license file not detected",
+     "details": [
+      "Warn: project does not have a license file"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": 0,
+     "reason": "branch protection not enabled on development/release branches",
+     "details": [
+      "Warn: branch protection not enabled for branch 'main'"
+     ]
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0",
+     "details": [
+      "Warn: 0 commits out of 21 are checked with a SAST tool"
+     ]
+    }
+   ],
+   "overallScore": 2.1,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 353830683,
+  "node_id": "MDEwOlJlcG9zaXRvcnkzNTM4MzA2ODM=",
+  "name": "kolor",
+  "full_name": "BoxDragon/kolor",
+  "private": false,
+  "owner": {
+   "login": "BoxDragon",
+   "id": 85511431,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjg1NTExNDMx",
+   "avatar_url": "https://avatars.githubusercontent.com/u/85511431?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/BoxDragon",
+   "html_url": "https://github.com/BoxDragon",
+   "followers_url": "https://api.github.com/users/BoxDragon/followers",
+   "following_url": "https://api.github.com/users/BoxDragon/following{/other_user}",
+   "gists_url": "https://api.github.com/users/BoxDragon/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/BoxDragon/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/BoxDragon/subscriptions",
+   "organizations_url": "https://api.github.com/users/BoxDragon/orgs",
+   "repos_url": "https://api.github.com/users/BoxDragon/repos",
+   "events_url": "https://api.github.com/users/BoxDragon/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/BoxDragon/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/BoxDragon/kolor",
+  "description": "Color space conversion math made simple",
+  "fork": false,
+  "url": "https://api.github.com/repos/BoxDragon/kolor",
+  "forks_url": "https://api.github.com/repos/BoxDragon/kolor/forks",
+  "keys_url": "https://api.github.com/repos/BoxDragon/kolor/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/BoxDragon/kolor/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/BoxDragon/kolor/teams",
+  "hooks_url": "https://api.github.com/repos/BoxDragon/kolor/hooks",
+  "issue_events_url": "https://api.github.com/repos/BoxDragon/kolor/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/BoxDragon/kolor/events",
+  "assignees_url": "https://api.github.com/repos/BoxDragon/kolor/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/BoxDragon/kolor/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/BoxDragon/kolor/tags",
+  "blobs_url": "https://api.github.com/repos/BoxDragon/kolor/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/BoxDragon/kolor/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/BoxDragon/kolor/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/BoxDragon/kolor/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/BoxDragon/kolor/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/BoxDragon/kolor/languages",
+  "stargazers_url": "https://api.github.com/repos/BoxDragon/kolor/stargazers",
+  "contributors_url": "https://api.github.com/repos/BoxDragon/kolor/contributors",
+  "subscribers_url": "https://api.github.com/repos/BoxDragon/kolor/subscribers",
+  "subscription_url": "https://api.github.com/repos/BoxDragon/kolor/subscription",
+  "commits_url": "https://api.github.com/repos/BoxDragon/kolor/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/BoxDragon/kolor/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/BoxDragon/kolor/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/BoxDragon/kolor/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/BoxDragon/kolor/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/BoxDragon/kolor/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/BoxDragon/kolor/merges",
+  "archive_url": "https://api.github.com/repos/BoxDragon/kolor/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/BoxDragon/kolor/downloads",
+  "issues_url": "https://api.github.com/repos/BoxDragon/kolor/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/BoxDragon/kolor/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/BoxDragon/kolor/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/BoxDragon/kolor/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/BoxDragon/kolor/labels{/name}",
+  "releases_url": "https://api.github.com/repos/BoxDragon/kolor/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/BoxDragon/kolor/deployments",
+  "created_at": "2021-04-01T21:27:01Z",
+  "updated_at": "2025-04-05T22:27:53Z",
+  "pushed_at": "2024-11-20T00:49:04Z",
+  "git_url": "git://github.com/BoxDragon/kolor.git",
+  "ssh_url": "git@github.com:BoxDragon/kolor.git",
+  "clone_url": "https://github.com/BoxDragon/kolor.git",
+  "svn_url": "https://github.com/BoxDragon/kolor",
+  "homepage": "",
+  "size": 183,
+  "stargazers_count": 40,
+  "watchers_count": 40,
+  "language": "Rust",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 9,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 3,
+  "license": null,
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [],
+  "visibility": "public",
+  "forks": 9,
+  "open_issues": 3,
+  "watchers": 40,
+  "default_branch": "main",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "BoxDragon",
+   "id": 85511431,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjg1NTExNDMx",
+   "avatar_url": "https://avatars.githubusercontent.com/u/85511431?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/BoxDragon",
+   "html_url": "https://github.com/BoxDragon",
+   "followers_url": "https://api.github.com/users/BoxDragon/followers",
+   "following_url": "https://api.github.com/users/BoxDragon/following{/other_user}",
+   "gists_url": "https://api.github.com/users/BoxDragon/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/BoxDragon/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/BoxDragon/subscriptions",
+   "organizations_url": "https://api.github.com/users/BoxDragon/orgs",
+   "repos_url": "https://api.github.com/users/BoxDragon/repos",
+   "events_url": "https://api.github.com/users/BoxDragon/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/BoxDragon/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 9,
+  "subscribers_count": 3
+ },
+ "funding": []
+}

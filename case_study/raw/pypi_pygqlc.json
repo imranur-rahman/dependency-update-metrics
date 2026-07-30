@@ -1,0 +1,786 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "PYPI",
+   "name": "pygqlc"
+  },
+  "purl": "pkg:pypi/pygqlc",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "0.1.0"
+    },
+    "purl": "pkg:pypi/pygqlc@0.1.0",
+    "publishedAt": "2019-09-01T02:47:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "0.1.0-py3.7"
+    },
+    "purl": "pkg:pypi/pygqlc@0.1.0-py3.7",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "0.1.1"
+    },
+    "purl": "pkg:pypi/pygqlc@0.1.1",
+    "publishedAt": "2019-09-01T02:47:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "1.0.0"
+    },
+    "purl": "pkg:pypi/pygqlc@1.0.0",
+    "publishedAt": "2019-09-01T21:25:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "1.0.1"
+    },
+    "purl": "pkg:pypi/pygqlc@1.0.1",
+    "publishedAt": "2019-09-01T21:36:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "1.0.4"
+    },
+    "purl": "pkg:pypi/pygqlc@1.0.4",
+    "publishedAt": "2019-09-03T00:34:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "1.0.5"
+    },
+    "purl": "pkg:pypi/pygqlc@1.0.5",
+    "publishedAt": "2019-09-03T00:34:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "1.0.8"
+    },
+    "purl": "pkg:pypi/pygqlc@1.0.8",
+    "publishedAt": "2019-09-03T00:48:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "1.1.0"
+    },
+    "purl": "pkg:pypi/pygqlc@1.1.0",
+    "publishedAt": "2019-09-09T18:26:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "1.1.1"
+    },
+    "purl": "pkg:pypi/pygqlc@1.1.1",
+    "publishedAt": "2019-09-10T19:14:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "1.1.2"
+    },
+    "purl": "pkg:pypi/pygqlc@1.1.2",
+    "publishedAt": "2020-03-26T06:11:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "1.2.0"
+    },
+    "purl": "pkg:pypi/pygqlc@1.2.0",
+    "publishedAt": "2020-07-09T04:23:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "2.0.0"
+    },
+    "purl": "pkg:pypi/pygqlc@2.0.0",
+    "publishedAt": "2020-08-25T23:26:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "2.0.1"
+    },
+    "purl": "pkg:pypi/pygqlc@2.0.1",
+    "publishedAt": "2020-08-25T23:57:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "2.0.2"
+    },
+    "purl": "pkg:pypi/pygqlc@2.0.2",
+    "publishedAt": "2020-09-02T17:48:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "2.0.3"
+    },
+    "purl": "pkg:pypi/pygqlc@2.0.3",
+    "publishedAt": "2021-09-21T21:44:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "2.0.4"
+    },
+    "purl": "pkg:pypi/pygqlc@2.0.4",
+    "publishedAt": "2021-10-29T17:36:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "2.1.0"
+    },
+    "purl": "pkg:pypi/pygqlc@2.1.0",
+    "publishedAt": "2022-02-04T16:44:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "3.0.1"
+    },
+    "purl": "pkg:pypi/pygqlc@3.0.1",
+    "publishedAt": "2022-08-01T20:23:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "3.0.2"
+    },
+    "purl": "pkg:pypi/pygqlc@3.0.2",
+    "publishedAt": "2023-02-10T19:03:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "3.0.3"
+    },
+    "purl": "pkg:pypi/pygqlc@3.0.3",
+    "publishedAt": "2023-02-14T17:40:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "3.0.4"
+    },
+    "purl": "pkg:pypi/pygqlc@3.0.4",
+    "publishedAt": "2023-02-17T23:05:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "3.0.5"
+    },
+    "purl": "pkg:pypi/pygqlc@3.0.5",
+    "publishedAt": "2023-02-22T19:53:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "3.1.0"
+    },
+    "purl": "pkg:pypi/pygqlc@3.1.0",
+    "publishedAt": "2023-04-21T18:46:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "3.1.3"
+    },
+    "purl": "pkg:pypi/pygqlc@3.1.3",
+    "publishedAt": "2023-07-17T22:51:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "3.1.4"
+    },
+    "purl": "pkg:pypi/pygqlc@3.1.4",
+    "publishedAt": "2023-08-16T22:46:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "3.2.0"
+    },
+    "purl": "pkg:pypi/pygqlc@3.2.0",
+    "publishedAt": "2024-04-04T15:52:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "3.3.0"
+    },
+    "purl": "pkg:pypi/pygqlc@3.3.0",
+    "publishedAt": "2025-01-25T22:01:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "3.4.0"
+    },
+    "purl": "pkg:pypi/pygqlc@3.4.0",
+    "publishedAt": "2025-03-05T19:55:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "3.5.0"
+    },
+    "purl": "pkg:pypi/pygqlc@3.5.0",
+    "publishedAt": "2025-03-07T22:45:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "3.5.1"
+    },
+    "purl": "pkg:pypi/pygqlc@3.5.1",
+    "publishedAt": "2025-03-10T20:03:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "3.5.2"
+    },
+    "purl": "pkg:pypi/pygqlc@3.5.2",
+    "publishedAt": "2025-03-19T21:59:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "3.5.3"
+    },
+    "purl": "pkg:pypi/pygqlc@3.5.3",
+    "publishedAt": "2025-03-31T06:01:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "3.5.5"
+    },
+    "purl": "pkg:pypi/pygqlc@3.5.5",
+    "publishedAt": "2025-06-11T15:23:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "3.8.0"
+    },
+    "purl": "pkg:pypi/pygqlc@3.8.0",
+    "publishedAt": "2026-05-28T21:08:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "3.8.1"
+    },
+    "purl": "pkg:pypi/pygqlc@3.8.1",
+    "publishedAt": "2026-06-12T04:28:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "3.8.2"
+    },
+    "purl": "pkg:pypi/pygqlc@3.8.2",
+    "publishedAt": "2026-06-24T01:07:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "3.8.3"
+    },
+    "purl": "pkg:pypi/pygqlc@3.8.3",
+    "publishedAt": "2026-06-24T18:46:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "3.8.4"
+    },
+    "purl": "pkg:pypi/pygqlc@3.8.4",
+    "publishedAt": "2026-06-25T03:52:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "3.8.5"
+    },
+    "purl": "pkg:pypi/pygqlc@3.8.5",
+    "publishedAt": "2026-06-26T15:04:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "3.8.6"
+    },
+    "purl": "pkg:pypi/pygqlc@3.8.6",
+    "publishedAt": "2026-06-26T15:35:37Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "PYPI",
+   "name": "pygqlc",
+   "version": "3.8.6"
+  },
+  "purl": "pkg:pypi/pygqlc@3.8.6",
+  "publishedAt": "2026-06-26T15:35:37Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [],
+  "licenseDetails": [],
+  "advisoryKeys": [],
+  "links": [],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://pypi.org/simple"
+  ],
+  "relatedProjects": [],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "pygqlc",
+    "versionString": "3.8.6",
+    "source": "PYPI_RELEASE_FILENAME"
+   },
+   {
+    "packageName": "pygqlc",
+    "versionString": "3.8.6",
+    "source": "PYPI_METADATA_FILE"
+   }
+  ],
+  "cooldown": {
+   "end": "2026-07-01T15:35:37Z",
+   "description": ""
+  },
+  "projectStatus": {
+   "status": "active",
+   "reason": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygqlc",
+     "version": "3.8.6"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "anyio",
+     "version": "4.14.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certifi",
+     "version": "2026.6.17"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "h11",
+     "version": "0.16.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "h2",
+     "version": "4.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "hpack",
+     "version": "4.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "httpcore",
+     "version": "1.0.9"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "httpx",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "hyperframe",
+     "version": "6.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "idna",
+     "version": "3.18.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "orjson",
+     "version": "3.11.9"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pydash",
+     "version": "8.0.6"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tenacity",
+     "version": "9.1.4"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "typing-extensions",
+     "version": "4.16.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "websocket-client",
+     "version": "1.9.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 7,
+    "requirement": ">=0.28"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 10,
+    "requirement": ">=3.10"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 11,
+    "requirement": ">=8.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 12,
+    "requirement": ">=9.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 14,
+    "requirement": ">=1.8"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 9,
+    "requirement": ">=2.8"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 5,
+    "requirement": "<5,>=4.1"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 8,
+    "requirement": "<7,>=6.1"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 2,
+    "requirement": ""
+   },
+   {
+    "fromNode": 6,
+    "toNode": 3,
+    "requirement": ">=0.16"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 1,
+    "requirement": ""
+   },
+   {
+    "fromNode": 7,
+    "toNode": 2,
+    "requirement": ""
+   },
+   {
+    "fromNode": 7,
+    "toNode": 4,
+    "requirement": "<5,>=3"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 6,
+    "requirement": "==1.*"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 9,
+    "requirement": ""
+   },
+   {
+    "fromNode": 11,
+    "toNode": 13,
+    "requirement": "!=4.6.0,>3.10"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 2,
+  "directDependentCount": 2,
+  "indirectDependentCount": 0
+ }
+}

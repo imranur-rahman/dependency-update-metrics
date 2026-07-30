@@ -72,6 +72,7 @@ def _init_worker_process(
     default_start_date: datetime,
     log_file_str: Optional[str],
     max_worker_memory_mb: int = 0,
+    write_dependency_details: bool = False,
 ) -> None:
     """Initialise per-process state for ProcessPoolExecutor workers.
 
@@ -131,6 +132,7 @@ def _init_worker_process(
             "output_dir": Path(output_dir_str),
             "default_start_date": default_start_date,
             "max_worker_memory_mb": max_worker_memory_mb,
+            "write_dependency_details": write_dependency_details,
         }
     )
 
@@ -557,6 +559,7 @@ def _worker_run_group_per_release(task: Dict[str, Any]) -> List[Dict[str, Any]]:
             merged_row,
             osv_df=osv_by_ecosystem.get(ecosystem),
             max_memory_mb=max_worker_memory_mb,
+            generate_dep_frames=ws.get("write_dependency_details", False),
         )
         all_results.extend(release_results)
         _wlogger.warning(
@@ -777,8 +780,7 @@ def main():
         "--write-dependency-details",
         action="store_true",
         help=(
-            "Write the per-interval dependency details CSV in bulk mode. "
-            "Disabled by default."
+            "Write the per-interval dependency details CSV in bulk mode. " "Disabled by default."
         ),
     )
 
@@ -1521,7 +1523,9 @@ def main():
             all_results = []
             try:
                 release_results = analyzer.analyze_at_release_points(
-                    merged_row, osv_df=osv_by_ecosystem.get(ecosystem)
+                    merged_row,
+                    osv_df=osv_by_ecosystem.get(ecosystem),
+                    generate_dep_frames=args.write_dependency_details,
                 )
                 all_results.extend(release_results)
             except Exception as exc:
@@ -1605,6 +1609,7 @@ def main():
             default_start_date,
             str(log_file_path),
             args.max_worker_memory_mb,
+            args.write_dependency_details,
         )
         _mp_ctx = multiprocessing.get_context("spawn")
 

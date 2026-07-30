@@ -85,14 +85,16 @@ class OSVBuilder:
                 logger.warning(f"Downloaded OSV data to {self.osv_zip}")
                 return
 
-            except (requests.exceptions.ChunkedEncodingError,
-                    requests.exceptions.ConnectionError,
-                    requests.exceptions.Timeout,
-                    zipfile.BadZipFile) as e:
+            except (
+                requests.exceptions.ChunkedEncodingError,
+                requests.exceptions.ConnectionError,
+                requests.exceptions.Timeout,
+                zipfile.BadZipFile,
+            ) as e:
                 if self.osv_zip.exists():
                     os.remove(self.osv_zip)
                 if attempt < max_retries:
-                    wait = 2 ** attempt
+                    wait = 2**attempt
                     logger.warning(
                         f"Download attempt {attempt}/{max_retries} failed ({e}); "
                         f"retrying in {wait}s..."

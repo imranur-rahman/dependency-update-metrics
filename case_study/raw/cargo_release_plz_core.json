@@ -1,0 +1,2813 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "CARGO",
+   "name": "release_plz_core"
+  },
+  "purl": "pkg:cargo/release_plz_core",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.1.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.1.0",
+    "publishedAt": "2022-02-01T22:35:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.1.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.1.1",
+    "publishedAt": "2022-02-13T21:51:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.10.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.10.0",
+    "publishedAt": "2023-05-09T05:40:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.11.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.11.0",
+    "publishedAt": "2023-05-21T18:18:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.11.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.11.1",
+    "publishedAt": "2023-05-26T06:10:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.11.2"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.11.2",
+    "publishedAt": "2023-05-31T19:58:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.11.3"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.11.3",
+    "publishedAt": "2023-06-09T07:17:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.12.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.12.0",
+    "publishedAt": "2023-06-09T22:18:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.12.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.12.1",
+    "publishedAt": "2023-06-10T08:50:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.12.2"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.12.2",
+    "publishedAt": "2023-06-26T20:36:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.12.3"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.12.3",
+    "publishedAt": "2023-07-25T18:28:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.12.4"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.12.4",
+    "publishedAt": "2023-08-02T10:47:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.13.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.13.0",
+    "publishedAt": "2023-08-15T17:02:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.13.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.13.1",
+    "publishedAt": "2023-08-16T11:38:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.13.2"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.13.2",
+    "publishedAt": "2023-08-26T14:36:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.13.3"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.13.3",
+    "publishedAt": "2023-09-08T21:54:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.13.4"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.13.4",
+    "publishedAt": "2023-09-11T19:09:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.13.5"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.13.5",
+    "publishedAt": "2023-09-16T16:17:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.13.6"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.13.6",
+    "publishedAt": "2023-09-17T10:58:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.14.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.14.0",
+    "publishedAt": "2023-09-24T15:05:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.14.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.14.1",
+    "publishedAt": "2023-09-30T13:38:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.14.2"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.14.2",
+    "publishedAt": "2023-09-30T21:38:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.14.3"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.14.3",
+    "publishedAt": "2023-10-15T08:59:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.14.4"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.14.4",
+    "publishedAt": "2023-10-29T22:12:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.14.5"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.14.5",
+    "publishedAt": "2023-11-08T22:05:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.15.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.15.0",
+    "publishedAt": "2023-12-02T16:18:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.15.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.15.1",
+    "publishedAt": "2023-12-04T21:31:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.15.2"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.15.2",
+    "publishedAt": "2023-12-13T18:11:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.15.3"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.15.3",
+    "publishedAt": "2023-12-16T23:14:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.15.4"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.15.4",
+    "publishedAt": "2023-12-20T07:54:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.15.5"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.15.5",
+    "publishedAt": "2023-12-30T20:15:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.16.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.16.0",
+    "publishedAt": "2024-01-17T07:56:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.16.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.16.1",
+    "publishedAt": "2024-01-20T15:32:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.16.2"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.16.2",
+    "publishedAt": "2024-01-23T15:50:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.17.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.17.0",
+    "publishedAt": "2024-01-26T17:48:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.17.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.17.1",
+    "publishedAt": "2024-02-06T10:05:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.18.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.18.0",
+    "publishedAt": "2024-02-09T21:11:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.19.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.19.0",
+    "publishedAt": "2024-02-12T07:44:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.19.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.19.1",
+    "publishedAt": "2024-02-25T15:24:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.19.2"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.19.2",
+    "publishedAt": "2024-02-25T19:12:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.19.3"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.19.3",
+    "publishedAt": "2024-02-25T22:40:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.19.4"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.19.4",
+    "publishedAt": "2024-02-27T22:28:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.19.5"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.19.5",
+    "publishedAt": "2024-03-06T22:32:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.19.6"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.19.6",
+    "publishedAt": "2024-03-08T23:00:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.19.7"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.19.7",
+    "publishedAt": "2024-03-10T09:57:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.19.8"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.19.8",
+    "publishedAt": "2024-03-10T22:38:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.2.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.2.0",
+    "publishedAt": "2022-03-27T21:07:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.2.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.2.1",
+    "publishedAt": "2022-03-30T07:19:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.2.10"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.2.10",
+    "publishedAt": "2022-05-14T09:06:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.2.11"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.2.11",
+    "publishedAt": "2022-05-15T13:51:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.2.12"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.2.12",
+    "publishedAt": "2022-05-19T06:55:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.2.13"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.2.13",
+    "publishedAt": "2022-05-26T22:16:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.2.14"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.2.14",
+    "publishedAt": "2022-05-28T14:46:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.2.15"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.2.15",
+    "publishedAt": "2022-05-29T07:41:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.2.16"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.2.16",
+    "publishedAt": "2022-05-29T13:33:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.2.17"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.2.17",
+    "publishedAt": "2022-06-18T14:35:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.2.18"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.2.18",
+    "publishedAt": "2022-07-16T12:51:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.2.19"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.2.19",
+    "publishedAt": "2022-10-26T21:28:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.2.2"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.2.2",
+    "publishedAt": "2022-04-10T21:17:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.2.20"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.2.20",
+    "publishedAt": "2022-11-03T07:11:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.2.21"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.2.21",
+    "publishedAt": "2022-11-04T08:02:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.2.3"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.2.3",
+    "publishedAt": "2022-04-11T13:32:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.2.4"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.2.4",
+    "publishedAt": "2022-04-23T18:07:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.2.5"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.2.5",
+    "publishedAt": "2022-05-01T12:02:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.2.6"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.2.6",
+    "publishedAt": "2022-05-01T20:48:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.2.7"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.2.7",
+    "publishedAt": "2022-05-02T21:16:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.2.8"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.2.8",
+    "publishedAt": "2022-05-08T21:36:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.2.9"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.2.9",
+    "publishedAt": "2022-05-10T13:36:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.20.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.20.0",
+    "publishedAt": "2024-03-14T20:52:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.20.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.20.1",
+    "publishedAt": "2024-03-24T12:02:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.20.2"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.20.2",
+    "publishedAt": "2024-04-02T22:34:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.20.3"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.20.3",
+    "publishedAt": "2024-04-08T06:17:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.21.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.21.0",
+    "publishedAt": "2024-04-14T15:53:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.21.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.21.1",
+    "publishedAt": "2024-04-21T13:59:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.21.2"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.21.2",
+    "publishedAt": "2024-04-25T14:48:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.21.3"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.21.3",
+    "publishedAt": "2024-04-25T21:50:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.21.4"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.21.4",
+    "publishedAt": "2024-04-28T13:38:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.21.5"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.21.5",
+    "publishedAt": "2024-05-05T21:30:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.21.6"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.21.6",
+    "publishedAt": "2024-05-10T05:38:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.21.7"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.21.7",
+    "publishedAt": "2024-05-12T16:52:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.21.8"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.21.8",
+    "publishedAt": "2024-05-14T20:07:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.22.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.22.0",
+    "publishedAt": "2024-05-22T17:10:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.22.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.22.1",
+    "publishedAt": "2024-05-27T18:03:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.22.2"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.22.2",
+    "publishedAt": "2024-06-09T07:07:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.22.3"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.22.3",
+    "publishedAt": "2024-06-10T21:06:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.22.4"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.22.4",
+    "publishedAt": "2024-06-18T12:04:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.23.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.23.0",
+    "publishedAt": "2024-06-21T13:47:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.23.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.23.1",
+    "publishedAt": "2024-06-30T14:03:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.24.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.24.0",
+    "publishedAt": "2024-07-12T06:17:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.24.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.24.1",
+    "publishedAt": "2024-07-14T14:15:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.24.2"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.24.2",
+    "publishedAt": "2024-07-15T06:08:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.24.3"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.24.3",
+    "publishedAt": "2024-07-18T06:21:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.24.4"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.24.4",
+    "publishedAt": "2024-08-04T13:32:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.25.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.25.0",
+    "publishedAt": "2024-08-05T06:54:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.25.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.25.1",
+    "publishedAt": "2024-08-07T05:37:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.25.2"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.25.2",
+    "publishedAt": "2024-08-07T06:20:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.25.3"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.25.3",
+    "publishedAt": "2024-08-18T21:20:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.25.4"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.25.4",
+    "publishedAt": "2024-08-25T11:46:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.25.5"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.25.5",
+    "publishedAt": "2024-09-07T07:59:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.25.6"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.25.6",
+    "publishedAt": "2024-09-07T14:32:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.25.7"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.25.7",
+    "publishedAt": "2024-09-14T17:34:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.26.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.26.0",
+    "publishedAt": "2024-09-16T18:00:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.26.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.26.1",
+    "publishedAt": "2024-09-16T19:35:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.26.2"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.26.2",
+    "publishedAt": "2024-09-17T20:49:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.27.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.27.0",
+    "publishedAt": "2024-09-28T08:41:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.27.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.27.1",
+    "publishedAt": "2024-09-30T18:03:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.27.2"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.27.2",
+    "publishedAt": "2024-10-01T17:13:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.28.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.28.0",
+    "publishedAt": "2024-10-03T09:16:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.29.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.29.0",
+    "publishedAt": "2024-10-05T16:46:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.3.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.3.0",
+    "publishedAt": "2022-11-12T23:16:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.3.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.3.1",
+    "publishedAt": "2022-11-17T21:38:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.30.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.30.0",
+    "publishedAt": "2024-10-08T20:08:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.30.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.30.1",
+    "publishedAt": "2024-10-13T21:42:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.30.10"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.30.10",
+    "publishedAt": "2024-11-21T09:10:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.30.11"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.30.11",
+    "publishedAt": "2024-11-22T07:46:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.30.12"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.30.12",
+    "publishedAt": "2024-12-07T17:00:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.30.13"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.30.13",
+    "publishedAt": "2024-12-19T21:14:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.30.2"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.30.2",
+    "publishedAt": "2024-10-15T09:28:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.30.3"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.30.3",
+    "publishedAt": "2024-10-16T12:29:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.30.4"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.30.4",
+    "publishedAt": "2024-10-18T20:20:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.30.5"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.30.5",
+    "publishedAt": "2024-10-25T20:10:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.30.6"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.30.6",
+    "publishedAt": "2024-10-27T13:54:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.30.7"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.30.7",
+    "publishedAt": "2024-10-30T09:43:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.30.8"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.30.8",
+    "publishedAt": "2024-11-08T09:38:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.30.9"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.30.9",
+    "publishedAt": "2024-11-13T21:06:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.31.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.31.0",
+    "publishedAt": "2025-01-14T20:49:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.31.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.31.1",
+    "publishedAt": "2025-01-24T14:22:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.32.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.32.0",
+    "publishedAt": "2025-02-01T15:36:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.32.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.32.1",
+    "publishedAt": "2025-02-01T16:22:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.32.2"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.32.2",
+    "publishedAt": "2025-02-08T19:13:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.32.3"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.32.3",
+    "publishedAt": "2025-02-08T22:13:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.32.4"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.32.4",
+    "publishedAt": "2025-02-09T09:44:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.32.5"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.32.5",
+    "publishedAt": "2025-02-09T18:46:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.32.6"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.32.6",
+    "publishedAt": "2025-02-22T18:11:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.32.7"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.32.7",
+    "publishedAt": "2025-02-22T19:04:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.33.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.33.0",
+    "publishedAt": "2025-02-25T16:00:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.33.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.33.1",
+    "publishedAt": "2025-03-01T23:45:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.33.2"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.33.2",
+    "publishedAt": "2025-03-04T20:59:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.33.3"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.33.3",
+    "publishedAt": "2025-03-15T17:20:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.33.4"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.33.4",
+    "publishedAt": "2025-03-17T17:17:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.33.5"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.33.5",
+    "publishedAt": "2025-03-26T22:04:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.33.6"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.33.6",
+    "publishedAt": "2025-04-02T17:46:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.33.7"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.33.7",
+    "publishedAt": "2025-04-10T18:33:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.33.8"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.33.8",
+    "publishedAt": "2025-04-13T11:56:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.34.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.34.0",
+    "publishedAt": "2025-04-18T22:42:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.34.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.34.1",
+    "publishedAt": "2025-05-08T11:44:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.34.2"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.34.2",
+    "publishedAt": "2025-05-18T15:00:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.34.3"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.34.3",
+    "publishedAt": "2025-06-19T06:53:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.34.4"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.34.4",
+    "publishedAt": "2025-07-01T18:46:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.34.5"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.34.5",
+    "publishedAt": "2025-07-09T12:46:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.34.6"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.34.6",
+    "publishedAt": "2025-07-24T08:50:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.34.7"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.34.7",
+    "publishedAt": "2025-08-13T21:22:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.34.8"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.34.8",
+    "publishedAt": "2025-08-15T11:28:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.35.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.35.0",
+    "publishedAt": "2025-09-01T12:57:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.36.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.36.0",
+    "publishedAt": "2025-09-05T21:15:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.36.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.36.1",
+    "publishedAt": "2025-09-10T15:12:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.36.10"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.36.10",
+    "publishedAt": "2026-02-03T21:09:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.36.11"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.36.11",
+    "publishedAt": "2026-02-06T00:05:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.36.12"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.36.12",
+    "publishedAt": "2026-02-16T00:11:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.36.13"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.36.13",
+    "publishedAt": "2026-03-07T16:18:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.36.14"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.36.14",
+    "publishedAt": "2026-05-10T10:15:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.36.15"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.36.15",
+    "publishedAt": "2026-06-09T15:16:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.36.2"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.36.2",
+    "publishedAt": "2025-09-12T01:35:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.36.3"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.36.3",
+    "publishedAt": "2025-09-13T14:59:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.36.4"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.36.4",
+    "publishedAt": "2025-09-13T22:48:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.36.5"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.36.5",
+    "publishedAt": "2025-10-10T21:23:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.36.6"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.36.6",
+    "publishedAt": "2025-11-24T20:43:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.36.7"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.36.7",
+    "publishedAt": "2025-12-05T20:47:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.36.8"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.36.8",
+    "publishedAt": "2026-01-17T23:12:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.36.9"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.36.9",
+    "publishedAt": "2026-01-23T23:14:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.37.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.37.0",
+    "publishedAt": "2026-07-14T08:06:12Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.4.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.4.0",
+    "publishedAt": "2022-12-12T22:49:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.4.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.4.1",
+    "publishedAt": "2022-12-17T10:04:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.4.10"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.4.10",
+    "publishedAt": "2023-01-17T22:55:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.4.11"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.4.11",
+    "publishedAt": "2023-01-22T08:47:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.4.12"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.4.12",
+    "publishedAt": "2023-01-26T18:50:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.4.13"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.4.13",
+    "publishedAt": "2023-01-27T18:40:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.4.14"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.4.14",
+    "publishedAt": "2023-01-31T22:51:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.4.15"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.4.15",
+    "publishedAt": "2023-01-31T23:35:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.4.16"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.4.16",
+    "publishedAt": "2023-02-08T18:47:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.4.17"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.4.17",
+    "publishedAt": "2023-02-11T11:42:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.4.18"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.4.18",
+    "publishedAt": "2023-02-11T17:19:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.4.19"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.4.19",
+    "publishedAt": "2023-02-18T10:08:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.4.2"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.4.2",
+    "publishedAt": "2022-12-26T22:16:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.4.20"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.4.20",
+    "publishedAt": "2023-02-18T11:48:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.4.21"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.4.21",
+    "publishedAt": "2023-02-20T22:01:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.4.3"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.4.3",
+    "publishedAt": "2023-01-06T11:29:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.4.4"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.4.4",
+    "publishedAt": "2023-01-07T14:23:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.4.5"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.4.5",
+    "publishedAt": "2023-01-11T21:33:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.4.6"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.4.6",
+    "publishedAt": "2023-01-13T22:56:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.4.7"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.4.7",
+    "publishedAt": "2023-01-15T00:28:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.4.8"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.4.8",
+    "publishedAt": "2023-01-16T21:54:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.4.9"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.4.9",
+    "publishedAt": "2023-01-16T22:48:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.5.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.5.0",
+    "publishedAt": "2023-02-26T22:30:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.5.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.5.1",
+    "publishedAt": "2023-02-27T18:28:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.5.2"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.5.2",
+    "publishedAt": "2023-03-04T22:21:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.5.3"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.5.3",
+    "publishedAt": "2023-03-09T06:46:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.5.4"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.5.4",
+    "publishedAt": "2023-03-10T13:39:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.5.5"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.5.5",
+    "publishedAt": "2023-03-13T22:07:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.5.6"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.5.6",
+    "publishedAt": "2023-03-17T22:34:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.5.7"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.5.7",
+    "publishedAt": "2023-03-19T00:58:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.5.8"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.5.8",
+    "publishedAt": "2023-03-27T21:02:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.6.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.6.0",
+    "publishedAt": "2023-04-01T23:03:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.6.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.6.1",
+    "publishedAt": "2023-04-02T10:36:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.6.2"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.6.2",
+    "publishedAt": "2023-04-02T15:32:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.7.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.7.0",
+    "publishedAt": "2023-04-03T05:54:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.7.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.7.1",
+    "publishedAt": "2023-04-05T20:31:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.8.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.8.0",
+    "publishedAt": "2023-04-16T17:56:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.9.0"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.9.0",
+    "publishedAt": "2023-04-21T19:59:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.9.1"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.9.1",
+    "publishedAt": "2023-04-24T19:01:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.9.2"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.9.2",
+    "publishedAt": "2023-04-25T12:23:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.9.3"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.9.3",
+    "publishedAt": "2023-04-27T16:55:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.9.4"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.9.4",
+    "publishedAt": "2023-05-05T22:06:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.9.5"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.9.5",
+    "publishedAt": "2023-05-07T10:06:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "release_plz_core",
+     "version": "0.9.6"
+    },
+    "purl": "pkg:cargo/release_plz_core@0.9.6",
+    "publishedAt": "2023-05-07T14:41:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "CARGO",
+   "name": "release_plz_core",
+   "version": "0.37.0"
+  },
+  "purl": "pkg:cargo/release_plz_core@0.37.0",
+  "publishedAt": "2026-07-14T08:06:12Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "Apache-2.0 OR MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "Apache-2.0 OR MIT",
+    "spdx": "Apache-2.0 OR MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/release-plz/release-plz/tree/main/crates/release_plz_core"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://crates.io/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/release-plz/release-plz"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "release_plz_core",
+    "versionString": "0.37.0",
+    "source": "CARGO_CRATES_IO"
+   }
+  ],
+  "cooldown": {
+   "end": "2026-07-24T08:06:12Z",
+   "description": ""
+  }
+ },
+ "dependencies": null,
+ "dependents": null,
+ "project": {
+  "projectKey": {
+   "id": "github.com/release-plz/release-plz"
+  },
+  "openIssuesCount": 131,
+  "starsCount": 1418,
+  "forksCount": 180,
+  "license": "Apache-2.0",
+  "description": "Publish Rust crates from CI with a Release PR.",
+  "homepage": "https://release-plz.dev"
+ },
+ "github_repo_api": {
+  "id": 439941981,
+  "node_id": "R_kgDOGjj7XQ",
+  "name": "release-plz",
+  "full_name": "release-plz/release-plz",
+  "private": false,
+  "owner": {
+   "login": "release-plz",
+   "id": 188756284,
+   "node_id": "O_kgDOC0AxPA",
+   "avatar_url": "https://avatars.githubusercontent.com/u/188756284?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/release-plz",
+   "html_url": "https://github.com/release-plz",
+   "followers_url": "https://api.github.com/users/release-plz/followers",
+   "following_url": "https://api.github.com/users/release-plz/following{/other_user}",
+   "gists_url": "https://api.github.com/users/release-plz/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/release-plz/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/release-plz/subscriptions",
+   "organizations_url": "https://api.github.com/users/release-plz/orgs",
+   "repos_url": "https://api.github.com/users/release-plz/repos",
+   "events_url": "https://api.github.com/users/release-plz/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/release-plz/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/release-plz/release-plz",
+  "description": "Publish Rust crates from CI with a Release PR.",
+  "fork": false,
+  "url": "https://api.github.com/repos/release-plz/release-plz",
+  "forks_url": "https://api.github.com/repos/release-plz/release-plz/forks",
+  "keys_url": "https://api.github.com/repos/release-plz/release-plz/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/release-plz/release-plz/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/release-plz/release-plz/teams",
+  "hooks_url": "https://api.github.com/repos/release-plz/release-plz/hooks",
+  "issue_events_url": "https://api.github.com/repos/release-plz/release-plz/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/release-plz/release-plz/events",
+  "assignees_url": "https://api.github.com/repos/release-plz/release-plz/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/release-plz/release-plz/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/release-plz/release-plz/tags",
+  "blobs_url": "https://api.github.com/repos/release-plz/release-plz/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/release-plz/release-plz/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/release-plz/release-plz/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/release-plz/release-plz/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/release-plz/release-plz/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/release-plz/release-plz/languages",
+  "stargazers_url": "https://api.github.com/repos/release-plz/release-plz/stargazers",
+  "contributors_url": "https://api.github.com/repos/release-plz/release-plz/contributors",
+  "subscribers_url": "https://api.github.com/repos/release-plz/release-plz/subscribers",
+  "subscription_url": "https://api.github.com/repos/release-plz/release-plz/subscription",
+  "commits_url": "https://api.github.com/repos/release-plz/release-plz/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/release-plz/release-plz/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/release-plz/release-plz/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/release-plz/release-plz/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/release-plz/release-plz/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/release-plz/release-plz/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/release-plz/release-plz/merges",
+  "archive_url": "https://api.github.com/repos/release-plz/release-plz/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/release-plz/release-plz/downloads",
+  "issues_url": "https://api.github.com/repos/release-plz/release-plz/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/release-plz/release-plz/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/release-plz/release-plz/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/release-plz/release-plz/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/release-plz/release-plz/labels{/name}",
+  "releases_url": "https://api.github.com/repos/release-plz/release-plz/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/release-plz/release-plz/deployments",
+  "created_at": "2021-12-19T18:46:33Z",
+  "updated_at": "2026-07-21T18:58:33Z",
+  "pushed_at": "2026-07-21T18:58:21Z",
+  "git_url": "git://github.com/release-plz/release-plz.git",
+  "ssh_url": "git@github.com:release-plz/release-plz.git",
+  "clone_url": "https://github.com/release-plz/release-plz.git",
+  "svn_url": "https://github.com/release-plz/release-plz",
+  "homepage": "https://release-plz.dev",
+  "size": 36171,
+  "stargazers_count": 1426,
+  "watchers_count": 1426,
+  "language": "Rust",
+  "has_issues": true,
+  "has_projects": false,
+  "has_downloads": false,
+  "has_wiki": false,
+  "has_pages": true,
+  "has_discussions": true,
+  "forks_count": 180,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 134,
+  "license": {
+   "key": "apache-2.0",
+   "name": "Apache License 2.0",
+   "spdx_id": "Apache-2.0",
+   "url": "https://api.github.com/licenses/apache-2.0",
+   "node_id": "MDc6TGljZW5zZTI="
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [
+   "ci",
+   "hacktoberfest",
+   "release",
+   "rust"
+  ],
+  "visibility": "public",
+  "forks": 180,
+  "open_issues": 134,
+  "watchers": 1426,
+  "default_branch": "main",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "release-plz",
+   "id": 188756284,
+   "node_id": "O_kgDOC0AxPA",
+   "avatar_url": "https://avatars.githubusercontent.com/u/188756284?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/release-plz",
+   "html_url": "https://github.com/release-plz",
+   "followers_url": "https://api.github.com/users/release-plz/followers",
+   "following_url": "https://api.github.com/users/release-plz/following{/other_user}",
+   "gists_url": "https://api.github.com/users/release-plz/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/release-plz/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/release-plz/subscriptions",
+   "organizations_url": "https://api.github.com/users/release-plz/orgs",
+   "repos_url": "https://api.github.com/users/release-plz/repos",
+   "events_url": "https://api.github.com/users/release-plz/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/release-plz/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 180,
+  "subscribers_count": 4
+ },
+ "funding": [
+  {
+   "platform": "GITHUB",
+   "url": "https://github.com/release-plz"
+  },
+  {
+   "platform": "OPEN_COLLECTIVE",
+   "url": "https://opencollective.com/release-plz"
+  }
+ ]
+}

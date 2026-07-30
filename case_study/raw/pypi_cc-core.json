@@ -1,0 +1,1151 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "PYPI",
+   "name": "cc-core"
+  },
+  "purl": "pkg:pypi/cc-core",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "0.1.0"
+    },
+    "purl": "pkg:pypi/cc-core@0.1.0",
+    "publishedAt": "2017-10-28T11:31:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "2.0.1"
+    },
+    "purl": "pkg:pypi/cc-core@2.0.1",
+    "publishedAt": "2018-02-02T12:38:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "2.0.2"
+    },
+    "purl": "pkg:pypi/cc-core@2.0.2",
+    "publishedAt": "2018-02-06T09:26:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "3.0.0"
+    },
+    "purl": "pkg:pypi/cc-core@3.0.0",
+    "publishedAt": "2018-02-08T17:51:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "3.1.0"
+    },
+    "purl": "pkg:pypi/cc-core@3.1.0",
+    "publishedAt": "2018-02-18T15:48:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "3.2.0"
+    },
+    "purl": "pkg:pypi/cc-core@3.2.0",
+    "publishedAt": "2018-04-16T08:02:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "4.0.0"
+    },
+    "purl": "pkg:pypi/cc-core@4.0.0",
+    "publishedAt": "2018-06-06T13:22:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "5.0.0"
+    },
+    "purl": "pkg:pypi/cc-core@5.0.0",
+    "publishedAt": "2018-06-23T17:20:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "5.0.1"
+    },
+    "purl": "pkg:pypi/cc-core@5.0.1",
+    "publishedAt": "2018-06-24T12:31:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "5.1.0"
+    },
+    "purl": "pkg:pypi/cc-core@5.1.0",
+    "publishedAt": "2018-06-24T20:55:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "5.1.1"
+    },
+    "purl": "pkg:pypi/cc-core@5.1.1",
+    "publishedAt": "2018-07-08T16:12:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "5.2.0"
+    },
+    "purl": "pkg:pypi/cc-core@5.2.0",
+    "publishedAt": "2018-08-21T15:43:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "5.2.1"
+    },
+    "purl": "pkg:pypi/cc-core@5.2.1",
+    "publishedAt": "2018-08-30T15:17:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "5.2.2"
+    },
+    "purl": "pkg:pypi/cc-core@5.2.2",
+    "publishedAt": "2018-08-31T11:08:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "5.3.0"
+    },
+    "purl": "pkg:pypi/cc-core@5.3.0",
+    "publishedAt": "2018-09-06T12:40:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "5.3.1"
+    },
+    "purl": "pkg:pypi/cc-core@5.3.1",
+    "publishedAt": "2018-09-06T13:45:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "5.3.2"
+    },
+    "purl": "pkg:pypi/cc-core@5.3.2",
+    "publishedAt": "2018-09-17T14:08:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "5.3.3"
+    },
+    "purl": "pkg:pypi/cc-core@5.3.3",
+    "publishedAt": "2018-11-13T11:31:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "5.4.0"
+    },
+    "purl": "pkg:pypi/cc-core@5.4.0",
+    "publishedAt": "2018-11-13T11:40:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "6.0.0"
+    },
+    "purl": "pkg:pypi/cc-core@6.0.0",
+    "publishedAt": "2019-02-18T16:20:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "6.1.0"
+    },
+    "purl": "pkg:pypi/cc-core@6.1.0",
+    "publishedAt": "2019-02-19T14:29:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "6.1.1"
+    },
+    "purl": "pkg:pypi/cc-core@6.1.1",
+    "publishedAt": "2019-02-22T13:13:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "6.1.2"
+    },
+    "purl": "pkg:pypi/cc-core@6.1.2",
+    "publishedAt": "2019-02-22T14:39:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "7.0.0"
+    },
+    "purl": "pkg:pypi/cc-core@7.0.0",
+    "publishedAt": "2019-05-10T19:41:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "7.0.1"
+    },
+    "purl": "pkg:pypi/cc-core@7.0.1",
+    "publishedAt": "2019-05-10T22:11:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "7.0.2"
+    },
+    "purl": "pkg:pypi/cc-core@7.0.2",
+    "publishedAt": "2019-05-11T09:10:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "7.0.3"
+    },
+    "purl": "pkg:pypi/cc-core@7.0.3",
+    "publishedAt": "2019-05-13T19:07:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "7.0.4"
+    },
+    "purl": "pkg:pypi/cc-core@7.0.4",
+    "publishedAt": "2019-07-22T11:07:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "8.0.0"
+    },
+    "purl": "pkg:pypi/cc-core@8.0.0",
+    "publishedAt": "2019-08-22T15:50:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "8.1.0"
+    },
+    "purl": "pkg:pypi/cc-core@8.1.0",
+    "publishedAt": "2019-10-25T10:54:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "8.1.1"
+    },
+    "purl": "pkg:pypi/cc-core@8.1.1",
+    "publishedAt": "2019-11-08T15:51:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "8.1.2"
+    },
+    "purl": "pkg:pypi/cc-core@8.1.2",
+    "publishedAt": "2020-01-17T13:08:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "9.0.0"
+    },
+    "purl": "pkg:pypi/cc-core@9.0.0",
+    "publishedAt": "2020-01-17T17:11:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "9.1.0"
+    },
+    "purl": "pkg:pypi/cc-core@9.1.0",
+    "publishedAt": "2020-02-21T14:24:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "9.1.1"
+    },
+    "purl": "pkg:pypi/cc-core@9.1.1",
+    "publishedAt": "2022-08-26T09:23:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "9.2.0"
+    },
+    "purl": "pkg:pypi/cc-core@9.2.0",
+    "publishedAt": "2023-09-28T08:49:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "9.2.1"
+    },
+    "purl": "pkg:pypi/cc-core@9.2.1",
+    "publishedAt": "2023-10-05T10:30:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "9.2.2"
+    },
+    "purl": "pkg:pypi/cc-core@9.2.2",
+    "publishedAt": "2023-10-09T11:31:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "9.2.3"
+    },
+    "purl": "pkg:pypi/cc-core@9.2.3",
+    "publishedAt": "2023-10-30T14:58:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "9.3.0"
+    },
+    "purl": "pkg:pypi/cc-core@9.3.0",
+    "publishedAt": "2023-11-30T15:11:30Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "PYPI",
+   "name": "cc-core",
+   "version": "9.3.0"
+  },
+  "purl": "pkg:pypi/cc-core@9.3.0",
+  "publishedAt": "2023-11-30T15:11:30Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "AGPL-3.0"
+  ],
+  "licenseDetails": [
+   {
+    "license": "AGPL-3.0",
+    "spdx": "AGPL-3.0"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/curious-containers/cc-core"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://pypi.org/simple"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/curious-containers/cc-core"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "cc_core",
+    "versionString": "9.3.0",
+    "source": "PYPI_RELEASE_FILENAME"
+   },
+   {
+    "packageName": "cc-core",
+    "versionString": "9.3.0",
+    "source": "PYPI_METADATA_FILE"
+   }
+  ],
+  "cooldown": {
+   "end": "2023-12-05T15:11:30Z",
+   "description": ""
+  },
+  "projectStatus": {
+   "status": "active",
+   "reason": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cc-core",
+     "version": "9.3.0"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "attrs",
+     "version": "26.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certifi",
+     "version": "2026.6.17"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "charset-normalizer",
+     "version": "3.4.9"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "docker",
+     "version": "6.1.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "idna",
+     "version": "3.18.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jsonschema",
+     "version": "4.26.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jsonschema-specifications",
+     "version": "2025.9.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "packaging",
+     "version": "26.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "red-val",
+     "version": "9.3.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "referencing",
+     "version": "0.37.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "requests",
+     "version": "2.34.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "rpds-py",
+     "version": "2026.6.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "ruamel-yaml",
+     "version": "0.17.40"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "urllib3",
+     "version": "1.26.20"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "websocket-client",
+     "version": "1.9.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 4,
+    "requirement": ">=6.0,<7.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 9,
+    "requirement": ">=9.3,<9.4"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 13,
+    "requirement": ">=0.17,<0.18"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 14,
+    "requirement": ">=1.26,<2.0"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 8,
+    "requirement": ">=14.0"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 11,
+    "requirement": ">=2.26.0"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 14,
+    "requirement": ">=1.26.0"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 15,
+    "requirement": ">=0.32.0"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 1,
+    "requirement": ">=22.2.0"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 7,
+    "requirement": ">=2023.03.6"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 10,
+    "requirement": ">=0.28.4"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 12,
+    "requirement": ">=0.25.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 10,
+    "requirement": ">=0.31.0"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 6,
+    "requirement": ">=4.12,<5.0"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 1,
+    "requirement": ">=22.2.0"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 12,
+    "requirement": ">=0.7.0"
+   },
+   {
+    "fromNode": 11,
+    "toNode": 2,
+    "requirement": ">=2023.5.7"
+   },
+   {
+    "fromNode": 11,
+    "toNode": 3,
+    "requirement": "<4,>=2"
+   },
+   {
+    "fromNode": 11,
+    "toNode": 5,
+    "requirement": "<4,>=2.5"
+   },
+   {
+    "fromNode": 11,
+    "toNode": 14,
+    "requirement": "<3,>=1.26"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 2,
+  "directDependentCount": 2,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/curious-containers/cc-core"
+  },
+  "openIssuesCount": 0,
+  "starsCount": 0,
+  "forksCount": 0,
+  "license": "AGPL-3.0",
+  "description": "",
+  "homepage": "https://www.curious-containers.cc/",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/curious-containers/cc-core",
+    "commit": "be975620b561dd1ba61c7bef3f2765a9e57b1f2c"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": -1,
+     "reason": "No tokens found",
+     "details": []
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": -1,
+     "reason": "no workflows found",
+     "details": []
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": -1,
+     "reason": "no dependencies found",
+     "details": []
+    },
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 0,
+     "reason": "Found 0/30 approved changesets -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 0,
+     "reason": "project is archived",
+     "details": [
+      "Warn: Repository is archived."
+     ]
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "no SAST tool detected",
+     "details": [
+      "Warn: no pull requests merged into dev branch"
+     ]
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 0,
+     "reason": "security policy file not detected",
+     "details": [
+      "Warn: no security policy file detected",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 10,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE:0",
+      "Info: FSF or OSI recognized license: GNU Affero General Public License v3.0: LICENSE:0"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": 0,
+     "reason": "branch protection not enabled on development/release branches",
+     "details": [
+      "Warn: branch protection not enabled for branch 'master'"
+     ]
+    }
+   ],
+   "overallScore": 2,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 116587766,
+  "node_id": "MDEwOlJlcG9zaXRvcnkxMTY1ODc3NjY=",
+  "name": "cc-core",
+  "full_name": "curious-containers/cc-core",
+  "private": false,
+  "owner": {
+   "login": "curious-containers",
+   "id": 21206721,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjIxMjA2NzIx",
+   "avatar_url": "https://avatars.githubusercontent.com/u/21206721?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/curious-containers",
+   "html_url": "https://github.com/curious-containers",
+   "followers_url": "https://api.github.com/users/curious-containers/followers",
+   "following_url": "https://api.github.com/users/curious-containers/following{/other_user}",
+   "gists_url": "https://api.github.com/users/curious-containers/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/curious-containers/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/curious-containers/subscriptions",
+   "organizations_url": "https://api.github.com/users/curious-containers/orgs",
+   "repos_url": "https://api.github.com/users/curious-containers/repos",
+   "events_url": "https://api.github.com/users/curious-containers/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/curious-containers/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/curious-containers/cc-core",
+  "description": null,
+  "fork": false,
+  "url": "https://api.github.com/repos/curious-containers/cc-core",
+  "forks_url": "https://api.github.com/repos/curious-containers/cc-core/forks",
+  "keys_url": "https://api.github.com/repos/curious-containers/cc-core/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/curious-containers/cc-core/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/curious-containers/cc-core/teams",
+  "hooks_url": "https://api.github.com/repos/curious-containers/cc-core/hooks",
+  "issue_events_url": "https://api.github.com/repos/curious-containers/cc-core/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/curious-containers/cc-core/events",
+  "assignees_url": "https://api.github.com/repos/curious-containers/cc-core/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/curious-containers/cc-core/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/curious-containers/cc-core/tags",
+  "blobs_url": "https://api.github.com/repos/curious-containers/cc-core/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/curious-containers/cc-core/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/curious-containers/cc-core/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/curious-containers/cc-core/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/curious-containers/cc-core/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/curious-containers/cc-core/languages",
+  "stargazers_url": "https://api.github.com/repos/curious-containers/cc-core/stargazers",
+  "contributors_url": "https://api.github.com/repos/curious-containers/cc-core/contributors",
+  "subscribers_url": "https://api.github.com/repos/curious-containers/cc-core/subscribers",
+  "subscription_url": "https://api.github.com/repos/curious-containers/cc-core/subscription",
+  "commits_url": "https://api.github.com/repos/curious-containers/cc-core/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/curious-containers/cc-core/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/curious-containers/cc-core/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/curious-containers/cc-core/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/curious-containers/cc-core/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/curious-containers/cc-core/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/curious-containers/cc-core/merges",
+  "archive_url": "https://api.github.com/repos/curious-containers/cc-core/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/curious-containers/cc-core/downloads",
+  "issues_url": "https://api.github.com/repos/curious-containers/cc-core/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/curious-containers/cc-core/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/curious-containers/cc-core/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/curious-containers/cc-core/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/curious-containers/cc-core/labels{/name}",
+  "releases_url": "https://api.github.com/repos/curious-containers/cc-core/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/curious-containers/cc-core/deployments",
+  "created_at": "2018-01-07T18:07:11Z",
+  "updated_at": "2023-01-28T16:49:03Z",
+  "pushed_at": "2019-10-28T09:23:35Z",
+  "git_url": "git://github.com/curious-containers/cc-core.git",
+  "ssh_url": "git@github.com:curious-containers/cc-core.git",
+  "clone_url": "https://github.com/curious-containers/cc-core.git",
+  "svn_url": "https://github.com/curious-containers/cc-core",
+  "homepage": "https://www.curious-containers.cc/",
+  "size": 429,
+  "stargazers_count": 0,
+  "watchers_count": 0,
+  "language": "Python",
+  "has_issues": false,
+  "has_projects": false,
+  "has_downloads": false,
+  "has_wiki": false,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 0,
+  "mirror_url": null,
+  "archived": true,
+  "disabled": false,
+  "open_issues_count": 0,
+  "license": {
+   "key": "agpl-3.0",
+   "name": "GNU Affero General Public License v3.0",
+   "spdx_id": "AGPL-3.0",
+   "url": "https://api.github.com/licenses/agpl-3.0",
+   "node_id": "MDc6TGljZW5zZTE="
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [],
+  "visibility": "public",
+  "forks": 0,
+  "open_issues": 0,
+  "watchers": 0,
+  "default_branch": "master",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "curious-containers",
+   "id": 21206721,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjIxMjA2NzIx",
+   "avatar_url": "https://avatars.githubusercontent.com/u/21206721?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/curious-containers",
+   "html_url": "https://github.com/curious-containers",
+   "followers_url": "https://api.github.com/users/curious-containers/followers",
+   "following_url": "https://api.github.com/users/curious-containers/following{/other_user}",
+   "gists_url": "https://api.github.com/users/curious-containers/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/curious-containers/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/curious-containers/subscriptions",
+   "organizations_url": "https://api.github.com/users/curious-containers/orgs",
+   "repos_url": "https://api.github.com/users/curious-containers/repos",
+   "events_url": "https://api.github.com/users/curious-containers/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/curious-containers/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 0,
+  "subscribers_count": 3
+ },
+ "funding": []
+}

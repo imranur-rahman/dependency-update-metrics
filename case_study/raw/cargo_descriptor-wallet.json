@@ -1,0 +1,776 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "CARGO",
+   "name": "descriptor-wallet"
+  },
+  "purl": "pkg:cargo/descriptor-wallet",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.10.0"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.10.0",
+    "publishedAt": "2023-04-26T11:18:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.10.0-alpha.1"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.10.0-alpha.1",
+    "publishedAt": "2023-03-24T21:12:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.10.1"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.10.1",
+    "publishedAt": "2023-09-08T13:04:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.10.2"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.10.2",
+    "publishedAt": "2024-03-20T16:43:58Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.3.0"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.3.0",
+    "publishedAt": "2021-01-20T07:24:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.3.0-rc.1"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.3.0-rc.1",
+    "publishedAt": "2021-01-18T21:48:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.3.0-rc.2"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.3.0-rc.2",
+    "publishedAt": "2021-01-19T01:51:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.3.0-rc.3"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.3.0-rc.3",
+    "publishedAt": "2021-01-19T02:00:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.3.0-rc.3+1"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.3.0-rc.3%2B1",
+    "publishedAt": "2021-01-19T02:08:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.3.0-rc.4"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.3.0-rc.4",
+    "publishedAt": "2021-01-20T05:06:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.3.0-rc.5"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.3.0-rc.5",
+    "publishedAt": "2021-01-20T05:41:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.3.1"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.3.1",
+    "publishedAt": "2021-01-22T00:28:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.3.2"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.3.2",
+    "publishedAt": "2021-01-22T00:24:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.3.3"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.3.3",
+    "publishedAt": "2021-01-22T01:15:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.3.4"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.3.4",
+    "publishedAt": "2021-01-24T09:42:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.3.5"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.3.5",
+    "publishedAt": "2021-01-26T00:28:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.4.0"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.4.0",
+    "publishedAt": "2021-03-08T10:25:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.4.0-alpha.1"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.4.0-alpha.1",
+    "publishedAt": "2021-01-27T00:29:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.4.1"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.4.1",
+    "publishedAt": "2021-05-04T18:42:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.5.0"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.5.0",
+    "publishedAt": "2021-11-23T16:10:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.5.0-alpha.1"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.5.0-alpha.1",
+    "publishedAt": "2021-08-10T20:37:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.5.0-alpha.2"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.5.0-alpha.2",
+    "publishedAt": "2021-08-26T14:56:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.5.0-alpha.3"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.5.0-alpha.3",
+    "publishedAt": "2021-08-27T07:52:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.5.0-alpha.4"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.5.0-alpha.4",
+    "publishedAt": "2021-08-31T10:20:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.5.0-alpha.5"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.5.0-alpha.5",
+    "publishedAt": "2021-08-31T10:28:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.5.1"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.5.1",
+    "publishedAt": "2021-12-18T07:59:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.5.2"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.5.2",
+    "publishedAt": "2022-01-08T17:27:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.6.0"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.6.0",
+    "publishedAt": "2022-05-01T16:40:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.6.0-beta.1"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.6.0-beta.1",
+    "publishedAt": "2022-03-13T12:56:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.6.0-rc.1"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.6.0-rc.1",
+    "publishedAt": "2022-03-23T14:55:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.6.0-rc.2"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.6.0-rc.2",
+    "publishedAt": "2022-03-29T07:19:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.6.1"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.6.1",
+    "publishedAt": "2022-05-15T11:42:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.7.0"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.7.0",
+    "publishedAt": "2022-05-02T11:23:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.7.0-alpha.1"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.7.0-alpha.1",
+    "publishedAt": "2022-03-29T07:36:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.7.0-beta.1"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.7.0-beta.1",
+    "publishedAt": "2022-04-05T19:31:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.7.1"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.7.1",
+    "publishedAt": "2022-05-15T11:45:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.8.0"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.8.0",
+    "publishedAt": "2022-06-30T17:49:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.8.1"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.8.1",
+    "publishedAt": "2022-07-02T15:53:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.8.2"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.8.2",
+    "publishedAt": "2022-07-02T23:31:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.8.3"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.8.3",
+    "publishedAt": "2022-07-30T15:57:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.9.0"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.9.0",
+    "publishedAt": "2023-01-25T17:15:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.9.0-alpha.1"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.9.0-alpha.1",
+    "publishedAt": "2022-11-17T21:20:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.9.0-rc.1"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.9.0-rc.1",
+    "publishedAt": "2022-12-25T20:58:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.9.1"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.9.1",
+    "publishedAt": "2023-04-11T20:06:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "descriptor-wallet",
+     "version": "0.9.2"
+    },
+    "purl": "pkg:cargo/descriptor-wallet@0.9.2",
+    "publishedAt": "2023-04-16T16:16:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "CARGO",
+   "name": "descriptor-wallet",
+   "version": "0.10.2"
+  },
+  "purl": "pkg:cargo/descriptor-wallet@0.10.2",
+  "publishedAt": "2024-03-20T16:43:58Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "Apache-2.0"
+  ],
+  "licenseDetails": [
+   {
+    "license": "Apache-2.0",
+    "spdx": "Apache-2.0"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/BP-WG/descriptor-wallet"
+   },
+   {
+    "label": "HOMEPAGE",
+    "url": "https://lnp-bp.org"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://crates.io/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/bp-wg/descriptor-wallet"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "descriptor-wallet",
+    "versionString": "0.10.2",
+    "source": "CARGO_CRATES_IO"
+   }
+  ],
+  "cooldown": {
+   "end": "2024-03-30T16:43:58Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [],
+  "edges": [],
+  "error": "clap/^4.1.13: no candidates found"
+ },
+ "dependents": {
+  "dependentCount": 3,
+  "directDependentCount": 3,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/bp-wg/descriptor-wallet"
+  },
+  "openIssuesCount": 16,
+  "starsCount": 59,
+  "forksCount": 25,
+  "license": "Apache-2.0",
+  "description": "Library for building descriptor-based bitcoin wallets using rust-bitcoin",
+  "homepage": ""
+ },
+ "github_repo_api": {
+  "id": 330769577,
+  "node_id": "MDEwOlJlcG9zaXRvcnkzMzA3Njk1Nzc=",
+  "name": "descriptor-wallet",
+  "full_name": "BP-WG/descriptor-wallet",
+  "private": false,
+  "owner": {
+   "login": "BP-WG",
+   "id": 103577765,
+   "node_id": "O_kgDOBix4pQ",
+   "avatar_url": "https://avatars.githubusercontent.com/u/103577765?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/BP-WG",
+   "html_url": "https://github.com/BP-WG",
+   "followers_url": "https://api.github.com/users/BP-WG/followers",
+   "following_url": "https://api.github.com/users/BP-WG/following{/other_user}",
+   "gists_url": "https://api.github.com/users/BP-WG/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/BP-WG/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/BP-WG/subscriptions",
+   "organizations_url": "https://api.github.com/users/BP-WG/orgs",
+   "repos_url": "https://api.github.com/users/BP-WG/repos",
+   "events_url": "https://api.github.com/users/BP-WG/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/BP-WG/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/BP-WG/descriptor-wallet",
+  "description": "Library for building descriptor-based bitcoin wallets using rust-bitcoin",
+  "fork": false,
+  "url": "https://api.github.com/repos/BP-WG/descriptor-wallet",
+  "forks_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/forks",
+  "keys_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/teams",
+  "hooks_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/hooks",
+  "issue_events_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/events",
+  "assignees_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/tags",
+  "blobs_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/languages",
+  "stargazers_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/stargazers",
+  "contributors_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/contributors",
+  "subscribers_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/subscribers",
+  "subscription_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/subscription",
+  "commits_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/merges",
+  "archive_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/downloads",
+  "issues_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/labels{/name}",
+  "releases_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/BP-WG/descriptor-wallet/deployments",
+  "created_at": "2021-01-18T19:42:36Z",
+  "updated_at": "2025-09-01T06:46:27Z",
+  "pushed_at": "2025-06-05T09:11:00Z",
+  "git_url": "git://github.com/BP-WG/descriptor-wallet.git",
+  "ssh_url": "git@github.com:BP-WG/descriptor-wallet.git",
+  "clone_url": "https://github.com/BP-WG/descriptor-wallet.git",
+  "svn_url": "https://github.com/BP-WG/descriptor-wallet",
+  "homepage": "",
+  "size": 1475,
+  "stargazers_count": 59,
+  "watchers_count": 59,
+  "language": "Rust",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": true,
+  "forks_count": 24,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 15,
+  "license": {
+   "key": "apache-2.0",
+   "name": "Apache License 2.0",
+   "spdx_id": "Apache-2.0",
+   "url": "https://api.github.com/licenses/apache-2.0",
+   "node_id": "MDc6TGljZW5zZTI="
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [],
+  "visibility": "public",
+  "forks": 24,
+  "open_issues": 15,
+  "watchers": 59,
+  "default_branch": "master",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "BP-WG",
+   "id": 103577765,
+   "node_id": "O_kgDOBix4pQ",
+   "avatar_url": "https://avatars.githubusercontent.com/u/103577765?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/BP-WG",
+   "html_url": "https://github.com/BP-WG",
+   "followers_url": "https://api.github.com/users/BP-WG/followers",
+   "following_url": "https://api.github.com/users/BP-WG/following{/other_user}",
+   "gists_url": "https://api.github.com/users/BP-WG/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/BP-WG/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/BP-WG/subscriptions",
+   "organizations_url": "https://api.github.com/users/BP-WG/orgs",
+   "repos_url": "https://api.github.com/users/BP-WG/repos",
+   "events_url": "https://api.github.com/users/BP-WG/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/BP-WG/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 24,
+  "subscribers_count": 9
+ },
+ "funding": [
+  {
+   "platform": "GITHUB",
+   "url": "https://github.com/dr-orlovsky"
+  }
+ ]
+}

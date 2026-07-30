@@ -1,0 +1,749 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "@mezereon/bigcommerce-stencil-lifestyle"
+  },
+  "purl": "pkg:npm/%40mezereon/bigcommerce-stencil-lifestyle",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@mezereon/bigcommerce-stencil-lifestyle",
+     "version": "0.1.1"
+    },
+    "purl": "pkg:npm/%40mezereon/bigcommerce-stencil-lifestyle@0.1.1",
+    "publishedAt": "2019-12-15T06:11:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@mezereon/bigcommerce-stencil-lifestyle",
+     "version": "0.1.10"
+    },
+    "purl": "pkg:npm/%40mezereon/bigcommerce-stencil-lifestyle@0.1.10",
+    "publishedAt": "2020-09-25T04:03:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@mezereon/bigcommerce-stencil-lifestyle",
+     "version": "0.1.11"
+    },
+    "purl": "pkg:npm/%40mezereon/bigcommerce-stencil-lifestyle@0.1.11",
+    "publishedAt": "2021-05-06T07:18:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@mezereon/bigcommerce-stencil-lifestyle",
+     "version": "0.1.2"
+    },
+    "purl": "pkg:npm/%40mezereon/bigcommerce-stencil-lifestyle@0.1.2",
+    "publishedAt": "2020-01-27T00:29:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@mezereon/bigcommerce-stencil-lifestyle",
+     "version": "0.1.4"
+    },
+    "purl": "pkg:npm/%40mezereon/bigcommerce-stencil-lifestyle@0.1.4",
+    "publishedAt": "2020-04-18T02:54:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@mezereon/bigcommerce-stencil-lifestyle",
+     "version": "0.1.5"
+    },
+    "purl": "pkg:npm/%40mezereon/bigcommerce-stencil-lifestyle@0.1.5",
+    "publishedAt": "2020-07-06T06:53:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@mezereon/bigcommerce-stencil-lifestyle",
+     "version": "0.1.6"
+    },
+    "purl": "pkg:npm/%40mezereon/bigcommerce-stencil-lifestyle@0.1.6",
+    "publishedAt": "2020-08-16T03:08:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@mezereon/bigcommerce-stencil-lifestyle",
+     "version": "0.1.7"
+    },
+    "purl": "pkg:npm/%40mezereon/bigcommerce-stencil-lifestyle@0.1.7",
+    "publishedAt": "2020-08-28T05:45:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@mezereon/bigcommerce-stencil-lifestyle",
+     "version": "0.1.8"
+    },
+    "purl": "pkg:npm/%40mezereon/bigcommerce-stencil-lifestyle@0.1.8",
+    "publishedAt": "2020-09-16T01:54:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@mezereon/bigcommerce-stencil-lifestyle",
+     "version": "1.0.0"
+    },
+    "purl": "pkg:npm/%40mezereon/bigcommerce-stencil-lifestyle@1.0.0",
+    "publishedAt": "2021-09-25T04:31:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@mezereon/bigcommerce-stencil-lifestyle",
+     "version": "1.0.1"
+    },
+    "purl": "pkg:npm/%40mezereon/bigcommerce-stencil-lifestyle@1.0.1",
+    "publishedAt": "2023-03-17T08:23:18Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "NPM",
+   "name": "@mezereon/bigcommerce-stencil-lifestyle",
+   "version": "1.0.1"
+  },
+  "purl": "pkg:npm/%40mezereon/bigcommerce-stencil-lifestyle@1.0.1",
+  "publishedAt": "2023-03-17T08:23:18Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "MIT",
+    "spdx": "MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "HOMEPAGE",
+    "url": "https://github.com/mezereon-co/bigcommerce-stencil-lifestyle#readme"
+   },
+   {
+    "label": "ISSUE_TRACKER",
+    "url": "https://github.com/mezereon-co/bigcommerce-stencil-lifestyle/issues"
+   },
+   {
+    "label": "ORIGIN",
+    "url": "https://registry.npmjs.org/@mezereon%2Fbigcommerce-stencil-lifestyle/1.0.1"
+   },
+   {
+    "label": "SOURCE_REPO",
+    "url": "git+https://github.com/mezereon-co/bigcommerce-stencil-lifestyle.git"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://registry.npmjs.org/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/mezereon-co/bigcommerce-stencil-lifestyle"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "ISSUE_TRACKER"
+   },
+   {
+    "projectKey": {
+     "id": "github.com/mezereon-co/bigcommerce-stencil-lifestyle"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "@mezereon/bigcommerce-stencil-lifestyle",
+    "versionString": "1.0.1",
+    "source": "NPM_NPMJS_ORG"
+   }
+  ],
+  "cooldown": {
+   "end": "2023-04-01T08:23:18Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@mezereon/bigcommerce-stencil-lifestyle",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/helper-string-parser",
+     "version": "7.29.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/helper-validator-identifier",
+     "version": "7.29.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/parser",
+     "version": "7.29.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/types",
+     "version": "7.29.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@vue/compiler-sfc",
+     "version": "2.7.16"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "csstype",
+     "version": "3.2.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "nanoid",
+     "version": "3.3.15"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "picocolors",
+     "version": "1.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "postcss",
+     "version": "8.5.16"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prettier",
+     "version": "2.8.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "source-map",
+     "version": "0.6.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "source-map-js",
+     "version": "1.2.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "vue",
+     "version": "2.7.16"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "vuex",
+     "version": "3.6.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 13,
+    "requirement": "^2.7.14"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 14,
+    "requirement": "^3.6.2"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 4,
+    "requirement": "^7.29.7"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 1,
+    "requirement": "^7.29.7"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 2,
+    "requirement": "^7.29.7"
+   },
+   {
+    "fromNode": 5,
+    "toNode": 3,
+    "requirement": "^7.23.5"
+   },
+   {
+    "fromNode": 5,
+    "toNode": 9,
+    "requirement": "^8.4.14"
+   },
+   {
+    "fromNode": 5,
+    "toNode": 10,
+    "requirement": "^1.18.2 || ^2.0.0"
+   },
+   {
+    "fromNode": 5,
+    "toNode": 11,
+    "requirement": "^0.6.1"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 7,
+    "requirement": "^3.3.12"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 8,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 12,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 5,
+    "requirement": "2.7.16"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 6,
+    "requirement": "^3.1.0"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/mezereon-co/bigcommerce-stencil-lifestyle"
+  },
+  "openIssuesCount": 0,
+  "starsCount": 0,
+  "forksCount": 0,
+  "license": "MIT",
+  "description": "UI Components for BigCommerce LifeStyle Theme",
+  "homepage": "https://www.mezereon.com",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/mezereon-co/bigcommerce-stencil-lifestyle",
+    "commit": "2a300dcce1fa99a825537a50b7f4836db5eeb513"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": -1,
+     "reason": "no workflows found",
+     "details": []
+    },
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 10,
+     "reason": "13 commit(s) and 0 issue activity found in the last 90 days -- score normalized to 10",
+     "details": []
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 0,
+     "reason": "Found 0/4 approved changesets -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": -1,
+     "reason": "No tokens found",
+     "details": []
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": -1,
+     "reason": "no dependencies found",
+     "details": []
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 0,
+     "reason": "security policy file not detected",
+     "details": [
+      "Warn: no security policy file detected",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze"
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 10,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE.md:0",
+      "Info: FSF or OSI recognized license: MIT License: LICENSE.md:0"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": 0,
+     "reason": "branch protection not enabled on development/release branches",
+     "details": [
+      "Warn: branch protection not enabled for branch 'master'"
+     ]
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0",
+     "details": [
+      "Warn: 0 commits out of 26 are checked with a SAST tool"
+     ]
+    }
+   ],
+   "overallScore": 3.5,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 228039925,
+  "node_id": "MDEwOlJlcG9zaXRvcnkyMjgwMzk5MjU=",
+  "name": "bigcommerce-stencil-lifestyle",
+  "full_name": "mezereon-co/bigcommerce-stencil-lifestyle",
+  "private": false,
+  "owner": {
+   "login": "mezereon-co",
+   "id": 42593963,
+   "node_id": "MDQ6VXNlcjQyNTkzOTYz",
+   "avatar_url": "https://avatars.githubusercontent.com/u/42593963?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/mezereon-co",
+   "html_url": "https://github.com/mezereon-co",
+   "followers_url": "https://api.github.com/users/mezereon-co/followers",
+   "following_url": "https://api.github.com/users/mezereon-co/following{/other_user}",
+   "gists_url": "https://api.github.com/users/mezereon-co/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/mezereon-co/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/mezereon-co/subscriptions",
+   "organizations_url": "https://api.github.com/users/mezereon-co/orgs",
+   "repos_url": "https://api.github.com/users/mezereon-co/repos",
+   "events_url": "https://api.github.com/users/mezereon-co/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/mezereon-co/received_events",
+   "type": "User",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/mezereon-co/bigcommerce-stencil-lifestyle",
+  "description": "UI Components for BigCommerce LifeStyle Theme",
+  "fork": false,
+  "url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle",
+  "forks_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/forks",
+  "keys_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/teams",
+  "hooks_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/hooks",
+  "issue_events_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/events",
+  "assignees_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/tags",
+  "blobs_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/languages",
+  "stargazers_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/stargazers",
+  "contributors_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/contributors",
+  "subscribers_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/subscribers",
+  "subscription_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/subscription",
+  "commits_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/merges",
+  "archive_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/downloads",
+  "issues_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/labels{/name}",
+  "releases_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/mezereon-co/bigcommerce-stencil-lifestyle/deployments",
+  "created_at": "2019-12-14T14:52:16Z",
+  "updated_at": "2026-07-16T00:19:00Z",
+  "pushed_at": "2026-07-16T00:19:03Z",
+  "git_url": "git://github.com/mezereon-co/bigcommerce-stencil-lifestyle.git",
+  "ssh_url": "git@github.com:mezereon-co/bigcommerce-stencil-lifestyle.git",
+  "clone_url": "https://github.com/mezereon-co/bigcommerce-stencil-lifestyle.git",
+  "svn_url": "https://github.com/mezereon-co/bigcommerce-stencil-lifestyle",
+  "homepage": "https://www.mezereon.com",
+  "size": 2702,
+  "stargazers_count": 0,
+  "watchers_count": 0,
+  "language": "Vue",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 0,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 0,
+  "license": {
+   "key": "mit",
+   "name": "MIT License",
+   "spdx_id": "MIT",
+   "url": "https://api.github.com/licenses/mit",
+   "node_id": "MDc6TGljZW5zZTEz"
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [],
+  "visibility": "public",
+  "forks": 0,
+  "open_issues": 0,
+  "watchers": 0,
+  "default_branch": "master",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "network_count": 0,
+  "subscribers_count": 1
+ },
+ "funding": []
+}

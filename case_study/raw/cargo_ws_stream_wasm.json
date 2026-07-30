@@ -1,0 +1,635 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "CARGO",
+   "name": "ws_stream_wasm"
+  },
+  "purl": "pkg:cargo/ws_stream_wasm",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "ws_stream_wasm",
+     "version": "0.0.0"
+    },
+    "purl": "pkg:cargo/ws_stream_wasm@0.0.0",
+    "publishedAt": "2019-07-12T14:58:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "ws_stream_wasm",
+     "version": "0.1.0"
+    },
+    "purl": "pkg:cargo/ws_stream_wasm@0.1.0",
+    "publishedAt": "2019-07-19T16:55:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "ws_stream_wasm",
+     "version": "0.2.0"
+    },
+    "purl": "pkg:cargo/ws_stream_wasm@0.2.0",
+    "publishedAt": "2019-08-02T20:08:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "ws_stream_wasm",
+     "version": "0.2.1"
+    },
+    "purl": "pkg:cargo/ws_stream_wasm@0.2.1",
+    "publishedAt": "2019-08-02T20:14:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "ws_stream_wasm",
+     "version": "0.3.0"
+    },
+    "purl": "pkg:cargo/ws_stream_wasm@0.3.0",
+    "publishedAt": "2019-09-08T18:57:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "ws_stream_wasm",
+     "version": "0.4.0"
+    },
+    "purl": "pkg:cargo/ws_stream_wasm@0.4.0",
+    "publishedAt": "2019-09-23T19:34:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "ws_stream_wasm",
+     "version": "0.4.1"
+    },
+    "purl": "pkg:cargo/ws_stream_wasm@0.4.1",
+    "publishedAt": "2019-09-23T19:47:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "ws_stream_wasm",
+     "version": "0.5.0"
+    },
+    "purl": "pkg:cargo/ws_stream_wasm@0.5.0",
+    "publishedAt": "2019-09-28T11:28:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "ws_stream_wasm",
+     "version": "0.5.1"
+    },
+    "purl": "pkg:cargo/ws_stream_wasm@0.5.1",
+    "publishedAt": "2019-11-14T13:31:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "ws_stream_wasm",
+     "version": "0.5.2"
+    },
+    "purl": "pkg:cargo/ws_stream_wasm@0.5.2",
+    "publishedAt": "2020-01-07T13:15:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "ws_stream_wasm",
+     "version": "0.6.0"
+    },
+    "purl": "pkg:cargo/ws_stream_wasm@0.6.0",
+    "publishedAt": "2020-03-21T19:39:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "ws_stream_wasm",
+     "version": "0.6.1"
+    },
+    "purl": "pkg:cargo/ws_stream_wasm@0.6.1",
+    "publishedAt": "2020-10-02T15:08:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "ws_stream_wasm",
+     "version": "0.7.0"
+    },
+    "purl": "pkg:cargo/ws_stream_wasm@0.7.0",
+    "publishedAt": "2021-02-18T11:35:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "ws_stream_wasm",
+     "version": "0.7.0-beta.1"
+    },
+    "purl": "pkg:cargo/ws_stream_wasm@0.7.0-beta.1",
+    "publishedAt": "2020-11-03T11:25:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "ws_stream_wasm",
+     "version": "0.7.1"
+    },
+    "purl": "pkg:cargo/ws_stream_wasm@0.7.1",
+    "publishedAt": "2021-06-11T16:03:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "ws_stream_wasm",
+     "version": "0.7.2"
+    },
+    "purl": "pkg:cargo/ws_stream_wasm@0.7.2",
+    "publishedAt": "2021-06-26T15:48:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "ws_stream_wasm",
+     "version": "0.7.3"
+    },
+    "purl": "pkg:cargo/ws_stream_wasm@0.7.3",
+    "publishedAt": "2021-06-28T19:03:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "ws_stream_wasm",
+     "version": "0.7.4"
+    },
+    "purl": "pkg:cargo/ws_stream_wasm@0.7.4",
+    "publishedAt": "2023-01-29T17:50:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "ws_stream_wasm",
+     "version": "0.7.5"
+    },
+    "purl": "pkg:cargo/ws_stream_wasm@0.7.5",
+    "publishedAt": "2025-06-08T15:49:24Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "CARGO",
+   "name": "ws_stream_wasm",
+   "version": "0.7.5"
+  },
+  "purl": "pkg:cargo/ws_stream_wasm@0.7.5",
+  "publishedAt": "2025-06-08T15:49:24Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "Unlicense"
+  ],
+  "licenseDetails": [
+   {
+    "license": "Unlicense",
+    "spdx": "Unlicense"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/najamelan/ws_stream_wasm"
+   },
+   {
+    "label": "HOMEPAGE",
+    "url": "https://github.com/najamelan/ws_stream_wasm"
+   },
+   {
+    "label": "DOCUMENTATION",
+    "url": "https://docs.rs/ws_stream_wasm"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://crates.io/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/najamelan/ws_stream_wasm"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "ws_stream_wasm",
+    "versionString": "0.7.5",
+    "source": "CARGO_CRATES_IO"
+   }
+  ],
+  "cooldown": {
+   "end": "2025-06-18T15:49:24Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [],
+  "edges": [],
+  "error": "getrandom/^0.3: no candidates found"
+ },
+ "dependents": {
+  "dependentCount": 19,
+  "directDependentCount": 10,
+  "indirectDependentCount": 9
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/najamelan/ws_stream_wasm"
+  },
+  "openIssuesCount": 0,
+  "starsCount": 110,
+  "forksCount": 20,
+  "license": "non-standard",
+  "description": "Wasm convenience API for WebSockets",
+  "homepage": "",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/najamelan/ws_stream_wasm",
+    "commit": "d8c950a46fba5584a7c93c4717197c586404dc87"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 0,
+     "reason": "Found 2/27 approved changesets -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected",
+     "details": []
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": 0,
+     "reason": "detected GitHub workflow tokens with excessive permissions",
+     "details": [
+      "Warn: no topLevel permission defined: .github/workflows/ci.yml:1",
+      "Info: no jobLevel write permissions found"
+     ]
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 0,
+     "reason": "0 commit(s) and 0 issue activity found in the last 90 days -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": 0,
+     "reason": "dependency not pinned by hash detected -- score normalized to 0",
+     "details": [
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/ci.yml:14: update your workflow using https://app.stepsecurity.io/secureworkflow/najamelan/ws_stream_wasm/ci.yml/dev?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/ci.yml:23: update your workflow using https://app.stepsecurity.io/secureworkflow/najamelan/ws_stream_wasm/ci.yml/dev?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yml:29: update your workflow using https://app.stepsecurity.io/secureworkflow/najamelan/ws_stream_wasm/ci.yml/dev?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/ci.yml:46: update your workflow using https://app.stepsecurity.io/secureworkflow/najamelan/ws_stream_wasm/ci.yml/dev?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/ci.yml:55: update your workflow using https://app.stepsecurity.io/secureworkflow/najamelan/ws_stream_wasm/ci.yml/dev?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yml:62: update your workflow using https://app.stepsecurity.io/secureworkflow/najamelan/ws_stream_wasm/ci.yml/dev?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/ci.yml:81: update your workflow using https://app.stepsecurity.io/secureworkflow/najamelan/ws_stream_wasm/ci.yml/dev?enable=pin",
+      "Info:   0 out of   2 GitHub-owned GitHubAction dependencies pinned",
+      "Info:   0 out of   5 third-party GitHubAction dependencies pinned"
+     ]
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 0,
+     "reason": "security policy file not detected",
+     "details": [
+      "Warn: no security policy file detected",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 10,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE:0",
+      "Info: FSF or OSI recognized license: The Unlicense: LICENSE:0"
+     ]
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0",
+     "details": [
+      "Warn: 0 commits out of 5 are checked with a SAST tool"
+     ]
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": 0,
+     "reason": "branch protection not enabled on development/release branches",
+     "details": [
+      "Warn: branch protection not enabled for branch 'dev'"
+     ]
+    }
+   ],
+   "overallScore": 2.8,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 197435125,
+  "node_id": "MDEwOlJlcG9zaXRvcnkxOTc0MzUxMjU=",
+  "name": "ws_stream_wasm",
+  "full_name": "najamelan/ws_stream_wasm",
+  "private": false,
+  "owner": {
+   "login": "najamelan",
+   "id": 449589,
+   "node_id": "MDQ6VXNlcjQ0OTU4OQ==",
+   "avatar_url": "https://avatars.githubusercontent.com/u/449589?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/najamelan",
+   "html_url": "https://github.com/najamelan",
+   "followers_url": "https://api.github.com/users/najamelan/followers",
+   "following_url": "https://api.github.com/users/najamelan/following{/other_user}",
+   "gists_url": "https://api.github.com/users/najamelan/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/najamelan/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/najamelan/subscriptions",
+   "organizations_url": "https://api.github.com/users/najamelan/orgs",
+   "repos_url": "https://api.github.com/users/najamelan/repos",
+   "events_url": "https://api.github.com/users/najamelan/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/najamelan/received_events",
+   "type": "User",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/najamelan/ws_stream_wasm",
+  "description": "Wasm convenience API for WebSockets",
+  "fork": false,
+  "url": "https://api.github.com/repos/najamelan/ws_stream_wasm",
+  "forks_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/forks",
+  "keys_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/teams",
+  "hooks_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/hooks",
+  "issue_events_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/events",
+  "assignees_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/tags",
+  "blobs_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/languages",
+  "stargazers_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/stargazers",
+  "contributors_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/contributors",
+  "subscribers_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/subscribers",
+  "subscription_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/subscription",
+  "commits_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/merges",
+  "archive_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/downloads",
+  "issues_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/labels{/name}",
+  "releases_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/najamelan/ws_stream_wasm/deployments",
+  "created_at": "2019-07-17T17:36:33Z",
+  "updated_at": "2026-06-28T09:46:13Z",
+  "pushed_at": "2025-06-08T15:50:09Z",
+  "git_url": "git://github.com/najamelan/ws_stream_wasm.git",
+  "ssh_url": "git@github.com:najamelan/ws_stream_wasm.git",
+  "clone_url": "https://github.com/najamelan/ws_stream_wasm.git",
+  "svn_url": "https://github.com/najamelan/ws_stream_wasm",
+  "homepage": null,
+  "size": 304,
+  "stargazers_count": 110,
+  "watchers_count": 110,
+  "language": "Rust",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 20,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 0,
+  "license": {
+   "key": "unlicense",
+   "name": "The Unlicense",
+   "spdx_id": "Unlicense",
+   "url": "https://api.github.com/licenses/unlicense",
+   "node_id": "MDc6TGljZW5zZTE1"
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [
+   "crates",
+   "rust",
+   "wasm",
+   "websockets"
+  ],
+  "visibility": "public",
+  "forks": 20,
+  "open_issues": 0,
+  "watchers": 110,
+  "default_branch": "dev",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "network_count": 20,
+  "subscribers_count": 6
+ },
+ "funding": [
+  {
+   "platform": "LIBERAPAY",
+   "url": "https://liberapay.com/najamelan"
+  }
+ ]
+}

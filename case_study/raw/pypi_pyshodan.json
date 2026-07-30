@@ -1,0 +1,558 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "PYPI",
+   "name": "pyshodan"
+  },
+  "purl": "pkg:pypi/pyshodan",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyshodan",
+     "version": "0.2.0"
+    },
+    "purl": "pkg:pypi/pyshodan@0.2.0",
+    "publishedAt": "2019-02-12T16:42:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyshodan",
+     "version": "0.2.11"
+    },
+    "purl": "pkg:pypi/pyshodan@0.2.11",
+    "publishedAt": "2024-05-03T16:15:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyshodan",
+     "version": "0.2.16"
+    },
+    "purl": "pkg:pypi/pyshodan@0.2.16",
+    "publishedAt": "2024-10-28T19:13:56Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyshodan",
+     "version": "0.2.2"
+    },
+    "purl": "pkg:pypi/pyshodan@0.2.2",
+    "publishedAt": "2019-05-07T16:14:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyshodan",
+     "version": "0.2.3"
+    },
+    "purl": "pkg:pypi/pyshodan@0.2.3",
+    "publishedAt": "2019-05-07T19:14:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyshodan",
+     "version": "0.2.4"
+    },
+    "purl": "pkg:pypi/pyshodan@0.2.4",
+    "publishedAt": "2021-06-02T16:53:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyshodan",
+     "version": "0.2.5"
+    },
+    "purl": "pkg:pypi/pyshodan@0.2.5",
+    "publishedAt": "2021-06-02T18:33:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "PYPI",
+   "name": "pyshodan",
+   "version": "0.2.16"
+  },
+  "purl": "pkg:pypi/pyshodan@0.2.16",
+  "publishedAt": "2024-10-28T19:13:56Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "LGPL-3.0"
+  ],
+  "licenseDetails": [
+   {
+    "license": "LGPL-3.0",
+    "spdx": "LGPL-3.0"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/Hackman238/pyShodan"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://pypi.org/simple"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/hackman238/pyshodan"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "pyShodan",
+    "versionString": "0.2.16",
+    "source": "PYPI_RELEASE_FILENAME"
+   },
+   {
+    "packageName": "pyShodan",
+    "versionString": "0.2.16",
+    "source": "PYPI_METADATA_FILE"
+   }
+  ],
+  "cooldown": {
+   "end": "2024-11-02T19:13:56Z",
+   "description": ""
+  },
+  "projectStatus": {
+   "status": "active",
+   "reason": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyshodan",
+     "version": "0.2.16"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "ipy",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "shodan",
+     "version": "1.31.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 1,
+    "requirement": ""
+   },
+   {
+    "fromNode": 0,
+    "toNode": 2,
+    "requirement": ""
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/hackman238/pyshodan"
+  },
+  "openIssuesCount": 0,
+  "starsCount": 0,
+  "forksCount": 0,
+  "license": "LGPL-3.0",
+  "description": "Python 3 script for interacting with Shodan API",
+  "homepage": ""
+ },
+ "github_repo_api": {
+  "id": 879826857,
+  "node_id": "R_kgDONHEXqQ",
+  "name": "pyShodan",
+  "full_name": "Hackman238/pyShodan",
+  "private": false,
+  "owner": {
+   "login": "Hackman238",
+   "id": 1868673,
+   "node_id": "MDQ6VXNlcjE4Njg2NzM=",
+   "avatar_url": "https://avatars.githubusercontent.com/u/1868673?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/Hackman238",
+   "html_url": "https://github.com/Hackman238",
+   "followers_url": "https://api.github.com/users/Hackman238/followers",
+   "following_url": "https://api.github.com/users/Hackman238/following{/other_user}",
+   "gists_url": "https://api.github.com/users/Hackman238/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/Hackman238/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/Hackman238/subscriptions",
+   "organizations_url": "https://api.github.com/users/Hackman238/orgs",
+   "repos_url": "https://api.github.com/users/Hackman238/repos",
+   "events_url": "https://api.github.com/users/Hackman238/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/Hackman238/received_events",
+   "type": "User",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/Hackman238/pyShodan",
+  "description": "Python 3 script for interacting with Shodan API",
+  "fork": true,
+  "url": "https://api.github.com/repos/Hackman238/pyShodan",
+  "forks_url": "https://api.github.com/repos/Hackman238/pyShodan/forks",
+  "keys_url": "https://api.github.com/repos/Hackman238/pyShodan/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/Hackman238/pyShodan/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/Hackman238/pyShodan/teams",
+  "hooks_url": "https://api.github.com/repos/Hackman238/pyShodan/hooks",
+  "issue_events_url": "https://api.github.com/repos/Hackman238/pyShodan/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/Hackman238/pyShodan/events",
+  "assignees_url": "https://api.github.com/repos/Hackman238/pyShodan/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/Hackman238/pyShodan/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/Hackman238/pyShodan/tags",
+  "blobs_url": "https://api.github.com/repos/Hackman238/pyShodan/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/Hackman238/pyShodan/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/Hackman238/pyShodan/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/Hackman238/pyShodan/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/Hackman238/pyShodan/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/Hackman238/pyShodan/languages",
+  "stargazers_url": "https://api.github.com/repos/Hackman238/pyShodan/stargazers",
+  "contributors_url": "https://api.github.com/repos/Hackman238/pyShodan/contributors",
+  "subscribers_url": "https://api.github.com/repos/Hackman238/pyShodan/subscribers",
+  "subscription_url": "https://api.github.com/repos/Hackman238/pyShodan/subscription",
+  "commits_url": "https://api.github.com/repos/Hackman238/pyShodan/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/Hackman238/pyShodan/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/Hackman238/pyShodan/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/Hackman238/pyShodan/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/Hackman238/pyShodan/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/Hackman238/pyShodan/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/Hackman238/pyShodan/merges",
+  "archive_url": "https://api.github.com/repos/Hackman238/pyShodan/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/Hackman238/pyShodan/downloads",
+  "issues_url": "https://api.github.com/repos/Hackman238/pyShodan/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/Hackman238/pyShodan/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/Hackman238/pyShodan/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/Hackman238/pyShodan/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/Hackman238/pyShodan/labels{/name}",
+  "releases_url": "https://api.github.com/repos/Hackman238/pyShodan/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/Hackman238/pyShodan/deployments",
+  "created_at": "2024-10-28T16:02:58Z",
+  "updated_at": "2024-11-04T19:59:36Z",
+  "pushed_at": "2025-06-20T13:33:05Z",
+  "git_url": "git://github.com/Hackman238/pyShodan.git",
+  "ssh_url": "git@github.com:Hackman238/pyShodan.git",
+  "clone_url": "https://github.com/Hackman238/pyShodan.git",
+  "svn_url": "https://github.com/Hackman238/pyShodan",
+  "homepage": null,
+  "size": 106,
+  "stargazers_count": 0,
+  "watchers_count": 0,
+  "language": "Python",
+  "has_issues": false,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": false,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 0,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 1,
+  "license": {
+   "key": "lgpl-3.0",
+   "name": "GNU Lesser General Public License v3.0",
+   "spdx_id": "LGPL-3.0",
+   "url": "https://api.github.com/licenses/lgpl-3.0",
+   "node_id": "MDc6TGljZW5zZTEy"
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [],
+  "visibility": "public",
+  "forks": 0,
+  "open_issues": 1,
+  "watchers": 0,
+  "default_branch": "master",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "parent": {
+   "id": 151772847,
+   "node_id": "MDEwOlJlcG9zaXRvcnkxNTE3NzI4NDc=",
+   "name": "pyShodan",
+   "full_name": "Abacus-Group-RTO/pyShodan",
+   "private": false,
+   "owner": {
+    "login": "Abacus-Group-RTO",
+    "id": 8587308,
+    "node_id": "MDEyOk9yZ2FuaXphdGlvbjg1ODczMDg=",
+    "avatar_url": "https://avatars.githubusercontent.com/u/8587308?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/Abacus-Group-RTO",
+    "html_url": "https://github.com/Abacus-Group-RTO",
+    "followers_url": "https://api.github.com/users/Abacus-Group-RTO/followers",
+    "following_url": "https://api.github.com/users/Abacus-Group-RTO/following{/other_user}",
+    "gists_url": "https://api.github.com/users/Abacus-Group-RTO/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/Abacus-Group-RTO/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/Abacus-Group-RTO/subscriptions",
+    "organizations_url": "https://api.github.com/users/Abacus-Group-RTO/orgs",
+    "repos_url": "https://api.github.com/users/Abacus-Group-RTO/repos",
+    "events_url": "https://api.github.com/users/Abacus-Group-RTO/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/Abacus-Group-RTO/received_events",
+    "type": "Organization",
+    "user_view_type": "public",
+    "site_admin": false
+   },
+   "html_url": "https://github.com/Abacus-Group-RTO/pyShodan",
+   "description": "Python 3 script for interacting with Shodan API",
+   "fork": false,
+   "url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan",
+   "forks_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/forks",
+   "keys_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/keys{/key_id}",
+   "collaborators_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/collaborators{/collaborator}",
+   "teams_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/teams",
+   "hooks_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/hooks",
+   "issue_events_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/issues/events{/number}",
+   "events_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/events",
+   "assignees_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/assignees{/user}",
+   "branches_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/branches{/branch}",
+   "tags_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/tags",
+   "blobs_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/git/blobs{/sha}",
+   "git_tags_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/git/tags{/sha}",
+   "git_refs_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/git/refs{/sha}",
+   "trees_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/git/trees{/sha}",
+   "statuses_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/statuses/{sha}",
+   "languages_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/languages",
+   "stargazers_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/stargazers",
+   "contributors_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/contributors",
+   "subscribers_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/subscribers",
+   "subscription_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/subscription",
+   "commits_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/commits{/sha}",
+   "git_commits_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/git/commits{/sha}",
+   "comments_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/comments{/number}",
+   "issue_comment_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/issues/comments{/number}",
+   "contents_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/contents/{+path}",
+   "compare_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/compare/{base}...{head}",
+   "merges_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/merges",
+   "archive_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/{archive_format}{/ref}",
+   "downloads_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/downloads",
+   "issues_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/issues{/number}",
+   "pulls_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/pulls{/number}",
+   "milestones_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/milestones{/number}",
+   "notifications_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/notifications{?since,all,participating}",
+   "labels_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/labels{/name}",
+   "releases_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/releases{/id}",
+   "deployments_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/deployments",
+   "created_at": "2018-10-05T20:11:40Z",
+   "updated_at": "2025-02-26T17:45:08Z",
+   "pushed_at": "2024-11-04T16:49:32Z",
+   "git_url": "git://github.com/Abacus-Group-RTO/pyShodan.git",
+   "ssh_url": "git@github.com:Abacus-Group-RTO/pyShodan.git",
+   "clone_url": "https://github.com/Abacus-Group-RTO/pyShodan.git",
+   "svn_url": "https://github.com/Abacus-Group-RTO/pyShodan",
+   "homepage": null,
+   "size": 104,
+   "stargazers_count": 20,
+   "watchers_count": 20,
+   "language": "Python",
+   "has_issues": true,
+   "has_projects": false,
+   "has_downloads": false,
+   "has_wiki": false,
+   "has_pages": false,
+   "has_discussions": false,
+   "forks_count": 9,
+   "mirror_url": null,
+   "archived": true,
+   "disabled": false,
+   "open_issues_count": 5,
+   "license": {
+    "key": "lgpl-3.0",
+    "name": "GNU Lesser General Public License v3.0",
+    "spdx_id": "LGPL-3.0",
+    "url": "https://api.github.com/licenses/lgpl-3.0",
+    "node_id": "MDc6TGljZW5zZTEy"
+   },
+   "allow_forking": true,
+   "is_template": false,
+   "web_commit_signoff_required": false,
+   "has_pull_requests": true,
+   "pull_request_creation_policy": "all",
+   "topics": [],
+   "visibility": "public",
+   "forks": 9,
+   "open_issues": 5,
+   "watchers": 20,
+   "default_branch": "master"
+  },
+  "source": {
+   "id": 151772847,
+   "node_id": "MDEwOlJlcG9zaXRvcnkxNTE3NzI4NDc=",
+   "name": "pyShodan",
+   "full_name": "Abacus-Group-RTO/pyShodan",
+   "private": false,
+   "owner": {
+    "login": "Abacus-Group-RTO",
+    "id": 8587308,
+    "node_id": "MDEyOk9yZ2FuaXphdGlvbjg1ODczMDg=",
+    "avatar_url": "https://avatars.githubusercontent.com/u/8587308?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/Abacus-Group-RTO",
+    "html_url": "https://github.com/Abacus-Group-RTO",
+    "followers_url": "https://api.github.com/users/Abacus-Group-RTO/followers",
+    "following_url": "https://api.github.com/users/Abacus-Group-RTO/following{/other_user}",
+    "gists_url": "https://api.github.com/users/Abacus-Group-RTO/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/Abacus-Group-RTO/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/Abacus-Group-RTO/subscriptions",
+    "organizations_url": "https://api.github.com/users/Abacus-Group-RTO/orgs",
+    "repos_url": "https://api.github.com/users/Abacus-Group-RTO/repos",
+    "events_url": "https://api.github.com/users/Abacus-Group-RTO/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/Abacus-Group-RTO/received_events",
+    "type": "Organization",
+    "user_view_type": "public",
+    "site_admin": false
+   },
+   "html_url": "https://github.com/Abacus-Group-RTO/pyShodan",
+   "description": "Python 3 script for interacting with Shodan API",
+   "fork": false,
+   "url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan",
+   "forks_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/forks",
+   "keys_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/keys{/key_id}",
+   "collaborators_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/collaborators{/collaborator}",
+   "teams_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/teams",
+   "hooks_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/hooks",
+   "issue_events_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/issues/events{/number}",
+   "events_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/events",
+   "assignees_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/assignees{/user}",
+   "branches_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/branches{/branch}",
+   "tags_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/tags",
+   "blobs_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/git/blobs{/sha}",
+   "git_tags_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/git/tags{/sha}",
+   "git_refs_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/git/refs{/sha}",
+   "trees_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/git/trees{/sha}",
+   "statuses_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/statuses/{sha}",
+   "languages_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/languages",
+   "stargazers_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/stargazers",
+   "contributors_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/contributors",
+   "subscribers_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/subscribers",
+   "subscription_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/subscription",
+   "commits_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/commits{/sha}",
+   "git_commits_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/git/commits{/sha}",
+   "comments_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/comments{/number}",
+   "issue_comment_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/issues/comments{/number}",
+   "contents_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/contents/{+path}",
+   "compare_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/compare/{base}...{head}",
+   "merges_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/merges",
+   "archive_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/{archive_format}{/ref}",
+   "downloads_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/downloads",
+   "issues_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/issues{/number}",
+   "pulls_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/pulls{/number}",
+   "milestones_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/milestones{/number}",
+   "notifications_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/notifications{?since,all,participating}",
+   "labels_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/labels{/name}",
+   "releases_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/releases{/id}",
+   "deployments_url": "https://api.github.com/repos/Abacus-Group-RTO/pyShodan/deployments",
+   "created_at": "2018-10-05T20:11:40Z",
+   "updated_at": "2025-02-26T17:45:08Z",
+   "pushed_at": "2024-11-04T16:49:32Z",
+   "git_url": "git://github.com/Abacus-Group-RTO/pyShodan.git",
+   "ssh_url": "git@github.com:Abacus-Group-RTO/pyShodan.git",
+   "clone_url": "https://github.com/Abacus-Group-RTO/pyShodan.git",
+   "svn_url": "https://github.com/Abacus-Group-RTO/pyShodan",
+   "homepage": null,
+   "size": 104,
+   "stargazers_count": 20,
+   "watchers_count": 20,
+   "language": "Python",
+   "has_issues": true,
+   "has_projects": false,
+   "has_downloads": false,
+   "has_wiki": false,
+   "has_pages": false,
+   "has_discussions": false,
+   "forks_count": 9,
+   "mirror_url": null,
+   "archived": true,
+   "disabled": false,
+   "open_issues_count": 5,
+   "license": {
+    "key": "lgpl-3.0",
+    "name": "GNU Lesser General Public License v3.0",
+    "spdx_id": "LGPL-3.0",
+    "url": "https://api.github.com/licenses/lgpl-3.0",
+    "node_id": "MDc6TGljZW5zZTEy"
+   },
+   "allow_forking": true,
+   "is_template": false,
+   "web_commit_signoff_required": false,
+   "has_pull_requests": true,
+   "pull_request_creation_policy": "all",
+   "topics": [],
+   "visibility": "public",
+   "forks": 9,
+   "open_issues": 5,
+   "watchers": 20,
+   "default_branch": "master"
+  },
+  "network_count": 9,
+  "subscribers_count": 0
+ },
+ "funding": []
+}

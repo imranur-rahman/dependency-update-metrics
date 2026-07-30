@@ -1,0 +1,1141 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "CARGO",
+   "name": "serpente"
+  },
+  "purl": "pkg:cargo/serpente",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "serpente",
+     "version": "0.2.0"
+    },
+    "purl": "pkg:cargo/serpente@0.2.0",
+    "publishedAt": "2020-01-10T19:11:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "serpente",
+     "version": "0.3.0"
+    },
+    "purl": "pkg:cargo/serpente@0.3.0",
+    "publishedAt": "2020-07-30T01:43:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "serpente",
+     "version": "0.3.1"
+    },
+    "purl": "pkg:cargo/serpente@0.3.1",
+    "publishedAt": "2020-10-22T01:15:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "serpente",
+     "version": "0.4.0"
+    },
+    "purl": "pkg:cargo/serpente@0.4.0",
+    "publishedAt": "2020-11-28T03:58:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "serpente",
+     "version": "0.5.0"
+    },
+    "purl": "pkg:cargo/serpente@0.5.0",
+    "publishedAt": "2020-12-31T23:59:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "serpente",
+     "version": "0.6.0"
+    },
+    "purl": "pkg:cargo/serpente@0.6.0",
+    "publishedAt": "2021-09-27T21:20:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "serpente",
+     "version": "0.7.0"
+    },
+    "purl": "pkg:cargo/serpente@0.7.0",
+    "publishedAt": "2022-01-11T17:25:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "serpente",
+     "version": "0.7.1"
+    },
+    "purl": "pkg:cargo/serpente@0.7.1",
+    "publishedAt": "2023-07-15T04:53:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "serpente",
+     "version": "0.7.2"
+    },
+    "purl": "pkg:cargo/serpente@0.7.2",
+    "publishedAt": "2024-10-18T20:26:09Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "CARGO",
+   "name": "serpente",
+   "version": "0.7.2"
+  },
+  "purl": "pkg:cargo/serpente@0.7.2",
+  "publishedAt": "2024-10-18T20:26:09Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "Apache-2.0 OR MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "Apache-2.0 OR MIT",
+    "spdx": "Apache-2.0 OR MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/atsamd-rs/atsamd"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://crates.io/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/atsamd-rs/atsamd"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "serpente",
+    "versionString": "0.7.2",
+    "source": "CARGO_CRATES_IO"
+   }
+  ],
+  "cooldown": {
+   "end": "2024-10-28T20:26:09Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "serpente",
+     "version": "0.7.2"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "atsamd-hal",
+     "version": "0.14.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "autocfg",
+     "version": "1.5.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "bare-metal",
+     "version": "0.2.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "bitfield",
+     "version": "0.13.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "bitflags",
+     "version": "1.3.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "cortex-m",
+     "version": "0.7.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "cortex-m-rt",
+     "version": "0.7.5"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "cortex-m-rt-macros",
+     "version": "0.7.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "cortex-m-semihosting",
+     "version": "0.5.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "embedded-hal",
+     "version": "0.2.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "modular-bitfield",
+     "version": "0.11.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "modular-bitfield-impl",
+     "version": "0.11.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "nb",
+     "version": "0.1.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "nb",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "num-traits",
+     "version": "0.2.19"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "panic-halt",
+     "version": "0.2.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "panic-semihosting",
+     "version": "0.6.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "paste",
+     "version": "1.0.15"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "proc-macro2",
+     "version": "1.0.106"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "quote",
+     "version": "1.0.46"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "rand_core",
+     "version": "0.5.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "replace_with",
+     "version": "0.1.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "rustc_version",
+     "version": "0.2.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "semver",
+     "version": "0.9.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "semver-parser",
+     "version": "0.7.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "seq-macro",
+     "version": "0.2.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "static_assertions",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "syn",
+     "version": "1.0.109"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "syn",
+     "version": "2.0.118"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "typenum",
+     "version": "1.20.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "unicode-ident",
+     "version": "1.0.24"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "vcell",
+     "version": "0.1.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "void",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "volatile-register",
+     "version": "0.2.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 1,
+    "requirement": "^0.14"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 7,
+    "requirement": "^0.7"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 16,
+    "requirement": "^0.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 17,
+    "requirement": "^0.6"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 4,
+    "requirement": "^0.13"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 5,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 6,
+    "requirement": "^0.7"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 10,
+    "requirement": "^0.2"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 11,
+    "requirement": "^0.11"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 13,
+    "requirement": "^0.1"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 15,
+    "requirement": "^0.2.14"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 18,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 21,
+    "requirement": "^0.5"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 22,
+    "requirement": "^0.1"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 26,
+    "requirement": "^0.2.1"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 30,
+    "requirement": "^1.12.0"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 32,
+    "requirement": "^0.1"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 33,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 23,
+    "requirement": "^0.2.3"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 3,
+    "requirement": "^0.2.4"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 4,
+    "requirement": "^0.13.2"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 10,
+    "requirement": "^0.2.4"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 34,
+    "requirement": "^0.2.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 8,
+    "requirement": "=0.7.5"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 19,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 20,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 29,
+    "requirement": "^2.0"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 6,
+    "requirement": ">=0.5.8, <0.8"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 13,
+    "requirement": "^0.1.3"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 33,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 11,
+    "toNode": 12,
+    "requirement": "^0.11.2"
+   },
+   {
+    "fromNode": 11,
+    "toNode": 27,
+    "requirement": "^1.1"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 19,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 20,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 28,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 14,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 2,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 6,
+    "requirement": ">=0.5.6, <0.8"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 9,
+    "requirement": ">=0.5.0, <0.6"
+   },
+   {
+    "fromNode": 19,
+    "toNode": 31,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 19,
+    "requirement": "^1.0.80"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 24,
+    "requirement": "^0.9"
+   },
+   {
+    "fromNode": 24,
+    "toNode": 25,
+    "requirement": "^0.7.0"
+   },
+   {
+    "fromNode": 28,
+    "toNode": 19,
+    "requirement": "^1.0.46"
+   },
+   {
+    "fromNode": 28,
+    "toNode": 20,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 28,
+    "toNode": 31,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 19,
+    "requirement": "^1.0.91"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 31,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 34,
+    "toNode": 32,
+    "requirement": "^0.1.0"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/atsamd-rs/atsamd"
+  },
+  "openIssuesCount": 91,
+  "starsCount": 657,
+  "forksCount": 221,
+  "license": "Apache-2.0",
+  "description": "Target atsamd microcontrollers using Rust",
+  "homepage": "https://matrix.to/#/#atsamd-rs:matrix.org",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/atsamd-rs/atsamd",
+    "commit": "06710c7bc322eeae394426bd623b802118577a7a"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 5,
+     "reason": "6 commit(s) and 0 issue activity found in the last 90 days -- score normalized to 5",
+     "details": []
+    },
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 10,
+     "reason": "all changesets reviewed",
+     "details": []
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected",
+     "details": []
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": 0,
+     "reason": "detected GitHub workflow tokens with excessive permissions",
+     "details": [
+      "Warn: no topLevel permission defined: .github/workflows/build-bsp.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/build-hal.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/check-docs.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/generate-docs.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/matrix-bot.yml:1",
+      "Warn: topLevel 'contents' permission set to 'write': .github/workflows/release-crates.yml:5",
+      "Warn: no topLevel permission defined: .github/workflows/rustfmt.yml:1",
+      "Info: no jobLevel write permissions found"
+     ]
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 0,
+     "reason": "security policy file not detected",
+     "details": [
+      "Warn: no security policy file detected",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze"
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 10,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE-APACHE:0",
+      "Info: FSF or OSI recognized license: Apache License 2.0: LICENSE-APACHE:0"
+     ]
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": -1,
+     "reason": "internal error: error during branchesHandler.setup: internal error: some github tokens can't read classic branch protection rules: https://github.com/ossf/scorecard-action/blob/main/docs/authentication/fine-grained-auth-token.md",
+     "details": []
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": 0,
+     "reason": "dependency not pinned by hash detected -- score normalized to 0",
+     "details": [
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/build-bsp.yml:11: update your workflow using https://app.stepsecurity.io/secureworkflow/atsamd-rs/atsamd/build-bsp.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/build-bsp.yml:29: update your workflow using https://app.stepsecurity.io/secureworkflow/atsamd-rs/atsamd/build-bsp.yml/master?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/build-bsp.yml:41: update your workflow using https://app.stepsecurity.io/secureworkflow/atsamd-rs/atsamd/build-bsp.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/build-bsp.yml:63: update your workflow using https://app.stepsecurity.io/secureworkflow/atsamd-rs/atsamd/build-bsp.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/build-bsp.yml:74: update your workflow using https://app.stepsecurity.io/secureworkflow/atsamd-rs/atsamd/build-bsp.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/build-hal.yml:11: update your workflow using https://app.stepsecurity.io/secureworkflow/atsamd-rs/atsamd/build-hal.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/build-hal.yml:23: update your workflow using https://app.stepsecurity.io/secureworkflow/atsamd-rs/atsamd/build-hal.yml/master?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/build-hal.yml:35: update your workflow using https://app.stepsecurity.io/secureworkflow/atsamd-rs/atsamd/build-hal.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/check-docs.yml:17: update your workflow using https://app.stepsecurity.io/secureworkflow/atsamd-rs/atsamd/check-docs.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/generate-docs.yml:15: update your workflow using https://app.stepsecurity.io/secureworkflow/atsamd-rs/atsamd/generate-docs.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/generate-docs.yml:83: update your workflow using https://app.stepsecurity.io/secureworkflow/atsamd-rs/atsamd/generate-docs.yml/master?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/matrix-bot.yml:13: update your workflow using https://app.stepsecurity.io/secureworkflow/atsamd-rs/atsamd/matrix-bot.yml/master?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/matrix-bot.yml:26: update your workflow using https://app.stepsecurity.io/secureworkflow/atsamd-rs/atsamd/matrix-bot.yml/master?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/matrix-bot.yml:39: update your workflow using https://app.stepsecurity.io/secureworkflow/atsamd-rs/atsamd/matrix-bot.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/release-crates.yml:18: update your workflow using https://app.stepsecurity.io/secureworkflow/atsamd-rs/atsamd/release-crates.yml/master?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/release-crates.yml:23: update your workflow using https://app.stepsecurity.io/secureworkflow/atsamd-rs/atsamd/release-crates.yml/master?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/release-crates.yml:28: update your workflow using https://app.stepsecurity.io/secureworkflow/atsamd-rs/atsamd/release-crates.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/rustfmt.yml:17: update your workflow using https://app.stepsecurity.io/secureworkflow/atsamd-rs/atsamd/rustfmt.yml/master?enable=pin",
+      "Info:   0 out of  11 GitHub-owned GitHubAction dependencies pinned",
+      "Info:   0 out of   7 third-party GitHubAction dependencies pinned"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0",
+     "details": [
+      "Warn: 0 commits out of 30 are checked with a SAST tool"
+     ]
+    }
+   ],
+   "overallScore": 4.8,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 125536984,
+  "node_id": "MDEwOlJlcG9zaXRvcnkxMjU1MzY5ODQ=",
+  "name": "atsamd",
+  "full_name": "atsamd-rs/atsamd",
+  "private": false,
+  "owner": {
+   "login": "atsamd-rs",
+   "id": 44236671,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjQ0MjM2Njcx",
+   "avatar_url": "https://avatars.githubusercontent.com/u/44236671?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/atsamd-rs",
+   "html_url": "https://github.com/atsamd-rs",
+   "followers_url": "https://api.github.com/users/atsamd-rs/followers",
+   "following_url": "https://api.github.com/users/atsamd-rs/following{/other_user}",
+   "gists_url": "https://api.github.com/users/atsamd-rs/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/atsamd-rs/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/atsamd-rs/subscriptions",
+   "organizations_url": "https://api.github.com/users/atsamd-rs/orgs",
+   "repos_url": "https://api.github.com/users/atsamd-rs/repos",
+   "events_url": "https://api.github.com/users/atsamd-rs/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/atsamd-rs/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/atsamd-rs/atsamd",
+  "description": "Target atsamd microcontrollers using Rust",
+  "fork": false,
+  "url": "https://api.github.com/repos/atsamd-rs/atsamd",
+  "forks_url": "https://api.github.com/repos/atsamd-rs/atsamd/forks",
+  "keys_url": "https://api.github.com/repos/atsamd-rs/atsamd/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/atsamd-rs/atsamd/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/atsamd-rs/atsamd/teams",
+  "hooks_url": "https://api.github.com/repos/atsamd-rs/atsamd/hooks",
+  "issue_events_url": "https://api.github.com/repos/atsamd-rs/atsamd/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/atsamd-rs/atsamd/events",
+  "assignees_url": "https://api.github.com/repos/atsamd-rs/atsamd/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/atsamd-rs/atsamd/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/atsamd-rs/atsamd/tags",
+  "blobs_url": "https://api.github.com/repos/atsamd-rs/atsamd/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/atsamd-rs/atsamd/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/atsamd-rs/atsamd/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/atsamd-rs/atsamd/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/atsamd-rs/atsamd/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/atsamd-rs/atsamd/languages",
+  "stargazers_url": "https://api.github.com/repos/atsamd-rs/atsamd/stargazers",
+  "contributors_url": "https://api.github.com/repos/atsamd-rs/atsamd/contributors",
+  "subscribers_url": "https://api.github.com/repos/atsamd-rs/atsamd/subscribers",
+  "subscription_url": "https://api.github.com/repos/atsamd-rs/atsamd/subscription",
+  "commits_url": "https://api.github.com/repos/atsamd-rs/atsamd/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/atsamd-rs/atsamd/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/atsamd-rs/atsamd/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/atsamd-rs/atsamd/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/atsamd-rs/atsamd/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/atsamd-rs/atsamd/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/atsamd-rs/atsamd/merges",
+  "archive_url": "https://api.github.com/repos/atsamd-rs/atsamd/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/atsamd-rs/atsamd/downloads",
+  "issues_url": "https://api.github.com/repos/atsamd-rs/atsamd/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/atsamd-rs/atsamd/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/atsamd-rs/atsamd/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/atsamd-rs/atsamd/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/atsamd-rs/atsamd/labels{/name}",
+  "releases_url": "https://api.github.com/repos/atsamd-rs/atsamd/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/atsamd-rs/atsamd/deployments",
+  "created_at": "2018-03-16T15:42:43Z",
+  "updated_at": "2026-07-02T21:08:27Z",
+  "pushed_at": "2026-06-25T06:00:33Z",
+  "git_url": "git://github.com/atsamd-rs/atsamd.git",
+  "ssh_url": "git@github.com:atsamd-rs/atsamd.git",
+  "clone_url": "https://github.com/atsamd-rs/atsamd.git",
+  "svn_url": "https://github.com/atsamd-rs/atsamd",
+  "homepage": "https://matrix.to/#/#atsamd-rs:matrix.org",
+  "size": 127599,
+  "stargazers_count": 657,
+  "watchers_count": 657,
+  "language": "Rust",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": true,
+  "has_discussions": false,
+  "forks_count": 222,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 91,
+  "license": {
+   "key": "apache-2.0",
+   "name": "Apache License 2.0",
+   "spdx_id": "Apache-2.0",
+   "url": "https://api.github.com/licenses/apache-2.0",
+   "node_id": "MDc6TGljZW5zZTI="
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [
+   "atmel",
+   "embedded",
+   "embedded-hal",
+   "microchip",
+   "rust",
+   "samd11",
+   "samd21",
+   "samd51",
+   "same54"
+  ],
+  "visibility": "public",
+  "forks": 222,
+  "open_issues": 91,
+  "watchers": 657,
+  "default_branch": "master",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "atsamd-rs",
+   "id": 44236671,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjQ0MjM2Njcx",
+   "avatar_url": "https://avatars.githubusercontent.com/u/44236671?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/atsamd-rs",
+   "html_url": "https://github.com/atsamd-rs",
+   "followers_url": "https://api.github.com/users/atsamd-rs/followers",
+   "following_url": "https://api.github.com/users/atsamd-rs/following{/other_user}",
+   "gists_url": "https://api.github.com/users/atsamd-rs/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/atsamd-rs/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/atsamd-rs/subscriptions",
+   "organizations_url": "https://api.github.com/users/atsamd-rs/orgs",
+   "repos_url": "https://api.github.com/users/atsamd-rs/repos",
+   "events_url": "https://api.github.com/users/atsamd-rs/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/atsamd-rs/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 222,
+  "subscribers_count": 16
+ },
+ "funding": []
+}

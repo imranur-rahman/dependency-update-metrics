@@ -1,0 +1,1203 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "CARGO",
+   "name": "crossbeam"
+  },
+  "purl": "pkg:cargo/crossbeam",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.1.0"
+    },
+    "purl": "pkg:cargo/crossbeam@0.1.0",
+    "publishedAt": "2015-08-27T18:36:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.1.1"
+    },
+    "purl": "pkg:cargo/crossbeam@0.1.1",
+    "publishedAt": "2015-08-27T21:06:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.1.2"
+    },
+    "purl": "pkg:cargo/crossbeam@0.1.2",
+    "publishedAt": "2015-08-27T21:41:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.1.3"
+    },
+    "purl": "pkg:cargo/crossbeam@0.1.3",
+    "publishedAt": "2015-08-31T17:33:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.1.4"
+    },
+    "purl": "pkg:cargo/crossbeam@0.1.4",
+    "publishedAt": "2015-09-16T14:26:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.1.5"
+    },
+    "purl": "pkg:cargo/crossbeam@0.1.5",
+    "publishedAt": "2015-09-22T18:56:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.1.6"
+    },
+    "purl": "pkg:cargo/crossbeam@0.1.6",
+    "publishedAt": "2015-11-02T19:54:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.2.0"
+    },
+    "purl": "pkg:cargo/crossbeam@0.2.0",
+    "publishedAt": "2015-12-16T21:01:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.2.1"
+    },
+    "purl": "pkg:cargo/crossbeam@0.2.1",
+    "publishedAt": "2016-01-22T02:43:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.2.10"
+    },
+    "purl": "pkg:cargo/crossbeam@0.2.10",
+    "publishedAt": "2016-08-11T05:57:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.2.11"
+    },
+    "purl": "pkg:cargo/crossbeam@0.2.11",
+    "publishedAt": "2018-01-05T00:47:57Z",
+    "isDefault": false,
+    "isDeprecated": true,
+    "deprecatedReason": "yanked"
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.2.12"
+    },
+    "purl": "pkg:cargo/crossbeam@0.2.12",
+    "publishedAt": "2018-01-05T12:07:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.2.2"
+    },
+    "purl": "pkg:cargo/crossbeam@0.2.2",
+    "publishedAt": "2016-01-27T19:16:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.2.3"
+    },
+    "purl": "pkg:cargo/crossbeam@0.2.3",
+    "publishedAt": "2016-01-27T19:22:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.2.4"
+    },
+    "purl": "pkg:cargo/crossbeam@0.2.4",
+    "publishedAt": "2016-01-28T06:10:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.2.5"
+    },
+    "purl": "pkg:cargo/crossbeam@0.2.5",
+    "publishedAt": "2016-02-03T00:00:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.2.6"
+    },
+    "purl": "pkg:cargo/crossbeam@0.2.6",
+    "publishedAt": "2016-02-08T21:43:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.2.7"
+    },
+    "purl": "pkg:cargo/crossbeam@0.2.7",
+    "publishedAt": "2016-02-09T15:19:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.2.8"
+    },
+    "purl": "pkg:cargo/crossbeam@0.2.8",
+    "publishedAt": "2016-02-10T04:55:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.2.9"
+    },
+    "purl": "pkg:cargo/crossbeam@0.2.9",
+    "publishedAt": "2016-04-06T22:06:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.3.0"
+    },
+    "purl": "pkg:cargo/crossbeam@0.3.0",
+    "publishedAt": "2017-08-01T21:12:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.3.1"
+    },
+    "purl": "pkg:cargo/crossbeam@0.3.1",
+    "publishedAt": "2018-01-05T00:52:29Z",
+    "isDefault": false,
+    "isDeprecated": true,
+    "deprecatedReason": "yanked"
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.3.2"
+    },
+    "purl": "pkg:cargo/crossbeam@0.3.2",
+    "publishedAt": "2018-01-05T12:04:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.4.0"
+    },
+    "purl": "pkg:cargo/crossbeam@0.4.0",
+    "publishedAt": "2018-07-24T17:01:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.4.1"
+    },
+    "purl": "pkg:cargo/crossbeam@0.4.1",
+    "publishedAt": "2018-07-25T15:45:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.5.0"
+    },
+    "purl": "pkg:cargo/crossbeam@0.5.0",
+    "publishedAt": "2018-11-09T11:28:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.6.0"
+    },
+    "purl": "pkg:cargo/crossbeam@0.6.0",
+    "publishedAt": "2018-12-16T15:14:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.7.0"
+    },
+    "purl": "pkg:cargo/crossbeam@0.7.0",
+    "publishedAt": "2019-01-28T20:37:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.7.1"
+    },
+    "purl": "pkg:cargo/crossbeam@0.7.1",
+    "publishedAt": "2019-01-29T00:23:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.7.2"
+    },
+    "purl": "pkg:cargo/crossbeam@0.7.2",
+    "publishedAt": "2019-07-24T22:55:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.7.3"
+    },
+    "purl": "pkg:cargo/crossbeam@0.7.3",
+    "publishedAt": "2019-11-06T23:44:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.8.0"
+    },
+    "purl": "pkg:cargo/crossbeam@0.8.0",
+    "publishedAt": "2020-10-12T04:54:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.8.1"
+    },
+    "purl": "pkg:cargo/crossbeam@0.8.1",
+    "publishedAt": "2021-05-30T03:19:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.8.2"
+    },
+    "purl": "pkg:cargo/crossbeam@0.8.2",
+    "publishedAt": "2022-07-23T07:03:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.8.3"
+    },
+    "purl": "pkg:cargo/crossbeam@0.8.3",
+    "publishedAt": "2023-12-24T06:28:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.8.4"
+    },
+    "purl": "pkg:cargo/crossbeam@0.8.4",
+    "publishedAt": "2024-01-08T12:58:18Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "CARGO",
+   "name": "crossbeam",
+   "version": "0.8.4"
+  },
+  "purl": "pkg:cargo/crossbeam@0.8.4",
+  "publishedAt": "2024-01-08T12:58:18Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "Apache-2.0 OR MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "Apache-2.0 OR MIT",
+    "spdx": "Apache-2.0 OR MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/crossbeam-rs/crossbeam"
+   },
+   {
+    "label": "HOMEPAGE",
+    "url": "https://github.com/crossbeam-rs/crossbeam"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://crates.io/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/crossbeam-rs/crossbeam"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "crossbeam",
+    "versionString": "0.8.4",
+    "source": "CARGO_CRATES_IO"
+   }
+  ],
+  "cooldown": {
+   "end": "2024-01-18T12:58:18Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam",
+     "version": "0.8.4"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "cfg-if",
+     "version": "1.0.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam-channel",
+     "version": "0.5.16"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam-deque",
+     "version": "0.8.7"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam-epoch",
+     "version": "0.9.20"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam-queue",
+     "version": "0.3.13"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam-utils",
+     "version": "0.8.22"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "getrandom",
+     "version": "0.2.17"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "libc",
+     "version": "0.2.186"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "ppv-lite86",
+     "version": "0.2.21"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "proc-macro2",
+     "version": "1.0.106"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "quote",
+     "version": "1.0.46"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "rand",
+     "version": "0.8.6"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "rand_chacha",
+     "version": "0.3.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "rand_core",
+     "version": "0.6.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "syn",
+     "version": "2.0.118"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "unicode-ident",
+     "version": "1.0.24"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "wasi",
+     "version": "0.11.1+wasi-snapshot-preview1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "zerocopy",
+     "version": "0.8.54"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "zerocopy-derive",
+     "version": "0.8.54"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 2,
+    "requirement": "^0.5.10"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 3,
+    "requirement": "^0.8.4"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 4,
+    "requirement": "^0.9.17"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 5,
+    "requirement": "^0.3.10"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 6,
+    "requirement": "^0.8.18"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 12,
+    "requirement": "^0.8"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 6,
+    "requirement": "^0.8.18"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 4,
+    "requirement": "^0.9.17"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 6,
+    "requirement": "^0.8.18"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 6,
+    "requirement": "^0.8.18"
+   },
+   {
+    "fromNode": 5,
+    "toNode": 6,
+    "requirement": "^0.8.18"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 1,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 8,
+    "requirement": "^0.2.154"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 17,
+    "requirement": "^0.11"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 18,
+    "requirement": "^0.8.23"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 16,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 11,
+    "toNode": 10,
+    "requirement": "^1.0.80"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 8,
+    "requirement": "^0.2.22"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 13,
+    "requirement": "^0.3.0"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 14,
+    "requirement": "^0.6.0"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 9,
+    "requirement": "^0.2.8"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 14,
+    "requirement": "^0.6.0"
+   },
+   {
+    "fromNode": 14,
+    "toNode": 7,
+    "requirement": "^0.2"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 10,
+    "requirement": "^1.0.91"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 16,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 19,
+    "requirement": "=0.8.54"
+   },
+   {
+    "fromNode": 19,
+    "toNode": 10,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 19,
+    "toNode": 11,
+    "requirement": "^1.0.40"
+   },
+   {
+    "fromNode": 19,
+    "toNode": 15,
+    "requirement": "^2.0.46"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 2008,
+  "directDependentCount": 717,
+  "indirectDependentCount": 1316
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/crossbeam-rs/crossbeam"
+  },
+  "openIssuesCount": 159,
+  "starsCount": 8527,
+  "forksCount": 563,
+  "license": "Apache-2.0",
+  "description": "Tools for concurrent programming in Rust",
+  "homepage": "",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/crossbeam-rs/crossbeam",
+    "commit": "b23b7e8eca2efdad9bdc1ceb1aee1207a852c03b"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 1,
+     "reason": "Found 4/24 approved changesets -- score normalized to 1",
+     "details": []
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected",
+     "details": []
+    },
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 10,
+     "reason": "30 commit(s) and 5 issue activity found in the last 90 days -- score normalized to 10",
+     "details": []
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": 10,
+     "reason": "GitHub workflow tokens follow principle of least privilege",
+     "details": [
+      "Warn: jobLevel 'contents' permission set to 'write': .github/workflows/release.yml:25",
+      "Info: found token with 'none' permissions: .github/workflows/ci.yml:1",
+      "Info: found token with 'none' permissions: .github/workflows/release.yml:1"
+     ]
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": 10,
+     "reason": "all dependencies are pinned",
+     "details": [
+      "Info:  24 out of  24 third-party GitHubAction dependencies pinned"
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 10,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE-APACHE:0",
+      "Info: FSF or OSI recognized license: Apache License 2.0: LICENSE-APACHE:0"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": 3,
+     "reason": "branch protection is not maximal on development and all release branches",
+     "details": [
+      "Info: 'allow deletion' disabled on branch 'main'",
+      "Info: 'force pushes' disabled on branch 'main'",
+      "Info: 'branch protection settings apply to administrators' is required to merge on branch 'main'",
+      "Warn: 'stale review dismissal' is disabled on branch 'main'",
+      "Warn: branch 'main' does not require approvers",
+      "Warn: codeowners review is not required on branch 'main'",
+      "Warn: 'last push approval' is disabled on branch 'main'",
+      "Warn: no status checks found to merge onto branch 'main'",
+      "Info: PRs are required in order to make changes on branch 'main'"
+     ]
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 10,
+     "reason": "security policy file detected",
+     "details": [
+      "Info: security policy file detected: github.com/crossbeam-rs/.github/SECURITY.md:1",
+      "Info: Found linked content: github.com/crossbeam-rs/.github/SECURITY.md:1",
+      "Info: Found disclosure, vulnerability, and/or timelines in security policy: github.com/crossbeam-rs/.github/SECURITY.md:1",
+      "Info: Found text in security policy: github.com/crossbeam-rs/.github/SECURITY.md:1"
+     ]
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0",
+     "details": [
+      "Warn: 0 commits out of 30 are checked with a SAST tool"
+     ]
+    }
+   ],
+   "overallScore": 6.6,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 35566048,
+  "node_id": "MDEwOlJlcG9zaXRvcnkzNTU2NjA0OA==",
+  "name": "crossbeam",
+  "full_name": "crossbeam-rs/crossbeam",
+  "private": false,
+  "owner": {
+   "login": "crossbeam-rs",
+   "id": 26314159,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjI2MzE0MTU5",
+   "avatar_url": "https://avatars.githubusercontent.com/u/26314159?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/crossbeam-rs",
+   "html_url": "https://github.com/crossbeam-rs",
+   "followers_url": "https://api.github.com/users/crossbeam-rs/followers",
+   "following_url": "https://api.github.com/users/crossbeam-rs/following{/other_user}",
+   "gists_url": "https://api.github.com/users/crossbeam-rs/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/crossbeam-rs/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/crossbeam-rs/subscriptions",
+   "organizations_url": "https://api.github.com/users/crossbeam-rs/orgs",
+   "repos_url": "https://api.github.com/users/crossbeam-rs/repos",
+   "events_url": "https://api.github.com/users/crossbeam-rs/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/crossbeam-rs/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/crossbeam-rs/crossbeam",
+  "description": "Tools for concurrent programming in Rust",
+  "fork": false,
+  "url": "https://api.github.com/repos/crossbeam-rs/crossbeam",
+  "forks_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/forks",
+  "keys_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/teams",
+  "hooks_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/hooks",
+  "issue_events_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/events",
+  "assignees_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/tags",
+  "blobs_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/languages",
+  "stargazers_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/stargazers",
+  "contributors_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/contributors",
+  "subscribers_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/subscribers",
+  "subscription_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/subscription",
+  "commits_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/merges",
+  "archive_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/downloads",
+  "issues_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/labels{/name}",
+  "releases_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/crossbeam-rs/crossbeam/deployments",
+  "created_at": "2015-05-13T18:10:54Z",
+  "updated_at": "2026-07-21T14:50:07Z",
+  "pushed_at": "2026-07-13T12:39:21Z",
+  "git_url": "git://github.com/crossbeam-rs/crossbeam.git",
+  "ssh_url": "git@github.com:crossbeam-rs/crossbeam.git",
+  "clone_url": "https://github.com/crossbeam-rs/crossbeam.git",
+  "svn_url": "https://github.com/crossbeam-rs/crossbeam",
+  "homepage": "",
+  "size": 4402,
+  "stargazers_count": 8533,
+  "watchers_count": 8533,
+  "language": "Rust",
+  "has_issues": true,
+  "has_projects": false,
+  "has_downloads": false,
+  "has_wiki": false,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 563,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 159,
+  "license": {
+   "key": "apache-2.0",
+   "name": "Apache License 2.0",
+   "spdx_id": "Apache-2.0",
+   "url": "https://api.github.com/licenses/apache-2.0",
+   "node_id": "MDc6TGljZW5zZTI="
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [
+   "concurrency",
+   "data-structures",
+   "lock-free",
+   "parallelism",
+   "rust",
+   "synchronization",
+   "threads"
+  ],
+  "visibility": "public",
+  "forks": 563,
+  "open_issues": 159,
+  "watchers": 8533,
+  "default_branch": "main",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "crossbeam-rs",
+   "id": 26314159,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjI2MzE0MTU5",
+   "avatar_url": "https://avatars.githubusercontent.com/u/26314159?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/crossbeam-rs",
+   "html_url": "https://github.com/crossbeam-rs",
+   "followers_url": "https://api.github.com/users/crossbeam-rs/followers",
+   "following_url": "https://api.github.com/users/crossbeam-rs/following{/other_user}",
+   "gists_url": "https://api.github.com/users/crossbeam-rs/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/crossbeam-rs/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/crossbeam-rs/subscriptions",
+   "organizations_url": "https://api.github.com/users/crossbeam-rs/orgs",
+   "repos_url": "https://api.github.com/users/crossbeam-rs/repos",
+   "events_url": "https://api.github.com/users/crossbeam-rs/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/crossbeam-rs/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 563,
+  "subscribers_count": 80
+ },
+ "funding": []
+}

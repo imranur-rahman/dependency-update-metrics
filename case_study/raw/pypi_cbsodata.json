@@ -1,0 +1,488 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "PYPI",
+   "name": "cbsodata"
+  },
+  "purl": "pkg:pypi/cbsodata",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cbsodata",
+     "version": "0.0.1"
+    },
+    "purl": "pkg:pypi/cbsodata@0.0.1",
+    "publishedAt": "2016-12-12T14:18:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cbsodata",
+     "version": "0.1.0"
+    },
+    "purl": "pkg:pypi/cbsodata@0.1.0",
+    "publishedAt": "2016-12-18T22:22:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cbsodata",
+     "version": "0.1.1"
+    },
+    "purl": "pkg:pypi/cbsodata@0.1.1",
+    "publishedAt": "2016-12-18T22:46:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cbsodata",
+     "version": "0.1.2"
+    },
+    "purl": "pkg:pypi/cbsodata@0.1.2",
+    "publishedAt": "2017-01-03T13:17:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cbsodata",
+     "version": "0.1.3"
+    },
+    "purl": "pkg:pypi/cbsodata@0.1.3",
+    "publishedAt": "2017-01-03T23:26:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cbsodata",
+     "version": "1.0.0"
+    },
+    "purl": "pkg:pypi/cbsodata@1.0.0",
+    "publishedAt": "2018-02-20T15:10:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cbsodata",
+     "version": "1.1.0"
+    },
+    "purl": "pkg:pypi/cbsodata@1.1.0",
+    "publishedAt": "2018-12-02T08:30:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cbsodata",
+     "version": "1.2.0"
+    },
+    "purl": "pkg:pypi/cbsodata@1.2.0",
+    "publishedAt": "2019-08-21T12:27:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cbsodata",
+     "version": "1.2.1"
+    },
+    "purl": "pkg:pypi/cbsodata@1.2.1",
+    "publishedAt": "2019-08-22T16:14:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cbsodata",
+     "version": "1.2.2"
+    },
+    "purl": "pkg:pypi/cbsodata@1.2.2",
+    "publishedAt": "2019-08-22T16:38:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cbsodata",
+     "version": "1.2.3"
+    },
+    "purl": "pkg:pypi/cbsodata@1.2.3",
+    "publishedAt": "2019-09-05T19:59:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cbsodata",
+     "version": "1.3.0"
+    },
+    "purl": "pkg:pypi/cbsodata@1.3.0",
+    "publishedAt": "2019-12-12T21:53:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cbsodata",
+     "version": "1.3.1"
+    },
+    "purl": "pkg:pypi/cbsodata@1.3.1",
+    "publishedAt": "2020-03-14T22:24:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cbsodata",
+     "version": "1.3.2"
+    },
+    "purl": "pkg:pypi/cbsodata@1.3.2",
+    "publishedAt": "2020-08-05T21:16:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cbsodata",
+     "version": "1.3.3"
+    },
+    "purl": "pkg:pypi/cbsodata@1.3.3",
+    "publishedAt": "2020-12-07T09:36:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cbsodata",
+     "version": "1.3.4"
+    },
+    "purl": "pkg:pypi/cbsodata@1.3.4",
+    "publishedAt": "2021-02-13T09:18:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cbsodata",
+     "version": "1.3.5"
+    },
+    "purl": "pkg:pypi/cbsodata@1.3.5",
+    "publishedAt": "2023-10-23T18:48:41Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "PYPI",
+   "name": "cbsodata",
+   "version": "1.3.5"
+  },
+  "purl": "pkg:pypi/cbsodata@1.3.5",
+  "publishedAt": "2023-10-23T18:48:41Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "MIT",
+    "spdx": "MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://pypi.org/simple"
+  ],
+  "relatedProjects": [],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "cbsodata",
+    "versionString": "1.3.5",
+    "source": "PYPI_RELEASE_FILENAME"
+   },
+   {
+    "packageName": "cbsodata",
+    "versionString": "1.3.5",
+    "source": "PYPI_METADATA_FILE"
+   }
+  ],
+  "cooldown": {
+   "end": "2023-10-28T18:48:41Z",
+   "description": ""
+  },
+  "projectStatus": {
+   "status": "active",
+   "reason": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cbsodata",
+     "version": "1.3.5"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certifi",
+     "version": "2026.6.17"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "charset-normalizer",
+     "version": "3.4.9"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "idna",
+     "version": "3.18.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "requests",
+     "version": "2.34.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "urllib3",
+     "version": "2.7.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 4,
+    "requirement": ""
+   },
+   {
+    "fromNode": 4,
+    "toNode": 1,
+    "requirement": ">=2023.5.7"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 2,
+    "requirement": "<4,>=2"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 3,
+    "requirement": "<4,>=2.5"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 5,
+    "requirement": "<3,>=1.26"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 3,
+  "directDependentCount": 3,
+  "indirectDependentCount": 0
+ },
+ "github_repo_api_fallback": {
+  "id": 76260632,
+  "node_id": "MDEwOlJlcG9zaXRvcnk3NjI2MDYzMg==",
+  "name": "cbsodata",
+  "full_name": "J535D165/cbsodata",
+  "private": false,
+  "owner": {
+   "login": "J535D165",
+   "id": 12981139,
+   "node_id": "MDQ6VXNlcjEyOTgxMTM5",
+   "avatar_url": "https://avatars.githubusercontent.com/u/12981139?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/J535D165",
+   "html_url": "https://github.com/J535D165",
+   "followers_url": "https://api.github.com/users/J535D165/followers",
+   "following_url": "https://api.github.com/users/J535D165/following{/other_user}",
+   "gists_url": "https://api.github.com/users/J535D165/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/J535D165/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/J535D165/subscriptions",
+   "organizations_url": "https://api.github.com/users/J535D165/orgs",
+   "repos_url": "https://api.github.com/users/J535D165/repos",
+   "events_url": "https://api.github.com/users/J535D165/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/J535D165/received_events",
+   "type": "User",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/J535D165/cbsodata",
+  "description": "Unofficial Statistics Netherlands (CBS) open data API client for Python",
+  "fork": false,
+  "url": "https://api.github.com/repos/J535D165/cbsodata",
+  "forks_url": "https://api.github.com/repos/J535D165/cbsodata/forks",
+  "keys_url": "https://api.github.com/repos/J535D165/cbsodata/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/J535D165/cbsodata/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/J535D165/cbsodata/teams",
+  "hooks_url": "https://api.github.com/repos/J535D165/cbsodata/hooks",
+  "issue_events_url": "https://api.github.com/repos/J535D165/cbsodata/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/J535D165/cbsodata/events",
+  "assignees_url": "https://api.github.com/repos/J535D165/cbsodata/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/J535D165/cbsodata/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/J535D165/cbsodata/tags",
+  "blobs_url": "https://api.github.com/repos/J535D165/cbsodata/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/J535D165/cbsodata/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/J535D165/cbsodata/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/J535D165/cbsodata/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/J535D165/cbsodata/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/J535D165/cbsodata/languages",
+  "stargazers_url": "https://api.github.com/repos/J535D165/cbsodata/stargazers",
+  "contributors_url": "https://api.github.com/repos/J535D165/cbsodata/contributors",
+  "subscribers_url": "https://api.github.com/repos/J535D165/cbsodata/subscribers",
+  "subscription_url": "https://api.github.com/repos/J535D165/cbsodata/subscription",
+  "commits_url": "https://api.github.com/repos/J535D165/cbsodata/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/J535D165/cbsodata/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/J535D165/cbsodata/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/J535D165/cbsodata/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/J535D165/cbsodata/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/J535D165/cbsodata/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/J535D165/cbsodata/merges",
+  "archive_url": "https://api.github.com/repos/J535D165/cbsodata/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/J535D165/cbsodata/downloads",
+  "issues_url": "https://api.github.com/repos/J535D165/cbsodata/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/J535D165/cbsodata/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/J535D165/cbsodata/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/J535D165/cbsodata/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/J535D165/cbsodata/labels{/name}",
+  "releases_url": "https://api.github.com/repos/J535D165/cbsodata/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/J535D165/cbsodata/deployments",
+  "created_at": "2016-12-12T13:53:18Z",
+  "updated_at": "2026-06-13T13:19:33Z",
+  "pushed_at": "2026-07-06T21:00:36Z",
+  "git_url": "git://github.com/J535D165/cbsodata.git",
+  "ssh_url": "git@github.com:J535D165/cbsodata.git",
+  "clone_url": "https://github.com/J535D165/cbsodata.git",
+  "svn_url": "https://github.com/J535D165/cbsodata",
+  "homepage": "http://cbsodata.readthedocs.io/",
+  "size": 110,
+  "stargazers_count": 51,
+  "watchers_count": 51,
+  "language": "Python",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 23,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 6,
+  "license": {
+   "key": "mit",
+   "name": "MIT License",
+   "spdx_id": "MIT",
+   "url": "https://api.github.com/licenses/mit",
+   "node_id": "MDc6TGljZW5zZTEz"
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [
+   "census-api",
+   "census-data",
+   "data",
+   "national-statistics",
+   "netherlands",
+   "open-data",
+   "python-library"
+  ],
+  "visibility": "public",
+  "forks": 23,
+  "open_issues": 6,
+  "watchers": 51,
+  "default_branch": "main",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "network_count": 23,
+  "subscribers_count": 10
+ }
+}

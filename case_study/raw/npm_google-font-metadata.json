@@ -1,0 +1,1774 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "google-font-metadata"
+  },
+  "purl": "pkg:npm/google-font-metadata",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "1.0.1"
+    },
+    "purl": "pkg:npm/google-font-metadata@1.0.1",
+    "publishedAt": "2020-07-14T13:21:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "1.1.0"
+    },
+    "purl": "pkg:npm/google-font-metadata@1.1.0",
+    "publishedAt": "2020-07-17T12:33:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "1.2.0"
+    },
+    "purl": "pkg:npm/google-font-metadata@1.2.0",
+    "publishedAt": "2020-07-20T23:34:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "1.2.1"
+    },
+    "purl": "pkg:npm/google-font-metadata@1.2.1",
+    "publishedAt": "2020-07-22T12:59:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "1.2.2"
+    },
+    "purl": "pkg:npm/google-font-metadata@1.2.2",
+    "publishedAt": "2020-08-03T15:12:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "1.3.0"
+    },
+    "purl": "pkg:npm/google-font-metadata@1.3.0",
+    "publishedAt": "2020-08-06T12:34:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "1.3.1"
+    },
+    "purl": "pkg:npm/google-font-metadata@1.3.1",
+    "publishedAt": "2020-08-18T16:57:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "1.3.2"
+    },
+    "purl": "pkg:npm/google-font-metadata@1.3.2",
+    "publishedAt": "2020-09-03T10:12:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "1.3.3"
+    },
+    "purl": "pkg:npm/google-font-metadata@1.3.3",
+    "publishedAt": "2020-09-18T14:45:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "1.3.4"
+    },
+    "purl": "pkg:npm/google-font-metadata@1.3.4",
+    "publishedAt": "2020-09-23T11:17:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "1.4.0"
+    },
+    "purl": "pkg:npm/google-font-metadata@1.4.0",
+    "publishedAt": "2020-10-16T23:19:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "2.0.0"
+    },
+    "purl": "pkg:npm/google-font-metadata@2.0.0",
+    "publishedAt": "2020-11-14T15:22:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "2.0.1"
+    },
+    "purl": "pkg:npm/google-font-metadata@2.0.1",
+    "publishedAt": "2020-12-11T22:02:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "2.0.2"
+    },
+    "purl": "pkg:npm/google-font-metadata@2.0.2",
+    "publishedAt": "2021-02-16T05:35:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "3.0.0"
+    },
+    "purl": "pkg:npm/google-font-metadata@3.0.0",
+    "publishedAt": "2021-05-26T21:32:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "3.0.1"
+    },
+    "purl": "pkg:npm/google-font-metadata@3.0.1",
+    "publishedAt": "2021-05-26T22:06:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "3.0.2"
+    },
+    "purl": "pkg:npm/google-font-metadata@3.0.2",
+    "publishedAt": "2021-10-24T12:52:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "3.1.0"
+    },
+    "purl": "pkg:npm/google-font-metadata@3.1.0",
+    "publishedAt": "2021-11-03T00:23:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "3.1.1"
+    },
+    "purl": "pkg:npm/google-font-metadata@3.1.1",
+    "publishedAt": "2022-03-24T04:54:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "4.0.0"
+    },
+    "purl": "pkg:npm/google-font-metadata@4.0.0",
+    "publishedAt": "2022-07-11T14:43:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "4.0.1"
+    },
+    "purl": "pkg:npm/google-font-metadata@4.0.1",
+    "publishedAt": "2022-07-13T23:28:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "4.0.2"
+    },
+    "purl": "pkg:npm/google-font-metadata@4.0.2",
+    "publishedAt": "2022-07-15T14:54:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "4.1.0"
+    },
+    "purl": "pkg:npm/google-font-metadata@4.1.0",
+    "publishedAt": "2022-08-25T21:45:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "4.1.1"
+    },
+    "purl": "pkg:npm/google-font-metadata@4.1.1",
+    "publishedAt": "2022-10-02T00:24:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "4.1.2"
+    },
+    "purl": "pkg:npm/google-font-metadata@4.1.2",
+    "publishedAt": "2022-10-02T11:24:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "4.1.3"
+    },
+    "purl": "pkg:npm/google-font-metadata@4.1.3",
+    "publishedAt": "2022-10-21T00:28:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "4.1.4"
+    },
+    "purl": "pkg:npm/google-font-metadata@4.1.4",
+    "publishedAt": "2022-10-21T00:39:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "4.2.0"
+    },
+    "purl": "pkg:npm/google-font-metadata@4.2.0",
+    "publishedAt": "2023-03-01T02:08:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "4.2.1"
+    },
+    "purl": "pkg:npm/google-font-metadata@4.2.1",
+    "publishedAt": "2023-03-01T02:37:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "5.0.0"
+    },
+    "purl": "pkg:npm/google-font-metadata@5.0.0",
+    "publishedAt": "2023-03-01T10:53:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "5.0.1"
+    },
+    "purl": "pkg:npm/google-font-metadata@5.0.1",
+    "publishedAt": "2023-03-05T05:41:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "5.1.0"
+    },
+    "purl": "pkg:npm/google-font-metadata@5.1.0",
+    "publishedAt": "2023-04-28T15:37:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "5.1.1"
+    },
+    "purl": "pkg:npm/google-font-metadata@5.1.1",
+    "publishedAt": "2023-04-28T16:00:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "5.1.2"
+    },
+    "purl": "pkg:npm/google-font-metadata@5.1.2",
+    "publishedAt": "2023-04-28T16:39:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "5.1.3"
+    },
+    "purl": "pkg:npm/google-font-metadata@5.1.3",
+    "publishedAt": "2023-04-28T17:55:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "5.1.4"
+    },
+    "purl": "pkg:npm/google-font-metadata@5.1.4",
+    "publishedAt": "2023-04-28T19:48:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "5.1.5"
+    },
+    "purl": "pkg:npm/google-font-metadata@5.1.5",
+    "publishedAt": "2023-04-29T11:55:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "5.2.0"
+    },
+    "purl": "pkg:npm/google-font-metadata@5.2.0",
+    "publishedAt": "2023-04-29T17:02:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "5.2.1"
+    },
+    "purl": "pkg:npm/google-font-metadata@5.2.1",
+    "publishedAt": "2023-12-05T10:36:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "6.0.0"
+    },
+    "purl": "pkg:npm/google-font-metadata@6.0.0",
+    "publishedAt": "2024-12-29T09:38:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "6.0.1"
+    },
+    "purl": "pkg:npm/google-font-metadata@6.0.1",
+    "publishedAt": "2025-01-05T08:17:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "6.0.2"
+    },
+    "purl": "pkg:npm/google-font-metadata@6.0.2",
+    "publishedAt": "2025-01-05T08:19:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "6.0.3"
+    },
+    "purl": "pkg:npm/google-font-metadata@6.0.3",
+    "publishedAt": "2025-01-05T12:50:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "6.0.4"
+    },
+    "purl": "pkg:npm/google-font-metadata@6.0.4",
+    "publishedAt": "2025-09-17T07:12:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "6.0.5"
+    },
+    "purl": "pkg:npm/google-font-metadata@6.0.5",
+    "publishedAt": "2025-09-17T08:10:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "6.0.6"
+    },
+    "purl": "pkg:npm/google-font-metadata@6.0.6",
+    "publishedAt": "2025-09-25T07:08:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "6.0.7"
+    },
+    "purl": "pkg:npm/google-font-metadata@6.0.7",
+    "publishedAt": "2025-09-25T07:18:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "6.0.8"
+    },
+    "purl": "pkg:npm/google-font-metadata@6.0.8",
+    "publishedAt": "2026-01-15T08:41:32Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "NPM",
+   "name": "google-font-metadata",
+   "version": "6.0.8"
+  },
+  "purl": "pkg:npm/google-font-metadata@6.0.8",
+  "publishedAt": "2026-01-15T08:41:32Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "MIT",
+    "spdx": "MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "HOMEPAGE",
+    "url": "https://github.com/fontsource/google-font-metadata"
+   },
+   {
+    "label": "ISSUE_TRACKER",
+    "url": "https://github.com/fontsource/google-font-metadata/issues"
+   },
+   {
+    "label": "ORIGIN",
+    "url": "https://registry.npmjs.org/google-font-metadata/6.0.8"
+   },
+   {
+    "label": "SOURCE_REPO",
+    "url": "git+https://github.com/fontsource/google-font-metadata.git"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://registry.npmjs.org/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/fontsource/google-font-metadata"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "ISSUE_TRACKER"
+   },
+   {
+    "projectKey": {
+     "id": "github.com/fontsource/google-font-metadata"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "google-font-metadata",
+    "versionString": "6.0.8",
+    "source": "NPM_NPMJS_ORG"
+   }
+  ],
+  "cooldown": {
+   "end": "2026-01-30T08:41:32Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "google-font-metadata",
+     "version": "6.0.8"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@evan/concurrency",
+     "version": "0.0.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@octokit/auth-token",
+     "version": "5.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@octokit/core",
+     "version": "6.1.6"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@octokit/endpoint",
+     "version": "10.1.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@octokit/graphql",
+     "version": "8.2.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@octokit/openapi-types",
+     "version": "25.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@octokit/request",
+     "version": "9.2.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@octokit/request-error",
+     "version": "6.1.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@octokit/types",
+     "version": "14.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "before-after-hook",
+     "version": "3.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "boolbase",
+     "version": "2.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cac",
+     "version": "6.7.14"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "consola",
+     "version": "3.4.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "css-select",
+     "version": "7.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "css-what",
+     "version": "8.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cssom",
+     "version": "0.5.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "deepmerge",
+     "version": "4.3.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dom-serializer",
+     "version": "2.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dom-serializer",
+     "version": "3.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "domelementtype",
+     "version": "2.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "domelementtype",
+     "version": "3.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "domhandler",
+     "version": "5.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "domhandler",
+     "version": "6.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "domutils",
+     "version": "3.2.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "domutils",
+     "version": "4.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "entities",
+     "version": "4.5.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "entities",
+     "version": "7.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "entities",
+     "version": "8.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "fast-content-type-parse",
+     "version": "2.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "fsevents",
+     "version": "2.3.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "html-escaper",
+     "version": "3.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "htmlparser2",
+     "version": "10.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "json-stringify-pretty-compact",
+     "version": "4.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "linkedom",
+     "version": "0.18.13"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "nth-check",
+     "version": "3.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "pathe",
+     "version": "1.1.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "picocolors",
+     "version": "1.1.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "playwright",
+     "version": "1.61.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "playwright-core",
+     "version": "1.61.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "stylis",
+     "version": "4.4.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "uhyphen",
+     "version": "0.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "universal-user-agent",
+     "version": "7.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "zod",
+     "version": "3.25.76"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 1,
+    "requirement": "^0.0.3"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 3,
+    "requirement": "^6.1.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 12,
+    "requirement": "^6.7.14"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 13,
+    "requirement": "^3.3.3"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 17,
+    "requirement": "^4.3.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 33,
+    "requirement": "^4.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 34,
+    "requirement": "^0.18.6"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 36,
+    "requirement": "^1.1.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 37,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 38,
+    "requirement": "^1.49.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 40,
+    "requirement": "^4.3.4"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 43,
+    "requirement": "^3.24.1"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 2,
+    "requirement": "^5.0.0"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 5,
+    "requirement": "^8.2.2"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 7,
+    "requirement": "^9.2.3"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 8,
+    "requirement": "^6.1.8"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 9,
+    "requirement": "^14.0.0"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 10,
+    "requirement": "^3.0.2"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 42,
+    "requirement": "^7.0.0"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 9,
+    "requirement": "^14.0.0"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 42,
+    "requirement": "^7.0.2"
+   },
+   {
+    "fromNode": 5,
+    "toNode": 7,
+    "requirement": "^9.2.3"
+   },
+   {
+    "fromNode": 5,
+    "toNode": 9,
+    "requirement": "^14.0.0"
+   },
+   {
+    "fromNode": 5,
+    "toNode": 42,
+    "requirement": "^7.0.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 4,
+    "requirement": "^10.1.4"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 8,
+    "requirement": "^6.1.8"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 9,
+    "requirement": "^14.0.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 29,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 42,
+    "requirement": "^7.0.2"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 9,
+    "requirement": "^14.0.0"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 6,
+    "requirement": "^25.1.0"
+   },
+   {
+    "fromNode": 14,
+    "toNode": 11,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 14,
+    "toNode": 15,
+    "requirement": "^8.0.0"
+   },
+   {
+    "fromNode": 14,
+    "toNode": 23,
+    "requirement": "^6.0.1"
+   },
+   {
+    "fromNode": 14,
+    "toNode": 25,
+    "requirement": "^4.0.2"
+   },
+   {
+    "fromNode": 14,
+    "toNode": 35,
+    "requirement": "^3.0.1"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 20,
+    "requirement": "^2.3.0"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 22,
+    "requirement": "^5.0.2"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 26,
+    "requirement": "^4.2.0"
+   },
+   {
+    "fromNode": 19,
+    "toNode": 21,
+    "requirement": "^3.0.0"
+   },
+   {
+    "fromNode": 19,
+    "toNode": 23,
+    "requirement": "^6.0.0"
+   },
+   {
+    "fromNode": 19,
+    "toNode": 28,
+    "requirement": "^8.0.0"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 20,
+    "requirement": "^2.3.0"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 21,
+    "requirement": "^3.0.0"
+   },
+   {
+    "fromNode": 24,
+    "toNode": 18,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 24,
+    "toNode": 20,
+    "requirement": "^2.3.0"
+   },
+   {
+    "fromNode": 24,
+    "toNode": 22,
+    "requirement": "^5.0.3"
+   },
+   {
+    "fromNode": 25,
+    "toNode": 19,
+    "requirement": "^3.0.0"
+   },
+   {
+    "fromNode": 25,
+    "toNode": 21,
+    "requirement": "^3.0.0"
+   },
+   {
+    "fromNode": 25,
+    "toNode": 23,
+    "requirement": "^6.0.0"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 20,
+    "requirement": "^2.3.0"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 22,
+    "requirement": "^5.0.3"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 24,
+    "requirement": "^3.2.2"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 27,
+    "requirement": "^7.0.1"
+   },
+   {
+    "fromNode": 34,
+    "toNode": 14,
+    "requirement": "^7.0.0"
+   },
+   {
+    "fromNode": 34,
+    "toNode": 16,
+    "requirement": "^0.5.0"
+   },
+   {
+    "fromNode": 34,
+    "toNode": 31,
+    "requirement": "^3.0.3"
+   },
+   {
+    "fromNode": 34,
+    "toNode": 32,
+    "requirement": "^10.1.0"
+   },
+   {
+    "fromNode": 34,
+    "toNode": 41,
+    "requirement": "^0.2.0"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 11,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 30,
+    "requirement": "2.3.2"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 39,
+    "requirement": "1.61.1"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 1,
+  "directDependentCount": 1,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/fontsource/google-font-metadata"
+  },
+  "openIssuesCount": 5,
+  "starsCount": 40,
+  "forksCount": 12,
+  "license": "MIT",
+  "description": "A metadata generator that fetches and parses the Google Fonts API.",
+  "homepage": "",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/fontsource/google-font-metadata",
+    "commit": "a25745366d0c0bfc336379022cc556ba62bffa98"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 2,
+     "reason": "3 commit(s) and 0 issue activity found in the last 90 days -- score normalized to 2",
+     "details": []
+    },
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 0,
+     "reason": "Found 0/30 approved changesets -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected",
+     "details": []
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": 0,
+     "reason": "detected GitHub workflow tokens with excessive permissions",
+     "details": [
+      "Warn: no topLevel permission defined: .github/workflows/cron-run.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/manual-run-force.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/manual-run.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/tests.yml:1",
+      "Info: no jobLevel write permissions found"
+     ]
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 10,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE:0",
+      "Info: FSF or OSI recognized license: MIT License: LICENSE:0"
+     ]
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": 0,
+     "reason": "dependency not pinned by hash detected -- score normalized to 0",
+     "details": [
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/cron-run.yml:13: update your workflow using https://app.stepsecurity.io/secureworkflow/fontsource/google-font-metadata/cron-run.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/cron-run.yml:15: update your workflow using https://app.stepsecurity.io/secureworkflow/fontsource/google-font-metadata/cron-run.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/cron-run.yml:34: update your workflow using https://app.stepsecurity.io/secureworkflow/fontsource/google-font-metadata/cron-run.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/manual-run-force.yml:11: update your workflow using https://app.stepsecurity.io/secureworkflow/fontsource/google-font-metadata/manual-run-force.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/manual-run-force.yml:13: update your workflow using https://app.stepsecurity.io/secureworkflow/fontsource/google-font-metadata/manual-run-force.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/manual-run-force.yml:32: update your workflow using https://app.stepsecurity.io/secureworkflow/fontsource/google-font-metadata/manual-run-force.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/manual-run.yml:11: update your workflow using https://app.stepsecurity.io/secureworkflow/fontsource/google-font-metadata/manual-run.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/manual-run.yml:13: update your workflow using https://app.stepsecurity.io/secureworkflow/fontsource/google-font-metadata/manual-run.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/manual-run.yml:29: update your workflow using https://app.stepsecurity.io/secureworkflow/fontsource/google-font-metadata/manual-run.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/tests.yml:15: update your workflow using https://app.stepsecurity.io/secureworkflow/fontsource/google-font-metadata/tests.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/tests.yml:17: update your workflow using https://app.stepsecurity.io/secureworkflow/fontsource/google-font-metadata/tests.yml/main?enable=pin",
+      "Info:   0 out of   4 GitHub-owned GitHubAction dependencies pinned",
+      "Info:   0 out of   7 third-party GitHubAction dependencies pinned"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": 0,
+     "reason": "branch protection not enabled on development/release branches",
+     "details": [
+      "Warn: branch protection not enabled for branch 'main'"
+     ]
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0",
+     "details": [
+      "Warn: 0 commits out of 5 are checked with a SAST tool"
+     ]
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 0,
+     "reason": "security policy file not detected",
+     "details": [
+      "Warn: no security policy file detected",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze"
+     ]
+    }
+   ],
+   "overallScore": 3,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 279578822,
+  "node_id": "MDEwOlJlcG9zaXRvcnkyNzk1Nzg4MjI=",
+  "name": "google-font-metadata",
+  "full_name": "fontsource/google-font-metadata",
+  "private": false,
+  "owner": {
+   "login": "fontsource",
+   "id": 68393903,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjY4MzkzOTAz",
+   "avatar_url": "https://avatars.githubusercontent.com/u/68393903?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/fontsource",
+   "html_url": "https://github.com/fontsource",
+   "followers_url": "https://api.github.com/users/fontsource/followers",
+   "following_url": "https://api.github.com/users/fontsource/following{/other_user}",
+   "gists_url": "https://api.github.com/users/fontsource/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/fontsource/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/fontsource/subscriptions",
+   "organizations_url": "https://api.github.com/users/fontsource/orgs",
+   "repos_url": "https://api.github.com/users/fontsource/repos",
+   "events_url": "https://api.github.com/users/fontsource/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/fontsource/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/fontsource/google-font-metadata",
+  "description": "A metadata generator that fetches and parses the Google Fonts API.",
+  "fork": false,
+  "url": "https://api.github.com/repos/fontsource/google-font-metadata",
+  "forks_url": "https://api.github.com/repos/fontsource/google-font-metadata/forks",
+  "keys_url": "https://api.github.com/repos/fontsource/google-font-metadata/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/fontsource/google-font-metadata/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/fontsource/google-font-metadata/teams",
+  "hooks_url": "https://api.github.com/repos/fontsource/google-font-metadata/hooks",
+  "issue_events_url": "https://api.github.com/repos/fontsource/google-font-metadata/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/fontsource/google-font-metadata/events",
+  "assignees_url": "https://api.github.com/repos/fontsource/google-font-metadata/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/fontsource/google-font-metadata/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/fontsource/google-font-metadata/tags",
+  "blobs_url": "https://api.github.com/repos/fontsource/google-font-metadata/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/fontsource/google-font-metadata/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/fontsource/google-font-metadata/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/fontsource/google-font-metadata/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/fontsource/google-font-metadata/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/fontsource/google-font-metadata/languages",
+  "stargazers_url": "https://api.github.com/repos/fontsource/google-font-metadata/stargazers",
+  "contributors_url": "https://api.github.com/repos/fontsource/google-font-metadata/contributors",
+  "subscribers_url": "https://api.github.com/repos/fontsource/google-font-metadata/subscribers",
+  "subscription_url": "https://api.github.com/repos/fontsource/google-font-metadata/subscription",
+  "commits_url": "https://api.github.com/repos/fontsource/google-font-metadata/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/fontsource/google-font-metadata/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/fontsource/google-font-metadata/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/fontsource/google-font-metadata/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/fontsource/google-font-metadata/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/fontsource/google-font-metadata/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/fontsource/google-font-metadata/merges",
+  "archive_url": "https://api.github.com/repos/fontsource/google-font-metadata/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/fontsource/google-font-metadata/downloads",
+  "issues_url": "https://api.github.com/repos/fontsource/google-font-metadata/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/fontsource/google-font-metadata/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/fontsource/google-font-metadata/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/fontsource/google-font-metadata/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/fontsource/google-font-metadata/labels{/name}",
+  "releases_url": "https://api.github.com/repos/fontsource/google-font-metadata/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/fontsource/google-font-metadata/deployments",
+  "created_at": "2020-07-14T12:27:33Z",
+  "updated_at": "2026-07-01T03:24:12Z",
+  "pushed_at": "2026-07-01T03:24:07Z",
+  "git_url": "git://github.com/fontsource/google-font-metadata.git",
+  "ssh_url": "git@github.com:fontsource/google-font-metadata.git",
+  "clone_url": "https://github.com/fontsource/google-font-metadata.git",
+  "svn_url": "https://github.com/fontsource/google-font-metadata",
+  "homepage": "",
+  "size": 82958,
+  "stargazers_count": 40,
+  "watchers_count": 40,
+  "language": "TypeScript",
+  "has_issues": true,
+  "has_projects": false,
+  "has_downloads": false,
+  "has_wiki": false,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 12,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 5,
+  "license": {
+   "key": "mit",
+   "name": "MIT License",
+   "spdx_id": "MIT",
+   "url": "https://api.github.com/licenses/mit",
+   "node_id": "MDc6TGljZW5zZTEz"
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [
+   "fonts",
+   "fontsource",
+   "google-font",
+   "google-fonts",
+   "google-fonts-api",
+   "metadata",
+   "metadata-generator",
+   "unicode-range"
+  ],
+  "visibility": "public",
+  "forks": 12,
+  "open_issues": 5,
+  "watchers": 40,
+  "default_branch": "main",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "fontsource",
+   "id": 68393903,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjY4MzkzOTAz",
+   "avatar_url": "https://avatars.githubusercontent.com/u/68393903?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/fontsource",
+   "html_url": "https://github.com/fontsource",
+   "followers_url": "https://api.github.com/users/fontsource/followers",
+   "following_url": "https://api.github.com/users/fontsource/following{/other_user}",
+   "gists_url": "https://api.github.com/users/fontsource/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/fontsource/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/fontsource/subscriptions",
+   "organizations_url": "https://api.github.com/users/fontsource/orgs",
+   "repos_url": "https://api.github.com/users/fontsource/repos",
+   "events_url": "https://api.github.com/users/fontsource/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/fontsource/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 12,
+  "subscribers_count": 1
+ },
+ "funding": []
+}

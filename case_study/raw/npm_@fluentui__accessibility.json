@@ -1,0 +1,1654 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "@fluentui/accessibility"
+  },
+  "purl": "pkg:npm/%40fluentui/accessibility",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.31.1-alpha.6224"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.31.1-alpha.6224",
+    "publishedAt": "2020-02-25T15:56:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.41.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.41.0",
+    "publishedAt": "2019-12-05T18:09:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.41.1"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.41.1",
+    "publishedAt": "2019-12-10T22:38:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.42.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.42.0",
+    "publishedAt": "2019-12-13T06:39:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.43.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.43.0",
+    "publishedAt": "2020-01-08T16:46:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.44.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.44.0",
+    "publishedAt": "2020-02-05T12:02:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.45.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.45.0",
+    "publishedAt": "2020-03-02T14:54:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.46.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.46.0",
+    "publishedAt": "2020-03-05T16:26:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.47.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.47.0",
+    "publishedAt": "2020-03-19T15:15:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.47.1"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.47.1",
+    "publishedAt": "2020-04-15T12:29:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.47.10"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.47.10",
+    "publishedAt": "2020-09-24T14:38:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.47.10-experimental.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.47.10-experimental.0",
+    "publishedAt": "2020-09-18T12:53:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.47.11"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.47.11",
+    "publishedAt": "2020-10-15T15:36:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.47.12"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.47.12",
+    "publishedAt": "2020-10-21T09:19:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.47.13"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.47.13",
+    "publishedAt": "2020-10-26T15:09:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.47.14"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.47.14",
+    "publishedAt": "2020-11-23T16:45:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.47.15"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.47.15",
+    "publishedAt": "2020-11-25T18:42:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.47.2"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.47.2",
+    "publishedAt": "2020-05-14T14:10:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.47.3"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.47.3",
+    "publishedAt": "2020-06-02T13:18:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.47.4"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.47.4",
+    "publishedAt": "2020-06-15T18:05:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.47.5"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.47.5",
+    "publishedAt": "2020-06-15T18:43:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.47.6"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.47.6",
+    "publishedAt": "2020-06-19T15:00:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.47.7"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.47.7",
+    "publishedAt": "2020-07-15T16:13:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.47.8"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.47.8",
+    "publishedAt": "2020-08-07T14:58:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.47.9"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.47.9",
+    "publishedAt": "2020-08-18T09:50:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.48.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.48.0",
+    "publishedAt": "2020-04-15T11:05:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.49.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.49.0",
+    "publishedAt": "2020-05-10T07:36:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.50.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.50.0",
+    "publishedAt": "2020-06-16T15:02:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.51.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.51.0",
+    "publishedAt": "2020-07-27T13:34:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.51.1"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.51.1",
+    "publishedAt": "2020-09-23T13:52:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.51.2"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.51.2",
+    "publishedAt": "2020-09-25T09:51:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.51.3"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.51.3",
+    "publishedAt": "2020-11-24T07:50:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.51.4"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.51.4",
+    "publishedAt": "2020-12-22T10:27:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.51.5"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.51.5",
+    "publishedAt": "2021-01-12T16:57:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.51.6"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.51.6",
+    "publishedAt": "2021-01-18T17:14:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.51.7"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.51.7",
+    "publishedAt": "2021-01-25T10:08:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.52.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.52.0",
+    "publishedAt": "2021-01-26T12:22:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.52.0-beta.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.52.0-beta.0",
+    "publishedAt": "2021-01-14T17:51:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.52.0-beta.1"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.52.0-beta.1",
+    "publishedAt": "2021-01-15T16:32:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.52.1"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.52.1",
+    "publishedAt": "2021-02-23T11:06:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.52.1-beta.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.52.1-beta.0",
+    "publishedAt": "2021-02-02T21:40:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.52.1-beta.1"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.52.1-beta.1",
+    "publishedAt": "2021-02-10T10:40:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.52.1-beta.2"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.52.1-beta.2",
+    "publishedAt": "2021-02-10T11:33:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.52.1-beta.3"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.52.1-beta.3",
+    "publishedAt": "2021-02-10T15:39:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.52.1-beta.4"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.52.1-beta.4",
+    "publishedAt": "2021-02-10T17:03:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.52.1-beta.5"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.52.1-beta.5",
+    "publishedAt": "2021-02-22T18:56:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.52.2"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.52.2",
+    "publishedAt": "2021-03-09T15:20:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.52.2-beta.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.52.2-beta.0",
+    "publishedAt": "2021-03-09T14:42:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.52.3-beta.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.52.3-beta.0",
+    "publishedAt": "2021-03-10T12:45:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.53.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.53.0",
+    "publishedAt": "2021-03-12T09:44:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.53.1-beta.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.53.1-beta.0",
+    "publishedAt": "2021-04-06T15:56:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.54.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.54.0",
+    "publishedAt": "2021-04-06T16:42:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.54.1-beta.2"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.54.1-beta.2",
+    "publishedAt": "2021-05-05T10:15:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.55.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.55.0",
+    "publishedAt": "2021-05-05T11:31:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.56.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.56.0",
+    "publishedAt": "2021-05-14T10:25:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.56.1-beta.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.56.1-beta.0",
+    "publishedAt": "2021-06-15T17:47:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.56.1-beta.1"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.56.1-beta.1",
+    "publishedAt": "2021-06-23T19:04:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.57.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.57.0",
+    "publishedAt": "2021-06-29T17:47:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.58.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.58.0",
+    "publishedAt": "2021-09-09T12:50:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.59.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.59.0",
+    "publishedAt": "2021-09-21T02:40:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.60.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.60.0",
+    "publishedAt": "2021-12-14T19:01:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.60.1"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.60.1",
+    "publishedAt": "2022-01-17T12:53:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.61.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.61.0",
+    "publishedAt": "2022-03-10T14:02:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.62.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.62.0",
+    "publishedAt": "2022-04-11T10:03:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.63.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.63.0",
+    "publishedAt": "2022-05-18T15:35:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.63.1"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.63.1",
+    "publishedAt": "2022-06-06T13:16:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.63.1-beta.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.63.1-beta.0",
+    "publishedAt": "2022-06-06T11:50:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.64.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.64.0",
+    "publishedAt": "2022-08-10T15:45:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.65.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.65.0",
+    "publishedAt": "2022-11-01T11:56:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.66.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.66.0",
+    "publishedAt": "2023-01-06T16:26:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.66.1"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.66.1",
+    "publishedAt": "2023-02-07T09:29:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.66.1-beta.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.66.1-beta.0",
+    "publishedAt": "2023-02-06T12:38:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.66.2"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.66.2",
+    "publishedAt": "2023-02-24T10:19:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.66.3"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.66.3",
+    "publishedAt": "2023-02-27T11:44:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.66.4"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.66.4",
+    "publishedAt": "2023-03-10T13:52:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.66.5"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.66.5",
+    "publishedAt": "2023-06-12T10:33:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.67.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.67.0",
+    "publishedAt": "2025-10-01T12:21:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.67.1"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.67.1",
+    "publishedAt": "2025-10-03T11:20:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.67.2"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.67.2",
+    "publishedAt": "2025-10-21T14:58:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.68.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.68.0",
+    "publishedAt": "2025-10-02T14:37:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.68.1"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.68.1",
+    "publishedAt": "2025-10-03T14:10:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.68.2"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.68.2",
+    "publishedAt": "2025-10-27T08:57:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.69.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.69.0",
+    "publishedAt": "2025-10-27T11:59:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.69.1"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.69.1",
+    "publishedAt": "2025-10-29T15:17:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.70.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.70.0",
+    "publishedAt": "2025-10-30T09:20:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.71.0"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.71.0",
+    "publishedAt": "2025-11-03T15:44:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.71.1"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.71.1",
+    "publishedAt": "2025-11-20T14:35:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.71.2"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.71.2",
+    "publishedAt": "2026-02-25T10:23:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.71.3"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.71.3",
+    "publishedAt": "2026-02-25T14:38:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.71.4"
+    },
+    "purl": "pkg:npm/%40fluentui/accessibility@0.71.4",
+    "publishedAt": "2026-04-28T16:29:45Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "NPM",
+   "name": "@fluentui/accessibility",
+   "version": "0.71.4"
+  },
+  "purl": "pkg:npm/%40fluentui/accessibility@0.71.4",
+  "publishedAt": "2026-04-28T16:29:45Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "MIT",
+    "spdx": "MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "HOMEPAGE",
+    "url": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/accessibility"
+   },
+   {
+    "label": "ISSUE_TRACKER",
+    "url": "https://github.com/microsoft/fluentui/issues"
+   },
+   {
+    "label": "ORIGIN",
+    "url": "https://registry.npmjs.org/@fluentui%2Faccessibility/0.71.4"
+   },
+   {
+    "label": "SOURCE_REPO",
+    "url": "git+https://github.com/microsoft/fluentui.git"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://registry.npmjs.org/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/microsoft/fluentui"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "ISSUE_TRACKER"
+   },
+   {
+    "projectKey": {
+     "id": "github.com/microsoft/fluentui"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "@fluentui/accessibility",
+    "versionString": "0.71.4",
+    "source": "NPM_NPMJS_ORG"
+   }
+  ],
+  "cooldown": {
+   "end": "2026-05-13T16:29:45Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@fluentui/accessibility",
+     "version": "0.71.4"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/runtime",
+     "version": "7.29.7"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "lodash",
+     "version": "4.18.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 1,
+    "requirement": "^7.10.4"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 2,
+    "requirement": "^4.17.15"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 3,
+  "directDependentCount": 3,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/microsoft/fluentui"
+  },
+  "openIssuesCount": 765,
+  "starsCount": 20159,
+  "forksCount": 2899,
+  "license": "non-standard",
+  "description": "Fluent UI web represents a collection of utilities, React components, and web components for building web applications.",
+  "homepage": "https://react.fluentui.dev",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/Microsoft/fluentui",
+    "commit": "bc5035bfcd53277a39075c596b14b9731020d1de"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 10,
+     "reason": "30 commit(s) and 4 issue activity found in the last 90 days -- score normalized to 10",
+     "details": []
+    },
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 7,
+     "reason": "Found 22/30 approved changesets -- score normalized to 7",
+     "details": []
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 9,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE:0",
+      "Warn: project license file does not contain an FSF or OSI license."
+     ]
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected",
+     "details": []
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": -1,
+     "reason": "internal error: error during branchesHandler.setup: internal error: some github tokens can't read classic branch protection rules: https://github.com/ossf/scorecard-action/blob/main/docs/authentication/fine-grained-auth-token.md",
+     "details": []
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 10,
+     "reason": "security policy file detected",
+     "details": [
+      "Info: security policy file detected: SECURITY.md:1",
+      "Info: Found linked content: SECURITY.md:1",
+      "Info: Found disclosure, vulnerability, and/or timelines in security policy: SECURITY.md:1",
+      "Info: Found text in security policy: SECURITY.md:1"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": 0,
+     "reason": "detected GitHub workflow tokens with excessive permissions",
+     "details": [
+      "Info: jobLevel 'contents' permission set to 'read': .github/workflows/bundle-size-base.yml:24",
+      "Info: jobLevel 'contents' permission set to 'read': .github/workflows/bundle-size.yml:22",
+      "Info: jobLevel 'actions' permission set to 'read': .github/workflows/bundle-size.yml:23",
+      "Info: jobLevel 'contents' permission set to 'read': .github/workflows/copilot-setup-steps.yml:16",
+      "Warn: jobLevel 'contents' permission set to 'write': .github/workflows/create-experimental-branch.yml:15",
+      "Info: jobLevel 'contents' permission set to 'read': .github/workflows/pr-vrt-comment.yml:21",
+      "Info: jobLevel 'actions' permission set to 'read': .github/workflows/pr-vrt-comment.yml:22",
+      "Warn: jobLevel 'statuses' permission set to 'write': .github/workflows/pr-website-deploy-comment.yml:89",
+      "Info: jobLevel 'contents' permission set to 'read': .github/workflows/pr-website-deploy.yml:22",
+      "Info: jobLevel 'actions' permission set to 'read': .github/workflows/pr-website-deploy.yml:23",
+      "Info: jobLevel 'contents' permission set to 'read': .github/workflows/pr.yml:29",
+      "Info: jobLevel 'actions' permission set to 'read': .github/workflows/pr.yml:30",
+      "Info: jobLevel 'contents' permission set to 'read': .github/workflows/pr.yml:88",
+      "Info: jobLevel 'actions' permission set to 'read': .github/workflows/pr.yml:89",
+      "Info: jobLevel 'contents' permission set to 'read': .github/workflows/pr.yml:169",
+      "Info: jobLevel 'actions' permission set to 'read': .github/workflows/pr.yml:170",
+      "Info: topLevel 'contents' permission set to 'read': .github/workflows/azure-static-web-apps-deploy.yml:12",
+      "Warn: no topLevel permission defined: .github/workflows/bundle-size-base.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/bundle-size-comment.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/bundle-size.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/check-packages.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/check-tooling.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/copilot-setup-steps.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/create-experimental-branch.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/docsite-publish-ghpages.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/issues.yml:1",
+      "Info: topLevel 'contents' permission set to 'read': .github/workflows/pr-housekeeping.yml:6",
+      "Warn: no topLevel permission defined: .github/workflows/pr-vrt-comment.yml:1",
+      "Info: topLevel 'contents' permission set to 'read': .github/workflows/pr-vrt.yml:19",
+      "Info: topLevel 'actions' permission set to 'read': .github/workflows/pr-vrt.yml:20",
+      "Warn: no topLevel permission defined: .github/workflows/pr-website-deploy-comment.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/pr-website-deploy.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/pr.yml:1",
+      "Info: topLevel 'contents' permission set to 'read': .github/workflows/vrt-baseline.yml:14",
+      "Info: topLevel 'actions' permission set to 'read': .github/workflows/vrt-baseline.yml:15"
+     ]
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0",
+     "details": [
+      "Warn: 0 commits out of 22 are checked with a SAST tool"
+     ]
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": 4,
+     "reason": "dependency not pinned by hash detected -- score normalized to 4",
+     "details": [
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/azure-static-web-apps-deploy.yml:20: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/azure-static-web-apps-deploy.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/bundle-size-base.yml:27: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/bundle-size-base.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/bundle-size-base.yml:29: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/bundle-size-base.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/bundle-size-base.yml:51: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/bundle-size-base.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/bundle-size-base.yml:61: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/bundle-size-base.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/bundle-size-comment.yml:15: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/bundle-size-comment.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/bundle-size-comment.yml:21: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/bundle-size-comment.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/bundle-size-comment.yml:30: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/bundle-size-comment.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/bundle-size.yml:26: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/bundle-size.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/bundle-size.yml:35: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/bundle-size.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/bundle-size.yml:63: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/bundle-size.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/check-packages.yml:10: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/check-packages.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/check-packages.yml:14: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/check-packages.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/check-packages.yml:43: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/check-packages.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/check-packages.yml:47: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/check-packages.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/check-packages.yml:51: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/check-packages.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/check-packages.yml:70: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/check-packages.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/check-packages.yml:74: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/check-packages.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/check-packages.yml:78: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/check-packages.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/check-tooling.yml:23: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/check-tooling.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/check-tooling.yml:27: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/check-tooling.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/copilot-setup-steps.yml:22: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/copilot-setup-steps.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/copilot-setup-steps.yml:27: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/copilot-setup-steps.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/docsite-publish-ghpages.yml:17: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/docsite-publish-ghpages.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/docsite-publish-ghpages.yml:26: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/docsite-publish-ghpages.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/docsite-publish-ghpages.yml:62: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/docsite-publish-ghpages.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/docsite-publish-ghpages.yml:83: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/docsite-publish-ghpages.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/issues.yml:15: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/issues.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/issues.yml:16: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/issues.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr-housekeeping.yml:15: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr-housekeeping.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr-vrt-comment.yml:24: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr-vrt-comment.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr-vrt-comment.yml:33: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr-vrt-comment.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr-vrt-comment.yml:41: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr-vrt-comment.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr-vrt-comment.yml:59: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr-vrt-comment.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr-vrt-comment.yml:69: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr-vrt-comment.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr-vrt.yml:29: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr-vrt.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr-vrt.yml:38: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr-vrt.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr-vrt.yml:50: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr-vrt.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr-vrt.yml:63: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr-vrt.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr-vrt.yml:72: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr-vrt.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr-website-deploy-comment.yml:28: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr-website-deploy-comment.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr-website-deploy-comment.yml:33: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr-website-deploy-comment.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr-website-deploy-comment.yml:40: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr-website-deploy-comment.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr-website-deploy-comment.yml:48: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr-website-deploy-comment.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr-website-deploy-comment.yml:91: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr-website-deploy-comment.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr-website-deploy-comment.yml:102: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr-website-deploy-comment.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr-website-deploy.yml:26: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr-website-deploy.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr-website-deploy.yml:35: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr-website-deploy.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr-website-deploy.yml:57: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr-website-deploy.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr-website-deploy.yml:67: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr-website-deploy.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr.yml:92: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr.yml:101: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr.yml:116: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr.yml:125: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr.yml:148: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr.yml:173: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr.yml:182: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr.yml:201: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr.yml:33: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr.yml:42: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/pr.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/vrt-baseline.yml:24: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/vrt-baseline.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/vrt-baseline.yml:28: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/vrt-baseline.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/vrt-baseline.yml:40: update your workflow using https://app.stepsecurity.io/secureworkflow/microsoft/fluentui/vrt-baseline.yml/master?enable=pin",
+      "Warn: containerImage not pinned by hash: .devcontainer/Dockerfile:3: pin your Docker image by updating mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm to mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm@sha256:7c2e711a4f7b02f32d2da16192d5e05aa7c95279be4ce889cff5df316f251c1d",
+      "Info:   0 out of  63 GitHub-owned GitHubAction dependencies pinned",
+      "Info:  16 out of  16 third-party GitHubAction dependencies pinned",
+      "Info:   0 out of   1 containerImage dependencies pinned"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    }
+   ],
+   "overallScore": 6.1,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 60537144,
+  "node_id": "MDEwOlJlcG9zaXRvcnk2MDUzNzE0NA==",
+  "name": "fluentui",
+  "full_name": "microsoft/fluentui",
+  "private": false,
+  "owner": {
+   "login": "microsoft",
+   "id": 6154722,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjYxNTQ3MjI=",
+   "avatar_url": "https://avatars.githubusercontent.com/u/6154722?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/microsoft",
+   "html_url": "https://github.com/microsoft",
+   "followers_url": "https://api.github.com/users/microsoft/followers",
+   "following_url": "https://api.github.com/users/microsoft/following{/other_user}",
+   "gists_url": "https://api.github.com/users/microsoft/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/microsoft/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/microsoft/subscriptions",
+   "organizations_url": "https://api.github.com/users/microsoft/orgs",
+   "repos_url": "https://api.github.com/users/microsoft/repos",
+   "events_url": "https://api.github.com/users/microsoft/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/microsoft/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/microsoft/fluentui",
+  "description": "Fluent UI web represents a collection of utilities, React components, and web components for building web applications.",
+  "fork": false,
+  "url": "https://api.github.com/repos/microsoft/fluentui",
+  "forks_url": "https://api.github.com/repos/microsoft/fluentui/forks",
+  "keys_url": "https://api.github.com/repos/microsoft/fluentui/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/microsoft/fluentui/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/microsoft/fluentui/teams",
+  "hooks_url": "https://api.github.com/repos/microsoft/fluentui/hooks",
+  "issue_events_url": "https://api.github.com/repos/microsoft/fluentui/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/microsoft/fluentui/events",
+  "assignees_url": "https://api.github.com/repos/microsoft/fluentui/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/microsoft/fluentui/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/microsoft/fluentui/tags",
+  "blobs_url": "https://api.github.com/repos/microsoft/fluentui/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/microsoft/fluentui/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/microsoft/fluentui/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/microsoft/fluentui/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/microsoft/fluentui/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/microsoft/fluentui/languages",
+  "stargazers_url": "https://api.github.com/repos/microsoft/fluentui/stargazers",
+  "contributors_url": "https://api.github.com/repos/microsoft/fluentui/contributors",
+  "subscribers_url": "https://api.github.com/repos/microsoft/fluentui/subscribers",
+  "subscription_url": "https://api.github.com/repos/microsoft/fluentui/subscription",
+  "commits_url": "https://api.github.com/repos/microsoft/fluentui/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/microsoft/fluentui/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/microsoft/fluentui/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/microsoft/fluentui/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/microsoft/fluentui/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/microsoft/fluentui/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/microsoft/fluentui/merges",
+  "archive_url": "https://api.github.com/repos/microsoft/fluentui/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/microsoft/fluentui/downloads",
+  "issues_url": "https://api.github.com/repos/microsoft/fluentui/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/microsoft/fluentui/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/microsoft/fluentui/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/microsoft/fluentui/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/microsoft/fluentui/labels{/name}",
+  "releases_url": "https://api.github.com/repos/microsoft/fluentui/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/microsoft/fluentui/deployments",
+  "created_at": "2016-06-06T15:03:44Z",
+  "updated_at": "2026-07-21T20:11:00Z",
+  "pushed_at": "2026-07-21T16:03:38Z",
+  "git_url": "git://github.com/microsoft/fluentui.git",
+  "ssh_url": "git@github.com:microsoft/fluentui.git",
+  "clone_url": "https://github.com/microsoft/fluentui.git",
+  "svn_url": "https://github.com/microsoft/fluentui",
+  "homepage": "https://react.fluentui.dev",
+  "size": 844812,
+  "stargazers_count": 20157,
+  "watchers_count": 20157,
+  "language": "TypeScript",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": true,
+  "has_discussions": true,
+  "forks_count": 2899,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 765,
+  "license": {
+   "key": "other",
+   "name": "Other",
+   "spdx_id": "NOASSERTION",
+   "url": null,
+   "node_id": "MDc6TGljZW5zZTA="
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [
+   "components",
+   "fluent",
+   "microsoft",
+   "office-ui-fabric",
+   "react",
+   "react-components"
+  ],
+  "visibility": "public",
+  "forks": 2899,
+  "open_issues": 765,
+  "watchers": 20157,
+  "default_branch": "master",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {
+   "activeRepoStatus": "true",
+   "durableOwnershipDisable": "false",
+   "durableOwnershipNextCheckDate": "2024-04-16T00:42:13.780Z",
+   "durableOwnershipWarn": "false",
+   "global-rulesets-opt-out": "true"
+  },
+  "organization": {
+   "login": "microsoft",
+   "id": 6154722,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjYxNTQ3MjI=",
+   "avatar_url": "https://avatars.githubusercontent.com/u/6154722?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/microsoft",
+   "html_url": "https://github.com/microsoft",
+   "followers_url": "https://api.github.com/users/microsoft/followers",
+   "following_url": "https://api.github.com/users/microsoft/following{/other_user}",
+   "gists_url": "https://api.github.com/users/microsoft/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/microsoft/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/microsoft/subscriptions",
+   "organizations_url": "https://api.github.com/users/microsoft/orgs",
+   "repos_url": "https://api.github.com/users/microsoft/repos",
+   "events_url": "https://api.github.com/users/microsoft/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/microsoft/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 2899,
+  "subscribers_count": 286
+ },
+ "funding": []
+}

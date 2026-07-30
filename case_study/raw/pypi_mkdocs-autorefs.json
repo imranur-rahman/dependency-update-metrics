@@ -1,0 +1,983 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "PYPI",
+   "name": "mkdocs-autorefs"
+  },
+  "purl": "pkg:pypi/mkdocs-autorefs",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mkdocs-autorefs",
+     "version": "0.1.0"
+    },
+    "purl": "pkg:pypi/mkdocs-autorefs@0.1.0",
+    "publishedAt": "2021-02-17T19:54:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mkdocs-autorefs",
+     "version": "0.1.1"
+    },
+    "purl": "pkg:pypi/mkdocs-autorefs@0.1.1",
+    "publishedAt": "2021-02-28T14:35:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mkdocs-autorefs",
+     "version": "0.2.0"
+    },
+    "purl": "pkg:pypi/mkdocs-autorefs@0.2.0",
+    "publishedAt": "2021-05-03T21:10:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mkdocs-autorefs",
+     "version": "0.2.1"
+    },
+    "purl": "pkg:pypi/mkdocs-autorefs@0.2.1",
+    "publishedAt": "2021-05-07T09:49:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mkdocs-autorefs",
+     "version": "0.3.0"
+    },
+    "purl": "pkg:pypi/mkdocs-autorefs@0.3.0",
+    "publishedAt": "2021-07-24T14:33:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mkdocs-autorefs",
+     "version": "0.3.1"
+    },
+    "purl": "pkg:pypi/mkdocs-autorefs@0.3.1",
+    "publishedAt": "2021-12-27T21:40:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mkdocs-autorefs",
+     "version": "0.4.0"
+    },
+    "purl": "pkg:pypi/mkdocs-autorefs@0.4.0",
+    "publishedAt": "2022-03-07T12:36:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mkdocs-autorefs",
+     "version": "0.4.1"
+    },
+    "purl": "pkg:pypi/mkdocs-autorefs@0.4.1",
+    "publishedAt": "2022-03-07T16:43:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mkdocs-autorefs",
+     "version": "0.5.0"
+    },
+    "purl": "pkg:pypi/mkdocs-autorefs@0.5.0",
+    "publishedAt": "2023-08-02T19:40:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mkdocs-autorefs",
+     "version": "1.0.0"
+    },
+    "purl": "pkg:pypi/mkdocs-autorefs@1.0.0",
+    "publishedAt": "2024-02-27T14:10:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mkdocs-autorefs",
+     "version": "1.0.1"
+    },
+    "purl": "pkg:pypi/mkdocs-autorefs@1.0.1",
+    "publishedAt": "2024-02-29T15:51:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mkdocs-autorefs",
+     "version": "1.1.0"
+    },
+    "purl": "pkg:pypi/mkdocs-autorefs@1.1.0",
+    "publishedAt": "2024-08-20T15:54:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mkdocs-autorefs",
+     "version": "1.2.0"
+    },
+    "purl": "pkg:pypi/mkdocs-autorefs@1.2.0",
+    "publishedAt": "2024-09-01T18:29:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mkdocs-autorefs",
+     "version": "1.3.0"
+    },
+    "purl": "pkg:pypi/mkdocs-autorefs@1.3.0",
+    "publishedAt": "2025-01-12T21:48:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mkdocs-autorefs",
+     "version": "1.3.1"
+    },
+    "purl": "pkg:pypi/mkdocs-autorefs@1.3.1",
+    "publishedAt": "2025-02-11T15:33:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mkdocs-autorefs",
+     "version": "1.4.0"
+    },
+    "purl": "pkg:pypi/mkdocs-autorefs@1.4.0",
+    "publishedAt": "2025-02-24T15:57:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mkdocs-autorefs",
+     "version": "1.4.1"
+    },
+    "purl": "pkg:pypi/mkdocs-autorefs@1.4.1",
+    "publishedAt": "2025-03-08T13:35:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mkdocs-autorefs",
+     "version": "1.4.2"
+    },
+    "purl": "pkg:pypi/mkdocs-autorefs@1.4.2",
+    "publishedAt": "2025-05-20T13:09:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mkdocs-autorefs",
+     "version": "1.4.3"
+    },
+    "purl": "pkg:pypi/mkdocs-autorefs@1.4.3",
+    "publishedAt": "2025-08-26T14:23:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mkdocs-autorefs",
+     "version": "1.4.4"
+    },
+    "purl": "pkg:pypi/mkdocs-autorefs@1.4.4",
+    "publishedAt": "2026-02-10T15:23:53Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "PYPI",
+   "name": "mkdocs-autorefs",
+   "version": "1.4.4"
+  },
+  "purl": "pkg:pypi/mkdocs-autorefs@1.4.4",
+  "publishedAt": "2026-02-10T15:23:53Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "ISC"
+  ],
+  "licenseDetails": [
+   {
+    "license": "ISC",
+    "spdx": "ISC"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "HOMEPAGE",
+    "url": "https://mkdocstrings.github.io/autorefs"
+   },
+   {
+    "label": "DOCUMENTATION",
+    "url": "https://mkdocstrings.github.io/autorefs"
+   },
+   {
+    "label": "ISSUE_TRACKER",
+    "url": "https://github.com/mkdocstrings/autorefs/issues"
+   },
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/mkdocstrings/autorefs"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://pypi.org/simple"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/mkdocstrings/autorefs"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "ISSUE_TRACKER"
+   },
+   {
+    "projectKey": {
+     "id": "github.com/mkdocstrings/autorefs"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "mkdocs_autorefs",
+    "versionString": "1.4.4",
+    "source": "PYPI_RELEASE_FILENAME"
+   },
+   {
+    "packageName": "mkdocs-autorefs",
+    "versionString": "1.4.4",
+    "source": "PYPI_METADATA_FILE"
+   }
+  ],
+  "cooldown": {
+   "end": "2026-02-15T15:23:53Z",
+   "description": ""
+  },
+  "projectStatus": {
+   "status": "active",
+   "reason": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mkdocs-autorefs",
+     "version": "1.4.4"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "click",
+     "version": "8.4.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "ghp-import",
+     "version": "2.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jinja2",
+     "version": "3.1.6"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "markdown",
+     "version": "3.10.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "markupsafe",
+     "version": "3.0.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mergedeep",
+     "version": "1.3.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mkdocs",
+     "version": "1.6.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mkdocs-get-deps",
+     "version": "0.2.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "packaging",
+     "version": "26.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pathspec",
+     "version": "1.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "platformdirs",
+     "version": "4.10.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "python-dateutil",
+     "version": "2.9.0.post0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyyaml",
+     "version": "6.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyyaml-env-tag",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "six",
+     "version": "1.17.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "watchdog",
+     "version": "6.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 4,
+    "requirement": ">=3.3"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 5,
+    "requirement": ">=2.0.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 7,
+    "requirement": ">=1.1"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 12,
+    "requirement": ">=2.8.1"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 5,
+    "requirement": ">=2.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 1,
+    "requirement": ">=7.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 2,
+    "requirement": ">=1.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 3,
+    "requirement": ">=2.11.1"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 4,
+    "requirement": ">=3.3.6"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 5,
+    "requirement": ">=2.0.1"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 6,
+    "requirement": ">=1.3.4"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 8,
+    "requirement": ">=0.2.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 9,
+    "requirement": ">=20.5"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 10,
+    "requirement": ">=0.11.1"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 13,
+    "requirement": ">=5.1"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 14,
+    "requirement": ">=0.1"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 16,
+    "requirement": ">=2.0"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 6,
+    "requirement": ">=1.3.4"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 11,
+    "requirement": ">=2.2.0"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 13,
+    "requirement": ">=5.1"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 15,
+    "requirement": ">=1.5"
+   },
+   {
+    "fromNode": 14,
+    "toNode": 13,
+    "requirement": ""
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 370,
+  "directDependentCount": 29,
+  "indirectDependentCount": 346
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/mkdocstrings/autorefs"
+  },
+  "openIssuesCount": 0,
+  "starsCount": 84,
+  "forksCount": 11,
+  "license": "non-standard",
+  "description": "Automatically link across pages in MkDocs.",
+  "homepage": "https://mkdocstrings.github.io/autorefs/",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/mkdocstrings/autorefs",
+    "commit": "f11519b594f7885b27565ab1333cacfaa9afa66b"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 0,
+     "reason": "Found 0/30 approved changesets -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": 0,
+     "reason": "detected GitHub workflow tokens with excessive permissions",
+     "details": [
+      "Warn: no topLevel permission defined: .github/workflows/ci.yml:1",
+      "Warn: topLevel 'contents' permission set to 'write': .github/workflows/release.yml:5",
+      "Info: no jobLevel write permissions found"
+     ]
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 0,
+     "reason": "0 commit(s) and 1 issue activity found in the last 90 days -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected",
+     "details": []
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": 0,
+     "reason": "dependency not pinned by hash detected -- score normalized to 0",
+     "details": [
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yml:54: update your workflow using https://app.stepsecurity.io/secureworkflow/mkdocstrings/autorefs/ci.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yml:60: update your workflow using https://app.stepsecurity.io/secureworkflow/mkdocstrings/autorefs/ci.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/ci.yml:65: update your workflow using https://app.stepsecurity.io/secureworkflow/mkdocstrings/autorefs/ci.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yml:86: update your workflow using https://app.stepsecurity.io/secureworkflow/mkdocstrings/autorefs/ci.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yml:123: update your workflow using https://app.stepsecurity.io/secureworkflow/mkdocstrings/autorefs/ci.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yml:129: update your workflow using https://app.stepsecurity.io/secureworkflow/mkdocstrings/autorefs/ci.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/ci.yml:135: update your workflow using https://app.stepsecurity.io/secureworkflow/mkdocstrings/autorefs/ci.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yml:147: update your workflow using https://app.stepsecurity.io/secureworkflow/mkdocstrings/autorefs/ci.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/release.yml:13: update your workflow using https://app.stepsecurity.io/secureworkflow/mkdocstrings/autorefs/release.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/release.yml:18: update your workflow using https://app.stepsecurity.io/secureworkflow/mkdocstrings/autorefs/release.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/release.yml:22: update your workflow using https://app.stepsecurity.io/secureworkflow/mkdocstrings/autorefs/release.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/release.yml:26: update your workflow using https://app.stepsecurity.io/secureworkflow/mkdocstrings/autorefs/release.yml/main?enable=pin",
+      "Info:   0 out of   8 GitHub-owned GitHubAction dependencies pinned",
+      "Info:   0 out of   4 third-party GitHubAction dependencies pinned"
+     ]
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "no SAST tool detected",
+     "details": [
+      "Warn: no pull requests merged into dev branch"
+     ]
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 0,
+     "reason": "security policy file not detected",
+     "details": [
+      "Warn: no security policy file detected",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 10,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE:0",
+      "Info: FSF or OSI recognized license: ISC License: LICENSE:0"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": 0,
+     "reason": "branch protection not enabled on development/release branches",
+     "details": [
+      "Warn: branch protection not enabled for branch 'main'"
+     ]
+    }
+   ],
+   "overallScore": 2.8,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 337651663,
+  "node_id": "MDEwOlJlcG9zaXRvcnkzMzc2NTE2NjM=",
+  "name": "autorefs",
+  "full_name": "mkdocstrings/autorefs",
+  "private": false,
+  "owner": {
+   "login": "mkdocstrings",
+   "id": 75664361,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjc1NjY0MzYx",
+   "avatar_url": "https://avatars.githubusercontent.com/u/75664361?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/mkdocstrings",
+   "html_url": "https://github.com/mkdocstrings",
+   "followers_url": "https://api.github.com/users/mkdocstrings/followers",
+   "following_url": "https://api.github.com/users/mkdocstrings/following{/other_user}",
+   "gists_url": "https://api.github.com/users/mkdocstrings/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/mkdocstrings/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/mkdocstrings/subscriptions",
+   "organizations_url": "https://api.github.com/users/mkdocstrings/orgs",
+   "repos_url": "https://api.github.com/users/mkdocstrings/repos",
+   "events_url": "https://api.github.com/users/mkdocstrings/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/mkdocstrings/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/mkdocstrings/autorefs",
+  "description": "Automatically link across pages in MkDocs.",
+  "fork": false,
+  "url": "https://api.github.com/repos/mkdocstrings/autorefs",
+  "forks_url": "https://api.github.com/repos/mkdocstrings/autorefs/forks",
+  "keys_url": "https://api.github.com/repos/mkdocstrings/autorefs/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/mkdocstrings/autorefs/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/mkdocstrings/autorefs/teams",
+  "hooks_url": "https://api.github.com/repos/mkdocstrings/autorefs/hooks",
+  "issue_events_url": "https://api.github.com/repos/mkdocstrings/autorefs/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/mkdocstrings/autorefs/events",
+  "assignees_url": "https://api.github.com/repos/mkdocstrings/autorefs/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/mkdocstrings/autorefs/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/mkdocstrings/autorefs/tags",
+  "blobs_url": "https://api.github.com/repos/mkdocstrings/autorefs/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/mkdocstrings/autorefs/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/mkdocstrings/autorefs/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/mkdocstrings/autorefs/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/mkdocstrings/autorefs/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/mkdocstrings/autorefs/languages",
+  "stargazers_url": "https://api.github.com/repos/mkdocstrings/autorefs/stargazers",
+  "contributors_url": "https://api.github.com/repos/mkdocstrings/autorefs/contributors",
+  "subscribers_url": "https://api.github.com/repos/mkdocstrings/autorefs/subscribers",
+  "subscription_url": "https://api.github.com/repos/mkdocstrings/autorefs/subscription",
+  "commits_url": "https://api.github.com/repos/mkdocstrings/autorefs/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/mkdocstrings/autorefs/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/mkdocstrings/autorefs/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/mkdocstrings/autorefs/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/mkdocstrings/autorefs/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/mkdocstrings/autorefs/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/mkdocstrings/autorefs/merges",
+  "archive_url": "https://api.github.com/repos/mkdocstrings/autorefs/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/mkdocstrings/autorefs/downloads",
+  "issues_url": "https://api.github.com/repos/mkdocstrings/autorefs/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/mkdocstrings/autorefs/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/mkdocstrings/autorefs/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/mkdocstrings/autorefs/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/mkdocstrings/autorefs/labels{/name}",
+  "releases_url": "https://api.github.com/repos/mkdocstrings/autorefs/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/mkdocstrings/autorefs/deployments",
+  "created_at": "2021-02-10T07:44:02Z",
+  "updated_at": "2026-05-04T01:17:25Z",
+  "pushed_at": "2026-02-10T15:31:09Z",
+  "git_url": "git://github.com/mkdocstrings/autorefs.git",
+  "ssh_url": "git@github.com:mkdocstrings/autorefs.git",
+  "clone_url": "https://github.com/mkdocstrings/autorefs.git",
+  "svn_url": "https://github.com/mkdocstrings/autorefs",
+  "homepage": "https://mkdocstrings.github.io/autorefs/",
+  "size": 2387,
+  "stargazers_count": 84,
+  "watchers_count": 84,
+  "language": "Python",
+  "has_issues": true,
+  "has_projects": false,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": true,
+  "has_discussions": true,
+  "forks_count": 12,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 0,
+  "license": {
+   "key": "isc",
+   "name": "ISC License",
+   "spdx_id": "ISC",
+   "url": "https://api.github.com/licenses/isc",
+   "node_id": "MDc6TGljZW5zZTEw"
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [
+   "anchor",
+   "cross-linking",
+   "cross-references",
+   "mkdocs",
+   "mkdocs-plugin",
+   "mkdocstrings"
+  ],
+  "visibility": "public",
+  "forks": 12,
+  "open_issues": 0,
+  "watchers": 84,
+  "default_branch": "main",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "mkdocstrings",
+   "id": 75664361,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjc1NjY0MzYx",
+   "avatar_url": "https://avatars.githubusercontent.com/u/75664361?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/mkdocstrings",
+   "html_url": "https://github.com/mkdocstrings",
+   "followers_url": "https://api.github.com/users/mkdocstrings/followers",
+   "following_url": "https://api.github.com/users/mkdocstrings/following{/other_user}",
+   "gists_url": "https://api.github.com/users/mkdocstrings/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/mkdocstrings/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/mkdocstrings/subscriptions",
+   "organizations_url": "https://api.github.com/users/mkdocstrings/orgs",
+   "repos_url": "https://api.github.com/users/mkdocstrings/repos",
+   "events_url": "https://api.github.com/users/mkdocstrings/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/mkdocstrings/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 12,
+  "subscribers_count": 1
+ },
+ "funding": [
+  {
+   "platform": "GITHUB",
+   "url": "https://github.com/pawamoy"
+  },
+  {
+   "platform": "POLAR",
+   "url": "https://polar.sh/pawamoy"
+  }
+ ]
+}

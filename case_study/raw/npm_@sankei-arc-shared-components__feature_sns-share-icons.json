@@ -1,0 +1,532 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "@sankei-arc-shared-components/feature_sns-share-icons"
+  },
+  "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.1.0"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.1.0",
+    "publishedAt": "2020-04-01T17:06:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.1.10"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.1.10",
+    "publishedAt": "2021-01-20T07:50:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.1.11"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.1.11",
+    "publishedAt": "2021-01-20T08:39:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.1.12"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.1.12",
+    "publishedAt": "2021-11-30T01:15:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.1.13"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.1.13",
+    "publishedAt": "2021-11-30T02:01:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.1.14"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.1.14",
+    "publishedAt": "2022-12-22T10:02:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.1.2"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.1.2",
+    "publishedAt": "2020-04-02T23:16:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.1.3"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.1.3",
+    "publishedAt": "2020-04-08T14:51:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.1.4"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.1.4",
+    "publishedAt": "2020-04-09T02:58:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.1.5"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.1.5",
+    "publishedAt": "2020-04-10T20:15:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.1.6"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.1.6",
+    "publishedAt": "2020-04-13T18:11:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.1.7"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.1.7",
+    "publishedAt": "2020-04-15T15:39:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.1.8"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.1.8",
+    "publishedAt": "2020-10-06T09:58:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.1.9"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.1.9",
+    "publishedAt": "2020-12-02T08:41:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.2.0"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.2.0",
+    "publishedAt": "2023-02-09T04:49:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.2.1"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.2.1",
+    "publishedAt": "2023-05-15T04:06:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.3.0"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.3.0",
+    "publishedAt": "2023-05-22T06:37:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.3.1"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.3.1",
+    "publishedAt": "2023-07-26T01:22:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.3.10"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.3.10",
+    "publishedAt": "2024-07-18T07:05:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.3.11"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.3.11",
+    "publishedAt": "2024-08-15T08:29:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.3.12"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.3.12",
+    "publishedAt": "2024-10-03T04:55:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.3.13"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.3.13",
+    "publishedAt": "2025-03-17T06:54:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.3.14"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.3.14",
+    "publishedAt": "2025-04-30T05:47:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.3.15"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.3.15",
+    "publishedAt": "2025-08-07T03:29:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.3.16"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.3.16",
+    "publishedAt": "2025-09-18T05:13:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.3.17"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.3.17",
+    "publishedAt": "2026-02-17T01:17:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.3.18"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.3.18",
+    "publishedAt": "2026-02-17T01:50:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.3.19"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.3.19",
+    "publishedAt": "2026-05-27T07:54:42Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.3.2"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.3.2",
+    "publishedAt": "2023-10-10T05:05:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.3.3"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.3.3",
+    "publishedAt": "2023-10-10T05:49:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.3.4"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.3.4",
+    "publishedAt": "2023-11-13T05:57:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.3.5"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.3.5",
+    "publishedAt": "2023-11-30T01:19:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.3.6"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.3.6",
+    "publishedAt": "2024-01-10T03:28:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.3.7"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.3.7",
+    "publishedAt": "2024-01-10T06:01:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.3.8"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.3.8",
+    "publishedAt": "2024-04-22T04:01:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.3.9"
+    },
+    "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.3.9",
+    "publishedAt": "2024-07-02T03:16:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "NPM",
+   "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+   "version": "0.3.19"
+  },
+  "purl": "pkg:npm/%40sankei-arc-shared-components/feature_sns-share-icons@0.3.19",
+  "publishedAt": "2026-05-27T07:54:42Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [],
+  "licenseDetails": [],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "ORIGIN",
+    "url": "https://registry.npmjs.org/@sankei-arc-shared-components%2Ffeature_sns-share-icons/0.3.19"
+   },
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/wapopartners/sankei-shimbun-shared-components/packages/feature_sns-share-icons"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://registry.npmjs.org/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/wapopartners/sankei-shimbun-shared-components"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "@sankei-arc-shared-components/feature_sns-share-icons",
+    "versionString": "0.3.19",
+    "source": "NPM_NPMJS_ORG"
+   }
+  ],
+  "cooldown": {
+   "end": "2026-06-11T07:54:42Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@sankei-arc-shared-components/feature_sns-share-icons",
+     "version": "0.3.19"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/runtime",
+     "version": "7.29.7"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 1,
+    "requirement": "^7.4.3"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": null,
+ "github_repo_api": null
+}

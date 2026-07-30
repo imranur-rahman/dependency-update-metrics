@@ -1,0 +1,3318 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "@aws-solutions-constructs/aws-eventbridge-sqs"
+  },
+  "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.115.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.115.0",
+    "publishedAt": "2021-08-12T00:01:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.116.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.116.0",
+    "publishedAt": "2021-08-12T00:46:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.117.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.117.0",
+    "publishedAt": "2021-08-14T19:42:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.118.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.118.0",
+    "publishedAt": "2021-09-02T14:33:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.119.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.119.0",
+    "publishedAt": "2021-09-02T19:01:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.120.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.120.0",
+    "publishedAt": "2021-09-02T20:02:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.121.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.121.0",
+    "publishedAt": "2021-09-17T18:24:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.122.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.122.0",
+    "publishedAt": "2021-09-20T01:18:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.123.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.123.0",
+    "publishedAt": "2021-09-21T01:54:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.124.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.124.0",
+    "publishedAt": "2021-09-29T21:41:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.125.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.125.0",
+    "publishedAt": "2021-10-08T00:47:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.126.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.126.0",
+    "publishedAt": "2021-10-25T17:59:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.127.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.127.0",
+    "publishedAt": "2021-11-28T01:34:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.128.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.128.0",
+    "publishedAt": "2021-11-28T02:38:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.129.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.129.0",
+    "publishedAt": "2021-11-28T22:04:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.130.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.130.0",
+    "publishedAt": "2021-12-15T18:49:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.131.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.131.0",
+    "publishedAt": "2021-12-16T19:04:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.132.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.132.0",
+    "publishedAt": "2021-12-16T20:05:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.133.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.133.0",
+    "publishedAt": "2021-12-17T18:44:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.134.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.134.0",
+    "publishedAt": "2021-12-17T21:21:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.135.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.135.0",
+    "publishedAt": "2021-12-20T02:21:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.136.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.136.0",
+    "publishedAt": "2021-12-20T03:15:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.137.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.137.0",
+    "publishedAt": "2022-01-11T04:45:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.138.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.138.0",
+    "publishedAt": "2022-01-19T19:18:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.138.1"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.138.1",
+    "publishedAt": "2022-01-19T20:11:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.138.2"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.138.2",
+    "publishedAt": "2022-02-23T14:11:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.139.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.139.0",
+    "publishedAt": "2022-02-23T19:25:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.140.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.140.0",
+    "publishedAt": "2022-02-26T15:54:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.141.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.141.0",
+    "publishedAt": "2022-02-28T16:53:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.142.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.142.0",
+    "publishedAt": "2022-02-28T22:36:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.143.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.143.0",
+    "publishedAt": "2022-03-01T13:53:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.144.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.144.0",
+    "publishedAt": "2022-03-02T11:27:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.145.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.145.0",
+    "publishedAt": "2022-03-02T12:13:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.146.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.146.0",
+    "publishedAt": "2022-03-02T21:11:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.147.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.147.0",
+    "publishedAt": "2022-03-29T17:35:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.148.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.148.0",
+    "publishedAt": "2022-03-30T18:05:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.149.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.149.0",
+    "publishedAt": "2022-04-07T17:40:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.150.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.150.0",
+    "publishedAt": "2022-04-09T01:37:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.151.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.151.0",
+    "publishedAt": "2022-04-09T15:35:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.152.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.152.0",
+    "publishedAt": "2022-04-10T02:32:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.153.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.153.0",
+    "publishedAt": "2022-05-07T13:53:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.153.1"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.153.1",
+    "publishedAt": "2022-05-07T17:45:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.154.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.154.0",
+    "publishedAt": "2022-05-08T21:48:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.155.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.155.0",
+    "publishedAt": "2022-05-13T20:47:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.156.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.156.0",
+    "publishedAt": "2022-05-14T00:22:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.156.1"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.156.1",
+    "publishedAt": "2022-05-20T13:26:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.157.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.157.0",
+    "publishedAt": "2022-06-13T20:01:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.158.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.158.0",
+    "publishedAt": "2022-07-26T14:52:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.159.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.159.0",
+    "publishedAt": "2022-08-01T14:44:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.160.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.160.0",
+    "publishedAt": "2022-08-04T21:49:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.161.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.161.0",
+    "publishedAt": "2022-08-08T17:37:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.162.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.162.0",
+    "publishedAt": "2022-08-08T19:27:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.163.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.163.0",
+    "publishedAt": "2022-08-08T20:24:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.163.1"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.163.1",
+    "publishedAt": "2022-08-08T21:50:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.163.2"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.163.2",
+    "publishedAt": "2022-08-09T03:31:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.164.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.164.0",
+    "publishedAt": "2022-08-09T04:22:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.165.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.165.0",
+    "publishedAt": "2022-08-09T14:48:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.166.1"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.166.1",
+    "publishedAt": "2022-08-10T02:44:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.167.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.167.0",
+    "publishedAt": "2022-08-17T17:01:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.168.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.168.0",
+    "publishedAt": "2022-08-22T21:50:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.169.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.169.0",
+    "publishedAt": "2022-08-25T15:49:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.170.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.170.0",
+    "publishedAt": "2022-09-14T01:14:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.170.1"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.170.1",
+    "publishedAt": "2022-09-18T18:27:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.171.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.171.0",
+    "publishedAt": "2022-09-18T19:13:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.172.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.172.0",
+    "publishedAt": "2022-09-18T20:14:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.173.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.173.0",
+    "publishedAt": "2022-09-18T20:59:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.174.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.174.0",
+    "publishedAt": "2022-12-01T20:32:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.175.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.175.0",
+    "publishedAt": "2022-12-01T21:26:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.176.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.176.0",
+    "publishedAt": "2022-12-01T22:17:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.177.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.177.0",
+    "publishedAt": "2022-12-01T22:59:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.178.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.178.0",
+    "publishedAt": "2022-12-02T00:49:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.179.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.179.0",
+    "publishedAt": "2022-12-02T01:36:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.180.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.180.0",
+    "publishedAt": "2022-12-02T02:13:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.181.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.181.0",
+    "publishedAt": "2022-12-02T02:53:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "1.181.1"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@1.181.1",
+    "publishedAt": "2022-12-02T03:30:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.0.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.0.0",
+    "publishedAt": "2021-12-02T14:53:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.0.0-rc.1"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.0.0-rc.1",
+    "publishedAt": "2021-10-12T18:43:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.0.0-rc.2"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.0.0-rc.2",
+    "publishedAt": "2021-11-02T02:28:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.1.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.1.0",
+    "publishedAt": "2022-01-11T15:16:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.10.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.10.0",
+    "publishedAt": "2022-07-01T18:38:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.100.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.100.0",
+    "publishedAt": "2026-02-23T22:39:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.100.1"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.100.1",
+    "publishedAt": "2026-02-24T20:50:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.101.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.101.0",
+    "publishedAt": "2026-04-07T14:37:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.102.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.102.0",
+    "publishedAt": "2026-05-15T22:54:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.103.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.103.0",
+    "publishedAt": "2026-07-01T22:46:50Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.11.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.11.0",
+    "publishedAt": "2022-07-18T20:51:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.12.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.12.0",
+    "publishedAt": "2022-07-26T16:51:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.13.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.13.0",
+    "publishedAt": "2022-08-09T18:29:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.14.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.14.0",
+    "publishedAt": "2022-08-10T01:31:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.16.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.16.0",
+    "publishedAt": "2022-08-16T22:26:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.17.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.17.0",
+    "publishedAt": "2022-08-17T14:48:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.18.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.18.0",
+    "publishedAt": "2022-08-19T15:36:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.19.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.19.0",
+    "publishedAt": "2022-08-25T00:05:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.2.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.2.0",
+    "publishedAt": "2022-01-20T16:39:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.20.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.20.0",
+    "publishedAt": "2022-08-25T18:47:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.21.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.21.0",
+    "publishedAt": "2022-08-26T21:29:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.22.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.22.0",
+    "publishedAt": "2022-09-11T02:07:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.23.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.23.0",
+    "publishedAt": "2022-09-12T18:46:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.24.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.24.0",
+    "publishedAt": "2022-09-13T13:55:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.25.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.25.0",
+    "publishedAt": "2022-09-14T00:10:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.26.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.26.0",
+    "publishedAt": "2022-10-12T15:52:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.27.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.27.0",
+    "publishedAt": "2022-11-02T02:28:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.28.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.28.0",
+    "publishedAt": "2022-11-30T20:34:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.29.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.29.0",
+    "publishedAt": "2022-12-04T23:01:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.3.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.3.0",
+    "publishedAt": "2022-02-24T15:38:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.30.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.30.0",
+    "publishedAt": "2022-12-28T22:47:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.31.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.31.0",
+    "publishedAt": "2023-02-09T18:17:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.32.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.32.0",
+    "publishedAt": "2023-02-14T14:27:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.33.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.33.0",
+    "publishedAt": "2023-03-04T02:37:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.34.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.34.0",
+    "publishedAt": "2023-03-18T14:56:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.35.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.35.0",
+    "publishedAt": "2023-03-23T17:01:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.36.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.36.0",
+    "publishedAt": "2023-03-29T18:08:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.37.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.37.0",
+    "publishedAt": "2023-04-11T18:10:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.38.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.38.0",
+    "publishedAt": "2023-04-16T12:39:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.39.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.39.0",
+    "publishedAt": "2023-04-23T17:43:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.4.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.4.0",
+    "publishedAt": "2022-03-29T14:08:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.40.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.40.0",
+    "publishedAt": "2023-06-03T18:32:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.41.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.41.0",
+    "publishedAt": "2023-06-06T15:48:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.42.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.42.0",
+    "publishedAt": "2023-08-12T19:24:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.43.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.43.0",
+    "publishedAt": "2023-08-28T20:31:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.43.1"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.43.1",
+    "publishedAt": "2023-08-29T00:37:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.44.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.44.0",
+    "publishedAt": "2023-08-29T03:07:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.45.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.45.0",
+    "publishedAt": "2023-10-14T14:34:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.46.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.46.0",
+    "publishedAt": "2023-11-13T04:19:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.47.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.47.0",
+    "publishedAt": "2023-12-01T16:13:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.48.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.48.0",
+    "publishedAt": "2024-01-09T16:21:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.49.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.49.0",
+    "publishedAt": "2024-01-23T22:05:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.5.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.5.0",
+    "publishedAt": "2022-03-30T19:00:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.50.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.50.0",
+    "publishedAt": "2024-01-30T02:39:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.51.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.51.0",
+    "publishedAt": "2024-01-30T22:11:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.52.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.52.0",
+    "publishedAt": "2024-02-12T16:57:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.52.1"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.52.1",
+    "publishedAt": "2024-02-16T20:10:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.53.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.53.0",
+    "publishedAt": "2024-02-22T22:04:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.54.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.54.0",
+    "publishedAt": "2024-02-29T18:44:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.54.1"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.54.1",
+    "publishedAt": "2024-04-04T21:20:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.55.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.55.0",
+    "publishedAt": "2024-04-12T16:37:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.56.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.56.0",
+    "publishedAt": "2024-04-24T20:49:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.57.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.57.0",
+    "publishedAt": "2024-05-06T22:02:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.58.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.58.0",
+    "publishedAt": "2024-05-25T13:31:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.58.1"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.58.1",
+    "publishedAt": "2024-05-28T15:54:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.59.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.59.0",
+    "publishedAt": "2024-06-08T14:00:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.6.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.6.0",
+    "publishedAt": "2022-05-07T18:59:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.60.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.60.0",
+    "publishedAt": "2024-06-11T21:25:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.61.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.61.0",
+    "publishedAt": "2024-07-05T20:27:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.62.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.62.0",
+    "publishedAt": "2024-07-16T16:47:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.63.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.63.0",
+    "publishedAt": "2024-07-19T19:44:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.64.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.64.0",
+    "publishedAt": "2024-07-31T13:08:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.65.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.65.0",
+    "publishedAt": "2024-08-11T02:58:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.67.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.67.0",
+    "publishedAt": "2024-08-26T23:48:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.67.1"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.67.1",
+    "publishedAt": "2024-08-27T01:46:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.68.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.68.0",
+    "publishedAt": "2024-08-28T18:21:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.69.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.69.0",
+    "publishedAt": "2024-09-11T02:48:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.7.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.7.0",
+    "publishedAt": "2022-05-09T00:50:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.70.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.70.0",
+    "publishedAt": "2024-09-18T13:56:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.71.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.71.0",
+    "publishedAt": "2024-09-27T01:53:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.72.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.72.0",
+    "publishedAt": "2024-10-06T02:13:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.73.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.73.0",
+    "publishedAt": "2024-10-21T17:26:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.74.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.74.0",
+    "publishedAt": "2024-10-22T18:11:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.75.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.75.0",
+    "publishedAt": "2024-12-23T13:20:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.76.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.76.0",
+    "publishedAt": "2024-12-24T18:48:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.77.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.77.0",
+    "publishedAt": "2025-01-31T22:08:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.78.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.78.0",
+    "publishedAt": "2025-03-07T21:58:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.78.1"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.78.1",
+    "publishedAt": "2025-03-11T21:50:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.79.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.79.0",
+    "publishedAt": "2025-03-18T21:34:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.79.1"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.79.1",
+    "publishedAt": "2025-03-21T12:38:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.8.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.8.0",
+    "publishedAt": "2022-05-20T15:41:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.80.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.80.0",
+    "publishedAt": "2025-03-27T16:48:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.81.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.81.0",
+    "publishedAt": "2025-03-28T16:14:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.82.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.82.0",
+    "publishedAt": "2025-04-03T20:33:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.83.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.83.0",
+    "publishedAt": "2025-04-08T13:08:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.84.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.84.0",
+    "publishedAt": "2025-04-18T22:09:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.85.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.85.0",
+    "publishedAt": "2025-04-29T19:35:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.85.1"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.85.1",
+    "publishedAt": "2025-04-30T23:53:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.85.2"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.85.2",
+    "publishedAt": "2025-05-01T20:57:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.85.3"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.85.3",
+    "publishedAt": "2025-06-20T19:42:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.85.4"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.85.4",
+    "publishedAt": "2025-06-20T21:18:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.85.5"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.85.5",
+    "publishedAt": "2025-06-23T11:46:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.85.6"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.85.6",
+    "publishedAt": "2025-06-23T17:47:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.86.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.86.0",
+    "publishedAt": "2025-07-14T19:37:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.87.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.87.0",
+    "publishedAt": "2025-07-29T15:39:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.9.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.9.0",
+    "publishedAt": "2022-06-13T21:07:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.90.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.90.0",
+    "publishedAt": "2025-07-30T19:54:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.90.1"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.90.1",
+    "publishedAt": "2025-08-01T21:42:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.90.2"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.90.2",
+    "publishedAt": "2025-08-02T01:37:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.90.3"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.90.3",
+    "publishedAt": "2025-08-04T22:08:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.90.4"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.90.4",
+    "publishedAt": "2025-08-05T21:32:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.91.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.91.0",
+    "publishedAt": "2025-08-13T21:26:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.92.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.92.0",
+    "publishedAt": "2025-08-21T21:48:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.92.1"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.92.1",
+    "publishedAt": "2025-08-22T21:45:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.92.2"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.92.2",
+    "publishedAt": "2025-09-10T20:45:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.93.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.93.0",
+    "publishedAt": "2025-09-24T21:21:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.94.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.94.0",
+    "publishedAt": "2025-10-07T12:12:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.95.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.95.0",
+    "publishedAt": "2025-11-14T17:36:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.95.1"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.95.1",
+    "publishedAt": "2025-11-14T20:00:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.96.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.96.0",
+    "publishedAt": "2025-11-26T18:49:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.97.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.97.0",
+    "publishedAt": "2025-12-24T15:50:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.98.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.98.0",
+    "publishedAt": "2026-01-30T03:13:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.99.0"
+    },
+    "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.99.0",
+    "publishedAt": "2026-02-09T22:33:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "NPM",
+   "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+   "version": "2.103.0"
+  },
+  "purl": "pkg:npm/%40aws-solutions-constructs/aws-eventbridge-sqs@2.103.0",
+  "publishedAt": "2026-07-01T22:46:50Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "Apache-2.0"
+  ],
+  "licenseDetails": [
+   {
+    "license": "Apache-2.0",
+    "spdx": "Apache-2.0"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "HOMEPAGE",
+    "url": "https://github.com/awslabs/aws-solutions-constructs#readme"
+   },
+   {
+    "label": "ISSUE_TRACKER",
+    "url": "https://github.com/awslabs/aws-solutions-constructs/issues"
+   },
+   {
+    "label": "ORIGIN",
+    "url": "https://registry.npmjs.org/@aws-solutions-constructs%2Faws-eventbridge-sqs/2.103.0"
+   },
+   {
+    "label": "SOURCE_REPO",
+    "url": "git+https://github.com/awslabs/aws-solutions-constructs.git"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://registry.npmjs.org/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/awslabs/aws-solutions-constructs"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "ISSUE_TRACKER"
+   },
+   {
+    "projectKey": {
+     "id": "github.com/awslabs/aws-solutions-constructs"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "@aws-solutions-constructs/aws-eventbridge-sqs",
+    "versionString": "2.103.0",
+    "source": "NPM_NPMJS_ORG"
+   }
+  ],
+  "cooldown": {
+   "end": "2026-07-16T22:46:50Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/aws-eventbridge-sqs",
+     "version": "2.103.0"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-cdk/cloud-assembly-schema",
+     "version": "54.9.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-cdk/cloud-assembly-schema>54.9.0>jsonschema",
+     "version": "1.5.0"
+    },
+    "bundled": true,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-cdk/cloud-assembly-schema>54.9.0>semver",
+     "version": "7.8.5"
+    },
+    "bundled": true,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/core",
+     "version": "2.103.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/core>2.103.0>deep-diff",
+     "version": "1.0.2"
+    },
+    "bundled": true,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/core>2.103.0>deepmerge",
+     "version": "4.3.1"
+    },
+    "bundled": true,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@aws-solutions-constructs/core>2.103.0>npmlog",
+     "version": "7.0.1"
+    },
+    "bundled": true,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "ansi-regex",
+     "version": "5.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "aproba",
+     "version": "2.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "are-we-there-yet",
+     "version": "4.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "color-support",
+     "version": "1.1.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "console-control-strings",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "constructs",
+     "version": "10.6.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "emoji-regex",
+     "version": "8.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "gauge",
+     "version": "5.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "has-unicode",
+     "version": "2.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-fullwidth-code-point",
+     "version": "3.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "set-blocking",
+     "version": "2.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "signal-exit",
+     "version": "4.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "string-width",
+     "version": "4.2.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "strip-ansi",
+     "version": "6.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "wide-align",
+     "version": "1.1.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 4,
+    "requirement": "2.103.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 13,
+    "requirement": "^10.0.0"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 2,
+    "requirement": "^1.5.0"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 3,
+    "requirement": "^7.8.5"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 1,
+    "requirement": "^54.0.0"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 5,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 6,
+    "requirement": "^4.0.0"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 7,
+    "requirement": "^7.0.0"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 13,
+    "requirement": "^10.0.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 10,
+    "requirement": "^4.0.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 12,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 15,
+    "requirement": "^5.0.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 18,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 9,
+    "requirement": "^1.0.3 || ^2.0.0"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 11,
+    "requirement": "^1.1.3"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 12,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 16,
+    "requirement": "^2.0.1"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 19,
+    "requirement": "^4.0.1"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 20,
+    "requirement": "^4.2.3"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 21,
+    "requirement": "^6.0.1"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 22,
+    "requirement": "^1.1.5"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 14,
+    "requirement": "^8.0.0"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 17,
+    "requirement": "^3.0.0"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 21,
+    "requirement": "^6.0.1"
+   },
+   {
+    "fromNode": 21,
+    "toNode": 8,
+    "requirement": "^5.0.1"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 20,
+    "requirement": "^1.0.2 || 2 || 3 || 4"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/awslabs/aws-solutions-constructs"
+  },
+  "openIssuesCount": 55,
+  "starsCount": 1354,
+  "forksCount": 268,
+  "license": "Apache-2.0",
+  "description": "The AWS Solutions Constructs Library is an open-source extension of the AWS Cloud Development Kit (AWS CDK) that provides multi-service, well-architected patterns for quickly defining solutions",
+  "homepage": "https://docs.aws.amazon.com/solutions/latest/constructs/",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/awslabs/aws-solutions-constructs",
+    "commit": "76b8fdd90033b30f040ca99708b31e75d7433a0e"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 10,
+     "reason": "10 commit(s) and 2 issue activity found in the last 90 days -- score normalized to 10",
+     "details": []
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 6,
+     "reason": "Found 11/17 approved changesets -- score normalized to 6",
+     "details": []
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": 0,
+     "reason": "detected GitHub workflow tokens with excessive permissions",
+     "details": [
+      "Warn: no topLevel permission defined: .github/workflows/pr-feedback.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/slack-notify.yml:1",
+      "Info: no jobLevel write permissions found"
+     ]
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 10,
+     "reason": "security policy file detected",
+     "details": [
+      "Info: security policy file detected: SECURITY.md:1",
+      "Info: Found linked content: SECURITY.md:1",
+      "Info: Found disclosure, vulnerability, and/or timelines in security policy: SECURITY.md:1",
+      "Info: Found text in security policy: SECURITY.md:1"
+     ]
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected",
+     "details": []
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 10,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE.txt:0",
+      "Info: FSF or OSI recognized license: Apache License 2.0: LICENSE.txt:0"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": 8,
+     "reason": "5 out of the last 5 releases have a total of 5 signed artifacts.",
+     "details": [
+      "Info: signed release artifact: aws-solutions-constructs-2.103.0.zip.sig: https://github.com/awslabs/aws-solutions-constructs/releases/tag/v2.103.0",
+      "Info: signed release artifact: aws-solutions-constructs-2.102.0.zip.sig: https://github.com/awslabs/aws-solutions-constructs/releases/tag/v2.102.0",
+      "Info: signed release artifact: aws-solutions-constructs-2.101.0.zip.sig: https://github.com/awslabs/aws-solutions-constructs/releases/tag/v2.101.0",
+      "Info: signed release artifact: aws-solutions-constructs-2.100.1.zip.sig: https://github.com/awslabs/aws-solutions-constructs/releases/tag/v2.100.1",
+      "Info: signed release artifact: aws-solutions-constructs-2.100.0.zip.sig: https://github.com/awslabs/aws-solutions-constructs/releases/tag/v2.100.0",
+      "Warn: release artifact v2.103.0 does not have provenance: https://api.github.com/repos/awslabs/aws-solutions-constructs/releases/347749273",
+      "Warn: release artifact v2.102.0 does not have provenance: https://api.github.com/repos/awslabs/aws-solutions-constructs/releases/323527693",
+      "Warn: release artifact v2.101.0 does not have provenance: https://api.github.com/repos/awslabs/aws-solutions-constructs/releases/306135076",
+      "Warn: release artifact v2.100.1 does not have provenance: https://api.github.com/repos/awslabs/aws-solutions-constructs/releases/290055014",
+      "Warn: release artifact v2.100.0 does not have provenance: https://api.github.com/repos/awslabs/aws-solutions-constructs/releases/289623505"
+     ]
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": 8,
+     "reason": "branch protection is not maximal on development and all release branches",
+     "details": [
+      "Info: 'allow deletion' disabled on branch 'main'",
+      "Info: 'force pushes' disabled on branch 'main'",
+      "Warn: required approving review count is 1 on branch 'main'",
+      "Info: codeowner review is required on branch 'main'",
+      "Info: status check found to merge onto on branch 'main'",
+      "Info: PRs are required in order to make changes on branch 'main'"
+     ]
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 10,
+     "reason": "SAST tool is run on all commits",
+     "details": [
+      "Info: all commits (30) are checked with a SAST tool"
+     ]
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": 0,
+     "reason": "dependency not pinned by hash detected -- score normalized to 0",
+     "details": [
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pr-feedback.yml:10: update your workflow using https://app.stepsecurity.io/secureworkflow/awslabs/aws-solutions-constructs/pr-feedback.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/slack-notify.yml:23: update your workflow using https://app.stepsecurity.io/secureworkflow/awslabs/aws-solutions-constructs/slack-notify.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/slack-notify.yml:37: update your workflow using https://app.stepsecurity.io/secureworkflow/awslabs/aws-solutions-constructs/slack-notify.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/slack-notify.yml:54: update your workflow using https://app.stepsecurity.io/secureworkflow/awslabs/aws-solutions-constructs/slack-notify.yml/main?enable=pin",
+      "Warn: npmCommand not pinned by hash: deployment/v2/allow-partial-builds.sh:40",
+      "Warn: npmCommand not pinned by hash: deployment/v2/bootstrap.sh:20",
+      "Warn: npmCommand not pinned by hash: deployment/v2/bootstrap.sh:21",
+      "Warn: npmCommand not pinned by hash: deployment/v2/bootstrap.sh:22",
+      "Warn: npmCommand not pinned by hash: deployment/v2/bootstrap.sh:23",
+      "Warn: npmCommand not pinned by hash: deployment/v2/bootstrap.sh:40",
+      "Warn: npmCommand not pinned by hash: deployment/v2/build-all.sh:19",
+      "Warn: npmCommand not pinned by hash: deployment/v2/generate-license-file.sh:68",
+      "Warn: npmCommand not pinned by hash: deployment/v2/refresh-multiple-tests.sh:118",
+      "Info:   0 out of   1 GitHub-owned GitHubAction dependencies pinned",
+      "Info:   0 out of   3 third-party GitHubAction dependencies pinned",
+      "Info:   0 out of   9 npmCommand dependencies pinned"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    }
+   ],
+   "overallScore": 6.8,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 248605700,
+  "node_id": "MDEwOlJlcG9zaXRvcnkyNDg2MDU3MDA=",
+  "name": "aws-solutions-constructs",
+  "full_name": "awslabs/aws-solutions-constructs",
+  "private": false,
+  "owner": {
+   "login": "awslabs",
+   "id": 3299148,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjMyOTkxNDg=",
+   "avatar_url": "https://avatars.githubusercontent.com/u/3299148?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/awslabs",
+   "html_url": "https://github.com/awslabs",
+   "followers_url": "https://api.github.com/users/awslabs/followers",
+   "following_url": "https://api.github.com/users/awslabs/following{/other_user}",
+   "gists_url": "https://api.github.com/users/awslabs/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/awslabs/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/awslabs/subscriptions",
+   "organizations_url": "https://api.github.com/users/awslabs/orgs",
+   "repos_url": "https://api.github.com/users/awslabs/repos",
+   "events_url": "https://api.github.com/users/awslabs/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/awslabs/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/awslabs/aws-solutions-constructs",
+  "description": "The AWS Solutions Constructs Library is an open-source extension of the AWS Cloud Development Kit (AWS CDK) that provides multi-service, well-architected patterns for quickly defining solutions",
+  "fork": false,
+  "url": "https://api.github.com/repos/awslabs/aws-solutions-constructs",
+  "forks_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/forks",
+  "keys_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/teams",
+  "hooks_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/hooks",
+  "issue_events_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/events",
+  "assignees_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/tags",
+  "blobs_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/languages",
+  "stargazers_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/stargazers",
+  "contributors_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/contributors",
+  "subscribers_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/subscribers",
+  "subscription_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/subscription",
+  "commits_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/merges",
+  "archive_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/downloads",
+  "issues_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/labels{/name}",
+  "releases_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/awslabs/aws-solutions-constructs/deployments",
+  "created_at": "2020-03-19T21:10:30Z",
+  "updated_at": "2026-07-10T00:02:41Z",
+  "pushed_at": "2026-07-01T23:07:47Z",
+  "git_url": "git://github.com/awslabs/aws-solutions-constructs.git",
+  "ssh_url": "git@github.com:awslabs/aws-solutions-constructs.git",
+  "clone_url": "https://github.com/awslabs/aws-solutions-constructs.git",
+  "svn_url": "https://github.com/awslabs/aws-solutions-constructs",
+  "homepage": "https://docs.aws.amazon.com/solutions/latest/constructs/",
+  "size": 66408,
+  "stargazers_count": 1354,
+  "watchers_count": 1354,
+  "language": "TypeScript",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": true,
+  "forks_count": 268,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 55,
+  "license": {
+   "key": "apache-2.0",
+   "name": "Apache License 2.0",
+   "spdx_id": "Apache-2.0",
+   "url": "https://api.github.com/licenses/apache-2.0",
+   "node_id": "MDc6TGljZW5zZTI="
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [
+   "architectural-patterns",
+   "aws-cdk",
+   "constructs"
+  ],
+  "visibility": "public",
+  "forks": 268,
+  "open_issues": 55,
+  "watchers": 1354,
+  "default_branch": "main",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "template_repository": {
+   "id": 207914588,
+   "node_id": "MDEwOlJlcG9zaXRvcnkyMDc5MTQ1ODg=",
+   "name": "__template_Apache-2.0",
+   "full_name": "amazon-archives/__template_Apache-2.0",
+   "private": false,
+   "owner": {
+    "login": "amazon-archives",
+    "id": 29926826,
+    "node_id": "MDEyOk9yZ2FuaXphdGlvbjI5OTI2ODI2",
+    "avatar_url": "https://avatars.githubusercontent.com/u/29926826?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/amazon-archives",
+    "html_url": "https://github.com/amazon-archives",
+    "followers_url": "https://api.github.com/users/amazon-archives/followers",
+    "following_url": "https://api.github.com/users/amazon-archives/following{/other_user}",
+    "gists_url": "https://api.github.com/users/amazon-archives/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/amazon-archives/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/amazon-archives/subscriptions",
+    "organizations_url": "https://api.github.com/users/amazon-archives/orgs",
+    "repos_url": "https://api.github.com/users/amazon-archives/repos",
+    "events_url": "https://api.github.com/users/amazon-archives/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/amazon-archives/received_events",
+    "type": "Organization",
+    "user_view_type": "public",
+    "site_admin": false
+   },
+   "html_url": "https://github.com/amazon-archives/__template_Apache-2.0",
+   "description": "The standard open source license for Amazon projects (except samples).",
+   "fork": false,
+   "url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0",
+   "forks_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/forks",
+   "keys_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/keys{/key_id}",
+   "collaborators_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/collaborators{/collaborator}",
+   "teams_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/teams",
+   "hooks_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/hooks",
+   "issue_events_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/issues/events{/number}",
+   "events_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/events",
+   "assignees_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/assignees{/user}",
+   "branches_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/branches{/branch}",
+   "tags_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/tags",
+   "blobs_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/git/blobs{/sha}",
+   "git_tags_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/git/tags{/sha}",
+   "git_refs_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/git/refs{/sha}",
+   "trees_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/git/trees{/sha}",
+   "statuses_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/statuses/{sha}",
+   "languages_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/languages",
+   "stargazers_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/stargazers",
+   "contributors_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/contributors",
+   "subscribers_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/subscribers",
+   "subscription_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/subscription",
+   "commits_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/commits{/sha}",
+   "git_commits_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/git/commits{/sha}",
+   "comments_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/comments{/number}",
+   "issue_comment_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/issues/comments{/number}",
+   "contents_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/contents/{+path}",
+   "compare_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/compare/{base}...{head}",
+   "merges_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/merges",
+   "archive_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/{archive_format}{/ref}",
+   "downloads_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/downloads",
+   "issues_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/issues{/number}",
+   "pulls_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/pulls{/number}",
+   "milestones_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/milestones{/number}",
+   "notifications_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/notifications{?since,all,participating}",
+   "labels_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/labels{/name}",
+   "releases_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/releases{/id}",
+   "deployments_url": "https://api.github.com/repos/amazon-archives/__template_Apache-2.0/deployments",
+   "created_at": "2019-09-11T22:03:07Z",
+   "updated_at": "2026-06-24T19:07:49Z",
+   "pushed_at": "2020-10-28T19:12:55Z",
+   "git_url": "git://github.com/amazon-archives/__template_Apache-2.0.git",
+   "ssh_url": "git@github.com:amazon-archives/__template_Apache-2.0.git",
+   "clone_url": "https://github.com/amazon-archives/__template_Apache-2.0.git",
+   "svn_url": "https://github.com/amazon-archives/__template_Apache-2.0",
+   "homepage": null,
+   "size": 13,
+   "stargazers_count": 24,
+   "watchers_count": 24,
+   "language": null,
+   "has_issues": true,
+   "has_projects": true,
+   "has_downloads": false,
+   "has_wiki": true,
+   "has_pages": false,
+   "has_discussions": false,
+   "forks_count": 7,
+   "mirror_url": null,
+   "archived": false,
+   "disabled": false,
+   "open_issues_count": 6,
+   "license": {
+    "key": "apache-2.0",
+    "name": "Apache License 2.0",
+    "spdx_id": "Apache-2.0",
+    "url": "https://api.github.com/licenses/apache-2.0",
+    "node_id": "MDc6TGljZW5zZTI="
+   },
+   "allow_forking": true,
+   "is_template": true,
+   "web_commit_signoff_required": false,
+   "has_pull_requests": true,
+   "pull_request_creation_policy": "all",
+   "topics": [],
+   "visibility": "public",
+   "forks": 7,
+   "open_issues": 6,
+   "watchers": 24,
+   "default_branch": "main",
+   "permissions": {
+    "admin": false,
+    "maintain": false,
+    "push": false,
+    "triage": false,
+    "pull": true
+   },
+   "temp_clone_token": ""
+  },
+  "custom_properties": {
+   "staging": "false",
+   "visibility-allow-internal": "false",
+   "visibility-allow-private": "false",
+   "visibility-allow-public": "true"
+  },
+  "organization": {
+   "login": "awslabs",
+   "id": 3299148,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjMyOTkxNDg=",
+   "avatar_url": "https://avatars.githubusercontent.com/u/3299148?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/awslabs",
+   "html_url": "https://github.com/awslabs",
+   "followers_url": "https://api.github.com/users/awslabs/followers",
+   "following_url": "https://api.github.com/users/awslabs/following{/other_user}",
+   "gists_url": "https://api.github.com/users/awslabs/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/awslabs/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/awslabs/subscriptions",
+   "organizations_url": "https://api.github.com/users/awslabs/orgs",
+   "repos_url": "https://api.github.com/users/awslabs/repos",
+   "events_url": "https://api.github.com/users/awslabs/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/awslabs/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 268,
+  "subscribers_count": 20
+ },
+ "funding": []
+}

@@ -1,0 +1,1333 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "PYPI",
+   "name": "qucumber"
+  },
+  "purl": "pkg:pypi/qucumber",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "qucumber",
+     "version": "0.1.0"
+    },
+    "purl": "pkg:pypi/qucumber@0.1.0",
+    "publishedAt": "2018-07-13T22:40:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "qucumber",
+     "version": "0.1.1"
+    },
+    "purl": "pkg:pypi/qucumber@0.1.1",
+    "publishedAt": "2018-07-13T22:51:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "qucumber",
+     "version": "0.1.2"
+    },
+    "purl": "pkg:pypi/qucumber@0.1.2",
+    "publishedAt": "2018-07-18T14:40:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "qucumber",
+     "version": "0.2.0"
+    },
+    "purl": "pkg:pypi/qucumber@0.2.0",
+    "publishedAt": "2018-08-03T21:53:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "qucumber",
+     "version": "0.3.0"
+    },
+    "purl": "pkg:pypi/qucumber@0.3.0",
+    "publishedAt": "2018-08-24T20:19:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "qucumber",
+     "version": "0.3.1"
+    },
+    "purl": "pkg:pypi/qucumber@0.3.1",
+    "publishedAt": "2018-09-03T22:43:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "qucumber",
+     "version": "0.3.1.post2"
+    },
+    "purl": "pkg:pypi/qucumber@0.3.1.post2",
+    "publishedAt": "2018-09-04T22:19:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "qucumber",
+     "version": "0.3.1.post3"
+    },
+    "purl": "pkg:pypi/qucumber@0.3.1.post3",
+    "publishedAt": "2018-09-05T21:30:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "qucumber",
+     "version": "0.3.1.post4"
+    },
+    "purl": "pkg:pypi/qucumber@0.3.1.post4",
+    "publishedAt": "2018-09-06T20:31:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "qucumber",
+     "version": "1.0.0"
+    },
+    "purl": "pkg:pypi/qucumber@1.0.0",
+    "publishedAt": "2019-01-01T05:01:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "qucumber",
+     "version": "1.0.1"
+    },
+    "purl": "pkg:pypi/qucumber@1.0.1",
+    "publishedAt": "2019-02-07T23:06:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "qucumber",
+     "version": "1.0.2"
+    },
+    "purl": "pkg:pypi/qucumber@1.0.2",
+    "publishedAt": "2019-02-07T23:50:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "qucumber",
+     "version": "1.0.3"
+    },
+    "purl": "pkg:pypi/qucumber@1.0.3",
+    "publishedAt": "2019-03-28T03:52:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "qucumber",
+     "version": "1.1.0"
+    },
+    "purl": "pkg:pypi/qucumber@1.1.0",
+    "publishedAt": "2019-05-17T16:12:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "qucumber",
+     "version": "1.2.0"
+    },
+    "purl": "pkg:pypi/qucumber@1.2.0",
+    "publishedAt": "2019-07-03T19:58:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "qucumber",
+     "version": "1.2.0.post2"
+    },
+    "purl": "pkg:pypi/qucumber@1.2.0.post2",
+    "publishedAt": "2019-07-05T02:51:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "qucumber",
+     "version": "1.2.1"
+    },
+    "purl": "pkg:pypi/qucumber@1.2.1",
+    "publishedAt": "2019-07-12T03:05:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "qucumber",
+     "version": "1.2.2"
+    },
+    "purl": "pkg:pypi/qucumber@1.2.2",
+    "publishedAt": "2019-07-17T22:05:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "qucumber",
+     "version": "1.2.3"
+    },
+    "purl": "pkg:pypi/qucumber@1.2.3",
+    "publishedAt": "2019-09-05T01:40:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "qucumber",
+     "version": "1.3.0"
+    },
+    "purl": "pkg:pypi/qucumber@1.3.0",
+    "publishedAt": "2020-01-01T06:09:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "qucumber",
+     "version": "1.3.1"
+    },
+    "purl": "pkg:pypi/qucumber@1.3.1",
+    "publishedAt": "2020-08-05T03:45:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "qucumber",
+     "version": "1.3.2"
+    },
+    "purl": "pkg:pypi/qucumber@1.3.2",
+    "publishedAt": "2021-01-12T01:22:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "qucumber",
+     "version": "1.3.3"
+    },
+    "purl": "pkg:pypi/qucumber@1.3.3",
+    "publishedAt": "2023-05-09T04:08:40Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "PYPI",
+   "name": "qucumber",
+   "version": "1.3.3"
+  },
+  "purl": "pkg:pypi/qucumber@1.3.3",
+  "publishedAt": "2023-05-09T04:08:40Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "Apache-2.0"
+  ],
+  "licenseDetails": [
+   {
+    "license": "Apache License 2.0",
+    "spdx": "Apache-2.0"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "SOURCE_REPO",
+    "url": "http://github.com/PIQuIL/QuCumber"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://pypi.org/simple"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/piquil/qucumber"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "qucumber",
+    "versionString": "1.3.3",
+    "source": "PYPI_RELEASE_FILENAME"
+   },
+   {
+    "packageName": "qucumber",
+    "versionString": "1.3.3",
+    "source": "PYPI_METADATA_FILE"
+   }
+  ],
+  "cooldown": {
+   "end": "2023-05-14T04:08:40Z",
+   "description": ""
+  },
+  "projectStatus": {
+   "status": "active",
+   "reason": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "qucumber",
+     "version": "1.3.3"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "contourpy",
+     "version": "1.3.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cycler",
+     "version": "0.12.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "filelock",
+     "version": "3.29.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fonttools",
+     "version": "4.63.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jinja2",
+     "version": "3.1.6"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "kiwisolver",
+     "version": "1.5.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "markupsafe",
+     "version": "3.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "matplotlib",
+     "version": "3.11.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mpmath",
+     "version": "1.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "networkx",
+     "version": "3.6.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "numpy",
+     "version": "2.5.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "nvidia-cublas-cu11",
+     "version": "11.10.3.66"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "nvidia-cuda-cupti-cu11",
+     "version": "11.7.101"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "nvidia-cuda-nvrtc-cu11",
+     "version": "11.7.99"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "nvidia-cuda-runtime-cu11",
+     "version": "11.7.99"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "nvidia-cudnn-cu11",
+     "version": "8.5.0.96"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "nvidia-cufft-cu11",
+     "version": "10.9.0.58"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "nvidia-curand-cu11",
+     "version": "10.2.10.91"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "nvidia-cusolver-cu11",
+     "version": "11.4.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "nvidia-cusparse-cu11",
+     "version": "11.7.4.91"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "nvidia-nccl-cu11",
+     "version": "2.14.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "nvidia-nvtx-cu11",
+     "version": "11.7.91"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "packaging",
+     "version": "26.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pillow",
+     "version": "12.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyparsing",
+     "version": "3.3.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "python-dateutil",
+     "version": "2.9.0.post0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "scipy",
+     "version": "1.18.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "setuptools",
+     "version": "83.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "six",
+     "version": "1.17.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "sympy",
+     "version": "1.14.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "torch",
+     "version": "2.0.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tqdm",
+     "version": "4.68.4"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "triton",
+     "version": "2.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "typing-extensions",
+     "version": "4.16.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wheel",
+     "version": "0.47.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 8,
+    "requirement": ">=2.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 11,
+    "requirement": ">=1.13"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 27,
+    "requirement": ">=1.3.3"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 31,
+    "requirement": "<2.1,>=1.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 32,
+    "requirement": ">=4.23"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 11,
+    "requirement": ">=1.25"
+   },
+   {
+    "fromNode": 5,
+    "toNode": 7,
+    "requirement": ">=2.0"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 1,
+    "requirement": ">=1.0.1"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 2,
+    "requirement": ">=0.10"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 4,
+    "requirement": ">=4.22.0"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 6,
+    "requirement": ">=1.3.1"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 11,
+    "requirement": ">=1.25"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 23,
+    "requirement": ">=20.0"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 24,
+    "requirement": ">=9"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 25,
+    "requirement": ">=3"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 26,
+    "requirement": ">=2.7"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 28,
+    "requirement": ""
+   },
+   {
+    "fromNode": 12,
+    "toNode": 35,
+    "requirement": ""
+   },
+   {
+    "fromNode": 13,
+    "toNode": 28,
+    "requirement": ""
+   },
+   {
+    "fromNode": 13,
+    "toNode": 35,
+    "requirement": ""
+   },
+   {
+    "fromNode": 14,
+    "toNode": 28,
+    "requirement": ""
+   },
+   {
+    "fromNode": 14,
+    "toNode": 35,
+    "requirement": ""
+   },
+   {
+    "fromNode": 15,
+    "toNode": 28,
+    "requirement": ""
+   },
+   {
+    "fromNode": 15,
+    "toNode": 35,
+    "requirement": ""
+   },
+   {
+    "fromNode": 16,
+    "toNode": 28,
+    "requirement": ""
+   },
+   {
+    "fromNode": 16,
+    "toNode": 35,
+    "requirement": ""
+   },
+   {
+    "fromNode": 18,
+    "toNode": 28,
+    "requirement": ""
+   },
+   {
+    "fromNode": 18,
+    "toNode": 35,
+    "requirement": ""
+   },
+   {
+    "fromNode": 19,
+    "toNode": 28,
+    "requirement": ""
+   },
+   {
+    "fromNode": 19,
+    "toNode": 35,
+    "requirement": ""
+   },
+   {
+    "fromNode": 20,
+    "toNode": 28,
+    "requirement": ""
+   },
+   {
+    "fromNode": 20,
+    "toNode": 35,
+    "requirement": ""
+   },
+   {
+    "fromNode": 22,
+    "toNode": 28,
+    "requirement": ""
+   },
+   {
+    "fromNode": 22,
+    "toNode": 35,
+    "requirement": ""
+   },
+   {
+    "fromNode": 26,
+    "toNode": 29,
+    "requirement": ">=1.5"
+   },
+   {
+    "fromNode": 27,
+    "toNode": 11,
+    "requirement": "<2.8,>=2.0.0"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 9,
+    "requirement": "<1.4,>=1.1.0"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 3,
+    "requirement": ""
+   },
+   {
+    "fromNode": 31,
+    "toNode": 5,
+    "requirement": ""
+   },
+   {
+    "fromNode": 31,
+    "toNode": 10,
+    "requirement": ""
+   },
+   {
+    "fromNode": 31,
+    "toNode": 12,
+    "requirement": "==11.10.3.66"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 13,
+    "requirement": "==11.7.101"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 14,
+    "requirement": "==11.7.99"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 15,
+    "requirement": "==11.7.99"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 16,
+    "requirement": "==8.5.0.96"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 17,
+    "requirement": "==10.9.0.58"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 18,
+    "requirement": "==10.2.10.91"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 19,
+    "requirement": "==11.4.0.1"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 20,
+    "requirement": "==11.7.4.91"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 21,
+    "requirement": "==2.14.3"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 22,
+    "requirement": "==11.7.91"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 30,
+    "requirement": ""
+   },
+   {
+    "fromNode": 31,
+    "toNode": 33,
+    "requirement": "==2.0.0"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 34,
+    "requirement": ""
+   },
+   {
+    "fromNode": 35,
+    "toNode": 23,
+    "requirement": ">= 24.0"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/piquil/qucumber"
+  },
+  "openIssuesCount": 14,
+  "starsCount": 178,
+  "forksCount": 33,
+  "license": "non-standard",
+  "description": "Neural Network Many-Body Wavefunction Reconstruction",
+  "homepage": "https://qucumber.readthedocs.io/",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/PIQuIL/QuCumber",
+    "commit": "b2959318eec6b9d20575c5278e5dee7362cc7f5c"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 0,
+     "reason": "Found 0/6 approved changesets -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 0,
+     "reason": "0 commit(s) and 0 issue activity found in the last 90 days -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": -1,
+     "reason": "No tokens found",
+     "details": []
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": -1,
+     "reason": "no workflows found",
+     "details": []
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": -1,
+     "reason": "no dependencies found",
+     "details": []
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 0,
+     "reason": "security policy file not detected",
+     "details": [
+      "Warn: no security policy file detected",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 9,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE:0",
+      "Warn: project license file does not contain an FSF or OSI license."
+     ]
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": 0,
+     "reason": "branch protection not enabled on development/release branches",
+     "details": [
+      "Warn: branch protection not enabled for branch 'master'"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": 0,
+     "reason": "Project has not signed or included provenance with any releases.",
+     "details": [
+      "Warn: release artifact v1.3.1 not signed: https://api.github.com/repos/PIQuIL/QuCumber/releases/29346087",
+      "Warn: release artifact v1.3.0 not signed: https://api.github.com/repos/PIQuIL/QuCumber/releases/22539104",
+      "Warn: release artifact v1.2.3 not signed: https://api.github.com/repos/PIQuIL/QuCumber/releases/19765693",
+      "Warn: release artifact v1.2.2 not signed: https://api.github.com/repos/PIQuIL/QuCumber/releases/18687732",
+      "Warn: release artifact v1.3.1 does not have provenance: https://api.github.com/repos/PIQuIL/QuCumber/releases/29346087",
+      "Warn: release artifact v1.3.0 does not have provenance: https://api.github.com/repos/PIQuIL/QuCumber/releases/22539104",
+      "Warn: release artifact v1.2.3 does not have provenance: https://api.github.com/repos/PIQuIL/QuCumber/releases/19765693",
+      "Warn: release artifact v1.2.2 does not have provenance: https://api.github.com/repos/PIQuIL/QuCumber/releases/18687732"
+     ]
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0",
+     "details": [
+      "Warn: 0 commits out of 24 are checked with a SAST tool"
+     ]
+    }
+   ],
+   "overallScore": 1.7,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 132476190,
+  "node_id": "MDEwOlJlcG9zaXRvcnkxMzI0NzYxOTA=",
+  "name": "QuCumber",
+  "full_name": "PIQuIL/QuCumber",
+  "private": false,
+  "owner": {
+   "login": "PIQuIL",
+   "id": 41295863,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjQxMjk1ODYz",
+   "avatar_url": "https://avatars.githubusercontent.com/u/41295863?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/PIQuIL",
+   "html_url": "https://github.com/PIQuIL",
+   "followers_url": "https://api.github.com/users/PIQuIL/followers",
+   "following_url": "https://api.github.com/users/PIQuIL/following{/other_user}",
+   "gists_url": "https://api.github.com/users/PIQuIL/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/PIQuIL/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/PIQuIL/subscriptions",
+   "organizations_url": "https://api.github.com/users/PIQuIL/orgs",
+   "repos_url": "https://api.github.com/users/PIQuIL/repos",
+   "events_url": "https://api.github.com/users/PIQuIL/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/PIQuIL/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/PIQuIL/QuCumber",
+  "description": "Neural Network Many-Body Wavefunction Reconstruction",
+  "fork": false,
+  "url": "https://api.github.com/repos/PIQuIL/QuCumber",
+  "forks_url": "https://api.github.com/repos/PIQuIL/QuCumber/forks",
+  "keys_url": "https://api.github.com/repos/PIQuIL/QuCumber/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/PIQuIL/QuCumber/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/PIQuIL/QuCumber/teams",
+  "hooks_url": "https://api.github.com/repos/PIQuIL/QuCumber/hooks",
+  "issue_events_url": "https://api.github.com/repos/PIQuIL/QuCumber/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/PIQuIL/QuCumber/events",
+  "assignees_url": "https://api.github.com/repos/PIQuIL/QuCumber/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/PIQuIL/QuCumber/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/PIQuIL/QuCumber/tags",
+  "blobs_url": "https://api.github.com/repos/PIQuIL/QuCumber/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/PIQuIL/QuCumber/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/PIQuIL/QuCumber/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/PIQuIL/QuCumber/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/PIQuIL/QuCumber/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/PIQuIL/QuCumber/languages",
+  "stargazers_url": "https://api.github.com/repos/PIQuIL/QuCumber/stargazers",
+  "contributors_url": "https://api.github.com/repos/PIQuIL/QuCumber/contributors",
+  "subscribers_url": "https://api.github.com/repos/PIQuIL/QuCumber/subscribers",
+  "subscription_url": "https://api.github.com/repos/PIQuIL/QuCumber/subscription",
+  "commits_url": "https://api.github.com/repos/PIQuIL/QuCumber/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/PIQuIL/QuCumber/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/PIQuIL/QuCumber/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/PIQuIL/QuCumber/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/PIQuIL/QuCumber/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/PIQuIL/QuCumber/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/PIQuIL/QuCumber/merges",
+  "archive_url": "https://api.github.com/repos/PIQuIL/QuCumber/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/PIQuIL/QuCumber/downloads",
+  "issues_url": "https://api.github.com/repos/PIQuIL/QuCumber/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/PIQuIL/QuCumber/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/PIQuIL/QuCumber/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/PIQuIL/QuCumber/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/PIQuIL/QuCumber/labels{/name}",
+  "releases_url": "https://api.github.com/repos/PIQuIL/QuCumber/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/PIQuIL/QuCumber/deployments",
+  "created_at": "2018-05-07T14:55:13Z",
+  "updated_at": "2026-07-06T09:32:21Z",
+  "pushed_at": "2026-07-21T06:51:47Z",
+  "git_url": "git://github.com/PIQuIL/QuCumber.git",
+  "ssh_url": "git@github.com:PIQuIL/QuCumber.git",
+  "clone_url": "https://github.com/PIQuIL/QuCumber.git",
+  "svn_url": "https://github.com/PIQuIL/QuCumber",
+  "homepage": "https://qucumber.readthedocs.io/",
+  "size": 150300,
+  "stargazers_count": 178,
+  "watchers_count": 178,
+  "language": "Python",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": true,
+  "has_discussions": true,
+  "forks_count": 33,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 14,
+  "license": {
+   "key": "other",
+   "name": "Other",
+   "spdx_id": "NOASSERTION",
+   "url": null,
+   "node_id": "MDc6TGljZW5zZTA="
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [
+   "machine-learning",
+   "quantum-computing",
+   "restricted-boltzmann-machine"
+  ],
+  "visibility": "public",
+  "forks": 33,
+  "open_issues": 14,
+  "watchers": 178,
+  "default_branch": "master",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "PIQuIL",
+   "id": 41295863,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjQxMjk1ODYz",
+   "avatar_url": "https://avatars.githubusercontent.com/u/41295863?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/PIQuIL",
+   "html_url": "https://github.com/PIQuIL",
+   "followers_url": "https://api.github.com/users/PIQuIL/followers",
+   "following_url": "https://api.github.com/users/PIQuIL/following{/other_user}",
+   "gists_url": "https://api.github.com/users/PIQuIL/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/PIQuIL/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/PIQuIL/subscriptions",
+   "organizations_url": "https://api.github.com/users/PIQuIL/orgs",
+   "repos_url": "https://api.github.com/users/PIQuIL/repos",
+   "events_url": "https://api.github.com/users/PIQuIL/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/PIQuIL/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 33,
+  "subscribers_count": 15
+ },
+ "funding": []
+}

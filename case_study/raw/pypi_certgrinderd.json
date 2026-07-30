@@ -1,0 +1,1422 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "PYPI",
+   "name": "certgrinderd"
+  },
+  "purl": "pkg:pypi/certgrinderd",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.13.0"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.13.0",
+    "publishedAt": "2020-07-07T07:56:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.13.0a0"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.13.0a0",
+    "publishedAt": "2020-05-04T10:38:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.13.0a2"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.13.0a2",
+    "publishedAt": "2020-05-04T19:54:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.13.0a3"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.13.0a3",
+    "publishedAt": "2020-05-05T00:13:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.13.0a4"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.13.0a4",
+    "publishedAt": "2020-05-05T21:18:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.13.0a5"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.13.0a5",
+    "publishedAt": "2020-05-05T22:53:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.13.0a6"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.13.0a6",
+    "publishedAt": "2020-05-06T19:55:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.13.0a7"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.13.0a7",
+    "publishedAt": "2020-05-06T21:00:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.13.0a8"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.13.0a8",
+    "publishedAt": "2020-05-06T22:02:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.13.0b1"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.13.0b1",
+    "publishedAt": "2020-05-07T07:48:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.13.0b2"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.13.0b2",
+    "publishedAt": "2020-06-29T21:32:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.13.0rc1"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.13.0rc1",
+    "publishedAt": "2020-07-01T09:29:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.13.1"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.13.1",
+    "publishedAt": "2020-07-07T16:24:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.13.2"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.13.2",
+    "publishedAt": "2020-07-11T11:43:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.14.0"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.14.0",
+    "publishedAt": "2020-08-29T19:12:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.14.0b1"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.14.0b1",
+    "publishedAt": "2020-08-29T10:47:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.14.0b2"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.14.0b2",
+    "publishedAt": "2020-08-29T14:36:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.14.1"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.14.1",
+    "publishedAt": "2020-09-13T12:40:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.14.2"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.14.2",
+    "publishedAt": "2020-09-13T13:22:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.15.0"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.15.0",
+    "publishedAt": "2020-09-29T15:43:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.15.0b1"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.15.0b1",
+    "publishedAt": "2020-09-28T19:09:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.15.0b2"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.15.0b2",
+    "publishedAt": "2020-09-28T19:49:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.15.1"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.15.1",
+    "publishedAt": "2020-09-29T21:12:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.16.0"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.16.0",
+    "publishedAt": "2021-01-18T17:08:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.16.0rc1"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.16.0rc1",
+    "publishedAt": "2021-01-17T18:41:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.16.0rc2"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.16.0rc2",
+    "publishedAt": "2021-01-18T15:31:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.17.0"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.17.0",
+    "publishedAt": "2021-05-21T15:26:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.17.0rc1"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.17.0rc1",
+    "publishedAt": "2021-05-19T22:42:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.17.0rc2"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.17.0rc2",
+    "publishedAt": "2021-05-19T23:42:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.17.0rc3"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.17.0rc3",
+    "publishedAt": "2021-05-21T09:14:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.17.1"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.17.1",
+    "publishedAt": "2021-11-21T18:58:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.17.2"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.17.2",
+    "publishedAt": "2021-11-27T19:55:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.18.0"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.18.0",
+    "publishedAt": "2023-10-02T16:05:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.18.0rc1"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.18.0rc1",
+    "publishedAt": "2023-10-02T11:56:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.18.1"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.18.1",
+    "publishedAt": "2023-10-11T07:47:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.19.0"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.19.0",
+    "publishedAt": "2023-11-19T11:46:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.19.1"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.19.1",
+    "publishedAt": "2024-03-11T19:18:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.19.2"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.19.2",
+    "publishedAt": "2024-06-13T10:29:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.20.0"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.20.0",
+    "publishedAt": "2025-01-10T08:48:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.20.0b2"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.20.0b2",
+    "publishedAt": "2025-01-10T08:26:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.20.1"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.20.1",
+    "publishedAt": "2025-01-26T14:12:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.21.0"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.21.0",
+    "publishedAt": "2025-05-19T11:31:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.21.0rc1"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.21.0rc1",
+    "publishedAt": "2025-05-19T07:04:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.21.0rc2"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.21.0rc2",
+    "publishedAt": "2025-05-19T09:42:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.21.1"
+    },
+    "purl": "pkg:pypi/certgrinderd@0.21.1",
+    "publishedAt": "2026-06-01T06:40:07Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "PYPI",
+   "name": "certgrinderd",
+   "version": "0.21.1"
+  },
+  "purl": "pkg:pypi/certgrinderd@0.21.1",
+  "publishedAt": "2026-06-01T06:40:07Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "BSD-3-Clause"
+  ],
+  "licenseDetails": [
+   {
+    "license": "BSD 3-Clause License",
+    "spdx": "BSD-3-Clause"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/tykling/certgrinder"
+   },
+   {
+    "label": "HOMEPAGE",
+    "url": "https://github.com/tykling/certgrinder"
+   },
+   {
+    "label": "DOCUMENTATION",
+    "url": "https://certgrinder.readthedocs.org/"
+   },
+   {
+    "label": "ATTESTATION",
+    "url": "https://pypi.org/integrity/certgrinderd/0.21.1/certgrinderd-0.21.1-py3-none-any.whl/provenance"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [
+   {
+    "type": "https://docs.pypi.org/attestations/publish/v1",
+    "url": "https://pypi.org/integrity/certgrinderd/0.21.1/certgrinderd-0.21.1-py3-none-any.whl/provenance",
+    "verified": true,
+    "sourceRepository": "https://github.com/tykling/certgrinder",
+    "commit": "b2e6cffb4394ddc5df9e46067a1cb401cc7e2d80"
+   }
+  ],
+  "registries": [
+   "https://pypi.org/simple"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/tykling/certgrinder"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   },
+   {
+    "projectKey": {
+     "id": "github.com/tykling/certgrinder"
+    },
+    "relationProvenance": "PYPI_PUBLISH_ATTESTATION",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "certgrinderd",
+    "versionString": "0.21.1",
+    "source": "PYPI_RELEASE_FILENAME"
+   },
+   {
+    "packageName": "certgrinderd",
+    "versionString": "0.21.1",
+    "source": "PYPI_METADATA_FILE"
+   }
+  ],
+  "cooldown": {
+   "end": "2026-06-06T06:40:07Z",
+   "description": ""
+  },
+  "projectStatus": {
+   "status": "active",
+   "reason": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certgrinderd",
+     "version": "0.21.1"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "acme",
+     "version": "5.6.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "annotated-types",
+     "version": "0.7.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certbot",
+     "version": "5.6.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certifi",
+     "version": "2026.6.17"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cffi",
+     "version": "2.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "charset-normalizer",
+     "version": "3.4.9"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "configargparse",
+     "version": "1.7.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "configobj",
+     "version": "5.0.9"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cryptography",
+     "version": "48.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "distro",
+     "version": "1.9.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "idna",
+     "version": "3.18.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "josepy",
+     "version": "2.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "parsedatetime",
+     "version": "2.6.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pid",
+     "version": "3.0.4"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pycparser",
+     "version": "3.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pydantic",
+     "version": "2.13.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pydantic-core",
+     "version": "2.46.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pydantic-settings",
+     "version": "2.14.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyopenssl",
+     "version": "26.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyrfc3339",
+     "version": "2.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "python-dotenv",
+     "version": "1.2.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyyaml",
+     "version": "6.0.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "requests",
+     "version": "2.34.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "typing-extensions",
+     "version": "4.16.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "typing-inspection",
+     "version": "0.4.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "urllib3",
+     "version": "2.7.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 3,
+    "requirement": "==5.6.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 9,
+    "requirement": "==48.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 14,
+    "requirement": "==3.0.4"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 18,
+    "requirement": "==2.14.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 22,
+    "requirement": "==6.0.1"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 9,
+    "requirement": ">=43.0.0"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 12,
+    "requirement": ">=2.0.0"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 19,
+    "requirement": ">=25.0.0"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 20,
+    "requirement": ""
+   },
+   {
+    "fromNode": 1,
+    "toNode": 23,
+    "requirement": ">=2.25.1"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 1,
+    "requirement": ">=5.6.0"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 7,
+    "requirement": ">=1.5.3"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 8,
+    "requirement": ">=5.0.6"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 9,
+    "requirement": ">=43.0.0"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 10,
+    "requirement": ">=1.7.0"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 12,
+    "requirement": ">=2.0.0"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 13,
+    "requirement": ">=2.6"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 20,
+    "requirement": ""
+   },
+   {
+    "fromNode": 5,
+    "toNode": 15,
+    "requirement": ""
+   },
+   {
+    "fromNode": 9,
+    "toNode": 5,
+    "requirement": ">=2.0.0"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 9,
+    "requirement": ">=1.5"
+   },
+   {
+    "fromNode": 16,
+    "toNode": 2,
+    "requirement": ">=0.6.0"
+   },
+   {
+    "fromNode": 16,
+    "toNode": 17,
+    "requirement": "==2.46.4"
+   },
+   {
+    "fromNode": 16,
+    "toNode": 24,
+    "requirement": ">=4.14.1"
+   },
+   {
+    "fromNode": 16,
+    "toNode": 25,
+    "requirement": ">=0.4.2"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 24,
+    "requirement": ">=4.14.1"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 16,
+    "requirement": ">=2.7.0"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 21,
+    "requirement": ">=0.21.0"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 25,
+    "requirement": ">=0.4.0"
+   },
+   {
+    "fromNode": 19,
+    "toNode": 9,
+    "requirement": "<49,>=46.0.0"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 4,
+    "requirement": ">=2023.5.7"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 6,
+    "requirement": "<4,>=2"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 11,
+    "requirement": "<4,>=2.5"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 26,
+    "requirement": "<3,>=1.26"
+   },
+   {
+    "fromNode": 25,
+    "toNode": 24,
+    "requirement": ">=4.12.0"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/tykling/certgrinder"
+  },
+  "openIssuesCount": 18,
+  "starsCount": 39,
+  "forksCount": 8,
+  "license": "",
+  "description": "Certgrinder is a client/server system for getting LetsEncrypt certificates for your infrastructure. ACME challenges are handled by the Certgrinder server, making it possible to get certificates in highly isolated environments, since only an SSH connection to the Certgrinder server is needed.",
+  "homepage": "",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/tykling/certgrinder",
+    "commit": "b2e6cffb4394ddc5df9e46067a1cb401cc7e2d80"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260715062425-64febf8c5229",
+    "commit": "64febf8c5229a2a65d09c6b543677b28a51abb09"
+   },
+   "checks": [
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#dangerous-workflow"
+     },
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected",
+     "details": []
+    },
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#code-review"
+     },
+     "score": 0,
+     "reason": "Found 1/17 approved changesets -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#maintained"
+     },
+     "score": 10,
+     "reason": "18 commit(s) and 0 issue activity found in the last 90 days -- score normalized to 10",
+     "details": []
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#token-permissions"
+     },
+     "score": 0,
+     "reason": "detected GitHub workflow tokens with excessive permissions",
+     "details": [
+      "Warn: no topLevel permission defined: .github/workflows/ci.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/pypi.yml:1",
+      "Info: no jobLevel write permissions found"
+     ]
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#security-policy"
+     },
+     "score": 0,
+     "reason": "security policy file not detected",
+     "details": [
+      "Warn: no security policy file detected",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze"
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#license"
+     },
+     "score": 0,
+     "reason": "license file not detected",
+     "details": [
+      "Warn: project does not have a license file"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#packaging"
+     },
+     "score": 10,
+     "reason": "packaging workflow detected",
+     "details": [
+      "Info: Project packages its releases by way of GitHub Actions.: .github/workflows/pypi.yml:11"
+     ]
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#pinned-dependencies"
+     },
+     "score": 0,
+     "reason": "dependency not pinned by hash detected -- score normalized to 0",
+     "details": [
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yml:17: update your workflow using https://app.stepsecurity.io/secureworkflow/tykling/certgrinder/ci.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yml:21: update your workflow using https://app.stepsecurity.io/secureworkflow/tykling/certgrinder/ci.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/ci.yml:29: update your workflow using https://app.stepsecurity.io/secureworkflow/tykling/certgrinder/ci.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pypi.yml:23: update your workflow using https://app.stepsecurity.io/secureworkflow/tykling/certgrinder/pypi.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pypi.yml:26: update your workflow using https://app.stepsecurity.io/secureworkflow/tykling/certgrinder/pypi.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/pypi.yml:38: update your workflow using https://app.stepsecurity.io/secureworkflow/tykling/certgrinder/pypi.yml/main?enable=pin",
+      "Warn: containerImage not pinned by hash: docker/certgrinder/Dockerfile:1: pin your Docker image by updating python:3.11 to python:3.11@sha256:13f0881a239ca0d27fb8b2539536ace85f7d680a707bfaa178571e1dbfe85a91",
+      "Warn: pipCommand not pinned by hash: docker/certgrinder/Dockerfile:2",
+      "Warn: pipCommand not pinned by hash: .github/workflows/ci.yml:26",
+      "Warn: pipCommand not pinned by hash: .github/workflows/pypi.yml:32",
+      "Info:   0 out of   4 GitHub-owned GitHubAction dependencies pinned",
+      "Info:   0 out of   2 third-party GitHubAction dependencies pinned",
+      "Info:   0 out of   1 containerImage dependencies pinned",
+      "Info:   0 out of   3 pipCommand dependencies pinned"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#branch-protection"
+     },
+     "score": -1,
+     "reason": "internal error: error during branchesHandler.setup: internal error: some github tokens can't read classic branch protection rules: https://github.com/ossf/scorecard-action/blob/main/docs/authentication/fine-grained-auth-token.md",
+     "details": []
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0",
+     "details": [
+      "Warn: 0 commits out of 14 are checked with a SAST tool"
+     ]
+    }
+   ],
+   "overallScore": 4.3,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 88915616,
+  "node_id": "MDEwOlJlcG9zaXRvcnk4ODkxNTYxNg==",
+  "name": "certgrinder",
+  "full_name": "tykling/certgrinder",
+  "private": false,
+  "owner": {
+   "login": "tykling",
+   "id": 1965355,
+   "node_id": "MDQ6VXNlcjE5NjUzNTU=",
+   "avatar_url": "https://avatars.githubusercontent.com/u/1965355?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/tykling",
+   "html_url": "https://github.com/tykling",
+   "followers_url": "https://api.github.com/users/tykling/followers",
+   "following_url": "https://api.github.com/users/tykling/following{/other_user}",
+   "gists_url": "https://api.github.com/users/tykling/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/tykling/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/tykling/subscriptions",
+   "organizations_url": "https://api.github.com/users/tykling/orgs",
+   "repos_url": "https://api.github.com/users/tykling/repos",
+   "events_url": "https://api.github.com/users/tykling/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/tykling/received_events",
+   "type": "User",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/tykling/certgrinder",
+  "description": "Certgrinder is a client/server system for getting LetsEncrypt certificates for your infrastructure. ACME challenges are handled by the Certgrinder server, making it possible to get certificates in highly isolated environments, since only an SSH connection to the Certgrinder server is needed.",
+  "fork": false,
+  "url": "https://api.github.com/repos/tykling/certgrinder",
+  "forks_url": "https://api.github.com/repos/tykling/certgrinder/forks",
+  "keys_url": "https://api.github.com/repos/tykling/certgrinder/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/tykling/certgrinder/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/tykling/certgrinder/teams",
+  "hooks_url": "https://api.github.com/repos/tykling/certgrinder/hooks",
+  "issue_events_url": "https://api.github.com/repos/tykling/certgrinder/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/tykling/certgrinder/events",
+  "assignees_url": "https://api.github.com/repos/tykling/certgrinder/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/tykling/certgrinder/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/tykling/certgrinder/tags",
+  "blobs_url": "https://api.github.com/repos/tykling/certgrinder/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/tykling/certgrinder/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/tykling/certgrinder/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/tykling/certgrinder/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/tykling/certgrinder/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/tykling/certgrinder/languages",
+  "stargazers_url": "https://api.github.com/repos/tykling/certgrinder/stargazers",
+  "contributors_url": "https://api.github.com/repos/tykling/certgrinder/contributors",
+  "subscribers_url": "https://api.github.com/repos/tykling/certgrinder/subscribers",
+  "subscription_url": "https://api.github.com/repos/tykling/certgrinder/subscription",
+  "commits_url": "https://api.github.com/repos/tykling/certgrinder/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/tykling/certgrinder/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/tykling/certgrinder/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/tykling/certgrinder/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/tykling/certgrinder/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/tykling/certgrinder/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/tykling/certgrinder/merges",
+  "archive_url": "https://api.github.com/repos/tykling/certgrinder/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/tykling/certgrinder/downloads",
+  "issues_url": "https://api.github.com/repos/tykling/certgrinder/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/tykling/certgrinder/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/tykling/certgrinder/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/tykling/certgrinder/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/tykling/certgrinder/labels{/name}",
+  "releases_url": "https://api.github.com/repos/tykling/certgrinder/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/tykling/certgrinder/deployments",
+  "created_at": "2017-04-20T22:24:22Z",
+  "updated_at": "2026-06-01T06:39:14Z",
+  "pushed_at": "2026-07-21T11:12:53Z",
+  "git_url": "git://github.com/tykling/certgrinder.git",
+  "ssh_url": "git@github.com:tykling/certgrinder.git",
+  "clone_url": "https://github.com/tykling/certgrinder.git",
+  "svn_url": "https://github.com/tykling/certgrinder",
+  "homepage": "",
+  "size": 1170,
+  "stargazers_count": 39,
+  "watchers_count": 39,
+  "language": "Python",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 8,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 33,
+  "license": null,
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [
+   "certbot",
+   "letsencrypt",
+   "ocsp",
+   "pki",
+   "spki",
+   "tlsa",
+   "x509"
+  ],
+  "visibility": "public",
+  "forks": 8,
+  "open_issues": 33,
+  "watchers": 39,
+  "default_branch": "main",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "network_count": 8,
+  "subscribers_count": 1
+ },
+ "funding": [
+  {
+   "platform": "GITHUB",
+   "url": "https://github.com/tykling"
+  }
+ ]
+}

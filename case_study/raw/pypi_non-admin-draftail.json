@@ -1,0 +1,1180 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "PYPI",
+   "name": "non-admin-draftail"
+  },
+  "purl": "pkg:pypi/non-admin-draftail",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "non-admin-draftail",
+     "version": "0.1.0"
+    },
+    "purl": "pkg:pypi/non-admin-draftail@0.1.0",
+    "publishedAt": "2019-12-17T11:24:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "non-admin-draftail",
+     "version": "0.1.1"
+    },
+    "purl": "pkg:pypi/non-admin-draftail@0.1.1",
+    "publishedAt": "2019-12-17T11:41:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "non-admin-draftail",
+     "version": "0.1.2"
+    },
+    "purl": "pkg:pypi/non-admin-draftail@0.1.2",
+    "publishedAt": "2019-12-17T14:42:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "non-admin-draftail",
+     "version": "0.10.0"
+    },
+    "purl": "pkg:pypi/non-admin-draftail@0.10.0",
+    "publishedAt": "2020-11-20T15:40:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "non-admin-draftail",
+     "version": "0.11.0"
+    },
+    "purl": "pkg:pypi/non-admin-draftail@0.11.0",
+    "publishedAt": "2021-02-22T14:36:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "non-admin-draftail",
+     "version": "0.12.0"
+    },
+    "purl": "pkg:pypi/non-admin-draftail@0.12.0",
+    "publishedAt": "2021-06-02T08:49:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "non-admin-draftail",
+     "version": "0.12.1"
+    },
+    "purl": "pkg:pypi/non-admin-draftail@0.12.1",
+    "publishedAt": "2021-06-17T15:19:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "non-admin-draftail",
+     "version": "0.15.0"
+    },
+    "purl": "pkg:pypi/non-admin-draftail@0.15.0",
+    "publishedAt": "2021-11-05T15:47:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "non-admin-draftail",
+     "version": "0.15.1"
+    },
+    "purl": "pkg:pypi/non-admin-draftail@0.15.1",
+    "publishedAt": "2022-02-08T21:25:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "non-admin-draftail",
+     "version": "0.16.0"
+    },
+    "purl": "pkg:pypi/non-admin-draftail@0.16.0",
+    "publishedAt": "2023-01-30T21:10:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "non-admin-draftail",
+     "version": "0.17.0"
+    },
+    "purl": "pkg:pypi/non-admin-draftail@0.17.0",
+    "publishedAt": "2023-02-09T20:29:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "non-admin-draftail",
+     "version": "0.17.1"
+    },
+    "purl": "pkg:pypi/non-admin-draftail@0.17.1",
+    "publishedAt": "2023-02-28T16:35:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "non-admin-draftail",
+     "version": "0.17.2"
+    },
+    "purl": "pkg:pypi/non-admin-draftail@0.17.2",
+    "publishedAt": "2023-06-14T09:56:36Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "non-admin-draftail",
+     "version": "0.2.0"
+    },
+    "purl": "pkg:pypi/non-admin-draftail@0.2.0",
+    "publishedAt": "2019-12-18T09:39:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "non-admin-draftail",
+     "version": "0.3.0"
+    },
+    "purl": "pkg:pypi/non-admin-draftail@0.3.0",
+    "publishedAt": "2020-02-03T17:37:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "non-admin-draftail",
+     "version": "0.3.1"
+    },
+    "purl": "pkg:pypi/non-admin-draftail@0.3.1",
+    "publishedAt": "2020-07-08T15:19:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "non-admin-draftail",
+     "version": "0.4.1"
+    },
+    "purl": "pkg:pypi/non-admin-draftail@0.4.1",
+    "publishedAt": "2020-08-17T13:08:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "non-admin-draftail",
+     "version": "0.9.0"
+    },
+    "purl": "pkg:pypi/non-admin-draftail@0.9.0",
+    "publishedAt": "2020-09-14T12:59:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "PYPI",
+   "name": "non-admin-draftail",
+   "version": "0.17.2"
+  },
+  "purl": "pkg:pypi/non-admin-draftail@0.17.2",
+  "publishedAt": "2023-06-14T09:56:36Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "MIT",
+    "spdx": "MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/timonweb/non-admin-draftail"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://pypi.org/simple"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/timonweb/non-admin-draftail"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "non_admin_draftail",
+    "versionString": "0.17.2",
+    "source": "PYPI_RELEASE_FILENAME"
+   },
+   {
+    "packageName": "non-admin-draftail",
+    "versionString": "0.17.2",
+    "source": "PYPI_METADATA_FILE"
+   }
+  ],
+  "cooldown": {
+   "end": "2023-06-19T09:56:36Z",
+   "description": ""
+  },
+  "projectStatus": {
+   "status": "active",
+   "reason": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "non-admin-draftail",
+     "version": "0.17.2"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "anyascii",
+     "version": "0.3.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "asgiref",
+     "version": "3.11.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "beautifulsoup4",
+     "version": "4.15.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certifi",
+     "version": "2026.6.17"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "charset-normalizer",
+     "version": "3.4.9"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "defusedxml",
+     "version": "0.7.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "django",
+     "version": "6.0.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "django-filter",
+     "version": "25.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "django-modelcluster",
+     "version": "6.5.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "django-permissionedforms",
+     "version": "0.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "django-stubs-ext",
+     "version": "6.0.6"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "django-taggit",
+     "version": "6.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "django-tasks",
+     "version": "0.12.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "django-treebeard",
+     "version": "5.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "djangorestframework",
+     "version": "3.17.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "draftjs-exporter",
+     "version": "5.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "et-xmlfile",
+     "version": "2.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "filetype",
+     "version": "1.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "idna",
+     "version": "3.18.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "laces",
+     "version": "0.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "modelsearch",
+     "version": "1.3.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "openpyxl",
+     "version": "3.1.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pillow",
+     "version": "12.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pillow-heif",
+     "version": "1.4.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "requests",
+     "version": "2.34.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "soupsieve",
+     "version": "2.8.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "sqlparse",
+     "version": "0.5.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "telepath",
+     "version": "0.3.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "typing-extensions",
+     "version": "4.16.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "urllib3",
+     "version": "2.7.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wagtail",
+     "version": "7.4.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "willow",
+     "version": "1.12.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 31,
+    "requirement": ">=4.1"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 26,
+    "requirement": ">=1.6.1"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 29,
+    "requirement": ">=4.0.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 2,
+    "requirement": ">=3.9.1"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 27,
+    "requirement": ">=0.5.0"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 7,
+    "requirement": ">=5.2"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 7,
+    "requirement": ">=4.2"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 7,
+    "requirement": ""
+   },
+   {
+    "fromNode": 11,
+    "toNode": 7,
+    "requirement": ""
+   },
+   {
+    "fromNode": 11,
+    "toNode": 29,
+    "requirement": ""
+   },
+   {
+    "fromNode": 12,
+    "toNode": 7,
+    "requirement": ">=4.1"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 7,
+    "requirement": ">=4.2"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 11,
+    "requirement": ""
+   },
+   {
+    "fromNode": 13,
+    "toNode": 29,
+    "requirement": ""
+   },
+   {
+    "fromNode": 14,
+    "toNode": 7,
+    "requirement": ">=5.2"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 7,
+    "requirement": ">=4.2"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 7,
+    "requirement": ">=3.2"
+   },
+   {
+    "fromNode": 21,
+    "toNode": 7,
+    "requirement": ">=4.2"
+   },
+   {
+    "fromNode": 21,
+    "toNode": 13,
+    "requirement": "<0.13,>=0.7"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 17,
+    "requirement": ""
+   },
+   {
+    "fromNode": 24,
+    "toNode": 23,
+    "requirement": ">=11.1.0"
+   },
+   {
+    "fromNode": 25,
+    "toNode": 4,
+    "requirement": ">=2023.5.7"
+   },
+   {
+    "fromNode": 25,
+    "toNode": 5,
+    "requirement": "<4,>=2"
+   },
+   {
+    "fromNode": 25,
+    "toNode": 19,
+    "requirement": "<4,>=2.5"
+   },
+   {
+    "fromNode": 25,
+    "toNode": 30,
+    "requirement": "<3,>=1.26"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 1,
+    "requirement": ">=0.1.5"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 3,
+    "requirement": "<5,>=4.13.3"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 7,
+    "requirement": ">=5.2"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 8,
+    "requirement": ">=23.3"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 9,
+    "requirement": "<7.0,>=6.5"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 10,
+    "requirement": "<1.0,>=0.1"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 12,
+    "requirement": "<7,>=5.0"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 13,
+    "requirement": "<0.13,>=0.9"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 14,
+    "requirement": "<6.0,>=4.8"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 15,
+    "requirement": "<4.0,>=3.15.1"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 16,
+    "requirement": "<6.0,>=2.1.5"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 20,
+    "requirement": "<0.2,>=0.1"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 21,
+    "requirement": "<1.4,>=1.3"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 22,
+    "requirement": "<4.0,>=3.0.10"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 23,
+    "requirement": ">=9.1.0"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 25,
+    "requirement": "<3.0,>=2.11.1"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 28,
+    "requirement": "<1,>=0.3.1"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 32,
+    "requirement": "<2,>=1.11.0"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 6,
+    "requirement": ">=0.7,<1.0"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 18,
+    "requirement": ">=1.0.10,!=1.1.0"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 24,
+    "requirement": ">=1.0.0"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/timonweb/non-admin-draftail"
+  },
+  "openIssuesCount": 7,
+  "starsCount": 20,
+  "forksCount": 6,
+  "license": "BSD-3-Clause",
+  "description": "",
+  "homepage": "",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/timonweb/non-admin-draftail",
+    "commit": "87c790a5215012192f9f6946fcb13963676fd416"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260715062425-64febf8c5229",
+    "commit": "64febf8c5229a2a65d09c6b543677b28a51abb09"
+   },
+   "checks": [
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#code-review"
+     },
+     "score": 1,
+     "reason": "Found 3/20 approved changesets -- score normalized to 1",
+     "details": []
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#maintained"
+     },
+     "score": 0,
+     "reason": "0 commit(s) and 0 issue activity found in the last 90 days -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#token-permissions"
+     },
+     "score": 0,
+     "reason": "detected GitHub workflow tokens with excessive permissions",
+     "details": [
+      "Warn: no topLevel permission defined: .github/workflows/tests.yml:1",
+      "Info: no jobLevel write permissions found"
+     ]
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#dangerous-workflow"
+     },
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected",
+     "details": []
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#pinned-dependencies"
+     },
+     "score": 0,
+     "reason": "dependency not pinned by hash detected -- score normalized to 0",
+     "details": [
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/tests.yml:13: update your workflow using https://app.stepsecurity.io/secureworkflow/timonweb/wagtail-non-admin-draftail/tests.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/tests.yml:16: update your workflow using https://app.stepsecurity.io/secureworkflow/timonweb/wagtail-non-admin-draftail/tests.yml/master?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/tests.yml:17: update your workflow using https://app.stepsecurity.io/secureworkflow/timonweb/wagtail-non-admin-draftail/tests.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/tests.yml:28: update your workflow using https://app.stepsecurity.io/secureworkflow/timonweb/wagtail-non-admin-draftail/tests.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/tests.yml:30: update your workflow using https://app.stepsecurity.io/secureworkflow/timonweb/wagtail-non-admin-draftail/tests.yml/master?enable=pin",
+      "Warn: pipCommand not pinned by hash: .github/workflows/tests.yml:35",
+      "Warn: pipCommand not pinned by hash: .github/workflows/tests.yml:36",
+      "Info:   0 out of   4 GitHub-owned GitHubAction dependencies pinned",
+      "Info:   0 out of   1 third-party GitHubAction dependencies pinned",
+      "Info:   0 out of   2 pipCommand dependencies pinned"
+     ]
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#security-policy"
+     },
+     "score": 0,
+     "reason": "security policy file not detected",
+     "details": [
+      "Warn: no security policy file detected",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#license"
+     },
+     "score": 10,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE:0",
+      "Info: FSF or OSI recognized license: BSD 3-Clause \"New\" or \"Revised\" License: LICENSE:0"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#branch-protection"
+     },
+     "score": 0,
+     "reason": "branch protection not enabled on development/release branches",
+     "details": [
+      "Warn: branch protection not enabled for branch 'master'"
+     ]
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0",
+     "details": [
+      "Warn: 0 commits out of 14 are checked with a SAST tool"
+     ]
+    }
+   ],
+   "overallScore": 2.9,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 228602379,
+  "node_id": "MDEwOlJlcG9zaXRvcnkyMjg2MDIzNzk=",
+  "name": "wagtail-non-admin-draftail",
+  "full_name": "timonweb/wagtail-non-admin-draftail",
+  "private": false,
+  "owner": {
+   "login": "timonweb",
+   "id": 483900,
+   "node_id": "MDQ6VXNlcjQ4MzkwMA==",
+   "avatar_url": "https://avatars.githubusercontent.com/u/483900?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/timonweb",
+   "html_url": "https://github.com/timonweb",
+   "followers_url": "https://api.github.com/users/timonweb/followers",
+   "following_url": "https://api.github.com/users/timonweb/following{/other_user}",
+   "gists_url": "https://api.github.com/users/timonweb/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/timonweb/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/timonweb/subscriptions",
+   "organizations_url": "https://api.github.com/users/timonweb/orgs",
+   "repos_url": "https://api.github.com/users/timonweb/repos",
+   "events_url": "https://api.github.com/users/timonweb/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/timonweb/received_events",
+   "type": "User",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/timonweb/wagtail-non-admin-draftail",
+  "description": null,
+  "fork": false,
+  "url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail",
+  "forks_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/forks",
+  "keys_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/teams",
+  "hooks_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/hooks",
+  "issue_events_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/events",
+  "assignees_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/tags",
+  "blobs_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/languages",
+  "stargazers_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/stargazers",
+  "contributors_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/contributors",
+  "subscribers_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/subscribers",
+  "subscription_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/subscription",
+  "commits_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/merges",
+  "archive_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/downloads",
+  "issues_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/labels{/name}",
+  "releases_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/timonweb/wagtail-non-admin-draftail/deployments",
+  "created_at": "2019-12-17T11:32:01Z",
+  "updated_at": "2025-10-30T09:51:25Z",
+  "pushed_at": "2025-06-24T14:27:55Z",
+  "git_url": "git://github.com/timonweb/wagtail-non-admin-draftail.git",
+  "ssh_url": "git@github.com:timonweb/wagtail-non-admin-draftail.git",
+  "clone_url": "https://github.com/timonweb/wagtail-non-admin-draftail.git",
+  "svn_url": "https://github.com/timonweb/wagtail-non-admin-draftail",
+  "homepage": "",
+  "size": 2986,
+  "stargazers_count": 20,
+  "watchers_count": 20,
+  "language": "Python",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 6,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 7,
+  "license": {
+   "key": "bsd-3-clause",
+   "name": "BSD 3-Clause \"New\" or \"Revised\" License",
+   "spdx_id": "BSD-3-Clause",
+   "url": "https://api.github.com/licenses/bsd-3-clause",
+   "node_id": "MDc6TGljZW5zZTU="
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [
+   "django",
+   "wagtail"
+  ],
+  "visibility": "public",
+  "forks": 6,
+  "open_issues": 7,
+  "watchers": 20,
+  "default_branch": "master",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "network_count": 6,
+  "subscribers_count": 1
+ },
+ "funding": []
+}

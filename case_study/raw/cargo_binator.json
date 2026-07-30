@@ -1,0 +1,1815 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "CARGO",
+   "name": "binator"
+  },
+  "purl": "pkg:cargo/binator",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "binator",
+     "version": "0.0.0"
+    },
+    "purl": "pkg:cargo/binator@0.0.0",
+    "publishedAt": "2021-10-31T17:35:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "binator",
+     "version": "0.0.1"
+    },
+    "purl": "pkg:cargo/binator@0.0.1",
+    "publishedAt": "2021-10-31T17:34:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "binator",
+     "version": "0.0.2"
+    },
+    "purl": "pkg:cargo/binator@0.0.2",
+    "publishedAt": "2024-03-13T15:14:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "binator",
+     "version": "0.0.3"
+    },
+    "purl": "pkg:cargo/binator@0.0.3",
+    "publishedAt": "2024-03-13T17:54:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "binator",
+     "version": "0.1.0"
+    },
+    "purl": "pkg:cargo/binator@0.1.0",
+    "publishedAt": "2024-03-22T14:28:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "binator",
+     "version": "0.1.1"
+    },
+    "purl": "pkg:cargo/binator@0.1.1",
+    "publishedAt": "2024-03-22T14:38:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "binator",
+     "version": "0.2.0"
+    },
+    "purl": "pkg:cargo/binator@0.2.0",
+    "publishedAt": "2024-03-22T21:12:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "binator",
+     "version": "0.3.0"
+    },
+    "purl": "pkg:cargo/binator@0.3.0",
+    "publishedAt": "2024-03-26T13:57:15Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "CARGO",
+   "name": "binator",
+   "version": "0.3.0"
+  },
+  "purl": "pkg:cargo/binator@0.3.0",
+  "publishedAt": "2024-03-26T13:57:15Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "Zlib"
+  ],
+  "licenseDetails": [
+   {
+    "license": "Zlib",
+    "spdx": "Zlib"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/binator/self"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://crates.io/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/binator/self"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "binator",
+    "versionString": "0.3.0",
+    "source": "CARGO_CRATES_IO"
+   }
+  ],
+  "cooldown": {
+   "end": "2024-04-05T13:57:15Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "binator",
+     "version": "0.3.0"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "aho-corasick",
+     "version": "1.1.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "atty",
+     "version": "0.2.14"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "autocfg",
+     "version": "1.5.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "bitflags",
+     "version": "2.13.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "cfg-if",
+     "version": "1.0.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "convert_case",
+     "version": "0.4.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "derive_more",
+     "version": "0.99.20"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "derive-new",
+     "version": "0.5.9"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "either",
+     "version": "1.16.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "env_filter",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "env_logger",
+     "version": "0.11.10"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "env_logger",
+     "version": "0.9.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "errno",
+     "version": "0.3.14"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "fastrand",
+     "version": "2.4.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "getrandom",
+     "version": "0.2.17"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "getrandom",
+     "version": "0.4.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "hermit-abi",
+     "version": "0.1.19"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "home",
+     "version": "0.5.12"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "humantime",
+     "version": "2.4.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "lazy_static",
+     "version": "1.5.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "libc",
+     "version": "0.2.186"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "linux-raw-sys",
+     "version": "0.12.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "log",
+     "version": "0.4.33"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "matchers",
+     "version": "0.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "memchr",
+     "version": "2.8.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "num-traits",
+     "version": "0.2.19"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "once_cell",
+     "version": "1.21.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "owo-colors",
+     "version": "3.5.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "paste",
+     "version": "1.0.15"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "pest",
+     "version": "2.8.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "pin-project-lite",
+     "version": "0.2.17"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "ppv-lite86",
+     "version": "0.2.21"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "proc-macro2",
+     "version": "1.0.106"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "quote",
+     "version": "1.0.46"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "r-efi",
+     "version": "6.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "rand",
+     "version": "0.8.6"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "rand_chacha",
+     "version": "0.3.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "rand_core",
+     "version": "0.6.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "regex",
+     "version": "1.8.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "regex-automata",
+     "version": "0.1.10"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "regex-syntax",
+     "version": "0.6.29"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "regex-syntax",
+     "version": "0.7.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "rustc_version",
+     "version": "0.4.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "rustfmt-wrapper",
+     "version": "0.1.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "rustix",
+     "version": "1.1.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "same-file",
+     "version": "1.0.6"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "semver",
+     "version": "0.11.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "semver",
+     "version": "1.0.28"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "semver-parser",
+     "version": "0.10.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "serde",
+     "version": "1.0.210"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "serde_derive",
+     "version": "1.0.210"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "sharded-slab",
+     "version": "0.1.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "smallvec",
+     "version": "1.15.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "syn",
+     "version": "1.0.109"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "syn",
+     "version": "2.0.56"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "tempfile",
+     "version": "3.27.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "termcolor",
+     "version": "1.4.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "test-log",
+     "version": "0.2.15"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "test-log-core",
+     "version": "0.2.21"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "test-log-macros",
+     "version": "0.2.21"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "thiserror",
+     "version": "1.0.65"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "thiserror-impl",
+     "version": "1.0.65"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "thread_local",
+     "version": "1.1.10"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "toolchain_find",
+     "version": "0.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "tracing",
+     "version": "0.1.44"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "tracing-attributes",
+     "version": "0.1.31"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "tracing-core",
+     "version": "0.1.36"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "tracing-subscriber",
+     "version": "0.3.19"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "ucd-trie",
+     "version": "0.1.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "unicode-ident",
+     "version": "1.0.24"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "walkdir",
+     "version": "2.5.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "wasi",
+     "version": "0.11.1+wasi-snapshot-preview1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "winapi",
+     "version": "0.3.9"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "winapi-i686-pc-windows-gnu",
+     "version": "0.4.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "winapi-util",
+     "version": "0.1.11"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "winapi-x86_64-pc-windows-gnu",
+     "version": "0.4.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "windows-link",
+     "version": "0.2.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "windows-sys",
+     "version": "0.61.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "zerocopy",
+     "version": "0.8.54"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "zerocopy-derive",
+     "version": "0.8.54"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 7,
+    "requirement": "^0.99"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 8,
+    "requirement": "^0.5"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 9,
+    "requirement": "^1.7"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 12,
+    "requirement": "^0.9"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 26,
+    "requirement": "^0.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 28,
+    "requirement": "^3"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 29,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 34,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 36,
+    "requirement": "^0.8.4"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 44,
+    "requirement": "^0.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 50,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 53,
+    "requirement": "^1.7"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 54,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 58,
+    "requirement": "^0.2.10"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 65,
+    "requirement": "^0.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 65,
+    "requirement": "^0.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 68,
+    "requirement": "^0.3"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 17,
+    "requirement": "^0.1.6"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 21,
+    "requirement": "^0.2"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 73,
+    "requirement": "^0.3"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 6,
+    "requirement": "^0.4"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 33,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 34,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 43,
+    "requirement": "^0.4"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 55,
+    "requirement": "^2"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 33,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 34,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 54,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 23,
+    "requirement": "^0.4.29"
+   },
+   {
+    "fromNode": 11,
+    "toNode": 10,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 11,
+    "toNode": 23,
+    "requirement": "^0.4.29"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 2,
+    "requirement": "^0.2.5"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 19,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 23,
+    "requirement": "^0.4.8"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 39,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 57,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 21,
+    "requirement": "^0.2"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 78,
+    "requirement": ">=0.52, <0.62"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 5,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 21,
+    "requirement": "^0.2.154"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 72,
+    "requirement": "^0.11"
+   },
+   {
+    "fromNode": 16,
+    "toNode": 5,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 16,
+    "toNode": 21,
+    "requirement": "^0.2.154"
+   },
+   {
+    "fromNode": 16,
+    "toNode": 35,
+    "requirement": "^6"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 21,
+    "requirement": "^0.2.51"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 78,
+    "requirement": "^0.61"
+   },
+   {
+    "fromNode": 24,
+    "toNode": 40,
+    "requirement": "^0.1"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 3,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 25,
+    "requirement": "^2.4.0"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 69,
+    "requirement": "^0.1.5"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 79,
+    "requirement": "^0.8.23"
+   },
+   {
+    "fromNode": 33,
+    "toNode": 70,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 34,
+    "toNode": 33,
+    "requirement": "^1.0.80"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 21,
+    "requirement": "^0.2.22"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 37,
+    "requirement": "^0.3.0"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 38,
+    "requirement": "^0.6.0"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 32,
+    "requirement": "^0.2.8"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 38,
+    "requirement": "^0.6.0"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 15,
+    "requirement": "^0.2"
+   },
+   {
+    "fromNode": 39,
+    "toNode": 1,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 39,
+    "toNode": 25,
+    "requirement": "^2.5.0"
+   },
+   {
+    "fromNode": 39,
+    "toNode": 42,
+    "requirement": "^0.7.2"
+   },
+   {
+    "fromNode": 40,
+    "toNode": 41,
+    "requirement": "^0.6.16"
+   },
+   {
+    "fromNode": 43,
+    "toNode": 48,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 56,
+    "requirement": "^3.2.0"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 61,
+    "requirement": "^1.0.25"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 64,
+    "requirement": "^0.2.0"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 4,
+    "requirement": "^2.4.0"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 13,
+    "requirement": "^0.3.10"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 21,
+    "requirement": "^0.2.182"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 22,
+    "requirement": "^0.12"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 78,
+    "requirement": ">=0.52, <0.62"
+   },
+   {
+    "fromNode": 46,
+    "toNode": 75,
+    "requirement": "^0.1.1"
+   },
+   {
+    "fromNode": 47,
+    "toNode": 49,
+    "requirement": "^0.10.0"
+   },
+   {
+    "fromNode": 49,
+    "toNode": 30,
+    "requirement": "^2.1.0"
+   },
+   {
+    "fromNode": 50,
+    "toNode": 51,
+    "requirement": "=1.0.210"
+   },
+   {
+    "fromNode": 50,
+    "toNode": 51,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 51,
+    "toNode": 33,
+    "requirement": "^1.0.74"
+   },
+   {
+    "fromNode": 51,
+    "toNode": 34,
+    "requirement": "^1.0.35"
+   },
+   {
+    "fromNode": 51,
+    "toNode": 55,
+    "requirement": "^2.0.46"
+   },
+   {
+    "fromNode": 52,
+    "toNode": 20,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 54,
+    "toNode": 33,
+    "requirement": "^1.0.46"
+   },
+   {
+    "fromNode": 54,
+    "toNode": 34,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 54,
+    "toNode": 70,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 55,
+    "toNode": 33,
+    "requirement": "^1.0.75"
+   },
+   {
+    "fromNode": 55,
+    "toNode": 34,
+    "requirement": "^1.0.35"
+   },
+   {
+    "fromNode": 55,
+    "toNode": 70,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 56,
+    "toNode": 14,
+    "requirement": "^2.1.1"
+   },
+   {
+    "fromNode": 56,
+    "toNode": 16,
+    "requirement": ">=0.3.0, <0.5"
+   },
+   {
+    "fromNode": 56,
+    "toNode": 27,
+    "requirement": "^1.19.0"
+   },
+   {
+    "fromNode": 56,
+    "toNode": 45,
+    "requirement": "^1.1.4"
+   },
+   {
+    "fromNode": 56,
+    "toNode": 78,
+    "requirement": ">=0.52, <0.62"
+   },
+   {
+    "fromNode": 57,
+    "toNode": 75,
+    "requirement": "^0.1.3"
+   },
+   {
+    "fromNode": 58,
+    "toNode": 11,
+    "requirement": "^0.11"
+   },
+   {
+    "fromNode": 58,
+    "toNode": 60,
+    "requirement": "^0.2.15"
+   },
+   {
+    "fromNode": 58,
+    "toNode": 68,
+    "requirement": "^0.3.17"
+   },
+   {
+    "fromNode": 59,
+    "toNode": 33,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 59,
+    "toNode": 34,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 59,
+    "toNode": 55,
+    "requirement": "^2.0"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 55,
+    "requirement": "^2.0"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 59,
+    "requirement": "=0.2.21"
+   },
+   {
+    "fromNode": 61,
+    "toNode": 62,
+    "requirement": "=1.0.65"
+   },
+   {
+    "fromNode": 62,
+    "toNode": 33,
+    "requirement": "^1.0.74"
+   },
+   {
+    "fromNode": 62,
+    "toNode": 34,
+    "requirement": "^1.0.35"
+   },
+   {
+    "fromNode": 62,
+    "toNode": 55,
+    "requirement": "^2.0.46"
+   },
+   {
+    "fromNode": 63,
+    "toNode": 5,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 64,
+    "toNode": 18,
+    "requirement": "^0.5"
+   },
+   {
+    "fromNode": 64,
+    "toNode": 20,
+    "requirement": "^1.4"
+   },
+   {
+    "fromNode": 64,
+    "toNode": 39,
+    "requirement": "^1.4"
+   },
+   {
+    "fromNode": 64,
+    "toNode": 47,
+    "requirement": "^0.11"
+   },
+   {
+    "fromNode": 64,
+    "toNode": 71,
+    "requirement": "^2.3"
+   },
+   {
+    "fromNode": 65,
+    "toNode": 31,
+    "requirement": "^0.2.9"
+   },
+   {
+    "fromNode": 65,
+    "toNode": 66,
+    "requirement": "^0.1.31"
+   },
+   {
+    "fromNode": 65,
+    "toNode": 67,
+    "requirement": "^0.1.36"
+   },
+   {
+    "fromNode": 66,
+    "toNode": 33,
+    "requirement": "^1.0.60"
+   },
+   {
+    "fromNode": 66,
+    "toNode": 34,
+    "requirement": "^1.0.20"
+   },
+   {
+    "fromNode": 66,
+    "toNode": 55,
+    "requirement": "^2.0"
+   },
+   {
+    "fromNode": 67,
+    "toNode": 27,
+    "requirement": "^1.13.0"
+   },
+   {
+    "fromNode": 68,
+    "toNode": 24,
+    "requirement": "^0.1.0"
+   },
+   {
+    "fromNode": 68,
+    "toNode": 27,
+    "requirement": "^1.13.0"
+   },
+   {
+    "fromNode": 68,
+    "toNode": 39,
+    "requirement": "^1.6.0"
+   },
+   {
+    "fromNode": 68,
+    "toNode": 52,
+    "requirement": "^0.1.4"
+   },
+   {
+    "fromNode": 68,
+    "toNode": 63,
+    "requirement": "^1.1.4"
+   },
+   {
+    "fromNode": 68,
+    "toNode": 65,
+    "requirement": "^0.1.41"
+   },
+   {
+    "fromNode": 68,
+    "toNode": 67,
+    "requirement": "^0.1.30"
+   },
+   {
+    "fromNode": 71,
+    "toNode": 46,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 71,
+    "toNode": 75,
+    "requirement": "^0.1.1"
+   },
+   {
+    "fromNode": 73,
+    "toNode": 74,
+    "requirement": "^0.4"
+   },
+   {
+    "fromNode": 73,
+    "toNode": 76,
+    "requirement": "^0.4"
+   },
+   {
+    "fromNode": 75,
+    "toNode": 78,
+    "requirement": ">=0.48.0, <=0.61"
+   },
+   {
+    "fromNode": 78,
+    "toNode": 77,
+    "requirement": "^0.2.1"
+   },
+   {
+    "fromNode": 79,
+    "toNode": 80,
+    "requirement": "=0.8.54"
+   },
+   {
+    "fromNode": 80,
+    "toNode": 33,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 80,
+    "toNode": 34,
+    "requirement": "^1.0.40"
+   },
+   {
+    "fromNode": 80,
+    "toNode": 55,
+    "requirement": "^2.0.46"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 3,
+  "directDependentCount": 3,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/binator/self"
+  },
+  "openIssuesCount": 0,
+  "starsCount": 6,
+  "forksCount": 0,
+  "license": "non-standard",
+  "description": "Parser conbinator lib for Rust",
+  "homepage": ""
+ },
+ "github_repo_api": {
+  "id": 771545445,
+  "node_id": "R_kgDOLfzZZQ",
+  "name": "self",
+  "full_name": "binator/self",
+  "private": false,
+  "owner": {
+   "login": "binator",
+   "id": 93438755,
+   "node_id": "O_kgDOBZHDIw",
+   "avatar_url": "https://avatars.githubusercontent.com/u/93438755?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/binator",
+   "html_url": "https://github.com/binator",
+   "followers_url": "https://api.github.com/users/binator/followers",
+   "following_url": "https://api.github.com/users/binator/following{/other_user}",
+   "gists_url": "https://api.github.com/users/binator/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/binator/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/binator/subscriptions",
+   "organizations_url": "https://api.github.com/users/binator/orgs",
+   "repos_url": "https://api.github.com/users/binator/repos",
+   "events_url": "https://api.github.com/users/binator/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/binator/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/binator/self",
+  "description": "Parser conbinator lib for Rust",
+  "fork": false,
+  "url": "https://api.github.com/repos/binator/self",
+  "forks_url": "https://api.github.com/repos/binator/self/forks",
+  "keys_url": "https://api.github.com/repos/binator/self/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/binator/self/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/binator/self/teams",
+  "hooks_url": "https://api.github.com/repos/binator/self/hooks",
+  "issue_events_url": "https://api.github.com/repos/binator/self/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/binator/self/events",
+  "assignees_url": "https://api.github.com/repos/binator/self/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/binator/self/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/binator/self/tags",
+  "blobs_url": "https://api.github.com/repos/binator/self/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/binator/self/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/binator/self/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/binator/self/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/binator/self/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/binator/self/languages",
+  "stargazers_url": "https://api.github.com/repos/binator/self/stargazers",
+  "contributors_url": "https://api.github.com/repos/binator/self/contributors",
+  "subscribers_url": "https://api.github.com/repos/binator/self/subscribers",
+  "subscription_url": "https://api.github.com/repos/binator/self/subscription",
+  "commits_url": "https://api.github.com/repos/binator/self/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/binator/self/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/binator/self/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/binator/self/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/binator/self/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/binator/self/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/binator/self/merges",
+  "archive_url": "https://api.github.com/repos/binator/self/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/binator/self/downloads",
+  "issues_url": "https://api.github.com/repos/binator/self/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/binator/self/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/binator/self/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/binator/self/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/binator/self/labels{/name}",
+  "releases_url": "https://api.github.com/repos/binator/self/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/binator/self/deployments",
+  "created_at": "2024-03-13T13:52:47Z",
+  "updated_at": "2025-07-20T19:18:01Z",
+  "pushed_at": "2024-04-09T14:01:26Z",
+  "git_url": "git://github.com/binator/self.git",
+  "ssh_url": "git@github.com:binator/self.git",
+  "clone_url": "https://github.com/binator/self.git",
+  "svn_url": "https://github.com/binator/self",
+  "homepage": "",
+  "size": 105,
+  "stargazers_count": 6,
+  "watchers_count": 6,
+  "language": "Rust",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 0,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 0,
+  "license": {
+   "key": "zlib",
+   "name": "zlib License",
+   "spdx_id": "Zlib",
+   "url": "https://api.github.com/licenses/zlib",
+   "node_id": "MDc6TGljZW5zZTI3"
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [
+   "parser",
+   "parser-combinators",
+   "parsing",
+   "rust"
+  ],
+  "visibility": "public",
+  "forks": 0,
+  "open_issues": 0,
+  "watchers": 6,
+  "default_branch": "main",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "binator",
+   "id": 93438755,
+   "node_id": "O_kgDOBZHDIw",
+   "avatar_url": "https://avatars.githubusercontent.com/u/93438755?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/binator",
+   "html_url": "https://github.com/binator",
+   "followers_url": "https://api.github.com/users/binator/followers",
+   "following_url": "https://api.github.com/users/binator/following{/other_user}",
+   "gists_url": "https://api.github.com/users/binator/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/binator/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/binator/subscriptions",
+   "organizations_url": "https://api.github.com/users/binator/orgs",
+   "repos_url": "https://api.github.com/users/binator/repos",
+   "events_url": "https://api.github.com/users/binator/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/binator/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 0,
+  "subscribers_count": 1
+ },
+ "funding": []
+}

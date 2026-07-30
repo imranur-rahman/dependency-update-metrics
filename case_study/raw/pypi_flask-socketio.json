@@ -1,0 +1,1829 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "PYPI",
+   "name": "flask-socketio"
+  },
+  "purl": "pkg:pypi/flask-socketio",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "0.1.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@0.1.0",
+    "publishedAt": "2014-02-10T00:58:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "0.2.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@0.2.0",
+    "publishedAt": "2014-02-13T15:52:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "0.2.1"
+    },
+    "purl": "pkg:pypi/flask-socketio@0.2.1",
+    "publishedAt": "2014-02-15T21:27:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "0.2.2"
+    },
+    "purl": "pkg:pypi/flask-socketio@0.2.2",
+    "publishedAt": "2014-02-19T15:52:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "0.3.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@0.3.0",
+    "publishedAt": "2014-03-08T06:18:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "0.3.1"
+    },
+    "purl": "pkg:pypi/flask-socketio@0.3.1",
+    "publishedAt": "2014-03-24T02:15:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "0.3.2"
+    },
+    "purl": "pkg:pypi/flask-socketio@0.3.2",
+    "publishedAt": "2014-03-31T02:12:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "0.3.3"
+    },
+    "purl": "pkg:pypi/flask-socketio@0.3.3",
+    "publishedAt": "2014-04-22T14:39:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "0.3.4"
+    },
+    "purl": "pkg:pypi/flask-socketio@0.3.4",
+    "publishedAt": "2014-04-27T01:50:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "0.3.5"
+    },
+    "purl": "pkg:pypi/flask-socketio@0.3.5",
+    "publishedAt": "2014-05-10T04:03:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "0.3.6"
+    },
+    "purl": "pkg:pypi/flask-socketio@0.3.6",
+    "publishedAt": "2014-05-13T05:19:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "0.3.7"
+    },
+    "purl": "pkg:pypi/flask-socketio@0.3.7",
+    "publishedAt": "2014-05-21T05:42:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "0.3.8"
+    },
+    "purl": "pkg:pypi/flask-socketio@0.3.8",
+    "publishedAt": "2014-06-15T01:03:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "0.4.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@0.4.0",
+    "publishedAt": "2014-09-23T15:40:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "0.4.1"
+    },
+    "purl": "pkg:pypi/flask-socketio@0.4.1",
+    "publishedAt": "2014-10-23T19:29:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "0.4.2"
+    },
+    "purl": "pkg:pypi/flask-socketio@0.4.2",
+    "publishedAt": "2014-11-30T16:49:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "0.4.3"
+    },
+    "purl": "pkg:pypi/flask-socketio@0.4.3",
+    "publishedAt": "2014-12-16T23:33:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "0.5.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@0.5.0",
+    "publishedAt": "2015-01-05T05:58:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "0.6.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@0.6.0",
+    "publishedAt": "2015-03-15T00:35:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "1.0.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@1.0.0",
+    "publishedAt": "2015-10-29T08:08:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "1.0.0a1"
+    },
+    "purl": "pkg:pypi/flask-socketio@1.0.0a1",
+    "publishedAt": "2015-08-09T07:39:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "1.0.0b1"
+    },
+    "purl": "pkg:pypi/flask-socketio@1.0.0b1",
+    "publishedAt": "2015-09-20T07:55:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "1.0.0b2"
+    },
+    "purl": "pkg:pypi/flask-socketio@1.0.0b2",
+    "publishedAt": "2015-10-15T15:20:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "1.0.0b3"
+    },
+    "purl": "pkg:pypi/flask-socketio@1.0.0b3",
+    "publishedAt": "2015-10-16T17:24:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "1.0.0b4"
+    },
+    "purl": "pkg:pypi/flask-socketio@1.0.0b4",
+    "publishedAt": "2015-10-18T19:27:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "1.1.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@1.1.0",
+    "publishedAt": "2015-11-19T07:44:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "1.2.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@1.2.0",
+    "publishedAt": "2015-12-03T07:10:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "2.0.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@2.0.0",
+    "publishedAt": "2016-01-10T06:39:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "2.1.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@2.1.0",
+    "publishedAt": "2016-02-08T19:02:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "2.2.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@2.2.0",
+    "publishedAt": "2016-03-06T07:31:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "2.3.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@2.3.0",
+    "publishedAt": "2016-05-15T07:18:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "2.4.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@2.4.0",
+    "publishedAt": "2016-05-31T16:42:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "2.5.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@2.5.0",
+    "publishedAt": "2016-06-28T17:29:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "2.6.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@2.6.0",
+    "publishedAt": "2016-07-24T18:48:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "2.6.1"
+    },
+    "purl": "pkg:pypi/flask-socketio@2.6.1",
+    "publishedAt": "2016-08-02T17:03:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "2.6.2"
+    },
+    "purl": "pkg:pypi/flask-socketio@2.6.2",
+    "publishedAt": "2016-08-09T06:51:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "2.7.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@2.7.0",
+    "publishedAt": "2016-09-01T07:16:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "2.7.1"
+    },
+    "purl": "pkg:pypi/flask-socketio@2.7.1",
+    "publishedAt": "2016-09-04T18:27:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "2.7.2"
+    },
+    "purl": "pkg:pypi/flask-socketio@2.7.2",
+    "publishedAt": "2016-11-04T06:28:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "2.8.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@2.8.0",
+    "publishedAt": "2016-11-26T03:51:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "2.8.1"
+    },
+    "purl": "pkg:pypi/flask-socketio@2.8.1",
+    "publishedAt": "2016-11-27T18:45:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "2.8.2"
+    },
+    "purl": "pkg:pypi/flask-socketio@2.8.2",
+    "publishedAt": "2016-12-16T03:46:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "2.8.3"
+    },
+    "purl": "pkg:pypi/flask-socketio@2.8.3",
+    "publishedAt": "2017-02-13T02:00:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "2.8.4"
+    },
+    "purl": "pkg:pypi/flask-socketio@2.8.4",
+    "publishedAt": "2017-02-17T21:31:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "2.8.5"
+    },
+    "purl": "pkg:pypi/flask-socketio@2.8.5",
+    "publishedAt": "2017-03-02T05:52:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "2.8.6"
+    },
+    "purl": "pkg:pypi/flask-socketio@2.8.6",
+    "publishedAt": "2017-03-21T14:50:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "2.9.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@2.9.0",
+    "publishedAt": "2017-06-26T01:55:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "2.9.1"
+    },
+    "purl": "pkg:pypi/flask-socketio@2.9.1",
+    "publishedAt": "2017-07-16T15:41:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "2.9.2"
+    },
+    "purl": "pkg:pypi/flask-socketio@2.9.2",
+    "publishedAt": "2017-11-17T19:45:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "2.9.3"
+    },
+    "purl": "pkg:pypi/flask-socketio@2.9.3",
+    "publishedAt": "2017-12-11T22:43:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "2.9.4"
+    },
+    "purl": "pkg:pypi/flask-socketio@2.9.4",
+    "publishedAt": "2018-02-25T17:50:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "2.9.5"
+    },
+    "purl": "pkg:pypi/flask-socketio@2.9.5",
+    "publishedAt": "2018-03-09T06:27:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "2.9.6"
+    },
+    "purl": "pkg:pypi/flask-socketio@2.9.6",
+    "publishedAt": "2018-03-10T06:43:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "3.0.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@3.0.0",
+    "publishedAt": "2018-04-30T05:43:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "3.0.1"
+    },
+    "purl": "pkg:pypi/flask-socketio@3.0.1",
+    "publishedAt": "2018-06-03T21:36:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "3.0.2"
+    },
+    "purl": "pkg:pypi/flask-socketio@3.0.2",
+    "publishedAt": "2018-09-12T22:41:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "3.1.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@3.1.0",
+    "publishedAt": "2018-11-26T09:47:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "3.1.1"
+    },
+    "purl": "pkg:pypi/flask-socketio@3.1.1",
+    "publishedAt": "2018-12-08T11:59:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "3.1.2"
+    },
+    "purl": "pkg:pypi/flask-socketio@3.1.2",
+    "publishedAt": "2018-12-21T11:05:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "3.2.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@3.2.0",
+    "publishedAt": "2019-01-23T19:50:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "3.2.1"
+    },
+    "purl": "pkg:pypi/flask-socketio@3.2.1",
+    "publishedAt": "2019-01-24T13:43:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "3.2.2"
+    },
+    "purl": "pkg:pypi/flask-socketio@3.2.2",
+    "publishedAt": "2019-02-12T17:29:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "3.3.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@3.3.0",
+    "publishedAt": "2019-02-16T18:53:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "3.3.1"
+    },
+    "purl": "pkg:pypi/flask-socketio@3.3.1",
+    "publishedAt": "2019-02-16T19:27:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "3.3.2"
+    },
+    "purl": "pkg:pypi/flask-socketio@3.3.2",
+    "publishedAt": "2019-03-09T21:13:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "4.0.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@4.0.0",
+    "publishedAt": "2019-05-19T18:00:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "4.1.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@4.1.0",
+    "publishedAt": "2019-06-09T16:51:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "4.1.1"
+    },
+    "purl": "pkg:pypi/flask-socketio@4.1.1",
+    "publishedAt": "2019-07-29T13:26:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "4.2.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@4.2.0",
+    "publishedAt": "2019-07-29T15:04:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "4.2.1"
+    },
+    "purl": "pkg:pypi/flask-socketio@4.2.1",
+    "publishedAt": "2019-08-05T19:31:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "4.3.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@4.3.0",
+    "publishedAt": "2020-04-20T10:05:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "4.3.1"
+    },
+    "purl": "pkg:pypi/flask-socketio@4.3.1",
+    "publishedAt": "2020-07-02T19:15:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "4.3.2"
+    },
+    "purl": "pkg:pypi/flask-socketio@4.3.2",
+    "publishedAt": "2020-11-30T00:10:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "5.0.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@5.0.0",
+    "publishedAt": "2020-12-13T11:36:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "5.0.1"
+    },
+    "purl": "pkg:pypi/flask-socketio@5.0.1",
+    "publishedAt": "2020-12-19T15:37:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "5.0.2"
+    },
+    "purl": "pkg:pypi/flask-socketio@5.0.2",
+    "publishedAt": "2021-05-14T13:29:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "5.0.3"
+    },
+    "purl": "pkg:pypi/flask-socketio@5.0.3",
+    "publishedAt": "2021-05-15T14:14:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "5.1.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@5.1.0",
+    "publishedAt": "2021-05-28T09:56:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "5.1.1"
+    },
+    "purl": "pkg:pypi/flask-socketio@5.1.1",
+    "publishedAt": "2021-08-01T23:18:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "5.1.2"
+    },
+    "purl": "pkg:pypi/flask-socketio@5.1.2",
+    "publishedAt": "2022-04-24T09:51:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "5.2.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@5.2.0",
+    "publishedAt": "2022-05-22T15:52:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "5.3.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@5.3.0",
+    "publishedAt": "2022-08-23T22:29:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "5.3.1"
+    },
+    "purl": "pkg:pypi/flask-socketio@5.3.1",
+    "publishedAt": "2022-09-11T15:33:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "5.3.2"
+    },
+    "purl": "pkg:pypi/flask-socketio@5.3.2",
+    "publishedAt": "2022-11-20T12:44:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "5.3.3"
+    },
+    "purl": "pkg:pypi/flask-socketio@5.3.3",
+    "publishedAt": "2023-03-17T12:34:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "5.3.4"
+    },
+    "purl": "pkg:pypi/flask-socketio@5.3.4",
+    "publishedAt": "2023-05-03T10:35:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "5.3.5"
+    },
+    "purl": "pkg:pypi/flask-socketio@5.3.5",
+    "publishedAt": "2023-07-26T18:14:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "5.3.6"
+    },
+    "purl": "pkg:pypi/flask-socketio@5.3.6",
+    "publishedAt": "2023-09-05T09:35:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "5.3.7"
+    },
+    "purl": "pkg:pypi/flask-socketio@5.3.7",
+    "publishedAt": "2024-09-02T19:17:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "5.4.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@5.4.0",
+    "publishedAt": "2024-09-30T17:40:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "5.4.1"
+    },
+    "purl": "pkg:pypi/flask-socketio@5.4.1",
+    "publishedAt": "2024-10-01T09:52:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "5.5.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@5.5.0",
+    "publishedAt": "2024-12-18T18:32:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "5.5.1"
+    },
+    "purl": "pkg:pypi/flask-socketio@5.5.1",
+    "publishedAt": "2025-01-06T19:49:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "5.6.0"
+    },
+    "purl": "pkg:pypi/flask-socketio@5.6.0",
+    "publishedAt": "2025-12-25T19:30:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "5.6.1"
+    },
+    "purl": "pkg:pypi/flask-socketio@5.6.1",
+    "publishedAt": "2026-02-21T13:07:51Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "PYPI",
+   "name": "flask-socketio",
+   "version": "5.6.1"
+  },
+  "purl": "pkg:pypi/flask-socketio@5.6.1",
+  "publishedAt": "2026-02-21T13:07:51Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "MIT License",
+    "spdx": "MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/miguelgrinberg/flask-socketio"
+   },
+   {
+    "label": "HOMEPAGE",
+    "url": "https://github.com/miguelgrinberg/flask-socketio"
+   },
+   {
+    "label": "ISSUE_TRACKER",
+    "url": "https://github.com/miguelgrinberg/flask-socketio/issues"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://pypi.org/simple"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/miguelgrinberg/flask-socketio"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   },
+   {
+    "projectKey": {
+     "id": "github.com/miguelgrinberg/flask-socketio"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "ISSUE_TRACKER"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "flask_socketio",
+    "versionString": "5.6.1",
+    "source": "PYPI_RELEASE_FILENAME"
+   },
+   {
+    "packageName": "Flask-SocketIO",
+    "versionString": "5.6.1",
+    "source": "PYPI_METADATA_FILE"
+   }
+  ],
+  "cooldown": {
+   "end": "2026-02-26T13:07:51Z",
+   "description": ""
+  },
+  "projectStatus": {
+   "status": "active",
+   "reason": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask-socketio",
+     "version": "5.6.1"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "bidict",
+     "version": "0.23.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "blinker",
+     "version": "1.9.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "click",
+     "version": "8.4.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask",
+     "version": "3.1.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "h11",
+     "version": "0.16.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "itsdangerous",
+     "version": "2.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jinja2",
+     "version": "3.1.6"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "markupsafe",
+     "version": "3.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "python-engineio",
+     "version": "4.13.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "python-socketio",
+     "version": "5.16.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "simple-websocket",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "werkzeug",
+     "version": "3.1.8"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wsproto",
+     "version": "1.3.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 2,
+    "requirement": ""
+   },
+   {
+    "fromNode": 0,
+    "toNode": 3,
+    "requirement": ""
+   },
+   {
+    "fromNode": 0,
+    "toNode": 4,
+    "requirement": ""
+   },
+   {
+    "fromNode": 0,
+    "toNode": 4,
+    "requirement": ">=2.1.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 7,
+    "requirement": ""
+   },
+   {
+    "fromNode": 0,
+    "toNode": 10,
+    "requirement": ">=5.12.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 12,
+    "requirement": ""
+   },
+   {
+    "fromNode": 4,
+    "toNode": 2,
+    "requirement": ">=1.9.0"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 3,
+    "requirement": ">=8.1.3"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 6,
+    "requirement": ">=2.2.0"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 7,
+    "requirement": ">=3.1.2"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 8,
+    "requirement": ">=2.1.1"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 12,
+    "requirement": ">=3.1.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 8,
+    "requirement": ">=2.0"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 11,
+    "requirement": ">=0.10.0"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 1,
+    "requirement": ">=0.21.0"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 9,
+    "requirement": ">=4.13.2"
+   },
+   {
+    "fromNode": 11,
+    "toNode": 13,
+    "requirement": ""
+   },
+   {
+    "fromNode": 12,
+    "toNode": 8,
+    "requirement": ">=2.1.1"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 5,
+    "requirement": "<1,>=0.16.0"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 390,
+  "directDependentCount": 341,
+  "indirectDependentCount": 50
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/miguelgrinberg/flask-socketio"
+  },
+  "openIssuesCount": 7,
+  "starsCount": 5513,
+  "forksCount": 902,
+  "license": "MIT",
+  "description": "Socket.IO integration for Flask applications.",
+  "homepage": "",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/miguelgrinberg/Flask-SocketIO",
+    "commit": "694642ce37f7cf43c1b6dc100407ef39fbdd76ff"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 3,
+     "reason": "3 commit(s) and 1 issue activity found in the last 90 days -- score normalized to 3",
+     "details": []
+    },
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 0,
+     "reason": "Found 2/29 approved changesets -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 10,
+     "reason": "security policy file detected",
+     "details": [
+      "Info: security policy file detected: SECURITY.md:1",
+      "Info: Found linked content: SECURITY.md:1",
+      "Info: Found disclosure, vulnerability, and/or timelines in security policy: SECURITY.md:1",
+      "Info: Found text in security policy: SECURITY.md:1"
+     ]
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": 10,
+     "reason": "GitHub workflow tokens follow principle of least privilege",
+     "details": [
+      "Info: jobLevel 'contents' permission set to 'read': .github/workflows/tests.yml:89",
+      "Info: jobLevel 'actions' permission set to 'read': .github/workflows/tests.yml:90",
+      "Info: found token with 'none' permissions: .github/workflows/tests.yml:1",
+      "Info: no jobLevel write permissions found"
+     ]
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected",
+     "details": []
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": 3,
+     "reason": "dependency not pinned by hash detected -- score normalized to 3",
+     "details": [
+      "Warn: pipCommand not pinned by hash: .github/workflows/tests.yml:24",
+      "Warn: pipCommand not pinned by hash: .github/workflows/tests.yml:25",
+      "Warn: pipCommand not pinned by hash: .github/workflows/tests.yml:63",
+      "Warn: pipCommand not pinned by hash: .github/workflows/tests.yml:64",
+      "Warn: pipCommand not pinned by hash: .github/workflows/tests.yml:78",
+      "Warn: pipCommand not pinned by hash: .github/workflows/tests.yml:79",
+      "Info:   7 out of   7 GitHub-owned GitHubAction dependencies pinned",
+      "Info:   2 out of   2 third-party GitHubAction dependencies pinned",
+      "Info:   0 out of   6 pipCommand dependencies pinned"
+     ]
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 10,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE:0",
+      "Info: FSF or OSI recognized license: MIT License: LICENSE:0"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": 3,
+     "reason": "branch protection is not maximal on development and all release branches",
+     "details": [
+      "Info: 'allow deletion' disabled on branch 'main'",
+      "Info: 'force pushes' disabled on branch 'main'",
+      "Info: 'branch protection settings apply to administrators' is required to merge on branch 'main'",
+      "Warn: could not determine whether codeowners review is allowed",
+      "Warn: no status checks found to merge onto branch 'main'",
+      "Warn: PRs are not required to make changes on branch 'main'; or we don't have data to detect it.If you think it might be the latter, make sure to run Scorecard with a PAT or use Repo Rules (that are always public) instead of Branch Protection settings"
+     ]
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0",
+     "details": [
+      "Warn: 0 commits out of 5 are checked with a SAST tool"
+     ]
+    }
+   ],
+   "overallScore": 5.3,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 16662094,
+  "node_id": "MDEwOlJlcG9zaXRvcnkxNjY2MjA5NA==",
+  "name": "Flask-SocketIO",
+  "full_name": "miguelgrinberg/Flask-SocketIO",
+  "private": false,
+  "owner": {
+   "login": "miguelgrinberg",
+   "id": 2715854,
+   "node_id": "MDQ6VXNlcjI3MTU4NTQ=",
+   "avatar_url": "https://avatars.githubusercontent.com/u/2715854?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/miguelgrinberg",
+   "html_url": "https://github.com/miguelgrinberg",
+   "followers_url": "https://api.github.com/users/miguelgrinberg/followers",
+   "following_url": "https://api.github.com/users/miguelgrinberg/following{/other_user}",
+   "gists_url": "https://api.github.com/users/miguelgrinberg/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/miguelgrinberg/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/miguelgrinberg/subscriptions",
+   "organizations_url": "https://api.github.com/users/miguelgrinberg/orgs",
+   "repos_url": "https://api.github.com/users/miguelgrinberg/repos",
+   "events_url": "https://api.github.com/users/miguelgrinberg/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/miguelgrinberg/received_events",
+   "type": "User",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/miguelgrinberg/Flask-SocketIO",
+  "description": "Socket.IO integration for Flask applications.",
+  "fork": false,
+  "url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO",
+  "forks_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/forks",
+  "keys_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/teams",
+  "hooks_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/hooks",
+  "issue_events_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/events",
+  "assignees_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/tags",
+  "blobs_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/languages",
+  "stargazers_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/stargazers",
+  "contributors_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/contributors",
+  "subscribers_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/subscribers",
+  "subscription_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/subscription",
+  "commits_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/merges",
+  "archive_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/downloads",
+  "issues_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/labels{/name}",
+  "releases_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/miguelgrinberg/Flask-SocketIO/deployments",
+  "created_at": "2014-02-09T07:22:50Z",
+  "updated_at": "2026-07-21T21:01:34Z",
+  "pushed_at": "2026-05-14T22:21:08Z",
+  "git_url": "git://github.com/miguelgrinberg/Flask-SocketIO.git",
+  "ssh_url": "git@github.com:miguelgrinberg/Flask-SocketIO.git",
+  "clone_url": "https://github.com/miguelgrinberg/Flask-SocketIO.git",
+  "svn_url": "https://github.com/miguelgrinberg/Flask-SocketIO",
+  "homepage": null,
+  "size": 829,
+  "stargazers_count": 5512,
+  "watchers_count": 5512,
+  "language": "Python",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": true,
+  "forks_count": 902,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 7,
+  "license": {
+   "key": "mit",
+   "name": "MIT License",
+   "spdx_id": "MIT",
+   "url": "https://api.github.com/licenses/mit",
+   "node_id": "MDc6TGljZW5zZTEz"
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [
+   "flask",
+   "flask-socketio",
+   "python",
+   "socket-io",
+   "websocket"
+  ],
+  "visibility": "public",
+  "forks": 902,
+  "open_issues": 7,
+  "watchers": 5512,
+  "default_branch": "main",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "network_count": 902,
+  "subscribers_count": 102
+ },
+ "funding": [
+  {
+   "platform": "GITHUB",
+   "url": "https://github.com/miguelgrinberg"
+  },
+  {
+   "platform": "PATREON",
+   "url": "https://patreon.com/miguelgrinberg"
+  },
+  {
+   "platform": "BUY_ME_A_COFFEE",
+   "url": "https://buymeacoffee.com/miguelgrinberg"
+  },
+  {
+   "platform": "THANKS_DEV",
+   "url": "https://thanks.dev/u/gh/miguelgrinberg"
+  },
+  {
+   "platform": "CUSTOM",
+   "url": "https://paypal.me/miguelgrinberg"
+  }
+ ]
+}

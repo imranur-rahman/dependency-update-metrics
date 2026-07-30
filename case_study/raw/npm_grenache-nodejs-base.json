@@ -1,0 +1,1225 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "grenache-nodejs-base"
+  },
+  "purl": "pkg:npm/grenache-nodejs-base",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.0.10"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.0.10",
+    "publishedAt": "2017-01-30T15:38:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.0.11"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.0.11",
+    "publishedAt": "2017-02-01T19:45:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.0.12"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.0.12",
+    "publishedAt": "2017-04-18T21:56:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.0.13"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.0.13",
+    "publishedAt": "2017-04-19T14:53:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.0.14"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.0.14",
+    "publishedAt": "2017-04-20T14:40:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.0.15"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.0.15",
+    "publishedAt": "2017-04-22T07:45:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.0.16"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.0.16",
+    "publishedAt": "2017-04-22T07:59:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.0.17"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.0.17",
+    "publishedAt": "2017-04-24T10:56:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.0.18"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.0.18",
+    "publishedAt": "2017-04-25T12:24:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.0.19"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.0.19",
+    "publishedAt": "2017-04-27T13:50:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.0.20"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.0.20",
+    "publishedAt": "2017-04-29T16:25:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.0.21"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.0.21",
+    "publishedAt": "2017-05-02T20:45:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.0.22"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.0.22",
+    "publishedAt": "2017-05-02T20:46:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.0.23"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.0.23",
+    "publishedAt": "2017-05-02T20:47:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.0.24"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.0.24",
+    "publishedAt": "2017-05-05T13:46:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.0.25"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.0.25",
+    "publishedAt": "2017-05-08T12:19:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.0.26"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.0.26",
+    "publishedAt": "2017-05-09T20:15:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.0.28"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.0.28",
+    "publishedAt": "2017-05-11T18:49:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.0.29"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.0.29",
+    "publishedAt": "2017-05-12T16:02:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.0.30"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.0.30",
+    "publishedAt": "2017-05-12T16:59:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.0.31"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.0.31",
+    "publishedAt": "2017-05-14T09:39:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.0.4"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.0.4",
+    "publishedAt": "2016-11-11T14:56:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.0.5"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.0.5",
+    "publishedAt": "2016-12-11T10:12:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.0.6"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.0.6",
+    "publishedAt": "2016-12-11T10:50:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.0.7"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.0.7",
+    "publishedAt": "2016-12-11T11:40:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.0.8"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.0.8",
+    "publishedAt": "2017-01-30T12:51:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.1.0"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.1.0",
+    "publishedAt": "2017-05-15T19:46:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.1.2"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.1.2",
+    "publishedAt": "2017-05-18T19:50:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.1.3"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.1.3",
+    "publishedAt": "2017-05-19T13:16:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.2.0"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.2.0",
+    "publishedAt": "2017-05-28T08:37:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.2.1"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.2.1",
+    "publishedAt": "2017-06-01T14:18:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.2.2"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.2.2",
+    "publishedAt": "2017-06-02T18:39:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.2.3"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.2.3",
+    "publishedAt": "2017-06-02T18:45:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.2.4"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.2.4",
+    "publishedAt": "2017-06-10T19:25:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.2.5"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.2.5",
+    "publishedAt": "2017-06-11T09:39:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.2.6"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.2.6",
+    "publishedAt": "2017-06-11T18:27:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.2.7"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.2.7",
+    "publishedAt": "2017-06-13T09:54:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.2.8"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.2.8",
+    "publishedAt": "2017-06-13T10:20:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.4.0"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.4.0",
+    "publishedAt": "2017-07-05T11:33:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.5.0"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.5.0",
+    "publishedAt": "2017-08-14T14:00:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.7.0"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.7.0",
+    "publishedAt": "2017-11-27T09:29:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.7.1"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.7.1",
+    "publishedAt": "2018-02-12T14:03:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.7.2"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.7.2",
+    "publishedAt": "2018-06-25T13:52:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.7.3"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.7.3",
+    "publishedAt": "2018-09-29T22:26:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.7.4"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.7.4",
+    "publishedAt": "2018-10-12T17:30:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "0.7.5"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@0.7.5",
+    "publishedAt": "2023-03-18T09:07:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "1.0.0"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@1.0.0",
+    "publishedAt": "2025-05-22T04:57:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "1.1.0"
+    },
+    "purl": "pkg:npm/grenache-nodejs-base@1.1.0",
+    "publishedAt": "2026-03-05T12:50:29Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "NPM",
+   "name": "grenache-nodejs-base",
+   "version": "1.1.0"
+  },
+  "purl": "pkg:npm/grenache-nodejs-base@1.1.0",
+  "publishedAt": "2026-03-05T12:50:29Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "Apache-2.0"
+  ],
+  "licenseDetails": [
+   {
+    "license": "Apache-2.0",
+    "spdx": "Apache-2.0"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "HOMEPAGE",
+    "url": "https://github.com/bitfinexcom/grenache-nodejs-base#readme"
+   },
+   {
+    "label": "ISSUE_TRACKER",
+    "url": "https://github.com/bitfinexcom/grenache-nodejs-base/issues"
+   },
+   {
+    "label": "ORIGIN",
+    "url": "https://registry.npmjs.org/grenache-nodejs-base/1.1.0"
+   },
+   {
+    "label": "SOURCE_REPO",
+    "url": "git+https://github.com/bitfinexcom/grenache-nodejs-base.git"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://registry.npmjs.org/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/bitfinexcom/grenache-nodejs-base"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "ISSUE_TRACKER"
+   },
+   {
+    "projectKey": {
+     "id": "github.com/bitfinexcom/grenache-nodejs-base"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "grenache-nodejs-base",
+    "versionString": "1.1.0",
+    "source": "NPM_NPMJS_ORG"
+   }
+  ],
+  "cooldown": {
+   "end": "2026-03-20T12:50:29Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "grenache-nodejs-base",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": [
+     "could not find a version that satisfies requirement git+https://github.com/bitfinexcom/lib-js-util-base.git#v2.0.0 for package @bitfinex/lib-js-util-base"
+    ]
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "async",
+     "version": "3.2.6"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "duplexify",
+     "version": "4.1.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "end-of-stream",
+     "version": "1.4.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "inherits",
+     "version": "2.0.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "once",
+     "version": "1.4.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "pump",
+     "version": "3.0.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "readable-stream",
+     "version": "3.6.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "safe-buffer",
+     "version": "5.2.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "stream-shift",
+     "version": "1.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "string_decoder",
+     "version": "1.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "util-deprecate",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "uuid",
+     "version": "11.1.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "wrappy",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 1,
+    "requirement": "3.2.6"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 2,
+    "requirement": "4.1.3"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 6,
+    "requirement": "3.0.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 12,
+    "requirement": "11.1.0"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 3,
+    "requirement": "^1.4.1"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 4,
+    "requirement": "^2.0.3"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 7,
+    "requirement": "^3.1.1"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 9,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 5,
+    "requirement": "^1.4.0"
+   },
+   {
+    "fromNode": 5,
+    "toNode": 13,
+    "requirement": "1"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 3,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 5,
+    "requirement": "^1.3.1"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 4,
+    "requirement": "^2.0.3"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 10,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 11,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 8,
+    "requirement": "~5.2.0"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 6,
+  "directDependentCount": 1,
+  "indirectDependentCount": 5
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/bitfinexcom/grenache-nodejs-base"
+  },
+  "openIssuesCount": 0,
+  "starsCount": 4,
+  "forksCount": 16,
+  "license": "Apache-2.0",
+  "description": "",
+  "homepage": "",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/bitfinexcom/grenache-nodejs-base",
+    "commit": "88cc8eb73995642978209c1631dbf504428ecb34"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 4,
+     "reason": "Found 5/12 approved changesets -- score normalized to 4",
+     "details": []
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": -1,
+     "reason": "No tokens found",
+     "details": []
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": -1,
+     "reason": "no workflows found",
+     "details": []
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": -1,
+     "reason": "no dependencies found",
+     "details": []
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 0,
+     "reason": "0 commit(s) and 0 issue activity found in the last 90 days -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 0,
+     "reason": "security policy file not detected",
+     "details": [
+      "Warn: no security policy file detected",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 10,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE:0",
+      "Info: FSF or OSI recognized license: Apache License 2.0: LICENSE:0"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0",
+     "details": [
+      "Warn: 0 commits out of 23 are checked with a SAST tool"
+     ]
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": 5,
+     "reason": "branch protection is not maximal on development and all release branches",
+     "details": [
+      "Info: 'allow deletion' disabled on branch 'master'",
+      "Info: 'force pushes' disabled on branch 'master'",
+      "Info: 'branch protection settings apply to administrators' is required to merge on branch 'master'",
+      "Info: 'stale review dismissal' is required to merge on branch 'master'",
+      "Info: required approving review count is 2 on branch 'master'",
+      "Warn: codeowners review is not required on branch 'master'",
+      "Warn: 'last push approval' is disabled on branch 'master'",
+      "Warn: no status checks found to merge onto branch 'master'",
+      "Info: PRs are required in order to make changes on branch 'master'"
+     ]
+    }
+   ],
+   "overallScore": 3.4,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 55218996,
+  "node_id": "MDEwOlJlcG9zaXRvcnk1NTIxODk5Ng==",
+  "name": "grenache-nodejs-base",
+  "full_name": "bitfinexcom/grenache-nodejs-base",
+  "private": false,
+  "owner": {
+   "login": "bitfinexcom",
+   "id": 12942297,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjEyOTQyMjk3",
+   "avatar_url": "https://avatars.githubusercontent.com/u/12942297?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/bitfinexcom",
+   "html_url": "https://github.com/bitfinexcom",
+   "followers_url": "https://api.github.com/users/bitfinexcom/followers",
+   "following_url": "https://api.github.com/users/bitfinexcom/following{/other_user}",
+   "gists_url": "https://api.github.com/users/bitfinexcom/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/bitfinexcom/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/bitfinexcom/subscriptions",
+   "organizations_url": "https://api.github.com/users/bitfinexcom/orgs",
+   "repos_url": "https://api.github.com/users/bitfinexcom/repos",
+   "events_url": "https://api.github.com/users/bitfinexcom/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/bitfinexcom/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/bitfinexcom/grenache-nodejs-base",
+  "description": null,
+  "fork": false,
+  "url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base",
+  "forks_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/forks",
+  "keys_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/teams",
+  "hooks_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/hooks",
+  "issue_events_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/events",
+  "assignees_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/tags",
+  "blobs_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/languages",
+  "stargazers_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/stargazers",
+  "contributors_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/contributors",
+  "subscribers_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/subscribers",
+  "subscription_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/subscription",
+  "commits_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/merges",
+  "archive_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/downloads",
+  "issues_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/labels{/name}",
+  "releases_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/bitfinexcom/grenache-nodejs-base/deployments",
+  "created_at": "2016-04-01T09:12:54Z",
+  "updated_at": "2026-03-05T09:18:15Z",
+  "pushed_at": "2026-03-05T09:18:11Z",
+  "git_url": "git://github.com/bitfinexcom/grenache-nodejs-base.git",
+  "ssh_url": "git@github.com:bitfinexcom/grenache-nodejs-base.git",
+  "clone_url": "https://github.com/bitfinexcom/grenache-nodejs-base.git",
+  "svn_url": "https://github.com/bitfinexcom/grenache-nodejs-base",
+  "homepage": null,
+  "size": 149,
+  "stargazers_count": 4,
+  "watchers_count": 4,
+  "language": "JavaScript",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 17,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 0,
+  "license": {
+   "key": "apache-2.0",
+   "name": "Apache License 2.0",
+   "spdx_id": "Apache-2.0",
+   "url": "https://api.github.com/licenses/apache-2.0",
+   "node_id": "MDc6TGljZW5zZTI="
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [],
+  "visibility": "public",
+  "forks": 17,
+  "open_issues": 0,
+  "watchers": 4,
+  "default_branch": "master",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "bitfinexcom",
+   "id": 12942297,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjEyOTQyMjk3",
+   "avatar_url": "https://avatars.githubusercontent.com/u/12942297?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/bitfinexcom",
+   "html_url": "https://github.com/bitfinexcom",
+   "followers_url": "https://api.github.com/users/bitfinexcom/followers",
+   "following_url": "https://api.github.com/users/bitfinexcom/following{/other_user}",
+   "gists_url": "https://api.github.com/users/bitfinexcom/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/bitfinexcom/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/bitfinexcom/subscriptions",
+   "organizations_url": "https://api.github.com/users/bitfinexcom/orgs",
+   "repos_url": "https://api.github.com/users/bitfinexcom/repos",
+   "events_url": "https://api.github.com/users/bitfinexcom/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/bitfinexcom/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 17,
+  "subscribers_count": 8
+ },
+ "funding": []
+}

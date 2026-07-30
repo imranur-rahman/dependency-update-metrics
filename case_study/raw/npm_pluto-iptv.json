@@ -1,0 +1,1449 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "pluto-iptv"
+  },
+  "purl": "pkg:npm/pluto-iptv",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "pluto-iptv",
+     "version": "1.0.0"
+    },
+    "purl": "pkg:npm/pluto-iptv@1.0.0",
+    "publishedAt": "2020-03-24T23:00:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "pluto-iptv",
+     "version": "1.0.1"
+    },
+    "purl": "pkg:npm/pluto-iptv@1.0.1",
+    "publishedAt": "2020-03-24T23:06:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "pluto-iptv",
+     "version": "1.0.2"
+    },
+    "purl": "pkg:npm/pluto-iptv@1.0.2",
+    "publishedAt": "2020-03-24T23:09:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "pluto-iptv",
+     "version": "1.0.3"
+    },
+    "purl": "pkg:npm/pluto-iptv@1.0.3",
+    "publishedAt": "2020-03-24T23:14:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "pluto-iptv",
+     "version": "1.0.4"
+    },
+    "purl": "pkg:npm/pluto-iptv@1.0.4",
+    "publishedAt": "2020-03-25T09:57:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "pluto-iptv",
+     "version": "1.0.5"
+    },
+    "purl": "pkg:npm/pluto-iptv@1.0.5",
+    "publishedAt": "2020-03-28T03:27:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "pluto-iptv",
+     "version": "1.0.6"
+    },
+    "purl": "pkg:npm/pluto-iptv@1.0.6",
+    "publishedAt": "2020-04-27T15:05:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "pluto-iptv",
+     "version": "1.0.7"
+    },
+    "purl": "pkg:npm/pluto-iptv@1.0.7",
+    "publishedAt": "2020-12-09T17:34:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "pluto-iptv",
+     "version": "1.2.0"
+    },
+    "purl": "pkg:npm/pluto-iptv@1.2.0",
+    "publishedAt": "2021-04-12T12:30:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "pluto-iptv",
+     "version": "1.3.0"
+    },
+    "purl": "pkg:npm/pluto-iptv@1.3.0",
+    "publishedAt": "2021-11-15T15:35:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "pluto-iptv",
+     "version": "1.3.1"
+    },
+    "purl": "pkg:npm/pluto-iptv@1.3.1",
+    "publishedAt": "2024-01-13T15:29:48Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "NPM",
+   "name": "pluto-iptv",
+   "version": "1.3.1"
+  },
+  "purl": "pkg:npm/pluto-iptv@1.3.1",
+  "publishedAt": "2024-01-13T15:29:48Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "MIT",
+    "spdx": "MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "HOMEPAGE",
+    "url": "https://github.com/evoactivity/PlutoIPTV#readme"
+   },
+   {
+    "label": "ISSUE_TRACKER",
+    "url": "https://github.com/evoactivity/PlutoIPTV/issues"
+   },
+   {
+    "label": "ORIGIN",
+    "url": "https://registry.npmjs.org/pluto-iptv/1.3.1"
+   },
+   {
+    "label": "SOURCE_REPO",
+    "url": "git+https://github.com/evoactivity/PlutoIPTV.git"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://registry.npmjs.org/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/evoactivity/plutoiptv"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "ISSUE_TRACKER"
+   },
+   {
+    "projectKey": {
+     "id": "github.com/evoactivity/plutoiptv"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "pluto-iptv",
+    "versionString": "1.3.1",
+    "source": "NPM_NPMJS_ORG"
+   }
+  ],
+  "cooldown": {
+   "end": "2024-01-28T15:29:48Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "pluto-iptv",
+     "version": "1.3.1"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "ajv",
+     "version": "6.15.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "asn1",
+     "version": "0.2.6"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "assert-plus",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "asynckit",
+     "version": "0.4.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "at-least-node",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "aws-sign2",
+     "version": "0.7.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "aws4",
+     "version": "1.13.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "bcrypt-pbkdf",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "caseless",
+     "version": "0.12.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "combined-stream",
+     "version": "1.0.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "core-util-is",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dashdash",
+     "version": "1.14.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "delayed-stream",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "ecc-jsbn",
+     "version": "0.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "extend",
+     "version": "3.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "extsprintf",
+     "version": "1.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "fast-deep-equal",
+     "version": "3.1.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "fast-json-stable-stringify",
+     "version": "2.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "forever-agent",
+     "version": "0.6.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "form-data",
+     "version": "2.3.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "fs-extra",
+     "version": "9.1.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "getpass",
+     "version": "0.1.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "graceful-fs",
+     "version": "4.2.11"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "har-schema",
+     "version": "2.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "har-validator",
+     "version": "5.1.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "http-signature",
+     "version": "1.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-typedarray",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "isstream",
+     "version": "0.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "jsbn",
+     "version": "0.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "json-schema",
+     "version": "0.4.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "json-schema-traverse",
+     "version": "0.4.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "json-stringify-safe",
+     "version": "5.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "jsonfile",
+     "version": "6.2.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "jsontoxml",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "jsprim",
+     "version": "1.4.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "mime-db",
+     "version": "1.52.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "mime-types",
+     "version": "2.1.35"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "moment",
+     "version": "2.30.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "oauth-sign",
+     "version": "0.9.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "performance-now",
+     "version": "2.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "psl",
+     "version": "1.15.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "punycode",
+     "version": "2.3.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "qs",
+     "version": "6.5.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "request",
+     "version": "2.88.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "safe-buffer",
+     "version": "5.2.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "safer-buffer",
+     "version": "2.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sshpk",
+     "version": "1.18.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tough-cookie",
+     "version": "2.5.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tunnel-agent",
+     "version": "0.6.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tweetnacl",
+     "version": "0.14.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "universalify",
+     "version": "2.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "uri-js",
+     "version": "4.4.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "uuid",
+     "version": "3.4.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "uuid",
+     "version": "7.0.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "verror",
+     "version": "1.10.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 21,
+    "requirement": "^9.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 34,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 38,
+    "requirement": "^2.24.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 44,
+    "requirement": "^2.88.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 54,
+    "requirement": "^7.0.2"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 17,
+    "requirement": "^3.1.1"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 18,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 31,
+    "requirement": "^0.4.1"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 52,
+    "requirement": "^4.2.2"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 46,
+    "requirement": "~2.1.0"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 50,
+    "requirement": "^0.14.3"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 13,
+    "requirement": "~1.0.0"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 3,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 14,
+    "toNode": 29,
+    "requirement": "~0.1.0"
+   },
+   {
+    "fromNode": 14,
+    "toNode": 46,
+    "requirement": "^2.1.0"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 4,
+    "requirement": "^0.4.0"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 10,
+    "requirement": "^1.0.6"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 37,
+    "requirement": "^2.1.12"
+   },
+   {
+    "fromNode": 21,
+    "toNode": 5,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 21,
+    "toNode": 23,
+    "requirement": "^4.2.0"
+   },
+   {
+    "fromNode": 21,
+    "toNode": 33,
+    "requirement": "^6.0.1"
+   },
+   {
+    "fromNode": 21,
+    "toNode": 51,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 3,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 25,
+    "toNode": 1,
+    "requirement": "^6.12.3"
+   },
+   {
+    "fromNode": 25,
+    "toNode": 24,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 3,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 35,
+    "requirement": "^1.2.2"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 47,
+    "requirement": "^1.7.0"
+   },
+   {
+    "fromNode": 33,
+    "toNode": 23,
+    "requirement": "^4.1.6"
+   },
+   {
+    "fromNode": 33,
+    "toNode": 51,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 3,
+    "requirement": "1.0.0"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 16,
+    "requirement": "1.3.0"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 30,
+    "requirement": "0.4.0"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 55,
+    "requirement": "1.10.0"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 36,
+    "requirement": "1.52.0"
+   },
+   {
+    "fromNode": 41,
+    "toNode": 42,
+    "requirement": "^2.3.1"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 6,
+    "requirement": "~0.7.0"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 7,
+    "requirement": "^1.8.0"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 9,
+    "requirement": "~0.12.0"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 10,
+    "requirement": "~1.0.6"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 15,
+    "requirement": "~3.0.2"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 19,
+    "requirement": "~0.6.1"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 20,
+    "requirement": "~2.3.2"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 25,
+    "requirement": "~5.1.3"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 26,
+    "requirement": "~1.2.0"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 27,
+    "requirement": "~1.0.0"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 28,
+    "requirement": "~0.1.2"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 32,
+    "requirement": "~5.0.1"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 37,
+    "requirement": "~2.1.19"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 39,
+    "requirement": "~0.9.0"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 40,
+    "requirement": "^2.1.0"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 43,
+    "requirement": "~6.5.2"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 45,
+    "requirement": "^5.1.2"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 48,
+    "requirement": "~2.5.0"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 49,
+    "requirement": "^0.6.0"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 53,
+    "requirement": "^3.3.2"
+   },
+   {
+    "fromNode": 47,
+    "toNode": 2,
+    "requirement": "~0.2.3"
+   },
+   {
+    "fromNode": 47,
+    "toNode": 3,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 47,
+    "toNode": 8,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 47,
+    "toNode": 12,
+    "requirement": "^1.12.0"
+   },
+   {
+    "fromNode": 47,
+    "toNode": 14,
+    "requirement": "~0.1.1"
+   },
+   {
+    "fromNode": 47,
+    "toNode": 22,
+    "requirement": "^0.1.1"
+   },
+   {
+    "fromNode": 47,
+    "toNode": 29,
+    "requirement": "~0.1.0"
+   },
+   {
+    "fromNode": 47,
+    "toNode": 46,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 47,
+    "toNode": 50,
+    "requirement": "~0.14.0"
+   },
+   {
+    "fromNode": 48,
+    "toNode": 41,
+    "requirement": "^1.1.28"
+   },
+   {
+    "fromNode": 48,
+    "toNode": 42,
+    "requirement": "^2.1.1"
+   },
+   {
+    "fromNode": 49,
+    "toNode": 45,
+    "requirement": "^5.0.1"
+   },
+   {
+    "fromNode": 52,
+    "toNode": 42,
+    "requirement": "^2.1.0"
+   },
+   {
+    "fromNode": 55,
+    "toNode": 3,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 55,
+    "toNode": 11,
+    "requirement": "1.0.2"
+   },
+   {
+    "fromNode": 55,
+    "toNode": 16,
+    "requirement": "^1.2.0"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/evoactivity/plutoiptv"
+  },
+  "openIssuesCount": 9,
+  "starsCount": 216,
+  "forksCount": 62,
+  "license": "MIT",
+  "description": "Grab EPG & M3U from Pluto.tv",
+  "homepage": "",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/evoactivity/PlutoIPTV",
+    "commit": "be17ae472914ebbfffe1e8fafc27f9ed0fbcdb15"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 3,
+     "reason": "Found 5/15 approved changesets -- score normalized to 3",
+     "details": []
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": -1,
+     "reason": "no workflows found",
+     "details": []
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": -1,
+     "reason": "No tokens found",
+     "details": []
+    },
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 0,
+     "reason": "0 commit(s) and 0 issue activity found in the last 90 days -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": -1,
+     "reason": "no dependencies found",
+     "details": []
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 0,
+     "reason": "security policy file not detected",
+     "details": [
+      "Warn: no security policy file detected",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 10,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE:0",
+      "Info: FSF or OSI recognized license: MIT License: LICENSE:0"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": 0,
+     "reason": "branch protection not enabled on development/release branches",
+     "details": [
+      "Warn: branch protection not enabled for branch 'master'"
+     ]
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0",
+     "details": [
+      "Warn: 0 commits out of 21 are checked with a SAST tool"
+     ]
+    }
+   ],
+   "overallScore": 2.5,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 249835260,
+  "node_id": "MDEwOlJlcG9zaXRvcnkyNDk4MzUyNjA=",
+  "name": "PlutoIPTV",
+  "full_name": "evoactivity/PlutoIPTV",
+  "private": false,
+  "owner": {
+   "login": "evoactivity",
+   "id": 83799,
+   "node_id": "MDQ6VXNlcjgzNzk5",
+   "avatar_url": "https://avatars.githubusercontent.com/u/83799?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/evoactivity",
+   "html_url": "https://github.com/evoactivity",
+   "followers_url": "https://api.github.com/users/evoactivity/followers",
+   "following_url": "https://api.github.com/users/evoactivity/following{/other_user}",
+   "gists_url": "https://api.github.com/users/evoactivity/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/evoactivity/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/evoactivity/subscriptions",
+   "organizations_url": "https://api.github.com/users/evoactivity/orgs",
+   "repos_url": "https://api.github.com/users/evoactivity/repos",
+   "events_url": "https://api.github.com/users/evoactivity/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/evoactivity/received_events",
+   "type": "User",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/evoactivity/PlutoIPTV",
+  "description": "Grab EPG & M3U from Pluto.tv",
+  "fork": false,
+  "url": "https://api.github.com/repos/evoactivity/PlutoIPTV",
+  "forks_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/forks",
+  "keys_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/teams",
+  "hooks_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/hooks",
+  "issue_events_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/events",
+  "assignees_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/tags",
+  "blobs_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/languages",
+  "stargazers_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/stargazers",
+  "contributors_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/contributors",
+  "subscribers_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/subscribers",
+  "subscription_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/subscription",
+  "commits_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/merges",
+  "archive_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/downloads",
+  "issues_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/labels{/name}",
+  "releases_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/evoactivity/PlutoIPTV/deployments",
+  "created_at": "2020-03-24T22:50:28Z",
+  "updated_at": "2026-07-19T15:12:36Z",
+  "pushed_at": "2026-05-02T11:07:27Z",
+  "git_url": "git://github.com/evoactivity/PlutoIPTV.git",
+  "ssh_url": "git@github.com:evoactivity/PlutoIPTV.git",
+  "clone_url": "https://github.com/evoactivity/PlutoIPTV.git",
+  "svn_url": "https://github.com/evoactivity/PlutoIPTV",
+  "homepage": null,
+  "size": 65,
+  "stargazers_count": 216,
+  "watchers_count": 216,
+  "language": "JavaScript",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 62,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 9,
+  "license": {
+   "key": "mit",
+   "name": "MIT License",
+   "spdx_id": "MIT",
+   "url": "https://api.github.com/licenses/mit",
+   "node_id": "MDc6TGljZW5zZTEz"
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [],
+  "visibility": "public",
+  "forks": 62,
+  "open_issues": 9,
+  "watchers": 216,
+  "default_branch": "master",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "network_count": 62,
+  "subscribers_count": 19
+ },
+ "funding": []
+}

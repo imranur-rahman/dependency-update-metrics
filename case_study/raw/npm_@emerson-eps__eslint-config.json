@@ -1,0 +1,6340 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "@emerson-eps/eslint-config"
+  },
+  "purl": "pkg:npm/%40emerson-eps/eslint-config",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "1.0.0"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@1.0.0",
+    "publishedAt": "2021-04-19T15:27:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "1.0.1"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@1.0.1",
+    "publishedAt": "2021-04-23T13:18:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "2.0.0"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@2.0.0",
+    "publishedAt": "2021-04-23T19:23:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "2.0.1"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@2.0.1",
+    "publishedAt": "2021-06-14T09:39:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "2.0.2"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@2.0.2",
+    "publishedAt": "2021-11-12T16:41:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "2.0.3"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@2.0.3",
+    "publishedAt": "2021-11-18T16:27:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "2.0.4"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@2.0.4",
+    "publishedAt": "2021-11-19T09:32:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "3.0.0"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@3.0.0",
+    "publishedAt": "2021-12-17T15:06:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "3.0.1"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@3.0.1",
+    "publishedAt": "2022-01-04T10:04:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "3.0.2"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@3.0.2",
+    "publishedAt": "2022-01-13T09:20:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "3.0.3"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@3.0.3",
+    "publishedAt": "2022-09-27T12:27:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "3.0.4"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@3.0.4",
+    "publishedAt": "2022-09-27T12:28:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "3.0.5"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@3.0.5",
+    "publishedAt": "2022-09-27T12:31:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "3.0.6"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@3.0.6",
+    "publishedAt": "2022-09-29T08:54:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "3.0.7"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@3.0.7",
+    "publishedAt": "2022-10-20T12:40:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "3.0.8"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@3.0.8",
+    "publishedAt": "2022-12-09T14:32:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "3.0.9"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@3.0.9",
+    "publishedAt": "2022-12-12T17:02:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "4.0.0"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@4.0.0",
+    "publishedAt": "2022-12-19T14:21:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "4.0.1"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@4.0.1",
+    "publishedAt": "2023-03-21T17:11:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "4.0.2"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@4.0.2",
+    "publishedAt": "2023-03-22T09:43:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "5.0.0"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@5.0.0",
+    "publishedAt": "2023-04-05T08:23:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "5.0.1"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@5.0.1",
+    "publishedAt": "2023-04-05T09:09:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "5.0.2"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@5.0.2",
+    "publishedAt": "2023-05-04T07:49:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "5.0.3"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@5.0.3",
+    "publishedAt": "2023-05-04T07:50:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "5.0.4"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@5.0.4",
+    "publishedAt": "2023-05-17T13:09:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "6.0.0"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@6.0.0",
+    "publishedAt": "2023-07-11T08:17:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "6.0.1"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@6.0.1",
+    "publishedAt": "2023-07-12T07:33:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "6.0.10"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@6.0.10",
+    "publishedAt": "2023-09-04T10:25:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "6.0.11"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@6.0.11",
+    "publishedAt": "2023-09-14T07:45:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "6.0.12"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@6.0.12",
+    "publishedAt": "2023-09-15T09:02:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "6.0.13"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@6.0.13",
+    "publishedAt": "2023-10-19T13:04:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "6.0.14"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@6.0.14",
+    "publishedAt": "2023-10-26T13:09:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "6.0.15"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@6.0.15",
+    "publishedAt": "2023-10-31T08:05:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "6.0.2"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@6.0.2",
+    "publishedAt": "2023-08-07T07:46:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "6.0.3"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@6.0.3",
+    "publishedAt": "2023-08-07T07:48:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "6.0.4"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@6.0.4",
+    "publishedAt": "2023-08-07T07:54:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "6.0.5"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@6.0.5",
+    "publishedAt": "2023-08-16T08:33:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "6.0.6"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@6.0.6",
+    "publishedAt": "2023-08-21T11:55:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "6.0.7"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@6.0.7",
+    "publishedAt": "2023-08-21T11:56:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "6.0.8"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@6.0.8",
+    "publishedAt": "2023-08-24T14:00:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "6.0.9"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@6.0.9",
+    "publishedAt": "2023-08-29T09:03:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "6.1.0"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@6.1.0",
+    "publishedAt": "2023-11-24T14:14:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "6.1.1"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@6.1.1",
+    "publishedAt": "2023-11-30T08:57:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "6.1.2"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@6.1.2",
+    "publishedAt": "2023-11-30T08:58:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "6.1.3"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@6.1.3",
+    "publishedAt": "2023-11-30T08:59:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "6.1.4"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@6.1.4",
+    "publishedAt": "2024-03-27T08:52:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "6.1.5"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@6.1.5",
+    "publishedAt": "2024-03-27T11:53:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "6.1.6"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@6.1.6",
+    "publishedAt": "2024-03-27T11:56:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "6.1.7"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@6.1.7",
+    "publishedAt": "2024-04-08T07:29:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "6.1.8"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@6.1.8",
+    "publishedAt": "2024-04-19T10:13:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "7.0.0"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@7.0.0",
+    "publishedAt": "2024-07-12T13:00:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "7.0.1"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@7.0.1",
+    "publishedAt": "2024-08-12T07:27:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "7.0.10"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@7.0.10",
+    "publishedAt": "2025-06-30T08:06:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "7.0.11"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@7.0.11",
+    "publishedAt": "2025-12-08T15:41:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "7.0.11-beta.1"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@7.0.11-beta.1",
+    "publishedAt": "2025-10-21T08:40:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "7.0.11-beta.2"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@7.0.11-beta.2",
+    "publishedAt": "2025-10-21T14:21:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "7.0.11-beta.3"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@7.0.11-beta.3",
+    "publishedAt": "2025-10-21T14:36:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "7.0.11-beta.4"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@7.0.11-beta.4",
+    "publishedAt": "2025-11-12T14:34:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "7.0.11-beta.5"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@7.0.11-beta.5",
+    "publishedAt": "2025-11-12T14:42:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "7.0.12"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@7.0.12",
+    "publishedAt": "2025-12-09T09:36:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "7.0.13"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@7.0.13",
+    "publishedAt": "2026-03-25T11:37:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "7.0.14"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@7.0.14",
+    "publishedAt": "2026-03-26T08:54:42Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "7.0.2"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@7.0.2",
+    "publishedAt": "2024-08-12T08:23:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "7.0.3"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@7.0.3",
+    "publishedAt": "2024-08-19T12:53:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "7.0.4"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@7.0.4",
+    "publishedAt": "2024-08-19T15:32:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "7.0.5"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@7.0.5",
+    "publishedAt": "2024-08-26T14:59:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "7.0.6"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@7.0.6",
+    "publishedAt": "2024-09-25T12:25:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "7.0.7"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@7.0.7",
+    "publishedAt": "2024-11-26T11:15:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "7.0.8"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@7.0.8",
+    "publishedAt": "2025-01-06T08:29:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "7.0.9"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@7.0.9",
+    "publishedAt": "2025-01-23T11:09:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "7.1.0-beta.1"
+    },
+    "purl": "pkg:npm/%40emerson-eps/eslint-config@7.1.0-beta.1",
+    "publishedAt": "2025-11-14T13:39:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "NPM",
+   "name": "@emerson-eps/eslint-config",
+   "version": "7.0.14"
+  },
+  "purl": "pkg:npm/%40emerson-eps/eslint-config@7.0.14",
+  "publishedAt": "2026-03-26T08:54:42Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "MIT",
+    "spdx": "MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "HOMEPAGE",
+    "url": "https://github.com/emerson-eps/eslint-config"
+   },
+   {
+    "label": "ISSUE_TRACKER",
+    "url": "https://github.com/emerson-eps/eslint-config/issues"
+   },
+   {
+    "label": "ATTESTATION",
+    "url": "https://registry.npmjs.org/-/npm/v1/attestations/@emerson-eps%2feslint-config@7.0.14"
+   },
+   {
+    "label": "ORIGIN",
+    "url": "https://registry.npmjs.org/@emerson-eps%2Feslint-config/7.0.14"
+   },
+   {
+    "label": "SOURCE_REPO",
+    "url": "git+https://github.com/emerson-eps/eslint-config.git"
+   }
+  ],
+  "slsaProvenances": [
+   {
+    "sourceRepository": "https://github.com/emerson-eps/eslint-config",
+    "commit": "38a5d8a0809b5469631afd17b058cb014c85bca9",
+    "url": "https://registry.npmjs.org/-/npm/v1/attestations/@emerson-eps%2feslint-config@7.0.14",
+    "verified": true
+   }
+  ],
+  "attestations": [
+   {
+    "type": "https://slsa.dev/provenance/v1",
+    "url": "https://registry.npmjs.org/-/npm/v1/attestations/@emerson-eps%2feslint-config@7.0.14",
+    "verified": true,
+    "sourceRepository": "https://github.com/emerson-eps/eslint-config",
+    "commit": "38a5d8a0809b5469631afd17b058cb014c85bca9"
+   }
+  ],
+  "registries": [
+   "https://registry.npmjs.org/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/emerson-eps/eslint-config"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "ISSUE_TRACKER"
+   },
+   {
+    "projectKey": {
+     "id": "github.com/emerson-eps/eslint-config"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   },
+   {
+    "projectKey": {
+     "id": "github.com/emerson-eps/eslint-config"
+    },
+    "relationProvenance": "SLSA_ATTESTATION",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "@emerson-eps/eslint-config",
+    "versionString": "7.0.14",
+    "source": "NPM_NPMJS_ORG"
+   }
+  ],
+  "cooldown": {
+   "end": "2026-04-10T08:54:42Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@emerson-eps/eslint-config",
+     "version": "7.0.14"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/eslint-parser",
+     "version": "7.29.7"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@typescript-eslint/eslint-plugin",
+     "version": "5.62.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@typescript-eslint/parser",
+     "version": "5.62.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "eslint-config-prettier",
+     "version": "8.10.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "eslint-plugin-cypress",
+     "version": "2.15.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "eslint-plugin-flowtype",
+     "version": "8.0.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "eslint-plugin-import",
+     "version": "2.32.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "eslint-plugin-jsx-a11y",
+     "version": "6.10.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "eslint-plugin-react",
+     "version": "7.37.5"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "eslint-plugin-react-hooks",
+     "version": "4.6.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "eslint-plugin-sonarjs",
+     "version": "0.25.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@nicolo-ribaudo/eslint-scope-5-internals",
+     "version": "5.1.1-v1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "eslint-visitor-keys",
+     "version": "2.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "semver",
+     "version": "6.3.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@eslint-community/regexpp",
+     "version": "4.12.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@typescript-eslint/scope-manager",
+     "version": "5.62.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@typescript-eslint/type-utils",
+     "version": "5.62.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@typescript-eslint/utils",
+     "version": "5.62.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "debug",
+     "version": "4.4.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "graphemer",
+     "version": "1.4.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "ignore",
+     "version": "5.3.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "natural-compare-lite",
+     "version": "1.4.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "semver",
+     "version": "7.8.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tsutils",
+     "version": "3.21.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@typescript-eslint/types",
+     "version": "5.62.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@typescript-eslint/typescript-estree",
+     "version": "5.62.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "globals",
+     "version": "13.24.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "lodash",
+     "version": "4.18.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "string-natural-compare",
+     "version": "3.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rtsao/scc",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "array-includes",
+     "version": "3.1.9"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "array.prototype.findlastindex",
+     "version": "1.2.6"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "array.prototype.flat",
+     "version": "1.3.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "array.prototype.flatmap",
+     "version": "1.3.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "debug",
+     "version": "3.2.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "doctrine",
+     "version": "2.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "eslint-import-resolver-node",
+     "version": "0.3.10"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "eslint-module-utils",
+     "version": "2.14.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "hasown",
+     "version": "2.0.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-core-module",
+     "version": "2.16.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-glob",
+     "version": "4.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "minimatch",
+     "version": "3.1.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "object.fromentries",
+     "version": "2.0.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "object.groupby",
+     "version": "1.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "object.values",
+     "version": "1.2.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "string.prototype.trimend",
+     "version": "1.0.10"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tsconfig-paths",
+     "version": "3.15.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "aria-query",
+     "version": "5.3.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "ast-types-flow",
+     "version": "0.0.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "axe-core",
+     "version": "4.12.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "axobject-query",
+     "version": "4.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "damerau-levenshtein",
+     "version": "1.0.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "emoji-regex",
+     "version": "9.2.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "jsx-ast-utils",
+     "version": "3.3.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "language-tags",
+     "version": "1.0.9"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "safe-regex-test",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "string.prototype.includes",
+     "version": "2.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "array.prototype.findlast",
+     "version": "1.2.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "array.prototype.tosorted",
+     "version": "1.1.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "es-iterator-helpers",
+     "version": "1.4.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "estraverse",
+     "version": "5.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "object.entries",
+     "version": "1.1.9"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prop-types",
+     "version": "15.8.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "resolve",
+     "version": "2.0.0-next.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "string.prototype.matchall",
+     "version": "4.0.12"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "string.prototype.repeat",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "eslint-scope",
+     "version": "5.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@typescript-eslint/visitor-keys",
+     "version": "5.62.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@eslint-community/eslint-utils",
+     "version": "4.9.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@types/json-schema",
+     "version": "7.0.15"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@types/semver",
+     "version": "7.7.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "semver",
+     "version": "7.8.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "ms",
+     "version": "2.1.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslib",
+     "version": "1.14.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "globby",
+     "version": "11.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "semver",
+     "version": "7.8.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "type-fest",
+     "version": "0.20.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "call-bind",
+     "version": "1.0.9"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "call-bound",
+     "version": "1.0.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "define-properties",
+     "version": "1.2.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "es-abstract",
+     "version": "1.24.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "es-object-atoms",
+     "version": "1.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "get-intrinsic",
+     "version": "1.3.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-string",
+     "version": "1.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "math-intrinsics",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "es-errors",
+     "version": "1.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "es-shim-unscopables",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "esutils",
+     "version": "2.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "debug",
+     "version": "3.2.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "debug",
+     "version": "3.2.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "function-bind",
+     "version": "1.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-extglob",
+     "version": "2.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "brace-expansion",
+     "version": "1.1.16"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@types/json5",
+     "version": "0.0.29"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "json5",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "minimist",
+     "version": "1.2.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "strip-bom",
+     "version": "3.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "object.assign",
+     "version": "4.1.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "language-subtag-registry",
+     "version": "0.3.23"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-regex",
+     "version": "1.2.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "es-set-tostringtag",
+     "version": "2.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "globalthis",
+     "version": "1.0.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "gopd",
+     "version": "1.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "has-property-descriptors",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "has-proto",
+     "version": "1.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "has-symbols",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "internal-slot",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "iterator.prototype",
+     "version": "1.1.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "loose-envify",
+     "version": "1.4.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "object-assign",
+     "version": "4.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "react-is",
+     "version": "16.13.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-exports-info",
+     "version": "1.6.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "object-keys",
+     "version": "1.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "path-parse",
+     "version": "1.0.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "supports-preserve-symlinks-flag",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "regexp.prototype.flags",
+     "version": "1.5.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "set-function-name",
+     "version": "2.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "side-channel",
+     "version": "1.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "esrecurse",
+     "version": "4.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "estraverse",
+     "version": "4.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "eslint-visitor-keys",
+     "version": "3.4.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "eslint-visitor-keys",
+     "version": "3.4.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "array-union",
+     "version": "2.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dir-glob",
+     "version": "3.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "fast-glob",
+     "version": "3.3.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "merge2",
+     "version": "1.4.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "slash",
+     "version": "3.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "call-bind-apply-helpers",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "es-define-property",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "set-function-length",
+     "version": "1.2.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "define-data-property",
+     "version": "1.1.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "array-buffer-byte-length",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "arraybuffer.prototype.slice",
+     "version": "1.0.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "available-typed-arrays",
+     "version": "1.0.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "data-view-buffer",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "data-view-byte-length",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "data-view-byte-offset",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "es-to-primitive",
+     "version": "1.3.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "function.prototype.name",
+     "version": "1.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "get-proto",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "get-symbol-description",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-array-buffer",
+     "version": "3.0.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-callable",
+     "version": "1.2.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-data-view",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-negative-zero",
+     "version": "2.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-set",
+     "version": "2.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-shared-array-buffer",
+     "version": "1.0.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-typed-array",
+     "version": "1.1.15"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-weakref",
+     "version": "1.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "object-inspect",
+     "version": "1.13.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "own-keys",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "safe-array-concat",
+     "version": "1.1.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "safe-push-apply",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "set-proto",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "stop-iteration-iterator",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "string.prototype.trim",
+     "version": "1.2.11"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "string.prototype.trimstart",
+     "version": "1.0.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "typed-array-buffer",
+     "version": "1.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "typed-array-byte-length",
+     "version": "1.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "typed-array-byte-offset",
+     "version": "1.0.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "typed-array-length",
+     "version": "1.0.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "unbox-primitive",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "which-typed-array",
+     "version": "1.1.22"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "async-function",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "async-generator-function",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "generator-function",
+     "version": "2.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "has-tostringtag",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "balanced-match",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "concat-map",
+     "version": "0.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dunder-proto",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "js-tokens",
+     "version": "4.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "functions-have-names",
+     "version": "1.2.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "side-channel-list",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "side-channel-map",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "side-channel-weakmap",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "estraverse",
+     "version": "5.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "path-type",
+     "version": "4.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@nodelib/fs.stat",
+     "version": "2.0.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@nodelib/fs.walk",
+     "version": "1.2.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "glob-parent",
+     "version": "5.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "micromatch",
+     "version": "4.0.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "possible-typed-array-names",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "es-abstract-get",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-date-object",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-symbol",
+     "version": "1.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-document.all",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "isarray",
+     "version": "2.0.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "for-each",
+     "version": "0.3.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "reflect.getprototypeof",
+     "version": "1.0.10"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "has-bigints",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "which-boxed-primitive",
+     "version": "1.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@nodelib/fs.scandir",
+     "version": "2.1.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "fastq",
+     "version": "1.20.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "braces",
+     "version": "3.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "picomatch",
+     "version": "2.3.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "which-builtin-type",
+     "version": "1.2.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-bigint",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-boolean-object",
+     "version": "1.2.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-number-object",
+     "version": "1.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "run-parallel",
+     "version": "1.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "reusify",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "fill-range",
+     "version": "7.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-async-function",
+     "version": "2.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-finalizationregistry",
+     "version": "1.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-generator-function",
+     "version": "1.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "which-collection",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "queue-microtask",
+     "version": "1.2.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "to-regex-range",
+     "version": "5.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-map",
+     "version": "2.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-weakmap",
+     "version": "2.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-weakset",
+     "version": "2.0.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-number",
+     "version": "7.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 1,
+    "requirement": "^7.26.10"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 2,
+    "requirement": "^5.62.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 3,
+    "requirement": "^5.62.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 4,
+    "requirement": "^8.10.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 5,
+    "requirement": "^2.15.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 6,
+    "requirement": "^8.0.3"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 7,
+    "requirement": "^2.31.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 8,
+    "requirement": "^6.10.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 9,
+    "requirement": "^7.37.5"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 10,
+    "requirement": "^4.6.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 11,
+    "requirement": "^0.25.1"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 12,
+    "requirement": "5.1.1-v1"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 13,
+    "requirement": "^2.1.0"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 14,
+    "requirement": "^6.3.1"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 15,
+    "requirement": "^4.4.0"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 16,
+    "requirement": "5.62.0"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 17,
+    "requirement": "5.62.0"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 18,
+    "requirement": "5.62.0"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 19,
+    "requirement": "^4.3.4"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 20,
+    "requirement": "^1.4.0"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 21,
+    "requirement": "^5.2.0"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 22,
+    "requirement": "^1.4.0"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 23,
+    "requirement": "^7.3.7"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 24,
+    "requirement": "^3.21.0"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 16,
+    "requirement": "5.62.0"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 19,
+    "requirement": "^4.3.4"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 25,
+    "requirement": "5.62.0"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 26,
+    "requirement": "5.62.0"
+   },
+   {
+    "fromNode": 5,
+    "toNode": 27,
+    "requirement": "^13.20.0"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 28,
+    "requirement": "^4.17.21"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 29,
+    "requirement": "^3.0.1"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 14,
+    "requirement": "^6.3.1"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 30,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 31,
+    "requirement": "^3.1.9"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 32,
+    "requirement": "^1.2.6"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 33,
+    "requirement": "^1.3.3"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 34,
+    "requirement": "^1.3.3"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 35,
+    "requirement": "^3.2.7"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 36,
+    "requirement": "^2.1.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 37,
+    "requirement": "^0.3.9"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 38,
+    "requirement": "^2.12.1"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 39,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 40,
+    "requirement": "^2.16.1"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 41,
+    "requirement": "^4.0.3"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 42,
+    "requirement": "^3.1.2"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 43,
+    "requirement": "^2.0.8"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 44,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 45,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 46,
+    "requirement": "^1.0.9"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 47,
+    "requirement": "^3.15.0"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 31,
+    "requirement": "^3.1.8"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 34,
+    "requirement": "^1.3.2"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 39,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 42,
+    "requirement": "^3.1.2"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 43,
+    "requirement": "^2.0.8"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 48,
+    "requirement": "^5.3.2"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 49,
+    "requirement": "^0.0.8"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 50,
+    "requirement": "^4.10.0"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 51,
+    "requirement": "^4.1.0"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 52,
+    "requirement": "^1.0.8"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 53,
+    "requirement": "^9.2.2"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 54,
+    "requirement": "^3.3.5"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 55,
+    "requirement": "^1.0.9"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 56,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 57,
+    "requirement": "^2.0.1"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 14,
+    "requirement": "^6.3.1"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 31,
+    "requirement": "^3.1.8"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 34,
+    "requirement": "^1.3.3"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 36,
+    "requirement": "^2.1.0"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 39,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 42,
+    "requirement": "^3.1.2"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 43,
+    "requirement": "^2.0.8"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 45,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 54,
+    "requirement": "^2.4.1 || ^3.0.0"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 58,
+    "requirement": "^1.2.5"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 59,
+    "requirement": "^1.1.4"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 60,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 61,
+    "requirement": "^5.3.0"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 62,
+    "requirement": "^1.1.9"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 63,
+    "requirement": "^15.8.1"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 64,
+    "requirement": "^2.0.0-next.5"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 65,
+    "requirement": "^4.0.12"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 66,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 67,
+    "requirement": "5.1.1"
+   },
+   {
+    "fromNode": 16,
+    "toNode": 25,
+    "requirement": "5.62.0"
+   },
+   {
+    "fromNode": 16,
+    "toNode": 68,
+    "requirement": "5.62.0"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 18,
+    "requirement": "5.62.0"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 19,
+    "requirement": "^4.3.4"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 24,
+    "requirement": "^3.21.0"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 26,
+    "requirement": "5.62.0"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 16,
+    "requirement": "5.62.0"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 25,
+    "requirement": "5.62.0"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 26,
+    "requirement": "5.62.0"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 67,
+    "requirement": "^5.1.1"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 69,
+    "requirement": "^4.2.0"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 70,
+    "requirement": "^7.0.9"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 71,
+    "requirement": "^7.3.12"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 72,
+    "requirement": "^7.3.7"
+   },
+   {
+    "fromNode": 19,
+    "toNode": 73,
+    "requirement": "^2.1.3"
+   },
+   {
+    "fromNode": 24,
+    "toNode": 74,
+    "requirement": "^1.8.1"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 19,
+    "requirement": "^4.3.4"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 24,
+    "requirement": "^3.21.0"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 25,
+    "requirement": "5.62.0"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 41,
+    "requirement": "^4.0.3"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 68,
+    "requirement": "5.62.0"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 75,
+    "requirement": "^11.1.0"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 76,
+    "requirement": "^7.3.7"
+   },
+   {
+    "fromNode": 27,
+    "toNode": 77,
+    "requirement": "^0.20.2"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 78,
+    "requirement": "^1.0.8"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 79,
+    "requirement": "^1.0.4"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 80,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 81,
+    "requirement": "^1.24.0"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 82,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 83,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 84,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 85,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 78,
+    "requirement": "^1.0.8"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 79,
+    "requirement": "^1.0.4"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 80,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 81,
+    "requirement": "^1.23.9"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 82,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 87,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 33,
+    "toNode": 78,
+    "requirement": "^1.0.8"
+   },
+   {
+    "fromNode": 33,
+    "toNode": 80,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 33,
+    "toNode": 81,
+    "requirement": "^1.23.5"
+   },
+   {
+    "fromNode": 33,
+    "toNode": 87,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 34,
+    "toNode": 78,
+    "requirement": "^1.0.8"
+   },
+   {
+    "fromNode": 34,
+    "toNode": 80,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 34,
+    "toNode": 81,
+    "requirement": "^1.23.5"
+   },
+   {
+    "fromNode": 34,
+    "toNode": 87,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 73,
+    "requirement": "^2.1.1"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 88,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 40,
+    "requirement": "^2.16.1"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 64,
+    "requirement": "^2.0.0-next.6"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 89,
+    "requirement": "^3.2.7"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 90,
+    "requirement": "^3.2.7"
+   },
+   {
+    "fromNode": 39,
+    "toNode": 91,
+    "requirement": "^1.1.2"
+   },
+   {
+    "fromNode": 40,
+    "toNode": 39,
+    "requirement": "^2.0.3"
+   },
+   {
+    "fromNode": 41,
+    "toNode": 92,
+    "requirement": "^2.1.1"
+   },
+   {
+    "fromNode": 42,
+    "toNode": 93,
+    "requirement": "^1.1.7"
+   },
+   {
+    "fromNode": 43,
+    "toNode": 78,
+    "requirement": "^1.0.7"
+   },
+   {
+    "fromNode": 43,
+    "toNode": 80,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 43,
+    "toNode": 81,
+    "requirement": "^1.23.2"
+   },
+   {
+    "fromNode": 43,
+    "toNode": 82,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 78,
+    "requirement": "^1.0.7"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 80,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 81,
+    "requirement": "^1.23.2"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 78,
+    "requirement": "^1.0.8"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 79,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 80,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 82,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 46,
+    "toNode": 78,
+    "requirement": "^1.0.9"
+   },
+   {
+    "fromNode": 46,
+    "toNode": 79,
+    "requirement": "^1.0.4"
+   },
+   {
+    "fromNode": 46,
+    "toNode": 80,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 46,
+    "toNode": 82,
+    "requirement": "^1.1.2"
+   },
+   {
+    "fromNode": 47,
+    "toNode": 94,
+    "requirement": "^0.0.29"
+   },
+   {
+    "fromNode": 47,
+    "toNode": 95,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 47,
+    "toNode": 96,
+    "requirement": "^1.2.6"
+   },
+   {
+    "fromNode": 47,
+    "toNode": 97,
+    "requirement": "^3.0.0"
+   },
+   {
+    "fromNode": 54,
+    "toNode": 31,
+    "requirement": "^3.1.6"
+   },
+   {
+    "fromNode": 54,
+    "toNode": 33,
+    "requirement": "^1.3.1"
+   },
+   {
+    "fromNode": 54,
+    "toNode": 45,
+    "requirement": "^1.1.6"
+   },
+   {
+    "fromNode": 54,
+    "toNode": 98,
+    "requirement": "^4.1.4"
+   },
+   {
+    "fromNode": 55,
+    "toNode": 99,
+    "requirement": "^0.3.20"
+   },
+   {
+    "fromNode": 56,
+    "toNode": 79,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 56,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 56,
+    "toNode": 100,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 57,
+    "toNode": 78,
+    "requirement": "^1.0.7"
+   },
+   {
+    "fromNode": 57,
+    "toNode": 80,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 57,
+    "toNode": 81,
+    "requirement": "^1.23.3"
+   },
+   {
+    "fromNode": 58,
+    "toNode": 78,
+    "requirement": "^1.0.7"
+   },
+   {
+    "fromNode": 58,
+    "toNode": 80,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 58,
+    "toNode": 81,
+    "requirement": "^1.23.2"
+   },
+   {
+    "fromNode": 58,
+    "toNode": 82,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 58,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 58,
+    "toNode": 87,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 59,
+    "toNode": 78,
+    "requirement": "^1.0.7"
+   },
+   {
+    "fromNode": 59,
+    "toNode": 80,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 59,
+    "toNode": 81,
+    "requirement": "^1.23.3"
+   },
+   {
+    "fromNode": 59,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 59,
+    "toNode": 87,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 78,
+    "requirement": "^1.0.9"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 79,
+    "requirement": "^1.0.4"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 80,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 81,
+    "requirement": "^1.24.2"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 83,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 85,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 91,
+    "requirement": "^1.1.2"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 101,
+    "requirement": "^2.1.0"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 102,
+    "requirement": "^1.0.4"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 103,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 104,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 105,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 106,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 107,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 108,
+    "requirement": "^1.1.5"
+   },
+   {
+    "fromNode": 62,
+    "toNode": 78,
+    "requirement": "^1.0.8"
+   },
+   {
+    "fromNode": 62,
+    "toNode": 79,
+    "requirement": "^1.0.4"
+   },
+   {
+    "fromNode": 62,
+    "toNode": 80,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 62,
+    "toNode": 82,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 63,
+    "toNode": 109,
+    "requirement": "^1.4.0"
+   },
+   {
+    "fromNode": 63,
+    "toNode": 110,
+    "requirement": "^4.1.1"
+   },
+   {
+    "fromNode": 63,
+    "toNode": 111,
+    "requirement": "^16.13.1"
+   },
+   {
+    "fromNode": 64,
+    "toNode": 40,
+    "requirement": "^2.16.2"
+   },
+   {
+    "fromNode": 64,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 64,
+    "toNode": 112,
+    "requirement": "^1.6.0"
+   },
+   {
+    "fromNode": 64,
+    "toNode": 113,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 64,
+    "toNode": 114,
+    "requirement": "^1.0.7"
+   },
+   {
+    "fromNode": 64,
+    "toNode": 115,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 65,
+    "toNode": 78,
+    "requirement": "^1.0.8"
+   },
+   {
+    "fromNode": 65,
+    "toNode": 79,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 65,
+    "toNode": 80,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 65,
+    "toNode": 81,
+    "requirement": "^1.23.6"
+   },
+   {
+    "fromNode": 65,
+    "toNode": 82,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 65,
+    "toNode": 83,
+    "requirement": "^1.2.6"
+   },
+   {
+    "fromNode": 65,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 65,
+    "toNode": 103,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 65,
+    "toNode": 106,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 65,
+    "toNode": 107,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 65,
+    "toNode": 116,
+    "requirement": "^1.5.3"
+   },
+   {
+    "fromNode": 65,
+    "toNode": 117,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 65,
+    "toNode": 118,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 66,
+    "toNode": 80,
+    "requirement": "^1.1.3"
+   },
+   {
+    "fromNode": 66,
+    "toNode": 81,
+    "requirement": "^1.17.5"
+   },
+   {
+    "fromNode": 67,
+    "toNode": 119,
+    "requirement": "^4.3.0"
+   },
+   {
+    "fromNode": 67,
+    "toNode": 120,
+    "requirement": "^4.1.1"
+   },
+   {
+    "fromNode": 68,
+    "toNode": 25,
+    "requirement": "5.62.0"
+   },
+   {
+    "fromNode": 68,
+    "toNode": 121,
+    "requirement": "^3.3.0"
+   },
+   {
+    "fromNode": 69,
+    "toNode": 122,
+    "requirement": "^3.4.3"
+   },
+   {
+    "fromNode": 75,
+    "toNode": 21,
+    "requirement": "^5.2.0"
+   },
+   {
+    "fromNode": 75,
+    "toNode": 123,
+    "requirement": "^2.1.0"
+   },
+   {
+    "fromNode": 75,
+    "toNode": 124,
+    "requirement": "^3.0.1"
+   },
+   {
+    "fromNode": 75,
+    "toNode": 125,
+    "requirement": "^3.2.9"
+   },
+   {
+    "fromNode": 75,
+    "toNode": 126,
+    "requirement": "^1.4.1"
+   },
+   {
+    "fromNode": 75,
+    "toNode": 127,
+    "requirement": "^3.0.0"
+   },
+   {
+    "fromNode": 78,
+    "toNode": 83,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 78,
+    "toNode": 128,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 78,
+    "toNode": 129,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 78,
+    "toNode": 130,
+    "requirement": "^1.2.2"
+   },
+   {
+    "fromNode": 79,
+    "toNode": 83,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 79,
+    "toNode": 128,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 80,
+    "toNode": 104,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 80,
+    "toNode": 113,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 80,
+    "toNode": 131,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 39,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 46,
+    "requirement": "^1.0.9"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 56,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 78,
+    "requirement": "^1.0.8"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 79,
+    "requirement": "^1.0.4"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 82,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 83,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 84,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 85,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 98,
+    "requirement": "^4.1.7"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 100,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 101,
+    "requirement": "^2.1.0"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 102,
+    "requirement": "^1.0.4"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 103,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 104,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 105,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 106,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 107,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 113,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 116,
+    "requirement": "^1.5.4"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 129,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 132,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 133,
+    "requirement": "^1.0.4"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 134,
+    "requirement": "^1.0.7"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 135,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 136,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 137,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 138,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 139,
+    "requirement": "^1.1.8"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 140,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 141,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 142,
+    "requirement": "^3.0.5"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 143,
+    "requirement": "^1.2.7"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 144,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 145,
+    "requirement": "^2.0.3"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 146,
+    "requirement": "^2.0.3"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 147,
+    "requirement": "^1.0.4"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 148,
+    "requirement": "^1.1.15"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 149,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 150,
+    "requirement": "^1.13.4"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 151,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 152,
+    "requirement": "^1.1.3"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 153,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 154,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 155,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 156,
+    "requirement": "^1.2.10"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 157,
+    "requirement": "^1.0.8"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 158,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 159,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 160,
+    "requirement": "^1.0.4"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 161,
+    "requirement": "^1.0.7"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 162,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 163,
+    "requirement": "^1.1.19"
+   },
+   {
+    "fromNode": 82,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 83,
+    "toNode": 39,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 83,
+    "toNode": 82,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 83,
+    "toNode": 85,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 83,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 83,
+    "toNode": 91,
+    "requirement": "^1.1.2"
+   },
+   {
+    "fromNode": 83,
+    "toNode": 103,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 83,
+    "toNode": 106,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 83,
+    "toNode": 128,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 83,
+    "toNode": 129,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 83,
+    "toNode": 140,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 83,
+    "toNode": 164,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 83,
+    "toNode": 165,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 83,
+    "toNode": 166,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 84,
+    "toNode": 79,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 84,
+    "toNode": 167,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 87,
+    "toNode": 39,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 89,
+    "toNode": 73,
+    "requirement": "^2.1.1"
+   },
+   {
+    "fromNode": 90,
+    "toNode": 73,
+    "requirement": "^2.1.1"
+   },
+   {
+    "fromNode": 93,
+    "toNode": 168,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 93,
+    "toNode": 169,
+    "requirement": "0.0.1"
+   },
+   {
+    "fromNode": 95,
+    "toNode": 96,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 98,
+    "toNode": 78,
+    "requirement": "^1.0.8"
+   },
+   {
+    "fromNode": 98,
+    "toNode": 79,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 98,
+    "toNode": 80,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 98,
+    "toNode": 82,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 98,
+    "toNode": 106,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 98,
+    "toNode": 113,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 100,
+    "toNode": 39,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 100,
+    "toNode": 79,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 100,
+    "toNode": 103,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 100,
+    "toNode": 167,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 101,
+    "toNode": 39,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 101,
+    "toNode": 83,
+    "requirement": "^1.2.6"
+   },
+   {
+    "fromNode": 101,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 101,
+    "toNode": 167,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 102,
+    "toNode": 80,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 102,
+    "toNode": 103,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 104,
+    "toNode": 129,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 105,
+    "toNode": 170,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 107,
+    "toNode": 39,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 107,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 107,
+    "toNode": 118,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 108,
+    "toNode": 82,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 108,
+    "toNode": 83,
+    "requirement": "^1.2.6"
+   },
+   {
+    "fromNode": 108,
+    "toNode": 106,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 108,
+    "toNode": 117,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 108,
+    "toNode": 131,
+    "requirement": "^1.1.4"
+   },
+   {
+    "fromNode": 108,
+    "toNode": 140,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 109,
+    "toNode": 171,
+    "requirement": "^3.0.0 || ^4.0.0"
+   },
+   {
+    "fromNode": 112,
+    "toNode": 14,
+    "requirement": "^6.3.1"
+   },
+   {
+    "fromNode": 112,
+    "toNode": 34,
+    "requirement": "^1.3.3"
+   },
+   {
+    "fromNode": 112,
+    "toNode": 62,
+    "requirement": "^1.1.9"
+   },
+   {
+    "fromNode": 112,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 116,
+    "toNode": 78,
+    "requirement": "^1.0.8"
+   },
+   {
+    "fromNode": 116,
+    "toNode": 80,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 116,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 116,
+    "toNode": 103,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 116,
+    "toNode": 117,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 116,
+    "toNode": 140,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 117,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 117,
+    "toNode": 104,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 117,
+    "toNode": 131,
+    "requirement": "^1.1.4"
+   },
+   {
+    "fromNode": 117,
+    "toNode": 172,
+    "requirement": "^1.2.3"
+   },
+   {
+    "fromNode": 118,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 118,
+    "toNode": 150,
+    "requirement": "^1.13.4"
+   },
+   {
+    "fromNode": 118,
+    "toNode": 173,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 118,
+    "toNode": 174,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 118,
+    "toNode": 175,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 119,
+    "toNode": 176,
+    "requirement": "^5.2.0"
+   },
+   {
+    "fromNode": 124,
+    "toNode": 177,
+    "requirement": "^4.0.0"
+   },
+   {
+    "fromNode": 125,
+    "toNode": 126,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 125,
+    "toNode": 178,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 125,
+    "toNode": 179,
+    "requirement": "^1.2.3"
+   },
+   {
+    "fromNode": 125,
+    "toNode": 180,
+    "requirement": "^5.1.2"
+   },
+   {
+    "fromNode": 125,
+    "toNode": 181,
+    "requirement": "^4.0.8"
+   },
+   {
+    "fromNode": 128,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 128,
+    "toNode": 91,
+    "requirement": "^1.1.2"
+   },
+   {
+    "fromNode": 130,
+    "toNode": 83,
+    "requirement": "^1.2.4"
+   },
+   {
+    "fromNode": 130,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 130,
+    "toNode": 91,
+    "requirement": "^1.1.2"
+   },
+   {
+    "fromNode": 130,
+    "toNode": 103,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 130,
+    "toNode": 104,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 130,
+    "toNode": 131,
+    "requirement": "^1.1.4"
+   },
+   {
+    "fromNode": 131,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 131,
+    "toNode": 103,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 131,
+    "toNode": 129,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 132,
+    "toNode": 79,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 132,
+    "toNode": 142,
+    "requirement": "^3.0.5"
+   },
+   {
+    "fromNode": 133,
+    "toNode": 78,
+    "requirement": "^1.0.8"
+   },
+   {
+    "fromNode": 133,
+    "toNode": 80,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 133,
+    "toNode": 81,
+    "requirement": "^1.23.5"
+   },
+   {
+    "fromNode": 133,
+    "toNode": 83,
+    "requirement": "^1.2.6"
+   },
+   {
+    "fromNode": 133,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 133,
+    "toNode": 132,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 133,
+    "toNode": 142,
+    "requirement": "^3.0.4"
+   },
+   {
+    "fromNode": 134,
+    "toNode": 182,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 135,
+    "toNode": 79,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 135,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 135,
+    "toNode": 144,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 136,
+    "toNode": 79,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 136,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 136,
+    "toNode": 144,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 137,
+    "toNode": 79,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 137,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 137,
+    "toNode": 144,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 138,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 138,
+    "toNode": 129,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 138,
+    "toNode": 143,
+    "requirement": "^1.2.7"
+   },
+   {
+    "fromNode": 138,
+    "toNode": 183,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 138,
+    "toNode": 184,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 138,
+    "toNode": 185,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 139,
+    "toNode": 39,
+    "requirement": "^2.0.4"
+   },
+   {
+    "fromNode": 139,
+    "toNode": 78,
+    "requirement": "^1.0.9"
+   },
+   {
+    "fromNode": 139,
+    "toNode": 79,
+    "requirement": "^1.0.4"
+   },
+   {
+    "fromNode": 139,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 139,
+    "toNode": 104,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 139,
+    "toNode": 129,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 139,
+    "toNode": 143,
+    "requirement": "^1.2.7"
+   },
+   {
+    "fromNode": 139,
+    "toNode": 172,
+    "requirement": "^1.2.3"
+   },
+   {
+    "fromNode": 139,
+    "toNode": 186,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 140,
+    "toNode": 82,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 140,
+    "toNode": 170,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 141,
+    "toNode": 79,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 141,
+    "toNode": 83,
+    "requirement": "^1.2.6"
+   },
+   {
+    "fromNode": 141,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 142,
+    "toNode": 78,
+    "requirement": "^1.0.8"
+   },
+   {
+    "fromNode": 142,
+    "toNode": 79,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 142,
+    "toNode": 83,
+    "requirement": "^1.2.6"
+   },
+   {
+    "fromNode": 144,
+    "toNode": 79,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 144,
+    "toNode": 83,
+    "requirement": "^1.2.6"
+   },
+   {
+    "fromNode": 144,
+    "toNode": 148,
+    "requirement": "^1.1.13"
+   },
+   {
+    "fromNode": 147,
+    "toNode": 79,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 148,
+    "toNode": 163,
+    "requirement": "^1.1.16"
+   },
+   {
+    "fromNode": 149,
+    "toNode": 79,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 151,
+    "toNode": 83,
+    "requirement": "^1.2.6"
+   },
+   {
+    "fromNode": 151,
+    "toNode": 113,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 151,
+    "toNode": 153,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 152,
+    "toNode": 78,
+    "requirement": "^1.0.9"
+   },
+   {
+    "fromNode": 152,
+    "toNode": 79,
+    "requirement": "^1.0.4"
+   },
+   {
+    "fromNode": 152,
+    "toNode": 83,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 152,
+    "toNode": 106,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 152,
+    "toNode": 187,
+    "requirement": "^2.0.5"
+   },
+   {
+    "fromNode": 153,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 153,
+    "toNode": 187,
+    "requirement": "^2.0.5"
+   },
+   {
+    "fromNode": 154,
+    "toNode": 82,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 154,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 154,
+    "toNode": 170,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 155,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 155,
+    "toNode": 107,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 156,
+    "toNode": 56,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 156,
+    "toNode": 78,
+    "requirement": "^1.0.9"
+   },
+   {
+    "fromNode": 156,
+    "toNode": 79,
+    "requirement": "^1.0.4"
+   },
+   {
+    "fromNode": 156,
+    "toNode": 80,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 156,
+    "toNode": 81,
+    "requirement": "^1.24.2"
+   },
+   {
+    "fromNode": 156,
+    "toNode": 82,
+    "requirement": "^1.1.2"
+   },
+   {
+    "fromNode": 156,
+    "toNode": 104,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 156,
+    "toNode": 131,
+    "requirement": "^1.1.4"
+   },
+   {
+    "fromNode": 157,
+    "toNode": 78,
+    "requirement": "^1.0.7"
+   },
+   {
+    "fromNode": 157,
+    "toNode": 80,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 157,
+    "toNode": 82,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 158,
+    "toNode": 79,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 158,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 158,
+    "toNode": 148,
+    "requirement": "^1.1.14"
+   },
+   {
+    "fromNode": 159,
+    "toNode": 78,
+    "requirement": "^1.0.8"
+   },
+   {
+    "fromNode": 159,
+    "toNode": 103,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 159,
+    "toNode": 105,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 159,
+    "toNode": 148,
+    "requirement": "^1.1.14"
+   },
+   {
+    "fromNode": 159,
+    "toNode": 188,
+    "requirement": "^0.3.3"
+   },
+   {
+    "fromNode": 160,
+    "toNode": 78,
+    "requirement": "^1.0.8"
+   },
+   {
+    "fromNode": 160,
+    "toNode": 103,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 160,
+    "toNode": 105,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 160,
+    "toNode": 134,
+    "requirement": "^1.0.7"
+   },
+   {
+    "fromNode": 160,
+    "toNode": 148,
+    "requirement": "^1.1.15"
+   },
+   {
+    "fromNode": 160,
+    "toNode": 188,
+    "requirement": "^0.3.3"
+   },
+   {
+    "fromNode": 160,
+    "toNode": 189,
+    "requirement": "^1.0.9"
+   },
+   {
+    "fromNode": 161,
+    "toNode": 78,
+    "requirement": "^1.0.9"
+   },
+   {
+    "fromNode": 161,
+    "toNode": 103,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 161,
+    "toNode": 148,
+    "requirement": "^1.1.15"
+   },
+   {
+    "fromNode": 161,
+    "toNode": 182,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 161,
+    "toNode": 188,
+    "requirement": "^0.3.5"
+   },
+   {
+    "fromNode": 161,
+    "toNode": 189,
+    "requirement": "^1.0.10"
+   },
+   {
+    "fromNode": 162,
+    "toNode": 79,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 162,
+    "toNode": 106,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 162,
+    "toNode": 190,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 162,
+    "toNode": 191,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 163,
+    "toNode": 78,
+    "requirement": "^1.0.9"
+   },
+   {
+    "fromNode": 163,
+    "toNode": 79,
+    "requirement": "^1.0.4"
+   },
+   {
+    "fromNode": 163,
+    "toNode": 103,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 163,
+    "toNode": 134,
+    "requirement": "^1.0.7"
+   },
+   {
+    "fromNode": 163,
+    "toNode": 140,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 163,
+    "toNode": 167,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 163,
+    "toNode": 188,
+    "requirement": "^0.3.5"
+   },
+   {
+    "fromNode": 167,
+    "toNode": 106,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 170,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 170,
+    "toNode": 103,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 170,
+    "toNode": 128,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 173,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 173,
+    "toNode": 150,
+    "requirement": "^1.13.4"
+   },
+   {
+    "fromNode": 174,
+    "toNode": 79,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 174,
+    "toNode": 83,
+    "requirement": "^1.2.5"
+   },
+   {
+    "fromNode": 174,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 174,
+    "toNode": 150,
+    "requirement": "^1.13.3"
+   },
+   {
+    "fromNode": 175,
+    "toNode": 79,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 175,
+    "toNode": 83,
+    "requirement": "^1.2.5"
+   },
+   {
+    "fromNode": 175,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 175,
+    "toNode": 150,
+    "requirement": "^1.13.3"
+   },
+   {
+    "fromNode": 175,
+    "toNode": 174,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 179,
+    "toNode": 192,
+    "requirement": "2.1.5"
+   },
+   {
+    "fromNode": 179,
+    "toNode": 193,
+    "requirement": "^1.6.0"
+   },
+   {
+    "fromNode": 180,
+    "toNode": 41,
+    "requirement": "^4.0.1"
+   },
+   {
+    "fromNode": 181,
+    "toNode": 194,
+    "requirement": "^3.0.3"
+   },
+   {
+    "fromNode": 181,
+    "toNode": 195,
+    "requirement": "^2.3.1"
+   },
+   {
+    "fromNode": 183,
+    "toNode": 82,
+    "requirement": "^1.1.2"
+   },
+   {
+    "fromNode": 183,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 183,
+    "toNode": 143,
+    "requirement": "^1.2.7"
+   },
+   {
+    "fromNode": 183,
+    "toNode": 150,
+    "requirement": "^1.13.4"
+   },
+   {
+    "fromNode": 184,
+    "toNode": 79,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 184,
+    "toNode": 167,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 185,
+    "toNode": 56,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 185,
+    "toNode": 79,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 185,
+    "toNode": 106,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 186,
+    "toNode": 79,
+    "requirement": "^1.0.4"
+   },
+   {
+    "fromNode": 188,
+    "toNode": 143,
+    "requirement": "^1.2.7"
+   },
+   {
+    "fromNode": 189,
+    "toNode": 78,
+    "requirement": "^1.0.8"
+   },
+   {
+    "fromNode": 189,
+    "toNode": 80,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 189,
+    "toNode": 81,
+    "requirement": "^1.23.9"
+   },
+   {
+    "fromNode": 189,
+    "toNode": 82,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 189,
+    "toNode": 83,
+    "requirement": "^1.2.7"
+   },
+   {
+    "fromNode": 189,
+    "toNode": 86,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 189,
+    "toNode": 140,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 189,
+    "toNode": 196,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 191,
+    "toNode": 84,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 191,
+    "toNode": 185,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 191,
+    "toNode": 197,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 191,
+    "toNode": 198,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 191,
+    "toNode": 199,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 192,
+    "toNode": 178,
+    "requirement": "2.0.5"
+   },
+   {
+    "fromNode": 192,
+    "toNode": 200,
+    "requirement": "^1.1.9"
+   },
+   {
+    "fromNode": 193,
+    "toNode": 201,
+    "requirement": "^1.0.4"
+   },
+   {
+    "fromNode": 194,
+    "toNode": 202,
+    "requirement": "^7.1.1"
+   },
+   {
+    "fromNode": 196,
+    "toNode": 79,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 196,
+    "toNode": 100,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 196,
+    "toNode": 139,
+    "requirement": "^1.1.6"
+   },
+   {
+    "fromNode": 196,
+    "toNode": 149,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 196,
+    "toNode": 163,
+    "requirement": "^1.1.16"
+   },
+   {
+    "fromNode": 196,
+    "toNode": 167,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 196,
+    "toNode": 184,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 196,
+    "toNode": 187,
+    "requirement": "^2.0.5"
+   },
+   {
+    "fromNode": 196,
+    "toNode": 191,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 196,
+    "toNode": 203,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 196,
+    "toNode": 204,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 196,
+    "toNode": 205,
+    "requirement": "^1.0.10"
+   },
+   {
+    "fromNode": 196,
+    "toNode": 206,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 197,
+    "toNode": 190,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 198,
+    "toNode": 79,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 198,
+    "toNode": 167,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 199,
+    "toNode": 79,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 199,
+    "toNode": 167,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 200,
+    "toNode": 207,
+    "requirement": "^1.2.2"
+   },
+   {
+    "fromNode": 202,
+    "toNode": 208,
+    "requirement": "^5.0.1"
+   },
+   {
+    "fromNode": 203,
+    "toNode": 56,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 203,
+    "toNode": 79,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 203,
+    "toNode": 140,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 203,
+    "toNode": 164,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 203,
+    "toNode": 167,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 204,
+    "toNode": 79,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 205,
+    "toNode": 56,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 205,
+    "toNode": 79,
+    "requirement": "^1.0.4"
+   },
+   {
+    "fromNode": 205,
+    "toNode": 140,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 205,
+    "toNode": 166,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 205,
+    "toNode": 167,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 206,
+    "toNode": 146,
+    "requirement": "^2.0.3"
+   },
+   {
+    "fromNode": 206,
+    "toNode": 209,
+    "requirement": "^2.0.3"
+   },
+   {
+    "fromNode": 206,
+    "toNode": 210,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 206,
+    "toNode": 211,
+    "requirement": "^2.0.3"
+   },
+   {
+    "fromNode": 208,
+    "toNode": 212,
+    "requirement": "^7.0.0"
+   },
+   {
+    "fromNode": 211,
+    "toNode": 79,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 211,
+    "toNode": 83,
+    "requirement": "^1.2.6"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/emerson-eps/eslint-config"
+  },
+  "openIssuesCount": 6,
+  "starsCount": 3,
+  "forksCount": 3,
+  "license": "MIT",
+  "description": "Shared ESLint config",
+  "homepage": "",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/emerson-eps/eslint-config",
+    "commit": "84a0cde5e49b2e000ec4143aae501ccceebe3a27"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 0,
+     "reason": "0 commit(s) and 0 issue activity found in the last 90 days -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 7,
+     "reason": "Found 9/12 approved changesets -- score normalized to 7",
+     "details": []
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected",
+     "details": []
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": 0,
+     "reason": "detected GitHub workflow tokens with excessive permissions",
+     "details": [
+      "Info: jobLevel 'actions' permission set to 'read': .github/workflows/codeql-analysis.yml:28",
+      "Info: jobLevel 'contents' permission set to 'read': .github/workflows/codeql-analysis.yml:29",
+      "Warn: no topLevel permission defined: .github/workflows/codeql-analysis.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/conventional_commit.yml:1",
+      "Warn: topLevel 'contents' permission set to 'write': .github/workflows/node.js.yml:13",
+      "Info: no jobLevel write permissions found"
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 10,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE:0",
+      "Info: FSF or OSI recognized license: MIT License: LICENSE:0"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": 3,
+     "reason": "dependency not pinned by hash detected -- score normalized to 3",
+     "details": [
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/codeql-analysis.yml:41: update your workflow using https://app.stepsecurity.io/secureworkflow/emerson-eps/eslint-config/codeql-analysis.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/codeql-analysis.yml:45: update your workflow using https://app.stepsecurity.io/secureworkflow/emerson-eps/eslint-config/codeql-analysis.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/codeql-analysis.yml:58: update your workflow using https://app.stepsecurity.io/secureworkflow/emerson-eps/eslint-config/codeql-analysis.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/codeql-analysis.yml:71: update your workflow using https://app.stepsecurity.io/secureworkflow/emerson-eps/eslint-config/codeql-analysis.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/conventional_commit.yml:12: update your workflow using https://app.stepsecurity.io/secureworkflow/emerson-eps/eslint-config/conventional_commit.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/conventional_commit.yml:14: update your workflow using https://app.stepsecurity.io/secureworkflow/emerson-eps/eslint-config/conventional_commit.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/node.js.yml:22: update your workflow using https://app.stepsecurity.io/secureworkflow/emerson-eps/eslint-config/node.js.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/node.js.yml:26: update your workflow using https://app.stepsecurity.io/secureworkflow/emerson-eps/eslint-config/node.js.yml/main?enable=pin",
+      "Info:   0 out of   7 GitHub-owned GitHubAction dependencies pinned",
+      "Info:   0 out of   1 third-party GitHubAction dependencies pinned",
+      "Info:   1 out of   1 npmCommand dependencies pinned"
+     ]
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 0,
+     "reason": "security policy file not detected",
+     "details": [
+      "Warn: no security policy file detected",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze"
+     ]
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": -1,
+     "reason": "internal error: error during branchesHandler.setup: internal error: some github tokens can't read classic branch protection rules: https://github.com/ossf/scorecard-action/blob/main/docs/authentication/fine-grained-auth-token.md",
+     "details": []
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 9,
+     "reason": "SAST tool detected but not run on all commits",
+     "details": [
+      "Info: SAST configuration detected: CodeQL",
+      "Warn: 26 commits out of 30 are checked with a SAST tool"
+     ]
+    }
+   ],
+   "overallScore": 4.8,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 358650247,
+  "node_id": "MDEwOlJlcG9zaXRvcnkzNTg2NTAyNDc=",
+  "name": "eslint-config",
+  "full_name": "emerson-eps/eslint-config",
+  "private": false,
+  "owner": {
+   "login": "emerson-eps",
+   "id": 57386282,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjU3Mzg2Mjgy",
+   "avatar_url": "https://avatars.githubusercontent.com/u/57386282?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/emerson-eps",
+   "html_url": "https://github.com/emerson-eps",
+   "followers_url": "https://api.github.com/users/emerson-eps/followers",
+   "following_url": "https://api.github.com/users/emerson-eps/following{/other_user}",
+   "gists_url": "https://api.github.com/users/emerson-eps/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/emerson-eps/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/emerson-eps/subscriptions",
+   "organizations_url": "https://api.github.com/users/emerson-eps/orgs",
+   "repos_url": "https://api.github.com/users/emerson-eps/repos",
+   "events_url": "https://api.github.com/users/emerson-eps/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/emerson-eps/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/emerson-eps/eslint-config",
+  "description": "Shared ESLint config",
+  "fork": false,
+  "url": "https://api.github.com/repos/emerson-eps/eslint-config",
+  "forks_url": "https://api.github.com/repos/emerson-eps/eslint-config/forks",
+  "keys_url": "https://api.github.com/repos/emerson-eps/eslint-config/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/emerson-eps/eslint-config/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/emerson-eps/eslint-config/teams",
+  "hooks_url": "https://api.github.com/repos/emerson-eps/eslint-config/hooks",
+  "issue_events_url": "https://api.github.com/repos/emerson-eps/eslint-config/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/emerson-eps/eslint-config/events",
+  "assignees_url": "https://api.github.com/repos/emerson-eps/eslint-config/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/emerson-eps/eslint-config/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/emerson-eps/eslint-config/tags",
+  "blobs_url": "https://api.github.com/repos/emerson-eps/eslint-config/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/emerson-eps/eslint-config/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/emerson-eps/eslint-config/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/emerson-eps/eslint-config/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/emerson-eps/eslint-config/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/emerson-eps/eslint-config/languages",
+  "stargazers_url": "https://api.github.com/repos/emerson-eps/eslint-config/stargazers",
+  "contributors_url": "https://api.github.com/repos/emerson-eps/eslint-config/contributors",
+  "subscribers_url": "https://api.github.com/repos/emerson-eps/eslint-config/subscribers",
+  "subscription_url": "https://api.github.com/repos/emerson-eps/eslint-config/subscription",
+  "commits_url": "https://api.github.com/repos/emerson-eps/eslint-config/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/emerson-eps/eslint-config/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/emerson-eps/eslint-config/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/emerson-eps/eslint-config/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/emerson-eps/eslint-config/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/emerson-eps/eslint-config/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/emerson-eps/eslint-config/merges",
+  "archive_url": "https://api.github.com/repos/emerson-eps/eslint-config/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/emerson-eps/eslint-config/downloads",
+  "issues_url": "https://api.github.com/repos/emerson-eps/eslint-config/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/emerson-eps/eslint-config/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/emerson-eps/eslint-config/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/emerson-eps/eslint-config/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/emerson-eps/eslint-config/labels{/name}",
+  "releases_url": "https://api.github.com/repos/emerson-eps/eslint-config/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/emerson-eps/eslint-config/deployments",
+  "created_at": "2021-04-16T15:56:01Z",
+  "updated_at": "2026-03-30T07:36:34Z",
+  "pushed_at": "2026-06-23T09:01:58Z",
+  "git_url": "git://github.com/emerson-eps/eslint-config.git",
+  "ssh_url": "git@github.com:emerson-eps/eslint-config.git",
+  "clone_url": "https://github.com/emerson-eps/eslint-config.git",
+  "svn_url": "https://github.com/emerson-eps/eslint-config",
+  "homepage": "",
+  "size": 3486,
+  "stargazers_count": 3,
+  "watchers_count": 3,
+  "language": "JavaScript",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": true,
+  "forks_count": 3,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 14,
+  "license": {
+   "key": "mit",
+   "name": "MIT License",
+   "spdx_id": "MIT",
+   "url": "https://api.github.com/licenses/mit",
+   "node_id": "MDc6TGljZW5zZTEz"
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [],
+  "visibility": "public",
+  "forks": 3,
+  "open_issues": 14,
+  "watchers": 3,
+  "default_branch": "main",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "emerson-eps",
+   "id": 57386282,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjU3Mzg2Mjgy",
+   "avatar_url": "https://avatars.githubusercontent.com/u/57386282?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/emerson-eps",
+   "html_url": "https://github.com/emerson-eps",
+   "followers_url": "https://api.github.com/users/emerson-eps/followers",
+   "following_url": "https://api.github.com/users/emerson-eps/following{/other_user}",
+   "gists_url": "https://api.github.com/users/emerson-eps/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/emerson-eps/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/emerson-eps/subscriptions",
+   "organizations_url": "https://api.github.com/users/emerson-eps/orgs",
+   "repos_url": "https://api.github.com/users/emerson-eps/repos",
+   "events_url": "https://api.github.com/users/emerson-eps/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/emerson-eps/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 3,
+  "subscribers_count": 4
+ },
+ "funding": []
+}

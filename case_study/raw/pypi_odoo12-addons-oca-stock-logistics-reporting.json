@@ -1,0 +1,171 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "PYPI",
+   "name": "odoo12-addons-oca-stock-logistics-reporting"
+  },
+  "purl": "pkg:pypi/odoo12-addons-oca-stock-logistics-reporting",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "odoo12-addons-oca-stock-logistics-reporting",
+     "version": "12.0.20190623.0"
+    },
+    "purl": "pkg:pypi/odoo12-addons-oca-stock-logistics-reporting@12.0.20190623.0",
+    "publishedAt": "2019-06-24T04:49:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "odoo12-addons-oca-stock-logistics-reporting",
+     "version": "12.0.20190701.0"
+    },
+    "purl": "pkg:pypi/odoo12-addons-oca-stock-logistics-reporting@12.0.20190701.0",
+    "publishedAt": "2019-07-02T04:50:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "odoo12-addons-oca-stock-logistics-reporting",
+     "version": "12.0.20190714.0"
+    },
+    "purl": "pkg:pypi/odoo12-addons-oca-stock-logistics-reporting@12.0.20190714.0",
+    "publishedAt": "2019-07-15T04:50:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "odoo12-addons-oca-stock-logistics-reporting",
+     "version": "12.0.20201203.0"
+    },
+    "purl": "pkg:pypi/odoo12-addons-oca-stock-logistics-reporting@12.0.20201203.0",
+    "publishedAt": "2020-12-23T06:21:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "odoo12-addons-oca-stock-logistics-reporting",
+     "version": "12.0.20210315.0"
+    },
+    "purl": "pkg:pypi/odoo12-addons-oca-stock-logistics-reporting@12.0.20210315.0",
+    "publishedAt": "2021-03-17T06:19:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "odoo12-addons-oca-stock-logistics-reporting",
+     "version": "12.0.20211016.0"
+    },
+    "purl": "pkg:pypi/odoo12-addons-oca-stock-logistics-reporting@12.0.20211016.0",
+    "publishedAt": "2021-10-16T06:55:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "odoo12-addons-oca-stock-logistics-reporting",
+     "version": "12.0.20211204.0"
+    },
+    "purl": "pkg:pypi/odoo12-addons-oca-stock-logistics-reporting@12.0.20211204.0",
+    "publishedAt": "2021-12-05T05:08:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "odoo12-addons-oca-stock-logistics-reporting",
+     "version": "12.0.20221001.0"
+    },
+    "purl": "pkg:pypi/odoo12-addons-oca-stock-logistics-reporting@12.0.20221001.0",
+    "publishedAt": "2022-10-02T05:00:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "odoo12-addons-oca-stock-logistics-reporting",
+     "version": "12.0.20230111.0"
+    },
+    "purl": "pkg:pypi/odoo12-addons-oca-stock-logistics-reporting@12.0.20230111.0",
+    "publishedAt": "2023-01-12T07:10:53Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "PYPI",
+   "name": "odoo12-addons-oca-stock-logistics-reporting",
+   "version": "12.0.20230111.0"
+  },
+  "purl": "pkg:pypi/odoo12-addons-oca-stock-logistics-reporting@12.0.20230111.0",
+  "publishedAt": "2023-01-12T07:10:53Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [],
+  "licenseDetails": [],
+  "advisoryKeys": [],
+  "links": [],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://pypi.org/simple"
+  ],
+  "relatedProjects": [],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "odoo12_addons_oca_stock_logistics_reporting",
+    "versionString": "12.0.20230111.0",
+    "source": "PYPI_RELEASE_FILENAME"
+   },
+   {
+    "packageName": "odoo12-addons-oca-stock-logistics-reporting",
+    "versionString": "12.0.20230111.0",
+    "source": "PYPI_METADATA_FILE"
+   }
+  ],
+  "cooldown": {
+   "end": "2023-01-17T07:10:53Z",
+   "description": ""
+  },
+  "projectStatus": {
+   "status": "active",
+   "reason": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [],
+  "edges": [],
+  "error": "resolution impossible:\nno candidates at all for: odoo12-addon-stock-account-valuation-report \"\"\n"
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ }
+}

@@ -1,0 +1,4870 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "@alfalab/core-components-input-autocomplete"
+  },
+  "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "10.0.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@10.0.0",
+    "publishedAt": "2023-08-08T11:08:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "10.0.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@10.0.1",
+    "publishedAt": "2023-08-17T03:20:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "10.0.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@10.0.2",
+    "publishedAt": "2023-08-23T05:27:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "10.0.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@10.0.3",
+    "publishedAt": "2023-08-28T09:07:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "10.0.4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@10.0.4",
+    "publishedAt": "2023-08-29T11:55:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "10.1.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@10.1.0",
+    "publishedAt": "2023-09-01T10:35:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "10.1.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@10.1.1",
+    "publishedAt": "2023-09-05T16:25:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "10.1.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@10.1.2",
+    "publishedAt": "2023-09-11T13:14:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "10.1.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@10.1.3",
+    "publishedAt": "2023-09-11T16:01:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "10.1.4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@10.1.4",
+    "publishedAt": "2023-09-12T11:21:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "10.1.5"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@10.1.5",
+    "publishedAt": "2023-09-15T06:48:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "10.1.6"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@10.1.6",
+    "publishedAt": "2023-09-15T12:04:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "10.2.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@10.2.0",
+    "publishedAt": "2023-09-29T10:14:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "10.2.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@10.2.1",
+    "publishedAt": "2023-10-10T12:11:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "10.2.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@10.2.2",
+    "publishedAt": "2023-10-19T14:30:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "10.2.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@10.2.3",
+    "publishedAt": "2023-10-23T12:22:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "10.3.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@10.3.0",
+    "publishedAt": "2023-10-27T11:23:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "11.0.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@11.0.0",
+    "publishedAt": "2023-11-03T08:33:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "11.0.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@11.0.1",
+    "publishedAt": "2023-11-09T07:25:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "11.0.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@11.0.2",
+    "publishedAt": "2023-11-10T13:47:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "11.0.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@11.0.3",
+    "publishedAt": "2023-11-20T11:27:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "11.1.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@11.1.0",
+    "publishedAt": "2023-11-24T11:51:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "11.2.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@11.2.0",
+    "publishedAt": "2023-11-27T08:04:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "11.3.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@11.3.0",
+    "publishedAt": "2023-11-28T08:06:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "11.3.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@11.3.1",
+    "publishedAt": "2023-11-30T14:49:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "11.3.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@11.3.2",
+    "publishedAt": "2023-12-08T10:32:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "11.3.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@11.3.3",
+    "publishedAt": "2023-12-19T10:54:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "11.3.4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@11.3.4",
+    "publishedAt": "2023-12-29T11:52:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "11.4.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@11.4.0",
+    "publishedAt": "2024-01-24T10:39:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "11.4.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@11.4.1",
+    "publishedAt": "2024-02-06T13:53:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.0.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.0.0",
+    "publishedAt": "2024-02-12T12:30:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.0.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.0.1",
+    "publishedAt": "2024-03-04T05:48:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.0.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.0.2",
+    "publishedAt": "2024-03-04T15:11:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.0.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.0.3",
+    "publishedAt": "2024-03-15T17:19:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.0.4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.0.4",
+    "publishedAt": "2024-03-22T11:00:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.0.5"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.0.5",
+    "publishedAt": "2024-04-08T10:12:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.0.6"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.0.6",
+    "publishedAt": "2024-04-19T10:07:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.1.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.1.0",
+    "publishedAt": "2024-04-27T14:06:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.1.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.1.1",
+    "publishedAt": "2024-05-15T16:57:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.1.10"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.1.10",
+    "publishedAt": "2024-06-28T07:15:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.1.11"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.1.11",
+    "publishedAt": "2024-06-28T11:26:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.1.12"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.1.12",
+    "publishedAt": "2024-07-04T10:51:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.1.13"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.1.13",
+    "publishedAt": "2024-07-05T13:44:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.1.14"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.1.14",
+    "publishedAt": "2024-07-16T14:22:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.1.15"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.1.15",
+    "publishedAt": "2024-07-19T13:04:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.1.16"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.1.16",
+    "publishedAt": "2024-07-26T11:44:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.1.17"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.1.17",
+    "publishedAt": "2024-08-13T15:08:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.1.18"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.1.18",
+    "publishedAt": "2024-08-20T11:12:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.1.19"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.1.19",
+    "publishedAt": "2024-08-26T11:42:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.1.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.1.2",
+    "publishedAt": "2024-05-24T12:23:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.1.20"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.1.20",
+    "publishedAt": "2024-09-04T10:54:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.1.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.1.3",
+    "publishedAt": "2024-05-28T13:00:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.1.4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.1.4",
+    "publishedAt": "2024-06-13T13:40:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.1.5"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.1.5",
+    "publishedAt": "2024-06-14T13:43:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.1.6"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.1.6",
+    "publishedAt": "2024-06-17T15:17:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.1.7"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.1.7",
+    "publishedAt": "2024-06-21T12:47:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.1.8"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.1.8",
+    "publishedAt": "2024-06-26T08:32:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.1.9"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.1.9",
+    "publishedAt": "2024-06-27T14:12:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.10.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.10.0",
+    "publishedAt": "2025-08-04T12:29:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.10.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.10.1",
+    "publishedAt": "2025-08-26T09:48:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.10.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.10.2",
+    "publishedAt": "2025-12-05T10:24:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.10.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.10.3",
+    "publishedAt": "2025-12-29T15:36:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.10.4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.10.4",
+    "publishedAt": "2026-02-10T08:58:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.10.5"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.10.5",
+    "publishedAt": "2026-04-08T10:49:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.2.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.2.0",
+    "publishedAt": "2024-09-10T13:47:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.3.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.3.0",
+    "publishedAt": "2024-09-13T14:49:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.3.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.3.1",
+    "publishedAt": "2024-09-17T14:37:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.4.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.4.0",
+    "publishedAt": "2024-09-20T10:47:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.5.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.5.0",
+    "publishedAt": "2024-09-20T12:39:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.5.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.5.1",
+    "publishedAt": "2024-09-24T11:51:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.5.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.5.2",
+    "publishedAt": "2024-10-04T12:40:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.5.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.5.3",
+    "publishedAt": "2024-10-11T12:08:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.5.4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.5.4",
+    "publishedAt": "2024-10-15T09:16:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.5.5"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.5.5",
+    "publishedAt": "2024-10-23T11:12:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.6.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.6.0",
+    "publishedAt": "2024-10-24T12:43:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.6.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.6.1",
+    "publishedAt": "2024-11-02T11:22:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.6.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.6.2",
+    "publishedAt": "2024-11-11T08:12:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.6.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.6.3",
+    "publishedAt": "2024-11-13T11:22:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.6.4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.6.4",
+    "publishedAt": "2024-11-18T17:59:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.6.5"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.6.5",
+    "publishedAt": "2024-11-27T16:13:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.6.6"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.6.6",
+    "publishedAt": "2024-11-28T13:00:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.6.7"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.6.7",
+    "publishedAt": "2024-12-10T12:59:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.6.8"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.6.8",
+    "publishedAt": "2024-12-13T11:33:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.6.9"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.6.9",
+    "publishedAt": "2024-12-26T13:17:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.7.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.7.0",
+    "publishedAt": "2025-01-09T11:20:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.7.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.7.1",
+    "publishedAt": "2025-01-16T13:31:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.7.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.7.2",
+    "publishedAt": "2025-01-31T12:14:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.7.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.7.3",
+    "publishedAt": "2025-02-07T11:44:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.8.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.8.0",
+    "publishedAt": "2025-02-07T13:57:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.8.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.8.1",
+    "publishedAt": "2025-02-11T09:06:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.8.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.8.2",
+    "publishedAt": "2025-02-18T07:50:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.8.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.8.3",
+    "publishedAt": "2025-02-19T13:00:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.8.4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.8.4",
+    "publishedAt": "2025-02-21T13:32:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.8.5"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.8.5",
+    "publishedAt": "2025-02-28T13:11:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.8.6"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.8.6",
+    "publishedAt": "2025-03-26T11:44:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.8.7"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.8.7",
+    "publishedAt": "2025-03-28T12:00:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.8.8"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.8.8",
+    "publishedAt": "2025-04-11T12:36:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.8.9"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.8.9",
+    "publishedAt": "2025-04-18T12:52:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.9.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.9.0",
+    "publishedAt": "2025-04-28T09:57:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.9.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.9.1",
+    "publishedAt": "2025-05-16T12:40:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.9.1-snapshot-1393ffa"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.9.1-snapshot-1393ffa",
+    "publishedAt": "2025-05-16T05:37:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.9.1-snapshot-f57d3d0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.9.1-snapshot-f57d3d0",
+    "publishedAt": "2025-05-12T13:52:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.9.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.9.2",
+    "publishedAt": "2025-05-23T13:50:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.9.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.9.3",
+    "publishedAt": "2025-05-26T11:58:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.9.4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.9.4",
+    "publishedAt": "2025-05-27T10:27:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.9.5"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.9.5",
+    "publishedAt": "2025-05-30T11:45:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.9.6"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.9.6",
+    "publishedAt": "2025-06-23T08:27:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.9.7"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.9.7",
+    "publishedAt": "2025-07-04T12:24:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.9.8"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.9.8",
+    "publishedAt": "2025-07-18T08:15:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "12.9.9"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@12.9.9",
+    "publishedAt": "2025-07-22T11:49:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.0",
+    "publishedAt": "2025-08-06T09:35:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.0-snapshot-133b390"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.0-snapshot-133b390",
+    "publishedAt": "2025-07-02T08:11:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.0-snapshot-1ff3990"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.0-snapshot-1ff3990",
+    "publishedAt": "2025-08-01T10:03:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.0-snapshot-4f075c0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.0-snapshot-4f075c0",
+    "publishedAt": "2025-07-25T05:42:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.0-snapshot-59206f7"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.0-snapshot-59206f7",
+    "publishedAt": "2025-07-30T14:29:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.0-snapshot-5bcd094"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.0-snapshot-5bcd094",
+    "publishedAt": "2025-07-25T07:36:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.0-snapshot-6a9d3fc"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.0-snapshot-6a9d3fc",
+    "publishedAt": "2025-07-17T15:50:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.0-snapshot-6e248ac"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.0-snapshot-6e248ac",
+    "publishedAt": "2025-07-29T08:35:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.0-snapshot-81112f4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.0-snapshot-81112f4",
+    "publishedAt": "2025-07-25T08:18:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.0-snapshot-95f92d7"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.0-snapshot-95f92d7",
+    "publishedAt": "2025-07-25T09:31:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.0-snapshot-9e8c097"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.0-snapshot-9e8c097",
+    "publishedAt": "2025-07-25T08:49:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.0-snapshot-bbf91f6"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.0-snapshot-bbf91f6",
+    "publishedAt": "2025-07-25T12:18:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.0-snapshot-c39129c"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.0-snapshot-c39129c",
+    "publishedAt": "2025-07-31T16:18:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.1",
+    "publishedAt": "2025-08-26T14:25:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.1-snapshot-c2c8d5a"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.1-snapshot-c2c8d5a",
+    "publishedAt": "2025-08-11T14:23:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.10"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.10",
+    "publishedAt": "2026-01-19T10:05:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.2",
+    "publishedAt": "2025-09-15T09:34:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.3",
+    "publishedAt": "2025-09-19T20:01:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.4",
+    "publishedAt": "2025-11-05T14:07:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.4-snapshot-967d1beae2eda07c4803ba83f7fa507fb8125b1c"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.4-snapshot-967d1beae2eda07c4803ba83f7fa507fb8125b1c",
+    "publishedAt": "2025-11-10T09:38:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.5"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.5",
+    "publishedAt": "2025-11-07T19:56:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.6"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.6",
+    "publishedAt": "2025-11-13T14:38:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.6-snapshot-897508f0862fc49551441e9992feb51482887bc6"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.6-snapshot-897508f0862fc49551441e9992feb51482887bc6",
+    "publishedAt": "2025-11-10T12:16:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.6-snapshot-9a3fa794328539d0de4ce92ceb92bff292e2042a"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.6-snapshot-9a3fa794328539d0de4ce92ceb92bff292e2042a",
+    "publishedAt": "2025-11-10T12:07:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.7"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.7",
+    "publishedAt": "2025-12-08T12:51:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.7-snapshot-0cc76105d3a7c5d140bed4530ceff62ac6d413e2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.7-snapshot-0cc76105d3a7c5d140bed4530ceff62ac6d413e2",
+    "publishedAt": "2025-12-02T11:50:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.7-snapshot-b5a1b161066e20e3a98985579842694ea55d35ab"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.7-snapshot-b5a1b161066e20e3a98985579842694ea55d35ab",
+    "publishedAt": "2025-11-24T09:27:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.7-snapshot-febcc41ee5e7246ea3bb294cf66f062edea69ee3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.7-snapshot-febcc41ee5e7246ea3bb294cf66f062edea69ee3",
+    "publishedAt": "2025-12-04T14:11:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.8"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.8",
+    "publishedAt": "2025-12-22T12:19:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.8-snapshot-61e3bed37c5b23d8aa3e96015d5728eee066d312"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.8-snapshot-61e3bed37c5b23d8aa3e96015d5728eee066d312",
+    "publishedAt": "2025-12-17T10:49:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.0.9"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.0.9",
+    "publishedAt": "2025-12-30T12:37:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.1.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.1.0",
+    "publishedAt": "2026-01-23T14:06:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.1.0-771cf4fc784a9cc037552ce03739f0fcdd4edbee"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.1.0-771cf4fc784a9cc037552ce03739f0fcdd4edbee",
+    "publishedAt": "2026-01-21T07:52:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.1.0-snapshot-32d5a0af5a3d3ee33b93c380b0d17382bc7a494e"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.1.0-snapshot-32d5a0af5a3d3ee33b93c380b0d17382bc7a494e",
+    "publishedAt": "2025-09-26T08:33:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.1.0-snapshot-50288958263f615d26c8d1d5ccee691bf2ca26f6"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.1.0-snapshot-50288958263f615d26c8d1d5ccee691bf2ca26f6",
+    "publishedAt": "2025-10-01T07:27:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.1.0-snapshot-8413a526eca7b76edaec3e7db81df8ea11c08123"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.1.0-snapshot-8413a526eca7b76edaec3e7db81df8ea11c08123",
+    "publishedAt": "2025-10-02T16:43:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.1.0-snapshot-92b8690"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.1.0-snapshot-92b8690",
+    "publishedAt": "2025-08-11T12:55:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.1.0-snapshot-db3490d1f8397963efa6334c16e358301c7146f4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.1.0-snapshot-db3490d1f8397963efa6334c16e358301c7146f4",
+    "publishedAt": "2025-10-03T11:53:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.1.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.1.1",
+    "publishedAt": "2026-01-30T14:19:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.1.1-bbcaaaee0ecdeb2614add40a4f9eedb965f68f28"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.1.1-bbcaaaee0ecdeb2614add40a4f9eedb965f68f28",
+    "publishedAt": "2026-02-03T10:29:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.1.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.1.2",
+    "publishedAt": "2026-02-10T13:14:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.1.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.1.3",
+    "publishedAt": "2026-02-13T12:42:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.1.3-4947c7d93d4cf7ef28697aff825fcfcfe64b386d"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.1.3-4947c7d93d4cf7ef28697aff825fcfcfe64b386d",
+    "publishedAt": "2026-02-12T09:25:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.1.4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.1.4",
+    "publishedAt": "2026-02-27T16:04:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.1.4-757c571bfe2a68676962546a0590e0b91933f6c5"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.1.4-757c571bfe2a68676962546a0590e0b91933f6c5",
+    "publishedAt": "2026-02-24T16:41:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.1.5"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.1.5",
+    "publishedAt": "2026-04-09T09:14:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "13.1.6-56ce51fd67b94938a5f707982f594e4ce32cea61"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@13.1.6-56ce51fd67b94938a5f707982f594e4ce32cea61",
+    "publishedAt": "2026-05-04T08:44:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.0",
+    "publishedAt": "2026-02-04T15:46:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.0-39905141332ecbc8cdcc337635b2ef766bdf1c39"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.0-39905141332ecbc8cdcc337635b2ef766bdf1c39",
+    "publishedAt": "2026-01-13T10:39:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.0-8406faee42e08c133fbcbb0de3e6eb2df6766dd2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.0-8406faee42e08c133fbcbb0de3e6eb2df6766dd2",
+    "publishedAt": "2026-01-26T07:25:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.0-alfasans"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.0-alfasans",
+    "publishedAt": "2026-02-04T16:18:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.0-alfasans-39905141332ecbc8cdcc337635b2ef766bdf1c39"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.0-alfasans-39905141332ecbc8cdcc337635b2ef766bdf1c39",
+    "publishedAt": "2026-01-13T12:07:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.0-alfasans-8406faee42e08c133fbcbb0de3e6eb2df6766dd2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.0-alfasans-8406faee42e08c133fbcbb0de3e6eb2df6766dd2",
+    "publishedAt": "2026-01-26T08:30:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.0-alfasans-ca7a3cf250d2d2f5e58bbb0472645c4aad160643"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.0-alfasans-ca7a3cf250d2d2f5e58bbb0472645c4aad160643",
+    "publishedAt": "2025-12-24T14:08:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.0-ca7a3cf250d2d2f5e58bbb0472645c4aad160643"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.0-ca7a3cf250d2d2f5e58bbb0472645c4aad160643",
+    "publishedAt": "2025-12-24T14:48:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.0-snapshot-a523e5056d76fa17f5dbd56b067fddfc3017d2b0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.0-snapshot-a523e5056d76fa17f5dbd56b067fddfc3017d2b0",
+    "publishedAt": "2025-10-31T12:02:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.0-snapshot-b0bb0320956196dd95984ffd97a4bff7e0fd5075"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.0-snapshot-b0bb0320956196dd95984ffd97a4bff7e0fd5075",
+    "publishedAt": "2025-12-17T10:48:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.0-snapshot-e5041178d37d389f215e7b4cf41033257781b0c3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.0-snapshot-e5041178d37d389f215e7b4cf41033257781b0c3",
+    "publishedAt": "2025-10-23T11:02:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.1",
+    "publishedAt": "2026-02-05T06:48:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.1-alfasans"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.1-alfasans",
+    "publishedAt": "2026-02-05T07:21:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.10"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.10",
+    "publishedAt": "2026-04-10T12:02:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.10-alfasans"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.10-alfasans",
+    "publishedAt": "2026-04-10T12:28:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.11"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.11",
+    "publishedAt": "2026-04-17T10:03:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.11-alfasans"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.11-alfasans",
+    "publishedAt": "2026-04-17T10:29:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.12"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.12",
+    "publishedAt": "2026-05-08T11:43:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.12-5184d6fa2d33e9087998d84c0833a6182c7c0a29"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.12-5184d6fa2d33e9087998d84c0833a6182c7c0a29",
+    "publishedAt": "2026-04-30T08:09:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.12-alfasans"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.12-alfasans",
+    "publishedAt": "2026-05-08T12:09:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.13"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.13",
+    "publishedAt": "2026-05-22T15:12:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.13-alfasans"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.13-alfasans",
+    "publishedAt": "2026-05-22T15:39:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.13-alfasans-dcfcd74d3c8fc8c265f6df2ad7d04cbada7c6479"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.13-alfasans-dcfcd74d3c8fc8c265f6df2ad7d04cbada7c6479",
+    "publishedAt": "2026-05-18T12:35:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.13-dcfcd74d3c8fc8c265f6df2ad7d04cbada7c6479"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.13-dcfcd74d3c8fc8c265f6df2ad7d04cbada7c6479",
+    "publishedAt": "2026-05-18T12:33:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.14"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.14",
+    "publishedAt": "2026-05-25T05:58:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.14-alfasans"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.14-alfasans",
+    "publishedAt": "2026-05-25T07:48:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.15"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.15",
+    "publishedAt": "2026-05-29T14:24:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.15-alfasans"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.15-alfasans",
+    "publishedAt": "2026-05-29T14:47:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.16"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.16",
+    "publishedAt": "2026-06-05T17:08:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.16-alfasans"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.16-alfasans",
+    "publishedAt": "2026-06-05T18:31:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.17"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.17",
+    "publishedAt": "2026-06-11T15:08:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.17-0e519ce795ecd7c6b770d051088c12153c7f97b4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.17-0e519ce795ecd7c6b770d051088c12153c7f97b4",
+    "publishedAt": "2026-06-11T14:09:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.17-alfasans"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.17-alfasans",
+    "publishedAt": "2026-06-11T15:36:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.17-ccec49d44d26b22480945ad8d23d7de76a48d3a4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.17-ccec49d44d26b22480945ad8d23d7de76a48d3a4",
+    "publishedAt": "2026-07-06T13:12:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.18"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.18",
+    "publishedAt": "2026-07-01T14:21:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.18-alfasans"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.18-alfasans",
+    "publishedAt": "2026-07-01T15:29:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.19"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.19",
+    "publishedAt": "2026-07-17T13:54:58Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.19-alfasans"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.19-alfasans",
+    "publishedAt": "2026-07-17T14:16:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.2",
+    "publishedAt": "2026-02-09T18:55:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.3",
+    "publishedAt": "2026-02-13T10:56:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.3-677aa2eb84ae5a9f7b071f1721528f491571abba"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.3-677aa2eb84ae5a9f7b071f1721528f491571abba",
+    "publishedAt": "2026-02-12T13:57:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.3-abd29ceb1bf74b8e9bd542a8613956f72698cc8a"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.3-abd29ceb1bf74b8e9bd542a8613956f72698cc8a",
+    "publishedAt": "2026-02-11T21:27:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.3-alfasans"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.3-alfasans",
+    "publishedAt": "2026-02-13T11:24:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.4",
+    "publishedAt": "2026-02-13T15:37:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.4-alfasans"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.4-alfasans",
+    "publishedAt": "2026-02-13T16:05:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.5"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.5",
+    "publishedAt": "2026-02-20T14:50:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.5-alfasans"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.5-alfasans",
+    "publishedAt": "2026-02-20T15:18:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.6"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.6",
+    "publishedAt": "2026-02-24T11:56:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.6-alfasans"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.6-alfasans",
+    "publishedAt": "2026-02-24T12:17:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.7"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.7",
+    "publishedAt": "2026-02-27T12:03:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.7-alfasans"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.7-alfasans",
+    "publishedAt": "2026-02-27T12:31:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.8"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.8",
+    "publishedAt": "2026-03-06T16:12:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.8-alfasans"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.8-alfasans",
+    "publishedAt": "2026-03-06T16:43:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.9"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.9",
+    "publishedAt": "2026-03-20T13:43:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "14.0.9-alfasans"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.9-alfasans",
+    "publishedAt": "2026-03-20T14:09:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "15.0.0-fa6582dbe618619079d7fc620db13a577a85dfee"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@15.0.0-fa6582dbe618619079d7fc620db13a577a85dfee",
+    "publishedAt": "2026-03-03T16:15:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "2.0.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@2.0.0",
+    "publishedAt": "2020-10-13T22:13:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "2.0.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@2.0.1",
+    "publishedAt": "2020-10-14T10:07:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "2.0.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@2.0.2",
+    "publishedAt": "2020-10-20T18:19:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "3.0.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@3.0.0",
+    "publishedAt": "2020-10-27T10:46:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "3.0.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@3.0.1",
+    "publishedAt": "2020-10-28T05:47:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "3.0.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@3.0.2",
+    "publishedAt": "2020-10-30T05:49:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "3.0.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@3.0.3",
+    "publishedAt": "2020-11-09T12:33:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "3.1.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@3.1.0",
+    "publishedAt": "2020-11-11T12:46:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "3.2.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@3.2.0",
+    "publishedAt": "2020-11-14T15:08:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "3.2.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@3.2.1",
+    "publishedAt": "2020-11-16T08:32:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "3.2.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@3.2.2",
+    "publishedAt": "2020-11-19T14:06:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "3.3.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@3.3.0",
+    "publishedAt": "2020-11-23T16:01:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "3.3.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@3.3.1",
+    "publishedAt": "2020-11-24T09:39:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "3.3.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@3.3.2",
+    "publishedAt": "2020-11-25T15:09:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "3.4.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@3.4.0",
+    "publishedAt": "2020-12-03T15:03:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "3.4.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@3.4.1",
+    "publishedAt": "2020-12-11T10:31:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "3.4.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@3.4.2",
+    "publishedAt": "2020-12-15T13:01:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "3.4.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@3.4.3",
+    "publishedAt": "2020-12-21T11:54:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "4.0.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@4.0.0",
+    "publishedAt": "2020-12-29T11:04:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "49.0.0-snapshot-fbb690e"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@49.0.0-snapshot-fbb690e",
+    "publishedAt": "2025-05-19T07:47:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "5.0.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@5.0.0",
+    "publishedAt": "2020-12-30T12:54:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "5.1.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@5.1.0",
+    "publishedAt": "2021-01-20T11:08:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "5.2.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@5.2.0",
+    "publishedAt": "2021-02-11T06:31:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "5.2.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@5.2.1",
+    "publishedAt": "2021-02-18T12:42:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "5.2.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@5.2.2",
+    "publishedAt": "2021-02-18T16:58:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "5.2.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@5.2.3",
+    "publishedAt": "2021-02-19T11:16:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "5.2.4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@5.2.4",
+    "publishedAt": "2021-02-19T11:42:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "5.2.5"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@5.2.5",
+    "publishedAt": "2021-02-20T10:41:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "5.2.6"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@5.2.6",
+    "publishedAt": "2021-02-20T16:34:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "5.2.7"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@5.2.7",
+    "publishedAt": "2021-03-03T07:57:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "5.2.8"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@5.2.8",
+    "publishedAt": "2021-03-03T08:20:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "5.2.9"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@5.2.9",
+    "publishedAt": "2021-03-03T08:47:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "6.0.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@6.0.0",
+    "publishedAt": "2021-03-04T11:54:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "6.0.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@6.0.1",
+    "publishedAt": "2021-03-05T09:42:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "6.0.10"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@6.0.10",
+    "publishedAt": "2021-03-19T06:02:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "6.0.11"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@6.0.11",
+    "publishedAt": "2021-03-24T11:34:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "6.0.12"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@6.0.12",
+    "publishedAt": "2021-03-24T17:00:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "6.0.13"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@6.0.13",
+    "publishedAt": "2021-03-30T07:46:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "6.0.14"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@6.0.14",
+    "publishedAt": "2021-04-01T13:55:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "6.0.15"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@6.0.15",
+    "publishedAt": "2021-04-09T13:44:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "6.0.16"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@6.0.16",
+    "publishedAt": "2021-04-26T10:23:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "6.0.17"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@6.0.17",
+    "publishedAt": "2021-04-26T10:50:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "6.0.18"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@6.0.18",
+    "publishedAt": "2021-04-26T12:27:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "6.0.19"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@6.0.19",
+    "publishedAt": "2021-04-28T10:56:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "6.0.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@6.0.2",
+    "publishedAt": "2021-03-10T13:07:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "6.0.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@6.0.3",
+    "publishedAt": "2021-03-11T12:10:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "6.0.4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@6.0.4",
+    "publishedAt": "2021-03-14T05:32:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "6.0.5"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@6.0.5",
+    "publishedAt": "2021-03-15T15:04:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "6.0.7"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@6.0.7",
+    "publishedAt": "2021-03-16T10:56:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "6.0.9"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@6.0.9",
+    "publishedAt": "2021-03-18T10:29:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "6.1.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@6.1.0",
+    "publishedAt": "2021-05-07T11:28:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "6.1.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@6.1.1",
+    "publishedAt": "2021-05-18T05:43:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "6.1.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@6.1.2",
+    "publishedAt": "2021-05-25T10:13:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "6.1.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@6.1.3",
+    "publishedAt": "2021-05-25T11:04:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "6.1.4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@6.1.4",
+    "publishedAt": "2021-05-31T10:39:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "6.1.5"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@6.1.5",
+    "publishedAt": "2021-06-04T14:14:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "6.1.6"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@6.1.6",
+    "publishedAt": "2021-06-08T17:16:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "6.1.7"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@6.1.7",
+    "publishedAt": "2021-06-22T07:33:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "6.1.8"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@6.1.8",
+    "publishedAt": "2021-06-28T16:52:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.0",
+    "publishedAt": "2021-07-08T08:15:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.1",
+    "publishedAt": "2021-07-09T10:56:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.10"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.10",
+    "publishedAt": "2021-08-27T11:57:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.11"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.11",
+    "publishedAt": "2021-09-06T06:41:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.12"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.12",
+    "publishedAt": "2021-09-08T12:34:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.13"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.13",
+    "publishedAt": "2021-09-14T13:26:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.14"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.14",
+    "publishedAt": "2021-09-27T09:58:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.15"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.15",
+    "publishedAt": "2021-10-11T12:43:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.16"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.16",
+    "publishedAt": "2021-10-15T09:42:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.17"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.17",
+    "publishedAt": "2021-10-15T11:50:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.18"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.18",
+    "publishedAt": "2021-11-08T11:23:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.19"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.19",
+    "publishedAt": "2021-11-16T10:56:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.2",
+    "publishedAt": "2021-07-19T15:36:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.20"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.20",
+    "publishedAt": "2021-11-26T09:41:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.21"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.21",
+    "publishedAt": "2021-12-01T11:29:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.22"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.22",
+    "publishedAt": "2021-12-08T11:52:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.23"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.23",
+    "publishedAt": "2021-12-08T15:31:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.24"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.24",
+    "publishedAt": "2021-12-08T16:07:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.25"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.25",
+    "publishedAt": "2021-12-14T11:57:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.26"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.26",
+    "publishedAt": "2021-12-29T17:05:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.27"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.27",
+    "publishedAt": "2022-01-27T15:32:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.28"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.28",
+    "publishedAt": "2022-02-02T10:49:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.29"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.29",
+    "publishedAt": "2022-02-03T12:29:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.3",
+    "publishedAt": "2021-07-23T14:03:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.30"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.30",
+    "publishedAt": "2022-02-09T16:50:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.31"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.31",
+    "publishedAt": "2022-02-15T09:05:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.32"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.32",
+    "publishedAt": "2022-02-17T07:26:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.4",
+    "publishedAt": "2021-08-03T06:06:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.5"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.5",
+    "publishedAt": "2021-08-04T11:28:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.6"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.6",
+    "publishedAt": "2021-08-11T17:06:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.7"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.7",
+    "publishedAt": "2021-08-13T13:54:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.8"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.8",
+    "publishedAt": "2021-08-23T11:24:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.0.9"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.0.9",
+    "publishedAt": "2021-08-23T12:26:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.1.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.1.0",
+    "publishedAt": "2022-02-21T15:48:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.1.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.1.1",
+    "publishedAt": "2022-03-01T13:19:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.1.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.1.2",
+    "publishedAt": "2022-03-03T11:23:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.1.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.1.3",
+    "publishedAt": "2022-03-04T16:29:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.1.4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.1.4",
+    "publishedAt": "2022-03-04T22:25:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.1.5"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.1.5",
+    "publishedAt": "2022-03-24T07:56:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.1.6"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.1.6",
+    "publishedAt": "2022-03-29T12:25:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.1.7"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.1.7",
+    "publishedAt": "2022-04-13T13:28:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.1.8"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.1.8",
+    "publishedAt": "2022-04-21T10:25:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.1.9"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.1.9",
+    "publishedAt": "2022-05-04T14:37:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.2.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.2.0",
+    "publishedAt": "2022-05-05T15:08:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.2.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.2.1",
+    "publishedAt": "2022-05-20T17:06:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.2.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.2.2",
+    "publishedAt": "2022-05-26T14:09:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.2.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.2.3",
+    "publishedAt": "2022-05-30T12:42:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.2.5"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.2.5",
+    "publishedAt": "2022-06-13T10:25:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.2.6"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.2.6",
+    "publishedAt": "2022-06-16T05:13:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.2.7"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.2.7",
+    "publishedAt": "2022-06-20T10:47:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.3.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.3.0",
+    "publishedAt": "2022-06-20T12:57:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.3.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.3.2",
+    "publishedAt": "2022-06-24T08:50:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.3.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.3.3",
+    "publishedAt": "2022-06-28T08:35:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.3.4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.3.4",
+    "publishedAt": "2022-06-29T08:02:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.3.5"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.3.5",
+    "publishedAt": "2022-06-30T16:41:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.4.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.4.0",
+    "publishedAt": "2022-07-01T10:57:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.4.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.4.1",
+    "publishedAt": "2022-07-11T08:08:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.4.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.4.2",
+    "publishedAt": "2022-07-14T10:26:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.4.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.4.3",
+    "publishedAt": "2022-07-14T13:54:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.4.4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.4.4",
+    "publishedAt": "2022-07-15T07:03:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.4.7"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.4.7",
+    "publishedAt": "2022-07-25T10:20:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.4.8"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.4.8",
+    "publishedAt": "2022-07-25T11:32:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.4.9"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.4.9",
+    "publishedAt": "2022-07-29T11:32:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.5.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.5.0",
+    "publishedAt": "2022-08-04T13:41:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.5.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.5.1",
+    "publishedAt": "2022-08-09T09:46:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.5.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.5.2",
+    "publishedAt": "2022-08-11T08:28:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.6.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.6.0",
+    "publishedAt": "2022-08-12T10:48:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "7.6.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@7.6.1",
+    "publishedAt": "2022-08-17T10:02:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "8.0.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@8.0.0",
+    "publishedAt": "2022-08-17T14:15:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "8.0.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@8.0.1",
+    "publishedAt": "2022-08-19T06:07:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "8.0.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@8.0.2",
+    "publishedAt": "2022-08-26T10:12:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "8.0.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@8.0.3",
+    "publishedAt": "2022-08-29T05:52:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "8.0.4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@8.0.4",
+    "publishedAt": "2022-08-31T10:58:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "8.1.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@8.1.0",
+    "publishedAt": "2022-09-01T10:57:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "8.1.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@8.1.1",
+    "publishedAt": "2022-09-02T11:03:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "8.1.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@8.1.2",
+    "publishedAt": "2022-09-02T16:58:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "8.1.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@8.1.3",
+    "publishedAt": "2022-09-05T12:16:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "8.2.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@8.2.1",
+    "publishedAt": "2022-09-13T11:19:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "8.2.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@8.2.2",
+    "publishedAt": "2022-09-14T08:54:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "8.2.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@8.2.3",
+    "publishedAt": "2022-09-15T16:15:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "8.2.4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@8.2.4",
+    "publishedAt": "2022-09-29T10:39:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "8.2.5"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@8.2.5",
+    "publishedAt": "2022-09-30T09:37:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "8.2.6"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@8.2.6",
+    "publishedAt": "2022-10-13T10:38:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "8.2.7"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@8.2.7",
+    "publishedAt": "2022-10-18T13:35:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.0.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.0.0",
+    "publishedAt": "2022-10-24T08:48:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.0.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.0.1",
+    "publishedAt": "2022-10-28T04:26:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.0.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.0.2",
+    "publishedAt": "2022-11-03T16:57:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.0.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.0.3",
+    "publishedAt": "2022-11-11T14:19:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.1.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.1.0",
+    "publishedAt": "2022-11-17T13:39:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.1.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.1.1",
+    "publishedAt": "2022-11-18T10:18:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.1.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.1.2",
+    "publishedAt": "2022-11-22T13:59:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.1.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.1.3",
+    "publishedAt": "2022-11-23T05:08:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.1.4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.1.4",
+    "publishedAt": "2022-12-02T12:49:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.2.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.2.0",
+    "publishedAt": "2022-12-09T11:15:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.3.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.3.0",
+    "publishedAt": "2022-12-14T19:08:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.3.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.3.1",
+    "publishedAt": "2022-12-19T09:40:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.3.10"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.3.10",
+    "publishedAt": "2023-02-17T10:26:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.3.11"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.3.11",
+    "publishedAt": "2023-02-28T10:30:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.3.12"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.3.12",
+    "publishedAt": "2023-03-02T12:46:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.3.13"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.3.13",
+    "publishedAt": "2023-03-03T11:17:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.3.14"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.3.14",
+    "publishedAt": "2023-03-03T14:56:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.3.15"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.3.15",
+    "publishedAt": "2023-03-20T10:42:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.3.16"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.3.16",
+    "publishedAt": "2023-03-24T10:20:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.3.17"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.3.17",
+    "publishedAt": "2023-04-11T14:22:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.3.18"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.3.18",
+    "publishedAt": "2023-04-14T10:05:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.3.19"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.3.19",
+    "publishedAt": "2023-04-18T12:11:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.3.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.3.2",
+    "publishedAt": "2022-12-20T14:49:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.3.20"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.3.20",
+    "publishedAt": "2023-04-20T05:11:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.3.21"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.3.21",
+    "publishedAt": "2023-04-20T15:58:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.3.22"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.3.22",
+    "publishedAt": "2023-04-25T07:58:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.3.23"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.3.23",
+    "publishedAt": "2023-04-26T07:56:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.3.24"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.3.24",
+    "publishedAt": "2023-05-03T11:28:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.3.25"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.3.25",
+    "publishedAt": "2023-05-04T05:40:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.3.26"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.3.26",
+    "publishedAt": "2023-05-19T09:58:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.3.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.3.3",
+    "publishedAt": "2022-12-30T10:07:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.3.4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.3.4",
+    "publishedAt": "2023-01-20T15:09:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.3.5"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.3.5",
+    "publishedAt": "2023-01-30T12:30:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.3.6"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.3.6",
+    "publishedAt": "2023-02-02T14:21:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.3.7"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.3.7",
+    "publishedAt": "2023-02-07T14:01:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.3.8"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.3.8",
+    "publishedAt": "2023-02-10T05:36:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.3.9"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.3.9",
+    "publishedAt": "2023-02-15T12:25:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.4.0"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.4.0",
+    "publishedAt": "2023-05-31T06:10:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.4.1"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.4.1",
+    "publishedAt": "2023-06-16T10:28:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.4.2"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.4.2",
+    "publishedAt": "2023-06-22T10:12:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.4.3"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.4.3",
+    "publishedAt": "2023-07-06T07:25:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.4.4"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.4.4",
+    "publishedAt": "2023-07-18T12:05:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.4.5"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.4.5",
+    "publishedAt": "2023-07-20T12:23:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.4.6"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.4.6",
+    "publishedAt": "2023-08-02T08:42:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@alfalab/core-components-input-autocomplete",
+     "version": "9.4.7"
+    },
+    "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@9.4.7",
+    "publishedAt": "2023-08-07T05:35:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "NPM",
+   "name": "@alfalab/core-components-input-autocomplete",
+   "version": "14.0.19"
+  },
+  "purl": "pkg:npm/%40alfalab/core-components-input-autocomplete@14.0.19",
+  "publishedAt": "2026-07-17T13:54:58Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "MIT",
+    "spdx": "MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "ORIGIN",
+    "url": "https://registry.npmjs.org/@alfalab%2Fcore-components-input-autocomplete/14.0.19"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://registry.npmjs.org/"
+  ],
+  "relatedProjects": [],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "@alfalab/core-components-input-autocomplete",
+    "versionString": "14.0.19",
+    "source": "NPM_NPMJS_ORG"
+   }
+  ],
+  "cooldown": {
+   "end": "2026-08-01T13:54:58Z",
+   "description": ""
+  }
+ },
+ "dependencies": null,
+ "dependents": null
+}

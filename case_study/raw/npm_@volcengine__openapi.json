@@ -1,0 +1,2138 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "@volcengine/openapi"
+  },
+  "purl": "pkg:npm/%40volcengine/openapi",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "0.0.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@0.0.0",
+    "publishedAt": "2020-12-31T06:02:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "0.0.0-alpha.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@0.0.0-alpha.0",
+    "publishedAt": "2020-12-31T03:08:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "0.0.0-alpha.1"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@0.0.0-alpha.1",
+    "publishedAt": "2020-12-31T03:30:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.0.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.0.0",
+    "publishedAt": "2021-01-12T12:24:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.0.1"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.0.1",
+    "publishedAt": "2021-01-28T10:10:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.0.10"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.0.10",
+    "publishedAt": "2021-08-27T03:47:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.0.2"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.0.2",
+    "publishedAt": "2021-02-04T07:41:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.0.3"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.0.3",
+    "publishedAt": "2021-02-05T10:32:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.0.4"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.0.4",
+    "publishedAt": "2021-03-05T10:10:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.0.5"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.0.5",
+    "publishedAt": "2021-04-25T12:29:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.0.6"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.0.6",
+    "publishedAt": "2021-06-30T06:11:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.0.7"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.0.7",
+    "publishedAt": "2021-07-12T08:41:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.0.8"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.0.8",
+    "publishedAt": "2021-07-15T11:46:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.0.9"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.0.9",
+    "publishedAt": "2021-08-06T09:48:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.1.1"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.1.1",
+    "publishedAt": "2021-09-17T03:21:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.1.2"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.1.2",
+    "publishedAt": "2021-12-17T03:30:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.1.3"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.1.3",
+    "publishedAt": "2022-04-21T12:21:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.1.4"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.1.4",
+    "publishedAt": "2022-04-22T06:24:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.10.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.10.0",
+    "publishedAt": "2023-06-15T10:50:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.10.2"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.10.2",
+    "publishedAt": "2023-07-20T11:05:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.11.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.11.0",
+    "publishedAt": "2023-08-18T03:33:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.11.1"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.11.1",
+    "publishedAt": "2023-08-24T12:19:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.11.2"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.11.2",
+    "publishedAt": "2023-10-12T09:08:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.12.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.12.0",
+    "publishedAt": "2023-10-19T11:25:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.13.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.13.0",
+    "publishedAt": "2023-11-15T13:11:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.14.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.14.0",
+    "publishedAt": "2023-11-23T11:26:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.14.1"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.14.1",
+    "publishedAt": "2023-12-18T13:04:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.15.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.15.0",
+    "publishedAt": "2024-01-04T07:43:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.16.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.16.0",
+    "publishedAt": "2024-01-11T09:17:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.17.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.17.0",
+    "publishedAt": "2024-04-01T12:33:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.17.0-alpha.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.17.0-alpha.0",
+    "publishedAt": "2024-01-11T09:53:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.18.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.18.0",
+    "publishedAt": "2024-04-09T13:38:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.18.1"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.18.1",
+    "publishedAt": "2024-04-18T06:31:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.18.2"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.18.2",
+    "publishedAt": "2024-05-07T09:06:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.18.3"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.18.3",
+    "publishedAt": "2024-05-14T07:50:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.19.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.19.0",
+    "publishedAt": "2024-06-13T12:26:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.2.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.2.0",
+    "publishedAt": "2022-05-13T03:22:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.2.1"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.2.1",
+    "publishedAt": "2022-05-13T05:05:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.2.2"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.2.2",
+    "publishedAt": "2022-05-23T02:11:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.2.3"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.2.3",
+    "publishedAt": "2022-07-01T06:35:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.20.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.20.0",
+    "publishedAt": "2024-08-08T12:10:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.20.1"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.20.1",
+    "publishedAt": "2024-08-22T12:20:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.21.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.21.0",
+    "publishedAt": "2024-09-05T12:30:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.22.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.22.0",
+    "publishedAt": "2024-09-26T12:43:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.23.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.23.0",
+    "publishedAt": "2024-10-17T12:34:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.24.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.24.0",
+    "publishedAt": "2024-11-14T13:47:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.25.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.25.0",
+    "publishedAt": "2024-11-28T12:15:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.26.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.26.0",
+    "publishedAt": "2024-12-16T12:31:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.27.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.27.0",
+    "publishedAt": "2024-12-26T13:07:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.27.1"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.27.1",
+    "publishedAt": "2025-02-13T12:15:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.28.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.28.0",
+    "publishedAt": "2025-03-06T12:07:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.28.1"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.28.1",
+    "publishedAt": "2025-03-20T12:04:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.29.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.29.0",
+    "publishedAt": "2025-03-31T07:50:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.30.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.30.0",
+    "publishedAt": "2025-04-10T12:07:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.30.1"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.30.1",
+    "publishedAt": "2025-04-24T12:13:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.30.2"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.30.2",
+    "publishedAt": "2025-05-22T12:05:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.31.1"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.31.1",
+    "publishedAt": "2025-08-21T12:04:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.32.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.32.0",
+    "publishedAt": "2025-08-28T12:20:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.33.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.33.0",
+    "publishedAt": "2025-12-11T12:13:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.34.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.34.0",
+    "publishedAt": "2025-12-22T12:23:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.35.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.35.0",
+    "publishedAt": "2026-01-15T12:14:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.36.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.36.0",
+    "publishedAt": "2026-02-26T11:08:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.36.0-beta.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.36.0-beta.0",
+    "publishedAt": "2026-03-27T06:58:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.36.1"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.36.1",
+    "publishedAt": "2026-04-02T13:18:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.36.2"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.36.2",
+    "publishedAt": "2026-05-14T11:27:24Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.4.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.4.0",
+    "publishedAt": "2022-08-11T14:09:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.4.1"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.4.1",
+    "publishedAt": "2022-09-07T07:05:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.5.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.5.0",
+    "publishedAt": "2022-09-08T17:04:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.5.1"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.5.1",
+    "publishedAt": "2022-09-09T07:59:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.5.2"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.5.2",
+    "publishedAt": "2022-09-23T04:18:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.6.1"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.6.1",
+    "publishedAt": "2022-12-13T11:07:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.7.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.7.0",
+    "publishedAt": "2023-01-12T11:36:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.7.1"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.7.1",
+    "publishedAt": "2023-02-10T11:22:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.8.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.8.0",
+    "publishedAt": "2023-03-09T11:48:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.9.0"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.9.0",
+    "publishedAt": "2023-05-11T14:47:42Z",
+    "isDefault": false,
+    "isDeprecated": true,
+    "deprecatedReason": "broken version, please not use it"
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.9.1"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.9.1",
+    "publishedAt": "2023-05-12T02:52:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.9.3"
+    },
+    "purl": "pkg:npm/%40volcengine/openapi@1.9.3",
+    "publishedAt": "2023-05-26T09:22:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "NPM",
+   "name": "@volcengine/openapi",
+   "version": "1.36.2"
+  },
+  "purl": "pkg:npm/%40volcengine/openapi@1.36.2",
+  "publishedAt": "2026-05-14T11:27:24Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "Apache-2.0"
+  ],
+  "licenseDetails": [
+   {
+    "license": "Apache-2.0",
+    "spdx": "Apache-2.0"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "HOMEPAGE",
+    "url": "https://github.com/volcengine/volc-sdk-nodejs#readme"
+   },
+   {
+    "label": "ISSUE_TRACKER",
+    "url": "https://github.com/volcengine/volc-sdk-nodejs/issues"
+   },
+   {
+    "label": "ORIGIN",
+    "url": "https://registry.npmjs.org/@volcengine%2Fopenapi/1.36.2"
+   },
+   {
+    "label": "SOURCE_REPO",
+    "url": "git+ssh://git@github.com/volcengine/volc-sdk-nodejs.git"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://registry.npmjs.org/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/volcengine/volc-sdk-nodejs"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "ISSUE_TRACKER"
+   },
+   {
+    "projectKey": {
+     "id": "github.com/volcengine/volc-sdk-nodejs"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "@volcengine/openapi",
+    "versionString": "1.36.2",
+    "source": "NPM_NPMJS_ORG"
+   }
+  ],
+  "cooldown": {
+   "end": "2026-05-29T11:27:24Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@volcengine/openapi",
+     "version": "1.36.2"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@protobufjs/aspromise",
+     "version": "1.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@protobufjs/base64",
+     "version": "1.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@protobufjs/codegen",
+     "version": "2.0.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@protobufjs/eventemitter",
+     "version": "1.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@protobufjs/fetch",
+     "version": "1.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@protobufjs/float",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@protobufjs/inquire",
+     "version": "1.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@protobufjs/path",
+     "version": "1.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@protobufjs/pool",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@protobufjs/utf8",
+     "version": "1.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@types/node",
+     "version": "26.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "async-function",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "async-generator-function",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "asynckit",
+     "version": "0.4.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "axios",
+     "version": "0.21.4"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "call-bind-apply-helpers",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "combined-stream",
+     "version": "1.0.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "crc",
+     "version": "4.3.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "crypto-js",
+     "version": "4.2.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dayjs",
+     "version": "1.11.21"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "debug",
+     "version": "4.4.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "delayed-stream",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dunder-proto",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "es-define-property",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "es-errors",
+     "version": "1.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "es-object-atoms",
+     "version": "1.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "es-set-tostringtag",
+     "version": "2.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "follow-redirects",
+     "version": "1.16.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "form-data",
+     "version": "3.0.5"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "function-bind",
+     "version": "1.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "generator-function",
+     "version": "2.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "get-intrinsic",
+     "version": "1.3.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "get-proto",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "gopd",
+     "version": "1.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "has-symbols",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "has-tostringtag",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "hasown",
+     "version": "2.0.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "lodash.get",
+     "version": "4.4.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "long",
+     "version": "5.3.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "math-intrinsics",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "mime-db",
+     "version": "1.52.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "mime-types",
+     "version": "2.1.35"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "ms",
+     "version": "2.1.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "p-limit",
+     "version": "3.1.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "protobufjs",
+     "version": "7.2.5"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "undici-types",
+     "version": "8.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "uuid",
+     "version": "8.3.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "yocto-queue",
+     "version": "0.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 15,
+    "requirement": "^0.21.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 18,
+    "requirement": "^4.1.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 19,
+    "requirement": "^4.2.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 20,
+    "requirement": "^1.11.5"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 21,
+    "requirement": "^4.3.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 29,
+    "requirement": "^3.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 38,
+    "requirement": "^4.4.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 44,
+    "requirement": "^3.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 45,
+    "requirement": "7.2.5"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 47,
+    "requirement": "^8.3.2"
+   },
+   {
+    "fromNode": 5,
+    "toNode": 1,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 11,
+    "toNode": 46,
+    "requirement": "~8.3.0"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 28,
+    "requirement": "^1.14.0"
+   },
+   {
+    "fromNode": 16,
+    "toNode": 25,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 16,
+    "toNode": 30,
+    "requirement": "^1.1.2"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 22,
+    "requirement": "~1.0.0"
+   },
+   {
+    "fromNode": 21,
+    "toNode": 43,
+    "requirement": "^2.1.3"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 16,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 25,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 34,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 25,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 27,
+    "toNode": 25,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 27,
+    "toNode": 32,
+    "requirement": "^1.2.6"
+   },
+   {
+    "fromNode": 27,
+    "toNode": 36,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 27,
+    "toNode": 37,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 14,
+    "requirement": "^0.4.0"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 17,
+    "requirement": "^1.0.8"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 27,
+    "requirement": "^2.1.0"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 37,
+    "requirement": "^2.0.4"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 42,
+    "requirement": "^2.1.35"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 12,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 13,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 16,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 24,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 25,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 26,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 30,
+    "requirement": "^1.1.2"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 31,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 33,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 34,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 35,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 37,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 40,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 33,
+    "toNode": 23,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 33,
+    "toNode": 26,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 35,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 30,
+    "requirement": "^1.1.2"
+   },
+   {
+    "fromNode": 42,
+    "toNode": 41,
+    "requirement": "1.52.0"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 48,
+    "requirement": "^0.1.0"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 1,
+    "requirement": "^1.1.2"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 2,
+    "requirement": "^1.1.2"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 3,
+    "requirement": "^2.0.4"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 4,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 5,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 6,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 7,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 8,
+    "requirement": "^1.1.2"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 9,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 10,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 11,
+    "requirement": ">=13.7.0"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 39,
+    "requirement": "^5.0.0"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 248,
+  "directDependentCount": 43,
+  "indirectDependentCount": 205
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/volcengine/volc-sdk-nodejs"
+  },
+  "openIssuesCount": 14,
+  "starsCount": 64,
+  "forksCount": 8,
+  "license": "Apache-2.0",
+  "description": "",
+  "homepage": "",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/volcengine/volc-sdk-nodejs",
+    "commit": "6e8d98cfca31b83f2f920570882785b3283b57ce"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260715062425-64febf8c5229",
+    "commit": "64febf8c5229a2a65d09c6b543677b28a51abb09"
+   },
+   "checks": [
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#maintained"
+     },
+     "score": 8,
+     "reason": "10 commit(s) and 0 issue activity found in the last 90 days -- score normalized to 8",
+     "details": []
+    },
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#code-review"
+     },
+     "score": 0,
+     "reason": "Found 0/30 approved changesets -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#dangerous-workflow"
+     },
+     "score": -1,
+     "reason": "no workflows found",
+     "details": []
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#security-policy"
+     },
+     "score": 10,
+     "reason": "security policy file detected",
+     "details": [
+      "Info: security policy file detected: SECURITY.md:1",
+      "Info: Found linked content: SECURITY.md:1",
+      "Info: Found disclosure, vulnerability, and/or timelines in security policy: SECURITY.md:1",
+      "Info: Found text in security policy: SECURITY.md:1"
+     ]
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#token-permissions"
+     },
+     "score": -1,
+     "reason": "No tokens found",
+     "details": []
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "no SAST tool detected",
+     "details": [
+      "Warn: no pull requests merged into dev branch"
+     ]
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#pinned-dependencies"
+     },
+     "score": -1,
+     "reason": "no dependencies found",
+     "details": []
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#license"
+     },
+     "score": 10,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE:0",
+      "Info: FSF or OSI recognized license: Apache License 2.0: LICENSE:0"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#branch-protection"
+     },
+     "score": 0,
+     "reason": "branch protection not enabled on development/release branches",
+     "details": [
+      "Warn: branch protection not enabled for branch 'main'"
+     ]
+    }
+   ],
+   "overallScore": 4.2,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 325555601,
+  "node_id": "MDEwOlJlcG9zaXRvcnkzMjU1NTU2MDE=",
+  "name": "volc-sdk-nodejs",
+  "full_name": "volcengine/volc-sdk-nodejs",
+  "private": false,
+  "owner": {
+   "login": "volcengine",
+   "id": 67365215,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjY3MzY1MjE1",
+   "avatar_url": "https://avatars.githubusercontent.com/u/67365215?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/volcengine",
+   "html_url": "https://github.com/volcengine",
+   "followers_url": "https://api.github.com/users/volcengine/followers",
+   "following_url": "https://api.github.com/users/volcengine/following{/other_user}",
+   "gists_url": "https://api.github.com/users/volcengine/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/volcengine/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/volcengine/subscriptions",
+   "organizations_url": "https://api.github.com/users/volcengine/orgs",
+   "repos_url": "https://api.github.com/users/volcengine/repos",
+   "events_url": "https://api.github.com/users/volcengine/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/volcengine/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/volcengine/volc-sdk-nodejs",
+  "description": null,
+  "fork": false,
+  "url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs",
+  "forks_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/forks",
+  "keys_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/teams",
+  "hooks_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/hooks",
+  "issue_events_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/events",
+  "assignees_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/tags",
+  "blobs_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/languages",
+  "stargazers_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/stargazers",
+  "contributors_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/contributors",
+  "subscribers_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/subscribers",
+  "subscription_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/subscription",
+  "commits_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/merges",
+  "archive_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/downloads",
+  "issues_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/labels{/name}",
+  "releases_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/volcengine/volc-sdk-nodejs/deployments",
+  "created_at": "2020-12-30T13:18:15Z",
+  "updated_at": "2026-05-14T12:37:59Z",
+  "pushed_at": "2026-05-14T12:38:11Z",
+  "git_url": "git://github.com/volcengine/volc-sdk-nodejs.git",
+  "ssh_url": "git@github.com:volcengine/volc-sdk-nodejs.git",
+  "clone_url": "https://github.com/volcengine/volc-sdk-nodejs.git",
+  "svn_url": "https://github.com/volcengine/volc-sdk-nodejs",
+  "homepage": null,
+  "size": 1188,
+  "stargazers_count": 64,
+  "watchers_count": 64,
+  "language": "TypeScript",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 8,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 14,
+  "license": {
+   "key": "apache-2.0",
+   "name": "Apache License 2.0",
+   "spdx_id": "Apache-2.0",
+   "url": "https://api.github.com/licenses/apache-2.0",
+   "node_id": "MDc6TGljZW5zZTI="
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [],
+  "visibility": "public",
+  "forks": 8,
+  "open_issues": 14,
+  "watchers": 64,
+  "default_branch": "main",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "volcengine",
+   "id": 67365215,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjY3MzY1MjE1",
+   "avatar_url": "https://avatars.githubusercontent.com/u/67365215?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/volcengine",
+   "html_url": "https://github.com/volcengine",
+   "followers_url": "https://api.github.com/users/volcengine/followers",
+   "following_url": "https://api.github.com/users/volcengine/following{/other_user}",
+   "gists_url": "https://api.github.com/users/volcengine/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/volcengine/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/volcengine/subscriptions",
+   "organizations_url": "https://api.github.com/users/volcengine/orgs",
+   "repos_url": "https://api.github.com/users/volcengine/repos",
+   "events_url": "https://api.github.com/users/volcengine/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/volcengine/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 8,
+  "subscribers_count": 1
+ },
+ "funding": []
+}

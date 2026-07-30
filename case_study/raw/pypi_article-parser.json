@@ -1,0 +1,778 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "PYPI",
+   "name": "article-parser"
+  },
+  "purl": "pkg:pypi/article-parser",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "article-parser",
+     "version": "0.0.0"
+    },
+    "purl": "pkg:pypi/article-parser@0.0.0",
+    "publishedAt": "2024-05-13T07:30:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "article-parser",
+     "version": "1.0.0"
+    },
+    "purl": "pkg:pypi/article-parser@1.0.0",
+    "publishedAt": "2021-12-18T04:20:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "article-parser",
+     "version": "1.0.0-py3.10"
+    },
+    "purl": "pkg:pypi/article-parser@1.0.0-py3.10",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "article-parser",
+     "version": "1.1.0"
+    },
+    "purl": "pkg:pypi/article-parser@1.1.0",
+    "publishedAt": "2021-12-22T12:35:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "article-parser",
+     "version": "1.1.0-py3.9"
+    },
+    "purl": "pkg:pypi/article-parser@1.1.0-py3.9",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "article-parser",
+     "version": "1.2.0"
+    },
+    "purl": "pkg:pypi/article-parser@1.2.0",
+    "publishedAt": "2022-04-27T02:01:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "article-parser",
+     "version": "1.2.0-py3.7"
+    },
+    "purl": "pkg:pypi/article-parser@1.2.0-py3.7",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "article-parser",
+     "version": "1.2.1"
+    },
+    "purl": "pkg:pypi/article-parser@1.2.1",
+    "publishedAt": "2022-06-25T10:18:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "article-parser",
+     "version": "1.2.1-py3.6"
+    },
+    "purl": "pkg:pypi/article-parser@1.2.1-py3.6",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "article-parser",
+     "version": "1.3.0"
+    },
+    "purl": "pkg:pypi/article-parser@1.3.0",
+    "publishedAt": "2022-07-03T08:02:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "article-parser",
+     "version": "1.3.0-py3.6"
+    },
+    "purl": "pkg:pypi/article-parser@1.3.0-py3.6",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "article-parser",
+     "version": "1.5.0"
+    },
+    "purl": "pkg:pypi/article-parser@1.5.0",
+    "publishedAt": "2023-03-20T06:05:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "article-parser",
+     "version": "1.5.0-py3.7"
+    },
+    "purl": "pkg:pypi/article-parser@1.5.0-py3.7",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "article-parser",
+     "version": "1.6.0"
+    },
+    "purl": "pkg:pypi/article-parser@1.6.0",
+    "publishedAt": "2023-09-18T03:01:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "article-parser",
+     "version": "1.7.0"
+    },
+    "purl": "pkg:pypi/article-parser@1.7.0",
+    "publishedAt": "2024-02-20T02:51:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "article-parser",
+     "version": "1.7.1"
+    },
+    "purl": "pkg:pypi/article-parser@1.7.1",
+    "publishedAt": "2024-03-29T08:05:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "article-parser",
+     "version": "1.7.2"
+    },
+    "purl": "pkg:pypi/article-parser@1.7.2",
+    "publishedAt": "2024-05-13T09:05:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "article-parser",
+     "version": "1.8.0"
+    },
+    "purl": "pkg:pypi/article-parser@1.8.0",
+    "publishedAt": "2024-06-04T02:50:47Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "PYPI",
+   "name": "article-parser",
+   "version": "1.8.0"
+  },
+  "purl": "pkg:pypi/article-parser@1.8.0",
+  "publishedAt": "2024-06-04T02:50:47Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "MIT",
+    "spdx": "MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/myifeng/article-parser"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://pypi.org/simple"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/myifeng/article-parser"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "article_parser",
+    "versionString": "1.8.0",
+    "source": "PYPI_RELEASE_FILENAME"
+   },
+   {
+    "packageName": "article-parser",
+    "versionString": "1.8.0",
+    "source": "PYPI_METADATA_FILE"
+   }
+  ],
+  "cooldown": {
+   "end": "2024-06-09T02:50:47Z",
+   "description": ""
+  },
+  "projectStatus": {
+   "status": "active",
+   "reason": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "article-parser",
+     "version": "1.8.0"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "beautifulsoup4",
+     "version": "4.12.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certifi",
+     "version": "2026.6.17"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "charset-normalizer",
+     "version": "3.4.9"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "html2text",
+     "version": "2020.1.16"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "idna",
+     "version": "3.18.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "lxml",
+     "version": "5.2.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "requests",
+     "version": "2.31.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "soupsieve",
+     "version": "2.8.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "urllib3",
+     "version": "2.7.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 1,
+    "requirement": "==4.12.3"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 4,
+    "requirement": "==2020.1.16"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 6,
+    "requirement": "==5.2.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 7,
+    "requirement": "==2.31.0"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 8,
+    "requirement": ">1.2"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 2,
+    "requirement": ">=2017.4.17"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 3,
+    "requirement": "<4,>=2"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 5,
+    "requirement": "<4,>=2.5"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 9,
+    "requirement": "<3,>=1.21.1"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/myifeng/article-parser"
+  },
+  "openIssuesCount": 1,
+  "starsCount": 50,
+  "forksCount": 6,
+  "license": "MIT",
+  "description": "Extract article or news by url or html, parse the title and content, output in markdown format.",
+  "homepage": "https://pypi.org/project/article-parser",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/myifeng/article-parser",
+    "commit": "654aa74d68a2cb4e4e11a7f8e68a393090a50a68"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 0,
+     "reason": "0 commit(s) and 0 issue activity found in the last 90 days -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected",
+     "details": []
+    },
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 0,
+     "reason": "Found 0/21 approved changesets -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": 0,
+     "reason": "detected GitHub workflow tokens with excessive permissions",
+     "details": [
+      "Info: jobLevel 'contents' permission set to 'read': .github/workflows/codeql-analysis.yml:15",
+      "Info: jobLevel 'actions' permission set to 'read': .github/workflows/codeql-analysis.yml:14",
+      "Warn: no topLevel permission defined: .github/workflows/codeql-analysis.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/python-ci.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/python-publish.yml:1",
+      "Info: no jobLevel write permissions found"
+     ]
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": 1,
+     "reason": "dependency not pinned by hash detected -- score normalized to 1",
+     "details": [
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/codeql-analysis.yml:25: update your workflow using https://app.stepsecurity.io/secureworkflow/myifeng/article-parser/codeql-analysis.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/codeql-analysis.yml:27: update your workflow using https://app.stepsecurity.io/secureworkflow/myifeng/article-parser/codeql-analysis.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/codeql-analysis.yml:31: update your workflow using https://app.stepsecurity.io/secureworkflow/myifeng/article-parser/codeql-analysis.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/codeql-analysis.yml:33: update your workflow using https://app.stepsecurity.io/secureworkflow/myifeng/article-parser/codeql-analysis.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/python-ci.yml:20: update your workflow using https://app.stepsecurity.io/secureworkflow/myifeng/article-parser/python-ci.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/python-ci.yml:22: update your workflow using https://app.stepsecurity.io/secureworkflow/myifeng/article-parser/python-ci.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/python-publish.yml:20: update your workflow using https://app.stepsecurity.io/secureworkflow/myifeng/article-parser/python-publish.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/python-publish.yml:22: update your workflow using https://app.stepsecurity.io/secureworkflow/myifeng/article-parser/python-publish.yml/master?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/python-publish.yml:60: update your workflow using https://app.stepsecurity.io/secureworkflow/myifeng/article-parser/python-publish.yml/master?enable=pin",
+      "Warn: pipCommand not pinned by hash: .github/workflows/python-ci.yml:27",
+      "Warn: pipCommand not pinned by hash: .github/workflows/python-ci.yml:28",
+      "Warn: pipCommand not pinned by hash: .github/workflows/python-ci.yml:29",
+      "Warn: pipCommand not pinned by hash: .github/workflows/python-publish.yml:27",
+      "Warn: pipCommand not pinned by hash: .github/workflows/python-publish.yml:28",
+      "Warn: pipCommand not pinned by hash: .github/workflows/python-publish.yml:29",
+      "Info:   0 out of   8 GitHub-owned GitHubAction dependencies pinned",
+      "Info:   0 out of   1 third-party GitHubAction dependencies pinned",
+      "Info:   2 out of   8 pipCommand dependencies pinned"
+     ]
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 0,
+     "reason": "security policy file not detected",
+     "details": [
+      "Warn: no security policy file detected",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 10,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE:0",
+      "Info: FSF or OSI recognized license: MIT License: LICENSE:0"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": -1,
+     "reason": "internal error: error during branchesHandler.setup: internal error: some github tokens can't read classic branch protection rules: https://github.com/ossf/scorecard-action/blob/main/docs/authentication/fine-grained-auth-token.md",
+     "details": []
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 7,
+     "reason": "SAST tool detected but not run on all commits",
+     "details": [
+      "Info: SAST configuration detected: CodeQL",
+      "Warn: 0 commits out of 11 are checked with a SAST tool"
+     ]
+    }
+   ],
+   "overallScore": 3.7,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 297919737,
+  "node_id": "MDEwOlJlcG9zaXRvcnkyOTc5MTk3Mzc=",
+  "name": "article-parser",
+  "full_name": "myifeng/article-parser",
+  "private": false,
+  "owner": {
+   "login": "myifeng",
+   "id": 26652657,
+   "node_id": "MDQ6VXNlcjI2NjUyNjU3",
+   "avatar_url": "https://avatars.githubusercontent.com/u/26652657?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/myifeng",
+   "html_url": "https://github.com/myifeng",
+   "followers_url": "https://api.github.com/users/myifeng/followers",
+   "following_url": "https://api.github.com/users/myifeng/following{/other_user}",
+   "gists_url": "https://api.github.com/users/myifeng/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/myifeng/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/myifeng/subscriptions",
+   "organizations_url": "https://api.github.com/users/myifeng/orgs",
+   "repos_url": "https://api.github.com/users/myifeng/repos",
+   "events_url": "https://api.github.com/users/myifeng/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/myifeng/received_events",
+   "type": "User",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/myifeng/article-parser",
+  "description": "Extract article or news by url or html, parse the title and content, output in markdown format.",
+  "fork": false,
+  "url": "https://api.github.com/repos/myifeng/article-parser",
+  "forks_url": "https://api.github.com/repos/myifeng/article-parser/forks",
+  "keys_url": "https://api.github.com/repos/myifeng/article-parser/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/myifeng/article-parser/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/myifeng/article-parser/teams",
+  "hooks_url": "https://api.github.com/repos/myifeng/article-parser/hooks",
+  "issue_events_url": "https://api.github.com/repos/myifeng/article-parser/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/myifeng/article-parser/events",
+  "assignees_url": "https://api.github.com/repos/myifeng/article-parser/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/myifeng/article-parser/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/myifeng/article-parser/tags",
+  "blobs_url": "https://api.github.com/repos/myifeng/article-parser/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/myifeng/article-parser/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/myifeng/article-parser/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/myifeng/article-parser/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/myifeng/article-parser/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/myifeng/article-parser/languages",
+  "stargazers_url": "https://api.github.com/repos/myifeng/article-parser/stargazers",
+  "contributors_url": "https://api.github.com/repos/myifeng/article-parser/contributors",
+  "subscribers_url": "https://api.github.com/repos/myifeng/article-parser/subscribers",
+  "subscription_url": "https://api.github.com/repos/myifeng/article-parser/subscription",
+  "commits_url": "https://api.github.com/repos/myifeng/article-parser/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/myifeng/article-parser/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/myifeng/article-parser/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/myifeng/article-parser/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/myifeng/article-parser/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/myifeng/article-parser/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/myifeng/article-parser/merges",
+  "archive_url": "https://api.github.com/repos/myifeng/article-parser/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/myifeng/article-parser/downloads",
+  "issues_url": "https://api.github.com/repos/myifeng/article-parser/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/myifeng/article-parser/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/myifeng/article-parser/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/myifeng/article-parser/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/myifeng/article-parser/labels{/name}",
+  "releases_url": "https://api.github.com/repos/myifeng/article-parser/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/myifeng/article-parser/deployments",
+  "created_at": "2020-09-23T09:29:38Z",
+  "updated_at": "2025-08-25T09:45:20Z",
+  "pushed_at": "2024-08-12T06:27:54Z",
+  "git_url": "git://github.com/myifeng/article-parser.git",
+  "ssh_url": "git@github.com:myifeng/article-parser.git",
+  "clone_url": "https://github.com/myifeng/article-parser.git",
+  "svn_url": "https://github.com/myifeng/article-parser",
+  "homepage": "https://pypi.org/project/article-parser",
+  "size": 87,
+  "stargazers_count": 50,
+  "watchers_count": 50,
+  "language": "Python",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": true,
+  "has_discussions": true,
+  "forks_count": 6,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 1,
+  "license": {
+   "key": "mit",
+   "name": "MIT License",
+   "spdx_id": "MIT",
+   "url": "https://api.github.com/licenses/mit",
+   "node_id": "MDc6TGljZW5zZTEz"
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [
+   "article",
+   "article-extracting",
+   "article-extractor",
+   "article-parser",
+   "beautifulsoup",
+   "extract",
+   "extract-article",
+   "extractor",
+   "news",
+   "python"
+  ],
+  "visibility": "public",
+  "forks": 6,
+  "open_issues": 1,
+  "watchers": 50,
+  "default_branch": "master",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "network_count": 6,
+  "subscribers_count": 1
+ },
+ "funding": []
+}

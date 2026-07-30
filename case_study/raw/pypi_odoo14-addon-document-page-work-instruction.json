@@ -1,0 +1,471 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "PYPI",
+   "name": "odoo14-addon-document-page-work-instruction"
+  },
+  "purl": "pkg:pypi/odoo14-addon-document-page-work-instruction",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "odoo14-addon-document-page-work-instruction",
+     "version": "14.0.1.0.1.dev1"
+    },
+    "purl": "pkg:pypi/odoo14-addon-document-page-work-instruction@14.0.1.0.1.dev1",
+    "publishedAt": "2021-08-06T11:54:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "odoo14-addon-document-page-work-instruction",
+     "version": "14.0.1.0.1.dev2"
+    },
+    "purl": "pkg:pypi/odoo14-addon-document-page-work-instruction@14.0.1.0.1.dev2",
+    "publishedAt": "2023-09-03T14:23:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "odoo14-addon-document-page-work-instruction",
+     "version": "14.0.1.0.1.dev3"
+    },
+    "purl": "pkg:pypi/odoo14-addon-document-page-work-instruction@14.0.1.0.1.dev3",
+    "publishedAt": "2023-11-04T04:44:46Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "PYPI",
+   "name": "odoo14-addon-document-page-work-instruction",
+   "version": "14.0.1.0.1.dev3"
+  },
+  "purl": "pkg:pypi/odoo14-addon-document-page-work-instruction@14.0.1.0.1.dev3",
+  "publishedAt": "2023-11-04T04:44:46Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "AGPL-3.0"
+  ],
+  "licenseDetails": [
+   {
+    "license": "AGPL-3",
+    "spdx": "AGPL-3.0"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/OCA/management-system"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://pypi.org/simple"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/oca/management-system"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "odoo14_addon_document_page_work_instruction",
+    "versionString": "14.0.1.0.1.dev3",
+    "source": "PYPI_RELEASE_FILENAME"
+   },
+   {
+    "packageName": "odoo14-addon-document-page-work-instruction",
+    "versionString": "14.0.1.0.1.dev3",
+    "source": "PYPI_METADATA_FILE"
+   }
+  ],
+  "cooldown": {
+   "end": "2023-11-09T04:44:46Z",
+   "description": ""
+  },
+  "projectStatus": {
+   "status": "active",
+   "reason": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [],
+  "edges": [],
+  "error": "resolution impossible:\nno candidates at all for: odoo \"<14.1dev,>=14.0a\"\n"
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/oca/management-system"
+  },
+  "openIssuesCount": 19,
+  "starsCount": 234,
+  "forksCount": 357,
+  "license": "AGPL-3.0",
+  "description": "Odoo for Management Systems (ISO, IEC, BS)",
+  "homepage": "http://odoo-community.org",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/OCA/management-system",
+    "commit": "b1266d0d0c5a3b5fd1deba62ee66a3e1a7f6c55b"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 0,
+     "reason": "Found 1/29 approved changesets -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 10,
+     "reason": "30 commit(s) and 7 issue activity found in the last 90 days -- score normalized to 10",
+     "details": []
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected",
+     "details": []
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": 0,
+     "reason": "detected GitHub workflow tokens with excessive permissions",
+     "details": [
+      "Warn: no topLevel permission defined: .github/workflows/pre-commit.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/stale.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/test.yml:1",
+      "Info: no jobLevel write permissions found"
+     ]
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": 0,
+     "reason": "dependency not pinned by hash detected -- score normalized to 0",
+     "details": [
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pre-commit.yml:16: update your workflow using https://app.stepsecurity.io/secureworkflow/OCA/management-system/pre-commit.yml/18.0?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pre-commit.yml:17: update your workflow using https://app.stepsecurity.io/secureworkflow/OCA/management-system/pre-commit.yml/18.0?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pre-commit.yml:22: update your workflow using https://app.stepsecurity.io/secureworkflow/OCA/management-system/pre-commit.yml/18.0?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/stale.yml:12: update your workflow using https://app.stepsecurity.io/secureworkflow/OCA/management-system/stale.yml/18.0?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/stale.yml:51: update your workflow using https://app.stepsecurity.io/secureworkflow/OCA/management-system/stale.yml/18.0?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/test.yml:17: update your workflow using https://app.stepsecurity.io/secureworkflow/OCA/management-system/test.yml/18.0?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/test.yml:55: update your workflow using https://app.stepsecurity.io/secureworkflow/OCA/management-system/test.yml/18.0?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/test.yml:68: update your workflow using https://app.stepsecurity.io/secureworkflow/OCA/management-system/test.yml/18.0?enable=pin",
+      "Warn: pipCommand not pinned by hash: .github/workflows/pre-commit.yml:28",
+      "Info:   0 out of   7 GitHub-owned GitHubAction dependencies pinned",
+      "Info:   0 out of   1 third-party GitHubAction dependencies pinned",
+      "Info:   0 out of   1 pipCommand dependencies pinned"
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 10,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE:0",
+      "Info: FSF or OSI recognized license: GNU Affero General Public License v3.0: LICENSE:0"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": 0,
+     "reason": "branch protection not enabled on development/release branches",
+     "details": [
+      "Warn: branch protection not enabled for branch '18.0'"
+     ]
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 10,
+     "reason": "security policy file detected",
+     "details": [
+      "Info: security policy file detected: github.com/OCA/.github/SECURITY.md:1",
+      "Info: Found linked content: github.com/OCA/.github/SECURITY.md:1",
+      "Info: Found disclosure, vulnerability, and/or timelines in security policy: github.com/OCA/.github/SECURITY.md:1",
+      "Info: Found text in security policy: github.com/OCA/.github/SECURITY.md:1"
+     ]
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0",
+     "details": [
+      "Warn: 0 commits out of 2 are checked with a SAST tool"
+     ]
+    }
+   ],
+   "overallScore": 4.5,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 20894503,
+  "node_id": "MDEwOlJlcG9zaXRvcnkyMDg5NDUwMw==",
+  "name": "management-system",
+  "full_name": "OCA/management-system",
+  "private": false,
+  "owner": {
+   "login": "OCA",
+   "id": 7600578,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjc2MDA1Nzg=",
+   "avatar_url": "https://avatars.githubusercontent.com/u/7600578?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/OCA",
+   "html_url": "https://github.com/OCA",
+   "followers_url": "https://api.github.com/users/OCA/followers",
+   "following_url": "https://api.github.com/users/OCA/following{/other_user}",
+   "gists_url": "https://api.github.com/users/OCA/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/OCA/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/OCA/subscriptions",
+   "organizations_url": "https://api.github.com/users/OCA/orgs",
+   "repos_url": "https://api.github.com/users/OCA/repos",
+   "events_url": "https://api.github.com/users/OCA/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/OCA/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/OCA/management-system",
+  "description": "Odoo for Management Systems (ISO, IEC, BS)",
+  "fork": false,
+  "url": "https://api.github.com/repos/OCA/management-system",
+  "forks_url": "https://api.github.com/repos/OCA/management-system/forks",
+  "keys_url": "https://api.github.com/repos/OCA/management-system/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/OCA/management-system/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/OCA/management-system/teams",
+  "hooks_url": "https://api.github.com/repos/OCA/management-system/hooks",
+  "issue_events_url": "https://api.github.com/repos/OCA/management-system/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/OCA/management-system/events",
+  "assignees_url": "https://api.github.com/repos/OCA/management-system/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/OCA/management-system/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/OCA/management-system/tags",
+  "blobs_url": "https://api.github.com/repos/OCA/management-system/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/OCA/management-system/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/OCA/management-system/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/OCA/management-system/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/OCA/management-system/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/OCA/management-system/languages",
+  "stargazers_url": "https://api.github.com/repos/OCA/management-system/stargazers",
+  "contributors_url": "https://api.github.com/repos/OCA/management-system/contributors",
+  "subscribers_url": "https://api.github.com/repos/OCA/management-system/subscribers",
+  "subscription_url": "https://api.github.com/repos/OCA/management-system/subscription",
+  "commits_url": "https://api.github.com/repos/OCA/management-system/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/OCA/management-system/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/OCA/management-system/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/OCA/management-system/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/OCA/management-system/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/OCA/management-system/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/OCA/management-system/merges",
+  "archive_url": "https://api.github.com/repos/OCA/management-system/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/OCA/management-system/downloads",
+  "issues_url": "https://api.github.com/repos/OCA/management-system/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/OCA/management-system/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/OCA/management-system/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/OCA/management-system/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/OCA/management-system/labels{/name}",
+  "releases_url": "https://api.github.com/repos/OCA/management-system/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/OCA/management-system/deployments",
+  "created_at": "2014-06-16T17:53:24Z",
+  "updated_at": "2026-07-20T09:47:54Z",
+  "pushed_at": "2026-07-20T09:47:27Z",
+  "git_url": "git://github.com/OCA/management-system.git",
+  "ssh_url": "git@github.com:OCA/management-system.git",
+  "clone_url": "https://github.com/OCA/management-system.git",
+  "svn_url": "https://github.com/OCA/management-system",
+  "homepage": "http://odoo-community.org",
+  "size": 79767,
+  "stargazers_count": 234,
+  "watchers_count": 234,
+  "language": "HTML",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 357,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 23,
+  "license": {
+   "key": "agpl-3.0",
+   "name": "GNU Affero General Public License v3.0",
+   "spdx_id": "AGPL-3.0",
+   "url": "https://api.github.com/licenses/agpl-3.0",
+   "node_id": "MDc6TGljZW5zZTE="
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [
+   "erp",
+   "iso",
+   "odoo",
+   "python"
+  ],
+  "visibility": "public",
+  "forks": 357,
+  "open_issues": 23,
+  "watchers": 234,
+  "default_branch": "18.0",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "OCA",
+   "id": 7600578,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjc2MDA1Nzg=",
+   "avatar_url": "https://avatars.githubusercontent.com/u/7600578?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/OCA",
+   "html_url": "https://github.com/OCA",
+   "followers_url": "https://api.github.com/users/OCA/followers",
+   "following_url": "https://api.github.com/users/OCA/following{/other_user}",
+   "gists_url": "https://api.github.com/users/OCA/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/OCA/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/OCA/subscriptions",
+   "organizations_url": "https://api.github.com/users/OCA/orgs",
+   "repos_url": "https://api.github.com/users/OCA/repos",
+   "events_url": "https://api.github.com/users/OCA/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/OCA/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 357,
+  "subscribers_count": 59
+ },
+ "funding": [
+  {
+   "platform": "GITHUB",
+   "url": "https://github.com/OCA"
+  }
+ ]
+}

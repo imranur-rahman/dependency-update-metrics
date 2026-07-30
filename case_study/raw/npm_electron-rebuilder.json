@@ -1,0 +1,994 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "electron-rebuilder"
+  },
+  "purl": "pkg:npm/electron-rebuilder",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "electron-rebuilder",
+     "version": "0.0.1"
+    },
+    "purl": "pkg:npm/electron-rebuilder@0.0.1",
+    "publishedAt": "2022-06-06T21:35:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "electron-rebuilder",
+     "version": "0.0.10"
+    },
+    "purl": "pkg:npm/electron-rebuilder@0.0.10",
+    "publishedAt": "2022-06-07T21:01:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "electron-rebuilder",
+     "version": "0.0.11"
+    },
+    "purl": "pkg:npm/electron-rebuilder@0.0.11",
+    "publishedAt": "2022-06-07T21:02:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "electron-rebuilder",
+     "version": "0.0.12"
+    },
+    "purl": "pkg:npm/electron-rebuilder@0.0.12",
+    "publishedAt": "2022-06-07T23:47:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "electron-rebuilder",
+     "version": "0.0.13"
+    },
+    "purl": "pkg:npm/electron-rebuilder@0.0.13",
+    "publishedAt": "2022-06-08T04:29:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "electron-rebuilder",
+     "version": "0.0.14"
+    },
+    "purl": "pkg:npm/electron-rebuilder@0.0.14",
+    "publishedAt": "2022-06-08T04:47:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "electron-rebuilder",
+     "version": "0.0.15"
+    },
+    "purl": "pkg:npm/electron-rebuilder@0.0.15",
+    "publishedAt": "2022-06-08T04:56:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "electron-rebuilder",
+     "version": "0.0.16"
+    },
+    "purl": "pkg:npm/electron-rebuilder@0.0.16",
+    "publishedAt": "2022-07-07T06:35:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "electron-rebuilder",
+     "version": "0.0.17"
+    },
+    "purl": "pkg:npm/electron-rebuilder@0.0.17",
+    "publishedAt": "2022-07-07T10:18:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "electron-rebuilder",
+     "version": "0.0.18"
+    },
+    "purl": "pkg:npm/electron-rebuilder@0.0.18",
+    "publishedAt": "2022-07-07T17:45:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "electron-rebuilder",
+     "version": "0.0.19"
+    },
+    "purl": "pkg:npm/electron-rebuilder@0.0.19",
+    "publishedAt": "2022-07-08T00:49:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "electron-rebuilder",
+     "version": "0.0.2"
+    },
+    "purl": "pkg:npm/electron-rebuilder@0.0.2",
+    "publishedAt": "2022-06-07T00:47:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "electron-rebuilder",
+     "version": "0.0.20"
+    },
+    "purl": "pkg:npm/electron-rebuilder@0.0.20",
+    "publishedAt": "2022-08-29T23:49:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "electron-rebuilder",
+     "version": "0.0.3"
+    },
+    "purl": "pkg:npm/electron-rebuilder@0.0.3",
+    "publishedAt": "2022-06-07T02:41:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "electron-rebuilder",
+     "version": "0.0.4"
+    },
+    "purl": "pkg:npm/electron-rebuilder@0.0.4",
+    "publishedAt": "2022-06-07T02:48:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "electron-rebuilder",
+     "version": "0.0.5"
+    },
+    "purl": "pkg:npm/electron-rebuilder@0.0.5",
+    "publishedAt": "2022-06-07T02:52:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "electron-rebuilder",
+     "version": "0.0.6"
+    },
+    "purl": "pkg:npm/electron-rebuilder@0.0.6",
+    "publishedAt": "2022-06-07T20:38:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "electron-rebuilder",
+     "version": "0.0.7"
+    },
+    "purl": "pkg:npm/electron-rebuilder@0.0.7",
+    "publishedAt": "2022-06-07T20:42:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "electron-rebuilder",
+     "version": "0.0.8"
+    },
+    "purl": "pkg:npm/electron-rebuilder@0.0.8",
+    "publishedAt": "2022-06-07T20:58:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "electron-rebuilder",
+     "version": "0.0.9"
+    },
+    "purl": "pkg:npm/electron-rebuilder@0.0.9",
+    "publishedAt": "2022-06-07T21:00:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "electron-rebuilder",
+     "version": "1.0.0"
+    },
+    "purl": "pkg:npm/electron-rebuilder@1.0.0",
+    "publishedAt": "2023-08-08T12:31:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "electron-rebuilder",
+     "version": "1.0.1"
+    },
+    "purl": "pkg:npm/electron-rebuilder@1.0.1",
+    "publishedAt": "2024-06-10T03:58:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "electron-rebuilder",
+     "version": "1.0.2"
+    },
+    "purl": "pkg:npm/electron-rebuilder@1.0.2",
+    "publishedAt": "2024-06-19T21:41:09Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "NPM",
+   "name": "electron-rebuilder",
+   "version": "1.0.2"
+  },
+  "purl": "pkg:npm/electron-rebuilder@1.0.2",
+  "publishedAt": "2024-06-19T21:41:09Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "ISC"
+  ],
+  "licenseDetails": [
+   {
+    "license": "ISC",
+    "spdx": "ISC"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "HOMEPAGE",
+    "url": "https://itwcreativeworks.com"
+   },
+   {
+    "label": "ISSUE_TRACKER",
+    "url": "https://github.com/itw-creative-works/electron-rebuilder/issues"
+   },
+   {
+    "label": "ORIGIN",
+    "url": "https://registry.npmjs.org/electron-rebuilder/1.0.2"
+   },
+   {
+    "label": "SOURCE_REPO",
+    "url": "git+https://github.com/itw-creative-works/electron-rebuilder.git"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://registry.npmjs.org/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/itw-creative-works/electron-rebuilder"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "ISSUE_TRACKER"
+   },
+   {
+    "projectKey": {
+     "id": "github.com/itw-creative-works/electron-rebuilder"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "electron-rebuilder",
+    "versionString": "1.0.2",
+    "source": "NPM_NPMJS_ORG"
+   }
+  ],
+  "cooldown": {
+   "end": "2024-07-04T21:41:09Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "electron-rebuilder",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "ansi-styles",
+     "version": "4.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "balanced-match",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "brace-expansion",
+     "version": "1.1.16"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "chalk",
+     "version": "4.1.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "color-convert",
+     "version": "2.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "color-name",
+     "version": "1.1.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "concat-map",
+     "version": "0.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "fs-jetpack",
+     "version": "4.3.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "fs.realpath",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "glob",
+     "version": "7.2.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "has-flag",
+     "version": "4.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "inflight",
+     "version": "1.0.6"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "inherits",
+     "version": "2.0.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "itwcw-package-analytics",
+     "version": "1.0.8"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "json5",
+     "version": "2.2.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "mime-db",
+     "version": "1.52.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "mime-types",
+     "version": "2.1.35"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "minimatch",
+     "version": "3.1.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-fetch",
+     "version": "2.7.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "once",
+     "version": "1.4.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "path-is-absolute",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "rimraf",
+     "version": "2.7.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "supports-color",
+     "version": "7.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tr46",
+     "version": "0.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "uuid",
+     "version": "9.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "webidl-conversions",
+     "version": "3.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "whatwg-url",
+     "version": "5.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "wonderful-fetch",
+     "version": "1.3.4"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "wrappy",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 4,
+    "requirement": "^4.1.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 8,
+    "requirement": "^4.3.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 14,
+    "requirement": "^1.0.4"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 28,
+    "requirement": "^1.1.12"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 5,
+    "requirement": "^2.0.1"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 2,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 7,
+    "requirement": "0.0.1"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 1,
+    "requirement": "^4.1.0"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 23,
+    "requirement": "^7.1.0"
+   },
+   {
+    "fromNode": 5,
+    "toNode": 6,
+    "requirement": "~1.1.4"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 18,
+    "requirement": "^3.0.2"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 22,
+    "requirement": "^2.6.3"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 9,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 12,
+    "requirement": "^1.0.4"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 13,
+    "requirement": "2"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 18,
+    "requirement": "^3.1.1"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 20,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 21,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 20,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 29,
+    "requirement": "1"
+   },
+   {
+    "fromNode": 14,
+    "toNode": 8,
+    "requirement": "^4.3.1"
+   },
+   {
+    "fromNode": 14,
+    "toNode": 25,
+    "requirement": "^9.0.1"
+   },
+   {
+    "fromNode": 14,
+    "toNode": 28,
+    "requirement": "^1.3.4"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 16,
+    "requirement": "1.52.0"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 3,
+    "requirement": "^1.1.7"
+   },
+   {
+    "fromNode": 19,
+    "toNode": 27,
+    "requirement": "^5.0.0"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 29,
+    "requirement": "1"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 10,
+    "requirement": "^7.1.3"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 11,
+    "requirement": "^4.0.0"
+   },
+   {
+    "fromNode": 27,
+    "toNode": 24,
+    "requirement": "~0.0.3"
+   },
+   {
+    "fromNode": 27,
+    "toNode": 26,
+    "requirement": "^3.0.0"
+   },
+   {
+    "fromNode": 28,
+    "toNode": 8,
+    "requirement": "^4.3.1"
+   },
+   {
+    "fromNode": 28,
+    "toNode": 14,
+    "requirement": "^1.0.6"
+   },
+   {
+    "fromNode": 28,
+    "toNode": 15,
+    "requirement": "^2.2.1"
+   },
+   {
+    "fromNode": 28,
+    "toNode": 17,
+    "requirement": "^2.1.35"
+   },
+   {
+    "fromNode": 28,
+    "toNode": 19,
+    "requirement": "^2.7.0"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 1,
+  "directDependentCount": 1,
+  "indirectDependentCount": 0
+ },
+ "project": null,
+ "github_repo_api": {
+  "id": 501003667,
+  "node_id": "R_kgDOHdy1kw",
+  "name": "electron-rebuilder",
+  "full_name": "itw-creative-works/electron-rebuilder",
+  "private": false,
+  "owner": {
+   "login": "itw-creative-works",
+   "id": 37975591,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjM3OTc1NTkx",
+   "avatar_url": "https://avatars.githubusercontent.com/u/37975591?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/itw-creative-works",
+   "html_url": "https://github.com/itw-creative-works",
+   "followers_url": "https://api.github.com/users/itw-creative-works/followers",
+   "following_url": "https://api.github.com/users/itw-creative-works/following{/other_user}",
+   "gists_url": "https://api.github.com/users/itw-creative-works/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/itw-creative-works/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/itw-creative-works/subscriptions",
+   "organizations_url": "https://api.github.com/users/itw-creative-works/orgs",
+   "repos_url": "https://api.github.com/users/itw-creative-works/repos",
+   "events_url": "https://api.github.com/users/itw-creative-works/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/itw-creative-works/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/itw-creative-works/electron-rebuilder",
+  "description": "Drop-in script to automatically rebuilds for the correct Electron and Node.js abi versions",
+  "fork": false,
+  "url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder",
+  "forks_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/forks",
+  "keys_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/teams",
+  "hooks_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/hooks",
+  "issue_events_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/events",
+  "assignees_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/tags",
+  "blobs_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/languages",
+  "stargazers_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/stargazers",
+  "contributors_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/contributors",
+  "subscribers_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/subscribers",
+  "subscription_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/subscription",
+  "commits_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/merges",
+  "archive_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/downloads",
+  "issues_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/labels{/name}",
+  "releases_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/itw-creative-works/electron-rebuilder/deployments",
+  "created_at": "2022-06-07T21:05:18Z",
+  "updated_at": "2024-08-29T11:49:22Z",
+  "pushed_at": "2024-06-19T21:41:11Z",
+  "git_url": "git://github.com/itw-creative-works/electron-rebuilder.git",
+  "ssh_url": "git@github.com:itw-creative-works/electron-rebuilder.git",
+  "clone_url": "https://github.com/itw-creative-works/electron-rebuilder.git",
+  "svn_url": "https://github.com/itw-creative-works/electron-rebuilder",
+  "homepage": null,
+  "size": 16,
+  "stargazers_count": 1,
+  "watchers_count": 1,
+  "language": "JavaScript",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 0,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 0,
+  "license": {
+   "key": "mit",
+   "name": "MIT License",
+   "spdx_id": "MIT",
+   "url": "https://api.github.com/licenses/mit",
+   "node_id": "MDc6TGljZW5zZTEz"
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [],
+  "visibility": "public",
+  "forks": 0,
+  "open_issues": 0,
+  "watchers": 1,
+  "default_branch": "main",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "itw-creative-works",
+   "id": 37975591,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjM3OTc1NTkx",
+   "avatar_url": "https://avatars.githubusercontent.com/u/37975591?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/itw-creative-works",
+   "html_url": "https://github.com/itw-creative-works",
+   "followers_url": "https://api.github.com/users/itw-creative-works/followers",
+   "following_url": "https://api.github.com/users/itw-creative-works/following{/other_user}",
+   "gists_url": "https://api.github.com/users/itw-creative-works/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/itw-creative-works/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/itw-creative-works/subscriptions",
+   "organizations_url": "https://api.github.com/users/itw-creative-works/orgs",
+   "repos_url": "https://api.github.com/users/itw-creative-works/repos",
+   "events_url": "https://api.github.com/users/itw-creative-works/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/itw-creative-works/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 0,
+  "subscribers_count": 1
+ },
+ "funding": []
+}

@@ -1,0 +1,732 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "node-red-contrib-influxdb"
+  },
+  "purl": "pkg:npm/node-red-contrib-influxdb",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-red-contrib-influxdb",
+     "version": "0.0.1"
+    },
+    "purl": "pkg:npm/node-red-contrib-influxdb@0.0.1",
+    "publishedAt": "2015-10-12T22:36:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-red-contrib-influxdb",
+     "version": "0.0.2"
+    },
+    "purl": "pkg:npm/node-red-contrib-influxdb@0.0.2",
+    "publishedAt": "2015-10-12T23:08:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-red-contrib-influxdb",
+     "version": "0.0.3"
+    },
+    "purl": "pkg:npm/node-red-contrib-influxdb@0.0.3",
+    "publishedAt": "2015-10-22T21:29:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-red-contrib-influxdb",
+     "version": "0.0.4"
+    },
+    "purl": "pkg:npm/node-red-contrib-influxdb@0.0.4",
+    "publishedAt": "2015-11-23T18:39:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-red-contrib-influxdb",
+     "version": "0.0.5"
+    },
+    "purl": "pkg:npm/node-red-contrib-influxdb@0.0.5",
+    "publishedAt": "2015-12-28T22:41:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-red-contrib-influxdb",
+     "version": "0.0.6"
+    },
+    "purl": "pkg:npm/node-red-contrib-influxdb@0.0.6",
+    "publishedAt": "2016-11-08T22:49:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-red-contrib-influxdb",
+     "version": "0.1.0"
+    },
+    "purl": "pkg:npm/node-red-contrib-influxdb@0.1.0",
+    "publishedAt": "2017-03-09T01:18:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-red-contrib-influxdb",
+     "version": "0.1.1"
+    },
+    "purl": "pkg:npm/node-red-contrib-influxdb@0.1.1",
+    "publishedAt": "2017-03-09T21:27:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-red-contrib-influxdb",
+     "version": "0.2.0"
+    },
+    "purl": "pkg:npm/node-red-contrib-influxdb@0.2.0",
+    "publishedAt": "2017-06-12T03:33:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-red-contrib-influxdb",
+     "version": "0.2.1"
+    },
+    "purl": "pkg:npm/node-red-contrib-influxdb@0.2.1",
+    "publishedAt": "2017-07-04T00:04:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-red-contrib-influxdb",
+     "version": "0.2.2"
+    },
+    "purl": "pkg:npm/node-red-contrib-influxdb@0.2.2",
+    "publishedAt": "2018-09-30T02:31:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-red-contrib-influxdb",
+     "version": "0.3.0"
+    },
+    "purl": "pkg:npm/node-red-contrib-influxdb@0.3.0",
+    "publishedAt": "2019-06-20T02:39:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-red-contrib-influxdb",
+     "version": "0.3.1"
+    },
+    "purl": "pkg:npm/node-red-contrib-influxdb@0.3.1",
+    "publishedAt": "2019-09-04T18:17:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-red-contrib-influxdb",
+     "version": "0.4.0"
+    },
+    "purl": "pkg:npm/node-red-contrib-influxdb@0.4.0",
+    "publishedAt": "2019-10-02T23:42:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-red-contrib-influxdb",
+     "version": "0.4.1"
+    },
+    "purl": "pkg:npm/node-red-contrib-influxdb@0.4.1",
+    "publishedAt": "2020-06-21T21:59:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-red-contrib-influxdb",
+     "version": "0.5.0"
+    },
+    "purl": "pkg:npm/node-red-contrib-influxdb@0.5.0",
+    "publishedAt": "2020-11-05T02:33:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-red-contrib-influxdb",
+     "version": "0.5.1"
+    },
+    "purl": "pkg:npm/node-red-contrib-influxdb@0.5.1",
+    "publishedAt": "2020-11-20T04:03:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-red-contrib-influxdb",
+     "version": "0.5.2"
+    },
+    "purl": "pkg:npm/node-red-contrib-influxdb@0.5.2",
+    "publishedAt": "2020-12-03T03:09:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-red-contrib-influxdb",
+     "version": "0.5.3"
+    },
+    "purl": "pkg:npm/node-red-contrib-influxdb@0.5.3",
+    "publishedAt": "2020-12-19T03:48:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-red-contrib-influxdb",
+     "version": "0.5.4"
+    },
+    "purl": "pkg:npm/node-red-contrib-influxdb@0.5.4",
+    "publishedAt": "2021-01-16T18:27:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-red-contrib-influxdb",
+     "version": "0.6.0"
+    },
+    "purl": "pkg:npm/node-red-contrib-influxdb@0.6.0",
+    "publishedAt": "2021-04-05T22:57:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-red-contrib-influxdb",
+     "version": "0.6.1"
+    },
+    "purl": "pkg:npm/node-red-contrib-influxdb@0.6.1",
+    "publishedAt": "2021-05-24T02:13:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-red-contrib-influxdb",
+     "version": "0.7.0"
+    },
+    "purl": "pkg:npm/node-red-contrib-influxdb@0.7.0",
+    "publishedAt": "2023-12-30T22:43:01Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "NPM",
+   "name": "node-red-contrib-influxdb",
+   "version": "0.7.0"
+  },
+  "purl": "pkg:npm/node-red-contrib-influxdb@0.7.0",
+  "publishedAt": "2023-12-30T22:43:01Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "Apache-2.0"
+  ],
+  "licenseDetails": [
+   {
+    "license": "Apache-2.0",
+    "spdx": "Apache-2.0"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "HOMEPAGE",
+    "url": "https://github.com/mblackstock/node-red-contrib-influxdb#readme"
+   },
+   {
+    "label": "ISSUE_TRACKER",
+    "url": "https://github.com/mblackstock/node-red-contrib-influxdb/issues"
+   },
+   {
+    "label": "ORIGIN",
+    "url": "https://registry.npmjs.org/node-red-contrib-influxdb/0.7.0"
+   },
+   {
+    "label": "SOURCE_REPO",
+    "url": "git+https://github.com/mblackstock/node-red-contrib-influxdb.git"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://registry.npmjs.org/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/mblackstock/node-red-contrib-influxdb"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "ISSUE_TRACKER"
+   },
+   {
+    "projectKey": {
+     "id": "github.com/mblackstock/node-red-contrib-influxdb"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "node-red-contrib-influxdb",
+    "versionString": "0.7.0",
+    "source": "NPM_NPMJS_ORG"
+   }
+  ],
+  "cooldown": {
+   "end": "2024-01-14T22:43:01Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-red-contrib-influxdb",
+     "version": "0.7.0"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@influxdata/influxdb-client",
+     "version": "1.33.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "influx",
+     "version": "5.9.7"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "lodash",
+     "version": "4.17.23"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 1,
+    "requirement": "~1.33.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 2,
+    "requirement": "~5.9.3"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 3,
+    "requirement": "~4.17.21"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/mblackstock/node-red-contrib-influxdb"
+  },
+  "openIssuesCount": 30,
+  "starsCount": 66,
+  "forksCount": 47,
+  "license": "non-standard",
+  "description": "Node-RED nodes to save and query data from an influxdb time series database",
+  "homepage": "",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/mblackstock/node-red-contrib-influxdb",
+    "commit": "00aa0e689e5d4a09d121743ebf49a6bb743c99af"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": -1,
+     "reason": "No tokens found",
+     "details": []
+    },
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 0,
+     "reason": "Found 0/29 approved changesets -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 0,
+     "reason": "0 commit(s) and 0 issue activity found in the last 90 days -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": -1,
+     "reason": "no workflows found",
+     "details": []
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": -1,
+     "reason": "no dependencies found",
+     "details": []
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 0,
+     "reason": "security policy file not detected",
+     "details": [
+      "Warn: no security policy file detected",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 9,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE:0",
+      "Warn: project license file does not contain an FSF or OSI license."
+     ]
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": 0,
+     "reason": "branch protection not enabled on development/release branches",
+     "details": [
+      "Warn: branch protection not enabled for branch 'master'"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0",
+     "details": [
+      "Warn: 0 commits out of 2 are checked with a SAST tool"
+     ]
+    }
+   ],
+   "overallScore": 1.9,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 43993817,
+  "node_id": "MDEwOlJlcG9zaXRvcnk0Mzk5MzgxNw==",
+  "name": "node-red-contrib-influxdb",
+  "full_name": "mblackstock/node-red-contrib-influxdb",
+  "private": false,
+  "owner": {
+   "login": "mblackstock",
+   "id": 707704,
+   "node_id": "MDQ6VXNlcjcwNzcwNA==",
+   "avatar_url": "https://avatars.githubusercontent.com/u/707704?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/mblackstock",
+   "html_url": "https://github.com/mblackstock",
+   "followers_url": "https://api.github.com/users/mblackstock/followers",
+   "following_url": "https://api.github.com/users/mblackstock/following{/other_user}",
+   "gists_url": "https://api.github.com/users/mblackstock/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/mblackstock/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/mblackstock/subscriptions",
+   "organizations_url": "https://api.github.com/users/mblackstock/orgs",
+   "repos_url": "https://api.github.com/users/mblackstock/repos",
+   "events_url": "https://api.github.com/users/mblackstock/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/mblackstock/received_events",
+   "type": "User",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/mblackstock/node-red-contrib-influxdb",
+  "description": "Node-RED nodes to save and query data from an influxdb time series database",
+  "fork": false,
+  "url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb",
+  "forks_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/forks",
+  "keys_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/teams",
+  "hooks_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/hooks",
+  "issue_events_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/events",
+  "assignees_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/tags",
+  "blobs_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/languages",
+  "stargazers_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/stargazers",
+  "contributors_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/contributors",
+  "subscribers_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/subscribers",
+  "subscription_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/subscription",
+  "commits_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/merges",
+  "archive_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/downloads",
+  "issues_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/labels{/name}",
+  "releases_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/mblackstock/node-red-contrib-influxdb/deployments",
+  "created_at": "2015-10-10T04:22:10Z",
+  "updated_at": "2025-08-29T07:55:48Z",
+  "pushed_at": "2026-04-02T08:16:58Z",
+  "git_url": "git://github.com/mblackstock/node-red-contrib-influxdb.git",
+  "ssh_url": "git@github.com:mblackstock/node-red-contrib-influxdb.git",
+  "clone_url": "https://github.com/mblackstock/node-red-contrib-influxdb.git",
+  "svn_url": "https://github.com/mblackstock/node-red-contrib-influxdb",
+  "homepage": "",
+  "size": 131,
+  "stargazers_count": 66,
+  "watchers_count": 66,
+  "language": "HTML",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 48,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 37,
+  "license": {
+   "key": "other",
+   "name": "Other",
+   "spdx_id": "NOASSERTION",
+   "url": null,
+   "node_id": "MDc6TGljZW5zZTA="
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [
+   "influxdb",
+   "maintainer-wanted",
+   "node-red"
+  ],
+  "visibility": "public",
+  "forks": 48,
+  "open_issues": 37,
+  "watchers": 66,
+  "default_branch": "master",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "network_count": 48,
+  "subscribers_count": 7
+ },
+ "funding": []
+}

@@ -1,0 +1,302 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "taquante-api-client-js"
+  },
+  "purl": "pkg:npm/taquante-api-client-js",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "taquante-api-client-js",
+     "version": "0.1.0"
+    },
+    "purl": "pkg:npm/taquante-api-client-js@0.1.0",
+    "publishedAt": "2020-09-29T20:13:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "taquante-api-client-js",
+     "version": "0.2.0"
+    },
+    "purl": "pkg:npm/taquante-api-client-js@0.2.0",
+    "publishedAt": "2020-10-23T23:33:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "taquante-api-client-js",
+     "version": "0.3.0"
+    },
+    "purl": "pkg:npm/taquante-api-client-js@0.3.0",
+    "publishedAt": "2021-03-13T22:19:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "taquante-api-client-js",
+     "version": "0.3.1"
+    },
+    "purl": "pkg:npm/taquante-api-client-js@0.3.1",
+    "publishedAt": "2021-04-02T13:41:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "taquante-api-client-js",
+     "version": "0.3.2"
+    },
+    "purl": "pkg:npm/taquante-api-client-js@0.3.2",
+    "publishedAt": "2024-05-26T17:25:07Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "NPM",
+   "name": "taquante-api-client-js",
+   "version": "0.3.2"
+  },
+  "purl": "pkg:npm/taquante-api-client-js@0.3.2",
+  "publishedAt": "2024-05-26T17:25:07Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "Apache-2.0"
+  ],
+  "licenseDetails": [
+   {
+    "license": "Apache-2.0",
+    "spdx": "Apache-2.0"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "HOMEPAGE",
+    "url": "https://github.com/Benedito0/taquante-api-client-js#readme"
+   },
+   {
+    "label": "ISSUE_TRACKER",
+    "url": "https://github.com/Benedito0/taquante-api-client-js/issues"
+   },
+   {
+    "label": "ORIGIN",
+    "url": "https://registry.npmjs.org/taquante-api-client-js/0.3.2"
+   },
+   {
+    "label": "SOURCE_REPO",
+    "url": "git+https://github.com/Benedito0/taquante-api-client-js.git"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://registry.npmjs.org/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/benedito0/taquante-api-client-js"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "ISSUE_TRACKER"
+   },
+   {
+    "projectKey": {
+     "id": "github.com/benedito0/taquante-api-client-js"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "taquante-api-client-js",
+    "versionString": "0.3.2",
+    "source": "NPM_NPMJS_ORG"
+   }
+  ],
+  "cooldown": {
+   "end": "2024-06-10T17:25:07Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "taquante-api-client-js",
+     "version": "0.3.2"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "commander",
+     "version": "2.20.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "get-git-info",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "iniparser",
+     "version": "1.0.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-fetch",
+     "version": "2.7.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tr46",
+     "version": "0.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "travis-cli",
+     "version": "1.0.9"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "webidl-conversions",
+     "version": "3.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "whatwg-url",
+     "version": "5.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "yonius",
+     "version": "0.4.9"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 6,
+    "requirement": "^1.0.9"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 9,
+    "requirement": "^0.4.2"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 3,
+    "requirement": "^1.0.5"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 8,
+    "requirement": "^5.0.0"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 1,
+    "requirement": "^2.9.0"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 2,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 5,
+    "requirement": "~0.0.3"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 7,
+    "requirement": "^3.0.0"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 4,
+    "requirement": "^2.6.0"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": null,
+ "github_repo_api": null
+}

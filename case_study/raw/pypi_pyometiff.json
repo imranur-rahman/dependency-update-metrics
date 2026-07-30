@@ -1,0 +1,708 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "PYPI",
+   "name": "pyometiff"
+  },
+  "purl": "pkg:pypi/pyometiff",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyometiff",
+     "version": "0.0.1"
+    },
+    "purl": "pkg:pypi/pyometiff@0.0.1",
+    "publishedAt": "2021-03-31T13:06:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyometiff",
+     "version": "0.0.10"
+    },
+    "purl": "pkg:pypi/pyometiff@0.0.10",
+    "publishedAt": "2022-05-27T10:20:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyometiff",
+     "version": "0.0.12"
+    },
+    "purl": "pkg:pypi/pyometiff@0.0.12",
+    "publishedAt": "2023-03-17T09:41:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyometiff",
+     "version": "0.0.13"
+    },
+    "purl": "pkg:pypi/pyometiff@0.0.13",
+    "publishedAt": "2023-05-02T15:42:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyometiff",
+     "version": "0.0.2"
+    },
+    "purl": "pkg:pypi/pyometiff@0.0.2",
+    "publishedAt": "2021-04-01T12:45:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyometiff",
+     "version": "0.0.3"
+    },
+    "purl": "pkg:pypi/pyometiff@0.0.3",
+    "publishedAt": "2021-04-01T14:49:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyometiff",
+     "version": "0.0.3a1"
+    },
+    "purl": "pkg:pypi/pyometiff@0.0.3a1",
+    "publishedAt": "2021-04-01T13:50:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyometiff",
+     "version": "0.0.3a2"
+    },
+    "purl": "pkg:pypi/pyometiff@0.0.3a2",
+    "publishedAt": "2021-04-01T14:39:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyometiff",
+     "version": "0.0.4"
+    },
+    "purl": "pkg:pypi/pyometiff@0.0.4",
+    "publishedAt": "2021-04-06T17:27:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyometiff",
+     "version": "0.0.5"
+    },
+    "purl": "pkg:pypi/pyometiff@0.0.5",
+    "publishedAt": "2021-04-06T18:18:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyometiff",
+     "version": "0.0.6"
+    },
+    "purl": "pkg:pypi/pyometiff@0.0.6",
+    "publishedAt": "2021-07-20T19:57:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyometiff",
+     "version": "0.0.7"
+    },
+    "purl": "pkg:pypi/pyometiff@0.0.7",
+    "publishedAt": "2021-09-22T15:18:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyometiff",
+     "version": "0.0.8"
+    },
+    "purl": "pkg:pypi/pyometiff@0.0.8",
+    "publishedAt": "2021-09-24T14:47:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyometiff",
+     "version": "0.0.9"
+    },
+    "purl": "pkg:pypi/pyometiff@0.0.9",
+    "publishedAt": "2022-01-11T11:02:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyometiff",
+     "version": "1.0.0"
+    },
+    "purl": "pkg:pypi/pyometiff@1.0.0",
+    "publishedAt": "2024-02-03T00:45:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyometiff",
+     "version": "1.0.1"
+    },
+    "purl": "pkg:pypi/pyometiff@1.0.1",
+    "publishedAt": "2024-08-23T08:25:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyometiff",
+     "version": "1.1.4"
+    },
+    "purl": "pkg:pypi/pyometiff@1.1.4",
+    "publishedAt": "2025-04-10T16:56:59Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "PYPI",
+   "name": "pyometiff",
+   "version": "1.1.4"
+  },
+  "purl": "pkg:pypi/pyometiff@1.1.4",
+  "publishedAt": "2025-04-10T16:56:59Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "GPL-2.0-or-later"
+  ],
+  "licenseDetails": [
+   {
+    "license": "GPL-2.0-or-later",
+    "spdx": "GPL-2.0-or-later"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "HOMEPAGE",
+    "url": "https://github.com/filippocastelli/pyometiff"
+   },
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/filippocastelli/pyometiff"
+   },
+   {
+    "label": "ATTESTATION",
+    "url": "https://pypi.org/integrity/pyometiff/1.1.4/pyometiff-1.1.4-py3-none-any.whl/provenance"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [
+   {
+    "type": "https://docs.pypi.org/attestations/publish/v1",
+    "url": "https://pypi.org/integrity/pyometiff/1.1.4/pyometiff-1.1.4-py3-none-any.whl/provenance",
+    "verified": true,
+    "sourceRepository": "https://github.com/filippocastelli/pyometiff",
+    "commit": "e217b8b3d796fc2f5628e16011a883f291d6edc5"
+   }
+  ],
+  "registries": [
+   "https://pypi.org/simple"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/filippocastelli/pyometiff"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   },
+   {
+    "projectKey": {
+     "id": "github.com/filippocastelli/pyometiff"
+    },
+    "relationProvenance": "PYPI_PUBLISH_ATTESTATION",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "pyometiff",
+    "versionString": "1.1.4",
+    "source": "PYPI_RELEASE_FILENAME"
+   },
+   {
+    "packageName": "pyometiff",
+    "versionString": "1.1.4",
+    "source": "PYPI_METADATA_FILE"
+   }
+  ],
+  "cooldown": {
+   "end": "2025-04-15T16:56:59Z",
+   "description": ""
+  },
+  "projectStatus": {
+   "status": "active",
+   "reason": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyometiff",
+     "version": "1.1.4"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "imagecodecs",
+     "version": "2026.6.26"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "lxml",
+     "version": "5.4.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "numpy",
+     "version": "2.5.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tifffile",
+     "version": "2026.6.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 1,
+    "requirement": ">=2024.12.30"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 2,
+    "requirement": ">=5.3.2,<6.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 3,
+    "requirement": ">=1.26.4"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 4,
+    "requirement": ">2020.10.1"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 3,
+    "requirement": ">=2.1"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 3,
+    "requirement": ">=2.1"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 5,
+  "directDependentCount": 5,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/filippocastelli/pyometiff"
+  },
+  "openIssuesCount": 6,
+  "starsCount": 28,
+  "forksCount": 7,
+  "license": "GPL-3.0",
+  "description": "OME-TIFF IO in python",
+  "homepage": "",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/filippocastelli/pyometiff",
+    "commit": "631f87a8d47a9248b606a4b252baf8180d31561e"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 0,
+     "reason": "Found 2/22 approved changesets -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 0,
+     "reason": "0 commit(s) and 0 issue activity found in the last 90 days -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected",
+     "details": []
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": 0,
+     "reason": "detected GitHub workflow tokens with excessive permissions",
+     "details": [
+      "Warn: topLevel 'contents' permission set to 'write': .github/workflows/python-publish.yml:13",
+      "Info: no jobLevel write permissions found"
+     ]
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 0,
+     "reason": "security policy file not detected",
+     "details": [
+      "Warn: no security policy file detected",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 10,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE:0",
+      "Info: FSF or OSI recognized license: GNU General Public License v3.0: LICENSE:0"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": 0,
+     "reason": "dependency not pinned by hash detected -- score normalized to 0",
+     "details": [
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/python-publish.yml:20: update your workflow using https://app.stepsecurity.io/secureworkflow/filippocastelli/pyometiff/python-publish.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/python-publish.yml:23: update your workflow using https://app.stepsecurity.io/secureworkflow/filippocastelli/pyometiff/python-publish.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/python-publish.yml:61: update your workflow using https://app.stepsecurity.io/secureworkflow/filippocastelli/pyometiff/python-publish.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/python-publish.yml:66: update your workflow using https://app.stepsecurity.io/secureworkflow/filippocastelli/pyometiff/python-publish.yml/main?enable=pin",
+      "Warn: containerImage not pinned by hash: .devcontainer/Dockerfile:1: pin your Docker image by updating mcr.microsoft.com/devcontainers/anaconda:0-3 to mcr.microsoft.com/devcontainers/anaconda:0-3@sha256:5a7b881e10abb5d8188939867151262606d0f4b8ec24a71f491fd756a5c8eb78",
+      "Warn: downloadThenRun not pinned by hash: .github/workflows/python-publish.yml:29",
+      "Info:   0 out of   2 GitHub-owned GitHubAction dependencies pinned",
+      "Info:   0 out of   2 third-party GitHubAction dependencies pinned",
+      "Info:   0 out of   1 containerImage dependencies pinned",
+      "Info:   0 out of   1 downloadThenRun dependencies pinned"
+     ]
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": 0,
+     "reason": "branch protection not enabled on development/release branches",
+     "details": [
+      "Warn: branch protection not enabled for branch 'main'"
+     ]
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0",
+     "details": [
+      "Warn: 0 commits out of 12 are checked with a SAST tool"
+     ]
+    }
+   ],
+   "overallScore": 2.8,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 352674193,
+  "node_id": "MDEwOlJlcG9zaXRvcnkzNTI2NzQxOTM=",
+  "name": "pyometiff",
+  "full_name": "filippocastelli/pyometiff",
+  "private": false,
+  "owner": {
+   "login": "filippocastelli",
+   "id": 37574218,
+   "node_id": "MDQ6VXNlcjM3NTc0MjE4",
+   "avatar_url": "https://avatars.githubusercontent.com/u/37574218?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/filippocastelli",
+   "html_url": "https://github.com/filippocastelli",
+   "followers_url": "https://api.github.com/users/filippocastelli/followers",
+   "following_url": "https://api.github.com/users/filippocastelli/following{/other_user}",
+   "gists_url": "https://api.github.com/users/filippocastelli/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/filippocastelli/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/filippocastelli/subscriptions",
+   "organizations_url": "https://api.github.com/users/filippocastelli/orgs",
+   "repos_url": "https://api.github.com/users/filippocastelli/repos",
+   "events_url": "https://api.github.com/users/filippocastelli/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/filippocastelli/received_events",
+   "type": "User",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/filippocastelli/pyometiff",
+  "description": "OME-TIFF IO in python",
+  "fork": false,
+  "url": "https://api.github.com/repos/filippocastelli/pyometiff",
+  "forks_url": "https://api.github.com/repos/filippocastelli/pyometiff/forks",
+  "keys_url": "https://api.github.com/repos/filippocastelli/pyometiff/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/filippocastelli/pyometiff/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/filippocastelli/pyometiff/teams",
+  "hooks_url": "https://api.github.com/repos/filippocastelli/pyometiff/hooks",
+  "issue_events_url": "https://api.github.com/repos/filippocastelli/pyometiff/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/filippocastelli/pyometiff/events",
+  "assignees_url": "https://api.github.com/repos/filippocastelli/pyometiff/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/filippocastelli/pyometiff/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/filippocastelli/pyometiff/tags",
+  "blobs_url": "https://api.github.com/repos/filippocastelli/pyometiff/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/filippocastelli/pyometiff/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/filippocastelli/pyometiff/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/filippocastelli/pyometiff/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/filippocastelli/pyometiff/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/filippocastelli/pyometiff/languages",
+  "stargazers_url": "https://api.github.com/repos/filippocastelli/pyometiff/stargazers",
+  "contributors_url": "https://api.github.com/repos/filippocastelli/pyometiff/contributors",
+  "subscribers_url": "https://api.github.com/repos/filippocastelli/pyometiff/subscribers",
+  "subscription_url": "https://api.github.com/repos/filippocastelli/pyometiff/subscription",
+  "commits_url": "https://api.github.com/repos/filippocastelli/pyometiff/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/filippocastelli/pyometiff/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/filippocastelli/pyometiff/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/filippocastelli/pyometiff/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/filippocastelli/pyometiff/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/filippocastelli/pyometiff/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/filippocastelli/pyometiff/merges",
+  "archive_url": "https://api.github.com/repos/filippocastelli/pyometiff/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/filippocastelli/pyometiff/downloads",
+  "issues_url": "https://api.github.com/repos/filippocastelli/pyometiff/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/filippocastelli/pyometiff/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/filippocastelli/pyometiff/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/filippocastelli/pyometiff/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/filippocastelli/pyometiff/labels{/name}",
+  "releases_url": "https://api.github.com/repos/filippocastelli/pyometiff/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/filippocastelli/pyometiff/deployments",
+  "created_at": "2021-03-29T14:32:29Z",
+  "updated_at": "2026-05-15T20:24:29Z",
+  "pushed_at": "2025-04-10T16:56:48Z",
+  "git_url": "git://github.com/filippocastelli/pyometiff.git",
+  "ssh_url": "git@github.com:filippocastelli/pyometiff.git",
+  "clone_url": "https://github.com/filippocastelli/pyometiff.git",
+  "svn_url": "https://github.com/filippocastelli/pyometiff",
+  "homepage": null,
+  "size": 21918,
+  "stargazers_count": 28,
+  "watchers_count": 28,
+  "language": "Python",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 7,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 6,
+  "license": {
+   "key": "gpl-3.0",
+   "name": "GNU General Public License v3.0",
+   "spdx_id": "GPL-3.0",
+   "url": "https://api.github.com/licenses/gpl-3.0",
+   "node_id": "MDc6TGljZW5zZTk="
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [],
+  "visibility": "public",
+  "forks": 7,
+  "open_issues": 6,
+  "watchers": 28,
+  "default_branch": "main",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "network_count": 7,
+  "subscribers_count": 3
+ },
+ "funding": []
+}

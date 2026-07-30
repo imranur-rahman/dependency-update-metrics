@@ -1,0 +1,2054 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "CARGO",
+   "name": "bls12_381"
+  },
+  "purl": "pkg:cargo/bls12_381",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "bls12_381",
+     "version": "0.0.0"
+    },
+    "purl": "pkg:cargo/bls12_381@0.0.0",
+    "publishedAt": "2019-02-07T03:45:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "bls12_381",
+     "version": "0.1.0"
+    },
+    "purl": "pkg:cargo/bls12_381@0.1.0",
+    "publishedAt": "2019-11-22T22:54:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "bls12_381",
+     "version": "0.1.1"
+    },
+    "purl": "pkg:cargo/bls12_381@0.1.1",
+    "publishedAt": "2020-01-28T20:33:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "bls12_381",
+     "version": "0.2.0"
+    },
+    "purl": "pkg:cargo/bls12_381@0.2.0",
+    "publishedAt": "2020-08-24T13:53:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "bls12_381",
+     "version": "0.3.0"
+    },
+    "purl": "pkg:cargo/bls12_381@0.3.0",
+    "publishedAt": "2020-09-08T22:32:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "bls12_381",
+     "version": "0.3.1"
+    },
+    "purl": "pkg:cargo/bls12_381@0.3.1",
+    "publishedAt": "2020-09-09T14:34:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "bls12_381",
+     "version": "0.4.0"
+    },
+    "purl": "pkg:cargo/bls12_381@0.4.0",
+    "publishedAt": "2021-01-26T19:07:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "bls12_381",
+     "version": "0.5.0"
+    },
+    "purl": "pkg:cargo/bls12_381@0.5.0",
+    "publishedAt": "2021-06-03T21:37:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "bls12_381",
+     "version": "0.6.0"
+    },
+    "purl": "pkg:cargo/bls12_381@0.6.0",
+    "publishedAt": "2021-09-02T16:47:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "bls12_381",
+     "version": "0.6.1"
+    },
+    "purl": "pkg:cargo/bls12_381@0.6.1",
+    "publishedAt": "2022-05-04T19:50:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "bls12_381",
+     "version": "0.7.0"
+    },
+    "purl": "pkg:cargo/bls12_381@0.7.0",
+    "publishedAt": "2022-05-04T22:41:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "bls12_381",
+     "version": "0.7.1"
+    },
+    "purl": "pkg:cargo/bls12_381@0.7.1",
+    "publishedAt": "2022-12-08T21:54:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "bls12_381",
+     "version": "0.8.0"
+    },
+    "purl": "pkg:cargo/bls12_381@0.8.0",
+    "publishedAt": "2023-02-27T18:20:13Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "CARGO",
+   "name": "bls12_381",
+   "version": "0.8.0"
+  },
+  "purl": "pkg:cargo/bls12_381@0.8.0",
+  "publishedAt": "2023-02-27T18:20:13Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "Apache-2.0 OR MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "Apache-2.0 OR MIT",
+    "spdx": "Apache-2.0 OR MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/zkcrypto/bls12_381"
+   },
+   {
+    "label": "HOMEPAGE",
+    "url": "https://github.com/zkcrypto/bls12_381"
+   },
+   {
+    "label": "DOCUMENTATION",
+    "url": "https://docs.rs/bls12_381/"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://crates.io/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/zkcrypto/bls12_381"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "bls12_381",
+    "versionString": "0.8.0",
+    "source": "CARGO_CRATES_IO"
+   }
+  ],
+  "cooldown": {
+   "end": "2023-03-09T18:20:13Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "bls12_381",
+     "version": "0.8.0"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "atty",
+     "version": "0.2.14"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "autocfg",
+     "version": "1.5.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "bitflags",
+     "version": "1.3.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "block-buffer",
+     "version": "0.9.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "block-padding",
+     "version": "0.2.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "bstr",
+     "version": "0.2.17"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "bumpalo",
+     "version": "3.20.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "cast",
+     "version": "0.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "cfg-if",
+     "version": "1.0.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "clap",
+     "version": "2.34.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "cpufeatures",
+     "version": "0.2.17"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "criterion",
+     "version": "0.3.6"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "criterion-plot",
+     "version": "0.4.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam-deque",
+     "version": "0.8.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam-epoch",
+     "version": "0.9.20"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam-utils",
+     "version": "0.8.22"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "csv",
+     "version": "1.1.6"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "csv-core",
+     "version": "0.1.13"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "digest",
+     "version": "0.9.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "either",
+     "version": "1.16.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "ff",
+     "version": "0.13.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "generic-array",
+     "version": "0.14.9"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "group",
+     "version": "0.13.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "half",
+     "version": "1.8.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "hermit-abi",
+     "version": "0.1.19"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "hex",
+     "version": "0.4.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "itertools",
+     "version": "0.10.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "itoa",
+     "version": "0.4.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "itoa",
+     "version": "1.0.18"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "js-sys",
+     "version": "0.3.103"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "keccak",
+     "version": "0.1.6"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "lazy_static",
+     "version": "1.5.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "libc",
+     "version": "0.2.186"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "memchr",
+     "version": "2.8.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "num-traits",
+     "version": "0.2.19"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "once_cell",
+     "version": "1.21.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "oorandom",
+     "version": "11.1.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "opaque-debug",
+     "version": "0.3.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "pairing",
+     "version": "0.23.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "plotters",
+     "version": "0.3.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "plotters-backend",
+     "version": "0.3.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "plotters-svg",
+     "version": "0.3.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "proc-macro2",
+     "version": "1.0.106"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "quote",
+     "version": "1.0.46"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "rand_core",
+     "version": "0.6.4"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "rand_xorshift",
+     "version": "0.3.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "rayon",
+     "version": "1.12.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "rayon-core",
+     "version": "1.13.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "regex",
+     "version": "1.8.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "regex-automata",
+     "version": "0.1.10"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "regex-syntax",
+     "version": "0.7.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "rustversion",
+     "version": "1.0.23"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "ryu",
+     "version": "1.0.23"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "same-file",
+     "version": "1.0.6"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "serde",
+     "version": "1.0.195"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "serde_cbor",
+     "version": "0.11.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "serde_derive",
+     "version": "1.0.195"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "serde_json",
+     "version": "1.0.143"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "sha2",
+     "version": "0.9.9"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "sha3",
+     "version": "0.9.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "subtle",
+     "version": "2.6.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "syn",
+     "version": "2.0.118"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "textwrap",
+     "version": "0.11.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "tinytemplate",
+     "version": "1.2.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "typenum",
+     "version": "1.20.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "unicode-ident",
+     "version": "1.0.24"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "unicode-width",
+     "version": "0.1.14"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "version_check",
+     "version": "0.9.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "walkdir",
+     "version": "2.5.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "wasm-bindgen",
+     "version": "0.2.126"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "wasm-bindgen-macro",
+     "version": "0.2.126"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "wasm-bindgen-macro-support",
+     "version": "0.2.126"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "wasm-bindgen-shared",
+     "version": "0.2.126"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "web-sys",
+     "version": "0.3.72"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "winapi",
+     "version": "0.3.9"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "winapi-i686-pc-windows-gnu",
+     "version": "0.4.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "winapi-util",
+     "version": "0.1.11"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "winapi-x86_64-pc-windows-gnu",
+     "version": "0.4.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "windows-link",
+     "version": "0.2.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "windows-sys",
+     "version": "0.61.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "zeroize",
+     "version": "1.9.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 12,
+    "requirement": "^0.3"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 17,
+    "requirement": ">=1.0, <1.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 19,
+    "requirement": "^0.9"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 21,
+    "requirement": "^0.13"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 23,
+    "requirement": "^0.13"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 26,
+    "requirement": "^0.4"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 39,
+    "requirement": "^0.23"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 45,
+    "requirement": "^0.6"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 46,
+    "requirement": "^0.3"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 59,
+    "requirement": "^0.9"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 60,
+    "requirement": "^0.9"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 61,
+    "requirement": "^2.2.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 81,
+    "requirement": "^1.4"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 25,
+    "requirement": "^0.1.6"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 33,
+    "requirement": "^0.2"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 75,
+    "requirement": "^0.3"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 5,
+    "requirement": "^0.2.0"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 22,
+    "requirement": "^0.14"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 32,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 34,
+    "requirement": "^2.4.0"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 50,
+    "requirement": "^0.1.5"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 55,
+    "requirement": "^1.0.85"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 3,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 63,
+    "requirement": "^0.11.0"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 67,
+    "requirement": "^0.1.4"
+   },
+   {
+    "fromNode": 11,
+    "toNode": 33,
+    "requirement": "^0.2.155"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 1,
+    "requirement": "~0.2.6"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 8,
+    "requirement": "^0.3"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 10,
+    "requirement": "^2.34"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 13,
+    "requirement": "^0.4.4"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 17,
+    "requirement": "^1.1"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 27,
+    "requirement": "^0.10"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 32,
+    "requirement": "^1.4"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 35,
+    "requirement": "^0.2"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 37,
+    "requirement": "^11.1"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 40,
+    "requirement": "^0.3.1"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 47,
+    "requirement": "^1.3"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 49,
+    "requirement": "^1.3"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 55,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 56,
+    "requirement": "^0.11"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 57,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 58,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 64,
+    "requirement": "^1.1"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 69,
+    "requirement": "^2.3"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 8,
+    "requirement": "^0.3"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 27,
+    "requirement": "^0.10"
+   },
+   {
+    "fromNode": 14,
+    "toNode": 15,
+    "requirement": "^0.9.17"
+   },
+   {
+    "fromNode": 14,
+    "toNode": 16,
+    "requirement": "^0.8.18"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 16,
+    "requirement": "^0.8.18"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 6,
+    "requirement": "^0.2.1"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 18,
+    "requirement": "^0.1.6"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 28,
+    "requirement": "^0.4.3"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 53,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 55,
+    "requirement": "^1.0.55"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 34,
+    "requirement": "^2"
+   },
+   {
+    "fromNode": 19,
+    "toNode": 22,
+    "requirement": "^0.14"
+   },
+   {
+    "fromNode": 21,
+    "toNode": 45,
+    "requirement": "^0.6"
+   },
+   {
+    "fromNode": 21,
+    "toNode": 61,
+    "requirement": "^2.2.1"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 65,
+    "requirement": "^1.12"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 68,
+    "requirement": "^0.9"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 21,
+    "requirement": "^0.13"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 45,
+    "requirement": "^0.6"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 61,
+    "requirement": "^2.2.1"
+   },
+   {
+    "fromNode": 25,
+    "toNode": 33,
+    "requirement": "^0.2.51"
+   },
+   {
+    "fromNode": 27,
+    "toNode": 20,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 9,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 70,
+    "requirement": "=0.2.126"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 11,
+    "requirement": "^0.2"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 2,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 39,
+    "toNode": 23,
+    "requirement": "^0.13"
+   },
+   {
+    "fromNode": 40,
+    "toNode": 35,
+    "requirement": "^0.2.14"
+   },
+   {
+    "fromNode": 40,
+    "toNode": 41,
+    "requirement": "^0.3.6"
+   },
+   {
+    "fromNode": 40,
+    "toNode": 42,
+    "requirement": "^0.3.6"
+   },
+   {
+    "fromNode": 40,
+    "toNode": 70,
+    "requirement": "^0.2.89"
+   },
+   {
+    "fromNode": 40,
+    "toNode": 74,
+    "requirement": "^0.3.66"
+   },
+   {
+    "fromNode": 42,
+    "toNode": 41,
+    "requirement": "^0.3.6"
+   },
+   {
+    "fromNode": 43,
+    "toNode": 66,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 43,
+    "requirement": "^1.0.80"
+   },
+   {
+    "fromNode": 46,
+    "toNode": 45,
+    "requirement": "^0.6"
+   },
+   {
+    "fromNode": 47,
+    "toNode": 20,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 47,
+    "toNode": 48,
+    "requirement": "^1.13.0"
+   },
+   {
+    "fromNode": 48,
+    "toNode": 14,
+    "requirement": "^0.8.1"
+   },
+   {
+    "fromNode": 48,
+    "toNode": 16,
+    "requirement": "^0.8.0"
+   },
+   {
+    "fromNode": 49,
+    "toNode": 51,
+    "requirement": "^0.7.2"
+   },
+   {
+    "fromNode": 54,
+    "toNode": 77,
+    "requirement": "^0.1.1"
+   },
+   {
+    "fromNode": 55,
+    "toNode": 57,
+    "requirement": "=1.0.195"
+   },
+   {
+    "fromNode": 56,
+    "toNode": 24,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 56,
+    "toNode": 55,
+    "requirement": "^1.0.14"
+   },
+   {
+    "fromNode": 57,
+    "toNode": 43,
+    "requirement": "^1.0.74"
+   },
+   {
+    "fromNode": 57,
+    "toNode": 44,
+    "requirement": "^1.0.35"
+   },
+   {
+    "fromNode": 57,
+    "toNode": 62,
+    "requirement": "^2.0.46"
+   },
+   {
+    "fromNode": 58,
+    "toNode": 29,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 58,
+    "toNode": 34,
+    "requirement": "^2"
+   },
+   {
+    "fromNode": 58,
+    "toNode": 53,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 58,
+    "toNode": 55,
+    "requirement": "^1.0.194"
+   },
+   {
+    "fromNode": 59,
+    "toNode": 4,
+    "requirement": "^0.9"
+   },
+   {
+    "fromNode": 59,
+    "toNode": 9,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 59,
+    "toNode": 11,
+    "requirement": "^0.2"
+   },
+   {
+    "fromNode": 59,
+    "toNode": 19,
+    "requirement": "^0.9"
+   },
+   {
+    "fromNode": 59,
+    "toNode": 38,
+    "requirement": "^0.3"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 4,
+    "requirement": "^0.9"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 19,
+    "requirement": "^0.9"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 31,
+    "requirement": "^0.1"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 38,
+    "requirement": "^0.3"
+   },
+   {
+    "fromNode": 62,
+    "toNode": 43,
+    "requirement": "^1.0.91"
+   },
+   {
+    "fromNode": 62,
+    "toNode": 66,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 63,
+    "toNode": 67,
+    "requirement": "^0.1.3"
+   },
+   {
+    "fromNode": 64,
+    "toNode": 55,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 64,
+    "toNode": 58,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 69,
+    "toNode": 54,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 69,
+    "toNode": 77,
+    "requirement": "^0.1.1"
+   },
+   {
+    "fromNode": 70,
+    "toNode": 9,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 70,
+    "toNode": 36,
+    "requirement": "^1.12"
+   },
+   {
+    "fromNode": 70,
+    "toNode": 52,
+    "requirement": "^1.0.6"
+   },
+   {
+    "fromNode": 70,
+    "toNode": 71,
+    "requirement": "=0.2.126"
+   },
+   {
+    "fromNode": 70,
+    "toNode": 73,
+    "requirement": "=0.2.126"
+   },
+   {
+    "fromNode": 71,
+    "toNode": 44,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 71,
+    "toNode": 72,
+    "requirement": "=0.2.126"
+   },
+   {
+    "fromNode": 72,
+    "toNode": 7,
+    "requirement": "^3.0.0"
+   },
+   {
+    "fromNode": 72,
+    "toNode": 43,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 72,
+    "toNode": 44,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 72,
+    "toNode": 62,
+    "requirement": "^2.0"
+   },
+   {
+    "fromNode": 72,
+    "toNode": 73,
+    "requirement": "=0.2.126"
+   },
+   {
+    "fromNode": 73,
+    "toNode": 66,
+    "requirement": "^1.0.5"
+   },
+   {
+    "fromNode": 74,
+    "toNode": 30,
+    "requirement": "^0.3.72"
+   },
+   {
+    "fromNode": 74,
+    "toNode": 70,
+    "requirement": "^0.2.95"
+   },
+   {
+    "fromNode": 75,
+    "toNode": 76,
+    "requirement": "^0.4"
+   },
+   {
+    "fromNode": 75,
+    "toNode": 78,
+    "requirement": "^0.4"
+   },
+   {
+    "fromNode": 77,
+    "toNode": 80,
+    "requirement": ">=0.48.0, <=0.61"
+   },
+   {
+    "fromNode": 80,
+    "toNode": 79,
+    "requirement": "^0.2.1"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 25,
+  "directDependentCount": 19,
+  "indirectDependentCount": 6
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/zkcrypto/bls12_381"
+  },
+  "openIssuesCount": 38,
+  "starsCount": 362,
+  "forksCount": 209,
+  "license": "non-standard",
+  "description": "Implementation of the BLS12-381 pairing-friendly elliptic curve group",
+  "homepage": "",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/zkcrypto/bls12_381",
+    "commit": "6bb96951d5c2035caf4989b6e4a018435379590f"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260715062425-64febf8c5229",
+    "commit": "64febf8c5229a2a65d09c6b543677b28a51abb09"
+   },
+   "checks": [
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#code-review"
+     },
+     "score": 5,
+     "reason": "Found 5/10 approved changesets -- score normalized to 5",
+     "details": []
+    },
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#maintained"
+     },
+     "score": 0,
+     "reason": "0 commit(s) and 0 issue activity found in the last 90 days -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#dangerous-workflow"
+     },
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected",
+     "details": []
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#token-permissions"
+     },
+     "score": 0,
+     "reason": "detected GitHub workflow tokens with excessive permissions",
+     "details": [
+      "Warn: no topLevel permission defined: .github/workflows/ci.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/lints-beta.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/lints-stable.yml:1",
+      "Info: no jobLevel write permissions found"
+     ]
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#pinned-dependencies"
+     },
+     "score": 0,
+     "reason": "dependency not pinned by hash detected -- score normalized to 0",
+     "details": [
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yml:65: update your workflow using https://app.stepsecurity.io/secureworkflow/zkcrypto/bls12_381/ci.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yml:74: update your workflow using https://app.stepsecurity.io/secureworkflow/zkcrypto/bls12_381/ci.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yml:84: update your workflow using https://app.stepsecurity.io/secureworkflow/zkcrypto/bls12_381/ci.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yml:14: update your workflow using https://app.stepsecurity.io/secureworkflow/zkcrypto/bls12_381/ci.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yml:28: update your workflow using https://app.stepsecurity.io/secureworkflow/zkcrypto/bls12_381/ci.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/ci.yml:29: update your workflow using https://app.stepsecurity.io/secureworkflow/zkcrypto/bls12_381/ci.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yml:50: update your workflow using https://app.stepsecurity.io/secureworkflow/zkcrypto/bls12_381/ci.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/lints-beta.yml:13: update your workflow using https://app.stepsecurity.io/secureworkflow/zkcrypto/bls12_381/lints-beta.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/lints-beta.yml:14: update your workflow using https://app.stepsecurity.io/secureworkflow/zkcrypto/bls12_381/lints-beta.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/lints-beta.yml:18: update your workflow using https://app.stepsecurity.io/secureworkflow/zkcrypto/bls12_381/lints-beta.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/lints-stable.yml:11: update your workflow using https://app.stepsecurity.io/secureworkflow/zkcrypto/bls12_381/lints-stable.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/lints-stable.yml:13: update your workflow using https://app.stepsecurity.io/secureworkflow/zkcrypto/bls12_381/lints-stable.yml/main?enable=pin",
+      "Info:   0 out of   8 GitHub-owned GitHubAction dependencies pinned",
+      "Info:   0 out of   4 third-party GitHubAction dependencies pinned"
+     ]
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#security-policy"
+     },
+     "score": 0,
+     "reason": "security policy file not detected",
+     "details": [
+      "Warn: no security policy file detected",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#license"
+     },
+     "score": 9,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE-APACHE:0",
+      "Warn: project license file does not contain an FSF or OSI license."
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#branch-protection"
+     },
+     "score": 0,
+     "reason": "branch protection not enabled on development/release branches",
+     "details": [
+      "Warn: branch protection not enabled for branch 'main'"
+     ]
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0",
+     "details": [
+      "Warn: 0 commits out of 30 are checked with a SAST tool"
+     ]
+    }
+   ],
+   "overallScore": 3.2,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 169515439,
+  "node_id": "MDEwOlJlcG9zaXRvcnkxNjk1MTU0Mzk=",
+  "name": "bls12_381",
+  "full_name": "zkcrypto/bls12_381",
+  "private": false,
+  "owner": {
+   "login": "zkcrypto",
+   "id": 40902068,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjQwOTAyMDY4",
+   "avatar_url": "https://avatars.githubusercontent.com/u/40902068?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/zkcrypto",
+   "html_url": "https://github.com/zkcrypto",
+   "followers_url": "https://api.github.com/users/zkcrypto/followers",
+   "following_url": "https://api.github.com/users/zkcrypto/following{/other_user}",
+   "gists_url": "https://api.github.com/users/zkcrypto/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/zkcrypto/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/zkcrypto/subscriptions",
+   "organizations_url": "https://api.github.com/users/zkcrypto/orgs",
+   "repos_url": "https://api.github.com/users/zkcrypto/repos",
+   "events_url": "https://api.github.com/users/zkcrypto/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/zkcrypto/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/zkcrypto/bls12_381",
+  "description": "Implementation of the BLS12-381 pairing-friendly elliptic curve group",
+  "fork": false,
+  "url": "https://api.github.com/repos/zkcrypto/bls12_381",
+  "forks_url": "https://api.github.com/repos/zkcrypto/bls12_381/forks",
+  "keys_url": "https://api.github.com/repos/zkcrypto/bls12_381/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/zkcrypto/bls12_381/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/zkcrypto/bls12_381/teams",
+  "hooks_url": "https://api.github.com/repos/zkcrypto/bls12_381/hooks",
+  "issue_events_url": "https://api.github.com/repos/zkcrypto/bls12_381/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/zkcrypto/bls12_381/events",
+  "assignees_url": "https://api.github.com/repos/zkcrypto/bls12_381/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/zkcrypto/bls12_381/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/zkcrypto/bls12_381/tags",
+  "blobs_url": "https://api.github.com/repos/zkcrypto/bls12_381/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/zkcrypto/bls12_381/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/zkcrypto/bls12_381/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/zkcrypto/bls12_381/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/zkcrypto/bls12_381/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/zkcrypto/bls12_381/languages",
+  "stargazers_url": "https://api.github.com/repos/zkcrypto/bls12_381/stargazers",
+  "contributors_url": "https://api.github.com/repos/zkcrypto/bls12_381/contributors",
+  "subscribers_url": "https://api.github.com/repos/zkcrypto/bls12_381/subscribers",
+  "subscription_url": "https://api.github.com/repos/zkcrypto/bls12_381/subscription",
+  "commits_url": "https://api.github.com/repos/zkcrypto/bls12_381/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/zkcrypto/bls12_381/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/zkcrypto/bls12_381/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/zkcrypto/bls12_381/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/zkcrypto/bls12_381/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/zkcrypto/bls12_381/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/zkcrypto/bls12_381/merges",
+  "archive_url": "https://api.github.com/repos/zkcrypto/bls12_381/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/zkcrypto/bls12_381/downloads",
+  "issues_url": "https://api.github.com/repos/zkcrypto/bls12_381/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/zkcrypto/bls12_381/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/zkcrypto/bls12_381/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/zkcrypto/bls12_381/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/zkcrypto/bls12_381/labels{/name}",
+  "releases_url": "https://api.github.com/repos/zkcrypto/bls12_381/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/zkcrypto/bls12_381/deployments",
+  "created_at": "2019-02-07T03:46:20Z",
+  "updated_at": "2026-07-17T13:47:29Z",
+  "pushed_at": "2026-02-25T03:11:36Z",
+  "git_url": "git://github.com/zkcrypto/bls12_381.git",
+  "ssh_url": "git@github.com:zkcrypto/bls12_381.git",
+  "clone_url": "https://github.com/zkcrypto/bls12_381.git",
+  "svn_url": "https://github.com/zkcrypto/bls12_381",
+  "homepage": null,
+  "size": 638,
+  "stargazers_count": 363,
+  "watchers_count": 363,
+  "language": "Rust",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 210,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 38,
+  "license": {
+   "key": "other",
+   "name": "Other",
+   "spdx_id": "NOASSERTION",
+   "url": null,
+   "node_id": "MDc6TGljZW5zZTA="
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [],
+  "visibility": "public",
+  "forks": 210,
+  "open_issues": 38,
+  "watchers": 363,
+  "default_branch": "main",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "zkcrypto",
+   "id": 40902068,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjQwOTAyMDY4",
+   "avatar_url": "https://avatars.githubusercontent.com/u/40902068?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/zkcrypto",
+   "html_url": "https://github.com/zkcrypto",
+   "followers_url": "https://api.github.com/users/zkcrypto/followers",
+   "following_url": "https://api.github.com/users/zkcrypto/following{/other_user}",
+   "gists_url": "https://api.github.com/users/zkcrypto/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/zkcrypto/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/zkcrypto/subscriptions",
+   "organizations_url": "https://api.github.com/users/zkcrypto/orgs",
+   "repos_url": "https://api.github.com/users/zkcrypto/repos",
+   "events_url": "https://api.github.com/users/zkcrypto/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/zkcrypto/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 210,
+  "subscribers_count": 16
+ },
+ "funding": []
+}

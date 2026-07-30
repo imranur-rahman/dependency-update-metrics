@@ -1,0 +1,1658 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "PYPI",
+   "name": "fitbenchmarking"
+  },
+  "purl": "pkg:pypi/fitbenchmarking",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fitbenchmarking",
+     "version": "0.0.0"
+    },
+    "purl": "pkg:pypi/fitbenchmarking@0.0.0",
+    "publishedAt": "2022-01-26T15:39:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fitbenchmarking",
+     "version": "0.1.0"
+    },
+    "purl": "pkg:pypi/fitbenchmarking@0.1.0",
+    "publishedAt": "2021-02-26T17:05:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fitbenchmarking",
+     "version": "0.1.0.dev1"
+    },
+    "purl": "pkg:pypi/fitbenchmarking@0.1.0.dev1",
+    "publishedAt": "2020-10-12T09:14:42Z",
+    "isDefault": false,
+    "isDeprecated": true,
+    "deprecatedReason": "yanked"
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fitbenchmarking",
+     "version": "0.1.0b1"
+    },
+    "purl": "pkg:pypi/fitbenchmarking@0.1.0b1",
+    "publishedAt": "2020-11-02T14:47:17Z",
+    "isDefault": false,
+    "isDeprecated": true,
+    "deprecatedReason": "yanked"
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fitbenchmarking",
+     "version": "0.1.0rc1"
+    },
+    "purl": "pkg:pypi/fitbenchmarking@0.1.0rc1",
+    "publishedAt": "2021-02-19T11:54:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fitbenchmarking",
+     "version": "0.1.0rc4"
+    },
+    "purl": "pkg:pypi/fitbenchmarking@0.1.0rc4",
+    "publishedAt": "2021-02-25T16:18:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fitbenchmarking",
+     "version": "0.1.1"
+    },
+    "purl": "pkg:pypi/fitbenchmarking@0.1.1",
+    "publishedAt": "2021-04-30T16:20:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fitbenchmarking",
+     "version": "0.1.2"
+    },
+    "purl": "pkg:pypi/fitbenchmarking@0.1.2",
+    "publishedAt": "2021-05-05T08:49:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fitbenchmarking",
+     "version": "0.1.3"
+    },
+    "purl": "pkg:pypi/fitbenchmarking@0.1.3",
+    "publishedAt": "2021-05-12T15:14:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fitbenchmarking",
+     "version": "0.1.4"
+    },
+    "purl": "pkg:pypi/fitbenchmarking@0.1.4",
+    "publishedAt": "2021-06-02T10:56:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fitbenchmarking",
+     "version": "0.1.4rc1"
+    },
+    "purl": "pkg:pypi/fitbenchmarking@0.1.4rc1",
+    "publishedAt": "2021-05-12T15:15:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fitbenchmarking",
+     "version": "0.1.4rc2"
+    },
+    "purl": "pkg:pypi/fitbenchmarking@0.1.4rc2",
+    "publishedAt": "2021-06-02T10:53:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fitbenchmarking",
+     "version": "0.1.5"
+    },
+    "purl": "pkg:pypi/fitbenchmarking@0.1.5",
+    "publishedAt": "2021-10-06T13:07:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fitbenchmarking",
+     "version": "0.1.5b1"
+    },
+    "purl": "pkg:pypi/fitbenchmarking@0.1.5b1",
+    "publishedAt": "2021-10-06T10:58:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fitbenchmarking",
+     "version": "0.2.0"
+    },
+    "purl": "pkg:pypi/fitbenchmarking@0.2.0",
+    "publishedAt": "2022-05-31T09:38:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fitbenchmarking",
+     "version": "0.2.0rc3"
+    },
+    "purl": "pkg:pypi/fitbenchmarking@0.2.0rc3",
+    "publishedAt": "2022-05-31T09:19:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fitbenchmarking",
+     "version": "1.0.0"
+    },
+    "purl": "pkg:pypi/fitbenchmarking@1.0.0",
+    "publishedAt": "2023-08-08T16:31:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fitbenchmarking",
+     "version": "1.0.0rc1"
+    },
+    "purl": "pkg:pypi/fitbenchmarking@1.0.0rc1",
+    "publishedAt": "2023-07-21T08:49:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fitbenchmarking",
+     "version": "1.1.0"
+    },
+    "purl": "pkg:pypi/fitbenchmarking@1.1.0",
+    "publishedAt": "2024-05-15T12:27:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fitbenchmarking",
+     "version": "1.2.0"
+    },
+    "purl": "pkg:pypi/fitbenchmarking@1.2.0",
+    "publishedAt": "2024-11-26T14:48:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fitbenchmarking",
+     "version": "1.3.0"
+    },
+    "purl": "pkg:pypi/fitbenchmarking@1.3.0",
+    "publishedAt": "2025-05-29T13:52:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fitbenchmarking",
+     "version": "1.4.0"
+    },
+    "purl": "pkg:pypi/fitbenchmarking@1.4.0",
+    "publishedAt": "2026-03-11T15:47:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fitbenchmarking",
+     "version": "1.5.0"
+    },
+    "purl": "pkg:pypi/fitbenchmarking@1.5.0",
+    "publishedAt": "2026-06-26T12:01:16Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "PYPI",
+   "name": "fitbenchmarking",
+   "version": "1.5.0"
+  },
+  "purl": "pkg:pypi/fitbenchmarking@1.5.0",
+  "publishedAt": "2026-06-26T12:01:16Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "non-standard"
+  ],
+  "licenseDetails": [
+   {
+    "license": "BSD License",
+    "spdx": "non-standard"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/fitbenchmarking/fitbenchmarking"
+   },
+   {
+    "label": "HOMEPAGE",
+    "url": "https://fitbenchmarking.github.io"
+   },
+   {
+    "label": "DOCUMENTATION",
+    "url": "https://fitbenchmarking.readthedocs.io/en/stable"
+   },
+   {
+    "label": "ISSUE_TRACKER",
+    "url": "https://github.com/fitbenchmarking/fitbenchmarking/issues"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://pypi.org/simple"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/fitbenchmarking/fitbenchmarking"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   },
+   {
+    "projectKey": {
+     "id": "github.com/fitbenchmarking/fitbenchmarking"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "ISSUE_TRACKER"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "fitbenchmarking",
+    "versionString": "1.5.0",
+    "source": "PYPI_RELEASE_FILENAME"
+   },
+   {
+    "packageName": "FitBenchmarking",
+    "versionString": "1.5.0",
+    "source": "PYPI_METADATA_FILE"
+   }
+  ],
+  "cooldown": {
+   "end": "2026-07-01T12:01:16Z",
+   "description": ""
+  },
+  "projectStatus": {
+   "status": "active",
+   "reason": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fitbenchmarking",
+     "version": "1.5.0"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "annotated-doc",
+     "version": "0.0.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "annotated-types",
+     "version": "0.7.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "arrow",
+     "version": "1.4.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "authlib",
+     "version": "1.7.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "blinker",
+     "version": "1.9.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certifi",
+     "version": "2026.6.17"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cffi",
+     "version": "2.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "charset-normalizer",
+     "version": "3.4.9"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "click",
+     "version": "8.4.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "codecarbon",
+     "version": "3.2.8"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "configparser",
+     "version": "7.2.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "contourpy",
+     "version": "1.3.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cryptography",
+     "version": "49.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cycler",
+     "version": "0.12.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dash",
+     "version": "4.4.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "docutils",
+     "version": "0.23.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "flask",
+     "version": "3.1.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "fonttools",
+     "version": "4.63.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "idna",
+     "version": "3.18.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "importlib-metadata",
+     "version": "9.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "itsdangerous",
+     "version": "2.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "janus",
+     "version": "2.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jinja2",
+     "version": "3.1.6"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "joserfc",
+     "version": "1.7.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "kiwisolver",
+     "version": "1.5.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "lxml",
+     "version": "6.1.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "markdown-it-py",
+     "version": "4.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "markupsafe",
+     "version": "3.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "matplotlib",
+     "version": "3.11.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "mdurl",
+     "version": "0.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "narwhals",
+     "version": "2.23.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "nest-asyncio",
+     "version": "1.6.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "numpy",
+     "version": "2.4.6"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "nvidia-ml-py",
+     "version": "13.610.43"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "packaging",
+     "version": "26.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pandas",
+     "version": "3.0.4"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pillow",
+     "version": "12.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "plotly",
+     "version": "6.9.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "prometheus-client",
+     "version": "0.25.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "prompt-toolkit",
+     "version": "3.0.52"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "psutil",
+     "version": "7.2.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "py-cpuinfo",
+     "version": "9.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pycountry",
+     "version": "26.2.16"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pycparser",
+     "version": "3.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pydantic",
+     "version": "2.13.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pydantic-core",
+     "version": "2.46.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygments",
+     "version": "2.20.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyparsing",
+     "version": "3.3.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "python-dateutil",
+     "version": "2.9.0.post0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "questionary",
+     "version": "2.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "rapidfuzz",
+     "version": "3.14.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "requests",
+     "version": "2.34.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "retrying",
+     "version": "1.4.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "rich",
+     "version": "15.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "scipy",
+     "version": "1.15.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "setuptools",
+     "version": "83.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "shellingham",
+     "version": "1.5.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "six",
+     "version": "1.17.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tqdm",
+     "version": "4.68.4"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "typer",
+     "version": "0.26.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "typing-extensions",
+     "version": "4.16.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "typing-inspection",
+     "version": "0.4.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tzdata",
+     "version": "2026.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "urllib3",
+     "version": "2.7.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "wcwidth",
+     "version": "0.8.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "werkzeug",
+     "version": "3.1.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "zipp",
+     "version": "4.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 10,
+    "requirement": ">=3.2.6"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 11,
+    "requirement": ""
+   },
+   {
+    "fromNode": 0,
+    "toNode": 15,
+    "requirement": ""
+   },
+   {
+    "fromNode": 0,
+    "toNode": 16,
+    "requirement": ""
+   },
+   {
+    "fromNode": 0,
+    "toNode": 23,
+    "requirement": ""
+   },
+   {
+    "fromNode": 0,
+    "toNode": 26,
+    "requirement": ""
+   },
+   {
+    "fromNode": 0,
+    "toNode": 29,
+    "requirement": ">=2.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 33,
+    "requirement": ""
+   },
+   {
+    "fromNode": 0,
+    "toNode": 36,
+    "requirement": ">=1.3"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 38,
+    "requirement": ">=6.6.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 55,
+    "requirement": "<1.16.0,>=0.18"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 59,
+    "requirement": ">=4.60"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 49,
+    "requirement": ">=2.7.0"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 63,
+    "requirement": ""
+   },
+   {
+    "fromNode": 4,
+    "toNode": 13,
+    "requirement": ""
+   },
+   {
+    "fromNode": 4,
+    "toNode": 24,
+    "requirement": ">=1.6.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 44,
+    "requirement": ""
+   },
+   {
+    "fromNode": 10,
+    "toNode": 3,
+    "requirement": ""
+   },
+   {
+    "fromNode": 10,
+    "toNode": 4,
+    "requirement": ">=1.2.1"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 9,
+    "requirement": ""
+   },
+   {
+    "fromNode": 10,
+    "toNode": 24,
+    "requirement": ">=1.0.0"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 34,
+    "requirement": ""
+   },
+   {
+    "fromNode": 10,
+    "toNode": 36,
+    "requirement": ">=2.3.3"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 39,
+    "requirement": ""
+   },
+   {
+    "fromNode": 10,
+    "toNode": 41,
+    "requirement": ">=6.0.0"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 42,
+    "requirement": ""
+   },
+   {
+    "fromNode": 10,
+    "toNode": 43,
+    "requirement": ""
+   },
+   {
+    "fromNode": 10,
+    "toNode": 45,
+    "requirement": "<3.0.0,>=2.0.0"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 50,
+    "requirement": ""
+   },
+   {
+    "fromNode": 10,
+    "toNode": 51,
+    "requirement": ""
+   },
+   {
+    "fromNode": 10,
+    "toNode": 52,
+    "requirement": ""
+   },
+   {
+    "fromNode": 10,
+    "toNode": 54,
+    "requirement": ""
+   },
+   {
+    "fromNode": 10,
+    "toNode": 60,
+    "requirement": ""
+   },
+   {
+    "fromNode": 12,
+    "toNode": 33,
+    "requirement": ">=1.25"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 7,
+    "requirement": ">=2.0.0"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 17,
+    "requirement": "<3.2,>=1.0.4"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 20,
+    "requirement": ""
+   },
+   {
+    "fromNode": 15,
+    "toNode": 22,
+    "requirement": ">=1.0.0"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 32,
+    "requirement": ""
+   },
+   {
+    "fromNode": 15,
+    "toNode": 38,
+    "requirement": ">=5.0.0"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 45,
+    "requirement": ">=2.10"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 52,
+    "requirement": ""
+   },
+   {
+    "fromNode": 15,
+    "toNode": 53,
+    "requirement": ""
+   },
+   {
+    "fromNode": 15,
+    "toNode": 56,
+    "requirement": ""
+   },
+   {
+    "fromNode": 15,
+    "toNode": 61,
+    "requirement": ">=4.1.1"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 66,
+    "requirement": "<3.2"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 5,
+    "requirement": ">=1.9.0"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 9,
+    "requirement": ">=8.1.3"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 21,
+    "requirement": ">=2.2.0"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 23,
+    "requirement": ">=3.1.2"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 28,
+    "requirement": ">=2.1.1"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 66,
+    "requirement": ">=3.1.0"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 67,
+    "requirement": ">=3.20"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 28,
+    "requirement": ">=2.0"
+   },
+   {
+    "fromNode": 24,
+    "toNode": 13,
+    "requirement": ">=45.0.1"
+   },
+   {
+    "fromNode": 27,
+    "toNode": 30,
+    "requirement": "~=0.1"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 12,
+    "requirement": ">=1.0.1"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 14,
+    "requirement": ">=0.10"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 18,
+    "requirement": ">=4.22.0"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 25,
+    "requirement": ">=1.3.1"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 33,
+    "requirement": ">=1.25"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 35,
+    "requirement": ">=20.0"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 37,
+    "requirement": ">=9"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 48,
+    "requirement": ">=3"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 49,
+    "requirement": ">=2.7"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 33,
+    "requirement": ">=2.3.3"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 49,
+    "requirement": ">=2.8.2"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 31,
+    "requirement": ">=1.15.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 35,
+    "requirement": ""
+   },
+   {
+    "fromNode": 40,
+    "toNode": 65,
+    "requirement": ""
+   },
+   {
+    "fromNode": 45,
+    "toNode": 2,
+    "requirement": ">=0.6.0"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 46,
+    "requirement": "==2.46.4"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 61,
+    "requirement": ">=4.14.1"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 62,
+    "requirement": ">=0.4.2"
+   },
+   {
+    "fromNode": 46,
+    "toNode": 61,
+    "requirement": ">=4.14.1"
+   },
+   {
+    "fromNode": 49,
+    "toNode": 58,
+    "requirement": ">=1.5"
+   },
+   {
+    "fromNode": 50,
+    "toNode": 40,
+    "requirement": ">=2.0,<4.0"
+   },
+   {
+    "fromNode": 52,
+    "toNode": 6,
+    "requirement": ">=2023.5.7"
+   },
+   {
+    "fromNode": 52,
+    "toNode": 8,
+    "requirement": "<4,>=2"
+   },
+   {
+    "fromNode": 52,
+    "toNode": 19,
+    "requirement": "<4,>=2.5"
+   },
+   {
+    "fromNode": 52,
+    "toNode": 64,
+    "requirement": "<3,>=1.26"
+   },
+   {
+    "fromNode": 54,
+    "toNode": 27,
+    "requirement": ">=2.2.0"
+   },
+   {
+    "fromNode": 54,
+    "toNode": 47,
+    "requirement": ">=2.13.0,<3.0.0"
+   },
+   {
+    "fromNode": 55,
+    "toNode": 33,
+    "requirement": "<2.5,>=1.23.5"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 1,
+    "requirement": ">=0.0.2"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 54,
+    "requirement": ">=13.8.0"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 57,
+    "requirement": ">=1.3.0"
+   },
+   {
+    "fromNode": 62,
+    "toNode": 61,
+    "requirement": ">=4.12.0"
+   },
+   {
+    "fromNode": 66,
+    "toNode": 28,
+    "requirement": ">=2.1.1"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/fitbenchmarking/fitbenchmarking"
+  },
+  "openIssuesCount": 134,
+  "starsCount": 16,
+  "forksCount": 8,
+  "license": "BSD-3-Clause",
+  "description": "Tool for comparing the run time and accuracy of minimizers on fit benchmarking problems",
+  "homepage": "https://fitbenchmarking.readthedocs.io"
+ },
+ "github_repo_api": {
+  "id": 126030049,
+  "node_id": "MDEwOlJlcG9zaXRvcnkxMjYwMzAwNDk=",
+  "name": "fitbenchmarking",
+  "full_name": "fitbenchmarking/fitbenchmarking",
+  "private": false,
+  "owner": {
+   "login": "fitbenchmarking",
+   "id": 49585251,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjQ5NTg1MjUx",
+   "avatar_url": "https://avatars.githubusercontent.com/u/49585251?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/fitbenchmarking",
+   "html_url": "https://github.com/fitbenchmarking",
+   "followers_url": "https://api.github.com/users/fitbenchmarking/followers",
+   "following_url": "https://api.github.com/users/fitbenchmarking/following{/other_user}",
+   "gists_url": "https://api.github.com/users/fitbenchmarking/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/fitbenchmarking/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/fitbenchmarking/subscriptions",
+   "organizations_url": "https://api.github.com/users/fitbenchmarking/orgs",
+   "repos_url": "https://api.github.com/users/fitbenchmarking/repos",
+   "events_url": "https://api.github.com/users/fitbenchmarking/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/fitbenchmarking/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/fitbenchmarking/fitbenchmarking",
+  "description": "Tool for comparing the run time and accuracy of minimizers on fit benchmarking problems",
+  "fork": false,
+  "url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking",
+  "forks_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/forks",
+  "keys_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/teams",
+  "hooks_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/hooks",
+  "issue_events_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/events",
+  "assignees_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/tags",
+  "blobs_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/languages",
+  "stargazers_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/stargazers",
+  "contributors_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/contributors",
+  "subscribers_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/subscribers",
+  "subscription_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/subscription",
+  "commits_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/merges",
+  "archive_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/downloads",
+  "issues_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/labels{/name}",
+  "releases_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/fitbenchmarking/fitbenchmarking/deployments",
+  "created_at": "2018-03-20T14:26:19Z",
+  "updated_at": "2026-07-20T18:44:34Z",
+  "pushed_at": "2026-07-21T12:11:51Z",
+  "git_url": "git://github.com/fitbenchmarking/fitbenchmarking.git",
+  "ssh_url": "git@github.com:fitbenchmarking/fitbenchmarking.git",
+  "clone_url": "https://github.com/fitbenchmarking/fitbenchmarking.git",
+  "svn_url": "https://github.com/fitbenchmarking/fitbenchmarking",
+  "homepage": "https://fitbenchmarking.readthedocs.io",
+  "size": 124783,
+  "stargazers_count": 16,
+  "watchers_count": 16,
+  "language": "Python",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": true,
+  "forks_count": 8,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 134,
+  "license": {
+   "key": "bsd-3-clause",
+   "name": "BSD 3-Clause \"New\" or \"Revised\" License",
+   "spdx_id": "BSD-3-Clause",
+   "url": "https://api.github.com/licenses/bsd-3-clause",
+   "node_id": "MDc6TGljZW5zZTU="
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [],
+  "visibility": "public",
+  "forks": 8,
+  "open_issues": 134,
+  "watchers": 16,
+  "default_branch": "master",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "fitbenchmarking",
+   "id": 49585251,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjQ5NTg1MjUx",
+   "avatar_url": "https://avatars.githubusercontent.com/u/49585251?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/fitbenchmarking",
+   "html_url": "https://github.com/fitbenchmarking",
+   "followers_url": "https://api.github.com/users/fitbenchmarking/followers",
+   "following_url": "https://api.github.com/users/fitbenchmarking/following{/other_user}",
+   "gists_url": "https://api.github.com/users/fitbenchmarking/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/fitbenchmarking/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/fitbenchmarking/subscriptions",
+   "organizations_url": "https://api.github.com/users/fitbenchmarking/orgs",
+   "repos_url": "https://api.github.com/users/fitbenchmarking/repos",
+   "events_url": "https://api.github.com/users/fitbenchmarking/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/fitbenchmarking/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 8,
+  "subscribers_count": 20
+ },
+ "funding": []
+}

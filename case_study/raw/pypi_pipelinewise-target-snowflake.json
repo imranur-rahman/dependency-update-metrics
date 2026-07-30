@@ -1,0 +1,1686 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "PYPI",
+   "name": "pipelinewise-target-snowflake"
+  },
+  "purl": "pkg:pypi/pipelinewise-target-snowflake",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.0.0"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.0.0",
+    "publishedAt": "2019-06-03T00:29:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.0.1"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.0.1",
+    "publishedAt": "2019-06-07T15:06:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.0.2"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.0.2",
+    "publishedAt": "2019-06-11T18:05:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.0.3"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.0.3",
+    "publishedAt": "2019-06-19T11:19:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.0.4"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.0.4",
+    "publishedAt": "2019-07-01T18:04:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.0.5"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.0.5",
+    "publishedAt": "2019-07-17T11:01:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.0.6"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.0.6",
+    "publishedAt": "2019-07-26T15:59:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.0.7"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.0.7",
+    "publishedAt": "2019-08-06T09:55:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.0.8"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.0.8",
+    "publishedAt": "2019-08-16T15:56:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.1.0"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.1.0",
+    "publishedAt": "2019-10-14T17:19:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.1.1"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.1.1",
+    "publishedAt": "2019-10-18T11:36:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.1.3"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.1.3",
+    "publishedAt": "2019-11-04T10:38:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.1.5"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.1.5",
+    "publishedAt": "2019-11-05T02:00:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.1.6"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.1.6",
+    "publishedAt": "2019-11-05T15:02:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.1.7"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.1.7",
+    "publishedAt": "2019-12-09T07:54:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.1.8"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.1.8",
+    "publishedAt": "2019-12-09T10:46:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.10.0"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.10.0",
+    "publishedAt": "2020-12-03T13:23:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.10.1"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.10.1",
+    "publishedAt": "2021-01-08T13:40:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.11.0"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.11.0",
+    "publishedAt": "2021-03-17T13:27:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.11.1"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.11.1",
+    "publishedAt": "2021-03-23T12:28:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.12.0"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.12.0",
+    "publishedAt": "2021-04-12T08:29:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.13.0"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.13.0",
+    "publishedAt": "2021-06-24T09:03:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.13.1"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.13.1",
+    "publishedAt": "2021-07-15T15:32:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.14.0"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.14.0",
+    "publishedAt": "2021-09-30T10:45:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.14.1"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.14.1",
+    "publishedAt": "2021-10-14T22:48:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.15.0"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.15.0",
+    "publishedAt": "2022-01-14T13:57:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.2.0"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.2.0",
+    "publishedAt": "2020-01-07T11:44:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.2.1"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.2.1",
+    "publishedAt": "2020-01-13T10:25:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.3.0"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.3.0",
+    "publishedAt": "2020-01-15T21:19:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.4.0"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.4.0",
+    "publishedAt": "2020-01-27T23:06:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.4.1"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.4.1",
+    "publishedAt": "2020-01-31T11:34:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.5.0"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.5.0",
+    "publishedAt": "2020-02-18T13:38:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.6.0"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.6.0",
+    "publishedAt": "2020-03-06T16:12:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.6.1"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.6.1",
+    "publishedAt": "2020-03-12T11:28:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.6.2"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.6.2",
+    "publishedAt": "2020-03-23T10:04:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.6.3"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.6.3",
+    "publishedAt": "2020-04-03T14:06:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.6.4"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.6.4",
+    "publishedAt": "2020-04-21T07:52:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.6.5"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.6.5",
+    "publishedAt": "2020-06-17T13:32:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.6.6"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.6.6",
+    "publishedAt": "2020-06-26T12:47:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.7.0"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.7.0",
+    "publishedAt": "2020-07-23T14:15:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.8.0"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.8.0",
+    "publishedAt": "2020-08-03T14:41:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "1.9.1"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@1.9.1",
+    "publishedAt": "2020-12-02T12:14:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "2.0.0"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@2.0.0",
+    "publishedAt": "2022-03-31T10:05:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "2.0.1"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@2.0.1",
+    "publishedAt": "2022-04-08T11:28:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "2.1.0"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@2.1.0",
+    "publishedAt": "2022-05-05T11:15:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "2.2.0"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@2.2.0",
+    "publishedAt": "2022-05-12T09:40:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "2.3.0"
+    },
+    "purl": "pkg:pypi/pipelinewise-target-snowflake@2.3.0",
+    "publishedAt": "2023-08-09T09:47:02Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "PYPI",
+   "name": "pipelinewise-target-snowflake",
+   "version": "2.3.0"
+  },
+  "purl": "pkg:pypi/pipelinewise-target-snowflake@2.3.0",
+  "publishedAt": "2023-08-09T09:47:02Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "Apache-2.0"
+  ],
+  "licenseDetails": [
+   {
+    "license": "Apache-2.0",
+    "spdx": "Apache-2.0"
+   },
+   {
+    "license": "Apache-2.0",
+    "spdx": "Apache-2.0"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/transferwise/pipelinewise-target-snowflake"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://pypi.org/simple"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/transferwise/pipelinewise-target-snowflake"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "pipelinewise_target_snowflake",
+    "versionString": "2.3.0",
+    "source": "PYPI_RELEASE_FILENAME"
+   },
+   {
+    "packageName": "pipelinewise-target-snowflake",
+    "versionString": "2.3.0",
+    "source": "PYPI_METADATA_FILE"
+   }
+  ],
+  "cooldown": {
+   "end": "2023-08-14T09:47:02Z",
+   "description": ""
+  },
+  "projectStatus": {
+   "status": "active",
+   "reason": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-target-snowflake",
+     "version": "2.3.0"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "asn1crypto",
+     "version": "1.5.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "attrs",
+     "version": "26.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "backoff",
+     "version": "1.10.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "boto3",
+     "version": "1.28.20"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "botocore",
+     "version": "1.31.85"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certifi",
+     "version": "2026.6.17"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cffi",
+     "version": "1.17.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "charset-normalizer",
+     "version": "3.4.9"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "ciso8601",
+     "version": "2.3.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cryptography",
+     "version": "40.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "filelock",
+     "version": "3.29.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "idna",
+     "version": "3.18.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "inflection",
+     "version": "0.5.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jmespath",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "joblib",
+     "version": "1.2.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jsonschema",
+     "version": "3.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "numpy",
+     "version": "2.5.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "oscrypto",
+     "version": "1.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "packaging",
+     "version": "26.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pandas",
+     "version": "2.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pipelinewise-singer-python",
+     "version": "1.3.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyarrow",
+     "version": "10.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pycparser",
+     "version": "3.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pycryptodomex",
+     "version": "3.23.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyjwt",
+     "version": "2.13.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyopenssl",
+     "version": "23.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyrsistent",
+     "version": "0.20.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "python-dateutil",
+     "version": "2.9.0.post0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pytz",
+     "version": "2020.5.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "requests",
+     "version": "2.34.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "s3transfer",
+     "version": "0.6.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "setuptools",
+     "version": "83.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "simplejson",
+     "version": "3.17.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "six",
+     "version": "1.17.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "snowflake-connector-python",
+     "version": "3.0.4"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "sortedcontainers",
+     "version": "2.4.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "typing-extensions",
+     "version": "4.16.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tzdata",
+     "version": "2026.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "urllib3",
+     "version": "1.26.20"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 4,
+    "requirement": "==1.28.20"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 13,
+    "requirement": "==0.5.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 15,
+    "requirement": "==1.2.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 21,
+    "requirement": "==1.*"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 35,
+    "requirement": "==3.0.4"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 5,
+    "requirement": "<1.32.0,>=1.31.20"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 14,
+    "requirement": "<2.0.0,>=0.7.1"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 31,
+    "requirement": "<0.7.0,>=0.6.0"
+   },
+   {
+    "fromNode": 5,
+    "toNode": 14,
+    "requirement": "<2.0.0,>=0.7.1"
+   },
+   {
+    "fromNode": 5,
+    "toNode": 28,
+    "requirement": "<3.0.0,>=2.1"
+   },
+   {
+    "fromNode": 5,
+    "toNode": 39,
+    "requirement": "<2.1,>=1.25.4"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 23,
+    "requirement": ""
+   },
+   {
+    "fromNode": 10,
+    "toNode": 7,
+    "requirement": ">=1.12"
+   },
+   {
+    "fromNode": 16,
+    "toNode": 2,
+    "requirement": ">=17.4.0"
+   },
+   {
+    "fromNode": 16,
+    "toNode": 27,
+    "requirement": ">=0.14.0"
+   },
+   {
+    "fromNode": 16,
+    "toNode": 32,
+    "requirement": ""
+   },
+   {
+    "fromNode": 16,
+    "toNode": 34,
+    "requirement": ">=1.11.0"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 1,
+    "requirement": ">=1.5.1"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 17,
+    "requirement": ">=1.21.0"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 28,
+    "requirement": ">=2.8.2"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 29,
+    "requirement": ">=2020.1"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 38,
+    "requirement": ">=2022.1"
+   },
+   {
+    "fromNode": 21,
+    "toNode": 3,
+    "requirement": "==1.10.0"
+   },
+   {
+    "fromNode": 21,
+    "toNode": 9,
+    "requirement": ""
+   },
+   {
+    "fromNode": 21,
+    "toNode": 16,
+    "requirement": "==3.2.0"
+   },
+   {
+    "fromNode": 21,
+    "toNode": 28,
+    "requirement": ">=2.6.0"
+   },
+   {
+    "fromNode": 21,
+    "toNode": 29,
+    "requirement": "<2021.0"
+   },
+   {
+    "fromNode": 21,
+    "toNode": 33,
+    "requirement": "==3.17.2"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 17,
+    "requirement": ">=1.16.6"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 10,
+    "requirement": "!=40.0.0,!=40.0.1,<42,>=38.0.0"
+   },
+   {
+    "fromNode": 28,
+    "toNode": 34,
+    "requirement": ">=1.5"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 6,
+    "requirement": ">=2023.5.7"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 8,
+    "requirement": "<4,>=2"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 12,
+    "requirement": "<4,>=2.5"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 39,
+    "requirement": "<3,>=1.26"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 5,
+    "requirement": "<2.0a.0,>=1.12.36"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 1,
+    "requirement": "<2.0.0,>0.24.0"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 6,
+    "requirement": ">=2017.4.17"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 7,
+    "requirement": "<2.0.0,>=1.9"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 8,
+    "requirement": "<4,>=2"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 10,
+    "requirement": "<41.0.0,>=3.1.0"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 11,
+    "requirement": "<4,>=3.5"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 12,
+    "requirement": "<4,>=2.5"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 18,
+    "requirement": "<2.0.0"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 19,
+    "requirement": ""
+   },
+   {
+    "fromNode": 35,
+    "toNode": 20,
+    "requirement": "<2.1.0,>=1.0.0"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 22,
+    "requirement": "<10.1.0,>=10.0.1"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 24,
+    "requirement": "!=3.5.0,<4.0.0,>=3.2"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 25,
+    "requirement": "<3.0.0"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 26,
+    "requirement": "<24.0.0,>=16.2.0"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 29,
+    "requirement": ""
+   },
+   {
+    "fromNode": 35,
+    "toNode": 30,
+    "requirement": "<3.0.0"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 36,
+    "requirement": ">=2.4.0"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 37,
+    "requirement": "<5,>=4.3"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 39,
+    "requirement": "<1.27,>=1.21.1"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/transferwise/pipelinewise-target-snowflake"
+  },
+  "openIssuesCount": 50,
+  "starsCount": 51,
+  "forksCount": 112,
+  "license": "non-standard",
+  "description": "Singer.io Target for Snowflake - PipelineWise compatible",
+  "homepage": "https://transferwise.github.io/pipelinewise/",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/transferwise/pipelinewise-target-snowflake",
+    "commit": "f118c253dc51844c6dea000f74f71b1ae8a02c4b"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260715062425-64febf8c5229",
+    "commit": "64febf8c5229a2a65d09c6b543677b28a51abb09"
+   },
+   "checks": [
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#maintained"
+     },
+     "score": 0,
+     "reason": "project is archived",
+     "details": [
+      "Warn: Repository is archived."
+     ]
+    },
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#code-review"
+     },
+     "score": 10,
+     "reason": "all changesets reviewed",
+     "details": []
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#dangerous-workflow"
+     },
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected",
+     "details": []
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#token-permissions"
+     },
+     "score": 0,
+     "reason": "detected GitHub workflow tokens with excessive permissions",
+     "details": [
+      "Warn: no topLevel permission defined: .github/workflows/ci.yaml:1",
+      "Warn: no topLevel permission defined: .github/workflows/pythonpublish.yml:1",
+      "Info: no jobLevel write permissions found"
+     ]
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#pinned-dependencies"
+     },
+     "score": 0,
+     "reason": "dependency not pinned by hash detected -- score normalized to 0",
+     "details": [
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yaml:19: update your workflow using https://app.stepsecurity.io/secureworkflow/transferwise/pipelinewise-target-snowflake/ci.yaml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yaml:22: update your workflow using https://app.stepsecurity.io/secureworkflow/transferwise/pipelinewise-target-snowflake/ci.yaml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yaml:48: update your workflow using https://app.stepsecurity.io/secureworkflow/transferwise/pipelinewise-target-snowflake/ci.yaml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yaml:51: update your workflow using https://app.stepsecurity.io/secureworkflow/transferwise/pipelinewise-target-snowflake/ci.yaml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pythonpublish.yml:11: update your workflow using https://app.stepsecurity.io/secureworkflow/transferwise/pipelinewise-target-snowflake/pythonpublish.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/pythonpublish.yml:13: update your workflow using https://app.stepsecurity.io/secureworkflow/transferwise/pipelinewise-target-snowflake/pythonpublish.yml/master?enable=pin",
+      "Warn: pipCommand not pinned by hash: .github/workflows/pythonpublish.yml:18",
+      "Warn: pipCommand not pinned by hash: .github/workflows/pythonpublish.yml:19",
+      "Info:   0 out of   6 GitHub-owned GitHubAction dependencies pinned",
+      "Info:   0 out of   2 pipCommand dependencies pinned"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#license"
+     },
+     "score": 9,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE:0",
+      "Warn: project license file does not contain an FSF or OSI license."
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#security-policy"
+     },
+     "score": 10,
+     "reason": "security policy file detected",
+     "details": [
+      "Info: security policy file detected: github.com/transferwise/.github/SECURITY.md:1",
+      "Info: Found linked content: github.com/transferwise/.github/SECURITY.md:1",
+      "Info: Found disclosure, vulnerability, and/or timelines in security policy: github.com/transferwise/.github/SECURITY.md:1",
+      "Info: Found text in security policy: github.com/transferwise/.github/SECURITY.md:1"
+     ]
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#branch-protection"
+     },
+     "score": 1,
+     "reason": "branch protection is not maximal on development and all release branches",
+     "details": [
+      "Warn: 'allow deletion' enabled on branch 'master'",
+      "Info: 'force pushes' disabled on branch 'master'",
+      "Warn: 'branch protection settings apply to administrators' is disabled on branch 'master'",
+      "Info: 'stale review dismissal' is required to merge on branch 'master'",
+      "Warn: required approving review count is 1 on branch 'master'",
+      "Info: codeowner review is required on branch 'master'",
+      "Warn: 'last push approval' is disabled on branch 'master'",
+      "Warn: 'up-to-date branches' is disabled on branch 'master'",
+      "Info: status check found to merge onto on branch 'master'",
+      "Info: PRs are required in order to make changes on branch 'master'"
+     ]
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/64febf8c5229a2a65d09c6b543677b28a51abb09/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0",
+     "details": [
+      "Warn: 0 commits out of 30 are checked with a SAST tool"
+     ]
+    }
+   ],
+   "overallScore": 4.6,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 189252686,
+  "node_id": "MDEwOlJlcG9zaXRvcnkxODkyNTI2ODY=",
+  "name": "pipelinewise-target-snowflake",
+  "full_name": "transferwise/pipelinewise-target-snowflake",
+  "private": false,
+  "owner": {
+   "login": "transferwise",
+   "id": 9465219,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjk0NjUyMTk=",
+   "avatar_url": "https://avatars.githubusercontent.com/u/9465219?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/transferwise",
+   "html_url": "https://github.com/transferwise",
+   "followers_url": "https://api.github.com/users/transferwise/followers",
+   "following_url": "https://api.github.com/users/transferwise/following{/other_user}",
+   "gists_url": "https://api.github.com/users/transferwise/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/transferwise/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/transferwise/subscriptions",
+   "organizations_url": "https://api.github.com/users/transferwise/orgs",
+   "repos_url": "https://api.github.com/users/transferwise/repos",
+   "events_url": "https://api.github.com/users/transferwise/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/transferwise/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/transferwise/pipelinewise-target-snowflake",
+  "description": "Singer.io Target for Snowflake - PipelineWise compatible",
+  "fork": false,
+  "url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake",
+  "forks_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/forks",
+  "keys_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/teams",
+  "hooks_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/hooks",
+  "issue_events_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/events",
+  "assignees_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/tags",
+  "blobs_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/languages",
+  "stargazers_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/stargazers",
+  "contributors_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/contributors",
+  "subscribers_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/subscribers",
+  "subscription_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/subscription",
+  "commits_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/merges",
+  "archive_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/downloads",
+  "issues_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/labels{/name}",
+  "releases_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/transferwise/pipelinewise-target-snowflake/deployments",
+  "created_at": "2019-05-29T15:30:57Z",
+  "updated_at": "2024-09-23T03:19:07Z",
+  "pushed_at": "2024-09-20T00:37:00Z",
+  "git_url": "git://github.com/transferwise/pipelinewise-target-snowflake.git",
+  "ssh_url": "git@github.com:transferwise/pipelinewise-target-snowflake.git",
+  "clone_url": "https://github.com/transferwise/pipelinewise-target-snowflake.git",
+  "svn_url": "https://github.com/transferwise/pipelinewise-target-snowflake",
+  "homepage": "https://transferwise.github.io/pipelinewise/",
+  "size": 582,
+  "stargazers_count": 51,
+  "watchers_count": 51,
+  "language": "Python",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": false,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 125,
+  "mirror_url": null,
+  "archived": true,
+  "disabled": false,
+  "open_issues_count": 50,
+  "license": {
+   "key": "other",
+   "name": "Other",
+   "spdx_id": "NOASSERTION",
+   "url": null,
+   "node_id": "MDc6TGljZW5zZTA="
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [],
+  "visibility": "public",
+  "forks": 125,
+  "open_issues": 50,
+  "watchers": 51,
+  "default_branch": "master",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {
+   "copilot_pr_review": "true",
+   "skip-checks": "yes",
+   "wra_auto_review": "false",
+   "wra_auto_review_push": "false",
+   "wra_default_review_command": [
+    "review-pr"
+   ]
+  },
+  "organization": {
+   "login": "transferwise",
+   "id": 9465219,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjk0NjUyMTk=",
+   "avatar_url": "https://avatars.githubusercontent.com/u/9465219?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/transferwise",
+   "html_url": "https://github.com/transferwise",
+   "followers_url": "https://api.github.com/users/transferwise/followers",
+   "following_url": "https://api.github.com/users/transferwise/following{/other_user}",
+   "gists_url": "https://api.github.com/users/transferwise/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/transferwise/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/transferwise/subscriptions",
+   "organizations_url": "https://api.github.com/users/transferwise/orgs",
+   "repos_url": "https://api.github.com/users/transferwise/repos",
+   "events_url": "https://api.github.com/users/transferwise/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/transferwise/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 125,
+  "subscribers_count": 41
+ },
+ "funding": []
+}

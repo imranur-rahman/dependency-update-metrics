@@ -1,0 +1,745 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "PYPI",
+   "name": "adorn"
+  },
+  "purl": "pkg:pypi/adorn",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "adorn",
+     "version": "0.0.10"
+    },
+    "purl": "pkg:pypi/adorn@0.0.10",
+    "publishedAt": "2022-01-15T19:38:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "adorn",
+     "version": "0.0.11"
+    },
+    "purl": "pkg:pypi/adorn@0.0.11",
+    "publishedAt": "2022-01-15T21:43:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "adorn",
+     "version": "0.0.12"
+    },
+    "purl": "pkg:pypi/adorn@0.0.12",
+    "publishedAt": "2022-01-16T23:55:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "adorn",
+     "version": "0.0.13"
+    },
+    "purl": "pkg:pypi/adorn@0.0.13",
+    "publishedAt": "2022-01-17T00:25:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "adorn",
+     "version": "0.0.14"
+    },
+    "purl": "pkg:pypi/adorn@0.0.14",
+    "publishedAt": "2023-07-26T15:46:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "adorn",
+     "version": "0.0.15"
+    },
+    "purl": "pkg:pypi/adorn@0.0.15",
+    "publishedAt": "2023-07-26T18:47:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "adorn",
+     "version": "0.0.2"
+    },
+    "purl": "pkg:pypi/adorn@0.0.2",
+    "publishedAt": "2021-12-11T05:18:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "adorn",
+     "version": "0.0.3"
+    },
+    "purl": "pkg:pypi/adorn@0.0.3",
+    "publishedAt": "2021-12-11T06:27:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "adorn",
+     "version": "0.0.4"
+    },
+    "purl": "pkg:pypi/adorn@0.0.4",
+    "publishedAt": "2021-12-17T05:39:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "adorn",
+     "version": "0.0.5"
+    },
+    "purl": "pkg:pypi/adorn@0.0.5",
+    "publishedAt": "2021-12-22T07:13:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "adorn",
+     "version": "0.0.6"
+    },
+    "purl": "pkg:pypi/adorn@0.0.6",
+    "publishedAt": "2021-12-29T00:11:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "adorn",
+     "version": "0.0.7"
+    },
+    "purl": "pkg:pypi/adorn@0.0.7",
+    "publishedAt": "2021-12-31T19:20:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "adorn",
+     "version": "0.0.8"
+    },
+    "purl": "pkg:pypi/adorn@0.0.8",
+    "publishedAt": "2021-12-31T19:38:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "adorn",
+     "version": "0.0.9"
+    },
+    "purl": "pkg:pypi/adorn@0.0.9",
+    "publishedAt": "2022-01-13T07:11:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "adorn",
+     "version": "0.1.1"
+    },
+    "purl": "pkg:pypi/adorn@0.1.1",
+    "publishedAt": "2023-08-24T17:41:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "adorn",
+     "version": "0.1.2"
+    },
+    "purl": "pkg:pypi/adorn@0.1.2",
+    "publishedAt": "2023-10-04T19:54:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "adorn",
+     "version": "0.1.3"
+    },
+    "purl": "pkg:pypi/adorn@0.1.3",
+    "publishedAt": "2023-10-05T03:09:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "adorn",
+     "version": "0.1.4"
+    },
+    "purl": "pkg:pypi/adorn@0.1.4",
+    "publishedAt": "2023-10-05T16:24:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "adorn",
+     "version": "0.1.5"
+    },
+    "purl": "pkg:pypi/adorn@0.1.5",
+    "publishedAt": "2023-10-06T23:21:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "adorn",
+     "version": "0.1.6"
+    },
+    "purl": "pkg:pypi/adorn@0.1.6",
+    "publishedAt": "2024-06-25T20:57:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "adorn",
+     "version": "0.1.7"
+    },
+    "purl": "pkg:pypi/adorn@0.1.7",
+    "publishedAt": "2024-08-22T21:18:30Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "PYPI",
+   "name": "adorn",
+   "version": "0.1.7"
+  },
+  "purl": "pkg:pypi/adorn@0.1.7",
+  "publishedAt": "2024-08-22T21:18:30Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "Apache-2.0"
+  ],
+  "licenseDetails": [
+   {
+    "license": "Apache-2.0",
+    "spdx": "Apache-2.0"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "DOCUMENTATION",
+    "url": "https://pyadorn.github.io/adorn/"
+   },
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/pyadorn/adorn"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://pypi.org/simple"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/pyadorn/adorn"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "adorn",
+    "versionString": "0.1.7",
+    "source": "PYPI_RELEASE_FILENAME"
+   },
+   {
+    "packageName": "adorn",
+    "versionString": "0.1.7",
+    "source": "PYPI_METADATA_FILE"
+   }
+  ],
+  "cooldown": {
+   "end": "2024-08-27T21:18:30Z",
+   "description": ""
+  },
+  "projectStatus": {
+   "status": "active",
+   "reason": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "adorn",
+     "version": "0.1.7"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyyaml",
+     "version": "6.0.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tomli",
+     "version": "2.4.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 1,
+    "requirement": ">=6.0.0,<7.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 2,
+    "requirement": ">=2.0.1,<3.0.0"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/pyadorn/adorn"
+  },
+  "openIssuesCount": 16,
+  "starsCount": 3,
+  "forksCount": 0,
+  "license": "Apache-2.0",
+  "description": "",
+  "homepage": "",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/pyadorn/adorn",
+    "commit": "7c34264772ffd60f9b4093d7d551c3bca33bb0dd"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 0,
+     "reason": "0 commit(s) and 0 issue activity found in the last 90 days -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 0,
+     "reason": "Found 0/5 approved changesets -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected",
+     "details": []
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": 0,
+     "reason": "detected GitHub workflow tokens with excessive permissions",
+     "details": [
+      "Info: jobLevel 'actions' permission set to 'read': .github/workflows/codeql-analysis.yml:18",
+      "Info: jobLevel 'contents' permission set to 'read': .github/workflows/codeql-analysis.yml:19",
+      "Warn: no topLevel permission defined: .github/workflows/codeql-analysis.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/labeler.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/release.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/tests.yml:1",
+      "Info: no jobLevel write permissions found"
+     ]
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": 0,
+     "reason": "dependency not pinned by hash detected -- score normalized to 0",
+     "details": [
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/codeql-analysis.yml:29: update your workflow using https://app.stepsecurity.io/secureworkflow/pyadorn/adorn/codeql-analysis.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/codeql-analysis.yml:33: update your workflow using https://app.stepsecurity.io/secureworkflow/pyadorn/adorn/codeql-analysis.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/codeql-analysis.yml:38: update your workflow using https://app.stepsecurity.io/secureworkflow/pyadorn/adorn/codeql-analysis.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/codeql-analysis.yml:41: update your workflow using https://app.stepsecurity.io/secureworkflow/pyadorn/adorn/codeql-analysis.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/labeler.yml:14: update your workflow using https://app.stepsecurity.io/secureworkflow/pyadorn/adorn/labeler.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/labeler.yml:17: update your workflow using https://app.stepsecurity.io/secureworkflow/pyadorn/adorn/labeler.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/release.yml:15: update your workflow using https://app.stepsecurity.io/secureworkflow/pyadorn/adorn/release.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/release.yml:20: update your workflow using https://app.stepsecurity.io/secureworkflow/pyadorn/adorn/release.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/release.yml:42: update your workflow using https://app.stepsecurity.io/secureworkflow/pyadorn/adorn/release.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/release.yml:60: update your workflow using https://app.stepsecurity.io/secureworkflow/pyadorn/adorn/release.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/release.yml:67: update your workflow using https://app.stepsecurity.io/secureworkflow/pyadorn/adorn/release.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/release.yml:74: update your workflow using https://app.stepsecurity.io/secureworkflow/pyadorn/adorn/release.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/tests.yml:31: update your workflow using https://app.stepsecurity.io/secureworkflow/pyadorn/adorn/tests.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/tests.yml:34: update your workflow using https://app.stepsecurity.io/secureworkflow/pyadorn/adorn/tests.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/tests.yml:83: update your workflow using https://app.stepsecurity.io/secureworkflow/pyadorn/adorn/tests.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/tests.yml:107: update your workflow using https://app.stepsecurity.io/secureworkflow/pyadorn/adorn/tests.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/tests.yml:110: update your workflow using https://app.stepsecurity.io/secureworkflow/pyadorn/adorn/tests.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/tests.yml:130: update your workflow using https://app.stepsecurity.io/secureworkflow/pyadorn/adorn/tests.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/tests.yml:143: update your workflow using https://app.stepsecurity.io/secureworkflow/pyadorn/adorn/tests.yml/main?enable=pin",
+      "Warn: pipCommand not pinned by hash: .github/workflows/release.yml:26",
+      "Warn: pipCommand not pinned by hash: .github/workflows/release.yml:31",
+      "Warn: pipCommand not pinned by hash: .github/workflows/tests.yml:40",
+      "Warn: pipCommand not pinned by hash: .github/workflows/tests.yml:45",
+      "Warn: pipCommand not pinned by hash: .github/workflows/tests.yml:50",
+      "Warn: pipCommand not pinned by hash: .github/workflows/tests.yml:116",
+      "Warn: pipCommand not pinned by hash: .github/workflows/tests.yml:121",
+      "Warn: pipCommand not pinned by hash: .github/workflows/tests.yml:126",
+      "Info:   0 out of  13 GitHub-owned GitHubAction dependencies pinned",
+      "Info:   0 out of   6 third-party GitHubAction dependencies pinned",
+      "Info:   0 out of   8 pipCommand dependencies pinned"
+     ]
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 0,
+     "reason": "security policy file not detected",
+     "details": [
+      "Warn: no security policy file detected",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 10,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE.rst:0",
+      "Info: FSF or OSI recognized license: Apache License 2.0: LICENSE.rst:0"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": 0,
+     "reason": "branch protection not enabled on development/release branches",
+     "details": [
+      "Warn: branch protection not enabled for branch 'main'"
+     ]
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 7,
+     "reason": "SAST tool detected but not run on all commits",
+     "details": [
+      "Info: SAST configuration detected: CodeQL",
+      "Warn: 0 commits out of 28 are checked with a SAST tool"
+     ]
+    }
+   ],
+   "overallScore": 3.2,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 437112056,
+  "node_id": "R_kgDOGg3M-A",
+  "name": "adorn",
+  "full_name": "pyadorn/adorn",
+  "private": false,
+  "owner": {
+   "login": "pyadorn",
+   "id": 95940955,
+   "node_id": "O_kgDOBbfxWw",
+   "avatar_url": "https://avatars.githubusercontent.com/u/95940955?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/pyadorn",
+   "html_url": "https://github.com/pyadorn",
+   "followers_url": "https://api.github.com/users/pyadorn/followers",
+   "following_url": "https://api.github.com/users/pyadorn/following{/other_user}",
+   "gists_url": "https://api.github.com/users/pyadorn/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/pyadorn/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/pyadorn/subscriptions",
+   "organizations_url": "https://api.github.com/users/pyadorn/orgs",
+   "repos_url": "https://api.github.com/users/pyadorn/repos",
+   "events_url": "https://api.github.com/users/pyadorn/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/pyadorn/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/pyadorn/adorn",
+  "description": null,
+  "fork": false,
+  "url": "https://api.github.com/repos/pyadorn/adorn",
+  "forks_url": "https://api.github.com/repos/pyadorn/adorn/forks",
+  "keys_url": "https://api.github.com/repos/pyadorn/adorn/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/pyadorn/adorn/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/pyadorn/adorn/teams",
+  "hooks_url": "https://api.github.com/repos/pyadorn/adorn/hooks",
+  "issue_events_url": "https://api.github.com/repos/pyadorn/adorn/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/pyadorn/adorn/events",
+  "assignees_url": "https://api.github.com/repos/pyadorn/adorn/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/pyadorn/adorn/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/pyadorn/adorn/tags",
+  "blobs_url": "https://api.github.com/repos/pyadorn/adorn/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/pyadorn/adorn/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/pyadorn/adorn/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/pyadorn/adorn/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/pyadorn/adorn/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/pyadorn/adorn/languages",
+  "stargazers_url": "https://api.github.com/repos/pyadorn/adorn/stargazers",
+  "contributors_url": "https://api.github.com/repos/pyadorn/adorn/contributors",
+  "subscribers_url": "https://api.github.com/repos/pyadorn/adorn/subscribers",
+  "subscription_url": "https://api.github.com/repos/pyadorn/adorn/subscription",
+  "commits_url": "https://api.github.com/repos/pyadorn/adorn/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/pyadorn/adorn/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/pyadorn/adorn/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/pyadorn/adorn/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/pyadorn/adorn/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/pyadorn/adorn/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/pyadorn/adorn/merges",
+  "archive_url": "https://api.github.com/repos/pyadorn/adorn/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/pyadorn/adorn/downloads",
+  "issues_url": "https://api.github.com/repos/pyadorn/adorn/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/pyadorn/adorn/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/pyadorn/adorn/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/pyadorn/adorn/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/pyadorn/adorn/labels{/name}",
+  "releases_url": "https://api.github.com/repos/pyadorn/adorn/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/pyadorn/adorn/deployments",
+  "created_at": "2021-12-10T20:57:15Z",
+  "updated_at": "2024-08-22T21:17:50Z",
+  "pushed_at": "2024-08-22T21:18:27Z",
+  "git_url": "git://github.com/pyadorn/adorn.git",
+  "ssh_url": "git@github.com:pyadorn/adorn.git",
+  "clone_url": "https://github.com/pyadorn/adorn.git",
+  "svn_url": "https://github.com/pyadorn/adorn",
+  "homepage": null,
+  "size": 4803,
+  "stargazers_count": 3,
+  "watchers_count": 3,
+  "language": "Python",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": true,
+  "has_discussions": false,
+  "forks_count": 0,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 16,
+  "license": {
+   "key": "apache-2.0",
+   "name": "Apache License 2.0",
+   "spdx_id": "Apache-2.0",
+   "url": "https://api.github.com/licenses/apache-2.0",
+   "node_id": "MDc6TGljZW5zZTI="
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [],
+  "visibility": "public",
+  "forks": 0,
+  "open_issues": 16,
+  "watchers": 3,
+  "default_branch": "main",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "pyadorn",
+   "id": 95940955,
+   "node_id": "O_kgDOBbfxWw",
+   "avatar_url": "https://avatars.githubusercontent.com/u/95940955?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/pyadorn",
+   "html_url": "https://github.com/pyadorn",
+   "followers_url": "https://api.github.com/users/pyadorn/followers",
+   "following_url": "https://api.github.com/users/pyadorn/following{/other_user}",
+   "gists_url": "https://api.github.com/users/pyadorn/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/pyadorn/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/pyadorn/subscriptions",
+   "organizations_url": "https://api.github.com/users/pyadorn/orgs",
+   "repos_url": "https://api.github.com/users/pyadorn/repos",
+   "events_url": "https://api.github.com/users/pyadorn/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/pyadorn/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 0,
+  "subscribers_count": 0
+ },
+ "funding": []
+}

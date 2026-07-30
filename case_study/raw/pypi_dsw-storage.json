@@ -1,0 +1,1824 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "PYPI",
+   "name": "dsw-storage"
+  },
+  "purl": "pkg:pypi/dsw-storage",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.14.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.14.0",
+    "publishedAt": "2022-08-03T07:30:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.14.0rc1"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.14.0rc1",
+    "publishedAt": "2022-07-31T13:09:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.14.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.14.1",
+    "publishedAt": "2022-08-04T13:58:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.15.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.15.0",
+    "publishedAt": "2022-09-06T08:30:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.15.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.15.1",
+    "publishedAt": "2022-09-07T10:06:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.15.2"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.15.2",
+    "publishedAt": "2022-09-07T18:40:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.15.3"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.15.3",
+    "publishedAt": "2022-09-17T16:53:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.16.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.16.0",
+    "publishedAt": "2022-10-04T06:26:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.17.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.17.0",
+    "publishedAt": "2022-11-01T09:13:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.18.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.18.0",
+    "publishedAt": "2022-11-29T09:28:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.19.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.19.0",
+    "publishedAt": "2023-01-03T08:27:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.19.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.19.1",
+    "publishedAt": "2023-01-15T14:33:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.19.2"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.19.2",
+    "publishedAt": "2023-01-17T16:09:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.20.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.20.0",
+    "publishedAt": "2023-02-07T12:23:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.20.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.20.1",
+    "publishedAt": "2023-02-09T12:28:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.20.2"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.20.2",
+    "publishedAt": "2023-02-10T11:39:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.21.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.21.0",
+    "publishedAt": "2023-03-07T10:46:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.22.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.22.0",
+    "publishedAt": "2023-04-04T15:01:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.22.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.22.1",
+    "publishedAt": "2023-04-14T12:55:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.23.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.23.0",
+    "publishedAt": "2023-05-02T09:24:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.24.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.24.0",
+    "publishedAt": "2023-05-31T09:42:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.24.0rc1"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.24.0rc1",
+    "publishedAt": "2023-05-30T11:46:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.25.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.25.0",
+    "publishedAt": "2023-07-04T07:29:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.25.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.25.1",
+    "publishedAt": "2023-08-10T16:31:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.26.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.26.0",
+    "publishedAt": "2023-08-01T07:26:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.26.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.26.1",
+    "publishedAt": "2023-08-10T16:32:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.26.2"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.26.2",
+    "publishedAt": "2023-09-20T13:02:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.27.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.27.0",
+    "publishedAt": "2023-09-05T07:31:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.27.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.27.1",
+    "publishedAt": "2023-09-20T13:02:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "3.28.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@3.28.0",
+    "publishedAt": "2023-10-03T07:23:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.0.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.0.0",
+    "publishedAt": "2023-11-15T11:51:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.0.0rc2"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.0.0rc2",
+    "publishedAt": "2023-11-13T15:15:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.0.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.0.1",
+    "publishedAt": "2023-12-12T15:43:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.1.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.1.0",
+    "publishedAt": "2023-12-05T17:41:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.1.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.1.1",
+    "publishedAt": "2023-12-12T15:43:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.1.2"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.1.2",
+    "publishedAt": "2024-01-08T13:50:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.10.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.10.0",
+    "publishedAt": "2024-09-03T06:47:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.10.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.10.1",
+    "publishedAt": "2024-09-04T11:06:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.10.2"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.10.2",
+    "publishedAt": "2024-09-06T11:27:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.10.3"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.10.3",
+    "publishedAt": "2024-09-09T08:27:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.10.4"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.10.4",
+    "publishedAt": "2024-09-09T12:12:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.10.5"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.10.5",
+    "publishedAt": "2024-09-13T10:12:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.10.6"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.10.6",
+    "publishedAt": "2024-09-16T12:27:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.11.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.11.0",
+    "publishedAt": "2024-10-01T05:26:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.12.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.12.0",
+    "publishedAt": "2024-11-07T09:41:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.13.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.13.0",
+    "publishedAt": "2024-12-05T08:07:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.14.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.14.0",
+    "publishedAt": "2025-01-07T08:18:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.15.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.15.0",
+    "publishedAt": "2025-02-04T15:04:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.16.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.16.0",
+    "publishedAt": "2025-03-06T15:23:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.17.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.17.0",
+    "publishedAt": "2025-04-01T06:48:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.18.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.18.0",
+    "publishedAt": "2025-05-07T06:19:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.18.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.18.1",
+    "publishedAt": "2025-05-08T06:39:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.18.2"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.18.2",
+    "publishedAt": "2025-05-08T07:46:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.18.3"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.18.3",
+    "publishedAt": "2025-05-24T06:12:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.18.4"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.18.4",
+    "publishedAt": "2025-06-06T15:42:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.19.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.19.0",
+    "publishedAt": "2025-06-03T07:41:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.19.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.19.1",
+    "publishedAt": "2025-06-06T15:13:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.19.2"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.19.2",
+    "publishedAt": "2025-07-23T08:04:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.2.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.2.0",
+    "publishedAt": "2024-01-02T07:46:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.2.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.2.1",
+    "publishedAt": "2024-01-08T13:03:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.20.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.20.0",
+    "publishedAt": "2025-07-01T08:19:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.20.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.20.1",
+    "publishedAt": "2025-07-23T08:04:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.21.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.21.0",
+    "publishedAt": "2025-08-05T09:20:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.21.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.21.1",
+    "publishedAt": "2025-09-05T10:22:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.22.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.22.0",
+    "publishedAt": "2025-09-02T13:01:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.22.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.22.1",
+    "publishedAt": "2025-09-04T06:56:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.22.2"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.22.2",
+    "publishedAt": "2025-09-05T10:26:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.22.3"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.22.3",
+    "publishedAt": "2025-09-12T06:56:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.22.4"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.22.4",
+    "publishedAt": "2025-09-12T07:54:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.22.5"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.22.5",
+    "publishedAt": "2025-10-13T13:50:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.22.6"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.22.6",
+    "publishedAt": "2025-10-21T21:04:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.23.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.23.0",
+    "publishedAt": "2025-10-07T07:04:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.23.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.23.1",
+    "publishedAt": "2025-10-13T13:53:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.23.2"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.23.2",
+    "publishedAt": "2025-10-21T21:04:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.24.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.24.0",
+    "publishedAt": "2025-11-04T08:25:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.25.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.25.0",
+    "publishedAt": "2025-12-02T08:22:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.25.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.25.1",
+    "publishedAt": "2025-12-19T12:48:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.26.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.26.0",
+    "publishedAt": "2026-01-06T12:19:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.26.0rc1"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.26.0rc1",
+    "publishedAt": "2026-01-06T08:15:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.26.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.26.1",
+    "publishedAt": "2026-01-10T17:16:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.27.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.27.0",
+    "publishedAt": "2026-02-03T08:44:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.27.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.27.1",
+    "publishedAt": "2026-03-17T14:01:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.28.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.28.0",
+    "publishedAt": "2026-03-03T08:13:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.28.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.28.1",
+    "publishedAt": "2026-03-17T14:01:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.28.2"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.28.2",
+    "publishedAt": "2026-03-18T03:58:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.28.3"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.28.3",
+    "publishedAt": "2026-03-25T11:06:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.28.4"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.28.4",
+    "publishedAt": "2026-03-25T16:02:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.29.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.29.0",
+    "publishedAt": "2026-04-09T19:22:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.29.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.29.1",
+    "publishedAt": "2026-05-19T15:17:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.29.2"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.29.2",
+    "publishedAt": "2026-05-20T18:16:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.3.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.3.0",
+    "publishedAt": "2024-02-06T04:49:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.3.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.3.1",
+    "publishedAt": "2024-02-21T21:06:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.3.2"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.3.2",
+    "publishedAt": "2024-03-19T12:04:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.30.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.30.0",
+    "publishedAt": "2026-05-05T06:13:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.30.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.30.1",
+    "publishedAt": "2026-05-19T15:21:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.30.2"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.30.2",
+    "publishedAt": "2026-05-20T18:16:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.31.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.31.0",
+    "publishedAt": "2026-06-02T10:05:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.32.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.32.0",
+    "publishedAt": "2026-07-07T05:32:39Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.4.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.4.0",
+    "publishedAt": "2024-03-05T07:56:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.4.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.4.1",
+    "publishedAt": "2024-03-19T11:37:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.5.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.5.0",
+    "publishedAt": "2024-04-02T10:29:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.6.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.6.0",
+    "publishedAt": "2024-05-07T07:12:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.7.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.7.0",
+    "publishedAt": "2024-06-04T09:17:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.8.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.8.0",
+    "publishedAt": "2024-07-02T08:04:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.8.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.8.1",
+    "publishedAt": "2024-07-04T10:31:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.8.2"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.8.2",
+    "publishedAt": "2024-08-09T12:58:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.9.0"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.9.0",
+    "publishedAt": "2024-08-06T07:00:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.9.1"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.9.1",
+    "publishedAt": "2024-08-09T12:59:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.9.2"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.9.2",
+    "publishedAt": "2024-09-06T11:26:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.9.3"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.9.3",
+    "publishedAt": "2024-09-09T08:25:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.9.4"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.9.4",
+    "publishedAt": "2024-09-09T12:10:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.9.5"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.9.5",
+    "publishedAt": "2024-09-13T10:11:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.9.6"
+    },
+    "purl": "pkg:pypi/dsw-storage@4.9.6",
+    "publishedAt": "2024-09-16T12:21:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "PYPI",
+   "name": "dsw-storage",
+   "version": "4.32.0"
+  },
+  "purl": "pkg:pypi/dsw-storage@4.32.0",
+  "publishedAt": "2026-07-07T05:32:39Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "Apache-2.0"
+  ],
+  "licenseDetails": [
+   {
+    "license": "Apache License 2.0",
+    "spdx": "Apache-2.0"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "HOMEPAGE",
+    "url": "https://ds-wizard.org"
+   },
+   {
+    "label": "DOCUMENTATION",
+    "url": "https://guide.ds-wizard.org"
+   },
+   {
+    "label": "ISSUE_TRACKER",
+    "url": "https://github.com/ds-wizard/ds-wizard/issues"
+   },
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/ds-wizard/engine-tools"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://pypi.org/simple"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/ds-wizard/ds-wizard"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "ISSUE_TRACKER"
+   },
+   {
+    "projectKey": {
+     "id": "github.com/ds-wizard/engine-tools"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "dsw_storage",
+    "versionString": "4.32.0",
+    "source": "PYPI_RELEASE_FILENAME"
+   },
+   {
+    "packageName": "dsw-storage",
+    "versionString": "4.32.0",
+    "source": "PYPI_METADATA_FILE"
+   }
+  ],
+  "cooldown": {
+   "end": "2026-07-12T05:32:39Z",
+   "description": ""
+  },
+  "projectStatus": {
+   "status": "active",
+   "reason": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-storage",
+     "version": "4.32.0"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "argon2-cffi",
+     "version": "25.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "argon2-cffi-bindings",
+     "version": "25.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certifi",
+     "version": "2026.6.17"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cffi",
+     "version": "2.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dsw-config",
+     "version": "4.32.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "minio",
+     "version": "7.2.20"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pycparser",
+     "version": "3.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pycryptodome",
+     "version": "3.23.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pyyaml",
+     "version": "6.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "sentry-sdk",
+     "version": "2.64.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tenacity",
+     "version": "9.1.4"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "typing-extensions",
+     "version": "4.16.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "urllib3",
+     "version": "2.7.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 5,
+    "requirement": "==4.32.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 6,
+    "requirement": ""
+   },
+   {
+    "fromNode": 0,
+    "toNode": 11,
+    "requirement": ""
+   },
+   {
+    "fromNode": 1,
+    "toNode": 2,
+    "requirement": ""
+   },
+   {
+    "fromNode": 2,
+    "toNode": 4,
+    "requirement": ">=2.0.0b1"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 7,
+    "requirement": ""
+   },
+   {
+    "fromNode": 5,
+    "toNode": 9,
+    "requirement": ""
+   },
+   {
+    "fromNode": 5,
+    "toNode": 10,
+    "requirement": ""
+   },
+   {
+    "fromNode": 6,
+    "toNode": 1,
+    "requirement": ""
+   },
+   {
+    "fromNode": 6,
+    "toNode": 3,
+    "requirement": ""
+   },
+   {
+    "fromNode": 6,
+    "toNode": 8,
+    "requirement": ""
+   },
+   {
+    "fromNode": 6,
+    "toNode": 12,
+    "requirement": ""
+   },
+   {
+    "fromNode": 6,
+    "toNode": 13,
+    "requirement": ""
+   },
+   {
+    "fromNode": 10,
+    "toNode": 3,
+    "requirement": ""
+   },
+   {
+    "fromNode": 10,
+    "toNode": 13,
+    "requirement": ">=1.26.11"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/ds-wizard/ds-wizard"
+  },
+  "openIssuesCount": 4,
+  "starsCount": 21,
+  "forksCount": 1,
+  "license": "",
+  "description": "DSW Common Repository",
+  "homepage": "https://ds-wizard.org"
+ },
+ "github_repo_api": {
+  "id": 123105273,
+  "node_id": "MDEwOlJlcG9zaXRvcnkxMjMxMDUyNzM=",
+  "name": "ds-wizard",
+  "full_name": "ds-wizard/ds-wizard",
+  "private": false,
+  "owner": {
+   "login": "ds-wizard",
+   "id": 23522861,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjIzNTIyODYx",
+   "avatar_url": "https://avatars.githubusercontent.com/u/23522861?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/ds-wizard",
+   "html_url": "https://github.com/ds-wizard",
+   "followers_url": "https://api.github.com/users/ds-wizard/followers",
+   "following_url": "https://api.github.com/users/ds-wizard/following{/other_user}",
+   "gists_url": "https://api.github.com/users/ds-wizard/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/ds-wizard/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/ds-wizard/subscriptions",
+   "organizations_url": "https://api.github.com/users/ds-wizard/orgs",
+   "repos_url": "https://api.github.com/users/ds-wizard/repos",
+   "events_url": "https://api.github.com/users/ds-wizard/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/ds-wizard/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/ds-wizard/ds-wizard",
+  "description": "DSW Common Repository",
+  "fork": false,
+  "url": "https://api.github.com/repos/ds-wizard/ds-wizard",
+  "forks_url": "https://api.github.com/repos/ds-wizard/ds-wizard/forks",
+  "keys_url": "https://api.github.com/repos/ds-wizard/ds-wizard/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/ds-wizard/ds-wizard/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/ds-wizard/ds-wizard/teams",
+  "hooks_url": "https://api.github.com/repos/ds-wizard/ds-wizard/hooks",
+  "issue_events_url": "https://api.github.com/repos/ds-wizard/ds-wizard/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/ds-wizard/ds-wizard/events",
+  "assignees_url": "https://api.github.com/repos/ds-wizard/ds-wizard/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/ds-wizard/ds-wizard/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/ds-wizard/ds-wizard/tags",
+  "blobs_url": "https://api.github.com/repos/ds-wizard/ds-wizard/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/ds-wizard/ds-wizard/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/ds-wizard/ds-wizard/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/ds-wizard/ds-wizard/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/ds-wizard/ds-wizard/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/ds-wizard/ds-wizard/languages",
+  "stargazers_url": "https://api.github.com/repos/ds-wizard/ds-wizard/stargazers",
+  "contributors_url": "https://api.github.com/repos/ds-wizard/ds-wizard/contributors",
+  "subscribers_url": "https://api.github.com/repos/ds-wizard/ds-wizard/subscribers",
+  "subscription_url": "https://api.github.com/repos/ds-wizard/ds-wizard/subscription",
+  "commits_url": "https://api.github.com/repos/ds-wizard/ds-wizard/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/ds-wizard/ds-wizard/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/ds-wizard/ds-wizard/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/ds-wizard/ds-wizard/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/ds-wizard/ds-wizard/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/ds-wizard/ds-wizard/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/ds-wizard/ds-wizard/merges",
+  "archive_url": "https://api.github.com/repos/ds-wizard/ds-wizard/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/ds-wizard/ds-wizard/downloads",
+  "issues_url": "https://api.github.com/repos/ds-wizard/ds-wizard/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/ds-wizard/ds-wizard/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/ds-wizard/ds-wizard/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/ds-wizard/ds-wizard/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/ds-wizard/ds-wizard/labels{/name}",
+  "releases_url": "https://api.github.com/repos/ds-wizard/ds-wizard/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/ds-wizard/ds-wizard/deployments",
+  "created_at": "2018-02-27T09:27:35Z",
+  "updated_at": "2026-06-16T10:50:13Z",
+  "pushed_at": "2024-01-31T08:32:29Z",
+  "git_url": "git://github.com/ds-wizard/ds-wizard.git",
+  "ssh_url": "git@github.com:ds-wizard/ds-wizard.git",
+  "clone_url": "https://github.com/ds-wizard/ds-wizard.git",
+  "svn_url": "https://github.com/ds-wizard/ds-wizard",
+  "homepage": "https://ds-wizard.org",
+  "size": 5623,
+  "stargazers_count": 21,
+  "watchers_count": 21,
+  "language": null,
+  "has_issues": true,
+  "has_projects": false,
+  "has_downloads": false,
+  "has_wiki": false,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 1,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 4,
+  "license": null,
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [
+   "issues"
+  ],
+  "visibility": "public",
+  "forks": 1,
+  "open_issues": 4,
+  "watchers": 21,
+  "default_branch": "master",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "ds-wizard",
+   "id": 23522861,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjIzNTIyODYx",
+   "avatar_url": "https://avatars.githubusercontent.com/u/23522861?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/ds-wizard",
+   "html_url": "https://github.com/ds-wizard",
+   "followers_url": "https://api.github.com/users/ds-wizard/followers",
+   "following_url": "https://api.github.com/users/ds-wizard/following{/other_user}",
+   "gists_url": "https://api.github.com/users/ds-wizard/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/ds-wizard/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/ds-wizard/subscriptions",
+   "organizations_url": "https://api.github.com/users/ds-wizard/orgs",
+   "repos_url": "https://api.github.com/users/ds-wizard/repos",
+   "events_url": "https://api.github.com/users/ds-wizard/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/ds-wizard/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 1,
+  "subscribers_count": 7
+ },
+ "funding": []
+}

@@ -1,0 +1,1741 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "PYPI",
+   "name": "tradingkit"
+  },
+  "purl": "pkg:pypi/tradingkit",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.1.18"
+    },
+    "purl": "pkg:pypi/tradingkit@1.1.18",
+    "publishedAt": "2020-11-16T10:58:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.1.20"
+    },
+    "purl": "pkg:pypi/tradingkit@1.1.20",
+    "publishedAt": "2020-11-16T16:12:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.1.4"
+    },
+    "purl": "pkg:pypi/tradingkit@1.1.4",
+    "publishedAt": "2020-11-12T07:36:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.1.5"
+    },
+    "purl": "pkg:pypi/tradingkit@1.1.5",
+    "publishedAt": "2020-11-12T10:42:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.10.0"
+    },
+    "purl": "pkg:pypi/tradingkit@1.10.0",
+    "publishedAt": "2022-02-10T17:31:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.10.1"
+    },
+    "purl": "pkg:pypi/tradingkit@1.10.1",
+    "publishedAt": "2022-03-01T17:05:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.10.2"
+    },
+    "purl": "pkg:pypi/tradingkit@1.10.2",
+    "publishedAt": "2022-03-05T06:22:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.11.0"
+    },
+    "purl": "pkg:pypi/tradingkit@1.11.0",
+    "publishedAt": "2022-05-16T15:27:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.11.1"
+    },
+    "purl": "pkg:pypi/tradingkit@1.11.1",
+    "publishedAt": "2022-05-17T11:14:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.11.2"
+    },
+    "purl": "pkg:pypi/tradingkit@1.11.2",
+    "publishedAt": "2022-06-27T18:11:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.11.3"
+    },
+    "purl": "pkg:pypi/tradingkit@1.11.3",
+    "publishedAt": "2022-08-25T06:56:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.11.3.post1"
+    },
+    "purl": "pkg:pypi/tradingkit@1.11.3.post1",
+    "publishedAt": "2023-01-18T11:12:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.11.3.post2"
+    },
+    "purl": "pkg:pypi/tradingkit@1.11.3.post2",
+    "publishedAt": "2023-05-28T12:26:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.11.4"
+    },
+    "purl": "pkg:pypi/tradingkit@1.11.4",
+    "publishedAt": "2022-10-20T13:59:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.11.5"
+    },
+    "purl": "pkg:pypi/tradingkit@1.11.5",
+    "publishedAt": "2022-10-26T17:18:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.11.6"
+    },
+    "purl": "pkg:pypi/tradingkit@1.11.6",
+    "publishedAt": "2022-10-26T19:47:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.11.7"
+    },
+    "purl": "pkg:pypi/tradingkit@1.11.7",
+    "publishedAt": "2022-10-27T06:37:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.11.8"
+    },
+    "purl": "pkg:pypi/tradingkit@1.11.8",
+    "publishedAt": "2023-05-28T13:21:27Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.2.0"
+    },
+    "purl": "pkg:pypi/tradingkit@1.2.0",
+    "publishedAt": "2020-11-16T16:18:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.2.2"
+    },
+    "purl": "pkg:pypi/tradingkit@1.2.2",
+    "publishedAt": "2020-12-18T18:45:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.2.5"
+    },
+    "purl": "pkg:pypi/tradingkit@1.2.5",
+    "publishedAt": "2021-01-03T08:38:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.2.6"
+    },
+    "purl": "pkg:pypi/tradingkit@1.2.6",
+    "publishedAt": "2021-01-06T12:20:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.2.7"
+    },
+    "purl": "pkg:pypi/tradingkit@1.2.7",
+    "publishedAt": "2021-01-10T21:01:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.2.8"
+    },
+    "purl": "pkg:pypi/tradingkit@1.2.8",
+    "publishedAt": "2021-01-11T17:39:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.3.0"
+    },
+    "purl": "pkg:pypi/tradingkit@1.3.0",
+    "publishedAt": "2021-01-13T15:37:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.4.0"
+    },
+    "purl": "pkg:pypi/tradingkit@1.4.0",
+    "publishedAt": "2021-04-28T10:32:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.5.0"
+    },
+    "purl": "pkg:pypi/tradingkit@1.5.0",
+    "publishedAt": "2021-04-28T10:38:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.5.1"
+    },
+    "purl": "pkg:pypi/tradingkit@1.5.1",
+    "publishedAt": "2021-04-28T10:52:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.5.2"
+    },
+    "purl": "pkg:pypi/tradingkit@1.5.2",
+    "publishedAt": "2021-04-28T14:14:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.5.4"
+    },
+    "purl": "pkg:pypi/tradingkit@1.5.4",
+    "publishedAt": "2021-04-29T09:55:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.5.5"
+    },
+    "purl": "pkg:pypi/tradingkit@1.5.5",
+    "publishedAt": "2021-04-29T16:53:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.6.1"
+    },
+    "purl": "pkg:pypi/tradingkit@1.6.1",
+    "publishedAt": "2021-04-29T17:03:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.6.2"
+    },
+    "purl": "pkg:pypi/tradingkit@1.6.2",
+    "publishedAt": "2021-05-03T04:40:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.6.3"
+    },
+    "purl": "pkg:pypi/tradingkit@1.6.3",
+    "publishedAt": "2021-05-04T06:59:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.6.4"
+    },
+    "purl": "pkg:pypi/tradingkit@1.6.4",
+    "publishedAt": "2021-05-04T07:05:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.6.5"
+    },
+    "purl": "pkg:pypi/tradingkit@1.6.5",
+    "publishedAt": "2021-05-04T07:25:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.6.6"
+    },
+    "purl": "pkg:pypi/tradingkit@1.6.6",
+    "publishedAt": "2021-05-04T17:43:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.6.7"
+    },
+    "purl": "pkg:pypi/tradingkit@1.6.7",
+    "publishedAt": "2021-05-07T16:13:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.6.8"
+    },
+    "purl": "pkg:pypi/tradingkit@1.6.8",
+    "publishedAt": "2021-11-03T08:25:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.7.0"
+    },
+    "purl": "pkg:pypi/tradingkit@1.7.0",
+    "publishedAt": "2021-10-13T10:16:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.7.1"
+    },
+    "purl": "pkg:pypi/tradingkit@1.7.1",
+    "publishedAt": "2021-11-02T10:38:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.7.10"
+    },
+    "purl": "pkg:pypi/tradingkit@1.7.10",
+    "publishedAt": "2021-11-24T13:40:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.7.12"
+    },
+    "purl": "pkg:pypi/tradingkit@1.7.12",
+    "publishedAt": "2021-11-24T14:40:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.7.13"
+    },
+    "purl": "pkg:pypi/tradingkit@1.7.13",
+    "publishedAt": "2021-11-24T14:45:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.7.14"
+    },
+    "purl": "pkg:pypi/tradingkit@1.7.14",
+    "publishedAt": "2021-11-24T15:45:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.7.15"
+    },
+    "purl": "pkg:pypi/tradingkit@1.7.15",
+    "publishedAt": "2021-11-24T17:41:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.7.2"
+    },
+    "purl": "pkg:pypi/tradingkit@1.7.2",
+    "publishedAt": "2021-11-02T17:24:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.7.3"
+    },
+    "purl": "pkg:pypi/tradingkit@1.7.3",
+    "publishedAt": "2021-11-02T19:00:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.7.4"
+    },
+    "purl": "pkg:pypi/tradingkit@1.7.4",
+    "publishedAt": "2021-11-16T21:26:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.7.5"
+    },
+    "purl": "pkg:pypi/tradingkit@1.7.5",
+    "publishedAt": "2021-11-16T21:33:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.7.6"
+    },
+    "purl": "pkg:pypi/tradingkit@1.7.6",
+    "publishedAt": "2021-11-16T21:49:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.7.7"
+    },
+    "purl": "pkg:pypi/tradingkit@1.7.7",
+    "publishedAt": "2021-11-16T21:56:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.7.8"
+    },
+    "purl": "pkg:pypi/tradingkit@1.7.8",
+    "publishedAt": "2021-11-17T09:11:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.7.9"
+    },
+    "purl": "pkg:pypi/tradingkit@1.7.9",
+    "publishedAt": "2021-11-23T11:26:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.8.0"
+    },
+    "purl": "pkg:pypi/tradingkit@1.8.0",
+    "publishedAt": "2021-11-25T18:58:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.8.1"
+    },
+    "purl": "pkg:pypi/tradingkit@1.8.1",
+    "publishedAt": "2021-11-27T11:20:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.9.0"
+    },
+    "purl": "pkg:pypi/tradingkit@1.9.0",
+    "publishedAt": "2021-11-28T10:58:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.9.1"
+    },
+    "purl": "pkg:pypi/tradingkit@1.9.1",
+    "publishedAt": "2021-11-28T14:55:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.9.2"
+    },
+    "purl": "pkg:pypi/tradingkit@1.9.2",
+    "publishedAt": "2021-11-28T15:11:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.9.3"
+    },
+    "purl": "pkg:pypi/tradingkit@1.9.3",
+    "publishedAt": "2021-11-29T09:14:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.9.4"
+    },
+    "purl": "pkg:pypi/tradingkit@1.9.4",
+    "publishedAt": "2021-11-29T09:36:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.9.5"
+    },
+    "purl": "pkg:pypi/tradingkit@1.9.5",
+    "publishedAt": "2021-11-30T14:37:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.9.6"
+    },
+    "purl": "pkg:pypi/tradingkit@1.9.6",
+    "publishedAt": "2021-12-01T10:47:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "PYPI",
+   "name": "tradingkit",
+   "version": "1.11.8"
+  },
+  "purl": "pkg:pypi/tradingkit@1.11.8",
+  "publishedAt": "2023-05-28T13:21:27Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "MIT",
+    "spdx": "MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/logictraders/tradingkit"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://pypi.org/simple"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/logictraders/tradingkit"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "tradingkit",
+    "versionString": "1.11.8",
+    "source": "PYPI_RELEASE_FILENAME"
+   },
+   {
+    "packageName": "tradingkit",
+    "versionString": "1.11.8",
+    "source": "PYPI_METADATA_FILE"
+   }
+  ],
+  "cooldown": {
+   "end": "2023-06-02T13:21:27Z",
+   "description": ""
+  },
+  "projectStatus": {
+   "status": "active",
+   "reason": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tradingkit",
+     "version": "1.11.8"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiodns",
+     "version": "4.0.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiohappyeyeballs",
+     "version": "2.7.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiohttp",
+     "version": "3.14.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiosignal",
+     "version": "1.4.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "attrs",
+     "version": "26.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "ccxt",
+     "version": "3.1.10"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certifi",
+     "version": "2026.6.17"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cffi",
+     "version": "2.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "chardet",
+     "version": "3.0.4"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "charset-normalizer",
+     "version": "3.4.9"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "coverage",
+     "version": "7.0.5"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cryptography",
+     "version": "49.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "docopt",
+     "version": "0.6.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "frozenlist",
+     "version": "1.8.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "idna",
+     "version": "3.18.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "multidict",
+     "version": "6.7.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "numpy",
+     "version": "1.24.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pandas",
+     "version": "1.5.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "plotly",
+     "version": "5.12.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "propcache",
+     "version": "0.5.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pycares",
+     "version": "5.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pycparser",
+     "version": "3.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "python-dateutil",
+     "version": "2.8.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "python-dotenv",
+     "version": "0.21.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pytz",
+     "version": "2026.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "requests",
+     "version": "2.28.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "setuptools",
+     "version": "66.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "six",
+     "version": "1.17.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tenacity",
+     "version": "9.1.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "urllib3",
+     "version": "1.26.20"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "websocket-client",
+     "version": "1.4.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "websockets",
+     "version": "10.4.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "yarl",
+     "version": "1.24.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 6,
+    "requirement": "==3.1.10"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 9,
+    "requirement": "==3.0.4"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 11,
+    "requirement": "==7.0.5"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 13,
+    "requirement": "~=0.6.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 17,
+    "requirement": "==1.24.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 18,
+    "requirement": "==1.5.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 19,
+    "requirement": "==5.12.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 23,
+    "requirement": "~=2.8.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 24,
+    "requirement": "==0.21.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 26,
+    "requirement": "==2.28.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 27,
+    "requirement": "==66.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 31,
+    "requirement": "==1.4.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 32,
+    "requirement": "==10.4"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 21,
+    "requirement": "<6,>=5.0.0"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 2,
+    "requirement": ">=2.5.0"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 4,
+    "requirement": ">=1.4.0"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 5,
+    "requirement": ">=17.3.0"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 14,
+    "requirement": ">=1.1.1"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 16,
+    "requirement": "<7.0,>=4.5"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 20,
+    "requirement": ">=0.2.0"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 33,
+    "requirement": "<2.0,>=1.17.0"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 14,
+    "requirement": ">=1.1.0"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 1,
+    "requirement": ">=1.1.1"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 3,
+    "requirement": ">=3.8"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 7,
+    "requirement": ">=2018.1.18"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 12,
+    "requirement": ">=2.6.1"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 26,
+    "requirement": ">=2.18.4"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 27,
+    "requirement": ">=60.9.0"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 33,
+    "requirement": ">=1.7.2"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 22,
+    "requirement": ""
+   },
+   {
+    "fromNode": 12,
+    "toNode": 8,
+    "requirement": ">=2.0.0"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 17,
+    "requirement": ">=1.21.0"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 23,
+    "requirement": ">=2.8.1"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 25,
+    "requirement": ">=2020.1"
+   },
+   {
+    "fromNode": 19,
+    "toNode": 29,
+    "requirement": ">=6.2.0"
+   },
+   {
+    "fromNode": 21,
+    "toNode": 8,
+    "requirement": ">=2.0.0b1"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 28,
+    "requirement": ">=1.5"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 7,
+    "requirement": ">=2017.4.17"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 10,
+    "requirement": "<4,>=2"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 15,
+    "requirement": "<4,>=2.5"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 30,
+    "requirement": "<1.27,>=1.21.1"
+   },
+   {
+    "fromNode": 33,
+    "toNode": 15,
+    "requirement": ">=2.0"
+   },
+   {
+    "fromNode": 33,
+    "toNode": 16,
+    "requirement": ">=4.0"
+   },
+   {
+    "fromNode": 33,
+    "toNode": 20,
+    "requirement": ">=0.2.1"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/logictraders/tradingkit"
+  },
+  "openIssuesCount": 6,
+  "starsCount": 3,
+  "forksCount": 2,
+  "license": "MIT",
+  "description": "Cryptocurrency trading SDK",
+  "homepage": "",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/logictraders/tradingkit",
+    "commit": "dcb7040d79d4646775d33990758df2746dba1dfe"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected",
+     "details": []
+    },
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 2,
+     "reason": "Found 6/30 approved changesets -- score normalized to 2",
+     "details": []
+    },
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 0,
+     "reason": "0 commit(s) and 0 issue activity found in the last 90 days -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": 0,
+     "reason": "detected GitHub workflow tokens with excessive permissions",
+     "details": [
+      "Warn: no topLevel permission defined: .github/workflows/main.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/release.yml:1",
+      "Info: no jobLevel write permissions found"
+     ]
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": 0,
+     "reason": "dependency not pinned by hash detected -- score normalized to 0",
+     "details": [
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/main.yml:13: update your workflow using https://app.stepsecurity.io/secureworkflow/logictraders/tradingkit/main.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/release.yml:12: update your workflow using https://app.stepsecurity.io/secureworkflow/logictraders/tradingkit/release.yml/main?enable=pin",
+      "Warn: pipCommand not pinned by hash: .github/workflows/main.yml:19",
+      "Warn: pipCommand not pinned by hash: .github/workflows/main.yml:20",
+      "Warn: pipCommand not pinned by hash: .github/workflows/main.yml:28",
+      "Warn: pipCommand not pinned by hash: .github/workflows/release.yml:18",
+      "Warn: pipCommand not pinned by hash: .github/workflows/release.yml:19",
+      "Warn: pipCommand not pinned by hash: .github/workflows/release.yml:27",
+      "Info:   0 out of   2 GitHub-owned GitHubAction dependencies pinned",
+      "Info:   0 out of   6 pipCommand dependencies pinned"
+     ]
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 0,
+     "reason": "security policy file not detected",
+     "details": [
+      "Warn: no security policy file detected",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 10,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE:0",
+      "Info: FSF or OSI recognized license: MIT License: LICENSE:0"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": 0,
+     "reason": "branch protection not enabled on development/release branches",
+     "details": [
+      "Warn: branch protection not enabled for branch 'main'",
+      "Warn: branch protection not enabled for branch 'stable'"
+     ]
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0",
+     "details": [
+      "Warn: 0 commits out of 6 are checked with a SAST tool"
+     ]
+    }
+   ],
+   "overallScore": 3,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 310209671,
+  "node_id": "MDEwOlJlcG9zaXRvcnkzMTAyMDk2NzE=",
+  "name": "tradingkit",
+  "full_name": "logictraders/tradingkit",
+  "private": false,
+  "owner": {
+   "login": "logictraders",
+   "id": 73382629,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjczMzgyNjI5",
+   "avatar_url": "https://avatars.githubusercontent.com/u/73382629?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/logictraders",
+   "html_url": "https://github.com/logictraders",
+   "followers_url": "https://api.github.com/users/logictraders/followers",
+   "following_url": "https://api.github.com/users/logictraders/following{/other_user}",
+   "gists_url": "https://api.github.com/users/logictraders/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/logictraders/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/logictraders/subscriptions",
+   "organizations_url": "https://api.github.com/users/logictraders/orgs",
+   "repos_url": "https://api.github.com/users/logictraders/repos",
+   "events_url": "https://api.github.com/users/logictraders/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/logictraders/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/logictraders/tradingkit",
+  "description": "Cryptocurrency trading SDK",
+  "fork": false,
+  "url": "https://api.github.com/repos/logictraders/tradingkit",
+  "forks_url": "https://api.github.com/repos/logictraders/tradingkit/forks",
+  "keys_url": "https://api.github.com/repos/logictraders/tradingkit/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/logictraders/tradingkit/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/logictraders/tradingkit/teams",
+  "hooks_url": "https://api.github.com/repos/logictraders/tradingkit/hooks",
+  "issue_events_url": "https://api.github.com/repos/logictraders/tradingkit/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/logictraders/tradingkit/events",
+  "assignees_url": "https://api.github.com/repos/logictraders/tradingkit/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/logictraders/tradingkit/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/logictraders/tradingkit/tags",
+  "blobs_url": "https://api.github.com/repos/logictraders/tradingkit/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/logictraders/tradingkit/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/logictraders/tradingkit/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/logictraders/tradingkit/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/logictraders/tradingkit/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/logictraders/tradingkit/languages",
+  "stargazers_url": "https://api.github.com/repos/logictraders/tradingkit/stargazers",
+  "contributors_url": "https://api.github.com/repos/logictraders/tradingkit/contributors",
+  "subscribers_url": "https://api.github.com/repos/logictraders/tradingkit/subscribers",
+  "subscription_url": "https://api.github.com/repos/logictraders/tradingkit/subscription",
+  "commits_url": "https://api.github.com/repos/logictraders/tradingkit/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/logictraders/tradingkit/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/logictraders/tradingkit/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/logictraders/tradingkit/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/logictraders/tradingkit/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/logictraders/tradingkit/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/logictraders/tradingkit/merges",
+  "archive_url": "https://api.github.com/repos/logictraders/tradingkit/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/logictraders/tradingkit/downloads",
+  "issues_url": "https://api.github.com/repos/logictraders/tradingkit/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/logictraders/tradingkit/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/logictraders/tradingkit/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/logictraders/tradingkit/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/logictraders/tradingkit/labels{/name}",
+  "releases_url": "https://api.github.com/repos/logictraders/tradingkit/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/logictraders/tradingkit/deployments",
+  "created_at": "2020-11-05T06:29:42Z",
+  "updated_at": "2022-01-03T09:52:53Z",
+  "pushed_at": "2023-05-28T13:19:35Z",
+  "git_url": "git://github.com/logictraders/tradingkit.git",
+  "ssh_url": "git@github.com:logictraders/tradingkit.git",
+  "clone_url": "https://github.com/logictraders/tradingkit.git",
+  "svn_url": "https://github.com/logictraders/tradingkit",
+  "homepage": null,
+  "size": 4852,
+  "stargazers_count": 3,
+  "watchers_count": 3,
+  "language": "Python",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": true,
+  "forks_count": 6,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 10,
+  "license": {
+   "key": "mit",
+   "name": "MIT License",
+   "spdx_id": "MIT",
+   "url": "https://api.github.com/licenses/mit",
+   "node_id": "MDc6TGljZW5zZTEz"
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [],
+  "visibility": "public",
+  "forks": 6,
+  "open_issues": 10,
+  "watchers": 3,
+  "default_branch": "main",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "logictraders",
+   "id": 73382629,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjczMzgyNjI5",
+   "avatar_url": "https://avatars.githubusercontent.com/u/73382629?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/logictraders",
+   "html_url": "https://github.com/logictraders",
+   "followers_url": "https://api.github.com/users/logictraders/followers",
+   "following_url": "https://api.github.com/users/logictraders/following{/other_user}",
+   "gists_url": "https://api.github.com/users/logictraders/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/logictraders/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/logictraders/subscriptions",
+   "organizations_url": "https://api.github.com/users/logictraders/orgs",
+   "repos_url": "https://api.github.com/users/logictraders/repos",
+   "events_url": "https://api.github.com/users/logictraders/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/logictraders/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 6,
+  "subscribers_count": 2
+ },
+ "funding": []
+}

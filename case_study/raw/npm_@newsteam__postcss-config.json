@@ -1,0 +1,1622 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "@newsteam/postcss-config"
+  },
+  "purl": "pkg:npm/%40newsteam/postcss-config",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.1"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.1",
+    "publishedAt": "2020-06-15T14:59:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.10"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.10",
+    "publishedAt": "2020-10-19T13:11:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.11"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.11",
+    "publishedAt": "2020-10-20T13:06:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.12"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.12",
+    "publishedAt": "2020-10-21T05:27:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.13"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.13",
+    "publishedAt": "2020-11-04T10:49:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.14"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.14",
+    "publishedAt": "2020-11-16T09:43:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.15"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.15",
+    "publishedAt": "2020-11-24T10:50:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.17"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.17",
+    "publishedAt": "2020-12-08T10:54:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.18"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.18",
+    "publishedAt": "2020-12-09T09:11:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.19"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.19",
+    "publishedAt": "2020-12-14T11:59:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.2"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.2",
+    "publishedAt": "2020-07-06T13:05:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.20"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.20",
+    "publishedAt": "2021-01-07T12:31:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.21"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.21",
+    "publishedAt": "2021-01-07T16:16:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.22"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.22",
+    "publishedAt": "2021-01-10T13:45:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.23"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.23",
+    "publishedAt": "2021-01-11T08:38:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.24"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.24",
+    "publishedAt": "2021-01-28T10:40:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.25"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.25",
+    "publishedAt": "2021-03-15T10:13:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.26"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.26",
+    "publishedAt": "2021-03-16T09:13:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.27"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.27",
+    "publishedAt": "2021-03-18T13:30:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.28"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.28",
+    "publishedAt": "2021-03-19T10:24:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.29"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.29",
+    "publishedAt": "2021-03-19T12:09:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.3"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.3",
+    "publishedAt": "2020-07-28T09:59:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.30"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.30",
+    "publishedAt": "2021-05-06T11:50:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.31"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.31",
+    "publishedAt": "2021-05-19T13:18:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.32"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.32",
+    "publishedAt": "2021-05-19T13:34:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.33"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.33",
+    "publishedAt": "2021-05-19T13:46:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.34"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.34",
+    "publishedAt": "2021-05-19T13:48:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.35"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.35",
+    "publishedAt": "2021-05-19T14:13:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.36"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.36",
+    "publishedAt": "2021-05-19T14:35:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.37"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.37",
+    "publishedAt": "2021-05-19T14:42:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.39"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.39",
+    "publishedAt": "2021-05-19T14:47:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.4"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.4",
+    "publishedAt": "2020-08-04T11:32:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.40"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.40",
+    "publishedAt": "2021-05-27T12:59:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.41"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.41",
+    "publishedAt": "2021-07-14T11:30:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.42"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.42",
+    "publishedAt": "2021-07-14T13:37:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.43"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.43",
+    "publishedAt": "2021-07-14T14:45:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.44"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.44",
+    "publishedAt": "2021-07-15T12:22:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.45"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.45",
+    "publishedAt": "2022-01-18T10:07:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.46"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.46",
+    "publishedAt": "2022-02-17T12:59:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.47"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.47",
+    "publishedAt": "2022-02-21T10:40:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.48"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.48",
+    "publishedAt": "2022-03-01T13:06:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.49"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.49",
+    "publishedAt": "2022-07-11T10:44:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.5"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.5",
+    "publishedAt": "2020-08-12T09:32:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.50"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.50",
+    "publishedAt": "2022-07-11T11:03:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.51"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.51",
+    "publishedAt": "2022-07-12T11:22:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.52"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.52",
+    "publishedAt": "2022-10-31T09:39:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.53"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.53",
+    "publishedAt": "2022-11-23T09:14:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.54"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.54",
+    "publishedAt": "2022-12-09T10:29:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.55"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.55",
+    "publishedAt": "2023-02-27T13:43:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.56"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.56",
+    "publishedAt": "2023-03-30T09:56:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.57"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.57",
+    "publishedAt": "2023-11-10T18:47:40Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.6"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.6",
+    "publishedAt": "2020-08-17T11:18:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.7"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.7",
+    "publishedAt": "2020-08-28T12:04:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.8"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.8",
+    "publishedAt": "2020-09-04T11:23:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.9"
+    },
+    "purl": "pkg:npm/%40newsteam/postcss-config@0.0.9",
+    "publishedAt": "2020-09-09T10:18:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "NPM",
+   "name": "@newsteam/postcss-config",
+   "version": "0.0.57"
+  },
+  "purl": "pkg:npm/%40newsteam/postcss-config@0.0.57",
+  "publishedAt": "2023-11-10T18:47:40Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "MIT",
+    "spdx": "MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "HOMEPAGE",
+    "url": "https://github.com/feight/packages/tree/master/postcss-config#readme"
+   },
+   {
+    "label": "ISSUE_TRACKER",
+    "url": "https://github.com/feight/packages/issues"
+   },
+   {
+    "label": "ORIGIN",
+    "url": "https://registry.npmjs.org/@newsteam%2Fpostcss-config/0.0.57"
+   },
+   {
+    "label": "SOURCE_REPO",
+    "url": "git+https://github.com/feight/packages.git"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://registry.npmjs.org/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/feight/packages"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "ISSUE_TRACKER"
+   },
+   {
+    "projectKey": {
+     "id": "github.com/feight/packages"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "@newsteam/postcss-config",
+    "versionString": "0.0.57",
+    "source": "NPM_NPMJS_ORG"
+   }
+  ],
+  "cooldown": {
+   "end": "2023-11-25T18:47:40Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@newsteam/postcss-config",
+     "version": "0.0.57"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "baseline-browser-mapping",
+     "version": "2.10.42"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "browserslist",
+     "version": "4.28.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "caniuse-api",
+     "version": "3.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "caniuse-lite",
+     "version": "1.0.30001803"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "colord",
+     "version": "2.9.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cssesc",
+     "version": "3.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cssnano-utils",
+     "version": "4.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "electron-to-chromium",
+     "version": "1.5.389"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "escalade",
+     "version": "3.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "install",
+     "version": "0.13.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "lodash.memoize",
+     "version": "4.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "lodash.uniq",
+     "version": "4.5.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "nanoid",
+     "version": "3.3.15"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "node-releases",
+     "version": "2.0.51"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "picocolors",
+     "version": "1.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "postcss",
+     "version": "8.4.29"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "postcss-colormin",
+     "version": "6.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "postcss-discard-comments",
+     "version": "6.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "postcss-discard-duplicates",
+     "version": "6.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "postcss-discard-empty",
+     "version": "6.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "postcss-font-variant",
+     "version": "5.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "postcss-merge-longhand",
+     "version": "6.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "postcss-merge-rules",
+     "version": "6.0.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "postcss-minify-font-values",
+     "version": "6.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "postcss-minify-gradients",
+     "version": "6.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "postcss-minify-params",
+     "version": "6.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "postcss-minify-selectors",
+     "version": "6.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "postcss-normalize-positions",
+     "version": "6.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "postcss-normalize-url",
+     "version": "6.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "postcss-normalize-whitespace",
+     "version": "6.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "postcss-ordered-values",
+     "version": "6.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "postcss-reduce-initial",
+     "version": "6.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "postcss-reduce-transforms",
+     "version": "6.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "postcss-selector-parser",
+     "version": "6.1.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "postcss-value-parser",
+     "version": "4.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "source-map-js",
+     "version": "1.2.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "stylehacks",
+     "version": "6.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "undefined",
+     "version": "0.1.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "update-browserslist-db",
+     "version": "1.2.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "util-deprecate",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 10,
+    "requirement": "^0.13.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 16,
+    "requirement": "8.4.29"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 17,
+    "requirement": "6.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 18,
+    "requirement": "6.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 19,
+    "requirement": "6.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 20,
+    "requirement": "6.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 21,
+    "requirement": "5.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 22,
+    "requirement": "6.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 23,
+    "requirement": "6.0.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 24,
+    "requirement": "6.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 25,
+    "requirement": "6.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 26,
+    "requirement": "6.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 27,
+    "requirement": "6.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 28,
+    "requirement": "6.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 29,
+    "requirement": "6.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 30,
+    "requirement": "6.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 31,
+    "requirement": "6.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 32,
+    "requirement": "6.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 33,
+    "requirement": "6.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 38,
+    "requirement": "^0.1.0"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 1,
+    "requirement": "^2.10.42"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 4,
+    "requirement": "^1.0.30001800"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 8,
+    "requirement": "^1.5.387"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 14,
+    "requirement": "^2.0.50"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 39,
+    "requirement": "^1.2.3"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 2,
+    "requirement": "^4.0.0"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 4,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 11,
+    "requirement": "^4.1.2"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 12,
+    "requirement": "^4.5.0"
+   },
+   {
+    "fromNode": 16,
+    "toNode": 13,
+    "requirement": "^3.3.6"
+   },
+   {
+    "fromNode": 16,
+    "toNode": 15,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 16,
+    "toNode": 36,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 2,
+    "requirement": "^4.21.4"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 3,
+    "requirement": "^3.0.0"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 5,
+    "requirement": "^2.9.1"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 35,
+    "requirement": "^4.2.0"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 35,
+    "requirement": "^4.2.0"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 37,
+    "requirement": "^6.0.0"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 2,
+    "requirement": "^4.21.4"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 3,
+    "requirement": "^3.0.0"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 7,
+    "requirement": "^4.0.0"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 34,
+    "requirement": "^6.0.5"
+   },
+   {
+    "fromNode": 24,
+    "toNode": 35,
+    "requirement": "^4.2.0"
+   },
+   {
+    "fromNode": 25,
+    "toNode": 5,
+    "requirement": "^2.9.1"
+   },
+   {
+    "fromNode": 25,
+    "toNode": 7,
+    "requirement": "^4.0.0"
+   },
+   {
+    "fromNode": 25,
+    "toNode": 35,
+    "requirement": "^4.2.0"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 2,
+    "requirement": "^4.21.4"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 7,
+    "requirement": "^4.0.0"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 35,
+    "requirement": "^4.2.0"
+   },
+   {
+    "fromNode": 27,
+    "toNode": 34,
+    "requirement": "^6.0.5"
+   },
+   {
+    "fromNode": 28,
+    "toNode": 35,
+    "requirement": "^4.2.0"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 35,
+    "requirement": "^4.2.0"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 35,
+    "requirement": "^4.2.0"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 7,
+    "requirement": "^4.0.0"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 35,
+    "requirement": "^4.2.0"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 2,
+    "requirement": "^4.21.4"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 3,
+    "requirement": "^3.0.0"
+   },
+   {
+    "fromNode": 33,
+    "toNode": 35,
+    "requirement": "^4.2.0"
+   },
+   {
+    "fromNode": 34,
+    "toNode": 6,
+    "requirement": "^3.0.0"
+   },
+   {
+    "fromNode": 34,
+    "toNode": 40,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 2,
+    "requirement": "^4.23.0"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 34,
+    "requirement": "^6.0.16"
+   },
+   {
+    "fromNode": 39,
+    "toNode": 9,
+    "requirement": "^3.2.0"
+   },
+   {
+    "fromNode": 39,
+    "toNode": 15,
+    "requirement": "^1.1.1"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": null,
+ "github_repo_api": {
+  "id": 239980936,
+  "node_id": "MDEwOlJlcG9zaXRvcnkyMzk5ODA5MzY=",
+  "name": "packages",
+  "full_name": "feight/packages",
+  "private": false,
+  "owner": {
+   "login": "feight",
+   "id": 11542865,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjExNTQyODY1",
+   "avatar_url": "https://avatars.githubusercontent.com/u/11542865?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/feight",
+   "html_url": "https://github.com/feight",
+   "followers_url": "https://api.github.com/users/feight/followers",
+   "following_url": "https://api.github.com/users/feight/following{/other_user}",
+   "gists_url": "https://api.github.com/users/feight/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/feight/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/feight/subscriptions",
+   "organizations_url": "https://api.github.com/users/feight/orgs",
+   "repos_url": "https://api.github.com/users/feight/repos",
+   "events_url": "https://api.github.com/users/feight/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/feight/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/feight/packages",
+  "description": null,
+  "fork": false,
+  "url": "https://api.github.com/repos/feight/packages",
+  "forks_url": "https://api.github.com/repos/feight/packages/forks",
+  "keys_url": "https://api.github.com/repos/feight/packages/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/feight/packages/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/feight/packages/teams",
+  "hooks_url": "https://api.github.com/repos/feight/packages/hooks",
+  "issue_events_url": "https://api.github.com/repos/feight/packages/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/feight/packages/events",
+  "assignees_url": "https://api.github.com/repos/feight/packages/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/feight/packages/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/feight/packages/tags",
+  "blobs_url": "https://api.github.com/repos/feight/packages/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/feight/packages/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/feight/packages/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/feight/packages/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/feight/packages/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/feight/packages/languages",
+  "stargazers_url": "https://api.github.com/repos/feight/packages/stargazers",
+  "contributors_url": "https://api.github.com/repos/feight/packages/contributors",
+  "subscribers_url": "https://api.github.com/repos/feight/packages/subscribers",
+  "subscription_url": "https://api.github.com/repos/feight/packages/subscription",
+  "commits_url": "https://api.github.com/repos/feight/packages/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/feight/packages/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/feight/packages/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/feight/packages/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/feight/packages/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/feight/packages/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/feight/packages/merges",
+  "archive_url": "https://api.github.com/repos/feight/packages/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/feight/packages/downloads",
+  "issues_url": "https://api.github.com/repos/feight/packages/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/feight/packages/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/feight/packages/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/feight/packages/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/feight/packages/labels{/name}",
+  "releases_url": "https://api.github.com/repos/feight/packages/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/feight/packages/deployments",
+  "created_at": "2020-02-12T10:06:27Z",
+  "updated_at": "2023-11-13T09:41:29Z",
+  "pushed_at": "2022-02-21T12:07:04Z",
+  "git_url": "git://github.com/feight/packages.git",
+  "ssh_url": "git@github.com:feight/packages.git",
+  "clone_url": "https://github.com/feight/packages.git",
+  "svn_url": "https://github.com/feight/packages",
+  "homepage": null,
+  "size": 1803,
+  "stargazers_count": 0,
+  "watchers_count": 0,
+  "language": "TypeScript",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 0,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 0,
+  "license": null,
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [],
+  "visibility": "public",
+  "forks": 0,
+  "open_issues": 0,
+  "watchers": 0,
+  "default_branch": "master",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "feight",
+   "id": 11542865,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjExNTQyODY1",
+   "avatar_url": "https://avatars.githubusercontent.com/u/11542865?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/feight",
+   "html_url": "https://github.com/feight",
+   "followers_url": "https://api.github.com/users/feight/followers",
+   "following_url": "https://api.github.com/users/feight/following{/other_user}",
+   "gists_url": "https://api.github.com/users/feight/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/feight/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/feight/subscriptions",
+   "organizations_url": "https://api.github.com/users/feight/orgs",
+   "repos_url": "https://api.github.com/users/feight/repos",
+   "events_url": "https://api.github.com/users/feight/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/feight/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 0,
+  "subscribers_count": 4
+ },
+ "funding": []
+}

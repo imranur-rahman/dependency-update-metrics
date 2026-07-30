@@ -1,0 +1,2227 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "@liqd-js/pdf"
+  },
+  "purl": "pkg:npm/%40liqd-js/pdf",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@liqd-js/pdf",
+     "version": "0.0.1"
+    },
+    "purl": "pkg:npm/%40liqd-js/pdf@0.0.1",
+    "publishedAt": "2022-05-05T08:38:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@liqd-js/pdf",
+     "version": "0.0.2"
+    },
+    "purl": "pkg:npm/%40liqd-js/pdf@0.0.2",
+    "publishedAt": "2022-05-05T08:51:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@liqd-js/pdf",
+     "version": "0.0.3"
+    },
+    "purl": "pkg:npm/%40liqd-js/pdf@0.0.3",
+    "publishedAt": "2022-05-11T08:17:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@liqd-js/pdf",
+     "version": "0.0.4"
+    },
+    "purl": "pkg:npm/%40liqd-js/pdf@0.0.4",
+    "publishedAt": "2022-05-11T09:45:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@liqd-js/pdf",
+     "version": "0.0.5"
+    },
+    "purl": "pkg:npm/%40liqd-js/pdf@0.0.5",
+    "publishedAt": "2022-05-11T09:50:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@liqd-js/pdf",
+     "version": "0.1.0"
+    },
+    "purl": "pkg:npm/%40liqd-js/pdf@0.1.0",
+    "publishedAt": "2022-05-30T08:52:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@liqd-js/pdf",
+     "version": "0.2.0"
+    },
+    "purl": "pkg:npm/%40liqd-js/pdf@0.2.0",
+    "publishedAt": "2023-11-06T09:08:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@liqd-js/pdf",
+     "version": "0.2.1"
+    },
+    "purl": "pkg:npm/%40liqd-js/pdf@0.2.1",
+    "publishedAt": "2023-11-06T09:27:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@liqd-js/pdf",
+     "version": "0.2.2"
+    },
+    "purl": "pkg:npm/%40liqd-js/pdf@0.2.2",
+    "publishedAt": "2023-11-07T12:14:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@liqd-js/pdf",
+     "version": "0.3.0-custom.1"
+    },
+    "purl": "pkg:npm/%40liqd-js/pdf@0.3.0-custom.1",
+    "publishedAt": "2024-06-25T07:11:15Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "NPM",
+   "name": "@liqd-js/pdf",
+   "version": "0.3.0-custom.1"
+  },
+  "purl": "pkg:npm/%40liqd-js/pdf@0.3.0-custom.1",
+  "publishedAt": "2024-06-25T07:11:15Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "MIT",
+    "spdx": "MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "HOMEPAGE",
+    "url": "https://liqd-js.com/lib/template"
+   },
+   {
+    "label": "ISSUE_TRACKER",
+    "url": "https://github.com/liqd-js/pdf/issues"
+   },
+   {
+    "label": "ORIGIN",
+    "url": "https://registry.npmjs.org/@liqd-js%2Fpdf/0.3.0-custom.1"
+   },
+   {
+    "label": "SOURCE_REPO",
+    "url": "git://github.com/liqd-js/pdf.git"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://registry.npmjs.org/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/liqd-js/pdf"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "ISSUE_TRACKER"
+   },
+   {
+    "projectKey": {
+     "id": "github.com/liqd-js/pdf"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "@liqd-js/pdf",
+    "versionString": "0.3.0-custom.1",
+    "source": "NPM_NPMJS_ORG"
+   }
+  ],
+  "cooldown": {
+   "end": "2024-07-10T07:11:15Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@liqd-js/pdf",
+     "version": "0.3.0-custom.1"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@liqd-js/alg-object-merge",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@liqd-js/fs",
+     "version": "0.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@liqd-js/i18n",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@liqd-js/options",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@liqd-js/parser",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@liqd-js/style",
+     "version": "1.2.6"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@liqd-js/template",
+     "version": "0.9.11"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@liqd-js/unique-id",
+     "version": "1.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@swc/helpers",
+     "version": "0.3.17"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "array-buffer-byte-length",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "async-function",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "async-generator-function",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "available-typed-arrays",
+     "version": "1.0.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "base64-js",
+     "version": "0.0.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "base64-js",
+     "version": "1.5.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "brotli",
+     "version": "1.3.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "browserify-zlib",
+     "version": "0.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "call-bind",
+     "version": "1.0.9"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "call-bind-apply-helpers",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "call-bound",
+     "version": "1.0.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "clone",
+     "version": "2.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "crypto-js",
+     "version": "4.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "deep-equal",
+     "version": "2.2.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "define-data-property",
+     "version": "1.1.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "define-properties",
+     "version": "1.2.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dfa",
+     "version": "1.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dunder-proto",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "es-define-property",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "es-errors",
+     "version": "1.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "es-get-iterator",
+     "version": "1.1.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "es-object-atoms",
+     "version": "1.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "fontkit",
+     "version": "1.9.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "for-each",
+     "version": "0.3.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "function-bind",
+     "version": "1.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "functions-have-names",
+     "version": "1.2.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "generator-function",
+     "version": "2.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "get-intrinsic",
+     "version": "1.3.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "get-proto",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "gopd",
+     "version": "1.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "has-bigints",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "has-property-descriptors",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "has-symbols",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "has-tostringtag",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "hasown",
+     "version": "2.0.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "internal-slot",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-arguments",
+     "version": "1.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-array-buffer",
+     "version": "3.0.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-bigint",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-boolean-object",
+     "version": "1.2.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-callable",
+     "version": "1.2.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-date-object",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-map",
+     "version": "2.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-number-object",
+     "version": "1.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-regex",
+     "version": "1.2.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-set",
+     "version": "2.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-shared-array-buffer",
+     "version": "1.0.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-string",
+     "version": "1.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-symbol",
+     "version": "1.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-weakmap",
+     "version": "2.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-weakset",
+     "version": "2.0.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "isarray",
+     "version": "2.0.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "linebreak",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "math-intrinsics",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "object-inspect",
+     "version": "1.13.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "object-is",
+     "version": "1.1.6"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "object-keys",
+     "version": "1.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "object.assign",
+     "version": "4.1.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "pako",
+     "version": "0.2.9"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "pako",
+     "version": "1.0.11"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "pdfkit",
+     "version": "0.13.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "png-js",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "possible-typed-array-names",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "regexp.prototype.flags",
+     "version": "1.5.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "restructure",
+     "version": "2.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "safe-regex-test",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "set-function-length",
+     "version": "1.2.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "set-function-name",
+     "version": "2.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "side-channel",
+     "version": "1.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "side-channel-list",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "side-channel-map",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "side-channel-weakmap",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "stop-iteration-iterator",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "svg-to-pdfkit",
+     "version": "0.1.8"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tiny-inflate",
+     "version": "1.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslib",
+     "version": "2.8.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "unicode-properties",
+     "version": "1.4.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "unicode-trie",
+     "version": "2.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "which-boxed-primitive",
+     "version": "1.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "which-collection",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "which-typed-array",
+     "version": "1.1.22"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 5,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 7,
+    "requirement": "^0.9.10"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 70,
+    "requirement": "^0.13.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 83,
+    "requirement": "^0.1.8"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 1,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 6,
+    "toNode": 5,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 2,
+    "requirement": "0.0.1"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 3,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 5,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 6,
+    "requirement": "^1.2.6"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 8,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 4,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 85,
+    "requirement": "^2.4.0"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 20,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 47,
+    "requirement": "^3.0.5"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 72,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 16,
+    "toNode": 15,
+    "requirement": "^1.1.2"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 69,
+    "requirement": "~1.0.5"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 19,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 28,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 37,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 76,
+    "requirement": "^1.2.2"
+   },
+   {
+    "fromNode": 19,
+    "toNode": 29,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 19,
+    "toNode": 34,
+    "requirement": "^1.1.2"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 19,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 37,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 10,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 18,
+    "requirement": "^1.0.5"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 30,
+    "requirement": "^1.1.3"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 37,
+    "requirement": "^1.2.2"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 46,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 47,
+    "requirement": "^3.0.2"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 51,
+    "requirement": "^1.0.5"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 54,
+    "requirement": "^1.1.4"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 56,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 61,
+    "requirement": "^2.0.5"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 65,
+    "requirement": "^1.1.5"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 66,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 67,
+    "requirement": "^4.1.4"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 73,
+    "requirement": "^1.5.1"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 78,
+    "requirement": "^1.0.4"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 88,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 89,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 90,
+    "requirement": "^1.1.13"
+   },
+   {
+    "fromNode": 24,
+    "toNode": 28,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 24,
+    "toNode": 29,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 24,
+    "toNode": 39,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 25,
+    "toNode": 24,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 25,
+    "toNode": 41,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 25,
+    "toNode": 66,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 27,
+    "toNode": 19,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 27,
+    "toNode": 29,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 27,
+    "toNode": 39,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 18,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 37,
+    "requirement": "^1.1.3"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 42,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 46,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 52,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 55,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 57,
+    "requirement": "^1.0.7"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 61,
+    "requirement": "^2.0.5"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 82,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 29,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 9,
+    "requirement": "^0.3.13"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 16,
+    "requirement": "^1.3.2"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 21,
+    "requirement": "^2.1.2"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 23,
+    "requirement": "^2.0.5"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 26,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 74,
+    "requirement": "^2.0.1"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 84,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 86,
+    "requirement": "^1.3.1"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 87,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 33,
+    "toNode": 50,
+    "requirement": "^1.2.7"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 11,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 12,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 19,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 28,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 29,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 31,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 34,
+    "requirement": "^1.1.2"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 36,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 38,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 39,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 42,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 44,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 63,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 27,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 31,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 41,
+    "toNode": 28,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 43,
+    "toNode": 42,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 44,
+    "toNode": 34,
+    "requirement": "^1.1.2"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 29,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 44,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 78,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 46,
+    "toNode": 20,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 46,
+    "toNode": 43,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 47,
+    "toNode": 18,
+    "requirement": "^1.0.8"
+   },
+   {
+    "fromNode": 47,
+    "toNode": 20,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 47,
+    "toNode": 37,
+    "requirement": "^1.2.6"
+   },
+   {
+    "fromNode": 48,
+    "toNode": 40,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 49,
+    "toNode": 20,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 49,
+    "toNode": 43,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 51,
+    "toNode": 20,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 51,
+    "toNode": 43,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 53,
+    "toNode": 20,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 53,
+    "toNode": 43,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 54,
+    "toNode": 20,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 54,
+    "toNode": 39,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 54,
+    "toNode": 43,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 54,
+    "toNode": 44,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 56,
+    "toNode": 20,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 57,
+    "toNode": 20,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 57,
+    "toNode": 43,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 58,
+    "toNode": 20,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 58,
+    "toNode": 42,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 58,
+    "toNode": 75,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 20,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 60,
+    "toNode": 37,
+    "requirement": "^1.2.6"
+   },
+   {
+    "fromNode": 62,
+    "toNode": 14,
+    "requirement": "0.0.8"
+   },
+   {
+    "fromNode": 62,
+    "toNode": 87,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 65,
+    "toNode": 18,
+    "requirement": "^1.0.7"
+   },
+   {
+    "fromNode": 65,
+    "toNode": 25,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 67,
+    "toNode": 18,
+    "requirement": "^1.0.8"
+   },
+   {
+    "fromNode": 67,
+    "toNode": 20,
+    "requirement": "^1.0.3"
+   },
+   {
+    "fromNode": 67,
+    "toNode": 25,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 67,
+    "toNode": 31,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 67,
+    "toNode": 42,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 67,
+    "toNode": 66,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 70,
+    "toNode": 22,
+    "requirement": "^4.0.0"
+   },
+   {
+    "fromNode": 70,
+    "toNode": 32,
+    "requirement": "^1.8.1"
+   },
+   {
+    "fromNode": 70,
+    "toNode": 62,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 70,
+    "toNode": 71,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 71,
+    "toNode": 17,
+    "requirement": "^0.2.0"
+   },
+   {
+    "fromNode": 73,
+    "toNode": 18,
+    "requirement": "^1.0.8"
+   },
+   {
+    "fromNode": 73,
+    "toNode": 25,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 73,
+    "toNode": 29,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 73,
+    "toNode": 38,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 73,
+    "toNode": 39,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 73,
+    "toNode": 77,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 75,
+    "toNode": 20,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 75,
+    "toNode": 29,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 75,
+    "toNode": 54,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 76,
+    "toNode": 24,
+    "requirement": "^1.1.4"
+   },
+   {
+    "fromNode": 76,
+    "toNode": 29,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 76,
+    "toNode": 34,
+    "requirement": "^1.1.2"
+   },
+   {
+    "fromNode": 76,
+    "toNode": 37,
+    "requirement": "^1.2.4"
+   },
+   {
+    "fromNode": 76,
+    "toNode": 39,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 76,
+    "toNode": 41,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 77,
+    "toNode": 24,
+    "requirement": "^1.1.4"
+   },
+   {
+    "fromNode": 77,
+    "toNode": 29,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 77,
+    "toNode": 35,
+    "requirement": "^1.2.3"
+   },
+   {
+    "fromNode": 77,
+    "toNode": 41,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 78,
+    "toNode": 29,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 78,
+    "toNode": 64,
+    "requirement": "^1.13.4"
+   },
+   {
+    "fromNode": 78,
+    "toNode": 79,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 78,
+    "toNode": 80,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 78,
+    "toNode": 81,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 79,
+    "toNode": 29,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 79,
+    "toNode": 64,
+    "requirement": "^1.13.4"
+   },
+   {
+    "fromNode": 80,
+    "toNode": 20,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 80,
+    "toNode": 29,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 80,
+    "toNode": 37,
+    "requirement": "^1.2.5"
+   },
+   {
+    "fromNode": 80,
+    "toNode": 64,
+    "requirement": "^1.13.3"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 20,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 29,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 37,
+    "requirement": "^1.2.5"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 64,
+    "requirement": "^1.13.3"
+   },
+   {
+    "fromNode": 81,
+    "toNode": 80,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 82,
+    "toNode": 29,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 82,
+    "toNode": 45,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 83,
+    "toNode": 70,
+    "requirement": ">=0.8.1"
+   },
+   {
+    "fromNode": 86,
+    "toNode": 15,
+    "requirement": "^1.3.0"
+   },
+   {
+    "fromNode": 86,
+    "toNode": 87,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 87,
+    "toNode": 68,
+    "requirement": "^0.2.5"
+   },
+   {
+    "fromNode": 87,
+    "toNode": 84,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 88,
+    "toNode": 48,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 88,
+    "toNode": 49,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 88,
+    "toNode": 53,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 88,
+    "toNode": 57,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 88,
+    "toNode": 58,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 89,
+    "toNode": 52,
+    "requirement": "^2.0.3"
+   },
+   {
+    "fromNode": 89,
+    "toNode": 55,
+    "requirement": "^2.0.3"
+   },
+   {
+    "fromNode": 89,
+    "toNode": 59,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 89,
+    "toNode": 60,
+    "requirement": "^2.0.3"
+   },
+   {
+    "fromNode": 90,
+    "toNode": 13,
+    "requirement": "^1.0.7"
+   },
+   {
+    "fromNode": 90,
+    "toNode": 18,
+    "requirement": "^1.0.9"
+   },
+   {
+    "fromNode": 90,
+    "toNode": 20,
+    "requirement": "^1.0.4"
+   },
+   {
+    "fromNode": 90,
+    "toNode": 33,
+    "requirement": "^0.3.5"
+   },
+   {
+    "fromNode": 90,
+    "toNode": 38,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 90,
+    "toNode": 39,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 90,
+    "toNode": 43,
+    "requirement": "^1.0.2"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/liqd-js/pdf"
+  },
+  "openIssuesCount": 0,
+  "starsCount": 0,
+  "forksCount": 0,
+  "license": "",
+  "description": "",
+  "homepage": ""
+ },
+ "github_repo_api": {
+  "id": 339651310,
+  "node_id": "MDEwOlJlcG9zaXRvcnkzMzk2NTEzMTA=",
+  "name": "pdf",
+  "full_name": "liqd-js/pdf",
+  "private": false,
+  "owner": {
+   "login": "liqd-js",
+   "id": 58682401,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjU4NjgyNDAx",
+   "avatar_url": "https://avatars.githubusercontent.com/u/58682401?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/liqd-js",
+   "html_url": "https://github.com/liqd-js",
+   "followers_url": "https://api.github.com/users/liqd-js/followers",
+   "following_url": "https://api.github.com/users/liqd-js/following{/other_user}",
+   "gists_url": "https://api.github.com/users/liqd-js/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/liqd-js/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/liqd-js/subscriptions",
+   "organizations_url": "https://api.github.com/users/liqd-js/orgs",
+   "repos_url": "https://api.github.com/users/liqd-js/repos",
+   "events_url": "https://api.github.com/users/liqd-js/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/liqd-js/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/liqd-js/pdf",
+  "description": null,
+  "fork": false,
+  "url": "https://api.github.com/repos/liqd-js/pdf",
+  "forks_url": "https://api.github.com/repos/liqd-js/pdf/forks",
+  "keys_url": "https://api.github.com/repos/liqd-js/pdf/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/liqd-js/pdf/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/liqd-js/pdf/teams",
+  "hooks_url": "https://api.github.com/repos/liqd-js/pdf/hooks",
+  "issue_events_url": "https://api.github.com/repos/liqd-js/pdf/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/liqd-js/pdf/events",
+  "assignees_url": "https://api.github.com/repos/liqd-js/pdf/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/liqd-js/pdf/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/liqd-js/pdf/tags",
+  "blobs_url": "https://api.github.com/repos/liqd-js/pdf/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/liqd-js/pdf/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/liqd-js/pdf/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/liqd-js/pdf/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/liqd-js/pdf/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/liqd-js/pdf/languages",
+  "stargazers_url": "https://api.github.com/repos/liqd-js/pdf/stargazers",
+  "contributors_url": "https://api.github.com/repos/liqd-js/pdf/contributors",
+  "subscribers_url": "https://api.github.com/repos/liqd-js/pdf/subscribers",
+  "subscription_url": "https://api.github.com/repos/liqd-js/pdf/subscription",
+  "commits_url": "https://api.github.com/repos/liqd-js/pdf/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/liqd-js/pdf/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/liqd-js/pdf/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/liqd-js/pdf/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/liqd-js/pdf/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/liqd-js/pdf/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/liqd-js/pdf/merges",
+  "archive_url": "https://api.github.com/repos/liqd-js/pdf/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/liqd-js/pdf/downloads",
+  "issues_url": "https://api.github.com/repos/liqd-js/pdf/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/liqd-js/pdf/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/liqd-js/pdf/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/liqd-js/pdf/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/liqd-js/pdf/labels{/name}",
+  "releases_url": "https://api.github.com/repos/liqd-js/pdf/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/liqd-js/pdf/deployments",
+  "created_at": "2021-02-17T08:04:55Z",
+  "updated_at": "2023-11-15T11:31:49Z",
+  "pushed_at": "2025-08-28T13:29:03Z",
+  "git_url": "git://github.com/liqd-js/pdf.git",
+  "ssh_url": "git@github.com:liqd-js/pdf.git",
+  "clone_url": "https://github.com/liqd-js/pdf.git",
+  "svn_url": "https://github.com/liqd-js/pdf",
+  "homepage": null,
+  "size": 2286,
+  "stargazers_count": 0,
+  "watchers_count": 0,
+  "language": "HTML",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 0,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 0,
+  "license": null,
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [],
+  "visibility": "public",
+  "forks": 0,
+  "open_issues": 0,
+  "watchers": 0,
+  "default_branch": "main",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "liqd-js",
+   "id": 58682401,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjU4NjgyNDAx",
+   "avatar_url": "https://avatars.githubusercontent.com/u/58682401?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/liqd-js",
+   "html_url": "https://github.com/liqd-js",
+   "followers_url": "https://api.github.com/users/liqd-js/followers",
+   "following_url": "https://api.github.com/users/liqd-js/following{/other_user}",
+   "gists_url": "https://api.github.com/users/liqd-js/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/liqd-js/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/liqd-js/subscriptions",
+   "organizations_url": "https://api.github.com/users/liqd-js/orgs",
+   "repos_url": "https://api.github.com/users/liqd-js/repos",
+   "events_url": "https://api.github.com/users/liqd-js/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/liqd-js/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 0,
+  "subscribers_count": 1
+ },
+ "funding": []
+}

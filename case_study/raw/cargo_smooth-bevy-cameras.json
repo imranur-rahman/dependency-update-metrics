@@ -1,0 +1,373 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "CARGO",
+   "name": "smooth-bevy-cameras"
+  },
+  "purl": "pkg:cargo/smooth-bevy-cameras",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "smooth-bevy-cameras",
+     "version": "0.1.0"
+    },
+    "purl": "pkg:cargo/smooth-bevy-cameras@0.1.0",
+    "publishedAt": "2022-01-06T06:56:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "smooth-bevy-cameras",
+     "version": "0.10.0"
+    },
+    "purl": "pkg:cargo/smooth-bevy-cameras@0.10.0",
+    "publishedAt": "2023-11-04T22:30:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "smooth-bevy-cameras",
+     "version": "0.11.0"
+    },
+    "purl": "pkg:cargo/smooth-bevy-cameras@0.11.0",
+    "publishedAt": "2024-02-19T21:49:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "smooth-bevy-cameras",
+     "version": "0.12.0"
+    },
+    "purl": "pkg:cargo/smooth-bevy-cameras@0.12.0",
+    "publishedAt": "2024-07-10T09:08:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "smooth-bevy-cameras",
+     "version": "0.13.0"
+    },
+    "purl": "pkg:cargo/smooth-bevy-cameras@0.13.0",
+    "publishedAt": "2024-12-02T01:08:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "smooth-bevy-cameras",
+     "version": "0.14.0"
+    },
+    "purl": "pkg:cargo/smooth-bevy-cameras@0.14.0",
+    "publishedAt": "2025-05-03T16:06:44Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "smooth-bevy-cameras",
+     "version": "0.2.0"
+    },
+    "purl": "pkg:cargo/smooth-bevy-cameras@0.2.0",
+    "publishedAt": "2022-01-10T19:03:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "smooth-bevy-cameras",
+     "version": "0.3.0"
+    },
+    "purl": "pkg:cargo/smooth-bevy-cameras@0.3.0",
+    "publishedAt": "2022-04-16T15:37:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "smooth-bevy-cameras",
+     "version": "0.4.0"
+    },
+    "purl": "pkg:cargo/smooth-bevy-cameras@0.4.0",
+    "publishedAt": "2022-04-17T23:17:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "smooth-bevy-cameras",
+     "version": "0.5.0"
+    },
+    "purl": "pkg:cargo/smooth-bevy-cameras@0.5.0",
+    "publishedAt": "2022-09-08T19:05:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "smooth-bevy-cameras",
+     "version": "0.6.0"
+    },
+    "purl": "pkg:cargo/smooth-bevy-cameras@0.6.0",
+    "publishedAt": "2022-11-24T05:31:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "smooth-bevy-cameras",
+     "version": "0.7.0"
+    },
+    "purl": "pkg:cargo/smooth-bevy-cameras@0.7.0",
+    "publishedAt": "2023-01-25T23:06:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "smooth-bevy-cameras",
+     "version": "0.8.0"
+    },
+    "purl": "pkg:cargo/smooth-bevy-cameras@0.8.0",
+    "publishedAt": "2023-03-11T10:05:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "smooth-bevy-cameras",
+     "version": "0.9.0"
+    },
+    "purl": "pkg:cargo/smooth-bevy-cameras@0.9.0",
+    "publishedAt": "2023-08-04T00:07:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "CARGO",
+   "name": "smooth-bevy-cameras",
+   "version": "0.14.0"
+  },
+  "purl": "pkg:cargo/smooth-bevy-cameras@0.14.0",
+  "publishedAt": "2025-05-03T16:06:44Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "MIT",
+    "spdx": "MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/bonsairobo/smooth-bevy-cameras"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://crates.io/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/bonsairobo/smooth-bevy-cameras"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "smooth-bevy-cameras",
+    "versionString": "0.14.0",
+    "source": "CARGO_CRATES_IO"
+   }
+  ],
+  "cooldown": {
+   "end": "2025-05-13T16:06:44Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [],
+  "edges": [],
+  "error": "bevy_platform/^0.16.0: no candidates found"
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/bonsairobo/smooth-bevy-cameras"
+  },
+  "openIssuesCount": 8,
+  "starsCount": 317,
+  "forksCount": 64,
+  "license": "MIT",
+  "description": "Bevy camera controllers with buttery, exponential smoothing.",
+  "homepage": ""
+ },
+ "github_repo_api": {
+  "id": 375913453,
+  "node_id": "MDEwOlJlcG9zaXRvcnkzNzU5MTM0NTM=",
+  "name": "smooth-bevy-cameras",
+  "full_name": "bonsairobo/smooth-bevy-cameras",
+  "private": false,
+  "owner": {
+   "login": "bonsairobo",
+   "id": 3229981,
+   "node_id": "MDQ6VXNlcjMyMjk5ODE=",
+   "avatar_url": "https://avatars.githubusercontent.com/u/3229981?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/bonsairobo",
+   "html_url": "https://github.com/bonsairobo",
+   "followers_url": "https://api.github.com/users/bonsairobo/followers",
+   "following_url": "https://api.github.com/users/bonsairobo/following{/other_user}",
+   "gists_url": "https://api.github.com/users/bonsairobo/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/bonsairobo/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/bonsairobo/subscriptions",
+   "organizations_url": "https://api.github.com/users/bonsairobo/orgs",
+   "repos_url": "https://api.github.com/users/bonsairobo/repos",
+   "events_url": "https://api.github.com/users/bonsairobo/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/bonsairobo/received_events",
+   "type": "User",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/bonsairobo/smooth-bevy-cameras",
+  "description": "Bevy camera controllers with buttery, exponential smoothing.",
+  "fork": false,
+  "url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras",
+  "forks_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/forks",
+  "keys_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/teams",
+  "hooks_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/hooks",
+  "issue_events_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/events",
+  "assignees_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/tags",
+  "blobs_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/languages",
+  "stargazers_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/stargazers",
+  "contributors_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/contributors",
+  "subscribers_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/subscribers",
+  "subscription_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/subscription",
+  "commits_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/merges",
+  "archive_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/downloads",
+  "issues_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/labels{/name}",
+  "releases_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/bonsairobo/smooth-bevy-cameras/deployments",
+  "created_at": "2021-06-11T05:21:59Z",
+  "updated_at": "2026-05-28T23:00:59Z",
+  "pushed_at": "2026-02-02T19:23:10Z",
+  "git_url": "git://github.com/bonsairobo/smooth-bevy-cameras.git",
+  "ssh_url": "git@github.com:bonsairobo/smooth-bevy-cameras.git",
+  "clone_url": "https://github.com/bonsairobo/smooth-bevy-cameras.git",
+  "svn_url": "https://github.com/bonsairobo/smooth-bevy-cameras",
+  "homepage": null,
+  "size": 106,
+  "stargazers_count": 317,
+  "watchers_count": 317,
+  "language": "Rust",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 64,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 8,
+  "license": {
+   "key": "mit",
+   "name": "MIT License",
+   "spdx_id": "MIT",
+   "url": "https://api.github.com/licenses/mit",
+   "node_id": "MDc6TGljZW5zZTEz"
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [],
+  "visibility": "public",
+  "forks": 64,
+  "open_issues": 8,
+  "watchers": 317,
+  "default_branch": "main",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "network_count": 64,
+  "subscribers_count": 2
+ },
+ "funding": []
+}

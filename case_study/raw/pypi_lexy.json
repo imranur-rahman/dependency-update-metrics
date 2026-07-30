@@ -1,0 +1,575 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "PYPI",
+   "name": "lexy"
+  },
+  "purl": "pkg:pypi/lexy",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "lexy",
+     "version": "0.0.2"
+    },
+    "purl": "pkg:pypi/lexy@0.0.2",
+    "publishedAt": "2024-06-19T18:14:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "lexy",
+     "version": "0.0.3"
+    },
+    "purl": "pkg:pypi/lexy@0.0.3",
+    "publishedAt": "2024-07-06T03:00:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "lexy",
+     "version": "0.1.0"
+    },
+    "purl": "pkg:pypi/lexy@0.1.0",
+    "publishedAt": "2022-01-16T13:38:45Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "PYPI",
+   "name": "lexy",
+   "version": "0.1.0"
+  },
+  "purl": "pkg:pypi/lexy@0.1.0",
+  "publishedAt": "2022-01-16T13:38:45Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "MIT",
+    "spdx": "MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/aminekaabachi/lexy"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://pypi.org/simple"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/aminekaabachi/lexy"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "lexy",
+    "versionString": "0.1.0",
+    "source": "PYPI_RELEASE_FILENAME"
+   },
+   {
+    "packageName": "lexy",
+    "versionString": "0.1.0",
+    "source": "PYPI_METADATA_FILE"
+   }
+  ],
+  "cooldown": {
+   "end": "2022-01-21T13:38:45Z",
+   "description": ""
+  },
+  "projectStatus": {
+   "status": "active",
+   "reason": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "lexy",
+     "version": "0.1.0"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "attrs",
+     "version": "26.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cattrs",
+     "version": "1.10.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "numpy",
+     "version": "2.5.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pandas",
+     "version": "1.5.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "python-dateutil",
+     "version": "2.9.0.post0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pytz",
+     "version": "2026.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "six",
+     "version": "1.17.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "spacy",
+     "version": "3.8.14"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 2,
+    "requirement": ">=1.10.0,<2.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 4,
+    "requirement": ">=1.3.5,<2.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 8,
+    "requirement": ">=3.2.1,<4.0.0"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 1,
+    "requirement": ">=20"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 3,
+    "requirement": ">=1.21.0"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 5,
+    "requirement": ">=2.8.1"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 6,
+    "requirement": ">=2020.1"
+   },
+   {
+    "fromNode": 5,
+    "toNode": 7,
+    "requirement": ">=1.5"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/aminekaabachi/lexy"
+  },
+  "openIssuesCount": 0,
+  "starsCount": 2,
+  "forksCount": 0,
+  "license": "MIT",
+  "description": "\ud83d\udcd9 Lexy enables you to easily build and share data dictionaries to explain and document your data terminology using code.",
+  "homepage": "",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/aminekaabachi/lexy",
+    "commit": "fdee8a7e97f518ee1eee072ff96b56b6f0e14702"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected",
+     "details": []
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 0,
+     "reason": "0 commit(s) and 0 issue activity found in the last 90 days -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": 0,
+     "reason": "detected GitHub workflow tokens with excessive permissions",
+     "details": [
+      "Warn: no topLevel permission defined: .github/workflows/test.yml:1",
+      "Info: no jobLevel write permissions found"
+     ]
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "no SAST tool detected",
+     "details": [
+      "Warn: no pull requests merged into dev branch"
+     ]
+    },
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 0,
+     "reason": "Found 0/26 approved changesets -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 8,
+     "reason": "binaries present in source code",
+     "details": [
+      "Warn: binary detected: models/spaCy/en_core_web_md-3.2.0-py3-none-any.whl:1",
+      "Warn: binary detected: models/spaCy/en_core_web_sm-3.2.0-py3-none-any.whl:1"
+     ]
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 0,
+     "reason": "security policy file not detected",
+     "details": [
+      "Warn: no security policy file detected",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze"
+     ]
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": 0,
+     "reason": "dependency not pinned by hash detected -- score normalized to 0",
+     "details": [
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/test.yml:12: update your workflow using https://app.stepsecurity.io/secureworkflow/aminekaabachi/lexy/test.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/test.yml:14: update your workflow using https://app.stepsecurity.io/secureworkflow/aminekaabachi/lexy/test.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/test.yml:18: update your workflow using https://app.stepsecurity.io/secureworkflow/aminekaabachi/lexy/test.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/test.yml:34: update your workflow using https://app.stepsecurity.io/secureworkflow/aminekaabachi/lexy/test.yml/main?enable=pin",
+      "Warn: pipCommand not pinned by hash: .github/workflows/test.yml:26",
+      "Info:   0 out of   3 GitHub-owned GitHubAction dependencies pinned",
+      "Info:   0 out of   1 third-party GitHubAction dependencies pinned",
+      "Info:   0 out of   1 pipCommand dependencies pinned"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 10,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE:0",
+      "Info: FSF or OSI recognized license: MIT License: LICENSE:0"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": 0,
+     "reason": "branch protection not enabled on development/release branches",
+     "details": [
+      "Warn: branch protection not enabled for branch 'main'"
+     ]
+    }
+   ],
+   "overallScore": 2.6,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 446992503,
+  "node_id": "R_kgDOGqSQdw",
+  "name": "lexy",
+  "full_name": "aminekaabachi/lexy",
+  "private": false,
+  "owner": {
+   "login": "aminekaabachi",
+   "id": 1732576,
+   "node_id": "MDQ6VXNlcjE3MzI1NzY=",
+   "avatar_url": "https://avatars.githubusercontent.com/u/1732576?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/aminekaabachi",
+   "html_url": "https://github.com/aminekaabachi",
+   "followers_url": "https://api.github.com/users/aminekaabachi/followers",
+   "following_url": "https://api.github.com/users/aminekaabachi/following{/other_user}",
+   "gists_url": "https://api.github.com/users/aminekaabachi/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/aminekaabachi/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/aminekaabachi/subscriptions",
+   "organizations_url": "https://api.github.com/users/aminekaabachi/orgs",
+   "repos_url": "https://api.github.com/users/aminekaabachi/repos",
+   "events_url": "https://api.github.com/users/aminekaabachi/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/aminekaabachi/received_events",
+   "type": "User",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/aminekaabachi/lexy",
+  "description": "\ud83d\udcd9 Lexy enables you to easily build and share data dictionaries to explain and document your data terminology using code.",
+  "fork": false,
+  "url": "https://api.github.com/repos/aminekaabachi/lexy",
+  "forks_url": "https://api.github.com/repos/aminekaabachi/lexy/forks",
+  "keys_url": "https://api.github.com/repos/aminekaabachi/lexy/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/aminekaabachi/lexy/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/aminekaabachi/lexy/teams",
+  "hooks_url": "https://api.github.com/repos/aminekaabachi/lexy/hooks",
+  "issue_events_url": "https://api.github.com/repos/aminekaabachi/lexy/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/aminekaabachi/lexy/events",
+  "assignees_url": "https://api.github.com/repos/aminekaabachi/lexy/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/aminekaabachi/lexy/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/aminekaabachi/lexy/tags",
+  "blobs_url": "https://api.github.com/repos/aminekaabachi/lexy/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/aminekaabachi/lexy/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/aminekaabachi/lexy/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/aminekaabachi/lexy/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/aminekaabachi/lexy/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/aminekaabachi/lexy/languages",
+  "stargazers_url": "https://api.github.com/repos/aminekaabachi/lexy/stargazers",
+  "contributors_url": "https://api.github.com/repos/aminekaabachi/lexy/contributors",
+  "subscribers_url": "https://api.github.com/repos/aminekaabachi/lexy/subscribers",
+  "subscription_url": "https://api.github.com/repos/aminekaabachi/lexy/subscription",
+  "commits_url": "https://api.github.com/repos/aminekaabachi/lexy/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/aminekaabachi/lexy/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/aminekaabachi/lexy/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/aminekaabachi/lexy/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/aminekaabachi/lexy/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/aminekaabachi/lexy/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/aminekaabachi/lexy/merges",
+  "archive_url": "https://api.github.com/repos/aminekaabachi/lexy/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/aminekaabachi/lexy/downloads",
+  "issues_url": "https://api.github.com/repos/aminekaabachi/lexy/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/aminekaabachi/lexy/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/aminekaabachi/lexy/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/aminekaabachi/lexy/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/aminekaabachi/lexy/labels{/name}",
+  "releases_url": "https://api.github.com/repos/aminekaabachi/lexy/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/aminekaabachi/lexy/deployments",
+  "created_at": "2022-01-11T21:53:33Z",
+  "updated_at": "2025-08-08T23:57:43Z",
+  "pushed_at": "2022-01-17T01:23:26Z",
+  "git_url": "git://github.com/aminekaabachi/lexy.git",
+  "ssh_url": "git@github.com:aminekaabachi/lexy.git",
+  "clone_url": "https://github.com/aminekaabachi/lexy.git",
+  "svn_url": "https://github.com/aminekaabachi/lexy",
+  "homepage": "",
+  "size": 58441,
+  "stargazers_count": 2,
+  "watchers_count": 2,
+  "language": "Python",
+  "has_issues": true,
+  "has_projects": false,
+  "has_downloads": false,
+  "has_wiki": false,
+  "has_pages": false,
+  "has_discussions": true,
+  "forks_count": 0,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 0,
+  "license": {
+   "key": "mit",
+   "name": "MIT License",
+   "spdx_id": "MIT",
+   "url": "https://api.github.com/licenses/mit",
+   "node_id": "MDc6TGljZW5zZTEz"
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [
+   "data-catalog",
+   "data-dictionaries",
+   "data-dictionary",
+   "documentation",
+   "pandas",
+   "pyspark"
+  ],
+  "visibility": "public",
+  "forks": 0,
+  "open_issues": 0,
+  "watchers": 2,
+  "default_branch": "main",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "network_count": 0,
+  "subscribers_count": 1
+ },
+ "funding": []
+}

@@ -1,0 +1,1494 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "CARGO",
+   "name": "sha256"
+  },
+  "purl": "pkg:cargo/sha256",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "sha256",
+     "version": "0.1.0"
+    },
+    "purl": "pkg:cargo/sha256@0.1.0",
+    "publishedAt": "2018-03-20T11:13:25Z",
+    "isDefault": false,
+    "isDeprecated": true,
+    "deprecatedReason": "yanked"
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "sha256",
+     "version": "1.0.0"
+    },
+    "purl": "pkg:cargo/sha256@1.0.0",
+    "publishedAt": "2021-01-31T17:11:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "sha256",
+     "version": "1.0.1"
+    },
+    "purl": "pkg:cargo/sha256@1.0.1",
+    "publishedAt": "2021-04-12T09:57:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "sha256",
+     "version": "1.0.2"
+    },
+    "purl": "pkg:cargo/sha256@1.0.2",
+    "publishedAt": "2021-04-12T14:59:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "sha256",
+     "version": "1.0.3"
+    },
+    "purl": "pkg:cargo/sha256@1.0.3",
+    "publishedAt": "2021-11-01T06:17:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "sha256",
+     "version": "1.1.0"
+    },
+    "purl": "pkg:cargo/sha256@1.1.0",
+    "publishedAt": "2022-10-15T14:22:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "sha256",
+     "version": "1.1.1"
+    },
+    "purl": "pkg:cargo/sha256@1.1.1",
+    "publishedAt": "2022-10-17T03:41:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "sha256",
+     "version": "1.1.2"
+    },
+    "purl": "pkg:cargo/sha256@1.1.2",
+    "publishedAt": "2023-02-10T06:56:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "sha256",
+     "version": "1.1.3"
+    },
+    "purl": "pkg:cargo/sha256@1.1.3",
+    "publishedAt": "2023-04-19T07:37:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "sha256",
+     "version": "1.1.4"
+    },
+    "purl": "pkg:cargo/sha256@1.1.4",
+    "publishedAt": "2023-06-10T03:23:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "sha256",
+     "version": "1.1.5"
+    },
+    "purl": "pkg:cargo/sha256@1.1.5",
+    "publishedAt": "2023-07-14T06:09:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "sha256",
+     "version": "1.2.0"
+    },
+    "purl": "pkg:cargo/sha256@1.2.0",
+    "publishedAt": "2023-07-15T08:52:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "sha256",
+     "version": "1.2.1"
+    },
+    "purl": "pkg:cargo/sha256@1.2.1",
+    "publishedAt": "2023-07-18T13:45:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "sha256",
+     "version": "1.2.2"
+    },
+    "purl": "pkg:cargo/sha256@1.2.2",
+    "publishedAt": "2023-07-20T02:09:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "sha256",
+     "version": "1.3.0"
+    },
+    "purl": "pkg:cargo/sha256@1.3.0",
+    "publishedAt": "2023-08-03T03:19:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "sha256",
+     "version": "1.4.0"
+    },
+    "purl": "pkg:cargo/sha256@1.4.0",
+    "publishedAt": "2023-08-22T15:28:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "sha256",
+     "version": "1.5.0"
+    },
+    "purl": "pkg:cargo/sha256@1.5.0",
+    "publishedAt": "2024-01-03T16:49:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "sha256",
+     "version": "1.6.0"
+    },
+    "purl": "pkg:cargo/sha256@1.6.0",
+    "publishedAt": "2025-03-02T15:28:42Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "CARGO",
+   "name": "sha256",
+   "version": "1.6.0"
+  },
+  "purl": "pkg:cargo/sha256@1.6.0",
+  "publishedAt": "2025-03-02T15:28:42Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "Apache-2.0 OR MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "Apache-2.0 OR MIT",
+    "spdx": "Apache-2.0 OR MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/baoyachi/sha256-rs"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://crates.io/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/baoyachi/sha256-rs"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "sha256",
+    "versionString": "1.6.0",
+    "source": "CARGO_CRATES_IO"
+   }
+  ],
+  "cooldown": {
+   "end": "2025-03-12T15:28:42Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "sha256",
+     "version": "1.6.0"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "async-trait",
+     "version": "0.1.89"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "bitflags",
+     "version": "2.13.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "block-buffer",
+     "version": "0.10.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "bytes",
+     "version": "1.12.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "cc",
+     "version": "1.2.66"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "cfg-if",
+     "version": "1.0.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "cpufeatures",
+     "version": "0.2.17"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crypto-common",
+     "version": "0.1.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "digest",
+     "version": "0.10.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "errno",
+     "version": "0.3.14"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "find-msvc-tools",
+     "version": "0.1.9"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "foreign-types",
+     "version": "0.3.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "foreign-types-shared",
+     "version": "0.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "futures-core",
+     "version": "0.3.32"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "generic-array",
+     "version": "0.14.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "hex",
+     "version": "0.4.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "libc",
+     "version": "0.2.186"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "lock_api",
+     "version": "0.4.14"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "mio",
+     "version": "1.2.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "openssl",
+     "version": "0.10.81"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "openssl-macros",
+     "version": "0.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "openssl-sys",
+     "version": "0.9.117"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "parking_lot",
+     "version": "0.12.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "parking_lot_core",
+     "version": "0.9.12"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "pin-project-lite",
+     "version": "0.2.17"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "pkg-config",
+     "version": "0.3.33"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "proc-macro2",
+     "version": "1.0.106"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "quote",
+     "version": "1.0.46"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "redox_syscall",
+     "version": "0.5.18"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "scopeguard",
+     "version": "1.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "sha2",
+     "version": "0.10.9"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "shlex",
+     "version": "2.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "signal-hook-registry",
+     "version": "1.4.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "smallvec",
+     "version": "1.15.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "socket2",
+     "version": "0.6.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "syn",
+     "version": "2.0.56"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "tokio",
+     "version": "1.52.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "tokio-macros",
+     "version": "2.7.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "tokio-stream",
+     "version": "0.1.18"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "tokio-test",
+     "version": "0.4.5"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "typenum",
+     "version": "1.20.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "unicode-ident",
+     "version": "1.0.24"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "vcpkg",
+     "version": "0.2.15"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "version_check",
+     "version": "0.9.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "wasi",
+     "version": "0.11.1+wasi-snapshot-preview1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "windows-link",
+     "version": "0.2.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "windows-sys",
+     "version": "0.61.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 1,
+    "requirement": "^0.1.68"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 4,
+    "requirement": "^1.4.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 16,
+    "requirement": "^0.4.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 20,
+    "requirement": "^0.10.54"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 31,
+    "requirement": "^0.10.6"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 37,
+    "requirement": "^1.28.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 37,
+    "requirement": "^1.28.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 40,
+    "requirement": "^0.4.2"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 27,
+    "requirement": "^1.0.74"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 28,
+    "requirement": "^1.0.35"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 36,
+    "requirement": "^2.0.46"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 15,
+    "requirement": "^0.14"
+   },
+   {
+    "fromNode": 5,
+    "toNode": 11,
+    "requirement": "^0.1.9"
+   },
+   {
+    "fromNode": 5,
+    "toNode": 32,
+    "requirement": "^2.0.1"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 17,
+    "requirement": "^0.2.155"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 15,
+    "requirement": "=0.14.7"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 41,
+    "requirement": "^1.14"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 3,
+    "requirement": "^0.10"
+   },
+   {
+    "fromNode": 9,
+    "toNode": 8,
+    "requirement": "^0.1.3"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 17,
+    "requirement": "^0.2"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 47,
+    "requirement": ">=0.52, <0.62"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 13,
+    "requirement": "^0.1"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 41,
+    "requirement": "^1.12"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 44,
+    "requirement": "^0.9"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 30,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 19,
+    "toNode": 17,
+    "requirement": "^0.2.183"
+   },
+   {
+    "fromNode": 19,
+    "toNode": 45,
+    "requirement": "^0.11.0"
+   },
+   {
+    "fromNode": 19,
+    "toNode": 47,
+    "requirement": "^0.61"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 2,
+    "requirement": "^2.2.1"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 6,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 12,
+    "requirement": "^0.3.1"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 17,
+    "requirement": "^0.2"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 21,
+    "requirement": "^0.1.1"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 22,
+    "requirement": "^0.9.117"
+   },
+   {
+    "fromNode": 21,
+    "toNode": 27,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 21,
+    "toNode": 28,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 21,
+    "toNode": 36,
+    "requirement": "^2"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 5,
+    "requirement": "^1.0.61"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 17,
+    "requirement": "^0.2"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 26,
+    "requirement": "^0.3.9"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 43,
+    "requirement": "^0.2.8"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 18,
+    "requirement": "^0.4.14"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 24,
+    "requirement": "^0.9.12"
+   },
+   {
+    "fromNode": 24,
+    "toNode": 6,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 24,
+    "toNode": 17,
+    "requirement": "^0.2.95"
+   },
+   {
+    "fromNode": 24,
+    "toNode": 29,
+    "requirement": "^0.5"
+   },
+   {
+    "fromNode": 24,
+    "toNode": 34,
+    "requirement": "^1.6.1"
+   },
+   {
+    "fromNode": 24,
+    "toNode": 46,
+    "requirement": "^0.2.0"
+   },
+   {
+    "fromNode": 27,
+    "toNode": 42,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 28,
+    "toNode": 27,
+    "requirement": "^1.0.80"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 2,
+    "requirement": "^2.4"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 6,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 7,
+    "requirement": "^0.2"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 9,
+    "requirement": "^0.10.7"
+   },
+   {
+    "fromNode": 33,
+    "toNode": 10,
+    "requirement": ">=0.2, <0.4"
+   },
+   {
+    "fromNode": 33,
+    "toNode": 17,
+    "requirement": "^0.2"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 17,
+    "requirement": "^0.2.172"
+   },
+   {
+    "fromNode": 35,
+    "toNode": 47,
+    "requirement": ">=0.60, <0.62"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 27,
+    "requirement": "^1.0.75"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 28,
+    "requirement": "^1.0.35"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 42,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 4,
+    "requirement": "^1.2.1"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 17,
+    "requirement": "^0.2.168"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 19,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 23,
+    "requirement": "^0.12.0"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 25,
+    "requirement": "^0.2.11"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 33,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 35,
+    "requirement": "^0.6.3"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 38,
+    "requirement": "~2.7.0"
+   },
+   {
+    "fromNode": 37,
+    "toNode": 47,
+    "requirement": "^0.61"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 27,
+    "requirement": "^1.0.60"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 28,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 36,
+    "requirement": "^2.0"
+   },
+   {
+    "fromNode": 39,
+    "toNode": 14,
+    "requirement": "^0.3.0"
+   },
+   {
+    "fromNode": 39,
+    "toNode": 25,
+    "requirement": "^0.2.11"
+   },
+   {
+    "fromNode": 39,
+    "toNode": 37,
+    "requirement": "^1.15.0"
+   },
+   {
+    "fromNode": 40,
+    "toNode": 14,
+    "requirement": "^0.3.0"
+   },
+   {
+    "fromNode": 40,
+    "toNode": 37,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 40,
+    "toNode": 39,
+    "requirement": "^0.1.1"
+   },
+   {
+    "fromNode": 47,
+    "toNode": 46,
+    "requirement": "^0.2.1"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 135,
+  "directDependentCount": 110,
+  "indirectDependentCount": 28
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/baoyachi/sha256-rs"
+  },
+  "openIssuesCount": 2,
+  "starsCount": 39,
+  "forksCount": 11,
+  "license": "Apache-2.0",
+  "description": "sha256 crypto digest write by rust",
+  "homepage": "",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/baoyachi/sha256-rs",
+    "commit": "3aeea01ab752646bc17ee3fb0dff4781020adb1f"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 1,
+     "reason": "Found 2/14 approved changesets -- score normalized to 1",
+     "details": []
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected",
+     "details": []
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 0,
+     "reason": "0 commit(s) and 0 issue activity found in the last 90 days -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": 0,
+     "reason": "detected GitHub workflow tokens with excessive permissions",
+     "details": [
+      "Warn: no topLevel permission defined: .github/workflows/check.yml:1",
+      "Info: no jobLevel write permissions found"
+     ]
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": 0,
+     "reason": "dependency not pinned by hash detected -- score normalized to 0",
+     "details": [
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/check.yml:87: update your workflow using https://app.stepsecurity.io/secureworkflow/baoyachi/sha256-rs/check.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/check.yml:88: update your workflow using https://app.stepsecurity.io/secureworkflow/baoyachi/sha256-rs/check.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/check.yml:22: update your workflow using https://app.stepsecurity.io/secureworkflow/baoyachi/sha256-rs/check.yml/master?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/check.yml:25: update your workflow using https://app.stepsecurity.io/secureworkflow/baoyachi/sha256-rs/check.yml/master?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/check.yml:42: update your workflow using https://app.stepsecurity.io/secureworkflow/baoyachi/sha256-rs/check.yml/master?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/check.yml:53: update your workflow using https://app.stepsecurity.io/secureworkflow/baoyachi/sha256-rs/check.yml/master?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/check.yml:54: update your workflow using https://app.stepsecurity.io/secureworkflow/baoyachi/sha256-rs/check.yml/master?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/check.yml:59: update your workflow using https://app.stepsecurity.io/secureworkflow/baoyachi/sha256-rs/check.yml/master?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/check.yml:74: update your workflow using https://app.stepsecurity.io/secureworkflow/baoyachi/sha256-rs/check.yml/master?enable=pin",
+      "Info:   0 out of   3 GitHub-owned GitHubAction dependencies pinned",
+      "Info:   0 out of   6 third-party GitHubAction dependencies pinned"
+     ]
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 0,
+     "reason": "security policy file not detected",
+     "details": [
+      "Warn: no security policy file detected",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 10,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE-APACHE:0",
+      "Info: FSF or OSI recognized license: Apache License 2.0: LICENSE-APACHE:0"
+     ]
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": 0,
+     "reason": "branch protection not enabled on development/release branches",
+     "details": [
+      "Warn: branch protection not enabled for branch 'master'"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": 10,
+     "reason": "packaging workflow detected",
+     "details": [
+      "Info: Project packages its releases by way of GitHub Actions.: .github/workflows/check.yml:81"
+     ]
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0",
+     "details": [
+      "Warn: 0 commits out of 23 are checked with a SAST tool"
+     ]
+    }
+   ],
+   "overallScore": 3.3,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 334573857,
+  "node_id": "MDEwOlJlcG9zaXRvcnkzMzQ1NzM4NTc=",
+  "name": "sha256-rs",
+  "full_name": "baoyachi/sha256-rs",
+  "private": false,
+  "owner": {
+   "login": "baoyachi",
+   "id": 10433001,
+   "node_id": "MDQ6VXNlcjEwNDMzMDAx",
+   "avatar_url": "https://avatars.githubusercontent.com/u/10433001?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/baoyachi",
+   "html_url": "https://github.com/baoyachi",
+   "followers_url": "https://api.github.com/users/baoyachi/followers",
+   "following_url": "https://api.github.com/users/baoyachi/following{/other_user}",
+   "gists_url": "https://api.github.com/users/baoyachi/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/baoyachi/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/baoyachi/subscriptions",
+   "organizations_url": "https://api.github.com/users/baoyachi/orgs",
+   "repos_url": "https://api.github.com/users/baoyachi/repos",
+   "events_url": "https://api.github.com/users/baoyachi/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/baoyachi/received_events",
+   "type": "User",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/baoyachi/sha256-rs",
+  "description": "sha256 crypto digest write by rust",
+  "fork": false,
+  "url": "https://api.github.com/repos/baoyachi/sha256-rs",
+  "forks_url": "https://api.github.com/repos/baoyachi/sha256-rs/forks",
+  "keys_url": "https://api.github.com/repos/baoyachi/sha256-rs/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/baoyachi/sha256-rs/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/baoyachi/sha256-rs/teams",
+  "hooks_url": "https://api.github.com/repos/baoyachi/sha256-rs/hooks",
+  "issue_events_url": "https://api.github.com/repos/baoyachi/sha256-rs/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/baoyachi/sha256-rs/events",
+  "assignees_url": "https://api.github.com/repos/baoyachi/sha256-rs/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/baoyachi/sha256-rs/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/baoyachi/sha256-rs/tags",
+  "blobs_url": "https://api.github.com/repos/baoyachi/sha256-rs/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/baoyachi/sha256-rs/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/baoyachi/sha256-rs/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/baoyachi/sha256-rs/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/baoyachi/sha256-rs/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/baoyachi/sha256-rs/languages",
+  "stargazers_url": "https://api.github.com/repos/baoyachi/sha256-rs/stargazers",
+  "contributors_url": "https://api.github.com/repos/baoyachi/sha256-rs/contributors",
+  "subscribers_url": "https://api.github.com/repos/baoyachi/sha256-rs/subscribers",
+  "subscription_url": "https://api.github.com/repos/baoyachi/sha256-rs/subscription",
+  "commits_url": "https://api.github.com/repos/baoyachi/sha256-rs/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/baoyachi/sha256-rs/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/baoyachi/sha256-rs/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/baoyachi/sha256-rs/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/baoyachi/sha256-rs/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/baoyachi/sha256-rs/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/baoyachi/sha256-rs/merges",
+  "archive_url": "https://api.github.com/repos/baoyachi/sha256-rs/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/baoyachi/sha256-rs/downloads",
+  "issues_url": "https://api.github.com/repos/baoyachi/sha256-rs/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/baoyachi/sha256-rs/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/baoyachi/sha256-rs/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/baoyachi/sha256-rs/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/baoyachi/sha256-rs/labels{/name}",
+  "releases_url": "https://api.github.com/repos/baoyachi/sha256-rs/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/baoyachi/sha256-rs/deployments",
+  "created_at": "2021-01-31T04:41:59Z",
+  "updated_at": "2026-07-03T12:35:04Z",
+  "pushed_at": "2026-04-01T11:05:18Z",
+  "git_url": "git://github.com/baoyachi/sha256-rs.git",
+  "ssh_url": "git@github.com:baoyachi/sha256-rs.git",
+  "clone_url": "https://github.com/baoyachi/sha256-rs.git",
+  "svn_url": "https://github.com/baoyachi/sha256-rs",
+  "homepage": "",
+  "size": 51,
+  "stargazers_count": 39,
+  "watchers_count": 39,
+  "language": "Rust",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 10,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 2,
+  "license": {
+   "key": "apache-2.0",
+   "name": "Apache License 2.0",
+   "spdx_id": "Apache-2.0",
+   "url": "https://api.github.com/licenses/apache-2.0",
+   "node_id": "MDc6TGljZW5zZTI="
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [
+   "cypto",
+   "rust",
+   "sha-256",
+   "sha256"
+  ],
+  "visibility": "public",
+  "forks": 10,
+  "open_issues": 2,
+  "watchers": 39,
+  "default_branch": "master",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "network_count": 10,
+  "subscribers_count": 1
+ },
+ "funding": []
+}

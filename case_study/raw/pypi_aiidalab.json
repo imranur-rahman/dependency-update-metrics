@@ -1,0 +1,1791 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "PYPI",
+   "name": "aiidalab"
+  },
+  "purl": "pkg:pypi/aiidalab",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "18.10.0"
+    },
+    "purl": "pkg:pypi/aiidalab@18.10.0",
+    "publishedAt": "2018-10-16T07:40:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "18.10.1"
+    },
+    "purl": "pkg:pypi/aiidalab@18.10.1",
+    "publishedAt": "2018-10-16T10:24:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "18.6.0rc4"
+    },
+    "purl": "pkg:pypi/aiidalab@18.6.0rc4",
+    "publishedAt": "2018-06-20T11:24:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "18.9.0"
+    },
+    "purl": "pkg:pypi/aiidalab@18.9.0",
+    "publishedAt": "2018-09-13T19:57:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "19.1.0"
+    },
+    "purl": "pkg:pypi/aiidalab@19.1.0",
+    "publishedAt": "2019-01-06T23:15:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "19.1.1"
+    },
+    "purl": "pkg:pypi/aiidalab@19.1.1",
+    "publishedAt": "2019-01-13T21:57:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "19.1.2"
+    },
+    "purl": "pkg:pypi/aiidalab@19.1.2",
+    "publishedAt": "2019-01-14T21:09:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "19.11.0a1"
+    },
+    "purl": "pkg:pypi/aiidalab@19.11.0a1",
+    "publishedAt": "2019-11-01T15:15:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "19.11.0a2"
+    },
+    "purl": "pkg:pypi/aiidalab@19.11.0a2",
+    "publishedAt": "2019-11-07T13:14:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "19.2.0"
+    },
+    "purl": "pkg:pypi/aiidalab@19.2.0",
+    "publishedAt": "2019-02-12T19:19:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "19.3.0"
+    },
+    "purl": "pkg:pypi/aiidalab@19.3.0",
+    "publishedAt": "2019-03-03T10:41:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "19.3.1"
+    },
+    "purl": "pkg:pypi/aiidalab@19.3.1",
+    "publishedAt": "2019-03-05T17:44:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "19.4.0"
+    },
+    "purl": "pkg:pypi/aiidalab@19.4.0",
+    "publishedAt": "2019-04-13T19:37:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "19.4.1"
+    },
+    "purl": "pkg:pypi/aiidalab@19.4.1",
+    "publishedAt": "2019-04-13T20:37:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "19.4.2"
+    },
+    "purl": "pkg:pypi/aiidalab@19.4.2",
+    "publishedAt": "2019-04-14T08:30:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "19.4.3"
+    },
+    "purl": "pkg:pypi/aiidalab@19.4.3",
+    "publishedAt": "2019-04-26T12:35:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "19.5.1"
+    },
+    "purl": "pkg:pypi/aiidalab@19.5.1",
+    "publishedAt": "2019-05-19T19:54:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "19.5.2"
+    },
+    "purl": "pkg:pypi/aiidalab@19.5.2",
+    "publishedAt": "2019-05-20T15:54:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "19.5.3"
+    },
+    "purl": "pkg:pypi/aiidalab@19.5.3",
+    "publishedAt": "2019-07-30T18:23:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "19.6.0a1"
+    },
+    "purl": "pkg:pypi/aiidalab@19.6.0a1",
+    "publishedAt": "2019-05-20T17:26:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "19.6.0a2"
+    },
+    "purl": "pkg:pypi/aiidalab@19.6.0a2",
+    "publishedAt": "2019-05-22T06:03:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "19.6.0a3"
+    },
+    "purl": "pkg:pypi/aiidalab@19.6.0a3",
+    "publishedAt": "2019-05-22T23:04:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "19.6.0a4"
+    },
+    "purl": "pkg:pypi/aiidalab@19.6.0a4",
+    "publishedAt": "2019-07-10T15:33:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "19.6.0a5"
+    },
+    "purl": "pkg:pypi/aiidalab@19.6.0a5",
+    "publishedAt": "2019-07-10T16:29:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "19.6.0a6"
+    },
+    "purl": "pkg:pypi/aiidalab@19.6.0a6",
+    "publishedAt": "2019-07-11T12:53:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "19.7.0a1"
+    },
+    "purl": "pkg:pypi/aiidalab@19.7.0a1",
+    "publishedAt": "2019-07-22T12:19:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "19.7.0a2"
+    },
+    "purl": "pkg:pypi/aiidalab@19.7.0a2",
+    "publishedAt": "2019-07-23T15:05:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "19.8.0a1"
+    },
+    "purl": "pkg:pypi/aiidalab@19.8.0a1",
+    "publishedAt": "2019-08-29T18:24:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "19.9.0a1"
+    },
+    "purl": "pkg:pypi/aiidalab@19.9.0a1",
+    "publishedAt": "2019-09-25T13:34:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "20.10.0b0"
+    },
+    "purl": "pkg:pypi/aiidalab@20.10.0b0",
+    "publishedAt": "2020-10-07T02:07:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "20.10.0b1"
+    },
+    "purl": "pkg:pypi/aiidalab@20.10.0b1",
+    "publishedAt": "2020-10-21T18:33:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "20.11.0b0"
+    },
+    "purl": "pkg:pypi/aiidalab@20.11.0b0",
+    "publishedAt": "2020-11-02T17:42:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "20.11.0b1"
+    },
+    "purl": "pkg:pypi/aiidalab@20.11.0b1",
+    "publishedAt": "2020-11-06T13:20:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "20.2.0a1"
+    },
+    "purl": "pkg:pypi/aiidalab@20.2.0a1",
+    "publishedAt": "2020-02-05T20:41:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "20.2.0b1"
+    },
+    "purl": "pkg:pypi/aiidalab@20.2.0b1",
+    "publishedAt": "2020-02-13T14:51:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "20.2.0b2"
+    },
+    "purl": "pkg:pypi/aiidalab@20.2.0b2",
+    "publishedAt": "2020-02-24T17:18:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "20.3.0b1"
+    },
+    "purl": "pkg:pypi/aiidalab@20.3.0b1",
+    "publishedAt": "2020-03-18T17:04:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "20.3.0b2"
+    },
+    "purl": "pkg:pypi/aiidalab@20.3.0b2",
+    "publishedAt": "2020-03-19T16:16:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "20.4.0b1"
+    },
+    "purl": "pkg:pypi/aiidalab@20.4.0b1",
+    "publishedAt": "2020-04-17T22:16:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "20.5.0b1"
+    },
+    "purl": "pkg:pypi/aiidalab@20.5.0b1",
+    "publishedAt": "2020-05-06T22:40:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "20.6.0b1"
+    },
+    "purl": "pkg:pypi/aiidalab@20.6.0b1",
+    "publishedAt": "2020-06-03T01:16:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "20.6.0b2"
+    },
+    "purl": "pkg:pypi/aiidalab@20.6.0b2",
+    "publishedAt": "2020-06-18T10:29:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "20.7.0b1"
+    },
+    "purl": "pkg:pypi/aiidalab@20.7.0b1",
+    "publishedAt": "2020-07-03T21:44:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "20.7.0b2"
+    },
+    "purl": "pkg:pypi/aiidalab@20.7.0b2",
+    "publishedAt": "2020-07-06T11:42:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "20.7.0b3"
+    },
+    "purl": "pkg:pypi/aiidalab@20.7.0b3",
+    "publishedAt": "2020-07-16T09:57:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "20.8.0b0"
+    },
+    "purl": "pkg:pypi/aiidalab@20.8.0b0",
+    "publishedAt": "2020-08-04T23:16:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "20.8.0b1"
+    },
+    "purl": "pkg:pypi/aiidalab@20.8.0b1",
+    "publishedAt": "2020-08-24T13:51:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "20.8.0b2"
+    },
+    "purl": "pkg:pypi/aiidalab@20.8.0b2",
+    "publishedAt": "2020-08-31T22:01:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "20.9.0b0"
+    },
+    "purl": "pkg:pypi/aiidalab@20.9.0b0",
+    "publishedAt": "2020-09-08T21:07:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "20.9.0b1"
+    },
+    "purl": "pkg:pypi/aiidalab@20.9.0b1",
+    "publishedAt": "2020-09-17T09:37:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "21.10.0"
+    },
+    "purl": "pkg:pypi/aiidalab@21.10.0",
+    "publishedAt": "2021-09-27T19:13:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "21.10.1"
+    },
+    "purl": "pkg:pypi/aiidalab@21.10.1",
+    "publishedAt": "2021-09-29T14:38:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "21.10.2"
+    },
+    "purl": "pkg:pypi/aiidalab@21.10.2",
+    "publishedAt": "2021-10-27T15:45:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "21.11.0"
+    },
+    "purl": "pkg:pypi/aiidalab@21.11.0",
+    "publishedAt": "2021-11-02T12:08:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "21.11.1"
+    },
+    "purl": "pkg:pypi/aiidalab@21.11.1",
+    "publishedAt": "2021-12-05T22:15:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "21.4.0"
+    },
+    "purl": "pkg:pypi/aiidalab@21.4.0",
+    "publishedAt": "2021-04-12T13:20:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "21.4.1"
+    },
+    "purl": "pkg:pypi/aiidalab@21.4.1",
+    "publishedAt": "2021-04-13T12:55:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "21.5.0"
+    },
+    "purl": "pkg:pypi/aiidalab@21.5.0",
+    "publishedAt": "2021-05-18T18:53:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "21.6.0"
+    },
+    "purl": "pkg:pypi/aiidalab@21.6.0",
+    "publishedAt": "2021-06-04T15:13:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "21.7.0"
+    },
+    "purl": "pkg:pypi/aiidalab@21.7.0",
+    "publishedAt": "2021-07-14T15:12:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "21.7.1"
+    },
+    "purl": "pkg:pypi/aiidalab@21.7.1",
+    "publishedAt": "2021-07-14T16:17:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "21.7.2"
+    },
+    "purl": "pkg:pypi/aiidalab@21.7.2",
+    "publishedAt": "2021-07-16T08:10:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "21.7.3"
+    },
+    "purl": "pkg:pypi/aiidalab@21.7.3",
+    "publishedAt": "2021-07-22T11:24:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "21.9.0"
+    },
+    "purl": "pkg:pypi/aiidalab@21.9.0",
+    "publishedAt": "2021-09-15T12:02:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "22.1.0"
+    },
+    "purl": "pkg:pypi/aiidalab@22.1.0",
+    "publishedAt": "2022-01-17T17:24:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "22.11.0"
+    },
+    "purl": "pkg:pypi/aiidalab@22.11.0",
+    "publishedAt": "2022-11-28T15:23:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "22.2.0"
+    },
+    "purl": "pkg:pypi/aiidalab@22.2.0",
+    "publishedAt": "2022-02-22T15:45:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "22.6.0"
+    },
+    "purl": "pkg:pypi/aiidalab@22.6.0",
+    "publishedAt": "2022-06-16T11:22:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "22.7.0"
+    },
+    "purl": "pkg:pypi/aiidalab@22.7.0",
+    "publishedAt": "2022-07-29T10:17:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "22.7.1"
+    },
+    "purl": "pkg:pypi/aiidalab@22.7.1",
+    "publishedAt": "2022-08-05T13:38:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "22.8.0"
+    },
+    "purl": "pkg:pypi/aiidalab@22.8.0",
+    "publishedAt": "2022-08-18T13:05:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "23.3.0"
+    },
+    "purl": "pkg:pypi/aiidalab@23.3.0",
+    "publishedAt": "2023-03-17T13:21:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "23.3.1"
+    },
+    "purl": "pkg:pypi/aiidalab@23.3.1",
+    "publishedAt": "2023-05-25T15:32:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "23.3.2"
+    },
+    "purl": "pkg:pypi/aiidalab@23.3.2",
+    "publishedAt": "2023-10-23T11:47:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "24.7.0"
+    },
+    "purl": "pkg:pypi/aiidalab@24.7.0",
+    "publishedAt": "2024-07-05T11:49:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "24.9.0"
+    },
+    "purl": "pkg:pypi/aiidalab@24.9.0",
+    "publishedAt": "2024-09-01T19:08:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "26.2.0"
+    },
+    "purl": "pkg:pypi/aiidalab@26.2.0",
+    "publishedAt": "2026-02-26T19:21:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "26.5.0"
+    },
+    "purl": "pkg:pypi/aiidalab@26.5.0",
+    "publishedAt": "2026-05-01T11:26:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "26.5.1"
+    },
+    "purl": "pkg:pypi/aiidalab@26.5.1",
+    "publishedAt": "2026-05-13T11:33:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "26.5.2"
+    },
+    "purl": "pkg:pypi/aiidalab@26.5.2",
+    "publishedAt": "2026-05-13T12:36:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "26.6.0"
+    },
+    "purl": "pkg:pypi/aiidalab@26.6.0",
+    "publishedAt": "2026-06-03T10:08:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "26.6.1"
+    },
+    "purl": "pkg:pypi/aiidalab@26.6.1",
+    "publishedAt": "2026-06-04T09:39:24Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "PYPI",
+   "name": "aiidalab",
+   "version": "26.6.1"
+  },
+  "purl": "pkg:pypi/aiidalab@26.6.1",
+  "publishedAt": "2026-06-04T09:39:24Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "MIT License",
+    "spdx": "MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "DOCUMENTATION",
+    "url": "https://aiidalab.readthedocs.io/en/latest/"
+   },
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/aiidalab/aiidalab"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://pypi.org/simple"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/aiidalab/aiidalab"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "aiidalab",
+    "versionString": "26.6.1",
+    "source": "PYPI_RELEASE_FILENAME"
+   },
+   {
+    "packageName": "aiidalab",
+    "versionString": "26.6.1",
+    "source": "PYPI_METADATA_FILE"
+   }
+  ],
+  "cooldown": {
+   "end": "2026-06-09T09:39:24Z",
+   "description": ""
+  },
+  "projectStatus": {
+   "status": "active",
+   "reason": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "aiidalab",
+     "version": "26.6.1"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "attrs",
+     "version": "26.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cachetools",
+     "version": "4.2.4"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "cattrs",
+     "version": "26.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certifi",
+     "version": "2026.6.17"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "charset-normalizer",
+     "version": "3.4.9"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "click",
+     "version": "8.4.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "click-spinner",
+     "version": "0.2.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "dulwich",
+     "version": "0.25.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "idna",
+     "version": "3.18.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "packaging",
+     "version": "26.2.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pip",
+     "version": "26.1.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "platformdirs",
+     "version": "4.10.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "requests",
+     "version": "2.34.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "requests-cache",
+     "version": "1.3.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "tabulate",
+     "version": "0.10.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "toml",
+     "version": "0.10.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "traitlets",
+     "version": "5.15.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "typing-extensions",
+     "version": "4.16.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "url-normalize",
+     "version": "3.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "urllib3",
+     "version": "2.7.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "watchdog",
+     "version": "6.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 2,
+    "requirement": "~=4.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 6,
+    "requirement": ">=7.0,<9"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 7,
+    "requirement": "~=0.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 8,
+    "requirement": "~=0.22"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 10,
+    "requirement": ">=22.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 11,
+    "requirement": ">=25.2"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 13,
+    "requirement": "~=2.27"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 14,
+    "requirement": "~=1.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 15,
+    "requirement": "~=0.9"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 16,
+    "requirement": "~=0.10"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 17,
+    "requirement": "~=5.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 21,
+    "requirement": "~=6.0"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 1,
+    "requirement": ">=25.4.0"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 18,
+    "requirement": ">=4.14.0"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 20,
+    "requirement": ">=2.2.2"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 4,
+    "requirement": ">=2023.5.7"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 5,
+    "requirement": "<4,>=2"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 9,
+    "requirement": "<4,>=2.5"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 20,
+    "requirement": "<3,>=1.26"
+   },
+   {
+    "fromNode": 14,
+    "toNode": 1,
+    "requirement": ">=21.2"
+   },
+   {
+    "fromNode": 14,
+    "toNode": 3,
+    "requirement": ">=22.2"
+   },
+   {
+    "fromNode": 14,
+    "toNode": 12,
+    "requirement": ">=2.5"
+   },
+   {
+    "fromNode": 14,
+    "toNode": 13,
+    "requirement": ">=2.22"
+   },
+   {
+    "fromNode": 14,
+    "toNode": 19,
+    "requirement": ">=2.0"
+   },
+   {
+    "fromNode": 14,
+    "toNode": 20,
+    "requirement": ">=1.25.5"
+   },
+   {
+    "fromNode": 19,
+    "toNode": 9,
+    "requirement": ">=3.3"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 4,
+  "directDependentCount": 1,
+  "indirectDependentCount": 3
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/aiidalab/aiidalab"
+  },
+  "openIssuesCount": 23,
+  "starsCount": 17,
+  "forksCount": 17,
+  "license": "MIT",
+  "description": "Implements core functions for AiiDAlab.",
+  "homepage": "https://aiidalab.readthedocs.io",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/aiidalab/aiidalab",
+    "commit": "140ee85f1c7c7f2dc21f4bb54ef0701e4baca6f9"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 7,
+     "reason": "Found 18/24 approved changesets -- score normalized to 7",
+     "details": []
+    },
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 10,
+     "reason": "22 commit(s) and 1 issue activity found in the last 90 days -- score normalized to 10",
+     "details": []
+    },
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": 0,
+     "reason": "detected GitHub workflow tokens with excessive permissions",
+     "details": [
+      "Warn: no topLevel permission defined: .github/workflows/ci.yml:1",
+      "Warn: no topLevel permission defined: .github/workflows/publish.yml:1",
+      "Info: no jobLevel write permissions found"
+     ]
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected",
+     "details": []
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": 0,
+     "reason": "dependency not pinned by hash detected -- score normalized to 0",
+     "details": [
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yml:28: update your workflow using https://app.stepsecurity.io/secureworkflow/aiidalab/aiidalab/ci.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/ci.yml:32: update your workflow using https://app.stepsecurity.io/secureworkflow/aiidalab/aiidalab/ci.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/ci.yml:51: update your workflow using https://app.stepsecurity.io/secureworkflow/aiidalab/aiidalab/ci.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yml:61: update your workflow using https://app.stepsecurity.io/secureworkflow/aiidalab/aiidalab/ci.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/ci.yml:62: update your workflow using https://app.stepsecurity.io/secureworkflow/aiidalab/aiidalab/ci.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yml:70: update your workflow using https://app.stepsecurity.io/secureworkflow/aiidalab/aiidalab/ci.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/ci.yml:86: update your workflow using https://app.stepsecurity.io/secureworkflow/aiidalab/aiidalab/ci.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/ci.yml:89: update your workflow using https://app.stepsecurity.io/secureworkflow/aiidalab/aiidalab/ci.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/publish.yml:22: update your workflow using https://app.stepsecurity.io/secureworkflow/aiidalab/aiidalab/publish.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/publish.yml:25: update your workflow using https://app.stepsecurity.io/secureworkflow/aiidalab/aiidalab/publish.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/publish.yml:41: update your workflow using https://app.stepsecurity.io/secureworkflow/aiidalab/aiidalab/publish.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/publish.yml:62: update your workflow using https://app.stepsecurity.io/secureworkflow/aiidalab/aiidalab/publish.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/publish.yml:69: update your workflow using https://app.stepsecurity.io/secureworkflow/aiidalab/aiidalab/publish.yml/main?enable=pin",
+      "Warn: GitHub-owned GitHubAction not pinned by hash: .github/workflows/publish.yml:91: update your workflow using https://app.stepsecurity.io/secureworkflow/aiidalab/aiidalab/publish.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/publish.yml:97: update your workflow using https://app.stepsecurity.io/secureworkflow/aiidalab/aiidalab/publish.yml/main?enable=pin",
+      "Warn: third-party GitHubAction not pinned by hash: .github/workflows/publish.yml:106: update your workflow using https://app.stepsecurity.io/secureworkflow/aiidalab/aiidalab/publish.yml/main?enable=pin",
+      "Warn: pipCommand not pinned by hash: .github/workflows/publish.yml:31",
+      "Info:   0 out of   9 GitHub-owned GitHubAction dependencies pinned",
+      "Info:   0 out of   7 third-party GitHubAction dependencies pinned",
+      "Info:   0 out of   1 pipCommand dependencies pinned"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 10,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE:0",
+      "Info: FSF or OSI recognized license: MIT License: LICENSE:0"
+     ]
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 0,
+     "reason": "security policy file not detected",
+     "details": [
+      "Warn: no security policy file detected",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": 0,
+     "reason": "Project has not signed or included provenance with any releases.",
+     "details": [
+      "Warn: release artifact v26.06.1 not signed: https://api.github.com/repos/aiidalab/aiidalab/releases/334239067",
+      "Warn: release artifact v26.06.0 not signed: https://api.github.com/repos/aiidalab/aiidalab/releases/333628038",
+      "Warn: release artifact v26.05.2 not signed: https://api.github.com/repos/aiidalab/aiidalab/releases/321843934",
+      "Warn: release artifact v26.05.1 not signed: https://api.github.com/repos/aiidalab/aiidalab/releases/321815103",
+      "Warn: release artifact v26.05.0 not signed: https://api.github.com/repos/aiidalab/aiidalab/releases/316361751",
+      "Warn: release artifact v26.06.1 does not have provenance: https://api.github.com/repos/aiidalab/aiidalab/releases/334239067",
+      "Warn: release artifact v26.06.0 does not have provenance: https://api.github.com/repos/aiidalab/aiidalab/releases/333628038",
+      "Warn: release artifact v26.05.2 does not have provenance: https://api.github.com/repos/aiidalab/aiidalab/releases/321843934",
+      "Warn: release artifact v26.05.1 does not have provenance: https://api.github.com/repos/aiidalab/aiidalab/releases/321815103",
+      "Warn: release artifact v26.05.0 does not have provenance: https://api.github.com/repos/aiidalab/aiidalab/releases/316361751"
+     ]
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": 10,
+     "reason": "packaging workflow detected",
+     "details": [
+      "Info: Project packages its releases by way of GitHub Actions.: .github/workflows/publish.yml:47"
+     ]
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0",
+     "details": [
+      "Warn: 0 commits out of 25 are checked with a SAST tool"
+     ]
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": 6,
+     "reason": "branch protection is not maximal on development and all release branches",
+     "details": [
+      "Info: 'allow deletion' disabled on branch 'main'",
+      "Info: 'force pushes' disabled on branch 'main'",
+      "Warn: required approving review count is 1 on branch 'main'",
+      "Warn: codeowners review is not required on branch 'main'",
+      "Warn: no status checks found to merge onto branch 'main'",
+      "Info: PRs are required in order to make changes on branch 'main'"
+     ]
+    }
+   ],
+   "overallScore": 5,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 136350008,
+  "node_id": "MDEwOlJlcG9zaXRvcnkxMzYzNTAwMDg=",
+  "name": "aiidalab",
+  "full_name": "aiidalab/aiidalab",
+  "private": false,
+  "owner": {
+   "login": "aiidalab",
+   "id": 43276134,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjQzMjc2MTM0",
+   "avatar_url": "https://avatars.githubusercontent.com/u/43276134?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/aiidalab",
+   "html_url": "https://github.com/aiidalab",
+   "followers_url": "https://api.github.com/users/aiidalab/followers",
+   "following_url": "https://api.github.com/users/aiidalab/following{/other_user}",
+   "gists_url": "https://api.github.com/users/aiidalab/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/aiidalab/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/aiidalab/subscriptions",
+   "organizations_url": "https://api.github.com/users/aiidalab/orgs",
+   "repos_url": "https://api.github.com/users/aiidalab/repos",
+   "events_url": "https://api.github.com/users/aiidalab/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/aiidalab/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/aiidalab/aiidalab",
+  "description": "Implements core functions for AiiDAlab.",
+  "fork": false,
+  "url": "https://api.github.com/repos/aiidalab/aiidalab",
+  "forks_url": "https://api.github.com/repos/aiidalab/aiidalab/forks",
+  "keys_url": "https://api.github.com/repos/aiidalab/aiidalab/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/aiidalab/aiidalab/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/aiidalab/aiidalab/teams",
+  "hooks_url": "https://api.github.com/repos/aiidalab/aiidalab/hooks",
+  "issue_events_url": "https://api.github.com/repos/aiidalab/aiidalab/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/aiidalab/aiidalab/events",
+  "assignees_url": "https://api.github.com/repos/aiidalab/aiidalab/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/aiidalab/aiidalab/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/aiidalab/aiidalab/tags",
+  "blobs_url": "https://api.github.com/repos/aiidalab/aiidalab/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/aiidalab/aiidalab/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/aiidalab/aiidalab/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/aiidalab/aiidalab/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/aiidalab/aiidalab/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/aiidalab/aiidalab/languages",
+  "stargazers_url": "https://api.github.com/repos/aiidalab/aiidalab/stargazers",
+  "contributors_url": "https://api.github.com/repos/aiidalab/aiidalab/contributors",
+  "subscribers_url": "https://api.github.com/repos/aiidalab/aiidalab/subscribers",
+  "subscription_url": "https://api.github.com/repos/aiidalab/aiidalab/subscription",
+  "commits_url": "https://api.github.com/repos/aiidalab/aiidalab/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/aiidalab/aiidalab/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/aiidalab/aiidalab/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/aiidalab/aiidalab/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/aiidalab/aiidalab/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/aiidalab/aiidalab/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/aiidalab/aiidalab/merges",
+  "archive_url": "https://api.github.com/repos/aiidalab/aiidalab/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/aiidalab/aiidalab/downloads",
+  "issues_url": "https://api.github.com/repos/aiidalab/aiidalab/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/aiidalab/aiidalab/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/aiidalab/aiidalab/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/aiidalab/aiidalab/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/aiidalab/aiidalab/labels{/name}",
+  "releases_url": "https://api.github.com/repos/aiidalab/aiidalab/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/aiidalab/aiidalab/deployments",
+  "created_at": "2018-06-06T15:36:32Z",
+  "updated_at": "2026-07-09T04:32:09Z",
+  "pushed_at": "2026-07-09T04:32:06Z",
+  "git_url": "git://github.com/aiidalab/aiidalab.git",
+  "ssh_url": "git@github.com:aiidalab/aiidalab.git",
+  "clone_url": "https://github.com/aiidalab/aiidalab.git",
+  "svn_url": "https://github.com/aiidalab/aiidalab",
+  "homepage": "https://aiidalab.readthedocs.io",
+  "size": 8001,
+  "stargazers_count": 17,
+  "watchers_count": 17,
+  "language": "Python",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 17,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 23,
+  "license": {
+   "key": "mit",
+   "name": "MIT License",
+   "spdx_id": "MIT",
+   "url": "https://api.github.com/licenses/mit",
+   "node_id": "MDc6TGljZW5zZTEz"
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [
+   "aiida",
+   "aiidalab"
+  ],
+  "visibility": "public",
+  "forks": 17,
+  "open_issues": 23,
+  "watchers": 17,
+  "default_branch": "main",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "aiidalab",
+   "id": 43276134,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjQzMjc2MTM0",
+   "avatar_url": "https://avatars.githubusercontent.com/u/43276134?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/aiidalab",
+   "html_url": "https://github.com/aiidalab",
+   "followers_url": "https://api.github.com/users/aiidalab/followers",
+   "following_url": "https://api.github.com/users/aiidalab/following{/other_user}",
+   "gists_url": "https://api.github.com/users/aiidalab/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/aiidalab/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/aiidalab/subscriptions",
+   "organizations_url": "https://api.github.com/users/aiidalab/orgs",
+   "repos_url": "https://api.github.com/users/aiidalab/repos",
+   "events_url": "https://api.github.com/users/aiidalab/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/aiidalab/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 17,
+  "subscribers_count": 3
+ },
+ "funding": []
+}

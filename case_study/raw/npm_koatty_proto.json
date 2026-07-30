@@ -1,0 +1,1039 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "koatty_proto"
+  },
+  "purl": "pkg:npm/koatty_proto",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.0.10"
+    },
+    "purl": "pkg:npm/koatty_proto@1.0.10",
+    "publishedAt": "2021-11-24T09:21:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.0.12"
+    },
+    "purl": "pkg:npm/koatty_proto@1.0.12",
+    "publishedAt": "2021-11-24T15:06:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.0.14"
+    },
+    "purl": "pkg:npm/koatty_proto@1.0.14",
+    "publishedAt": "2021-11-24T16:04:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.0.16"
+    },
+    "purl": "pkg:npm/koatty_proto@1.0.16",
+    "publishedAt": "2021-11-30T07:24:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.0.18"
+    },
+    "purl": "pkg:npm/koatty_proto@1.0.18",
+    "publishedAt": "2021-12-13T08:01:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.0.2"
+    },
+    "purl": "pkg:npm/koatty_proto@1.0.2",
+    "publishedAt": "2021-11-24T02:35:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.0.4"
+    },
+    "purl": "pkg:npm/koatty_proto@1.0.4",
+    "publishedAt": "2021-11-24T03:46:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.0.6"
+    },
+    "purl": "pkg:npm/koatty_proto@1.0.6",
+    "publishedAt": "2021-11-24T08:51:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.0.8"
+    },
+    "purl": "pkg:npm/koatty_proto@1.0.8",
+    "publishedAt": "2021-11-24T09:19:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.1.10"
+    },
+    "purl": "pkg:npm/koatty_proto@1.1.10",
+    "publishedAt": "2023-01-13T02:23:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.1.11"
+    },
+    "purl": "pkg:npm/koatty_proto@1.1.11",
+    "publishedAt": "2023-02-26T16:02:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.1.12"
+    },
+    "purl": "pkg:npm/koatty_proto@1.1.12",
+    "publishedAt": "2023-07-22T03:03:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.1.13"
+    },
+    "purl": "pkg:npm/koatty_proto@1.1.13",
+    "publishedAt": "2024-04-14T21:04:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.1.14"
+    },
+    "purl": "pkg:npm/koatty_proto@1.1.14",
+    "publishedAt": "2024-10-31T08:43:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.1.2"
+    },
+    "purl": "pkg:npm/koatty_proto@1.1.2",
+    "publishedAt": "2021-12-13T08:39:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.1.4"
+    },
+    "purl": "pkg:npm/koatty_proto@1.1.4",
+    "publishedAt": "2021-12-13T09:29:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.1.6"
+    },
+    "purl": "pkg:npm/koatty_proto@1.1.6",
+    "publishedAt": "2022-02-16T08:08:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.1.7"
+    },
+    "purl": "pkg:npm/koatty_proto@1.1.7",
+    "publishedAt": "2022-05-26T06:49:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.1.8"
+    },
+    "purl": "pkg:npm/koatty_proto@1.1.8",
+    "publishedAt": "2022-05-27T01:44:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.1.9"
+    },
+    "purl": "pkg:npm/koatty_proto@1.1.9",
+    "publishedAt": "2022-10-31T07:53:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.2.0"
+    },
+    "purl": "pkg:npm/koatty_proto@1.2.0",
+    "publishedAt": "2024-11-06T10:41:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.3.0"
+    },
+    "purl": "pkg:npm/koatty_proto@1.3.0",
+    "publishedAt": "2025-06-09T02:50:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.3.1"
+    },
+    "purl": "pkg:npm/koatty_proto@1.3.1",
+    "publishedAt": "2026-01-28T03:06:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.3.5"
+    },
+    "purl": "pkg:npm/koatty_proto@1.3.5",
+    "publishedAt": "2026-01-28T09:30:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.3.6"
+    },
+    "purl": "pkg:npm/koatty_proto@1.3.6",
+    "publishedAt": "2026-02-03T08:56:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.3.7"
+    },
+    "purl": "pkg:npm/koatty_proto@1.3.7",
+    "publishedAt": "2026-02-10T09:13:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.3.8"
+    },
+    "purl": "pkg:npm/koatty_proto@1.3.8",
+    "publishedAt": "2026-03-02T15:05:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.4.0"
+    },
+    "purl": "pkg:npm/koatty_proto@1.4.0",
+    "publishedAt": "2026-04-24T09:09:38Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "NPM",
+   "name": "koatty_proto",
+   "version": "1.4.0"
+  },
+  "purl": "pkg:npm/koatty_proto@1.4.0",
+  "publishedAt": "2026-04-24T09:09:38Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "BSD-3-Clause"
+  ],
+  "licenseDetails": [
+   {
+    "license": "BSD-3-Clause",
+    "spdx": "BSD-3-Clause"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "ORIGIN",
+    "url": "https://registry.npmjs.org/koatty_proto/1.4.0"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://registry.npmjs.org/"
+  ],
+  "relatedProjects": [],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "koatty_proto",
+    "versionString": "1.4.0",
+    "source": "NPM_NPMJS_ORG"
+   }
+  ],
+  "cooldown": {
+   "end": "2026-05-09T09:09:38Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_proto",
+     "version": "1.4.0"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@grpc/grpc-js",
+     "version": "1.14.4"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@grpc/proto-loader",
+     "version": "0.8.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@js-sdsl/ordered-map",
+     "version": "4.4.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@protobufjs/aspromise",
+     "version": "1.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@protobufjs/base64",
+     "version": "1.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@protobufjs/codegen",
+     "version": "2.0.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@protobufjs/eventemitter",
+     "version": "1.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@protobufjs/fetch",
+     "version": "1.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@protobufjs/float",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@protobufjs/path",
+     "version": "1.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@protobufjs/pool",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@protobufjs/utf8",
+     "version": "1.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@types/node",
+     "version": "26.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "ansi-regex",
+     "version": "5.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "ansi-styles",
+     "version": "4.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cliui",
+     "version": "8.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "co",
+     "version": "4.6.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "color-convert",
+     "version": "2.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "color-name",
+     "version": "1.1.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "dayjs",
+     "version": "1.11.21"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "emoji-regex",
+     "version": "8.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "escalade",
+     "version": "3.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "get-caller-file",
+     "version": "2.0.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "is-fullwidth-code-point",
+     "version": "3.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "koatty_lib",
+     "version": "1.5.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "lodash",
+     "version": "4.18.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "lodash.camelcase",
+     "version": "4.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "long",
+     "version": "5.3.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "murmurhash",
+     "version": "2.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "protobufjs",
+     "version": "7.6.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "protobufjs",
+     "version": "8.7.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "require-directory",
+     "version": "2.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "string-width",
+     "version": "4.2.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "strip-ansi",
+     "version": "6.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "undici-types",
+     "version": "8.3.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "wrap-ansi",
+     "version": "7.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "y18n",
+     "version": "5.0.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "yargs",
+     "version": "17.7.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "yargs-parser",
+     "version": "21.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 1,
+    "requirement": "^1.14.3"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 2,
+    "requirement": "^0.8.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 25,
+    "requirement": "1.5.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 31,
+    "requirement": "^8.0.0"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 2,
+    "requirement": "^0.8.0"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 3,
+    "requirement": "^4.4.2"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 27,
+    "requirement": "^4.3.0"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 28,
+    "requirement": "^5.0.0"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 30,
+    "requirement": "^7.5.5"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 38,
+    "requirement": "^17.7.2"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 4,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 35,
+    "requirement": "~8.3.0"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 18,
+    "requirement": "^2.0.1"
+   },
+   {
+    "fromNode": 16,
+    "toNode": 33,
+    "requirement": "^4.2.0"
+   },
+   {
+    "fromNode": 16,
+    "toNode": 34,
+    "requirement": "^6.0.1"
+   },
+   {
+    "fromNode": 16,
+    "toNode": 36,
+    "requirement": "^7.0.0"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 19,
+    "requirement": "~1.1.4"
+   },
+   {
+    "fromNode": 25,
+    "toNode": 17,
+    "requirement": "^4.6.0"
+   },
+   {
+    "fromNode": 25,
+    "toNode": 20,
+    "requirement": "^1.11.19"
+   },
+   {
+    "fromNode": 25,
+    "toNode": 26,
+    "requirement": "^4.17.23"
+   },
+   {
+    "fromNode": 25,
+    "toNode": 29,
+    "requirement": "^2.0.1"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 4,
+    "requirement": "^1.1.2"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 5,
+    "requirement": "^1.1.2"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 6,
+    "requirement": "^2.0.5"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 7,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 8,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 9,
+    "requirement": "^1.0.2"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 10,
+    "requirement": "^1.1.2"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 11,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 12,
+    "requirement": "^1.1.1"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 13,
+    "requirement": ">=13.7.0"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 28,
+    "requirement": "^5.3.2"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 28,
+    "requirement": "^5.3.2"
+   },
+   {
+    "fromNode": 33,
+    "toNode": 21,
+    "requirement": "^8.0.0"
+   },
+   {
+    "fromNode": 33,
+    "toNode": 24,
+    "requirement": "^3.0.0"
+   },
+   {
+    "fromNode": 33,
+    "toNode": 34,
+    "requirement": "^6.0.1"
+   },
+   {
+    "fromNode": 34,
+    "toNode": 14,
+    "requirement": "^5.0.1"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 15,
+    "requirement": "^4.0.0"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 33,
+    "requirement": "^4.1.0"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 34,
+    "requirement": "^6.0.0"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 16,
+    "requirement": "^8.0.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 22,
+    "requirement": "^3.1.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 23,
+    "requirement": "^2.0.5"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 32,
+    "requirement": "^2.1.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 33,
+    "requirement": "^4.2.3"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 37,
+    "requirement": "^5.0.5"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 39,
+    "requirement": "^21.1.1"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 8,
+  "directDependentCount": 5,
+  "indirectDependentCount": 6
+ }
+}

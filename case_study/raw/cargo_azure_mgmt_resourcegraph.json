@@ -1,0 +1,2414 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "CARGO",
+   "name": "azure_mgmt_resourcegraph"
+  },
+  "purl": "pkg:cargo/azure_mgmt_resourcegraph",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "azure_mgmt_resourcegraph",
+     "version": "0.1.0"
+    },
+    "purl": "pkg:cargo/azure_mgmt_resourcegraph@0.1.0",
+    "publishedAt": "2022-01-26T15:05:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "azure_mgmt_resourcegraph",
+     "version": "0.10.0"
+    },
+    "purl": "pkg:cargo/azure_mgmt_resourcegraph@0.10.0",
+    "publishedAt": "2023-02-15T19:42:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "azure_mgmt_resourcegraph",
+     "version": "0.11.0"
+    },
+    "purl": "pkg:cargo/azure_mgmt_resourcegraph@0.11.0",
+    "publishedAt": "2023-03-17T21:39:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "azure_mgmt_resourcegraph",
+     "version": "0.12.0"
+    },
+    "purl": "pkg:cargo/azure_mgmt_resourcegraph@0.12.0",
+    "publishedAt": "2023-05-22T20:49:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "azure_mgmt_resourcegraph",
+     "version": "0.13.0"
+    },
+    "purl": "pkg:cargo/azure_mgmt_resourcegraph@0.13.0",
+    "publishedAt": "2023-06-28T15:42:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "azure_mgmt_resourcegraph",
+     "version": "0.14.0"
+    },
+    "purl": "pkg:cargo/azure_mgmt_resourcegraph@0.14.0",
+    "publishedAt": "2023-08-23T19:13:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "azure_mgmt_resourcegraph",
+     "version": "0.15.0"
+    },
+    "purl": "pkg:cargo/azure_mgmt_resourcegraph@0.15.0",
+    "publishedAt": "2023-09-08T16:58:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "azure_mgmt_resourcegraph",
+     "version": "0.16.0"
+    },
+    "purl": "pkg:cargo/azure_mgmt_resourcegraph@0.16.0",
+    "publishedAt": "2023-09-28T18:06:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "azure_mgmt_resourcegraph",
+     "version": "0.17.0"
+    },
+    "purl": "pkg:cargo/azure_mgmt_resourcegraph@0.17.0",
+    "publishedAt": "2023-11-03T17:06:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "azure_mgmt_resourcegraph",
+     "version": "0.18.0"
+    },
+    "purl": "pkg:cargo/azure_mgmt_resourcegraph@0.18.0",
+    "publishedAt": "2023-12-08T22:20:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "azure_mgmt_resourcegraph",
+     "version": "0.19.0"
+    },
+    "purl": "pkg:cargo/azure_mgmt_resourcegraph@0.19.0",
+    "publishedAt": "2024-01-05T19:59:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "azure_mgmt_resourcegraph",
+     "version": "0.2.0"
+    },
+    "purl": "pkg:cargo/azure_mgmt_resourcegraph@0.2.0",
+    "publishedAt": "2022-04-03T20:15:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "azure_mgmt_resourcegraph",
+     "version": "0.20.0"
+    },
+    "purl": "pkg:cargo/azure_mgmt_resourcegraph@0.20.0",
+    "publishedAt": "2024-04-24T16:43:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "azure_mgmt_resourcegraph",
+     "version": "0.21.0"
+    },
+    "purl": "pkg:cargo/azure_mgmt_resourcegraph@0.21.0",
+    "publishedAt": "2024-10-16T03:22:50Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "azure_mgmt_resourcegraph",
+     "version": "0.3.0"
+    },
+    "purl": "pkg:cargo/azure_mgmt_resourcegraph@0.3.0",
+    "publishedAt": "2022-04-27T21:53:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "azure_mgmt_resourcegraph",
+     "version": "0.4.0"
+    },
+    "purl": "pkg:cargo/azure_mgmt_resourcegraph@0.4.0",
+    "publishedAt": "2022-06-16T01:22:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "azure_mgmt_resourcegraph",
+     "version": "0.5.0"
+    },
+    "purl": "pkg:cargo/azure_mgmt_resourcegraph@0.5.0",
+    "publishedAt": "2022-08-09T23:09:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "azure_mgmt_resourcegraph",
+     "version": "0.6.0"
+    },
+    "purl": "pkg:cargo/azure_mgmt_resourcegraph@0.6.0",
+    "publishedAt": "2022-09-16T21:10:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "azure_mgmt_resourcegraph",
+     "version": "0.7.0"
+    },
+    "purl": "pkg:cargo/azure_mgmt_resourcegraph@0.7.0",
+    "publishedAt": "2022-10-27T19:32:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "azure_mgmt_resourcegraph",
+     "version": "0.8.0"
+    },
+    "purl": "pkg:cargo/azure_mgmt_resourcegraph@0.8.0",
+    "publishedAt": "2022-11-30T21:18:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "azure_mgmt_resourcegraph",
+     "version": "0.9.0"
+    },
+    "purl": "pkg:cargo/azure_mgmt_resourcegraph@0.9.0",
+    "publishedAt": "2022-12-16T21:38:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "CARGO",
+   "name": "azure_mgmt_resourcegraph",
+   "version": "0.21.0"
+  },
+  "purl": "pkg:cargo/azure_mgmt_resourcegraph@0.21.0",
+  "publishedAt": "2024-10-16T03:22:50Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "MIT",
+    "spdx": "MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/azure/azure-sdk-for-rust"
+   },
+   {
+    "label": "HOMEPAGE",
+    "url": "https://github.com/azure/azure-sdk-for-rust/tree/legacy"
+   },
+   {
+    "label": "DOCUMENTATION",
+    "url": "https://docs.rs/azure_mgmt_resourcegraph"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://crates.io/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/azure/azure-sdk-for-rust"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "azure_mgmt_resourcegraph",
+    "versionString": "0.21.0",
+    "source": "CARGO_CRATES_IO"
+   }
+  ],
+  "cooldown": {
+   "end": "2024-10-26T03:22:50Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "azure_mgmt_resourcegraph",
+     "version": "0.21.0"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "anyhow",
+     "version": "1.0.103"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "async-channel",
+     "version": "1.9.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "async-trait",
+     "version": "0.1.89"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "azure_core",
+     "version": "0.21.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "base64",
+     "version": "0.13.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "base64",
+     "version": "0.22.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "bumpalo",
+     "version": "3.20.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "bytes",
+     "version": "1.12.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "cfg-if",
+     "version": "1.0.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "concurrent-queue",
+     "version": "2.5.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "crossbeam-utils",
+     "version": "0.8.22"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "dyn-clone",
+     "version": "1.0.20"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "env_logger",
+     "version": "0.10.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "event-listener",
+     "version": "2.5.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "fastrand",
+     "version": "1.9.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "form_urlencoded",
+     "version": "1.2.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "futures",
+     "version": "0.3.32"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "futures-channel",
+     "version": "0.3.32"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "futures-core",
+     "version": "0.3.32"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "futures-executor",
+     "version": "0.3.32"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "futures-io",
+     "version": "0.3.32"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "futures-lite",
+     "version": "1.13.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "futures-macro",
+     "version": "0.3.32"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "futures-sink",
+     "version": "0.3.32"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "futures-task",
+     "version": "0.3.32"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "futures-util",
+     "version": "0.3.32"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "getrandom",
+     "version": "0.1.16"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "getrandom",
+     "version": "0.2.17"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "http-types",
+     "version": "2.12.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "idna",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "idna_adapter",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "idna_mapping",
+     "version": "1.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "infer",
+     "version": "0.2.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "instant",
+     "version": "0.1.13"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "itoa",
+     "version": "1.0.18"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "js-sys",
+     "version": "0.3.103"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "libc",
+     "version": "0.2.186"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "log",
+     "version": "0.4.33"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "memchr",
+     "version": "2.8.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "num_threads",
+     "version": "0.1.7"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "once_cell",
+     "version": "1.21.4"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "parking",
+     "version": "2.2.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "paste",
+     "version": "1.0.15"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "percent-encoding",
+     "version": "2.3.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "pin-project",
+     "version": "1.1.13"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "pin-project-internal",
+     "version": "1.1.13"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "pin-project-lite",
+     "version": "0.2.17"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "ppv-lite86",
+     "version": "0.2.21"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "proc-macro2",
+     "version": "1.0.106"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "quote",
+     "version": "1.0.46"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "rand",
+     "version": "0.7.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "rand",
+     "version": "0.8.6"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "rand_chacha",
+     "version": "0.2.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "rand_chacha",
+     "version": "0.3.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "rand_core",
+     "version": "0.5.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "rand_core",
+     "version": "0.6.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "rand_hc",
+     "version": "0.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "rustc_version",
+     "version": "0.4.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "rustversion",
+     "version": "1.0.23"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "ryu",
+     "version": "1.0.23"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "semver",
+     "version": "1.0.28"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "serde",
+     "version": "1.0.210"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "serde_derive",
+     "version": "1.0.210"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "serde_json",
+     "version": "1.0.143"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "serde_qs",
+     "version": "0.8.5"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "serde_urlencoded",
+     "version": "0.7.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "slab",
+     "version": "0.4.12"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "smallvec",
+     "version": "1.15.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "syn",
+     "version": "2.0.56"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "thiserror",
+     "version": "1.0.65"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "thiserror-impl",
+     "version": "1.0.65"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "time",
+     "version": "0.3.15"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "time-macros",
+     "version": "0.2.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "tinyvec",
+     "version": "1.12.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "tinyvec_macros",
+     "version": "0.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "tokio",
+     "version": "1.52.3"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "tokio-macros",
+     "version": "2.7.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "tracing",
+     "version": "0.1.44"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "tracing-attributes",
+     "version": "0.1.31"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "tracing-core",
+     "version": "0.1.36"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "unicode-bidi",
+     "version": "0.3.18"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "unicode-ident",
+     "version": "1.0.24"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "unicode-joining-type",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "unicode-normalization",
+     "version": "0.1.25"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "url",
+     "version": "2.5.8"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "utf8_iter",
+     "version": "1.0.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "uuid",
+     "version": "1.23.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "waker-fn",
+     "version": "1.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "wasi",
+     "version": "0.11.1+wasi-snapshot-preview1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "wasi",
+     "version": "0.9.0+wasi-snapshot-preview1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "wasm-bindgen",
+     "version": "0.2.126"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "wasm-bindgen-macro",
+     "version": "0.2.126"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "wasm-bindgen-macro-support",
+     "version": "0.2.126"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "wasm-bindgen-shared",
+     "version": "0.2.126"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "zerocopy",
+     "version": "0.8.54"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "zerocopy-derive",
+     "version": "0.8.54"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 1,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 4,
+    "requirement": "^0.21"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 8,
+    "requirement": "^1.3"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 13,
+    "requirement": "^0.10"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 17,
+    "requirement": "^0.3"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 38,
+    "requirement": "^0.4"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 41,
+    "requirement": "^1.18"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 62,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 64,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 72,
+    "requirement": "^0.3"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 76,
+    "requirement": "^1.23"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 10,
+    "requirement": "^2"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 14,
+    "requirement": "^2.4.0"
+   },
+   {
+    "fromNode": 2,
+    "toNode": 19,
+    "requirement": "^0.3.5"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 49,
+    "requirement": "^1.0.74"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 50,
+    "requirement": "^1.0.35"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 69,
+    "requirement": "^2.0.46"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 3,
+    "requirement": "^0.1"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 6,
+    "requirement": "^0.22"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 8,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 12,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 17,
+    "requirement": "^0.3"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 28,
+    "requirement": "^0.2"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 29,
+    "requirement": "^2.12"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 41,
+    "requirement": "^1.18"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 43,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 45,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 52,
+    "requirement": "^0.8"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 58,
+    "requirement": "^0.4"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 62,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 64,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 72,
+    "requirement": "^0.3.10"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 78,
+    "requirement": "^0.1.40"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 85,
+    "requirement": "^2.2"
+   },
+   {
+    "fromNode": 4,
+    "toNode": 87,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 10,
+    "toNode": 11,
+    "requirement": "^0.8.11"
+   },
+   {
+    "fromNode": 13,
+    "toNode": 38,
+    "requirement": "^0.4.8"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 34,
+    "requirement": "^0.1"
+   },
+   {
+    "fromNode": 16,
+    "toNode": 44,
+    "requirement": "^2.3.0"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 18,
+    "requirement": "^0.3.32"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 19,
+    "requirement": "^0.3.32"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 20,
+    "requirement": "^0.3.32"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 21,
+    "requirement": "^0.3.32"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 24,
+    "requirement": "^0.3.32"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 25,
+    "requirement": "^0.3.32"
+   },
+   {
+    "fromNode": 17,
+    "toNode": 26,
+    "requirement": "^0.3.32"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 19,
+    "requirement": "^0.3.32"
+   },
+   {
+    "fromNode": 18,
+    "toNode": 24,
+    "requirement": "^0.3.32"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 19,
+    "requirement": "^0.3.32"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 25,
+    "requirement": "^0.3.32"
+   },
+   {
+    "fromNode": 20,
+    "toNode": 26,
+    "requirement": "^0.3.32"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 15,
+    "requirement": "^1.3.4"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 19,
+    "requirement": "^0.3.5"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 21,
+    "requirement": "^0.3.5"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 39,
+    "requirement": "^2.3.3"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 42,
+    "requirement": "^2.0.0"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 47,
+    "requirement": "^0.2.0"
+   },
+   {
+    "fromNode": 22,
+    "toNode": 88,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 49,
+    "requirement": "^1.0.60"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 50,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 23,
+    "toNode": 69,
+    "requirement": "^2.0.52"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 18,
+    "requirement": "^0.3.32"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 19,
+    "requirement": "^0.3.32"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 21,
+    "requirement": "^0.3.32"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 23,
+    "requirement": "=0.3.32"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 24,
+    "requirement": "^0.3.32"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 25,
+    "requirement": "^0.3.32"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 39,
+    "requirement": "^2.2"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 47,
+    "requirement": "^0.2.6"
+   },
+   {
+    "fromNode": 26,
+    "toNode": 67,
+    "requirement": "^0.4.7"
+   },
+   {
+    "fromNode": 27,
+    "toNode": 9,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 27,
+    "toNode": 37,
+    "requirement": "^0.2.64"
+   },
+   {
+    "fromNode": 27,
+    "toNode": 90,
+    "requirement": "^0.9"
+   },
+   {
+    "fromNode": 28,
+    "toNode": 9,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 28,
+    "toNode": 36,
+    "requirement": "^0.3"
+   },
+   {
+    "fromNode": 28,
+    "toNode": 37,
+    "requirement": "^0.2.154"
+   },
+   {
+    "fromNode": 28,
+    "toNode": 89,
+    "requirement": "^0.11"
+   },
+   {
+    "fromNode": 28,
+    "toNode": 91,
+    "requirement": "^0.2.62"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 1,
+    "requirement": "^1.0.26"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 2,
+    "requirement": "^1.5.1"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 5,
+    "requirement": "^0.13.0"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 22,
+    "requirement": "^1.11.1"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 33,
+    "requirement": "^0.2.3"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 47,
+    "requirement": "^0.2.0"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 51,
+    "requirement": "^0.7.3"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 62,
+    "requirement": "^1.0.106"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 64,
+    "requirement": "^1.0.51"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 65,
+    "requirement": "^0.8.3"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 66,
+    "requirement": "^0.7.0"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 85,
+    "requirement": "^2.1.1"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 31,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 68,
+    "requirement": "^1.13.1"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 86,
+    "requirement": "^1.0.4"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 32,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 81,
+    "requirement": "^0.3.10"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 84,
+    "requirement": "^0.1.22"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 83,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 34,
+    "toNode": 9,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 9,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 36,
+    "toNode": 91,
+    "requirement": "=0.2.126"
+   },
+   {
+    "fromNode": 40,
+    "toNode": 37,
+    "requirement": "^0.2.107"
+   },
+   {
+    "fromNode": 45,
+    "toNode": 46,
+    "requirement": "=1.1.13"
+   },
+   {
+    "fromNode": 46,
+    "toNode": 49,
+    "requirement": "^1.0.60"
+   },
+   {
+    "fromNode": 46,
+    "toNode": 50,
+    "requirement": "^1.0.25"
+   },
+   {
+    "fromNode": 46,
+    "toNode": 69,
+    "requirement": "^2.0.1"
+   },
+   {
+    "fromNode": 48,
+    "toNode": 95,
+    "requirement": "^0.8.23"
+   },
+   {
+    "fromNode": 49,
+    "toNode": 82,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 50,
+    "toNode": 49,
+    "requirement": "^1.0.80"
+   },
+   {
+    "fromNode": 51,
+    "toNode": 27,
+    "requirement": "^0.1.1"
+   },
+   {
+    "fromNode": 51,
+    "toNode": 37,
+    "requirement": "^0.2.22"
+   },
+   {
+    "fromNode": 51,
+    "toNode": 53,
+    "requirement": "^0.2.1"
+   },
+   {
+    "fromNode": 51,
+    "toNode": 55,
+    "requirement": "^0.5.1"
+   },
+   {
+    "fromNode": 51,
+    "toNode": 57,
+    "requirement": "^0.2"
+   },
+   {
+    "fromNode": 52,
+    "toNode": 37,
+    "requirement": "^0.2.22"
+   },
+   {
+    "fromNode": 52,
+    "toNode": 54,
+    "requirement": "^0.3.0"
+   },
+   {
+    "fromNode": 52,
+    "toNode": 56,
+    "requirement": "^0.6.0"
+   },
+   {
+    "fromNode": 53,
+    "toNode": 48,
+    "requirement": "^0.2.6"
+   },
+   {
+    "fromNode": 53,
+    "toNode": 55,
+    "requirement": "^0.5"
+   },
+   {
+    "fromNode": 54,
+    "toNode": 48,
+    "requirement": "^0.2.8"
+   },
+   {
+    "fromNode": 54,
+    "toNode": 56,
+    "requirement": "^0.6.0"
+   },
+   {
+    "fromNode": 55,
+    "toNode": 27,
+    "requirement": "^0.1"
+   },
+   {
+    "fromNode": 56,
+    "toNode": 28,
+    "requirement": "^0.2"
+   },
+   {
+    "fromNode": 57,
+    "toNode": 55,
+    "requirement": "^0.5"
+   },
+   {
+    "fromNode": 58,
+    "toNode": 61,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 62,
+    "toNode": 63,
+    "requirement": "=1.0.210"
+   },
+   {
+    "fromNode": 62,
+    "toNode": 63,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 63,
+    "toNode": 49,
+    "requirement": "^1.0.74"
+   },
+   {
+    "fromNode": 63,
+    "toNode": 50,
+    "requirement": "^1.0.35"
+   },
+   {
+    "fromNode": 63,
+    "toNode": 69,
+    "requirement": "^2.0.46"
+   },
+   {
+    "fromNode": 64,
+    "toNode": 35,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 64,
+    "toNode": 39,
+    "requirement": "^2"
+   },
+   {
+    "fromNode": 64,
+    "toNode": 60,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 64,
+    "toNode": 62,
+    "requirement": "^1.0.194"
+   },
+   {
+    "fromNode": 65,
+    "toNode": 44,
+    "requirement": "^2.1"
+   },
+   {
+    "fromNode": 65,
+    "toNode": 62,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 65,
+    "toNode": 70,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 66,
+    "toNode": 16,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 66,
+    "toNode": 35,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 66,
+    "toNode": 60,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 66,
+    "toNode": 62,
+    "requirement": "^1.0.69"
+   },
+   {
+    "fromNode": 69,
+    "toNode": 49,
+    "requirement": "^1.0.75"
+   },
+   {
+    "fromNode": 69,
+    "toNode": 50,
+    "requirement": "^1.0.35"
+   },
+   {
+    "fromNode": 69,
+    "toNode": 82,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 70,
+    "toNode": 71,
+    "requirement": "=1.0.65"
+   },
+   {
+    "fromNode": 71,
+    "toNode": 49,
+    "requirement": "^1.0.74"
+   },
+   {
+    "fromNode": 71,
+    "toNode": 50,
+    "requirement": "^1.0.35"
+   },
+   {
+    "fromNode": 71,
+    "toNode": 69,
+    "requirement": "^2.0.46"
+   },
+   {
+    "fromNode": 72,
+    "toNode": 35,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 72,
+    "toNode": 36,
+    "requirement": "^0.3.58"
+   },
+   {
+    "fromNode": 72,
+    "toNode": 37,
+    "requirement": "^0.2.98"
+   },
+   {
+    "fromNode": 72,
+    "toNode": 40,
+    "requirement": "^0.1.2"
+   },
+   {
+    "fromNode": 72,
+    "toNode": 62,
+    "requirement": "^1.0.126"
+   },
+   {
+    "fromNode": 72,
+    "toNode": 73,
+    "requirement": "=0.2.4"
+   },
+   {
+    "fromNode": 74,
+    "toNode": 75,
+    "requirement": "^0.1"
+   },
+   {
+    "fromNode": 76,
+    "toNode": 47,
+    "requirement": "^0.2.11"
+   },
+   {
+    "fromNode": 76,
+    "toNode": 77,
+    "requirement": "~2.7.0"
+   },
+   {
+    "fromNode": 77,
+    "toNode": 49,
+    "requirement": "^1.0.60"
+   },
+   {
+    "fromNode": 77,
+    "toNode": 50,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 77,
+    "toNode": 69,
+    "requirement": "^2.0"
+   },
+   {
+    "fromNode": 78,
+    "toNode": 47,
+    "requirement": "^0.2.9"
+   },
+   {
+    "fromNode": 78,
+    "toNode": 79,
+    "requirement": "^0.1.31"
+   },
+   {
+    "fromNode": 78,
+    "toNode": 80,
+    "requirement": "^0.1.36"
+   },
+   {
+    "fromNode": 79,
+    "toNode": 49,
+    "requirement": "^1.0.60"
+   },
+   {
+    "fromNode": 79,
+    "toNode": 50,
+    "requirement": "^1.0.20"
+   },
+   {
+    "fromNode": 79,
+    "toNode": 69,
+    "requirement": "^2.0"
+   },
+   {
+    "fromNode": 80,
+    "toNode": 41,
+    "requirement": "^1.13.0"
+   },
+   {
+    "fromNode": 84,
+    "toNode": 74,
+    "requirement": "^1"
+   },
+   {
+    "fromNode": 85,
+    "toNode": 16,
+    "requirement": "^1.2.2"
+   },
+   {
+    "fromNode": 85,
+    "toNode": 30,
+    "requirement": "^1.1.0"
+   },
+   {
+    "fromNode": 85,
+    "toNode": 44,
+    "requirement": "^2.3.2"
+   },
+   {
+    "fromNode": 85,
+    "toNode": 62,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 91,
+    "toNode": 9,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 91,
+    "toNode": 41,
+    "requirement": "^1.12"
+   },
+   {
+    "fromNode": 91,
+    "toNode": 59,
+    "requirement": "^1.0.6"
+   },
+   {
+    "fromNode": 91,
+    "toNode": 92,
+    "requirement": "=0.2.126"
+   },
+   {
+    "fromNode": 91,
+    "toNode": 94,
+    "requirement": "=0.2.126"
+   },
+   {
+    "fromNode": 92,
+    "toNode": 50,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 92,
+    "toNode": 93,
+    "requirement": "=0.2.126"
+   },
+   {
+    "fromNode": 93,
+    "toNode": 7,
+    "requirement": "^3.0.0"
+   },
+   {
+    "fromNode": 93,
+    "toNode": 49,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 93,
+    "toNode": 50,
+    "requirement": "^1.0"
+   },
+   {
+    "fromNode": 93,
+    "toNode": 69,
+    "requirement": "^2.0"
+   },
+   {
+    "fromNode": 93,
+    "toNode": 94,
+    "requirement": "=0.2.126"
+   },
+   {
+    "fromNode": 94,
+    "toNode": 82,
+    "requirement": "^1.0.5"
+   },
+   {
+    "fromNode": 95,
+    "toNode": 96,
+    "requirement": "=0.8.54"
+   },
+   {
+    "fromNode": 96,
+    "toNode": 49,
+    "requirement": "^1.0.1"
+   },
+   {
+    "fromNode": 96,
+    "toNode": 50,
+    "requirement": "^1.0.40"
+   },
+   {
+    "fromNode": 96,
+    "toNode": 69,
+    "requirement": "^2.0.46"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/azure/azure-sdk-for-rust"
+  },
+  "openIssuesCount": 276,
+  "starsCount": 881,
+  "forksCount": 359,
+  "license": "MIT",
+  "description": "This repository is for the active development of the Azure SDK for Rust. For consumers of the SDK we recommend visiting Docs.rs and looking up the docs for any of libraries in the SDK.",
+  "homepage": ""
+ },
+ "github_repo_api": {
+  "id": 295810364,
+  "node_id": "MDEwOlJlcG9zaXRvcnkyOTU4MTAzNjQ=",
+  "name": "azure-sdk-for-rust",
+  "full_name": "Azure/azure-sdk-for-rust",
+  "private": false,
+  "owner": {
+   "login": "Azure",
+   "id": 6844498,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjY4NDQ0OTg=",
+   "avatar_url": "https://avatars.githubusercontent.com/u/6844498?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/Azure",
+   "html_url": "https://github.com/Azure",
+   "followers_url": "https://api.github.com/users/Azure/followers",
+   "following_url": "https://api.github.com/users/Azure/following{/other_user}",
+   "gists_url": "https://api.github.com/users/Azure/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/Azure/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/Azure/subscriptions",
+   "organizations_url": "https://api.github.com/users/Azure/orgs",
+   "repos_url": "https://api.github.com/users/Azure/repos",
+   "events_url": "https://api.github.com/users/Azure/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/Azure/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/Azure/azure-sdk-for-rust",
+  "description": "This repository is for the active development of the Azure SDK for Rust. For consumers of the SDK we recommend visiting Docs.rs and looking up the docs for any of libraries in the SDK.",
+  "fork": false,
+  "url": "https://api.github.com/repos/Azure/azure-sdk-for-rust",
+  "forks_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/forks",
+  "keys_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/teams",
+  "hooks_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/hooks",
+  "issue_events_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/events",
+  "assignees_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/tags",
+  "blobs_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/languages",
+  "stargazers_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/stargazers",
+  "contributors_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/contributors",
+  "subscribers_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/subscribers",
+  "subscription_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/subscription",
+  "commits_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/merges",
+  "archive_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/downloads",
+  "issues_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/labels{/name}",
+  "releases_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/Azure/azure-sdk-for-rust/deployments",
+  "created_at": "2020-09-15T18:05:06Z",
+  "updated_at": "2026-07-21T18:21:20Z",
+  "pushed_at": "2026-07-21T18:20:46Z",
+  "git_url": "git://github.com/Azure/azure-sdk-for-rust.git",
+  "ssh_url": "git@github.com:Azure/azure-sdk-for-rust.git",
+  "clone_url": "https://github.com/Azure/azure-sdk-for-rust.git",
+  "svn_url": "https://github.com/Azure/azure-sdk-for-rust",
+  "homepage": "",
+  "size": 435490,
+  "stargazers_count": 881,
+  "watchers_count": 881,
+  "language": "Rust",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": false,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 358,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 285,
+  "license": {
+   "key": "mit",
+   "name": "MIT License",
+   "spdx_id": "MIT",
+   "url": "https://api.github.com/licenses/mit",
+   "node_id": "MDc6TGljZW5zZTEz"
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [
+   "azure",
+   "azure-sdk",
+   "microsoft",
+   "rust",
+   "rust-lang",
+   "rustlang"
+  ],
+  "visibility": "public",
+  "forks": 358,
+  "open_issues": 285,
+  "watchers": 881,
+  "default_branch": "main",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {
+   "activeRepoStatus": "false",
+   "azure-sdk-rulesets-opt-in": "true",
+   "currentRepoStatus": "false",
+   "durableOwnershipDisable": "false",
+   "durableOwnershipNextCheckDate": "2026-05-02T14:13:11.759Z",
+   "durableOwnershipWarn": "false",
+   "global-rulesets-opt-out": "true"
+  },
+  "organization": {
+   "login": "Azure",
+   "id": 6844498,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjY4NDQ0OTg=",
+   "avatar_url": "https://avatars.githubusercontent.com/u/6844498?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/Azure",
+   "html_url": "https://github.com/Azure",
+   "followers_url": "https://api.github.com/users/Azure/followers",
+   "following_url": "https://api.github.com/users/Azure/following{/other_user}",
+   "gists_url": "https://api.github.com/users/Azure/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/Azure/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/Azure/subscriptions",
+   "organizations_url": "https://api.github.com/users/Azure/orgs",
+   "repos_url": "https://api.github.com/users/Azure/repos",
+   "events_url": "https://api.github.com/users/Azure/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/Azure/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 358,
+  "subscribers_count": 290
+ },
+ "funding": []
+}

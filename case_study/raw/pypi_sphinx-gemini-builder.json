@@ -1,0 +1,493 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "PYPI",
+   "name": "sphinx-gemini-builder"
+  },
+  "purl": "pkg:pypi/sphinx-gemini-builder",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "sphinx-gemini-builder",
+     "version": "1.0.0"
+    },
+    "purl": "pkg:pypi/sphinx-gemini-builder@1.0.0",
+    "publishedAt": "2021-02-01T02:19:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "sphinx-gemini-builder",
+     "version": "1.1.0"
+    },
+    "purl": "pkg:pypi/sphinx-gemini-builder@1.1.0",
+    "publishedAt": "2021-02-02T23:55:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "sphinx-gemini-builder",
+     "version": "1.1.1"
+    },
+    "purl": "pkg:pypi/sphinx-gemini-builder@1.1.1",
+    "publishedAt": "2021-02-03T00:08:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "sphinx-gemini-builder",
+     "version": "1.1.2"
+    },
+    "purl": "pkg:pypi/sphinx-gemini-builder@1.1.2",
+    "publishedAt": "2021-06-02T17:37:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "sphinx-gemini-builder",
+     "version": "2.0.0"
+    },
+    "purl": "pkg:pypi/sphinx-gemini-builder@2.0.0",
+    "publishedAt": "2023-08-16T23:59:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "sphinx-gemini-builder",
+     "version": "2.0.1"
+    },
+    "purl": "pkg:pypi/sphinx-gemini-builder@2.0.1",
+    "publishedAt": "2025-10-21T17:55:23Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "PYPI",
+   "name": "sphinx-gemini-builder",
+   "version": "2.0.1"
+  },
+  "purl": "pkg:pypi/sphinx-gemini-builder@2.0.1",
+  "publishedAt": "2025-10-21T17:55:23Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "EUPL-1.2"
+  ],
+  "licenseDetails": [
+   {
+    "license": "European Union Public Licence 1.2 (EUPL 1.2)",
+    "spdx": "EUPL-1.2"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "HOMEPAGE",
+    "url": "https://www.nerv-project.eu"
+   },
+   {
+    "label": "ISSUE_TRACKER",
+    "url": "https://procrastinator.nerv-project.eu/nerv-project/sphinx_gemini_builder/issues"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://pypi.org/simple"
+  ],
+  "relatedProjects": [],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "sphinx_gemini_builder",
+    "versionString": "2.0.1",
+    "source": "PYPI_RELEASE_FILENAME"
+   },
+   {
+    "packageName": "sphinx_gemini_builder",
+    "versionString": "2.0.1",
+    "source": "PYPI_METADATA_FILE"
+   }
+  ],
+  "cooldown": {
+   "end": "2025-10-26T17:55:23Z",
+   "description": ""
+  },
+  "projectStatus": {
+   "status": "active",
+   "reason": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "sphinx-gemini-builder",
+     "version": "2.0.1"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "alabaster",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "babel",
+     "version": "2.18.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "certifi",
+     "version": "2026.6.17"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "charset-normalizer",
+     "version": "3.4.9"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "docutils",
+     "version": "0.22.4"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "idna",
+     "version": "3.18.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "imagesize",
+     "version": "2.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "jinja2",
+     "version": "3.1.6"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "markupsafe",
+     "version": "3.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "packaging",
+     "version": "26.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "pygments",
+     "version": "2.20.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "requests",
+     "version": "2.34.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "roman-numerals",
+     "version": "4.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "snowballstemmer",
+     "version": "3.1.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "sphinx",
+     "version": "9.1.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "sphinxcontrib-applehelp",
+     "version": "2.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "sphinxcontrib-devhelp",
+     "version": "2.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "sphinxcontrib-htmlhelp",
+     "version": "2.1.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "sphinxcontrib-jsmath",
+     "version": "1.0.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "sphinxcontrib-qthelp",
+     "version": "2.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "sphinxcontrib-serializinghtml",
+     "version": "2.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "PYPI",
+     "name": "urllib3",
+     "version": "2.7.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 15,
+    "requirement": ">=8.0.0"
+   },
+   {
+    "fromNode": 8,
+    "toNode": 9,
+    "requirement": ">=2.0"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 3,
+    "requirement": ">=2023.5.7"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 4,
+    "requirement": "<4,>=2"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 6,
+    "requirement": "<4,>=2.5"
+   },
+   {
+    "fromNode": 12,
+    "toNode": 22,
+    "requirement": "<3,>=1.26"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 1,
+    "requirement": ">=0.7.14"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 2,
+    "requirement": ">=2.13"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 5,
+    "requirement": ">=0.21,<0.23"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 7,
+    "requirement": ">=1.3"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 8,
+    "requirement": ">=3.1"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 10,
+    "requirement": ">=23.0"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 11,
+    "requirement": ">=2.17"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 12,
+    "requirement": ">=2.30.0"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 13,
+    "requirement": ">=1.0.0"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 14,
+    "requirement": ">=2.2"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 16,
+    "requirement": ">=1.0.7"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 17,
+    "requirement": ">=1.0.6"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 18,
+    "requirement": ">=2.0.6"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 19,
+    "requirement": ">=1.0.1"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 20,
+    "requirement": ">=1.0.6"
+   },
+   {
+    "fromNode": 15,
+    "toNode": 21,
+    "requirement": ">=1.1.9"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ }
+}

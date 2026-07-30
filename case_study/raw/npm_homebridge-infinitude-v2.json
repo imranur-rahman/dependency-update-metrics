@@ -1,0 +1,959 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "homebridge-infinitude-v2"
+  },
+  "purl": "pkg:npm/homebridge-infinitude-v2",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "homebridge-infinitude-v2",
+     "version": "0.5.1"
+    },
+    "purl": "pkg:npm/homebridge-infinitude-v2@0.5.1",
+    "publishedAt": "2021-05-04T04:22:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "homebridge-infinitude-v2",
+     "version": "0.5.2"
+    },
+    "purl": "pkg:npm/homebridge-infinitude-v2@0.5.2",
+    "publishedAt": "2021-05-04T20:52:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "homebridge-infinitude-v2",
+     "version": "0.5.3"
+    },
+    "purl": "pkg:npm/homebridge-infinitude-v2@0.5.3",
+    "publishedAt": "2021-05-04T20:53:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "homebridge-infinitude-v2",
+     "version": "0.5.4"
+    },
+    "purl": "pkg:npm/homebridge-infinitude-v2@0.5.4",
+    "publishedAt": "2021-07-02T15:18:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "homebridge-infinitude-v2",
+     "version": "0.6.0"
+    },
+    "purl": "pkg:npm/homebridge-infinitude-v2@0.6.0",
+    "publishedAt": "2022-08-24T21:44:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "homebridge-infinitude-v2",
+     "version": "0.6.1"
+    },
+    "purl": "pkg:npm/homebridge-infinitude-v2@0.6.1",
+    "publishedAt": "2022-08-29T16:09:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "homebridge-infinitude-v2",
+     "version": "0.6.2"
+    },
+    "purl": "pkg:npm/homebridge-infinitude-v2@0.6.2",
+    "publishedAt": "2022-08-30T14:48:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "homebridge-infinitude-v2",
+     "version": "0.6.4"
+    },
+    "purl": "pkg:npm/homebridge-infinitude-v2@0.6.4",
+    "publishedAt": "2022-08-30T20:26:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "homebridge-infinitude-v2",
+     "version": "0.6.5"
+    },
+    "purl": "pkg:npm/homebridge-infinitude-v2@0.6.5",
+    "publishedAt": "2022-09-05T02:50:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "homebridge-infinitude-v2",
+     "version": "0.7.0"
+    },
+    "purl": "pkg:npm/homebridge-infinitude-v2@0.7.0",
+    "publishedAt": "2022-09-27T18:06:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "homebridge-infinitude-v2",
+     "version": "0.7.1"
+    },
+    "purl": "pkg:npm/homebridge-infinitude-v2@0.7.1",
+    "publishedAt": "2023-11-17T00:07:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "homebridge-infinitude-v2",
+     "version": "0.8.0"
+    },
+    "purl": "pkg:npm/homebridge-infinitude-v2@0.8.0",
+    "publishedAt": "2023-11-29T06:14:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "homebridge-infinitude-v2",
+     "version": "0.9.0"
+    },
+    "purl": "pkg:npm/homebridge-infinitude-v2@0.9.0",
+    "publishedAt": "2024-01-25T16:37:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "homebridge-infinitude-v2",
+     "version": "0.9.1"
+    },
+    "purl": "pkg:npm/homebridge-infinitude-v2@0.9.1",
+    "publishedAt": "2024-01-25T17:29:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "homebridge-infinitude-v2",
+     "version": "0.9.2"
+    },
+    "purl": "pkg:npm/homebridge-infinitude-v2@0.9.2",
+    "publishedAt": "2024-01-25T17:40:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "homebridge-infinitude-v2",
+     "version": "0.9.3"
+    },
+    "purl": "pkg:npm/homebridge-infinitude-v2@0.9.3",
+    "publishedAt": "2024-01-25T17:53:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "homebridge-infinitude-v2",
+     "version": "0.9.4"
+    },
+    "purl": "pkg:npm/homebridge-infinitude-v2@0.9.4",
+    "publishedAt": "2024-01-25T18:45:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "homebridge-infinitude-v2",
+     "version": "0.9.5"
+    },
+    "purl": "pkg:npm/homebridge-infinitude-v2@0.9.5",
+    "publishedAt": "2024-05-07T18:27:50Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "NPM",
+   "name": "homebridge-infinitude-v2",
+   "version": "0.9.5"
+  },
+  "purl": "pkg:npm/homebridge-infinitude-v2@0.9.5",
+  "publishedAt": "2024-05-07T18:27:50Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "ISC"
+  ],
+  "licenseDetails": [
+   {
+    "license": "ISC",
+    "spdx": "ISC"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "HOMEPAGE",
+    "url": "https://github.com/dotfortun3-code/homebridge-infinitude-v2#readme"
+   },
+   {
+    "label": "ISSUE_TRACKER",
+    "url": "https://github.com/dotfortun3-code/homebridge-infinitude-v2/issues"
+   },
+   {
+    "label": "ORIGIN",
+    "url": "https://registry.npmjs.org/homebridge-infinitude-v2/0.9.5"
+   },
+   {
+    "label": "SOURCE_REPO",
+    "url": "git://github.com/dotfortun3-code/homebridge-infinitude-v2.git"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://registry.npmjs.org/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/dotfortun3-code/homebridge-infinitude-v2"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "ISSUE_TRACKER"
+   },
+   {
+    "projectKey": {
+     "id": "github.com/dotfortun3-code/homebridge-infinitude-v2"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "homebridge-infinitude-v2",
+    "versionString": "0.9.5",
+    "source": "NPM_NPMJS_ORG"
+   }
+  ],
+  "cooldown": {
+   "end": "2024-05-22T18:27:50Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "homebridge-infinitude-v2",
+     "version": "0.9.5"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "axios",
+     "version": "0.21.4"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "eventemitter3",
+     "version": "2.0.3"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "fast-xml-parser",
+     "version": "4.5.7"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "follow-redirects",
+     "version": "1.16.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "native-promise-only",
+     "version": "0.8.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "strnum",
+     "version": "1.1.2"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "threads",
+     "version": "0.12.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "yarn",
+     "version": "1.22.22"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 1,
+    "requirement": "^0.21.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 3,
+    "requirement": "^4.0.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 7,
+    "requirement": "^0.12.1"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 8,
+    "requirement": "^1.22.17"
+   },
+   {
+    "fromNode": 1,
+    "toNode": 4,
+    "requirement": "^1.14.0"
+   },
+   {
+    "fromNode": 3,
+    "toNode": 6,
+    "requirement": "^1.0.5"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 2,
+    "requirement": "^2.0.2"
+   },
+   {
+    "fromNode": 7,
+    "toNode": 5,
+    "requirement": "^0.8.1"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/dotfortun3-code/homebridge-infinitude-v2"
+  },
+  "openIssuesCount": 2,
+  "starsCount": 3,
+  "forksCount": 0,
+  "license": "non-standard",
+  "description": "Infinitude Plugin for Homebridge",
+  "homepage": "",
+  "scorecard": {
+   "date": "2026-07-13T00:00:00Z",
+   "repository": {
+    "name": "github.com/dotfortun3-code/homebridge-infinitude-v2",
+    "commit": "ad896da1073a92349a68a18386c01682d8c9db31"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260519155427-916bfc57fa74",
+    "commit": "916bfc57fa7431467a33a5a013cba3f8a0c1ec50"
+   },
+   "checks": [
+    {
+     "name": "Binary-Artifacts",
+     "documentation": {
+      "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#binary-artifacts"
+     },
+     "score": 10,
+     "reason": "no binaries found in the repo",
+     "details": []
+    },
+    {
+     "name": "Packaging",
+     "documentation": {
+      "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#packaging"
+     },
+     "score": -1,
+     "reason": "packaging workflow not detected",
+     "details": [
+      "Warn: no GitHub/GitLab publishing workflow detected."
+     ]
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "documentation": {
+      "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#dangerous-workflow"
+     },
+     "score": -1,
+     "reason": "no workflows found",
+     "details": []
+    },
+    {
+     "name": "Code-Review",
+     "documentation": {
+      "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#code-review"
+     },
+     "score": 1,
+     "reason": "Found 2/12 approved changesets -- score normalized to 1",
+     "details": []
+    },
+    {
+     "name": "Maintained",
+     "documentation": {
+      "shortDescription": "Determines if the project is \"actively maintained\".",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#maintained"
+     },
+     "score": 0,
+     "reason": "0 commit(s) and 0 issue activity found in the last 90 days -- score normalized to 0",
+     "details": []
+    },
+    {
+     "name": "Token-Permissions",
+     "documentation": {
+      "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#token-permissions"
+     },
+     "score": -1,
+     "reason": "No tokens found",
+     "details": []
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "documentation": {
+      "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#pinned-dependencies"
+     },
+     "score": -1,
+     "reason": "no dependencies found",
+     "details": []
+    },
+    {
+     "name": "CII-Best-Practices",
+     "documentation": {
+      "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#cii-best-practices"
+     },
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected",
+     "details": []
+    },
+    {
+     "name": "Security-Policy",
+     "documentation": {
+      "shortDescription": "Determines if the project has published a security policy.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#security-policy"
+     },
+     "score": 0,
+     "reason": "security policy file not detected",
+     "details": [
+      "Warn: no security policy file detected",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze",
+      "Warn: no security file to analyze"
+     ]
+    },
+    {
+     "name": "Fuzzing",
+     "documentation": {
+      "shortDescription": "Determines if the project uses fuzzing.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#fuzzing"
+     },
+     "score": 0,
+     "reason": "project is not fuzzed",
+     "details": [
+      "Warn: no fuzzer integrations found"
+     ]
+    },
+    {
+     "name": "License",
+     "documentation": {
+      "shortDescription": "Determines if the project has defined a license.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#license"
+     },
+     "score": 10,
+     "reason": "license file detected",
+     "details": [
+      "Info: project has a license file: LICENSE:0",
+      "Info: FSF or OSI recognized license: ISC License: LICENSE:0"
+     ]
+    },
+    {
+     "name": "Signed-Releases",
+     "documentation": {
+      "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#signed-releases"
+     },
+     "score": -1,
+     "reason": "no releases found",
+     "details": []
+    },
+    {
+     "name": "Branch-Protection",
+     "documentation": {
+      "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#branch-protection"
+     },
+     "score": -1,
+     "reason": "internal error: error during branchesHandler.setup: internal error: some github tokens can't read classic branch protection rules: https://github.com/ossf/scorecard-action/blob/main/docs/authentication/fine-grained-auth-token.md",
+     "details": []
+    },
+    {
+     "name": "SAST",
+     "documentation": {
+      "shortDescription": "Determines if the project uses static code analysis.",
+      "url": "https://github.com/ossf/scorecard/blob/916bfc57fa7431467a33a5a013cba3f8a0c1ec50/docs/checks.md#sast"
+     },
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0",
+     "details": [
+      "Warn: 0 commits out of 27 are checked with a SAST tool"
+     ]
+    }
+   ],
+   "overallScore": 2.5,
+   "metadata": []
+  }
+ },
+ "github_repo_api": {
+  "id": 363804523,
+  "node_id": "MDEwOlJlcG9zaXRvcnkzNjM4MDQ1MjM=",
+  "name": "homebridge-infinitude-v2",
+  "full_name": "dotfortun3-code/homebridge-infinitude-v2",
+  "private": false,
+  "owner": {
+   "login": "dotfortun3-code",
+   "id": 24662541,
+   "node_id": "MDQ6VXNlcjI0NjYyNTQx",
+   "avatar_url": "https://avatars.githubusercontent.com/u/24662541?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/dotfortun3-code",
+   "html_url": "https://github.com/dotfortun3-code",
+   "followers_url": "https://api.github.com/users/dotfortun3-code/followers",
+   "following_url": "https://api.github.com/users/dotfortun3-code/following{/other_user}",
+   "gists_url": "https://api.github.com/users/dotfortun3-code/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/dotfortun3-code/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/dotfortun3-code/subscriptions",
+   "organizations_url": "https://api.github.com/users/dotfortun3-code/orgs",
+   "repos_url": "https://api.github.com/users/dotfortun3-code/repos",
+   "events_url": "https://api.github.com/users/dotfortun3-code/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/dotfortun3-code/received_events",
+   "type": "User",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/dotfortun3-code/homebridge-infinitude-v2",
+  "description": "Infinitude Plugin for Homebridge",
+  "fork": true,
+  "url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2",
+  "forks_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/forks",
+  "keys_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/teams",
+  "hooks_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/hooks",
+  "issue_events_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/events",
+  "assignees_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/tags",
+  "blobs_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/languages",
+  "stargazers_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/stargazers",
+  "contributors_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/contributors",
+  "subscribers_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/subscribers",
+  "subscription_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/subscription",
+  "commits_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/merges",
+  "archive_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/downloads",
+  "issues_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/labels{/name}",
+  "releases_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/dotfortun3-code/homebridge-infinitude-v2/deployments",
+  "created_at": "2021-05-03T03:14:41Z",
+  "updated_at": "2024-05-29T19:10:53Z",
+  "pushed_at": "2024-05-07T18:27:13Z",
+  "git_url": "git://github.com/dotfortun3-code/homebridge-infinitude-v2.git",
+  "ssh_url": "git@github.com:dotfortun3-code/homebridge-infinitude-v2.git",
+  "clone_url": "https://github.com/dotfortun3-code/homebridge-infinitude-v2.git",
+  "svn_url": "https://github.com/dotfortun3-code/homebridge-infinitude-v2",
+  "homepage": null,
+  "size": 1201,
+  "stargazers_count": 3,
+  "watchers_count": 3,
+  "language": "JavaScript",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": true,
+  "has_pages": false,
+  "has_discussions": false,
+  "forks_count": 0,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 2,
+  "license": {
+   "key": "isc",
+   "name": "ISC License",
+   "spdx_id": "ISC",
+   "url": "https://api.github.com/licenses/isc",
+   "node_id": "MDc6TGljZW5zZTEw"
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [],
+  "visibility": "public",
+  "forks": 0,
+  "open_issues": 2,
+  "watchers": 3,
+  "default_branch": "master",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "parent": {
+   "id": 162934984,
+   "node_id": "MDEwOlJlcG9zaXRvcnkxNjI5MzQ5ODQ=",
+   "name": "homebridge-infinitude",
+   "full_name": "jimhe/homebridge-infinitude",
+   "private": false,
+   "owner": {
+    "login": "jimhe",
+    "id": 2302582,
+    "node_id": "MDQ6VXNlcjIzMDI1ODI=",
+    "avatar_url": "https://avatars.githubusercontent.com/u/2302582?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/jimhe",
+    "html_url": "https://github.com/jimhe",
+    "followers_url": "https://api.github.com/users/jimhe/followers",
+    "following_url": "https://api.github.com/users/jimhe/following{/other_user}",
+    "gists_url": "https://api.github.com/users/jimhe/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/jimhe/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/jimhe/subscriptions",
+    "organizations_url": "https://api.github.com/users/jimhe/orgs",
+    "repos_url": "https://api.github.com/users/jimhe/repos",
+    "events_url": "https://api.github.com/users/jimhe/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/jimhe/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+   },
+   "html_url": "https://github.com/jimhe/homebridge-infinitude",
+   "description": "Infinitude Plugin for Homebridge",
+   "fork": false,
+   "url": "https://api.github.com/repos/jimhe/homebridge-infinitude",
+   "forks_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/forks",
+   "keys_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/keys{/key_id}",
+   "collaborators_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/collaborators{/collaborator}",
+   "teams_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/teams",
+   "hooks_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/hooks",
+   "issue_events_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/issues/events{/number}",
+   "events_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/events",
+   "assignees_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/assignees{/user}",
+   "branches_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/branches{/branch}",
+   "tags_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/tags",
+   "blobs_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/git/blobs{/sha}",
+   "git_tags_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/git/tags{/sha}",
+   "git_refs_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/git/refs{/sha}",
+   "trees_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/git/trees{/sha}",
+   "statuses_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/statuses/{sha}",
+   "languages_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/languages",
+   "stargazers_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/stargazers",
+   "contributors_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/contributors",
+   "subscribers_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/subscribers",
+   "subscription_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/subscription",
+   "commits_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/commits{/sha}",
+   "git_commits_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/git/commits{/sha}",
+   "comments_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/comments{/number}",
+   "issue_comment_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/issues/comments{/number}",
+   "contents_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/contents/{+path}",
+   "compare_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/compare/{base}...{head}",
+   "merges_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/merges",
+   "archive_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/{archive_format}{/ref}",
+   "downloads_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/downloads",
+   "issues_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/issues{/number}",
+   "pulls_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/pulls{/number}",
+   "milestones_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/milestones{/number}",
+   "notifications_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/notifications{?since,all,participating}",
+   "labels_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/labels{/name}",
+   "releases_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/releases{/id}",
+   "deployments_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/deployments",
+   "created_at": "2018-12-24T00:59:12Z",
+   "updated_at": "2022-11-29T16:06:45Z",
+   "pushed_at": "2024-01-25T17:28:27Z",
+   "git_url": "git://github.com/jimhe/homebridge-infinitude.git",
+   "ssh_url": "git@github.com:jimhe/homebridge-infinitude.git",
+   "clone_url": "https://github.com/jimhe/homebridge-infinitude.git",
+   "svn_url": "https://github.com/jimhe/homebridge-infinitude",
+   "homepage": null,
+   "size": 438,
+   "stargazers_count": 7,
+   "watchers_count": 7,
+   "language": "JavaScript",
+   "has_issues": true,
+   "has_projects": true,
+   "has_downloads": false,
+   "has_wiki": true,
+   "has_pages": false,
+   "has_discussions": false,
+   "forks_count": 4,
+   "mirror_url": null,
+   "archived": false,
+   "disabled": false,
+   "open_issues_count": 20,
+   "license": {
+    "key": "isc",
+    "name": "ISC License",
+    "spdx_id": "ISC",
+    "url": "https://api.github.com/licenses/isc",
+    "node_id": "MDc6TGljZW5zZTEw"
+   },
+   "allow_forking": true,
+   "is_template": false,
+   "web_commit_signoff_required": false,
+   "has_pull_requests": true,
+   "pull_request_creation_policy": "all",
+   "topics": [],
+   "visibility": "public",
+   "forks": 4,
+   "open_issues": 20,
+   "watchers": 7,
+   "default_branch": "master"
+  },
+  "source": {
+   "id": 162934984,
+   "node_id": "MDEwOlJlcG9zaXRvcnkxNjI5MzQ5ODQ=",
+   "name": "homebridge-infinitude",
+   "full_name": "jimhe/homebridge-infinitude",
+   "private": false,
+   "owner": {
+    "login": "jimhe",
+    "id": 2302582,
+    "node_id": "MDQ6VXNlcjIzMDI1ODI=",
+    "avatar_url": "https://avatars.githubusercontent.com/u/2302582?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/jimhe",
+    "html_url": "https://github.com/jimhe",
+    "followers_url": "https://api.github.com/users/jimhe/followers",
+    "following_url": "https://api.github.com/users/jimhe/following{/other_user}",
+    "gists_url": "https://api.github.com/users/jimhe/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/jimhe/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/jimhe/subscriptions",
+    "organizations_url": "https://api.github.com/users/jimhe/orgs",
+    "repos_url": "https://api.github.com/users/jimhe/repos",
+    "events_url": "https://api.github.com/users/jimhe/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/jimhe/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+   },
+   "html_url": "https://github.com/jimhe/homebridge-infinitude",
+   "description": "Infinitude Plugin for Homebridge",
+   "fork": false,
+   "url": "https://api.github.com/repos/jimhe/homebridge-infinitude",
+   "forks_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/forks",
+   "keys_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/keys{/key_id}",
+   "collaborators_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/collaborators{/collaborator}",
+   "teams_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/teams",
+   "hooks_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/hooks",
+   "issue_events_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/issues/events{/number}",
+   "events_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/events",
+   "assignees_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/assignees{/user}",
+   "branches_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/branches{/branch}",
+   "tags_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/tags",
+   "blobs_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/git/blobs{/sha}",
+   "git_tags_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/git/tags{/sha}",
+   "git_refs_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/git/refs{/sha}",
+   "trees_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/git/trees{/sha}",
+   "statuses_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/statuses/{sha}",
+   "languages_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/languages",
+   "stargazers_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/stargazers",
+   "contributors_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/contributors",
+   "subscribers_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/subscribers",
+   "subscription_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/subscription",
+   "commits_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/commits{/sha}",
+   "git_commits_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/git/commits{/sha}",
+   "comments_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/comments{/number}",
+   "issue_comment_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/issues/comments{/number}",
+   "contents_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/contents/{+path}",
+   "compare_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/compare/{base}...{head}",
+   "merges_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/merges",
+   "archive_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/{archive_format}{/ref}",
+   "downloads_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/downloads",
+   "issues_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/issues{/number}",
+   "pulls_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/pulls{/number}",
+   "milestones_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/milestones{/number}",
+   "notifications_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/notifications{?since,all,participating}",
+   "labels_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/labels{/name}",
+   "releases_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/releases{/id}",
+   "deployments_url": "https://api.github.com/repos/jimhe/homebridge-infinitude/deployments",
+   "created_at": "2018-12-24T00:59:12Z",
+   "updated_at": "2022-11-29T16:06:45Z",
+   "pushed_at": "2024-01-25T17:28:27Z",
+   "git_url": "git://github.com/jimhe/homebridge-infinitude.git",
+   "ssh_url": "git@github.com:jimhe/homebridge-infinitude.git",
+   "clone_url": "https://github.com/jimhe/homebridge-infinitude.git",
+   "svn_url": "https://github.com/jimhe/homebridge-infinitude",
+   "homepage": null,
+   "size": 438,
+   "stargazers_count": 7,
+   "watchers_count": 7,
+   "language": "JavaScript",
+   "has_issues": true,
+   "has_projects": true,
+   "has_downloads": false,
+   "has_wiki": true,
+   "has_pages": false,
+   "has_discussions": false,
+   "forks_count": 4,
+   "mirror_url": null,
+   "archived": false,
+   "disabled": false,
+   "open_issues_count": 20,
+   "license": {
+    "key": "isc",
+    "name": "ISC License",
+    "spdx_id": "ISC",
+    "url": "https://api.github.com/licenses/isc",
+    "node_id": "MDc6TGljZW5zZTEw"
+   },
+   "allow_forking": true,
+   "is_template": false,
+   "web_commit_signoff_required": false,
+   "has_pull_requests": true,
+   "pull_request_creation_policy": "all",
+   "topics": [],
+   "visibility": "public",
+   "forks": 4,
+   "open_issues": 20,
+   "watchers": 7,
+   "default_branch": "master"
+  },
+  "network_count": 4,
+  "subscribers_count": 1
+ },
+ "funding": []
+}

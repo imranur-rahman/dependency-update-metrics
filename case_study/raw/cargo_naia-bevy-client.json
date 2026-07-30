@@ -1,0 +1,531 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "CARGO",
+   "name": "naia-bevy-client"
+  },
+  "purl": "pkg:cargo/naia-bevy-client",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "naia-bevy-client",
+     "version": "0.10.0"
+    },
+    "purl": "pkg:cargo/naia-bevy-client@0.10.0",
+    "publishedAt": "2022-04-18T04:28:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "naia-bevy-client",
+     "version": "0.10.1"
+    },
+    "purl": "pkg:cargo/naia-bevy-client@0.10.1",
+    "publishedAt": "2022-04-24T01:23:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "naia-bevy-client",
+     "version": "0.10.2"
+    },
+    "purl": "pkg:cargo/naia-bevy-client@0.10.2",
+    "publishedAt": "2022-08-15T01:55:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "naia-bevy-client",
+     "version": "0.12.0"
+    },
+    "purl": "pkg:cargo/naia-bevy-client@0.12.0",
+    "publishedAt": "2022-08-27T20:53:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "naia-bevy-client",
+     "version": "0.13.0"
+    },
+    "purl": "pkg:cargo/naia-bevy-client@0.13.0",
+    "publishedAt": "2022-09-19T00:00:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "naia-bevy-client",
+     "version": "0.14.0"
+    },
+    "purl": "pkg:cargo/naia-bevy-client@0.14.0",
+    "publishedAt": "2022-11-20T00:22:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "naia-bevy-client",
+     "version": "0.15.0"
+    },
+    "purl": "pkg:cargo/naia-bevy-client@0.15.0",
+    "publishedAt": "2023-01-29T00:52:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "naia-bevy-client",
+     "version": "0.16.0"
+    },
+    "purl": "pkg:cargo/naia-bevy-client@0.16.0",
+    "publishedAt": "2023-02-14T01:57:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "naia-bevy-client",
+     "version": "0.17.0"
+    },
+    "purl": "pkg:cargo/naia-bevy-client@0.17.0",
+    "publishedAt": "2023-02-24T02:42:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "naia-bevy-client",
+     "version": "0.18.0"
+    },
+    "purl": "pkg:cargo/naia-bevy-client@0.18.0",
+    "publishedAt": "2023-02-28T22:29:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "naia-bevy-client",
+     "version": "0.19.0"
+    },
+    "purl": "pkg:cargo/naia-bevy-client@0.19.0",
+    "publishedAt": "2023-03-10T21:03:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "naia-bevy-client",
+     "version": "0.20.0"
+    },
+    "purl": "pkg:cargo/naia-bevy-client@0.20.0",
+    "publishedAt": "2023-03-20T03:24:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "naia-bevy-client",
+     "version": "0.20.1"
+    },
+    "purl": "pkg:cargo/naia-bevy-client@0.20.1",
+    "publishedAt": "2023-03-23T20:01:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "naia-bevy-client",
+     "version": "0.21.0"
+    },
+    "purl": "pkg:cargo/naia-bevy-client@0.21.0",
+    "publishedAt": "2023-04-23T23:23:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "naia-bevy-client",
+     "version": "0.21.1"
+    },
+    "purl": "pkg:cargo/naia-bevy-client@0.21.1",
+    "publishedAt": "2023-08-25T20:03:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "naia-bevy-client",
+     "version": "0.22.0"
+    },
+    "purl": "pkg:cargo/naia-bevy-client@0.22.0",
+    "publishedAt": "2024-01-10T01:49:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "naia-bevy-client",
+     "version": "0.23.0"
+    },
+    "purl": "pkg:cargo/naia-bevy-client@0.23.0",
+    "publishedAt": "2024-09-17T23:11:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "naia-bevy-client",
+     "version": "0.24.0"
+    },
+    "purl": "pkg:cargo/naia-bevy-client@0.24.0",
+    "publishedAt": "2024-12-13T00:33:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "naia-bevy-client",
+     "version": "0.25.0"
+    },
+    "purl": "pkg:cargo/naia-bevy-client@0.25.0",
+    "publishedAt": "2026-05-12T17:20:10Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "naia-bevy-client",
+     "version": "0.7.0"
+    },
+    "purl": "pkg:cargo/naia-bevy-client@0.7.0",
+    "publishedAt": "2021-11-08T21:35:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "naia-bevy-client",
+     "version": "0.7.0-alpha.1"
+    },
+    "purl": "pkg:cargo/naia-bevy-client@0.7.0-alpha.1",
+    "publishedAt": "2021-10-21T17:48:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "naia-bevy-client",
+     "version": "0.7.3"
+    },
+    "purl": "pkg:cargo/naia-bevy-client@0.7.3",
+    "publishedAt": "2022-01-22T07:47:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "naia-bevy-client",
+     "version": "0.8.0"
+    },
+    "purl": "pkg:cargo/naia-bevy-client@0.8.0",
+    "publishedAt": "2022-01-31T01:41:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "naia-bevy-client",
+     "version": "0.9.0"
+    },
+    "purl": "pkg:cargo/naia-bevy-client@0.9.0",
+    "publishedAt": "2022-03-19T18:18:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "CARGO",
+     "name": "naia-bevy-client",
+     "version": "0.9.1"
+    },
+    "purl": "pkg:cargo/naia-bevy-client@0.9.1",
+    "publishedAt": "2022-03-19T18:51:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "CARGO",
+   "name": "naia-bevy-client",
+   "version": "0.25.0"
+  },
+  "purl": "pkg:cargo/naia-bevy-client@0.25.0",
+  "publishedAt": "2026-05-12T17:20:10Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "Apache-2.0 OR MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "Apache-2.0 OR MIT",
+    "spdx": "Apache-2.0 OR MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "SOURCE_REPO",
+    "url": "https://github.com/naia-lib/naia"
+   },
+   {
+    "label": "HOMEPAGE",
+    "url": "https://github.com/naia-lib/naia"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://crates.io/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/naia-lib/naia"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "naia-bevy-client",
+    "versionString": "0.25.0",
+    "source": "CARGO_CRATES_IO"
+   }
+  ],
+  "cooldown": {
+   "end": "2026-05-22T17:20:10Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [],
+  "edges": [],
+  "error": "naia_client/^0.25: no candidates found"
+ },
+ "dependents": {
+  "dependentCount": 0,
+  "directDependentCount": 0,
+  "indirectDependentCount": 0
+ },
+ "project": {
+  "projectKey": {
+   "id": "github.com/naia-lib/naia"
+  },
+  "openIssuesCount": 33,
+  "starsCount": 1153,
+  "forksCount": 64,
+  "license": "Apache-2.0",
+  "description": "a cross-platform (including Wasm!) networking library built in Rust. Intended to make multiplayer game development dead-simple & lightning-fast ",
+  "homepage": ""
+ },
+ "github_repo_api": {
+  "id": 275495359,
+  "node_id": "MDEwOlJlcG9zaXRvcnkyNzU0OTUzNTk=",
+  "name": "naia",
+  "full_name": "naia-lib/naia",
+  "private": false,
+  "owner": {
+   "login": "naia-lib",
+   "id": 104169814,
+   "node_id": "O_kgDOBjWBVg",
+   "avatar_url": "https://avatars.githubusercontent.com/u/104169814?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/naia-lib",
+   "html_url": "https://github.com/naia-lib",
+   "followers_url": "https://api.github.com/users/naia-lib/followers",
+   "following_url": "https://api.github.com/users/naia-lib/following{/other_user}",
+   "gists_url": "https://api.github.com/users/naia-lib/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/naia-lib/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/naia-lib/subscriptions",
+   "organizations_url": "https://api.github.com/users/naia-lib/orgs",
+   "repos_url": "https://api.github.com/users/naia-lib/repos",
+   "events_url": "https://api.github.com/users/naia-lib/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/naia-lib/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/naia-lib/naia",
+  "description": "a cross-platform (including Wasm!) networking library built in Rust. Intended to make multiplayer game development dead-simple & lightning-fast ",
+  "fork": false,
+  "url": "https://api.github.com/repos/naia-lib/naia",
+  "forks_url": "https://api.github.com/repos/naia-lib/naia/forks",
+  "keys_url": "https://api.github.com/repos/naia-lib/naia/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/naia-lib/naia/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/naia-lib/naia/teams",
+  "hooks_url": "https://api.github.com/repos/naia-lib/naia/hooks",
+  "issue_events_url": "https://api.github.com/repos/naia-lib/naia/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/naia-lib/naia/events",
+  "assignees_url": "https://api.github.com/repos/naia-lib/naia/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/naia-lib/naia/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/naia-lib/naia/tags",
+  "blobs_url": "https://api.github.com/repos/naia-lib/naia/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/naia-lib/naia/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/naia-lib/naia/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/naia-lib/naia/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/naia-lib/naia/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/naia-lib/naia/languages",
+  "stargazers_url": "https://api.github.com/repos/naia-lib/naia/stargazers",
+  "contributors_url": "https://api.github.com/repos/naia-lib/naia/contributors",
+  "subscribers_url": "https://api.github.com/repos/naia-lib/naia/subscribers",
+  "subscription_url": "https://api.github.com/repos/naia-lib/naia/subscription",
+  "commits_url": "https://api.github.com/repos/naia-lib/naia/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/naia-lib/naia/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/naia-lib/naia/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/naia-lib/naia/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/naia-lib/naia/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/naia-lib/naia/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/naia-lib/naia/merges",
+  "archive_url": "https://api.github.com/repos/naia-lib/naia/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/naia-lib/naia/downloads",
+  "issues_url": "https://api.github.com/repos/naia-lib/naia/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/naia-lib/naia/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/naia-lib/naia/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/naia-lib/naia/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/naia-lib/naia/labels{/name}",
+  "releases_url": "https://api.github.com/repos/naia-lib/naia/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/naia-lib/naia/deployments",
+  "created_at": "2020-06-28T03:00:57Z",
+  "updated_at": "2026-07-19T15:55:53Z",
+  "pushed_at": "2026-07-19T00:30:04Z",
+  "git_url": "git://github.com/naia-lib/naia.git",
+  "ssh_url": "git@github.com:naia-lib/naia.git",
+  "clone_url": "https://github.com/naia-lib/naia.git",
+  "svn_url": "https://github.com/naia-lib/naia",
+  "homepage": "",
+  "size": 94871,
+  "stargazers_count": 1153,
+  "watchers_count": 1153,
+  "language": "Rust",
+  "has_issues": true,
+  "has_projects": false,
+  "has_downloads": false,
+  "has_wiki": false,
+  "has_pages": true,
+  "has_discussions": false,
+  "forks_count": 64,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 33,
+  "license": {
+   "key": "apache-2.0",
+   "name": "Apache License 2.0",
+   "spdx_id": "Apache-2.0",
+   "url": "https://api.github.com/licenses/apache-2.0",
+   "node_id": "MDc6TGljZW5zZTI="
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [],
+  "visibility": "public",
+  "forks": 64,
+  "open_issues": 33,
+  "watchers": 1153,
+  "default_branch": "main",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {},
+  "organization": {
+   "login": "naia-lib",
+   "id": 104169814,
+   "node_id": "O_kgDOBjWBVg",
+   "avatar_url": "https://avatars.githubusercontent.com/u/104169814?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/naia-lib",
+   "html_url": "https://github.com/naia-lib",
+   "followers_url": "https://api.github.com/users/naia-lib/followers",
+   "following_url": "https://api.github.com/users/naia-lib/following{/other_user}",
+   "gists_url": "https://api.github.com/users/naia-lib/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/naia-lib/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/naia-lib/subscriptions",
+   "organizations_url": "https://api.github.com/users/naia-lib/orgs",
+   "repos_url": "https://api.github.com/users/naia-lib/repos",
+   "events_url": "https://api.github.com/users/naia-lib/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/naia-lib/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 64,
+  "subscribers_count": 9
+ },
+ "funding": []
+}

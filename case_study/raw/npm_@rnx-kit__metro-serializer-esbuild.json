@@ -1,0 +1,1785 @@
+{
+ "package": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "@rnx-kit/metro-serializer-esbuild"
+  },
+  "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild",
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.0.1"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.0.1",
+    "publishedAt": "2021-06-15T13:13:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.0.10"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.0.10",
+    "publishedAt": "2021-07-12T21:55:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.0.11"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.0.11",
+    "publishedAt": "2021-07-29T19:41:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.0.12"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.0.12",
+    "publishedAt": "2021-08-04T10:08:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.0.13"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.0.13",
+    "publishedAt": "2021-08-20T09:36:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.0.14"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.0.14",
+    "publishedAt": "2021-08-23T17:17:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.0.15"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.0.15",
+    "publishedAt": "2021-10-29T08:51:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.0.16"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.0.16",
+    "publishedAt": "2021-10-29T10:30:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.0.17"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.0.17",
+    "publishedAt": "2021-10-29T12:13:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.0.18"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.0.18",
+    "publishedAt": "2021-11-01T13:45:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.0.19"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.0.19",
+    "publishedAt": "2021-11-03T18:15:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.0.2"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.0.2",
+    "publishedAt": "2021-06-17T09:07:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.0.20"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.0.20",
+    "publishedAt": "2021-11-05T07:33:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.0.21"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.0.21",
+    "publishedAt": "2021-11-05T19:24:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.0.22"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.0.22",
+    "publishedAt": "2021-11-18T20:49:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.0.23"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.0.23",
+    "publishedAt": "2021-11-30T17:22:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.0.3"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.0.3",
+    "publishedAt": "2021-06-22T14:59:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.0.4"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.0.4",
+    "publishedAt": "2021-06-22T15:04:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.0.5"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.0.5",
+    "publishedAt": "2021-06-23T17:54:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.0.6"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.0.6",
+    "publishedAt": "2021-06-25T14:10:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.0.7"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.0.7",
+    "publishedAt": "2021-07-01T13:59:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.0.8"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.0.8",
+    "publishedAt": "2021-07-08T11:40:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.0.9"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.0.9",
+    "publishedAt": "2021-07-12T17:30:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.0"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.0",
+    "publishedAt": "2022-01-07T09:03:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.1"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.1",
+    "publishedAt": "2022-01-24T12:03:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.10"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.10",
+    "publishedAt": "2022-07-26T09:53:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.11"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.11",
+    "publishedAt": "2022-08-22T17:13:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.12"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.12",
+    "publishedAt": "2022-08-24T09:38:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.13"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.13",
+    "publishedAt": "2022-08-31T10:27:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.14"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.14",
+    "publishedAt": "2022-09-07T08:49:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.15"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.15",
+    "publishedAt": "2022-10-03T12:19:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.16"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.16",
+    "publishedAt": "2022-11-03T08:37:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.17"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.17",
+    "publishedAt": "2022-11-17T11:28:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.18"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.18",
+    "publishedAt": "2023-01-16T14:44:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.19"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.19",
+    "publishedAt": "2023-01-31T18:15:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.2"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.2",
+    "publishedAt": "2022-01-26T07:37:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.20"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.20",
+    "publishedAt": "2023-02-01T10:32:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.21"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.21",
+    "publishedAt": "2023-02-07T16:19:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.22"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.22",
+    "publishedAt": "2023-04-21T12:04:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.23"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.23",
+    "publishedAt": "2023-05-09T14:28:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.24"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.24",
+    "publishedAt": "2023-06-16T14:24:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.25"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.25",
+    "publishedAt": "2023-06-22T15:18:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.26"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.26",
+    "publishedAt": "2023-06-26T12:06:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.27"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.27",
+    "publishedAt": "2023-08-09T17:32:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.28"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.28",
+    "publishedAt": "2023-08-21T07:39:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.29"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.29",
+    "publishedAt": "2023-09-18T10:35:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.3"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.3",
+    "publishedAt": "2022-02-21T10:50:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.30"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.30",
+    "publishedAt": "2023-10-12T07:15:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.31"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.31",
+    "publishedAt": "2023-10-16T06:45:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.32"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.32",
+    "publishedAt": "2023-11-17T08:01:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.33"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.33",
+    "publishedAt": "2023-11-24T13:57:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.34"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.34",
+    "publishedAt": "2024-02-01T11:13:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.35"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.35",
+    "publishedAt": "2024-02-12T14:55:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.36"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.36",
+    "publishedAt": "2024-08-12T09:53:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.37"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.37",
+    "publishedAt": "2024-08-12T19:32:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.38"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.38",
+    "publishedAt": "2024-08-20T10:00:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.4"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.4",
+    "publishedAt": "2022-03-08T07:59:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.5"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.5",
+    "publishedAt": "2022-03-09T16:07:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.6"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.6",
+    "publishedAt": "2022-05-09T19:33:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.7"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.7",
+    "publishedAt": "2022-05-19T01:46:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.8"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.8",
+    "publishedAt": "2022-06-30T15:44:08Z",
+    "isDefault": false,
+    "isDeprecated": true,
+    "deprecatedReason": "A regression was introduced breaking bundling of react-native"
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.1.9"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.1.9",
+    "publishedAt": "2022-07-06T13:01:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.2.0"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.2.0",
+    "publishedAt": "2024-09-11T07:05:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.2.1"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.2.1",
+    "publishedAt": "2024-09-23T06:50:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.2.2"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.2.2",
+    "publishedAt": "2025-02-13T17:23:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.2.3"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.2.3",
+    "publishedAt": "2025-06-09T10:36:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.2.4"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.2.4",
+    "publishedAt": "2025-09-16T08:09:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.2.5"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.2.5",
+    "publishedAt": "2025-09-24T10:46:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.2.6"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.2.6",
+    "publishedAt": "2025-11-06T08:38:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.2.7"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.2.7",
+    "publishedAt": "2025-11-25T19:14:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.2.8"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.2.8",
+    "publishedAt": "2025-12-11T18:14:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.3.0"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.3.0",
+    "publishedAt": "2026-01-05T13:01:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.3.1"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.3.1",
+    "publishedAt": "2026-02-19T13:24:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.3.2"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.3.2",
+    "publishedAt": "2026-05-06T17:23:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.4.0"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.4.0",
+    "publishedAt": "2026-05-13T06:45:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.4.1"
+    },
+    "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.4.1",
+    "publishedAt": "2026-05-19T17:14:25Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ },
+ "version": {
+  "versionKey": {
+   "system": "NPM",
+   "name": "@rnx-kit/metro-serializer-esbuild",
+   "version": "0.4.1"
+  },
+  "purl": "pkg:npm/%40rnx-kit/metro-serializer-esbuild@0.4.1",
+  "publishedAt": "2026-05-19T17:14:25Z",
+  "isDefault": true,
+  "isDeprecated": false,
+  "deprecatedReason": "",
+  "licenses": [
+   "MIT"
+  ],
+  "licenseDetails": [
+   {
+    "license": "MIT",
+    "spdx": "MIT"
+   }
+  ],
+  "advisoryKeys": [],
+  "links": [
+   {
+    "label": "HOMEPAGE",
+    "url": "https://github.com/microsoft/rnx-kit/tree/main/packages/metro-serializer-esbuild#readme"
+   },
+   {
+    "label": "ISSUE_TRACKER",
+    "url": "https://github.com/microsoft/rnx-kit/issues"
+   },
+   {
+    "label": "ORIGIN",
+    "url": "https://registry.npmjs.org/@rnx-kit%2Fmetro-serializer-esbuild/0.4.1"
+   },
+   {
+    "label": "SOURCE_REPO",
+    "url": "git+https://github.com/microsoft/rnx-kit.git"
+   }
+  ],
+  "slsaProvenances": [],
+  "attestations": [],
+  "registries": [
+   "https://registry.npmjs.org/"
+  ],
+  "relatedProjects": [
+   {
+    "projectKey": {
+     "id": "github.com/microsoft/rnx-kit"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "ISSUE_TRACKER"
+   },
+   {
+    "projectKey": {
+     "id": "github.com/microsoft/rnx-kit"
+    },
+    "relationProvenance": "UNVERIFIED_METADATA",
+    "relationType": "SOURCE_REPO"
+   }
+  ],
+  "upstreamIdentifiers": [
+   {
+    "packageName": "@rnx-kit/metro-serializer-esbuild",
+    "versionString": "0.4.1",
+    "source": "NPM_NPMJS_ORG"
+   }
+  ],
+  "cooldown": {
+   "end": "2026-06-03T17:14:25Z",
+   "description": ""
+  }
+ },
+ "dependencies": {
+  "nodes": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/metro-serializer-esbuild",
+     "version": "0.4.1"
+    },
+    "bundled": false,
+    "relation": "SELF",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@esbuild/aix-ppc64",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@esbuild/android-arm",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@esbuild/android-arm64",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@esbuild/android-x64",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@esbuild/darwin-arm64",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@esbuild/darwin-x64",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@esbuild/freebsd-arm64",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@esbuild/freebsd-x64",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@esbuild/linux-arm",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@esbuild/linux-arm64",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@esbuild/linux-ia32",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@esbuild/linux-loong64",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@esbuild/linux-mips64el",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@esbuild/linux-ppc64",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@esbuild/linux-riscv64",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@esbuild/linux-s390x",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@esbuild/linux-x64",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@esbuild/netbsd-arm64",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@esbuild/netbsd-x64",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@esbuild/openbsd-arm64",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@esbuild/openbsd-x64",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@esbuild/openharmony-arm64",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@esbuild/sunos-x64",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@esbuild/win32-arm64",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@esbuild/win32-ia32",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@esbuild/win32-x64",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/console",
+     "version": "3.0.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/tools-filesystem",
+     "version": "0.2.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/tools-node",
+     "version": "3.0.5"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/tools-react-native",
+     "version": "2.3.8"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/types-bundle-config",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/types-kit-config",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/types-metro-serializer-esbuild",
+     "version": "1.0.2"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/types-node",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/types-plugin-cyclic-dependencies",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/types-plugin-duplicates-checker",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@rnx-kit/types-plugin-typescript",
+     "version": "1.0.0"
+    },
+    "bundled": false,
+    "relation": "INDIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "esbuild",
+     "version": "0.28.1"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "esbuild-plugin-lodash",
+     "version": "1.2.0"
+    },
+    "bundled": false,
+    "relation": "DIRECT",
+    "errors": []
+   }
+  ],
+  "edges": [
+   {
+    "fromNode": 0,
+    "toNode": 27,
+    "requirement": "^3.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 29,
+    "requirement": "^3.0.4"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 30,
+    "requirement": "^2.3.3"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 33,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 38,
+    "requirement": "^0.28.0"
+   },
+   {
+    "fromNode": 0,
+    "toNode": 39,
+    "requirement": "^1.2.0"
+   },
+   {
+    "fromNode": 29,
+    "toNode": 34,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 28,
+    "requirement": "^0.2.0"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 29,
+    "requirement": "^3.0.5"
+   },
+   {
+    "fromNode": 30,
+    "toNode": 31,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 33,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 35,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 36,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 31,
+    "toNode": 37,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 32,
+    "toNode": 31,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 34,
+    "toNode": 32,
+    "requirement": "^1.0.0"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 1,
+    "requirement": "0.28.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 2,
+    "requirement": "0.28.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 3,
+    "requirement": "0.28.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 4,
+    "requirement": "0.28.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 5,
+    "requirement": "0.28.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 6,
+    "requirement": "0.28.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 7,
+    "requirement": "0.28.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 8,
+    "requirement": "0.28.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 9,
+    "requirement": "0.28.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 10,
+    "requirement": "0.28.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 11,
+    "requirement": "0.28.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 12,
+    "requirement": "0.28.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 13,
+    "requirement": "0.28.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 14,
+    "requirement": "0.28.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 15,
+    "requirement": "0.28.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 16,
+    "requirement": "0.28.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 17,
+    "requirement": "0.28.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 18,
+    "requirement": "0.28.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 19,
+    "requirement": "0.28.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 20,
+    "requirement": "0.28.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 21,
+    "requirement": "0.28.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 22,
+    "requirement": "0.28.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 23,
+    "requirement": "0.28.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 24,
+    "requirement": "0.28.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 25,
+    "requirement": "0.28.1"
+   },
+   {
+    "fromNode": 38,
+    "toNode": 26,
+    "requirement": "0.28.1"
+   }
+  ],
+  "error": ""
+ },
+ "dependents": {
+  "dependentCount": 1,
+  "directDependentCount": 1,
+  "indirectDependentCount": 0
+ },
+ "project": null,
+ "github_repo_api": {
+  "id": 222007330,
+  "node_id": "MDEwOlJlcG9zaXRvcnkyMjIwMDczMzA=",
+  "name": "rnx-kit",
+  "full_name": "microsoft/rnx-kit",
+  "private": false,
+  "owner": {
+   "login": "microsoft",
+   "id": 6154722,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjYxNTQ3MjI=",
+   "avatar_url": "https://avatars.githubusercontent.com/u/6154722?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/microsoft",
+   "html_url": "https://github.com/microsoft",
+   "followers_url": "https://api.github.com/users/microsoft/followers",
+   "following_url": "https://api.github.com/users/microsoft/following{/other_user}",
+   "gists_url": "https://api.github.com/users/microsoft/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/microsoft/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/microsoft/subscriptions",
+   "organizations_url": "https://api.github.com/users/microsoft/orgs",
+   "repos_url": "https://api.github.com/users/microsoft/repos",
+   "events_url": "https://api.github.com/users/microsoft/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/microsoft/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "html_url": "https://github.com/microsoft/rnx-kit",
+  "description": "Modern, scalable tools. Exceptional developer experience.",
+  "fork": false,
+  "url": "https://api.github.com/repos/microsoft/rnx-kit",
+  "forks_url": "https://api.github.com/repos/microsoft/rnx-kit/forks",
+  "keys_url": "https://api.github.com/repos/microsoft/rnx-kit/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/microsoft/rnx-kit/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/microsoft/rnx-kit/teams",
+  "hooks_url": "https://api.github.com/repos/microsoft/rnx-kit/hooks",
+  "issue_events_url": "https://api.github.com/repos/microsoft/rnx-kit/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/microsoft/rnx-kit/events",
+  "assignees_url": "https://api.github.com/repos/microsoft/rnx-kit/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/microsoft/rnx-kit/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/microsoft/rnx-kit/tags",
+  "blobs_url": "https://api.github.com/repos/microsoft/rnx-kit/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/microsoft/rnx-kit/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/microsoft/rnx-kit/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/microsoft/rnx-kit/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/microsoft/rnx-kit/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/microsoft/rnx-kit/languages",
+  "stargazers_url": "https://api.github.com/repos/microsoft/rnx-kit/stargazers",
+  "contributors_url": "https://api.github.com/repos/microsoft/rnx-kit/contributors",
+  "subscribers_url": "https://api.github.com/repos/microsoft/rnx-kit/subscribers",
+  "subscription_url": "https://api.github.com/repos/microsoft/rnx-kit/subscription",
+  "commits_url": "https://api.github.com/repos/microsoft/rnx-kit/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/microsoft/rnx-kit/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/microsoft/rnx-kit/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/microsoft/rnx-kit/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/microsoft/rnx-kit/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/microsoft/rnx-kit/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/microsoft/rnx-kit/merges",
+  "archive_url": "https://api.github.com/repos/microsoft/rnx-kit/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/microsoft/rnx-kit/downloads",
+  "issues_url": "https://api.github.com/repos/microsoft/rnx-kit/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/microsoft/rnx-kit/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/microsoft/rnx-kit/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/microsoft/rnx-kit/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/microsoft/rnx-kit/labels{/name}",
+  "releases_url": "https://api.github.com/repos/microsoft/rnx-kit/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/microsoft/rnx-kit/deployments",
+  "created_at": "2019-11-15T21:38:13Z",
+  "updated_at": "2026-07-21T16:53:52Z",
+  "pushed_at": "2026-07-21T16:56:42Z",
+  "git_url": "git://github.com/microsoft/rnx-kit.git",
+  "ssh_url": "git@github.com:microsoft/rnx-kit.git",
+  "clone_url": "https://github.com/microsoft/rnx-kit.git",
+  "svn_url": "https://github.com/microsoft/rnx-kit",
+  "homepage": "https://microsoft.github.io/rnx-kit/",
+  "size": 152810,
+  "stargazers_count": 1725,
+  "watchers_count": 1725,
+  "language": "TypeScript",
+  "has_issues": true,
+  "has_projects": true,
+  "has_downloads": false,
+  "has_wiki": false,
+  "has_pages": true,
+  "has_discussions": true,
+  "forks_count": 119,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 42,
+  "license": {
+   "key": "mit",
+   "name": "MIT License",
+   "spdx_id": "MIT",
+   "url": "https://api.github.com/licenses/mit",
+   "node_id": "MDc6TGljZW5zZTEz"
+  },
+  "allow_forking": true,
+  "is_template": false,
+  "web_commit_signoff_required": false,
+  "has_pull_requests": true,
+  "pull_request_creation_policy": "all",
+  "topics": [
+   "android",
+   "cli",
+   "cross-platform",
+   "dependency-manager",
+   "desktop",
+   "desktop-development",
+   "developer-experience",
+   "developer-tools",
+   "devtools",
+   "ios",
+   "macos",
+   "mobile",
+   "mobile-development",
+   "monorepo",
+   "react-native",
+   "typescript",
+   "visionos",
+   "windows"
+  ],
+  "visibility": "public",
+  "forks": 119,
+  "open_issues": 42,
+  "watchers": 1725,
+  "default_branch": "main",
+  "permissions": {
+   "admin": false,
+   "maintain": false,
+   "push": false,
+   "triage": false,
+   "pull": true
+  },
+  "temp_clone_token": "",
+  "custom_properties": {
+   "activeRepoStatus": "true",
+   "durableOwnershipDisable": "false",
+   "durableOwnershipNextCheckDate": "2024-04-19T05:21:40.970Z",
+   "durableOwnershipWarn": "false",
+   "global-rulesets-opt-out": "false"
+  },
+  "organization": {
+   "login": "microsoft",
+   "id": 6154722,
+   "node_id": "MDEyOk9yZ2FuaXphdGlvbjYxNTQ3MjI=",
+   "avatar_url": "https://avatars.githubusercontent.com/u/6154722?v=4",
+   "gravatar_id": "",
+   "url": "https://api.github.com/users/microsoft",
+   "html_url": "https://github.com/microsoft",
+   "followers_url": "https://api.github.com/users/microsoft/followers",
+   "following_url": "https://api.github.com/users/microsoft/following{/other_user}",
+   "gists_url": "https://api.github.com/users/microsoft/gists{/gist_id}",
+   "starred_url": "https://api.github.com/users/microsoft/starred{/owner}{/repo}",
+   "subscriptions_url": "https://api.github.com/users/microsoft/subscriptions",
+   "organizations_url": "https://api.github.com/users/microsoft/orgs",
+   "repos_url": "https://api.github.com/users/microsoft/repos",
+   "events_url": "https://api.github.com/users/microsoft/events{/privacy}",
+   "received_events_url": "https://api.github.com/users/microsoft/received_events",
+   "type": "Organization",
+   "user_view_type": "public",
+   "site_admin": false
+  },
+  "network_count": 119,
+  "subscribers_count": 15
+ },
+ "funding": []
+}
