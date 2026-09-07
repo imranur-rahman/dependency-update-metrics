@@ -325,7 +325,11 @@ GitHub Actions runs:
 ## Performance Considerations
 
 1. **Network calls**: Main bottleneck is fetching package metadata
-2. **Caching**: Consider implementing cache for repeated analyses
+2. **Caching**: `ResolverCache` persists all HTTP responses to `<output-dir>/cache/cache.db`
+   (SQLite), keyed by `(namespace, key)` with no TTL/expiry. Per-version data caches safely
+   forever, but package-level version-list lookups (`metadata`/`depsdev_package` namespaces)
+   freeze at first-fetch time and won't pick up newly published versions on later runs against
+   the same output directory — see USAGE.md's "Stale or missing recent versions" section.
 3. **Parallel processing**: Could parallelize per-dependency analysis
 4. **Database**: OSV database uses Parquet for efficient storage
 

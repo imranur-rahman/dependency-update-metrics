@@ -249,6 +249,7 @@ The JSON file contains detailed results:
 - Reporting/export helpers live in `dependency_metrics/reporting.py`.
 - Bulk CSV mode groups rows by `(ecosystem, package_name)` and processes each group sequentially while running groups in parallel to maximize cache reuse.
 - For bulk runs, a single package analysis computes metrics across multiple end dates using the latest dependency set.
+- **Cache invalidation:** `ResolverCache` persists all HTTP responses to a SQLite file at `<output-dir>/cache/cache.db`, keyed only by `(namespace, key)` — there is no TTL or expiry. Per-version lookups are safe to cache forever (a specific version's metadata/dependencies never changes), but the package-level version-list lookups (`depsdev_package` namespace from `DepsDevClient.get_package()`, and the `metadata` namespace from each resolver's `fetch_package_metadata()`) cache the whole version list as of the moment it was first fetched. Re-running against the same `--output-dir` later — even with a newer `--end-date` — will keep replaying that frozen list and silently omit any versions the package has published since. See [Troubleshooting](#stale-or-missing-recent-versions) below.
 
 ### Excel Worksheets
 
@@ -352,6 +353,26 @@ If version resolution fails for some dependencies:
 1. This may be normal for packages with complex version constraints
 2. The tool will log warnings and continue with other dependencies
 3. Check the output directory for detailed logs
+
+### Stale or missing recent versions
+
+If a package's newest release(s) — or a dependency's — never show up in the
+results, even with a recent `--end-date`, and re-running doesn't help:
+
+1. This almost always means the package's version list was already cached
+   under `<output-dir>/cache/cache.db` from an earlier run, before the
+   missing version was published. Package-level metadata (`metadata` and
+   `depsdev_package` cache namespaces) has no TTL — see
+   [Architecture Notes](#architecture-notes) — so it is never refreshed
+   automatically.
+2. Fix: point `--output-dir` at a fresh directory for that run, or delete
+   the stale rows from the cache directly, e.g.:
+   ```bash
+   sqlite3 ./output/cache/cache.db \
+     "DELETE FROM cache WHERE namespace IN ('metadata','depsdev_package') AND key LIKE '%<package_name>%';"
+   ```
+3. This affects every ecosystem/resolver (npm, PyPI, Cargo, and `--depsdev`)
+   equally, since they all share the same cache implementation.
 
 ## Performance Tips
 
