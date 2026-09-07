@@ -361,7 +361,9 @@ def test_fetch_package_metadata_calls_client(tmp_path):
 
     result = resolver.fetch_package_metadata("express")
 
-    resolver._client.get_package.assert_called_once_with("NPM", "express")
+    resolver._client.get_package.assert_called_once_with(
+        "NPM", "express", end_date=_utc(2023, 1, 1)
+    )
     assert result == data
 
 

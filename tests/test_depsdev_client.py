@@ -1,6 +1,7 @@
 """Tests for DepsDevClient in dependency_metrics/depsdev_client.py."""
 
 import json
+from datetime import datetime, timezone
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
@@ -126,6 +127,63 @@ def test_get_package_response_written_to_disk_cache(tmp_path):
         mock_get.assert_not_called()
 
     assert result == data
+
+
+def test_get_package_refetches_when_end_date_exceeds_cached_versions(tmp_path):
+    """A package's version list is mutable — a cached listing whose newest known
+    release predates the requested end_date might be missing later releases, so
+    it must be refreshed rather than trusted forever."""
+    client = _make_client(tmp_path)
+    stale = {
+        "versions": [{"versionKey": {"version": "1.8.0"}, "publishedAt": "2024-01-29T00:00:00Z"}]
+    }
+    client._cache.save_json("depsdev_package", "PYPI:cmcrameri", stale)
+    fresh = {
+        "versions": [
+            {"versionKey": {"version": "1.8.0"}, "publishedAt": "2024-01-29T00:00:00Z"},
+            {"versionKey": {"version": "1.9.0"}, "publishedAt": "2024-04-22T00:00:00Z"},
+        ]
+    }
+
+    with patch.object(client._cache, "get", return_value=_mock_response(fresh)) as mock_get:
+        result = client.get_package(
+            "PYPI", "cmcrameri", end_date=datetime(2026, 6, 1, tzinfo=timezone.utc)
+        )
+        mock_get.assert_called_once()
+
+    assert result == fresh
+    # The refreshed response must overwrite the stale disk cache entry.
+    assert client._cache.load_json("depsdev_package", "PYPI:cmcrameri") == fresh
+
+
+def test_get_package_disk_cache_hit_when_end_date_already_covered(tmp_path):
+    client = _make_client(tmp_path)
+    cached = {
+        "versions": [{"versionKey": {"version": "1.9.0"}, "publishedAt": "2024-04-22T00:00:00Z"}]
+    }
+    client._cache.save_json("depsdev_package", "PYPI:cmcrameri", cached)
+
+    with patch.object(client._cache, "get") as mock_get:
+        result = client.get_package(
+            "PYPI", "cmcrameri", end_date=datetime(2024, 2, 1, tzinfo=timezone.utc)
+        )
+        mock_get.assert_not_called()
+
+    assert result == cached
+
+
+def test_get_package_trusts_cache_when_no_end_date_given(tmp_path):
+    client = _make_client(tmp_path)
+    cached = {
+        "versions": [{"versionKey": {"version": "1.8.0"}, "publishedAt": "2024-01-29T00:00:00Z"}]
+    }
+    client._cache.save_json("depsdev_package", "PYPI:cmcrameri", cached)
+
+    with patch.object(client._cache, "get") as mock_get:
+        result = client.get_package("PYPI", "cmcrameri")
+        mock_get.assert_not_called()
+
+    assert result == cached
 
 
 def test_get_requirements_disk_cache_hit_skips_http(tmp_path):

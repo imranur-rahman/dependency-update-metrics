@@ -144,11 +144,7 @@ def _make_pypi_resolver(tmp_path):
 
 def _pypi_metadata(releases: dict) -> dict:
     """Build minimal PyPI metadata dict with the given {ver: upload_time} map."""
-    return {
-        "releases": {
-            ver: [{"upload_time": ts}] for ver, ts in releases.items()
-        }
-    }
+    return {"releases": {ver: [{"upload_time": ts}] for ver, ts in releases.items()}}
 
 
 def test_pypi_get_highest_semver_stable_beats_higher_prerelease(tmp_path):
@@ -207,3 +203,58 @@ def test_build_intervals_uses_unique_sorted_dates():
         (datetime(2020, 1, 2), datetime(2020, 1, 3)),
         (datetime(2020, 1, 3), datetime(2020, 1, 5)),
     ]
+
+
+# ---------------------------------------------------------------------------
+# fetch_package_metadata — disk-cache staleness
+# ---------------------------------------------------------------------------
+
+
+def _mock_pypi_http_response(data: dict):
+    from unittest.mock import MagicMock
+
+    resp = MagicMock()
+    resp.raise_for_status = MagicMock()
+    resp.json.return_value = data
+    resp.__enter__ = MagicMock(return_value=resp)
+    resp.__exit__ = MagicMock(return_value=False)
+    return resp
+
+
+def test_fetch_package_metadata_refetches_when_end_date_exceeds_cached_versions(tmp_path):
+    """A cached PyPI JSON doc whose newest known release predates end_date might
+    be missing later releases published since — it must be refreshed."""
+    from datetime import timezone
+    from unittest.mock import patch
+
+    resolver = _make_pypi_resolver(tmp_path)
+    resolver.end_date = datetime(2026, 6, 1, tzinfo=timezone.utc)
+    resolver.registry_urls = {"pypi": "https://pypi.org/pypi"}
+    stale = _pypi_metadata({"1.8.0": "2024-01-29T00:00:00Z"})
+    resolver.cache.save_json("metadata", "pypi:demo", stale)
+    fresh = _pypi_metadata({"1.8.0": "2024-01-29T00:00:00Z", "1.9.0": "2024-04-22T00:00:00Z"})
+
+    with patch.object(
+        resolver.cache, "get", return_value=_mock_pypi_http_response(fresh)
+    ) as mock_get:
+        result = resolver.fetch_package_metadata("demo")
+        mock_get.assert_called_once()
+
+    assert result == fresh
+    assert resolver.cache.load_json("metadata", "pypi:demo") == fresh
+
+
+def test_fetch_package_metadata_disk_cache_hit_when_end_date_already_covered(tmp_path):
+    from datetime import timezone
+    from unittest.mock import patch
+
+    resolver = _make_pypi_resolver(tmp_path)
+    resolver.end_date = datetime(2023, 6, 1, tzinfo=timezone.utc)
+    cached = _pypi_metadata({"1.8.0": "2024-01-29T00:00:00Z"})
+    resolver.cache.save_json("metadata", "pypi:demo", cached)
+
+    with patch.object(resolver.cache, "get") as mock_get:
+        result = resolver.fetch_package_metadata("demo")
+        mock_get.assert_not_called()
+
+    assert result == cached

@@ -229,3 +229,98 @@ def test_extract_dependencies_returns_deps_dict(tmp_path):
 def test_extract_dependencies_missing_key_returns_empty(tmp_path):
     resolver = _make_resolver(tmp_path)
     assert resolver.extract_dependencies({}) == {}
+
+
+# ---------------------------------------------------------------------------
+# _get_npm_time_data — disk-cache staleness
+# ---------------------------------------------------------------------------
+
+
+class _FakeCompletedProcess:
+    def __init__(self, returncode: int, stdout: str):
+        self.returncode = returncode
+        self.stdout = stdout
+
+
+def test_get_npm_time_data_refetches_when_end_date_exceeds_cached_versions(tmp_path):
+    """A cached npm time map whose newest known release predates end_date might
+    be missing later releases published since — it must be refreshed."""
+    resolver = _make_resolver(tmp_path, package="lodash")
+    resolver.end_date = _utc(2022, 6, 1)
+    stale = {"1.0.0": "2019-01-01T00:00:00Z"}
+    resolver.cache.save_json("npm_time", "npm:lodash", stale)
+    fresh = {"1.0.0": "2019-01-01T00:00:00Z", "2.0.0": "2022-03-01T00:00:00Z"}
+
+    with patch(
+        "dependency_metrics.resolvers.subprocess.run",
+        return_value=_FakeCompletedProcess(0, __import__("json").dumps(fresh)),
+    ) as mock_run:
+        result = resolver._get_npm_time_data("lodash")
+        mock_run.assert_called_once()
+
+    assert result == fresh
+    assert resolver.cache.load_json("npm_time", "npm:lodash") == fresh
+
+
+def test_get_npm_time_data_disk_cache_hit_when_end_date_already_covered(tmp_path):
+    resolver = _make_resolver(tmp_path, package="lodash")
+    resolver.end_date = _utc(2018, 6, 1)
+    cached = {"1.0.0": "2019-01-01T00:00:00Z"}
+    resolver.cache.save_json("npm_time", "npm:lodash", cached)
+
+    with patch("dependency_metrics.resolvers.subprocess.run") as mock_run:
+        result = resolver._get_npm_time_data("lodash")
+        mock_run.assert_not_called()
+
+    assert result == cached
+
+
+# ---------------------------------------------------------------------------
+# fetch_package_metadata — disk-cache staleness
+# ---------------------------------------------------------------------------
+
+
+def _mock_npm_http_response(data: dict):
+    from unittest.mock import MagicMock
+
+    resp = MagicMock()
+    resp.raise_for_status = MagicMock()
+    resp.json.return_value = data
+    resp.__enter__ = MagicMock(return_value=resp)
+    resp.__exit__ = MagicMock(return_value=False)
+    return resp
+
+
+def test_fetch_package_metadata_refetches_when_end_date_exceeds_cached_versions(tmp_path):
+    """A cached full npm package doc whose newest known release (per its ``time``
+    map) predates end_date might be missing later releases — must be refreshed."""
+    resolver = _make_resolver(tmp_path, package="lodash")
+    resolver.end_date = _utc(2022, 6, 1)
+    stale = {"versions": {"1.0.0": {}}, "time": {"1.0.0": "2019-01-01T00:00:00Z"}}
+    resolver.cache.save_json("metadata", "npm:lodash", stale)
+    fresh = {
+        "versions": {"1.0.0": {}, "2.0.0": {}},
+        "time": {"1.0.0": "2019-01-01T00:00:00Z", "2.0.0": "2022-03-01T00:00:00Z"},
+    }
+
+    with patch.object(
+        resolver.cache, "get", return_value=_mock_npm_http_response(fresh)
+    ) as mock_get:
+        result = resolver.fetch_package_metadata("lodash")
+        mock_get.assert_called_once()
+
+    assert result == fresh
+    assert resolver.cache.load_json("metadata", "npm:lodash") == fresh
+
+
+def test_fetch_package_metadata_disk_cache_hit_when_end_date_already_covered(tmp_path):
+    resolver = _make_resolver(tmp_path, package="lodash")
+    resolver.end_date = _utc(2018, 6, 1)
+    cached = {"versions": {"1.0.0": {}}, "time": {"1.0.0": "2019-01-01T00:00:00Z"}}
+    resolver.cache.save_json("metadata", "npm:lodash", cached)
+
+    with patch.object(resolver.cache, "get") as mock_get:
+        result = resolver.fetch_package_metadata("lodash")
+        mock_get.assert_not_called()
+
+    assert result == cached

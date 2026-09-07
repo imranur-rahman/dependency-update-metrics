@@ -102,3 +102,61 @@ def test_dependency_analyzer_constructs_native_cargo_resolver(tmp_path: Path) ->
 
     assert analyzer.ecosystem == "cargo"
     assert isinstance(analyzer.resolver, CratesResolver)
+
+
+# ---------------------------------------------------------------------------
+# fetch_package_metadata — disk-cache staleness
+# ---------------------------------------------------------------------------
+
+
+def _mock_crates_http_response(data: dict):
+    from unittest.mock import MagicMock
+
+    resp = MagicMock()
+    resp.raise_for_status = MagicMock()
+    resp.json.return_value = data
+    resp.__enter__ = MagicMock(return_value=resp)
+    resp.__exit__ = MagicMock(return_value=False)
+    return resp
+
+
+def test_fetch_package_metadata_refetches_when_end_date_exceeds_cached_versions(
+    tmp_path: Path,
+) -> None:
+    """A cached crates.io listing whose newest known release predates end_date
+    might be missing later releases published since — it must be refreshed."""
+    resolver = _make_resolver(tmp_path)
+    resolver.end_date = _utc(2026, 1, 1)
+    stale = {
+        "crate": {"id": "mycrate"},
+        "versions": [{"num": "1.0.0", "created_at": "2020-01-01T00:00:00Z", "yanked": False}],
+    }
+    resolver.cache.save_json("metadata", "cargo:mycrate", stale)
+    fresh = _metadata()
+
+    with patch.object(
+        resolver.cache, "get", return_value=_mock_crates_http_response(fresh)
+    ) as mock_get:
+        result = resolver.fetch_package_metadata("mycrate")
+        mock_get.assert_called_once()
+
+    assert result == fresh
+    assert resolver.cache.load_json("metadata", "cargo:mycrate") == fresh
+
+
+def test_fetch_package_metadata_disk_cache_hit_when_end_date_already_covered(
+    tmp_path: Path,
+) -> None:
+    resolver = _make_resolver(tmp_path)
+    resolver.end_date = _utc(2019, 6, 1)
+    cached = {
+        "crate": {"id": "mycrate"},
+        "versions": [{"num": "1.0.0", "created_at": "2020-01-01T00:00:00Z", "yanked": False}],
+    }
+    resolver.cache.save_json("metadata", "cargo:mycrate", cached)
+
+    with patch.object(resolver.cache, "get") as mock_get:
+        result = resolver.fetch_package_metadata("mycrate")
+        mock_get.assert_not_called()
+
+    assert result == cached

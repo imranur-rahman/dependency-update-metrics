@@ -249,7 +249,7 @@ The JSON file contains detailed results:
 - Reporting/export helpers live in `dependency_metrics/reporting.py`.
 - Bulk CSV mode groups rows by `(ecosystem, package_name)` and processes each group sequentially while running groups in parallel to maximize cache reuse.
 - For bulk runs, a single package analysis computes metrics across multiple end dates using the latest dependency set.
-- **Cache invalidation:** `ResolverCache` persists all HTTP responses to a SQLite file at `<output-dir>/cache/cache.db`, keyed only by `(namespace, key)` — there is no TTL or expiry. Per-version lookups are safe to cache forever (a specific version's metadata/dependencies never changes), but the package-level version-list lookups (`depsdev_package` namespace from `DepsDevClient.get_package()`, and the `metadata` namespace from each resolver's `fetch_package_metadata()`) cache the whole version list as of the moment it was first fetched. Re-running against the same `--output-dir` later — even with a newer `--end-date` — will keep replaying that frozen list and silently omit any versions the package has published since. See [Troubleshooting](#stale-or-missing-recent-versions) below.
+- **Cache invalidation:** `ResolverCache` persists all HTTP responses to a SQLite file at `<output-dir>/cache/cache.db`, keyed only by `(namespace, key)` — there is no TTL. Per-version lookups are safe to cache forever (a specific version's metadata/dependencies never changes). The package-level version-list lookups (`depsdev_package` namespace from `DepsDevClient.get_package()`, and the `metadata`/`npm_time` namespaces from each resolver's `fetch_package_metadata()`/`_get_npm_time_data()`) instead check whether the requested `--end-date` is newer than the newest release already in the cached listing, and transparently re-fetch when it might be missing something — so re-running against the same `--output-dir` later picks up versions published since the cache was last written. One consequence: analyzing "as of today" re-fetches each package's version list every run, since "today" is always newer than the last known release — only fixed, historical `--end-date` values stay served entirely from cache across runs.
 
 ### Excel Worksheets
 
@@ -356,23 +356,26 @@ If version resolution fails for some dependencies:
 
 ### Stale or missing recent versions
 
-If a package's newest release(s) — or a dependency's — never show up in the
-results, even with a recent `--end-date`, and re-running doesn't help:
+Package-level version-list lookups (`metadata`, `npm_time`, and
+`depsdev_package` cache namespaces — see [Architecture Notes](#architecture-notes))
+automatically re-fetch whenever the requested `--end-date` is newer than the
+newest release already in the cache, so a newly published version should
+appear the next time you run the tool, even against an old `--output-dir`.
 
-1. This almost always means the package's version list was already cached
-   under `<output-dir>/cache/cache.db` from an earlier run, before the
-   missing version was published. Package-level metadata (`metadata` and
-   `depsdev_package` cache namespaces) has no TTL — see
-   [Architecture Notes](#architecture-notes) — so it is never refreshed
-   automatically.
-2. Fix: point `--output-dir` at a fresh directory for that run, or delete
-   the stale rows from the cache directly, e.g.:
+If a package's newest release(s) still never show up:
+
+1. Confirm the release actually predates your `--end-date` — releases after
+   `--end-date` are correctly excluded, not a caching issue.
+2. Check the logs (`--verbose`) for a `deps.dev GetPackage` / registry fetch
+   line for that package on this run. If it's missing, the cached listing's
+   newest known release was already `>= --end-date`, so the cache was
+   (correctly) trusted — re-verify the release's actual publish date.
+3. As a last resort, force a re-fetch by deleting the package's cache rows
+   directly:
    ```bash
    sqlite3 ./output/cache/cache.db \
-     "DELETE FROM cache WHERE namespace IN ('metadata','depsdev_package') AND key LIKE '%<package_name>%';"
+     "DELETE FROM cache WHERE namespace IN ('metadata','npm_time','depsdev_package') AND key LIKE '%<package_name>%';"
    ```
-3. This affects every ecosystem/resolver (npm, PyPI, Cargo, and `--depsdev`)
-   equally, since they all share the same cache implementation.
 
 ## Performance Tips
 

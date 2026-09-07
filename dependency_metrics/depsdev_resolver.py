@@ -242,7 +242,7 @@ class DepsDevResolver:
             return shared
 
         try:
-            data = self._client.get_package(self.system, package_name)
+            data = self._client.get_package(self.system, package_name, end_date=self.end_date)
         except Exception as exc:
             logger.warning(
                 "deps.dev GetPackage failed for %s/%s: %s", self.system, package_name, exc

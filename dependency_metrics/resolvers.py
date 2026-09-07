@@ -43,9 +43,41 @@ from packaging.requirements import Requirement
 from .interfaces import PackageResolver
 from .models import PackageVersion
 from .pypi_resolver import resolve_pypi_version
-from .time_utils import parse_timestamp
+from .time_utils import ensure_utc, parse_timestamp
 
 logger = logging.getLogger(__name__)
+
+
+def _newest_date_among(raw_timestamps: Iterable[Optional[str]]) -> Optional[datetime]:
+    """Return the newest parseable timestamp in *raw_timestamps*, or None."""
+    newest: Optional[datetime] = None
+    for raw in raw_timestamps:
+        if not raw:
+            continue
+        ts = parse_timestamp(raw)
+        if ts is not None and (newest is None or ts > newest):
+            newest = ts
+    return newest
+
+
+def _package_listing_may_be_stale(
+    newest_known_release: Optional[datetime], end_date: datetime
+) -> bool:
+    """True if a cached, mutable package-level version listing might be
+    missing releases published on/before *end_date*.
+
+    Unlike a single version's own metadata (immutable once published), a
+    package's *list* of versions grows over time — new releases keep
+    appearing. A disk cache entry has no way to know about a release that
+    didn't exist yet when it was written, so if the newest release the cache
+    knows about is older than the window we're asking about, we can't rule
+    out that a newer one has since appeared and must re-fetch. If we can't
+    determine a newest-known date at all, trust the cache rather than refetch
+    blindly.
+    """
+    if newest_known_release is None:
+        return False
+    return newest_known_release < ensure_utc(end_date)
 
 
 def resolve_pypi_version_locally(
@@ -480,8 +512,12 @@ class NpmResolver(PackageResolver):
             disk_key = f"{self.ecosystem}:{package_name}"
             cached = self.cache.load_json("metadata", disk_key)
             if cached is not None:
-                self.cache.metadata_set(cache_key, cached)
-                return cached
+                newest_known = _newest_date_among(
+                    v for k, v in cached.get("time", {}).items() if k not in ("modified", "created")
+                )
+                if not _package_listing_may_be_stale(newest_known, self.end_date):
+                    self.cache.metadata_set(cache_key, cached)
+                    return cached
 
             encoded_package = quote(package_name, safe="")
             url = f"{self.registry_urls['npm']}/{encoded_package}"
@@ -770,8 +806,10 @@ class NpmResolver(PackageResolver):
         disk_key = f"npm:{package_name}"
         cached = self.cache.load_json("npm_time", disk_key)
         if cached is not None:
-            self.cache.npm_time_set(package_name, cached)
-            return cached
+            newest_known = _newest_date_among(cached.values())
+            if not _package_listing_may_be_stale(newest_known, self.end_date):
+                self.cache.npm_time_set(package_name, cached)
+                return cached
 
         cmd = ["npm", "view", package_name, "time", "--json"]
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
@@ -850,8 +888,14 @@ class PyPIResolver(PackageResolver):
             disk_key = f"{self.ecosystem}:{package_name}"
             cached = self.cache.load_json("metadata", disk_key)
             if cached is not None:
-                self.cache.metadata_set(cache_key, cached)
-                return cached
+                newest_known = _newest_date_among(
+                    f.get("upload_time_iso_8601") or f.get("upload_time")
+                    for files in (cached.get("releases") or {}).values()
+                    for f in (files or [])
+                )
+                if not _package_listing_may_be_stale(newest_known, self.end_date):
+                    self.cache.metadata_set(cache_key, cached)
+                    return cached
 
             encoded_package = quote(package_name, safe="")
             url = f"{self.registry_urls['pypi']}/{encoded_package}/json"
@@ -1155,8 +1199,13 @@ class CratesResolver(PackageResolver):
             disk_key = f"{self.ecosystem}:{package_name}"
             cached = self.cache.load_json("metadata", disk_key)
             if cached is not None:
-                self.cache.metadata_set(cache_key, cached)
-                return cached
+                newest_known = _newest_date_among(
+                    entry.get("created_at") or entry.get("publishedAt")
+                    for entry in cached.get("versions", []) or []
+                )
+                if not _package_listing_may_be_stale(newest_known, self.end_date):
+                    self.cache.metadata_set(cache_key, cached)
+                    return cached
 
             encoded_package = quote(package_name, safe="")
             url = f"{self.registry_urls['cargo']}/api/v1/crates/{encoded_package}"
