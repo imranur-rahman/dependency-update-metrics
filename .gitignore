@@ -165,3 +165,6 @@ osv-all.zip
 # OS
 .DS_Store
 Thumbs.db
+
+# Paper
+mttu-mttr-tool-paper/
