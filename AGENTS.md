@@ -17,7 +17,7 @@ Tests get all registry, deps.dev, and OSV data from fixtures. Inject the data th
 - `DependencyAnalyzer` takes `resolver=`.
 - CLI tests use the `in_process_executor` fixture (`tests/conftest.py`), so mocks reach the worker functions.
 
-Turn each bug fix into a regression test.
+Turn each bug fix into a regression test. `TESTING.md` maps each test type to its files; update it when you add a regression test or a metamorphic relation.
 
 ## Architecture
 
