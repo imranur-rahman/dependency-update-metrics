@@ -269,10 +269,8 @@
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">Quick Start</h2>
       <div class="content">
-        <pre class="cli"><code># Install (vendor/pip is a git submodule)
-git clone --recurse-submodules https://github.com/imranur-rahman/dependency-update-metrics.git
-cd dependency-update-metrics
-pip install -e .
+        <pre class="cli"><code># Install from PyPI (the command is dependency-metrics)
+pip install dependency-update-metrics
 
 # One package, with the OSV index built on the first run
 dependency-metrics --ecosystem npm --package express \
@@ -285,7 +283,8 @@ dependency-metrics --ecosystem pypi --package requests \
 # A batch of packages from a CSV file, in parallel
 dependency-metrics --input-csv input.csv --workers 8 --output-dir output</code></pre>
         <p class="has-text-centered">
-          See the <a href="https://github.com/imranur-rahman/dependency-update-metrics#readme" target="_blank" rel="noopener">README</a> for all options, and <a href="https://github.com/imranur-rahman/dependency-update-metrics/blob/main/ALGORITHM.md" target="_blank" rel="noopener">ALGORITHM.md</a> for how the metrics are computed.
+          Available on <a href="https://pypi.org/project/dependency-update-metrics/" target="_blank" rel="noopener">PyPI</a>.
+          See the <a href="https://github.com/imranur-rahman/dependency-update-metrics#readme" target="_blank" rel="noopener">README</a> for all options and for installing from source, and <a href="https://github.com/imranur-rahman/dependency-update-metrics/blob/main/ALGORITHM.md" target="_blank" rel="noopener">ALGORITHM.md</a> for how the metrics are computed.
         </p>
       </div>
     </div>

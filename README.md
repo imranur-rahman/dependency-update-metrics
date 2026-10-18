@@ -13,7 +13,7 @@ A Python tool for analyzing time-to-update (TTU) and time-to-remediate (TTR) met
 
 ## Installation
 
-### From PyPI (when published)
+### From PyPI
 
 ```bash
 pip install dependency-update-metrics
