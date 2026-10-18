@@ -105,7 +105,7 @@ def main():
         print("✅ Upload to Test PyPI successful!")
         print("="*60)
         print("\nTest the package with:")
-        print("pip install --index-url https://test.pypi.org/simple/ dependency-metrics")
+        print("pip install --index-url https://test.pypi.org/simple/ dependency-update-metrics")
         
     elif choice == "2":
         # Upload to Production PyPI
@@ -126,7 +126,7 @@ def main():
             print("✅ Upload to PyPI successful!")
             print("="*60)
             print("\nInstall the package with:")
-            print("pip install dependency-metrics")
+            print("pip install dependency-update-metrics")
         else:
             print("❌ Upload cancelled.")
     

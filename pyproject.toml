@@ -3,12 +3,14 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "dependency-metrics"
+name = "dependency-update-metrics"
 version = "0.1.0"
 description = "A tool for analyzing time-to-update and time-to-remediate metrics for package dependencies"
 readme = "README.md"
 authors = [
-    {name = "Imranur Rahman", email = "your.email@example.com"}
+    {name = "Imranur Rahman", email = "irahman3@ncsu.edu"},
+    {name = "Mahzabina Tamanna", email = "mtamman@ncsu.edu"},
+    {name = "Laurie Williams", email = "lawilli3@ncsu.edu"},
 ]
 license = {text = "MIT"}
 requires-python = ">=3.10"
@@ -45,7 +47,7 @@ dev = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/imranur-rahman/dependency-update-metrics"
+"Homepage" = "https://imranur-rahman.github.io/dependency-update-metrics/"
 "Bug Reports" = "https://github.com/imranur-rahman/dependency-update-metrics/issues"
 "Source" = "https://github.com/imranur-rahman/dependency-update-metrics"
 

@@ -184,7 +184,7 @@ twine upload dist/*
 
 ```bash
 # From PyPI
-pip install dependency-metrics
+pip install dependency-update-metrics
 
 # From source
 pip install -e .
