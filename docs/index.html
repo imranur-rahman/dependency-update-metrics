@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="DependencyUpdateMetric - Imranur Rahman, Mahzabina Tamanna, Laurie Williams">
+  <meta name="description" content="DependencyUpdateMetric measures how fast open-source packages update their dependencies (MTTU) and remediate known vulnerabilities (MTTR) over time, for npm, PyPI, and Cargo.">
+  <meta name="keywords" content="software supply chain, dependency management, technical lag, vulnerability remediation, MTTU, MTTR, mining software repositories, npm, PyPI, Cargo">
+  <meta name="author" content="Imranur Rahman, Mahzabina Tamanna, Laurie Williams">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="North Carolina State University">
+  <meta property="og:title" content="DependencyUpdateMetric">
+  <meta property="og:description" content="Measure how fast open-source packages update their dependencies (MTTU) and remediate known vulnerabilities (MTTR) over time, for npm, PyPI, and Cargo.">
+  <meta property="og:url" content="https://imranur-rahman.github.io/dependency-update-metrics/">
+  <meta property="og:image" content="https://imranur-rahman.github.io/dependency-update-metrics/static/images/architecture.png">
+  <meta property="og:image:alt" content="Architecture of DependencyUpdateMetric">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DependencyUpdateMetric">
+  <meta name="twitter:description" content="Measure how fast open-source packages update their dependencies (MTTU) and remediate known vulnerabilities (MTTR) over time.">
+  <meta name="twitter:image" content="https://imranur-rahman.github.io/dependency-update-metrics/static/images/architecture.png">
+
+  <meta name="theme-color" content="#2563eb">
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+  <title>DependencyUpdateMetric: MTTU and MTTR for Open-Source Dependencies</title>
+
+  <!-- Critical CSS -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <!-- Non-critical CSS -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+
+  <!-- Page-specific styles -->
+  <style>
+    .button.is-static-soon { opacity: 0.55; cursor: not-allowed; }
+    .goal-card { height: 100%; border-top: 4px solid #2563eb; }
+    .goal-card.scal { border-top-color: #009E73; }
+    .goal-card.ext { border-top-color: #E69F00; }
+    .goal-card h3 { margin-bottom: 0.5rem !important; }
+    .stat { font-size: 2rem; font-weight: 700; color: #1f2937; line-height: 1.1; }
+    .stat-label { color: #4b5563; font-size: 0.95rem; }
+    pre.cli { text-align: left; font-size: 0.9rem; border-radius: 8px; }
+    .figure-caption { color: #4b5563; font-size: 0.95rem; margin-top: 0.75rem; }
+  </style>
+
+  <!-- Structured data for the software -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "name": "DependencyUpdateMetric",
+    "description": "Measures how fast open-source packages update their dependencies (MTTU) and remediate known vulnerabilities (MTTR) over time, for npm, PyPI, and Cargo.",
+    "codeRepository": "https://github.com/imranur-rahman/dependency-update-metrics",
+    "programmingLanguage": "Python",
+    "license": "https://opensource.org/licenses/MIT",
+    "author": [
+      {"@type": "Person", "name": "Imranur Rahman", "affiliation": {"@type": "Organization", "name": "North Carolina State University"}},
+      {"@type": "Person", "name": "Mahzabina Tamanna", "affiliation": {"@type": "Organization", "name": "North Carolina State University"}},
+      {"@type": "Person", "name": "Laurie Williams", "affiliation": {"@type": "Organization", "name": "North Carolina State University"}}
+    ],
+    "keywords": ["software supply chain", "dependency management", "technical lag", "vulnerability remediation", "mining software repositories"]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- More Works Dropdown -->
+  <div class="more-works-container">
+    <button class="more-works-btn" onclick="toggleMoreWorks()" title="Related work from the authors">
+      <i class="fas fa-flask"></i>
+      More Works
+      <i class="fas fa-chevron-down dropdown-arrow"></i>
+    </button>
+    <div class="more-works-dropdown" id="moreWorksDropdown">
+      <div class="dropdown-header">
+        <h4>Related Work from the Authors</h4>
+        <button class="close-btn" onclick="toggleMoreWorks()" aria-label="Close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="works-list">
+        <a href="https://arxiv.org/abs/2403.17382" class="work-item" target="_blank" rel="noopener">
+          <div class="work-info">
+            <h5>No Vulnerability Data, No Problem: Towards Predicting Mean Time To Remediate In Open Source Software Dependencies</h5>
+            <p>Defines the MTTU and MTTR metrics that this tool computes.</p>
+            <span class="work-venue">arXiv:2403.17382</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://arxiv.org/abs/2607.15315" class="work-item" target="_blank" rel="noopener">
+          <div class="work-info">
+            <h5>CHRONO-RESOLUTION: A Dependency Resolution Dataset at Release Points for npm, PyPI, and crates.io Packages</h5>
+            <p>A dataset of dependencies resolved at release points.</p>
+            <span class="work-venue">arXiv:2607.15315</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://arxiv.org/abs/2408.02846" class="work-item" target="_blank" rel="noopener">
+          <div class="work-info">
+            <h5>What's in a Package? Getting Visibility Into Dependencies Using Security-Sensitive API Calls</h5>
+            <p>Finds what dependencies do through their security-sensitive API calls.</p>
+            <span class="work-venue">arXiv:2408.02846</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content">
+
+  <!-- Title, authors, and links -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">DependencyUpdateMetric</h1>
+            <h2 class="subtitle is-4">How fast do open-source packages update their dependencies and remediate known vulnerabilities, over time?</h2>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Imranur Rahman,</span>
+              <span class="author-block">Mahzabina Tamanna,</span>
+              <span class="author-block">Laurie Williams</span>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">North Carolina State University</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Paper: replace with the PDF link when the paper is public -->
+                <span class="link-block">
+                  <a class="button is-normal is-rounded is-dark is-static-soon" title="Coming soon" aria-disabled="true">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>Paper (soon)</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/imranur-rahman/dependency-update-metrics" target="_blank" rel="noopener"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/imranur-rahman/dependency-update-metrics/blob/main/ALGORITHM.md" target="_blank" rel="noopener"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-book"></i></span>
+                    <span>Algorithm</span>
+                  </a>
+                </span>
+                <!-- Video: replace with the YouTube link when the demo video is public -->
+                <span class="link-block">
+                  <a class="button is-normal is-rounded is-dark is-static-soon" title="Coming soon" aria-disabled="true">
+                    <span class="icon"><i class="fab fa-youtube"></i></span>
+                    <span>Video (soon)</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture figure -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body has-text-centered">
+        <img src="static/images/architecture.png" alt="Architecture of DependencyUpdateMetric: inputs, CLI, historical dependency resolver, OSV index, dependency analyzer, and reporting" loading="lazy" style="max-width: 760px; width: 100%;">
+        <p class="figure-caption">
+          Architecture of DependencyUpdateMetric. Numbers give the order of the steps. The resolver resolves each version constraint as of a past date, and the dashed slots show where a new ecosystem plugs in.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Overview</h2>
+          <div class="content has-text-justified">
+            <p>
+              Software composition analysis tools tell you whether a project is out of date or vulnerable <em>now</em>.
+              They do not tell you how the project behaved <em>over time</em>.
+              DependencyUpdateMetric fills this gap.
+              It computes two metrics for the direct dependencies of a package in npm, PyPI, or Cargo:
+              <strong>Mean Time To Update (MTTU)</strong>, how long the dependencies stay behind their newest version, and
+              <strong>Mean Time To Remediate (MTTR)</strong>, how long the dependencies keep a known vulnerability after a fix is available.
+            </p>
+            <p>
+              The tool resolves every version constraint as of a past date, so it never uses data from the future.
+              It can compute the metrics for one time window or at every past release of a package, and it runs in batches over thousands of packages.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Design goals -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Design Goals</h2>
+      <div class="columns">
+        <div class="column">
+          <div class="box goal-card">
+            <h3 class="title is-5"><i class="fas fa-check-circle"></i>&nbsp; Correctness</h3>
+            <p>Every value is right, and a reader can check it. Constraints resolve as of each past date, MTTR counts a vulnerability only after its fix is published, and optional worksheets list every interval.</p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="box goal-card scal">
+            <h3 class="title is-5"><i class="fas fa-tachometer-alt"></i>&nbsp; Scalability</h3>
+            <p>A study can analyze thousands of packages over their full histories. Batches run in parallel workers, a cache stores registry data, the OSV index is a lookup in memory, and <code>--resume</code> continues after a crash.</p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="box goal-card ext">
+            <h3 class="title is-5"><i class="fas fa-puzzle-piece"></i>&nbsp; Extensibility</h3>
+            <p>Researchers can add ecosystems, data sources, and analysis choices. Every resolver implements one <code>PackageResolver</code> protocol, and every analysis choice is a command-line option.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick start -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Quick Start</h2>
+      <div class="content">
+        <pre class="cli"><code># Install (vendor/pip is a git submodule)
+git clone --recurse-submodules https://github.com/imranur-rahman/dependency-update-metrics.git
+cd dependency-update-metrics
+pip install -e .
+
+# One package, with the OSV index built on the first run
+dependency-metrics --ecosystem npm --package express \
+  --start-date 2020-01-01 --end-date 2023-12-31 --build-osv
+
+# MTTU and MTTR at every release of a package
+dependency-metrics --ecosystem pypi --package requests \
+  --start-date 2020-01-01 --end-date 2021-01-01 --per-release
+
+# A batch of packages from a CSV file, in parallel
+dependency-metrics --input-csv input.csv --workers 8 --output-dir output</code></pre>
+        <p class="has-text-centered">
+          See the <a href="https://github.com/imranur-rahman/dependency-update-metrics#readme" target="_blank" rel="noopener">README</a> for all options, and <a href="https://github.com/imranur-rahman/dependency-update-metrics/blob/main/ALGORITHM.md" target="_blank" rel="noopener">ALGORITHM.md</a> for how the metrics are computed.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Validation and carbon footprint -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Validation</h2>
+      <div class="columns has-text-centered">
+        <div class="column">
+          <div class="stat">253</div>
+          <div class="stat-label">offline tests: unit, integration, regression, and metamorphic</div>
+        </div>
+        <div class="column">
+          <div class="stat">72 / 90</div>
+          <div class="stat-label">case-study packages whose scores match the reference scores exactly</div>
+        </div>
+        <div class="column">
+          <div class="stat">&lt; 1 g CO<sub>2</sub>e</div>
+          <div class="stat-label">for a full run over 90 packages (6,601 release points)</div>
+        </div>
+      </div>
+      <div class="content has-text-centered">
+        <p>
+          The test types follow research on testing scientific software; <a href="https://github.com/imranur-rahman/dependency-update-metrics/blob/main/TESTING.md" target="_blank" rel="noopener">TESTING.md</a> maps each type to its tests.
+          CI runs the suite on Ubuntu, macOS, and Windows with Python 3.10&ndash;3.12.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Envisioned users -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Who Can Use It</h2>
+      <div class="content">
+        <ul>
+          <li><strong>Researchers</strong> who study technical lag, software supply chains, or maintainer behavior can compute MTTU and MTTR for thousands of packages and get a full time series per package.</li>
+          <li><strong>Developers</strong> can compare how promptly candidate libraries keep their own dependencies current and patched.</li>
+          <li><strong>Security teams</strong> can run a batch over their portfolio to find the projects that lag behind available fixes.</li>
+          <li><strong>Builders of security metrics</strong>, such as the OpenSSF Scorecard, can use MTTU and MTTR as signals of maintenance.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo video: replace this section's body with the YouTube embed when the video is public -->
+  <section class="section">
+    <div class="container is-max-desktop has-text-centered">
+      <h2 class="title is-3">Demo Video</h2>
+      <p class="stat-label">Coming soon.</p>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- Citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <p>Until the paper is published, please cite the software:</p>
+      <pre id="bibtex-code"><code>@software{rahman2026dependencyupdatemetric,
+  title  = {DependencyUpdateMetric: Mean Time To Update and Mean Time To Remediate for Open-Source Dependencies},
+  author = {Rahman, Imranur and Tamanna, Mahzabina and Williams, Laurie},
+  year   = {2026},
+  url    = {https://github.com/imranur-rahman/dependency-update-metrics}
+}</code></pre>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank" rel="noopener">Nerfies</a> project page.
+              You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
