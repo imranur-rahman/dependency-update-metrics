@@ -1,0 +1,56 @@
+# Host CI: lint and test the Host (host/).
+# The Host runs the Tool, so a change in dependency_metrics/ also runs these checks.
+name: Host CI
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'host/**'
+      - 'dependency_metrics/**'
+      - 'pyproject.toml'
+      - 'requirements.txt'
+      - '.github/workflows/host.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'host/**'
+      - 'dependency_metrics/**'
+      - 'pyproject.toml'
+      - 'requirements.txt'
+      - '.github/workflows/host.yml'
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: true
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install black flake8 pytest
+        pip install -e .
+        if [ -f host/requirements.txt ]; then pip install -r host/requirements.txt; fi
+
+    # The Host is a placeholder until its first code ticket, so each step skips when
+    # there is nothing to check.
+    - name: Run black
+      run: |
+        if [ -n "$(find host -name '*.py')" ]; then black --check host/; else echo "No Python files in host/"; fi
+
+    - name: Run flake8
+      run: |
+        if [ -n "$(find host -name '*.py')" ]; then flake8 host/ --max-line-length=100; else echo "No Python files in host/"; fi
+
+    - name: Run tests
+      run: |
+        if [ -d host/tests ]; then pytest host/tests -v; else echo "No host/tests folder"; fi
