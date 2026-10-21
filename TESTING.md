@@ -16,7 +16,9 @@ source metrics_venv/bin/activate
 pytest tests/ -q
 ```
 
-The suite has 260 tests and runs offline in a few seconds. Every resolver receives its cache and HTTP client through its constructor, so tests inject fixture data and never call a registry, deps.dev, or OSV. CI runs the suite on Ubuntu, macOS, and Windows with Python 3.10, 3.11, and 3.12.
+The suite has 272 tests and runs offline in a few seconds. Every resolver receives its cache and HTTP client through its constructor, so tests inject fixture data and never call a registry, deps.dev, or OSV. CI runs the suite on Ubuntu, macOS, and Windows with Python 3.10, 3.11, and 3.12.
+
+This document covers the Tool. The Webapp tests use Node's built-in test runner: `node --test webapp/tests/*.test.mjs`. The Host tests go in `host/tests/`.
 
 ## Coverage by test type
 
@@ -52,6 +54,18 @@ The OSV build tests in `test_osv.py` write small fixture zips for npm, PyPI, and
 | A write that stops partway keeps the old index, because the new index replaces it in one rename | `test_osv_index_write_that_fails_midway_keeps_old_index` |
 | The index file holds its build date, and an index from an old build has no date | `test_osv_build_records_index_date`, `test_osv_index_date_is_none_for_index_from_old_build` |
 | `--build-osv` without `--package` rebuilds an index that exists | `test_cli_build_osv_alone_rebuilds_existing_index` |
+
+### Cache size and use tracking
+
+`test_resolver_cache.py` covers the `last_used` column and the cache flags:
+
+| Behavior | Tests |
+|---|---|
+| A cache file from before `last_used` opens and gets the column, with no data loss | `test_legacy_cache_file_gets_last_used_column_without_data_loss` |
+| A prune keeps the most recently used rows and gets the used data below the limit | `test_prune_keeps_most_recently_used_rows_and_falls_below_limit`, `test_prune_under_limit_removes_nothing`, `test_prune_removes_legacy_rows_without_last_used_first` |
+| A clear removes all rows, or only the rows of one namespace | `test_clear_without_namespace_removes_all_rows`, `test_clear_with_namespace_removes_only_that_namespace` |
+| Stats show the rows and the size of each namespace | `test_cache_stats_shows_rows_and_bytes_per_namespace` |
+| The CLI flags `--cache-stats`, `--cache-prune-gb`, `--cache-clear`, `--cache-namespace` | `test_cli_cache_*` |
 
 ## Working around the oracle problem
 
