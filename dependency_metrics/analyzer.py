@@ -20,6 +20,7 @@ from packaging import version as pkg_version
 
 from .osv_builder import OSVBuilder
 from .osv_service import OSVService
+from .errors import DataSourceError, PackageNotFoundError
 from .interfaces import PackageResolver
 from .models import ProgressEvent
 from .resolvers import (
@@ -63,6 +64,16 @@ def _mark_failed_releases(
                 summary[key] = None
         summary.update(num_dependencies=0, status="error", error=message)
     return results
+
+
+def _must_stop_analysis(error: BaseException) -> bool:
+    """Return true if the failure of one dependency must stop the whole analysis.
+
+    The data source did not answer (after its retries), so a result without the
+    dependency would look like a real value. A dependency that the data source does not
+    know (``PackageNotFoundError``) is skipped, as before.
+    """
+    return isinstance(error, DataSourceError) and not isinstance(error, PackageNotFoundError)
 
 
 class DependencyAnalyzer:
@@ -388,6 +399,8 @@ class DependencyAnalyzer:
                     try:
                         dep_metadata_cache[dep_name] = fut.result(timeout=120)
                     except Exception as exc:
+                        if _must_stop_analysis(exc):
+                            raise
                         logger.warning("Failed to fetch metadata for %s: %s", dep_name, exc)
                         dep_metadata_cache[dep_name] = {}
 
@@ -823,6 +836,8 @@ class DependencyAnalyzer:
                 try:
                     dep_metadata_cache[dep_name] = fut.result()
                 except Exception as exc:
+                    if _must_stop_analysis(exc):
+                        raise
                     logger.warning("Failed to fetch metadata for %s: %s", dep_name, exc)
                     dep_metadata_cache[dep_name] = {}
 
@@ -1705,7 +1720,7 @@ class DependencyAnalyzer:
                 logger.error(f"Error analyzing {dep_name}: {e}")
                 logger.error(traceback.format_exc())
                 logger.error("    Error: %s", e)
-                if "Error getting highest semver version for" in str(e):
+                if "Error getting highest semver version for" in str(e) or _must_stop_analysis(e):
                     raise
             finally:
                 if progress is not None:
