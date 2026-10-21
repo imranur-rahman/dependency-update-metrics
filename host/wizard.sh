@@ -305,6 +305,11 @@ step "Set Period to 15 minutes and Grace Time to 30 minutes. Save."
 step "Copy the ping URL (https://hc-ping.com/...)."
 ask DM_HOST_DISK_CHECK_URL "Paste the ping URL:"
 write_env DM_HOST_DISK_CHECK_URL "$DM_HOST_DISK_CHECK_URL"
+say "host/weekly-maintenance.sh rebuilds the OSV index every 7 days and pings a second check."
+step "Click Add Check again. Name: dmhost weekly maintenance."
+step "Set Period to 7 days and Grace Time to 1 day. Save. Copy the ping URL."
+ask DM_HOST_MAINTENANCE_CHECK_URL "Paste the ping URL:"
+write_env DM_HOST_MAINTENANCE_CHECK_URL "$DM_HOST_MAINTENANCE_CHECK_URL"
 pause
 
 # ── 8 ────────────────────────────────────────────────────────────────────
