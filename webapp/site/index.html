@@ -237,6 +237,81 @@
     </div>
   </section>
 
+  <!-- Try it: the Webapp form. webapp.js sends the Comparison to the Host at data-host-url. -->
+  <section class="section" id="try-it" data-host-url="http://localhost:8080">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Try It</h2>
+      <p class="has-text-centered mb-5">
+        Compute MTTU and MTTR for one package with deps.dev data.
+      </p>
+      <form id="comparison-form">
+        <div class="columns">
+          <div class="column is-one-quarter">
+            <div class="field">
+              <label class="label" for="ecosystem">Ecosystem</label>
+              <div class="control">
+                <div class="select is-fullwidth">
+                  <select id="ecosystem" name="ecosystem">
+                    <option value="npm">npm</option>
+                    <option value="pypi">PyPI</option>
+                    <option value="cargo">Cargo</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <label class="label" for="package">Package</label>
+              <div class="control">
+                <input class="input" id="package" name="package" type="text" placeholder="express" required>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column">
+            <div class="field">
+              <label class="label" for="start-date">Start date</label>
+              <div class="control">
+                <input class="input" id="start-date" name="startDate" type="date" value="2023-01-01" required>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <label class="label" for="end-date">End date</label>
+              <div class="control">
+                <input class="input" id="end-date" name="endDate" type="date" value="2025-01-01" required>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <button class="button is-dark" id="submit-comparison" type="submit">Compute</button>
+          </div>
+        </div>
+      </form>
+      <p id="job-status" class="mt-4" role="status" aria-live="polite"></p>
+      <div class="table-container mt-4">
+        <table class="table is-fullwidth is-striped" id="result-table" hidden>
+          <thead>
+            <tr>
+              <th>Package</th>
+              <th>MTTU (days)</th>
+              <th>MTTR (days)</th>
+              <th>Dependencies</th>
+              <th>Error</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <script type="module" src="static/js/webapp.js"></script>
+
   <!-- Design goals -->
   <section class="section">
     <div class="container is-max-desktop">

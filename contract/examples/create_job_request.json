@@ -1,0 +1,10 @@
+{
+  "ecosystem": "pypi",
+  "packages": ["mypkg"],
+  "start_date": "2020-01-01",
+  "end_date": "2023-01-01",
+  "mode": "window_summary",
+  "weighting_type": "disable",
+  "half_life": null,
+  "turnstile_token": "example-token"
+}

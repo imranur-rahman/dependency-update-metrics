@@ -9,11 +9,13 @@ on:
     branches: [ main, develop ]
     paths:
       - 'webapp/**'
+      - 'contract/**'
       - '.github/workflows/webapp.yml'
   pull_request:
     branches: [ main ]
     paths:
       - 'webapp/**'
+      - 'contract/**'
       - '.github/workflows/webapp.yml'
   workflow_dispatch:
 

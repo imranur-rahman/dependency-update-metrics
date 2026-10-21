@@ -18,7 +18,14 @@ pytest tests/ -q
 
 The suite has 289 tests and runs offline in a few seconds. Every resolver receives its cache and HTTP client through its constructor, so tests inject fixture data and never call a registry, deps.dev, or OSV. CI runs the suite on Ubuntu, macOS, and Windows with Python 3.10, 3.11, and 3.12.
 
-This document covers the Tool. The Webapp tests use Node's built-in test runner: `node --test webapp/tests/*.test.mjs`. The Host tests go in `host/tests/`.
+This document covers the Tool. The Host and the Webapp have their own tests:
+
+| Part | Command | What the tests check |
+|---|---|---|
+| Host | `pytest host/tests` | The HTTP API through FastAPI's `TestClient`. `create_app` takes a fake analysis function and a fake Turnstile check, and the tests run the queue and the worker (`Worker.run_once()`) in the test process. `test_tool_analysis.py` runs the real Tool with a deps.dev client stub, from submit to result. |
+| Webapp | `node --test webapp/tests/*.test.mjs` | The logic module `webapp/site/static/js/comparison.js` (form to request body, Job status text, result table rows) and the published folder. |
+
+Both read the shared API examples in `contract/examples/`. The done example is the real Tool output for the scenario in `host/tests/test_tool_analysis.py`, so the contract matches what the Tool returns.
 
 ## Coverage by test type
 
@@ -41,6 +48,7 @@ This document covers the Tool. The Webapp tests use Node's built-in test runner:
 | Scoped npm names created subdirectories in output paths (`26aabad`) | `test_reporting.py::test_scoped_npm_package_name_does_not_create_subdirectory`, `test_reporting.py::test_safe_filename_stem_replaces_path_separators` |
 | Excel sheet titles with forbidden characters crashed the export (`189a64f`) | `test_reporting.py::test_safe_sheet_name_replaces_invalid_characters_and_truncates`, `test_reporting.py::test_export_worksheets_sanitizes_scoped_dependency_name`, `test_reporting.py::test_export_per_release_worksheets_sanitizes_scoped_dependency_name` |
 | `--build-osv` did not rebuild an index that already existed (#13) | `test_osv.py::test_cli_build_osv_alone_rebuilds_existing_index` |
+| Host: the API and a worker that opened a new Job queue file at once failed with "database is locked" (#4) | `host/tests/test_job_queue.py::test_api_and_workers_that_open_one_new_queue_file_at_once_all_succeed` |
 
 ### OSV build tests
 
