@@ -30,7 +30,7 @@ from .api import DEPSDEV, NATIVE, PER_RELEASE, WINDOW_SUMMARY, analyze
 from .osv_builder import OSVBuilder
 from .resolvers import ResolverCache
 from .depsdev_client import DepsDevClient
-from .depsdev_resolver import DepsDevResolver
+from .depsdev_resolver import DepsDevResolver, depsdev_system
 from .reporting import (
     export_osv_data,
     export_per_release_worksheets,
@@ -237,6 +237,12 @@ def _make_timeout_result(
     return {"row_num": row_num, "summary": summary, "dependency_frames": []}
 
 
+def _log_days(value: Any) -> str:
+    """Return a number of days with two decimals for the log, or "error" for a release
+    that failed (its MTTU and MTTR are None)."""
+    return "error" if value is None else f"{float(value):.2f}"
+
+
 def _worker_make_resolver(eco: str, pkg: str, start: datetime, end: datetime):
     """Create a resolver for *pkg* using the worker-process ``_WORKER_STATE``."""
     from .resolvers import CratesResolver, NpmResolver, PyPIResolver as _PyPIResolverCls
@@ -247,11 +253,9 @@ def _worker_make_resolver(eco: str, pkg: str, start: datetime, end: datetime):
         "pypi": "https://pypi.org/pypi",
         "cargo": "https://crates.io",
     }
-    _eco_to_system = {"npm": "NPM", "pypi": "PYPI", "cargo": "CARGO"}
-
     if ws["use_depsdev"] and ws["depsdev_client"] is not None:
         return DepsDevResolver(
-            system=_eco_to_system.get(eco, eco.upper()),
+            system=depsdev_system(eco),
             package=pkg,
             start_date=start,
             end_date=end,
@@ -1233,14 +1237,12 @@ def main():
         if args.depsdev:
             _depsdev_client = DepsDevClient(cache=resolver_cache)
 
-        _eco_to_system = {"npm": "NPM", "pypi": "PYPI", "cargo": "CARGO"}
-
         def _make_resolver(eco: str, pkg: str, start=None, end=None):
             _start = start or default_start_date
             _end = end or datetime.today()
             if args.depsdev and _depsdev_client is not None:
                 return DepsDevResolver(
-                    system=_eco_to_system.get(eco, eco.upper()),
+                    system=depsdev_system(eco),
                     package=pkg,
                     start_date=_start,
                     end_date=_end,
@@ -2043,7 +2045,7 @@ def main():
                 raise_errors=True,
             )
             if args.per_release:
-                release_results = analysis.details
+                release_results = analysis.analyzer_output
                 if not release_results:
                     _logger.info("No releases found in window for %s", args.package)
                 else:
@@ -2058,10 +2060,10 @@ def main():
                         s = r["summary"]
                         mttr = s.get("mttr", s.get("mttr_all_severities", 0.0))
                         _logger.info(
-                            "  v%-20s  MTTU=%.2f  MTTR=%.2f  deps=%s  status=%s",
+                            "  v%-20s  MTTU=%s  MTTR=%s  deps=%s  status=%s",
                             s.get("package_version", ""),
-                            s.get("mttu", 0.0),
-                            mttr,
+                            _log_days(s.get("mttu", 0.0)),
+                            _log_days(mttr),
                             s.get("num_dependencies", 0),
                             s.get("status", ""),
                         )
@@ -2083,7 +2085,7 @@ def main():
                         if excel_file is not None:
                             _logger.info("Per-release worksheets saved to: %s", excel_file)
             else:
-                results = analysis.details
+                results = analysis.analyzer_output
 
                 # Output results
                 print_summary(

@@ -15,6 +15,8 @@ import pandas as pd
 import pytest
 
 from dependency_metrics.cli import main
+import requests
+
 from tests.test_api import VULN_A, _depsdev_client
 
 
@@ -29,8 +31,8 @@ def _restore_logger():
 
 
 @contextmanager
-def _stub_depsdev():
-    client = _depsdev_client()
+def _stub_depsdev(client=None):
+    client = client or _depsdev_client()
     with (
         patch("dependency_metrics.cli.DepsDevClient", return_value=client),
         patch("dependency_metrics.api.DepsDevClient", return_value=client),
@@ -38,7 +40,7 @@ def _stub_depsdev():
         yield
 
 
-def _run_cli(tmp_path, *extra):
+def _run_cli(tmp_path, *extra, client=None):
     pd.DataFrame([VULN_A]).to_parquet(tmp_path / "osv_database.parquet")
     argv = [
         "dependency-metrics",
@@ -55,7 +57,7 @@ def _run_cli(tmp_path, *extra):
         str(tmp_path),
         *extra,
     ]
-    with _stub_depsdev(), patch.object(sys, "argv", argv):
+    with _stub_depsdev(client), patch.object(sys, "argv", argv):
         main()
 
 
@@ -115,3 +117,17 @@ def test_cli_analysis_error_exits_with_status_1(tmp_path):
         main()
 
     assert exc.value.code == 1
+
+
+def test_cli_per_release_log_shows_a_failed_release_as_error(tmp_path, caplog, capsys):
+    """A failed release has no MTTU or MTTR (None). The summary log must not fail on it."""
+    caplog.set_level(logging.INFO, logger="dependency_metrics")
+    client = _depsdev_client(requirement_errors={"1.1.0": requests.ReadTimeout("timed out")})
+
+    _run_cli(tmp_path, "--per-release", client=client)
+
+    assert "Logging error" not in capsys.readouterr().err
+    lines = [r.getMessage() for r in caplog.records if "v1.1.0" in r.getMessage()]
+    assert len(lines) == 1
+    assert "MTTU=error" in lines[0] and "MTTR=error" in lines[0]
+    assert "status=error" in lines[0]

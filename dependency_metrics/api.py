@@ -11,26 +11,30 @@ import logging
 from dataclasses import asdict, dataclass, field
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Callable, Dict, List, Optional
+from typing import Any, Callable, Dict, List, Literal, Optional, Union, cast, get_args
 
 import pandas as pd
 
 from .analyzer import DependencyAnalyzer
 from .depsdev_client import DepsDevClient
-from .depsdev_resolver import DepsDevResolver
+from .depsdev_resolver import DepsDevResolver, depsdev_system
 from .interfaces import PackageResolver
-from .models import ProgressEvent
+from .models import ProgressEvent, Status
 from .resolvers import ResolverCache
 
 logger = logging.getLogger(__name__)
 
-WINDOW_SUMMARY = "window_summary"
-PER_RELEASE = "per_release"
-MODES = (WINDOW_SUMMARY, PER_RELEASE)
-NATIVE = "native"
-DEPSDEV = "depsdev"
-DATA_SOURCES = (NATIVE, DEPSDEV)
-_DEPSDEV_SYSTEMS = {"npm": "NPM", "pypi": "PYPI", "cargo": "CARGO", "crates.io": "CARGO"}
+Mode = Literal["window_summary", "per_release"]
+DataSource = Literal["native", "depsdev"]
+WINDOW_SUMMARY: Mode = "window_summary"
+PER_RELEASE: Mode = "per_release"
+MODES = get_args(Mode)
+NATIVE: DataSource = "native"
+DEPSDEV: DataSource = "depsdev"
+DATA_SOURCES = get_args(DataSource)
+# The raw analyzer output for the CLI exports: the dict of ``DependencyAnalyzer.analyze``
+# (Window summary) or the list of ``analyze_at_release_points`` (Per-release).
+AnalyzerOutput = Union[Dict[str, Any], List[Dict[str, Any]], None]
 
 
 @dataclass(frozen=True)
@@ -44,7 +48,7 @@ class WindowSummary:
     mttu: Optional[float]
     mttr: Optional[float]
     num_dependencies: int
-    status: str
+    status: Status
     error: str = ""
 
 
@@ -62,7 +66,7 @@ class ReleaseResult:
     mttu: Optional[float]
     mttr: Optional[float]
     num_dependencies: int
-    status: str
+    status: Status
     error: str = ""
 
 
@@ -72,21 +76,21 @@ class AnalysisResult:
 
     ecosystem: str
     package: str
-    mode: str
+    mode: Mode
     start_date: str
     end_date: str
     weighting_type: str
     half_life: Optional[float]
-    data_source: str
+    data_source: DataSource
     summary: Optional[WindowSummary] = None
     releases: List[ReleaseResult] = field(default_factory=list)
     # The message of an error that stopped the analysis of the package; "" if none.
     error: str = ""
     # The raw analyzer output, for the CLI exports. Not part of the plain-data contract.
-    details: Any = field(default=None, repr=False, compare=False)
+    analyzer_output: AnalyzerOutput = field(default=None, repr=False, compare=False)
 
     def to_dict(self) -> Dict[str, Any]:
-        """Return the result as JSON-ready plain data (without ``details``)."""
+        """Return the result as JSON-ready plain data (without ``analyzer_output``)."""
         return {
             "ecosystem": self.ecosystem,
             "package": self.package,
@@ -107,10 +111,10 @@ def analyze(
     package: str,
     start_date: datetime,
     end_date: datetime,
-    mode: str = WINDOW_SUMMARY,
+    mode: Mode = WINDOW_SUMMARY,
     weighting_type: str = "disable",
     half_life: Optional[float] = None,
-    data_source: str = NATIVE,
+    data_source: DataSource = NATIVE,
     output_dir: Path = Path("./output"),
     resolver: Optional[PackageResolver] = None,
     depsdev_client: Optional[DepsDevClient] = None,
@@ -134,7 +138,7 @@ def analyze(
         osv_df: Optional OSV records. If omitted, ``<output_dir>/osv_database.parquet``
             is read; if that file is missing, every MTTR is 0.
         dependency_frames: Per-release only. Keep the per-interval dependency frames
-            in ``details`` (the CLI needs them for ``--get-worksheets``).
+            in ``analyzer_output`` (the CLI needs them for ``--get-worksheets``).
         raise_errors: If true, an error in the analysis propagates. If false (the
             default), the result carries the error message and an ``"error"`` status.
         progress: Optional callback. It receives a :class:`ProgressEvent` after each
@@ -152,7 +156,7 @@ def analyze(
             cache=ResolverCache(cache_dir=output_dir / "cache")
         )
         resolver = DepsDevResolver(
-            system=_DEPSDEV_SYSTEMS.get(ecosystem.lower(), ecosystem.upper()),
+            system=depsdev_system(ecosystem),
             package=package,
             start_date=start_date,
             end_date=end_date,
@@ -189,7 +193,7 @@ def analyze(
             return AnalysisResult(
                 **common,
                 releases=[_release_result(r["summary"]) for r in release_results],
-                details=release_results,
+                analyzer_output=release_results,
             )
         raw: Dict[str, Any] = analyzer.analyze(osv_df=osv_df, progress=progress)
     except Exception as exc:
@@ -209,7 +213,7 @@ def analyze(
         num_dependencies=num_deps,
         status="ok" if num_deps else "no_deps",
     )
-    return AnalysisResult(**common, summary=summary, details=raw)
+    return AnalysisResult(**common, summary=summary, analyzer_output=raw)
 
 
 def _release_result(summary: Dict[str, Any]) -> ReleaseResult:
@@ -219,7 +223,7 @@ def _release_result(summary: Dict[str, Any]) -> ReleaseResult:
         mttu=_days(summary.get("mttu", 0.0)),
         mttr=_days(summary.get("mttr", summary.get("mttr_all_severities", 0.0))),
         num_dependencies=int(summary.get("num_dependencies", 0)),
-        status=str(summary.get("status", "")),
+        status=cast(Status, str(summary.get("status", ""))),
         error=str(summary.get("error", "")),
     )
 

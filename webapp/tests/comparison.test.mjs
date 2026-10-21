@@ -36,6 +36,8 @@ import {
   axisLabel,
   resultsNote,
   botCheckError,
+  packageKey,
+  packageNameMatchesRules,
 } from "../site/static/js/comparison.js";
 
 const contractDir = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "contract", "examples");
@@ -318,14 +320,31 @@ test("the CSV quotes values that hold a comma, a quote, or a line break", () => 
   );
 });
 
-test("the CSV file name holds the ecosystem, the packages, and the window", () => {
+test("the CSV file name holds the ecosystem, the packages, the window, the mode, and the weighting", () => {
   assert.equal(
     csvFileName(threePackageJob().comparison),
-    "mttu-mttr_pypi_fast_missing_slow_2020-01-01_2023-01-01.csv",
+    "mttu-mttr_pypi_fast_missing_slow_2020-01-01_2023-01-01_window_summary_disable.csv",
   );
   assert.equal(
     csvFileName({ ...threePackageJob().comparison, ecosystem: "npm", packages: ["@types/node"] }),
-    "mttu-mttr_npm_types-node_2020-01-01_2023-01-01.csv",
+    "mttu-mttr_npm_types-node_2020-01-01_2023-01-01_window_summary_disable.csv",
+  );
+});
+
+test("two downloads that differ only in the mode or the weighting get different file names", () => {
+  const comparison = threePackageJob().comparison;
+  const names = [
+    comparison,
+    { ...comparison, mode: "per_release" },
+    { ...comparison, weighting_type: "linear" },
+    { ...comparison, weighting_type: "exponential", half_life: 180 },
+    { ...comparison, weighting_type: "exponential", half_life: 30 },
+  ].map(csvFileName);
+
+  assert.equal(new Set(names).size, names.length);
+  assert.equal(
+    names[3],
+    "mttu-mttr_pypi_fast_missing_slow_2020-01-01_2023-01-01_window_summary_exponential-180.csv",
   );
 });
 
@@ -486,4 +505,13 @@ test("a refused submit shows the message of the Host, and never internal details
   const generic = "Something went wrong. Try again later.";
   assert.equal(submitErrorMessage({ detail: [{ loc: ["body"], msg: "Value error" }] }), generic);
   assert.equal(submitErrorMessage(null), generic);
+});
+
+// The Host tests (host/tests/test_input_checks.py) read the same cases, so the JavaScript and
+// the Python rules cannot drift apart.
+test("the package name rules and the package key match the shared contract cases", () => {
+  for (const { ecosystem, name, key, valid } of example("package_names").cases) {
+    assert.equal(packageNameMatchesRules(ecosystem, name), valid, `${ecosystem}: ${name}`);
+    assert.equal(packageKey(ecosystem, name), key, `${ecosystem}: ${name}`);
+  }
 });

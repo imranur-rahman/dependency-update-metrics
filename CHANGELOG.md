@@ -32,6 +32,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- `--depsdev` runs no longer hide a failed deps.dev request. Before, a failed GetPackage request gave an empty version list and a failed GetRequirements request gave no dependencies, so the result showed an MTTU and MTTR of 0. Now, after the retries of the HTTP session (connection errors, 429, and 5xx), the failure stops the analysis of the package: a single-package run and a bulk row get `status="error"` with the message, and `--resume` analyzes that bulk row again. The cache never keeps a failed lookup. A 404 on GetPackage raises `dependency_metrics.errors.PackageNotFoundError`; a dependency that deps.dev does not know is still skipped. A window without a release raises `NoReleaseInWindowError` (a `ValueError`).
+- `--per-release`: a release whose manifest (dependency list) cannot be read gets a row with `status="error"`, the message, and no MTTU or MTTR. Before, the release counted as a release without dependencies, with an MTTU of 0. The other releases keep their values.
+
 ### Added
 - `--write-dependency-details` CLI flag: opt in to writing per-interval dependency detail CSVs for bulk and per-release runs; these files are skipped by default.
 - `--per-release` CLI flag: computes MTTU/MTTR at every release of the parent package within the analysis window, producing one output row per release instead of one per input row.

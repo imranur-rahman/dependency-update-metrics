@@ -8,6 +8,7 @@ from fastapi.testclient import TestClient
 
 from contract_examples import load_example, with_job_id
 from dmhost import JobQueue, Worker, create_app
+from dmhost.errors import AnalysisTimedOut, NoReleasesInWindow, PackageNotFound
 
 HOUR = 3600.0
 DAY = 24 * HOUR
@@ -166,6 +167,95 @@ def test_job_that_did_not_finish_as_done_is_not_reused(client, queue):
     assert submit(client).status_code == 202
 
 
+def analysis_where_otherpkg(failure):
+    """A fake analysis in which the package ``otherpkg`` raises ``failure``."""
+
+    def analysis(comparison, package):
+        if package == "otherpkg":
+            raise failure
+        return fake_analysis(comparison, package)
+
+    return analysis
+
+
+def run_a_done_job_with(client, queue, analysis, **changes):
+    response = submit(client, **changes)
+    assert response.status_code == 202
+    assert Worker(queue, analysis).run_once() is True
+    assert client.get(f"/api/jobs/{response.json()['job_id']}").json()["state"] == "done"
+
+
+@pytest.mark.parametrize(
+    "failure",
+    [RuntimeError("deps.dev is down"), AnalysisTimedOut("900 s")],
+    ids=["something_went_wrong", "took_too_long"],
+)
+def test_done_job_with_a_package_that_failed_on_the_server_is_not_reused(client, queue, failure):
+    packages = ["mypkg", "otherpkg"]
+    run_a_done_job_with(client, queue, analysis_where_otherpkg(failure), packages=packages)
+
+    assert submit(client, packages=packages).status_code == 202
+
+
+@pytest.mark.parametrize(
+    "failure",
+    [PackageNotFound("404"), NoReleasesInWindow("none")],
+    ids=["package_not_found", "no_releases"],
+)
+def test_done_job_with_a_package_error_of_the_user_input_is_reused(client, queue, failure):
+    packages = ["mypkg", "otherpkg"]
+    run_a_done_job_with(client, queue, analysis_where_otherpkg(failure), packages=packages)
+
+    assert submit(client, packages=packages).status_code == 200
+
+
+def test_done_job_with_a_failed_release_is_not_reused(client, queue):
+    def analysis_with_a_failed_release(comparison, package):
+        release = {
+            "package_version": "1.1.0",
+            "package_release_date": "2022-01-01",
+            "mttu": None,
+            "mttr": None,
+            "num_dependencies": 0,
+            "status": "error",
+            "error": "deps.dev GetRequirements failed",
+        }
+        return {**fake_analysis(comparison, package), "summary": None, "releases": [release]}
+
+    run_a_done_job_with(client, queue, analysis_with_a_failed_release)
+
+    assert submit(client).status_code == 202
+
+
+def test_reuse_skips_a_newer_job_with_a_server_error_and_takes_an_older_clean_one(
+    client, queue, clock
+):
+    packages = ["mypkg", "otherpkg"]
+    clean_job = run_a_done_job(client, queue, packages=packages)
+    clock.advance(HOUR)
+    # A second Job with the same key (for example, one that two users submitted at once)
+    # ends later, with a server error for one package.
+    queue.add(queue.get(clean_job).comparison, reuse_key=queue_reuse_key(queue, clean_job))
+    Worker(queue, analysis_where_otherpkg(RuntimeError("down"))).run_once()
+
+    response = submit(client, packages=packages)
+
+    assert response.status_code == 200
+    assert response.json()["job_id"] == clean_job
+
+
+def queue_reuse_key(queue, job_id):
+    with sqlite3.connect(queue.db_path) as conn:
+        return conn.execute("SELECT reuse_key FROM jobs WHERE job_id = ?", (job_id,)).fetchone()[0]
+
+
+def test_cancelled_job_is_not_reused(client, queue):
+    job_id = submit(client).json()["job_id"]
+    assert client.delete(f"/api/jobs/{job_id}").status_code == 200
+
+    assert submit(client).status_code == 202
+
+
 def test_job_records_older_than_30_days_are_deleted(client, queue, clock):
     old_job = run_a_done_job(client, queue)
     clock.advance(29 * DAY)
@@ -195,3 +285,22 @@ def test_queue_file_from_before_reuse_still_reuses_results(tmp_path):
     run_a_done_job(client, queue)
 
     assert submit(client).status_code == 200
+
+
+def test_timer_cleanup_deletes_jobs_older_than_30_days_without_a_submit(tmp_path, clock):
+    from dmhost.app import clean_up_queue
+    from dmhost.reuse import ReusePolicy
+
+    queue = JobQueue(tmp_path / "jobs.db", clock=clock)
+    client = TestClient(
+        create_app(queue=queue, analysis=fake_analysis, turnstile_check=lambda t, ip: True)
+    )
+    old_job = run_a_done_job(client, queue)
+    clock.advance(29 * DAY)
+    recent_job = run_a_done_job(client, queue, packages=["otherpkg"])
+    clock.advance(1 * DAY + 1)
+
+    clean_up_queue(queue, window_seconds=HOUR, reuse=ReusePolicy())
+
+    assert queue.get(old_job) is None
+    assert queue.get(recent_job) is not None

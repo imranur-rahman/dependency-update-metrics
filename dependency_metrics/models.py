@@ -6,7 +6,12 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import datetime
-from typing import Optional
+from typing import Literal, Optional
+
+# The status of a result row: values, no direct dependencies, or a failure.
+Status = Literal["ok", "no_deps", "error"]
+# The unit of a progress event: a direct dependency, or a release (Per-release).
+ProgressStage = Literal["dependencies", "releases"]
 
 
 @dataclass(frozen=True)
@@ -59,7 +64,7 @@ class ProgressEvent:
     ``done`` of ``total`` units are complete; ``item`` names the unit that completed.
     """
 
-    stage: str
+    stage: ProgressStage
     done: int
     total: int
     item: str = ""

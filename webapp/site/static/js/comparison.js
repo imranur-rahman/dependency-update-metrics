@@ -374,11 +374,22 @@ export function rowsToCsv(rows, columns = TABLE_COLUMNS) {
   return lines.map((line) => `${line.join(",")}\r\n`).join("");
 }
 
-// Return the file name of the CSV download of a Comparison.
+// Return the file name of the CSV download of a Comparison. The mode and the weighting (with
+// the half-life) are in the name, so two downloads of one window get different names.
 export function csvFileName(comparison) {
   const safe = (text) => text.replace(/^@/, "").replace(/[^A-Za-z0-9._-]+/g, "-");
-  const parts = [comparison.ecosystem, ...comparison.packages, comparison.start_date, comparison.end_date];
-  return `mttu-mttr_${parts.map(safe).join("_")}.csv`;
+  const weighting = needsHalfLife(comparison.weighting_type)
+    ? `${comparison.weighting_type}-${comparison.half_life}`
+    : comparison.weighting_type || "disable";
+  const parts = [
+    comparison.ecosystem,
+    ...comparison.packages,
+    comparison.start_date,
+    comparison.end_date,
+    comparison.mode || WINDOW_SUMMARY,
+    weighting,
+  ];
+  return `mttu-mttr_${parts.map((part) => safe(String(part))).join("_")}.csv`;
 }
 
 // Return a number of days with one decimal, or a dash when there is no value.

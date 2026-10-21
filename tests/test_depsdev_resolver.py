@@ -6,6 +6,7 @@ from pathlib import Path
 from unittest.mock import MagicMock
 
 import pytest
+import requests
 
 from dependency_metrics.depsdev_client import DepsDevClient
 from dependency_metrics.analyzer import DependencyAnalyzer
@@ -15,7 +16,9 @@ from dependency_metrics.depsdev_resolver import (
     _match_constraint,
     _match_npm_or_cargo,
     _match_pypi,
+    depsdev_system,
 )
+from dependency_metrics.errors import DataSourceError, NoReleaseInWindowError, PackageNotFoundError
 from dependency_metrics.models import PackageVersion
 from dependency_metrics.resolvers import ResolverCache
 
@@ -377,12 +380,36 @@ def test_fetch_package_metadata_memoises_result(tmp_path):
     assert resolver._client.get_package.call_count == 1
 
 
-def test_fetch_package_metadata_returns_empty_versions_on_error(tmp_path):
-    resolver = _make_resolver()
-    resolver._client.get_package.side_effect = Exception("network error")
+def _http_error(status: int) -> requests.HTTPError:
+    response = MagicMock(spec=requests.Response)
+    response.status_code = status
+    return requests.HTTPError(f"{status} Client Error", response=response)
 
-    result = resolver.fetch_package_metadata("no-such-pkg")
-    assert result == {"versions": []}
+
+def test_fetch_package_metadata_404_raises_package_not_found(tmp_path):
+    resolver = _make_resolver()
+    resolver._client.get_package.side_effect = _http_error(404)
+
+    with pytest.raises(PackageNotFoundError) as caught:
+        resolver.fetch_package_metadata("no-such-pkg")
+    assert caught.value.package == "no-such-pkg"
+
+
+def test_fetch_package_metadata_server_error_raises_data_source_error(tmp_path):
+    resolver = _make_resolver()
+    resolver._client.get_package.side_effect = _http_error(503)
+
+    with pytest.raises(DataSourceError) as caught:
+        resolver.fetch_package_metadata("express")
+    assert not isinstance(caught.value, PackageNotFoundError)
+
+
+def test_fetch_package_metadata_network_error_raises_data_source_error(tmp_path):
+    resolver = _make_resolver()
+    resolver._client.get_package.side_effect = requests.ConnectionError("network error")
+
+    with pytest.raises(DataSourceError):
+        resolver.fetch_package_metadata("express")
 
 
 # ---------------------------------------------------------------------------
@@ -470,7 +497,7 @@ def test_get_package_version_at_date_raises_when_all_versions_in_future(tmp_path
     )
     metadata = _package_response(("1.0.0", "2022-01-01T00:00:00Z"))
 
-    with pytest.raises(ValueError, match="No version"):
+    with pytest.raises(NoReleaseInWindowError, match="No version"):
         resolver.get_package_version_at_date(metadata)
 
 
@@ -523,12 +550,12 @@ def test_extract_dependencies_excludes_dev_deps(tmp_path):
     assert deps == {"express": "^4.18.0"}
 
 
-def test_extract_dependencies_returns_empty_on_client_error(tmp_path):
+def test_extract_dependencies_raises_on_client_error(tmp_path):
     resolver = _make_resolver()
-    resolver._client.get_requirements.side_effect = Exception("timeout")
+    resolver._client.get_requirements.side_effect = requests.ReadTimeout("timeout")
 
-    deps = resolver.extract_dependencies({"_package": "pkg", "_version": "1.0.0"})
-    assert deps == {}
+    with pytest.raises(DataSourceError):
+        resolver.extract_dependencies({"_package": "pkg", "_version": "1.0.0"})
 
 
 def test_extract_dependencies_returns_empty_when_version_missing_from_stub(tmp_path):
@@ -878,19 +905,19 @@ def test_instance_cache_takes_priority_over_shared_cache():
     client.get_package.assert_not_called()
 
 
-def test_fetch_package_metadata_on_error_stores_empty_in_both_caches():
-    """On API failure, an empty versions dict is stored in both caches."""
+def test_failed_fetch_package_metadata_is_not_cached():
+    """A failed GetPackage is not cached: the next call asks deps.dev again."""
     client = _make_shared_client()
-    client.get_package.side_effect = RuntimeError("network error")
+    data = _package_response(("1.0.0", "2020-01-01T00:00:00Z"))
+    client.get_package.side_effect = [requests.ConnectionError("network error"), data]
     resolver = _make_resolver_with_client(client)
 
-    result = resolver.fetch_package_metadata("broken-pkg")
+    with pytest.raises(DataSourceError):
+        resolver.fetch_package_metadata("broken-pkg")
+    assert client._cache.metadata_cache.get(("NPM", "broken-pkg")) is None
 
-    assert result == {"versions": []}
-    # Per-instance cache should have it
-    assert resolver._package_cache["broken-pkg"] == {"versions": []}
-    # Shared metadata_cache should also have it (prevents other workers retrying)
-    assert client._cache.metadata_cache.get(("NPM", "broken-pkg")) == {"versions": []}
+    assert resolver.fetch_package_metadata("broken-pkg") == data
+    assert client.get_package.call_count == 2
 
 
 def test_concurrent_workers_make_only_one_api_call_for_shared_dependency():
@@ -947,3 +974,32 @@ def test_shared_cache_is_keyed_by_system_and_package_name():
     # Different systems → different cache entries, no cross-contamination
     assert client._cache.metadata_cache[("NPM", "requests")] == npm_data
     assert client._cache.metadata_cache[("PYPI", "requests")] == pypi_data
+
+
+# ---------------------------------------------------------------------------
+# depsdev_system: the one map from an ecosystem name to a deps.dev system
+# ---------------------------------------------------------------------------
+
+
+@pytest.mark.parametrize(
+    "ecosystem, system",
+    [
+        ("npm", "NPM"),
+        ("pypi", "PYPI"),
+        ("cargo", "CARGO"),
+        ("crates.io", "CARGO"),
+        ("PyPI", "PYPI"),
+    ],
+)
+def test_depsdev_system_maps_each_ecosystem_name(ecosystem, system):
+    assert depsdev_system(ecosystem) == system
+
+
+def test_depsdev_system_rejects_an_ecosystem_that_deps_dev_does_not_index():
+    with pytest.raises(ValueError, match="maven"):
+        depsdev_system("maven")
+
+
+def test_resolver_ecosystem_round_trips_through_depsdev_system():
+    for ecosystem in ("npm", "pypi", "cargo"):
+        assert _make_resolver(system=depsdev_system(ecosystem)).ecosystem == ecosystem

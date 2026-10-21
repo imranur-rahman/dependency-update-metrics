@@ -3,8 +3,9 @@
 A Comparison that matches a done Job of the last 72 hours gets the result of that Job, and
 the Host starts no new Job. The reuse key is the ecosystem, the set of packages, the window,
 the mode, the weighting type, the half-life, and the date of the OSV index. A rebuild of the
-OSV index therefore stops the reuse of older results. The Host deletes Job records after
-30 days.
+OSV index therefore stops the reuse of older results. Only a done Job is reused, and only
+when no package or release failed on the server side (``is_reusable``). The Host deletes Job
+records after 30 days.
 
 The reuse lookup is its own step (``find_reusable_job``), so that ``POST /api/jobs`` can run
 the rate limits after it: a reused result does not count against the limits.
@@ -17,6 +18,7 @@ from dataclasses import dataclass
 from datetime import date
 from typing import Callable, Optional
 
+from .errors import NO_RELEASES, PACKAGE_NOT_FOUND
 from .job_queue import JobQueue
 from .models import Comparison, Job, package_key
 
@@ -60,8 +62,35 @@ def reuse_key(comparison: Comparison, osv_index_date: Optional[date]) -> str:
 
 
 def find_reusable_job(queue: JobQueue, key: str, policy: ReusePolicy) -> Optional[Job]:
-    """Return the newest done Job with ``key`` that is recent enough to reuse, or ``None``."""
-    return queue.latest_done_job(key, policy.reuse_seconds)
+    """Return the newest done Job with ``key`` that is recent enough to reuse, or ``None``.
+
+    A Job with a failure on the server side (see :func:`is_reusable`) is skipped, so that a
+    new Job can give the result that the failure hid.
+    """
+    for job in queue.done_jobs(key, policy.reuse_seconds):
+        if is_reusable(job):
+            return job
+    return None
+
+
+# The package and release errors that come from the user input: a new Job gives the
+# same error, so the result can be reused.
+_USER_INPUT_ERRORS = frozenset({"", PACKAGE_NOT_FOUND, NO_RELEASES})
+
+
+def is_reusable(job: Job) -> bool:
+    """Return true if no package and no release of ``job`` failed on the server side.
+
+    "Package not found in deps.dev" and "No releases in this window" depend only on the
+    Comparison. "Something went wrong" and "The analysis took too long" can pass on a new
+    Job.
+    """
+    for result in job.results:
+        errors = [result.get("error") or ""]
+        errors += [(release.get("error") or "") for release in result.get("releases") or []]
+        if any(error not in _USER_INPUT_ERRORS for error in errors):
+            return False
+    return True
 
 
 def delete_expired_jobs(queue: JobQueue, policy: ReusePolicy) -> int:

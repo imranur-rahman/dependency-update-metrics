@@ -10,6 +10,7 @@ from fastapi.testclient import TestClient
 
 from contract_examples import load_example
 from dmhost import JobQueue, Worker, create_app
+from dmhost.models import package_key, package_name_matches_rules
 
 
 def analysis_that_must_not_run(comparison, package):
@@ -115,3 +116,16 @@ def test_window_with_a_wrong_end_date_is_refused(client, queue, start_date, end_
 
     assert response.status_code == 422
     assert Worker(queue, analysis_that_must_not_run).run_once() is False
+
+
+# The Webapp tests (webapp/tests/comparison.test.mjs) read the same cases, so the Python and
+# the JavaScript rules cannot drift apart.
+NAME_CASES = load_example("package_names")["cases"]
+
+
+@pytest.mark.parametrize(
+    "case", NAME_CASES, ids=[f"{c['ecosystem']}:{c['name'][:20]}" for c in NAME_CASES]
+)
+def test_package_name_rules_and_key_match_the_shared_contract_cases(case):
+    assert package_name_matches_rules(case["ecosystem"], case["name"]) is case["valid"]
+    assert package_key(case["ecosystem"], case["name"]) == case["key"]

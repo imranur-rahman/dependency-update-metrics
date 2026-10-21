@@ -1,0 +1,155 @@
+{
+  "description": "Package names, the key that two names of one package share (package_key in host/dmhost/models.py, packageKey in comparison.js), and whether the name matches the naming rules of the ecosystem (package_name_matches_rules, packageNameMatchesRules). The Host tests and the Webapp tests both read this file.",
+  "cases": [
+    {
+      "ecosystem": "npm",
+      "name": "express",
+      "key": "express",
+      "valid": true
+    },
+    {
+      "ecosystem": "npm",
+      "name": "@types/node",
+      "key": "@types/node",
+      "valid": true
+    },
+    {
+      "ecosystem": "npm",
+      "name": "JSONStream",
+      "key": "jsonstream",
+      "valid": true
+    },
+    {
+      "ecosystem": "npm",
+      "name": "lodash.merge",
+      "key": "lodash.merge",
+      "valid": true
+    },
+    {
+      "ecosystem": "npm",
+      "name": ".hidden",
+      "key": ".hidden",
+      "valid": false
+    },
+    {
+      "ecosystem": "npm",
+      "name": "_private",
+      "key": "_private",
+      "valid": false
+    },
+    {
+      "ecosystem": "npm",
+      "name": "@scope/",
+      "key": "@scope/",
+      "valid": false
+    },
+    {
+      "ecosystem": "npm",
+      "name": "has space",
+      "key": "has space",
+      "valid": false
+    },
+    {
+      "ecosystem": "npm",
+      "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "key": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "valid": true
+    },
+    {
+      "ecosystem": "npm",
+      "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "key": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "valid": false
+    },
+    {
+      "ecosystem": "pypi",
+      "name": "requests",
+      "key": "requests",
+      "valid": true
+    },
+    {
+      "ecosystem": "pypi",
+      "name": "Flask",
+      "key": "flask",
+      "valid": true
+    },
+    {
+      "ecosystem": "pypi",
+      "name": "zope.interface",
+      "key": "zope-interface",
+      "valid": true
+    },
+    {
+      "ecosystem": "pypi",
+      "name": "Typing_Extensions",
+      "key": "typing-extensions",
+      "valid": true
+    },
+    {
+      "ecosystem": "pypi",
+      "name": "a-_.b",
+      "key": "a-b",
+      "valid": true
+    },
+    {
+      "ecosystem": "pypi",
+      "name": "trailing-",
+      "key": "trailing-",
+      "valid": false
+    },
+    {
+      "ecosystem": "pypi",
+      "name": "-leading",
+      "key": "-leading",
+      "valid": false
+    },
+    {
+      "ecosystem": "pypi",
+      "name": "x",
+      "key": "x",
+      "valid": true
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "serde",
+      "key": "serde",
+      "valid": true
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "Serde_JSON",
+      "key": "serde_json",
+      "valid": true
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "tokio-util",
+      "key": "tokio-util",
+      "valid": true
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "1password",
+      "key": "1password",
+      "valid": false
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "key": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "valid": true
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "key": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "valid": false
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "dot.name",
+      "key": "dot.name",
+      "valid": false
+    }
+  ]
+}

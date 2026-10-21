@@ -20,8 +20,10 @@ from typing import Dict, Iterable, List, Optional, Tuple
 from packaging.specifiers import InvalidSpecifier, SpecifierSet
 from packaging.version import InvalidVersion, Version as PkgVersion
 from packaging import version as pkg_version
+import requests
 
 from .depsdev_client import DepsDevClient
+from .errors import DataSourceError, NoReleaseInWindowError, PackageNotFoundError
 from .models import PackageVersion
 from .time_utils import parse_timestamp
 
@@ -48,6 +50,25 @@ _SYSTEM_TO_ECOSYSTEM: Dict[str, str] = {
     "PYPI": "pypi",
     "CARGO": "cargo",
 }
+
+# Ecosystem name (as the CLI, analyze(), and the Host accept it) → deps.dev system.
+# It comes from _SYSTEM_TO_ECOSYSTEM, plus the other names of an ecosystem.
+ECOSYSTEM_TO_SYSTEM: Dict[str, str] = {
+    **{ecosystem: system for system, ecosystem in _SYSTEM_TO_ECOSYSTEM.items()},
+    "crates.io": "CARGO",
+}
+
+
+def depsdev_system(ecosystem: str) -> str:
+    """Return the deps.dev system of *ecosystem* (for example ``"crates.io"`` → ``"CARGO"``).
+
+    Raises:
+        ValueError: If deps.dev does not index the ecosystem.
+    """
+    try:
+        return ECOSYSTEM_TO_SYSTEM[ecosystem.lower()]
+    except KeyError:
+        raise ValueError(f"deps.dev does not index the ecosystem {ecosystem}") from None
 
 
 def _parse_published_at(raw: str) -> Optional[datetime]:
@@ -241,13 +262,20 @@ class DepsDevResolver:
             self._package_cache[package_name] = shared
             return shared
 
+        # The HTTP session already retries connection errors, 429, and 5xx. A failure
+        # that is left raises, and the cache never keeps it, so a later call asks again.
         try:
             data = self._client.get_package(self.system, package_name, end_date=self.end_date)
-        except Exception as exc:
-            logger.warning(
-                "deps.dev GetPackage failed for %s/%s: %s", self.system, package_name, exc
-            )
-            data = {"versions": []}
+        except requests.HTTPError as exc:
+            if exc.response is not None and exc.response.status_code == 404:
+                raise PackageNotFoundError(self.system, package_name) from exc
+            raise DataSourceError(
+                f"deps.dev GetPackage failed for {self.system}/{package_name}: {exc}"
+            ) from exc
+        except requests.RequestException as exc:
+            raise DataSourceError(
+                f"deps.dev GetPackage failed for {self.system}/{package_name}: {exc}"
+            ) from exc
 
         self._package_cache[package_name] = data
         self._client._cache.metadata_set(shared_key, data)
@@ -281,7 +309,7 @@ class DepsDevResolver:
         :meth:`extract_dependencies`.
 
         Raises:
-            ValueError: If no qualifying version is found.
+            NoReleaseInWindowError: If no qualifying version is found.
         """
         end = self.end_date
         if end.tzinfo is None:
@@ -293,7 +321,9 @@ class DepsDevResolver:
                 eligible.append((pv.released_at, pv.version))
 
         if not eligible:
-            raise ValueError(f"No version of {self.package} found on or before {end.date()}")
+            raise NoReleaseInWindowError(
+                f"No version of {self.package} found on or before {end.date()}"
+            )
 
         version_strs = [v for _, v in eligible]
         chosen = _best_semver(self.system, version_strs)
@@ -328,19 +358,18 @@ class DepsDevResolver:
         * **NPM**  — ``{"npm":  {"dependencies": {"dependencies": [{name, requirement}]}}}``
         * **CARGO**— ``{"cargo":{"dependencies": [{name, requirement, kind, optional}]}}``
 
-        Returns an empty dict on API failure or when no runtime deps are found.
+        Returns an empty dict when no runtime deps are found.
+
+        Raises:
+            DataSourceError: If deps.dev does not give the requirements (after the
+                retries of the HTTP session).
         """
         try:
             data = self._client.get_requirements(self.system, package, version)
-        except Exception as exc:
-            logger.warning(
-                "deps.dev GetRequirements failed for %s/%s@%s: %s",
-                self.system,
-                package,
-                version,
-                exc,
-            )
-            return {}
+        except requests.RequestException as exc:
+            raise DataSourceError(
+                f"deps.dev GetRequirements failed for {self.system}/{package}@{version}: {exc}"
+            ) from exc
 
         if self.system == "PYPI":
             return self._parse_pypi_requirements(data)

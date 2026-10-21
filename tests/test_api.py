@@ -19,9 +19,11 @@ from unittest.mock import MagicMock
 
 import pandas as pd
 import pytest
+import requests
 
 from dependency_metrics import analyze
 from dependency_metrics.depsdev_client import DepsDevClient
+from dependency_metrics.errors import DataSourceError, PackageNotFoundError
 from dependency_metrics.models import PackageVersion
 from dependency_metrics.resolvers import ResolverCache
 
@@ -224,13 +226,27 @@ def test_progress_callback_does_not_change_the_result(tmp_path):
     assert with_cb == without
 
 
-def _depsdev_client():
-    """A DepsDevClient stub that serves the same scenario in deps.dev's response shape."""
+def _http_error(status):
+    response = MagicMock(spec=requests.Response)
+    response.status_code = status
+    return requests.HTTPError(f"{status} Error", response=response)
+
+
+def _depsdev_client(package_errors=None, requirement_errors=None):
+    """A DepsDevClient stub that serves the same scenario in deps.dev's response shape.
+
+    ``package_errors`` maps a package name to the exception of its GetPackage call, and
+    ``requirement_errors`` maps a version of mypkg to the exception of its GetRequirements.
+    """
+    package_errors = package_errors or {}
+    requirement_errors = requirement_errors or {}
 
     def _iso(t):
         return t.strftime("%Y-%m-%dT%H:%M:%SZ")
 
     def _get_package(system, name, end_date=None):
+        if name in package_errors:
+            raise package_errors[name]
         releases = {"mypkg": PKG_RELEASES, "depA": DEP_RELEASES}[name]
         return {
             "packageKey": {"system": system, "name": name},
@@ -244,6 +260,8 @@ def _depsdev_client():
         }
 
     def _get_requirements(system, name, version):
+        if name == "mypkg" and version in requirement_errors:
+            raise requirement_errors[version]
         deps = [{"projectName": "depA", "versionSpecifier": "<2.0", "environmentMarker": ""}]
         return {"pypi": {"dependencies": deps if name == "mypkg" else []}}
 
@@ -337,3 +355,97 @@ def test_per_release_release_that_fails_gives_an_error_row_and_the_others_stay(t
     assert failed.package_release_date == "2021-09-01"
     assert failed.num_dependencies == 0
     assert json.loads(json.dumps(result.to_dict()))["releases"][1]["mttu"] is None
+
+
+def _depsdev_analyze(tmp_path, client, **kwargs):
+    return _analyze(tmp_path, resolver=None, data_source="depsdev", depsdev_client=client, **kwargs)
+
+
+@pytest.mark.parametrize("mode", ["window_summary", "per_release"])
+def test_depsdev_unknown_package_raises_package_not_found(tmp_path, mode):
+    client = _depsdev_client(package_errors={"mypkg": _http_error(404)})
+
+    with pytest.raises(PackageNotFoundError):
+        _depsdev_analyze(tmp_path, client, mode=mode, raise_errors=True)
+
+
+def test_depsdev_unknown_package_gives_an_error_result(tmp_path):
+    client = _depsdev_client(package_errors={"mypkg": _http_error(404)})
+
+    result = _depsdev_analyze(tmp_path, client)
+
+    assert result.summary.status == "error"
+    assert result.summary.mttu is None
+    assert "not found" in result.error
+
+
+@pytest.mark.parametrize("mode", ["window_summary", "per_release"])
+def test_depsdev_failed_dependency_lookup_is_an_error_not_a_zero(tmp_path, mode):
+    """A deps.dev failure for a dependency (after retries) is an error, never MTTU 0."""
+    client = _depsdev_client(package_errors={"depA": _http_error(503)})
+
+    result = _depsdev_analyze(tmp_path, client, mode=mode)
+
+    assert "depA" in result.error
+    assert result.releases == []
+    if mode == "window_summary":
+        assert result.summary.status == "error"
+    with pytest.raises(DataSourceError):
+        _depsdev_analyze(
+            tmp_path,
+            _depsdev_client(package_errors={"depA": _http_error(503)}),
+            mode=mode,
+            raise_errors=True,
+        )
+
+
+def test_depsdev_failed_manifest_gives_an_error_row_for_that_release(tmp_path):
+    client = _depsdev_client(requirement_errors={"1.1.0": requests.ReadTimeout("timed out")})
+
+    result = _depsdev_analyze(tmp_path, client, mode="per_release")
+
+    statuses = {r.package_version: r.status for r in result.releases}
+    assert statuses == {"1.0.0": "ok", "1.1.0": "error"}
+    failed = [r for r in result.releases if r.status == "error"][0]
+    assert failed.mttu is None
+
+
+def test_depsdev_failed_manifest_of_the_analyzed_version_is_an_error(tmp_path):
+    client = _depsdev_client(requirement_errors={"1.1.0": requests.ReadTimeout("timed out")})
+
+    result = _depsdev_analyze(tmp_path, client)
+
+    assert result.summary.status == "error"
+    assert "GetRequirements" in result.error
+
+
+def test_depsdev_failed_dependency_lookup_stops_a_bulk_row(tmp_path):
+    """The bulk CLI turns this exception into an error row, which --resume retries."""
+    from dependency_metrics.analyzer import DependencyAnalyzer
+    from dependency_metrics.depsdev_resolver import DepsDevResolver
+
+    client = _depsdev_client(package_errors={"depA": _http_error(503)})
+    resolver = DepsDevResolver("PYPI", "mypkg", _utc(2020, 1, 1), _utc(2023, 1, 1), client)
+    analyzer = DependencyAnalyzer(
+        ecosystem="pypi",
+        package="mypkg",
+        start_date=_utc(2020, 1, 1),
+        end_date=_utc(2023, 1, 1),
+        output_dir=tmp_path,
+        resolver=resolver,
+    )
+    row = {"start_date": _utc(2020, 1, 1), "end_date": _utc(2023, 1, 1), "row_num": 2}
+
+    with pytest.raises(DataSourceError, match="depA"):
+        analyzer.analyze_bulk_rows([row], osv_df=pd.DataFrame([VULN_A]))
+
+
+def test_public_types_name_the_values_of_the_plain_data_contract():
+    from typing import get_args
+
+    import dependency_metrics as dm
+
+    assert set(get_args(dm.Mode)) == {"window_summary", "per_release"}
+    assert set(get_args(dm.DataSource)) == {"native", "depsdev"}
+    assert set(get_args(dm.Status)) == {"ok", "no_deps", "error"}
+    assert set(get_args(dm.ProgressStage)) == {"dependencies", "releases"}
