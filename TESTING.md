@@ -18,6 +18,8 @@ pytest tests/ -q
 
 The suite has 253 tests and runs offline in a few seconds. Every resolver receives its cache and HTTP client through its constructor, so tests inject fixture data and never call a registry, deps.dev, or OSV. CI runs the suite on Ubuntu, macOS, and Windows with Python 3.10, 3.11, and 3.12.
 
+This document covers the Tool. The Webapp tests use Node's built-in test runner: `node --test webapp/tests/*.test.mjs`. The Host tests go in `host/tests/`.
+
 ## Coverage by test type
 
 | Type | What it checks | Where |

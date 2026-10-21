@@ -1,0 +1,63 @@
+# Webapp CI and GitHub Pages publish.
+# GitHub Pages serves only the repo root or docs/ without a workflow, so this workflow
+# uploads webapp/site/ and deploys it. The repo setting "Pages > Source" must be
+# "GitHub Actions".
+name: Webapp CI and Pages
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'webapp/**'
+      - '.github/workflows/webapp.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'webapp/**'
+      - '.github/workflows/webapp.yml'
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+
+    - name: Run tests
+      run: node --test webapp/tests/*.test.mjs
+
+  deploy:
+    needs: test
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Configure Pages
+      uses: actions/configure-pages@v5
+
+    - name: Upload the Webapp
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: webapp/site
+
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
