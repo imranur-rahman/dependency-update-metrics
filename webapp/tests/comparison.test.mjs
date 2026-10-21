@@ -318,14 +318,31 @@ test("the CSV quotes values that hold a comma, a quote, or a line break", () => 
   );
 });
 
-test("the CSV file name holds the ecosystem, the packages, and the window", () => {
+test("the CSV file name holds the ecosystem, the packages, the window, the mode, and the weighting", () => {
   assert.equal(
     csvFileName(threePackageJob().comparison),
-    "mttu-mttr_pypi_fast_missing_slow_2020-01-01_2023-01-01.csv",
+    "mttu-mttr_pypi_fast_missing_slow_2020-01-01_2023-01-01_window_summary_disable.csv",
   );
   assert.equal(
     csvFileName({ ...threePackageJob().comparison, ecosystem: "npm", packages: ["@types/node"] }),
-    "mttu-mttr_npm_types-node_2020-01-01_2023-01-01.csv",
+    "mttu-mttr_npm_types-node_2020-01-01_2023-01-01_window_summary_disable.csv",
+  );
+});
+
+test("two downloads that differ only in the mode or the weighting get different file names", () => {
+  const comparison = threePackageJob().comparison;
+  const names = [
+    comparison,
+    { ...comparison, mode: "per_release" },
+    { ...comparison, weighting_type: "linear" },
+    { ...comparison, weighting_type: "exponential", half_life: 180 },
+    { ...comparison, weighting_type: "exponential", half_life: 30 },
+  ].map(csvFileName);
+
+  assert.equal(new Set(names).size, names.length);
+  assert.equal(
+    names[3],
+    "mttu-mttr_pypi_fast_missing_slow_2020-01-01_2023-01-01_window_summary_exponential-180.csv",
   );
 });
 
