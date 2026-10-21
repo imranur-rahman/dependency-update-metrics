@@ -26,6 +26,10 @@ MAX_HALF_LIFE_DAYS = 3650
 
 MAX_PACKAGES = 5
 
+# The modes of a Comparison (GLOSSARY.md): one value for each package over the window, or
+# one value for each release of each package. The Tool has the same names (``api.MODES``).
+Mode = Literal["window_summary", "per_release"]
+
 
 def package_key(ecosystem: str, name: str) -> str:
     """Return the form of a package name that two names of one package share.
@@ -50,7 +54,7 @@ class Comparison(BaseModel):
     packages: List[str] = Field(min_length=1, max_length=MAX_PACKAGES)
     start_date: date
     end_date: date
-    mode: str = "window_summary"
+    mode: Mode = "window_summary"
     weighting_type: WeightingType = "disable"
     half_life: Optional[float] = None
 

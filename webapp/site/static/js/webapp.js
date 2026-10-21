@@ -15,7 +15,9 @@ import {
   formFromComparison,
   barChartData,
   barChartAxisLabel,
-  TABLE_COLUMNS,
+  lineChartData,
+  lineChartAxisLabel,
+  tableColumns,
   rowsToCsv,
   csvFileName,
 } from "./comparison.js";
@@ -24,6 +26,11 @@ const POLL_MS = 2000;
 // Colors of the bar chart: slots 1 and 2 of the validated categorical palette
 // (blue, orange), so that the two series stay apart for color-blind readers.
 const SERIES_COLORS = { MTTU: "#2a78d6", MTTR: "#eb6834" };
+// Colors and point shapes of the Per-release lines: one for each package, in the fixed
+// order of the validated categorical palette (slots 1 to 5). The shape is a second
+// encoding, so that a line does not depend on its color alone.
+const PACKAGE_COLORS = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4"];
+const PACKAGE_POINT_STYLES = ["circle", "rect", "triangle", "rectRot", "crossRot"];
 
 const section = document.getElementById("try-it");
 const form = document.getElementById("comparison-form");
@@ -41,9 +48,16 @@ const addPackageButton = document.getElementById("add-package");
 const packageMessage = document.getElementById("package-error");
 const chartFigure = document.getElementById("result-chart-figure");
 const chartCanvas = document.getElementById("result-chart");
+const releaseChartsFigure = document.getElementById("release-charts-figure");
+const releaseCanvases = {
+  mttu: document.getElementById("release-chart-mttu"),
+  mttr: document.getElementById("release-chart-mttr"),
+};
+const modeSelect = document.getElementById("mode");
 const csvButton = document.getElementById("download-csv");
 
 let chart = null;
+let releaseCharts = [];
 let csv = { text: "", fileName: "" };
 
 // --- Weighting fields (ticket #8) ---
@@ -143,6 +157,7 @@ function fillFormFromUrl() {
   setPackageFields(state.packages);
   form.elements.startDate.value = state.startDate;
   form.elements.endDate.value = state.endDate;
+  if (state.mode) modeSelect.value = state.mode;
   weightingSelect.value = state.weightingType;
   if (state.halfLife !== "") halfLifeInput.value = state.halfLife;
   showWeightingFields();
@@ -160,9 +175,9 @@ function showStatus(text) {
   statusLine.textContent = text;
 }
 
-function showRows(rows) {
+function showRows(rows, columns) {
   const headerRow = document.createElement("tr");
-  for (const [, header] of TABLE_COLUMNS) {
+  for (const [, header] of columns) {
     const th = document.createElement("th");
     th.textContent = header;
     headerRow.append(th);
@@ -171,7 +186,7 @@ function showRows(rows) {
   table.querySelector("tbody").replaceChildren(
     ...rows.map((row) => {
       const tr = document.createElement("tr");
-      for (const [key] of TABLE_COLUMNS) {
+      for (const [key] of columns) {
         const td = document.createElement("td");
         td.textContent = String(row[key]);
         tr.append(td);
@@ -187,7 +202,7 @@ function showChart(job) {
     chart.destroy();
     chart = null;
   }
-  // Per-release Jobs get their own charts (ticket #7).
+  // Per-release Jobs get two line charts (showReleaseCharts).
   if (job === null || job.comparison.mode !== "window_summary" || !window.Chart) {
     chartFigure.hidden = true;
     return;
@@ -213,18 +228,85 @@ function showChart(job) {
   });
 }
 
+// Format a release date of the x-axis (milliseconds, UTC) as "YYYY-MM-DD".
+function formatReleaseDate(ms) {
+  return new Date(ms).toISOString().slice(0, 10);
+}
+
+// Show the MTTU and the MTTR line charts of a done Per-release Job: one line for each
+// package, with a gap at each release that failed (lineChartData).
+function showReleaseCharts(job) {
+  for (const releaseChart of releaseCharts) releaseChart.destroy();
+  releaseCharts = [];
+  if (job === null || job.comparison.mode !== "per_release" || !window.Chart) {
+    releaseChartsFigure.hidden = true;
+    return;
+  }
+  releaseChartsFigure.hidden = false;
+  for (const [metric, canvas] of Object.entries(releaseCanvases)) {
+    const data = lineChartData(job, metric);
+    data.datasets.forEach((dataset, index) => {
+      const color = PACKAGE_COLORS[index % PACKAGE_COLORS.length];
+      Object.assign(dataset, {
+        borderColor: color,
+        backgroundColor: color,
+        borderWidth: 2,
+        pointRadius: 4,
+        pointHoverRadius: 6,
+        pointStyle: PACKAGE_POINT_STYLES[index % PACKAGE_POINT_STYLES.length],
+        spanGaps: false,
+      });
+    });
+    releaseCharts.push(
+      new window.Chart(canvas, {
+        type: "line",
+        data,
+        options: {
+          maintainAspectRatio: false,
+          interaction: { mode: "nearest", intersect: false },
+          plugins: {
+            legend: { position: "top", labels: { usePointStyle: true } },
+            tooltip: {
+              callbacks: {
+                title: (items) => formatReleaseDate(items[0].parsed.x),
+                label: (item) =>
+                  `${item.dataset.label} ${item.raw.version}: ${
+                    item.raw.y === null ? "failed" : `${item.raw.y.toFixed(1)} days`
+                  }`,
+              },
+            },
+          },
+          scales: {
+            x: {
+              type: "linear",
+              title: { display: true, text: "Release date" },
+              ticks: { callback: (value) => formatReleaseDate(value), maxTicksLimit: 6 },
+              grid: { display: false },
+            },
+            y: { beginAtZero: true, title: { display: true, text: lineChartAxisLabel(job) } },
+          },
+        },
+      }),
+    );
+  }
+}
+
 function showCsvButton(job) {
   if (job === null) {
     csvButton.hidden = true;
     return;
   }
-  csv = { text: rowsToCsv(resultRows(job)), fileName: csvFileName(job.comparison) };
+  csv = {
+    text: rowsToCsv(resultRows(job), tableColumns(job.comparison.mode)),
+    fileName: csvFileName(job.comparison),
+  };
   csvButton.hidden = false;
 }
 
 function showResult(job) {
-  showRows(job === null ? [] : resultRows(job));
+  showRows(job === null ? [] : resultRows(job), tableColumns(job?.comparison.mode));
   showChart(job);
+  showReleaseCharts(job);
   showCsvButton(job);
   showResultsNote(job === null ? null : job.comparison.weighting_type);
 }
@@ -275,6 +357,7 @@ form.addEventListener("submit", async (event) => {
       packages,
       startDate: data.get("startDate"),
       endDate: data.get("endDate"),
+      mode: data.get("mode"),
       weightingType: data.get("weightingType"),
       halfLife: data.get("halfLife"),
     },

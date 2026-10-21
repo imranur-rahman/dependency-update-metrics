@@ -16,23 +16,23 @@ source metrics_venv/bin/activate
 pytest tests/ -q
 ```
 
-The suite has 289 tests and runs offline in a few seconds. Every resolver receives its cache and HTTP client through its constructor, so tests inject fixture data and never call a registry, deps.dev, or OSV. CI runs the suite on Ubuntu, macOS, and Windows with Python 3.10, 3.11, and 3.12.
+The suite has 290 tests and runs offline in a few seconds. Every resolver receives its cache and HTTP client through its constructor, so tests inject fixture data and never call a registry, deps.dev, or OSV. CI runs the suite on Ubuntu, macOS, and Windows with Python 3.10, 3.11, and 3.12.
 
 This document covers the Tool. The Host and the Webapp have their own tests:
 
 | Part | Command | What the tests check |
 |---|---|---|
-| Host | `pytest host/tests` | The HTTP API through FastAPI's `TestClient`. `create_app` takes a fake analysis function and a fake Turnstile check, and the tests run the queue and the worker (`Worker.run_once()`) in the test process. They check the Comparison rules (1 to 5 packages, no duplicates, one ecosystem) and that a failed package keeps the results of the other packages. `test_tool_analysis.py` runs the real Tool with a deps.dev client stub, from submit to result. |
-| Webapp | `node --test webapp/tests/*.test.mjs` | The logic module `webapp/site/static/js/comparison.js` (form to request body, the package rules, the half-life rule, the axis label and the results note, the round trip between a Comparison and the page URL, Job status text, the bar chart data, result table rows, and the CSV text) and the published folder (local assets, and Chart.js from cdnjs with an exact version). The Chart.js drawing and the page layout get a manual smoke check. |
+| Host | `pytest host/tests` | The HTTP API through FastAPI's `TestClient`. `create_app` takes a fake analysis function and a fake Turnstile check, and the tests run the queue and the worker (`Worker.run_once()`) in the test process. They check the Comparison rules (1 to 5 packages, no duplicates, one ecosystem) and that a failed package keeps the results of the other packages. `test_tool_analysis.py` and `test_per_release.py` run the real Tool with a deps.dev client stub, from submit to result, in Window summary and Per-release mode. |
+| Webapp | `node --test webapp/tests/*.test.mjs` | The logic module `webapp/site/static/js/comparison.js` (form to request body, the package rules, the half-life rule, the axis label and the results note, the round trip between a Comparison and the page URL, Job status text, the bar chart data, the Per-release line data with gaps for failed releases, result table rows, and the CSV text) and the published folder (local assets, and Chart.js from cdnjs with an exact version). The Chart.js drawing and the page layout get a manual smoke check. |
 
-Both read the shared API examples in `contract/examples/`. The done example is the real Tool output for the scenario in `host/tests/test_tool_analysis.py`, so the contract matches what the Tool returns.
+Both read the shared API examples in `contract/examples/`. The done examples are the real Tool output: `job_done_window_summary.json` for the scenario in `host/tests/test_tool_analysis.py`, and `job_done_per_release.json` (with one failed release) for the scenario in `host/tests/test_per_release.py`. Run that test with `DM_REGENERATE_CONTRACT=1` to write the Per-release example again. So the contract matches what the Tool returns.
 
 ## Coverage by test type
 
 | Type | What it checks | Where |
 |---|---|---|
 | Unit | One component in isolation, with injected fixture data | `test_depsdev_resolver.py`, `test_depsdev_client.py`, `test_npm_resolver.py`, `test_pypi_resolver.py`, `test_pypi_version_resolution.py`, `test_crates_resolver.py`, `test_npm_semver.py`, `test_resolver_cache.py`, `test_cache_config.py`, `test_osv.py`, `test_severity_breakdown.py`, `test_time_utils.py`, `test_models.py`, `test_reporting.py`, `test_basic.py` |
-| Integration | Components working together: the analyzer over stubbed resolvers, the public `analyze()` function over an injected fixture resolver or deps.dev client stub (Window summary and Per-release results, plain-data output, errors, and progress events), and the real `cli.main()` with stubbed resolvers and an in-process executor (`in_process_executor` fixture in `conftest.py`) | `test_per_release.py`, `test_dependency_first_use.py`, `test_api.py`, `test_bulk_csv.py`, `test_cli_resume.py`, `test_cli_progress.py`, `test_cli_single_package.py` |
+| Integration | Components working together: the analyzer over stubbed resolvers, the public `analyze()` function over an injected fixture resolver or deps.dev client stub (Window summary and Per-release results, plain-data output, errors, a Per-release release that fails, and progress events), and the real `cli.main()` with stubbed resolvers and an in-process executor (`in_process_executor` fixture in `conftest.py`) | `test_per_release.py`, `test_dependency_first_use.py`, `test_api.py`, `test_bulk_csv.py`, `test_cli_resume.py`, `test_cli_progress.py`, `test_cli_single_package.py` |
 | System | The whole tool, end to end, on 90 real packages (npm, PyPI, Cargo) with live data | The case study in `case_study/` (see below); run by hand, not in CI |
 | Regression | Each bug found in real use has a test that fails on the old code | See the table below |
 | Acceptance | — | Not automated. The authors are also the main users, which the review names as the usual reason acceptance testing is rare in research software. |

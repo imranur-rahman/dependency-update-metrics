@@ -1,0 +1,91 @@
+{
+  "job_id": "example-job-id",
+  "state": "done",
+  "comparison": {
+    "ecosystem": "pypi",
+    "packages": [
+      "mypkg",
+      "yourpkg"
+    ],
+    "start_date": "2020-01-01",
+    "end_date": "2023-01-01",
+    "mode": "per_release",
+    "weighting_type": "disable",
+    "half_life": null
+  },
+  "results": [
+    {
+      "ecosystem": "pypi",
+      "package": "mypkg",
+      "mode": "per_release",
+      "start_date": "2020-01-01",
+      "end_date": "2023-01-01",
+      "weighting_type": "disable",
+      "half_life": null,
+      "data_source": "depsdev",
+      "summary": null,
+      "releases": [
+        {
+          "package_version": "1.0.0",
+          "package_release_date": "2021-01-01",
+          "mttu": 0.0,
+          "mttr": 0.0,
+          "num_dependencies": 1,
+          "status": "ok",
+          "error": ""
+        },
+        {
+          "package_version": "1.1.0",
+          "package_release_date": "2021-09-01",
+          "mttu": null,
+          "mttr": null,
+          "num_dependencies": 0,
+          "status": "error",
+          "error": "deps.dev has no manifest for mypkg 1.1.0"
+        },
+        {
+          "package_version": "1.2.0",
+          "package_release_date": "2022-01-01",
+          "mttu": 214.0,
+          "mttr": 214.0,
+          "num_dependencies": 1,
+          "status": "ok",
+          "error": ""
+        }
+      ],
+      "error": ""
+    },
+    {
+      "ecosystem": "pypi",
+      "package": "yourpkg",
+      "mode": "per_release",
+      "start_date": "2020-01-01",
+      "end_date": "2023-01-01",
+      "weighting_type": "disable",
+      "half_life": null,
+      "data_source": "depsdev",
+      "summary": null,
+      "releases": [
+        {
+          "package_version": "1.0.0",
+          "package_release_date": "2021-03-01",
+          "mttu": 0.0,
+          "mttr": 0.0,
+          "num_dependencies": 1,
+          "status": "ok",
+          "error": ""
+        },
+        {
+          "package_version": "2.0.0",
+          "package_release_date": "2021-12-01",
+          "mttu": 183.0,
+          "mttr": 183.0,
+          "num_dependencies": 1,
+          "status": "ok",
+          "error": ""
+        }
+      ],
+      "error": ""
+    }
+  ]
+}
