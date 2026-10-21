@@ -22,8 +22,8 @@ This document covers the Tool. The Host and the Webapp have their own tests:
 
 | Part | Command | What the tests check |
 |---|---|---|
-| Host | `pytest host/tests` | The HTTP API through FastAPI's `TestClient`. `create_app` takes a fake analysis function and a fake Turnstile check, and the tests run the queue and the worker (`Worker.run_once()`) in the test process. `test_tool_analysis.py` runs the real Tool with a deps.dev client stub, from submit to result. |
-| Webapp | `node --test webapp/tests/*.test.mjs` | The logic module `webapp/site/static/js/comparison.js` (form to request body, the half-life rule, the axis label and the results note, Job status text, result table rows) and the published folder. |
+| Host | `pytest host/tests` | The HTTP API through FastAPI's `TestClient`. `create_app` takes a fake analysis function and a fake Turnstile check, and the tests run the queue and the worker (`Worker.run_once()`) in the test process. They check the Comparison rules (1 to 5 packages, no duplicates, one ecosystem) and that a failed package keeps the results of the other packages. `test_tool_analysis.py` runs the real Tool with a deps.dev client stub, from submit to result. |
+| Webapp | `node --test webapp/tests/*.test.mjs` | The logic module `webapp/site/static/js/comparison.js` (form to request body, the package rules, the half-life rule, the axis label and the results note, the round trip between a Comparison and the page URL, Job status text, the bar chart data, result table rows, and the CSV text) and the published folder (local assets, and Chart.js from cdnjs with an exact version). The Chart.js drawing and the page layout get a manual smoke check. |
 
 Both read the shared API examples in `contract/examples/`. The done example is the real Tool output for the scenario in `host/tests/test_tool_analysis.py`, so the contract matches what the Tool returns.
 
