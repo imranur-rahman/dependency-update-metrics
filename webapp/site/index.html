@@ -287,6 +287,32 @@
             </div>
           </div>
         </div>
+        <div class="columns">
+          <div class="column">
+            <div class="field">
+              <label class="label" for="weighting-type">Weighting</label>
+              <div class="control">
+                <div class="select is-fullwidth">
+                  <select id="weighting-type" name="weightingType">
+                    <option value="disable" selected>disable (sum of days)</option>
+                    <option value="linear">linear</option>
+                    <option value="exponential">exponential</option>
+                    <option value="inverse">inverse</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column is-hidden" id="half-life-field">
+            <div class="field">
+              <label class="label" for="half-life">Half-life (days)</label>
+              <div class="control">
+                <input class="input" id="half-life" name="halfLife" type="number" min="1" max="3650" step="any" value="180">
+              </div>
+              <p class="help is-danger" id="half-life-error" hidden></p>
+            </div>
+          </div>
+        </div>
         <div class="field">
           <div class="control">
             <button class="button is-dark" id="submit-comparison" type="submit">Compute</button>
@@ -294,6 +320,7 @@
         </div>
       </form>
       <p id="job-status" class="mt-4" role="status" aria-live="polite"></p>
+      <p id="results-note" class="is-size-7 mt-2" hidden></p>
       <div class="table-container mt-4">
         <table class="table is-fullwidth is-striped" id="result-table" hidden>
           <thead>
