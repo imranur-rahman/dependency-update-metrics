@@ -11,6 +11,7 @@ See `GLOSSARY.md` and spec #1.
 | `dmhost/job_queue.py` | `JobQueue`: the SQLite table that holds the Jobs. The API and the workers share it. |
 | `dmhost/worker.py` | `Worker`: takes the oldest waiting Job, runs the analysis for each package, and stores the result. With `JobLimits`, it runs each Job in a new child process and stops the child on cancel, on the timeout, or over the RSS limit. `WorkerPool` runs several workers in parallel. `python -m dmhost.worker` starts the pool. |
 | `dmhost/events.py` | The event stream of a Job (`GET /api/jobs/{id}/events`). `EventStreamSettings` holds its timing; `create_app(event_stream=)` takes it. |
+| `dmhost/reuse.py` | Result reuse and retention: `reuse_key`, `find_reusable_job`, `delete_expired_jobs`, and `ReusePolicy` (72 hours, 30 days). |
 | `dmhost/tool_analysis.py` | `ToolAnalysis`: the analysis function of the workers. It runs the Tool, always with deps.dev data. |
 | `dmhost/models.py` | The request and response shapes of the API. |
 | `dmhost/settings.py` | The configuration values, read from environment variables. |
@@ -31,6 +32,15 @@ both read them.
   rules of its ecosystem (`PACKAGE_NAME_RULES` in `dmhost/models.py`). The `end_date` is after the
   `start_date` and not later than the latest date in any time zone (UTC+14). The Host does not limit
   the window length. A body that breaks a rule gets `422`.
+- Result reuse: if a done Job with the same reuse key finished in the last 72 hours, `POST /api/jobs`
+  returns `200` with the body of `GET /api/jobs/{id}` for that Job, and starts no Job. The reuse key is
+  the ecosystem, the set of packages (order, case, and PyPI separators do not matter, see
+  `package_key()`), the window, the mode, the weighting type, the half-life, and the build date of the
+  OSV index (`OSVBuilder.index_date()`). So a rebuild of the OSV index stops the reuse of older
+  results. A Job that ended in `error` or `cancelled` is not reused. The rate limits run after the
+  reuse lookup, so a reused result does not count against them.
+- Retention: each `POST /api/jobs` first deletes the Job records that were submitted more than 30
+  days ago. A `GET` for a deleted Job returns `404`.
 - `GET /api/jobs/{id}` returns the Job: `queued` with `position`, `running` with `package_index`
   (1-based) and `package_count`, `done` with `results` (one Tool result for each package), or `error` with `message`. The worker runs the packages in
   sequence. A package whose analysis raises gets a result with `error` set, and the other packages
