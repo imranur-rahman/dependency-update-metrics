@@ -1,0 +1,12 @@
+# The build context is the repo root. BuildKit reads this file for host/Dockerfile.
+# Send only what the image needs: never host/.env, the venv, caches, or output.
+*
+!pyproject.toml
+!README.md
+!LICENSE
+!MANIFEST.in
+!dependency_metrics/
+!host/requirements.txt
+!host/dmhost/
+**/__pycache__
+**/*.pyc

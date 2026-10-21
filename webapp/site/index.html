@@ -237,7 +237,9 @@
     </div>
   </section>
 
-  <!-- Try it: the Webapp form. webapp.js sends the Comparison to the Host at data-host-url. -->
+  <!-- Try it: the Webapp form. webapp.js sends the Comparison to the Host at data-host-url.
+       http://localhost:8080 is the local Host. The Pages workflow puts the production Host URL
+       here (repository variable DM_HOST_URL, see webapp/configure.mjs). -->
   <section class="section" id="try-it" data-host-url="http://localhost:8080">
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">Try It</h2>
@@ -337,7 +339,8 @@
         <div class="field">
           <!-- The Cloudflare Turnstile widget (the bot check). data-sitekey is the site key of the
                Webapp. 1x00000000000000000000AA is the Cloudflare test key that always passes; the
-               deploy (ticket #15) puts the real site key here. The secret key is only on the Host.
+               Pages workflow puts the real site key here (repository variable
+               DM_TURNSTILE_SITE_KEY, see webapp/configure.mjs). The secret key is only on the Host.
                The widget puts its token in the form field "cf-turnstile-response". -->
           <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA"></div>
           <p class="help is-danger" id="bot-check-error" hidden></p>

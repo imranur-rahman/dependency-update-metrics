@@ -246,6 +246,11 @@ class JobQueue:
         Return ``False`` (and change nothing) if the Job no longer runs."""
         return self._end(job_id, ERROR, message=message)
 
+    def ping(self) -> None:
+        """Read the jobs table once. Raise ``sqlite3.Error`` if the queue file does not answer."""
+        with self._connect() as conn:
+            conn.execute("SELECT 1 FROM jobs LIMIT 1").fetchone()
+
     def state(self, job_id: str) -> Optional[str]:
         """Return the state of the Job, or ``None`` if the queue has no Job with this ID."""
         with self._connect() as conn:

@@ -1,0 +1,40 @@
+# Caddy: the HTTPS front of the Host.
+#
+# Caddy gets and renews the Let's Encrypt certificate for the DuckDNS subdomain by itself.
+# For this, ports 80 and 443 must be open in the OCI security list and in the instance
+# firewall (host/RUNBOOK.md).
+#
+# Access logs are off: no site block has a `log` directive, so Caddy writes no access log.
+# The default logger below also removes the client address from the error entries,
+# because the Host must never store a plain IP.
+{
+	email {$DM_HOST_ACME_EMAIL}
+
+	log default {
+		output stderr
+		format filter {
+			wrap console
+			fields {
+				request>remote_ip delete
+				request>client_ip delete
+				request>headers>X-Forwarded-For delete
+				request>headers>Cf-Connecting-Ip delete
+			}
+		}
+	}
+}
+
+{$DM_HOST_DUCKDNS_SUBDOMAIN}.duckdns.org {
+	# Only the API is public. Caddy sets X-Forwarded-For to the address of its peer, and the
+	# API trusts that header only from this container (DM_HOST_TRUSTED_PROXIES).
+	handle /api/* {
+		reverse_proxy api:8080 {
+			# Send each server-sent event at once (GET /api/jobs/{id}/events).
+			flush_interval -1
+		}
+	}
+	handle {
+		respond 404
+	}
+	header -Server
+}

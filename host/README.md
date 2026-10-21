@@ -18,6 +18,8 @@ See `GLOSSARY.md` and spec #1.
 | `dmhost/limits.py` | `SubmitLimits` (the per-IP limits and the queue cap) and `IpHasher` (the keyed hash of an IP address). |
 | `dmhost/turnstile.py` | `TurnstileVerifier`: the Cloudflare Turnstile check. It takes the HTTP call as `post=`, so that tests need no network. |
 | `dmhost/client_ip.py` | `client_ip()`: the address of the user behind Caddy. |
+| `Dockerfile`, `compose.yaml`, `Caddyfile`, `.env.example` | The deploy to the Oracle VM: the image, the services (API, workers, Caddy, DuckDNS), the HTTPS front, and the configuration values. |
+| `RUNBOOK.md`, `wizard.sh`, `vm-setup.sh`, `deploy.sh`, `disk-check.sh` | The deploy steps. `RUNBOOK.md` lists the human steps and each deploy; `bash host/wizard.sh` walks a person through the first setup. |
 | `tests/` | The Host tests. They use FastAPI's `TestClient`, run the queue and the worker in the test process, and need no network. |
 
 `contract/examples/` (at the repo root) holds example API bodies. The Host tests and the Webapp tests
@@ -25,6 +27,9 @@ both read them.
 
 ## API
 
+- `GET /api/health` returns `200 {"status":"ok"}` when the API can read the Job queue, and
+  `503 {"status":"unavailable"}` when it cannot. The uptime monitor checks it. It does one cheap
+  read, and the body shows no path, error text, or version, because the URL is public.
 - `POST /api/jobs` takes a Comparison (`ecosystem`, `packages`, `start_date`, `end_date`, `mode`,
   `weighting_type`, `half_life`) and `turnstile_token`. It returns `202` with `{"job_id": ...}`.
   `ecosystem` is `npm`, `pypi`, or `cargo`, and all packages are from it. `packages` holds 1 to 5
@@ -124,9 +129,13 @@ Environment variables change the defaults:
 | `DM_HOST_IP_HASH_KEY` | a random key at each start | The key of the IP hash. Without it, a restart resets the limits |
 | `DM_HOST_TRUSTED_PROXIES` | none | Comma-separated addresses or CIDR networks of the proxies whose `X-Forwarded-For` the API reads (the Caddy container, for example the Docker network) |
 
+`RUNBOOK.md` describes the production deploy.
+
 The Webapp sends its requests to the URL in the `data-host-url` attribute of the `#try-it` section in
 `webapp/site/index.html` (`http://localhost:8080` by default). The Turnstile site key is the
-`data-sitekey` attribute of the `.cf-turnstile` widget in the same file.
+`data-sitekey` attribute of the `.cf-turnstile` widget in the same file. The Pages workflow
+puts the production values (repository variables `DM_HOST_URL` and `DM_TURNSTILE_SITE_KEY`)
+into the published copy, with `webapp/configure.mjs`.
 
 ## Checks
 
