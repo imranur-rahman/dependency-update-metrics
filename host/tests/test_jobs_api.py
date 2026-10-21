@@ -107,3 +107,95 @@ def test_unknown_job_id_returns_404(queue):
 
 def test_worker_with_an_empty_queue_does_nothing(queue):
     assert Worker(queue, fake_analysis_from_example).run_once() is False
+
+
+def submit_comparison(client, **changes):
+    body = {**load_example("create_job_request"), **changes}
+    return client.post("/api/jobs", json=body)
+
+
+def renamed_example_analysis(comparison, package):
+    """Return the done example result, under the name ``package``."""
+    return {**fake_analysis_from_example(comparison, "mypkg"), "package": package}
+
+
+def test_comparison_of_five_packages_is_accepted(queue):
+    client = make_client(queue)
+
+    response = submit_comparison(client, packages=["a", "b", "c", "d", "e"])
+
+    assert response.status_code == 202
+
+
+@pytest.mark.parametrize(
+    "packages",
+    [
+        pytest.param([], id="no package"),
+        pytest.param(["a", "b", "c", "d", "e", "f"], id="six packages"),
+        pytest.param(["a", "b", "a"], id="duplicate"),
+        pytest.param(["Requests", "requests"], id="duplicate in another case"),
+        pytest.param(["a", "  "], id="empty name"),
+    ],
+)
+def test_comparison_with_a_wrong_package_list_is_refused(queue, packages):
+    client = make_client(queue)
+
+    response = submit_comparison(client, packages=packages)
+
+    assert response.status_code == 422
+    assert Worker(queue, fake_analysis_from_example).run_once() is False
+
+
+def test_pypi_names_that_normalize_to_one_name_are_duplicates(queue):
+    client = make_client(queue)
+
+    response = submit_comparison(
+        client, ecosystem="pypi", packages=["zope.interface", "Zope_Interface"]
+    )
+
+    assert response.status_code == 422
+
+
+@pytest.mark.parametrize(
+    "changes",
+    [
+        pytest.param({"ecosystem": ["npm", "pypi"]}, id="two ecosystems"),
+        pytest.param(
+            {"packages": [{"ecosystem": "npm", "name": "a"}, {"ecosystem": "pypi", "name": "b"}]},
+            id="one ecosystem for each package",
+        ),
+        pytest.param({"ecosystem": "maven"}, id="unknown ecosystem"),
+    ],
+)
+def test_comparison_with_packages_from_more_than_one_ecosystem_is_refused(queue, changes):
+    client = make_client(queue)
+
+    response = submit_comparison(client, **changes)
+
+    assert response.status_code == 422
+    assert Worker(queue, fake_analysis_from_example).run_once() is False
+
+
+def test_worker_runs_each_package_in_sequence_and_one_failure_does_not_stop_the_others(queue):
+    calls = []
+
+    def analysis(comparison, package):
+        calls.append(package)
+        if package == "bad":
+            raise RuntimeError("deps.dev is down")
+        return renamed_example_analysis(comparison, package)
+
+    client = make_client(queue)
+    job_id = submit_comparison(client, packages=["first", "bad", "last"]).json()["job_id"]
+
+    Worker(queue, analysis).run_once()
+    body = client.get(f"/api/jobs/{job_id}").json()
+
+    assert calls == ["first", "bad", "last"]
+    assert body["state"] == "done"
+    assert [r["package"] for r in body["results"]] == ["first", "bad", "last"]
+    assert [r["summary"]["mttu"] for r in body["results"]] == [579.0, None, 579.0]
+    failed = body["results"][1]
+    assert failed["error"] == f"Something went wrong (ref: {job_id})"
+    assert failed["summary"]["status"] == "error"
+    assert "deps.dev is down" not in str(body)

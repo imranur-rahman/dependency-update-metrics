@@ -5,10 +5,11 @@
 
 from __future__ import annotations
 
+import re
 from datetime import date
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Literal, Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, model_validator
 
 QUEUED = "queued"
 RUNNING = "running"
@@ -16,16 +17,46 @@ DONE = "done"
 ERROR = "error"
 
 
-class Comparison(BaseModel):
-    """One user request: packages from one ecosystem, one window, one mode, one weighting."""
+MAX_PACKAGES = 5
 
-    ecosystem: str
-    packages: List[str]
+
+def package_key(ecosystem: str, name: str) -> str:
+    """Return the form of a package name that two names of one package share.
+
+    Registry names do not depend on case. PyPI also treats runs of ``-``, ``_``, and ``.``
+    as one ``-`` (PEP 503). The Webapp logic module uses the same rule (``packageKey``).
+    """
+    key = name.strip().lower()
+    if ecosystem == "pypi":
+        key = re.sub(r"[-_.]+", "-", key)
+    return key
+
+
+class Comparison(BaseModel):
+    """One user request: packages from one ecosystem, one window, one mode, one weighting.
+
+    The Comparison has one ``ecosystem`` for all its packages, so a request with packages
+    from more than one ecosystem cannot pass the checks.
+    """
+
+    ecosystem: Literal["npm", "pypi", "cargo"]
+    packages: List[str] = Field(min_length=1, max_length=MAX_PACKAGES)
     start_date: date
     end_date: date
     mode: str = "window_summary"
     weighting_type: str = "disable"
     half_life: Optional[float] = None
+
+    @model_validator(mode="after")
+    def _check_packages(self) -> "Comparison":
+        names = [name.strip() for name in self.packages]
+        if any(not name for name in names):
+            raise ValueError("A package name is empty")
+        keys = [package_key(self.ecosystem, name) for name in names]
+        if len(set(keys)) != len(keys):
+            raise ValueError("The Comparison holds the same package twice")
+        self.packages = names
+        return self
 
 
 class CreateJobRequest(Comparison):
