@@ -23,7 +23,7 @@ This document covers the Tool. The Host and the Webapp have their own tests:
 | Part | Command | What the tests check |
 |---|---|---|
 | Host | `pytest host/tests` | The HTTP API through FastAPI's `TestClient`. `create_app` takes a fake analysis function and a fake Turnstile check, and the tests run the queue and the worker (`Worker.run_once()`) in the test process. `test_tool_analysis.py` runs the real Tool with a deps.dev client stub, from submit to result. |
-| Webapp | `node --test webapp/tests/*.test.mjs` | The logic module `webapp/site/static/js/comparison.js` (form to request body, Job status text, result table rows) and the published folder. |
+| Webapp | `node --test webapp/tests/*.test.mjs` | The logic module `webapp/site/static/js/comparison.js` (form to request body, the half-life rule, the axis label and the results note, Job status text, result table rows) and the published folder. |
 
 Both read the shared API examples in `contract/examples/`. The done example is the real Tool output for the scenario in `host/tests/test_tool_analysis.py`, so the contract matches what the Tool returns.
 
