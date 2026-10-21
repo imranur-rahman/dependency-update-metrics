@@ -52,13 +52,29 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+
     - name: Configure Pages
       uses: actions/configure-pages@v5
+
+    # index.html keeps the local Host URL and the Turnstile test key. This step puts the
+    # production values from the repository variables (Settings > Secrets and variables >
+    # Actions > Variables) into the published copy. It fails if a variable is missing.
+    - name: Configure the Host URL and the Turnstile site key
+      env:
+        DM_HOST_URL: ${{ vars.DM_HOST_URL }}
+        DM_TURNSTILE_SITE_KEY: ${{ vars.DM_TURNSTILE_SITE_KEY }}
+      run: |
+        cp -R webapp/site "$RUNNER_TEMP/site"
+        node webapp/configure.mjs "$RUNNER_TEMP/site/index.html"
 
     - name: Upload the Webapp
       uses: actions/upload-pages-artifact@v3
       with:
-        path: webapp/site
+        path: ${{ runner.temp }}/site
 
     - name: Deploy to GitHub Pages
       id: deployment

@@ -25,6 +25,7 @@
 from __future__ import annotations
 
 import logging
+import sqlite3
 import threading
 import time
 from typing import Any, Callable, Dict, Sequence
@@ -84,6 +85,18 @@ def create_app(
         allow_headers=["Content-Type"],
         expose_headers=["Retry-After"],
     )
+
+    @app.get("/api/health")
+    def health(response: Response) -> Dict[str, str]:
+        # The uptime monitor calls this often, so it does one cheap read of the queue file.
+        # The URL is public, so the body names no path, error text, or version.
+        try:
+            queue.ping()
+        except sqlite3.Error:
+            logger.exception("Health check: the Job queue does not answer")
+            response.status_code = 503
+            return {"status": "unavailable"}
+        return {"status": "ok"}
 
     @app.post("/api/jobs", status_code=202)
     def create_job(body: CreateJobRequest, request: Request, response: Response) -> Dict[str, Any]:
