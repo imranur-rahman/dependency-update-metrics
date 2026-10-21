@@ -17,7 +17,7 @@ import pandas as pd
 
 from .analyzer import DependencyAnalyzer
 from .depsdev_client import DepsDevClient
-from .depsdev_resolver import DepsDevResolver
+from .depsdev_resolver import DepsDevResolver, depsdev_system
 from .interfaces import PackageResolver
 from .models import ProgressEvent
 from .resolvers import ResolverCache
@@ -30,7 +30,6 @@ MODES = (WINDOW_SUMMARY, PER_RELEASE)
 NATIVE = "native"
 DEPSDEV = "depsdev"
 DATA_SOURCES = (NATIVE, DEPSDEV)
-_DEPSDEV_SYSTEMS = {"npm": "NPM", "pypi": "PYPI", "cargo": "CARGO", "crates.io": "CARGO"}
 
 
 @dataclass(frozen=True)
@@ -152,7 +151,7 @@ def analyze(
             cache=ResolverCache(cache_dir=output_dir / "cache")
         )
         resolver = DepsDevResolver(
-            system=_DEPSDEV_SYSTEMS.get(ecosystem.lower(), ecosystem.upper()),
+            system=depsdev_system(ecosystem),
             package=package,
             start_date=start_date,
             end_date=end_date,

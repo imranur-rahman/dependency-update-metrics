@@ -36,7 +36,7 @@ Turn each bug fix into a regression test. `TESTING.md` maps each test type to it
 ## Architecture
 
 - `analyzer.py` holds the interval timeline and the TTU/TTR scoring. It reads package data only through the `PackageResolver` protocol (`interfaces.py`). Registry and HTTP code belongs in the resolvers.
-- To add an ecosystem that deps.dev indexes, extend `_SYSTEM_TO_ECOSYSTEM` in `depsdev_resolver.py` and add a constraint matcher for that ecosystem.
+- To add an ecosystem that deps.dev indexes, extend `_SYSTEM_TO_ECOSYSTEM` in `depsdev_resolver.py` and add a constraint matcher for that ecosystem. `ECOSYSTEM_TO_SYSTEM` (the one map that `api.py` and `cli.py` use through `depsdev_system()`; the Host goes through `analyze()`) comes from it; add other names of an ecosystem, such as `crates.io`, there.
 - To add a native ecosystem:
   1. Write a new resolver that implements `PackageResolver`.
   2. Select it in `DependencyAnalyzer.__init__`.

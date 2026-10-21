@@ -30,7 +30,7 @@ from .api import DEPSDEV, NATIVE, PER_RELEASE, WINDOW_SUMMARY, analyze
 from .osv_builder import OSVBuilder
 from .resolvers import ResolverCache
 from .depsdev_client import DepsDevClient
-from .depsdev_resolver import DepsDevResolver
+from .depsdev_resolver import DepsDevResolver, depsdev_system
 from .reporting import (
     export_osv_data,
     export_per_release_worksheets,
@@ -247,11 +247,9 @@ def _worker_make_resolver(eco: str, pkg: str, start: datetime, end: datetime):
         "pypi": "https://pypi.org/pypi",
         "cargo": "https://crates.io",
     }
-    _eco_to_system = {"npm": "NPM", "pypi": "PYPI", "cargo": "CARGO"}
-
     if ws["use_depsdev"] and ws["depsdev_client"] is not None:
         return DepsDevResolver(
-            system=_eco_to_system.get(eco, eco.upper()),
+            system=depsdev_system(eco),
             package=pkg,
             start_date=start,
             end_date=end,
@@ -1233,14 +1231,12 @@ def main():
         if args.depsdev:
             _depsdev_client = DepsDevClient(cache=resolver_cache)
 
-        _eco_to_system = {"npm": "NPM", "pypi": "PYPI", "cargo": "CARGO"}
-
         def _make_resolver(eco: str, pkg: str, start=None, end=None):
             _start = start or default_start_date
             _end = end or datetime.today()
             if args.depsdev and _depsdev_client is not None:
                 return DepsDevResolver(
-                    system=_eco_to_system.get(eco, eco.upper()),
+                    system=depsdev_system(eco),
                     package=pkg,
                     start_date=_start,
                     end_date=_end,

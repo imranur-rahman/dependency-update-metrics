@@ -51,6 +51,25 @@ _SYSTEM_TO_ECOSYSTEM: Dict[str, str] = {
     "CARGO": "cargo",
 }
 
+# Ecosystem name (as the CLI, analyze(), and the Host accept it) → deps.dev system.
+# It comes from _SYSTEM_TO_ECOSYSTEM, plus the other names of an ecosystem.
+ECOSYSTEM_TO_SYSTEM: Dict[str, str] = {
+    **{ecosystem: system for system, ecosystem in _SYSTEM_TO_ECOSYSTEM.items()},
+    "crates.io": "CARGO",
+}
+
+
+def depsdev_system(ecosystem: str) -> str:
+    """Return the deps.dev system of *ecosystem* (for example ``"crates.io"`` → ``"CARGO"``).
+
+    Raises:
+        ValueError: If deps.dev does not index the ecosystem.
+    """
+    try:
+        return ECOSYSTEM_TO_SYSTEM[ecosystem.lower()]
+    except KeyError:
+        raise ValueError(f"deps.dev does not index the ecosystem {ecosystem}") from None
+
 
 def _parse_published_at(raw: str) -> Optional[datetime]:
     """Parse a deps.dev ``publishedAt`` RFC-3339 string to an aware datetime."""

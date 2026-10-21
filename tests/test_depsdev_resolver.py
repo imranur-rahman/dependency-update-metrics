@@ -16,6 +16,7 @@ from dependency_metrics.depsdev_resolver import (
     _match_constraint,
     _match_npm_or_cargo,
     _match_pypi,
+    depsdev_system,
 )
 from dependency_metrics.errors import DataSourceError, NoReleaseInWindowError, PackageNotFoundError
 from dependency_metrics.models import PackageVersion
@@ -973,3 +974,32 @@ def test_shared_cache_is_keyed_by_system_and_package_name():
     # Different systems → different cache entries, no cross-contamination
     assert client._cache.metadata_cache[("NPM", "requests")] == npm_data
     assert client._cache.metadata_cache[("PYPI", "requests")] == pypi_data
+
+
+# ---------------------------------------------------------------------------
+# depsdev_system: the one map from an ecosystem name to a deps.dev system
+# ---------------------------------------------------------------------------
+
+
+@pytest.mark.parametrize(
+    "ecosystem, system",
+    [
+        ("npm", "NPM"),
+        ("pypi", "PYPI"),
+        ("cargo", "CARGO"),
+        ("crates.io", "CARGO"),
+        ("PyPI", "PYPI"),
+    ],
+)
+def test_depsdev_system_maps_each_ecosystem_name(ecosystem, system):
+    assert depsdev_system(ecosystem) == system
+
+
+def test_depsdev_system_rejects_an_ecosystem_that_deps_dev_does_not_index():
+    with pytest.raises(ValueError, match="maven"):
+        depsdev_system("maven")
+
+
+def test_resolver_ecosystem_round_trips_through_depsdev_system():
+    for ecosystem in ("npm", "pypi", "cargo"):
+        assert _make_resolver(system=depsdev_system(ecosystem)).ecosystem == ecosystem
