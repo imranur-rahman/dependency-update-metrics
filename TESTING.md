@@ -16,7 +16,7 @@ source metrics_venv/bin/activate
 pytest tests/ -q
 ```
 
-The suite has 253 tests and runs offline in a few seconds. Every resolver receives its cache and HTTP client through its constructor, so tests inject fixture data and never call a registry, deps.dev, or OSV. CI runs the suite on Ubuntu, macOS, and Windows with Python 3.10, 3.11, and 3.12.
+The suite has 265 tests and runs offline in a few seconds. Every resolver receives its cache and HTTP client through its constructor, so tests inject fixture data and never call a registry, deps.dev, or OSV. CI runs the suite on Ubuntu, macOS, and Windows with Python 3.10, 3.11, and 3.12.
 
 This document covers the Tool. The Webapp tests use Node's built-in test runner: `node --test webapp/tests/*.test.mjs`. The Host tests go in `host/tests/`.
 
@@ -40,6 +40,18 @@ This document covers the Tool. The Webapp tests use Node's built-in test runner:
 | Cached version lists missed newer releases (`58f05ac`) | `*_refetches_when_end_date_exceeds_cached_versions` and `*_disk_cache_hit_when_end_date_already_covered` in `test_npm_resolver.py`, `test_pypi_resolver.py`, `test_crates_resolver.py`, `test_depsdev_client.py`, and `test_depsdev_resolver.py` |
 | Scoped npm names created subdirectories in output paths (`26aabad`) | `test_reporting.py::test_scoped_npm_package_name_does_not_create_subdirectory`, `test_reporting.py::test_safe_filename_stem_replaces_path_separators` |
 | Excel sheet titles with forbidden characters crashed the export (`189a64f`) | `test_reporting.py::test_safe_sheet_name_replaces_invalid_characters_and_truncates`, `test_reporting.py::test_export_worksheets_sanitizes_scoped_dependency_name`, `test_reporting.py::test_export_per_release_worksheets_sanitizes_scoped_dependency_name` |
+
+### Cache size and use tracking
+
+`test_resolver_cache.py` covers the `last_used` column and the cache flags:
+
+| Behavior | Tests |
+|---|---|
+| A cache file from before `last_used` opens and gets the column, with no data loss | `test_legacy_cache_file_gets_last_used_column_without_data_loss` |
+| A prune keeps the most recently used rows and gets the used data below the limit | `test_prune_keeps_most_recently_used_rows_and_falls_below_limit`, `test_prune_under_limit_removes_nothing`, `test_prune_removes_legacy_rows_without_last_used_first` |
+| A clear removes all rows, or only the rows of one namespace | `test_clear_without_namespace_removes_all_rows`, `test_clear_with_namespace_removes_only_that_namespace` |
+| Stats show the rows and the size of each namespace | `test_cache_stats_shows_rows_and_bytes_per_namespace` |
+| The CLI flags `--cache-stats`, `--cache-prune-gb`, `--cache-clear`, `--cache-namespace` | `test_cli_cache_*` |
 
 ## Working around the oracle problem
 

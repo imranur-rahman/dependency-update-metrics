@@ -14,9 +14,9 @@ import threading
 from collections import OrderedDict
 from urllib.parse import quote
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
+from typing import Any, Callable, Dict, Iterable, List, Optional, Set, Tuple
 
 import psutil
 
@@ -231,10 +231,15 @@ class ResolverCache:
     version_prefix_cache: OrderedDict = field(default_factory=OrderedDict)
     cache_dir: Optional[Path] = None
     request_timeout: Tuple[float, float] = (5.0, 30.0)
+    # Gives the day that a read or a write records in the last_used column.
+    clock: Callable[[], date] = date.today
     _thread_local: threading.local = field(default_factory=threading.local, init=False, repr=False)
     _lock: threading.Lock = field(default_factory=threading.Lock, init=False, repr=False)
     _metadata_locks: Dict[Any, threading.Lock] = field(default_factory=dict, init=False, repr=False)
     _disk_preload: Dict[Tuple[str, str], Any] = field(default_factory=dict, init=False, repr=False)
+    _preload_last_used: Dict[Tuple[str, str], Optional[str]] = field(
+        default_factory=dict, init=False, repr=False
+    )
 
     def get_key_lock(self, key: Any) -> threading.Lock:
         """Return a per-cache-key Lock, creating one on first use.
@@ -322,6 +327,11 @@ class ResolverCache:
                 "(namespace TEXT NOT NULL, key TEXT NOT NULL, value TEXT NOT NULL, "
                 "PRIMARY KEY (namespace, key))"
             )
+            # Cache files from before use tracking lack last_used. Add it in place;
+            # old rows keep NULL, which a prune treats as the oldest use.
+            cols = {row[1] for row in conn.execute("PRAGMA table_info(cache)").fetchall()}
+            if "last_used" not in cols:
+                conn.execute("ALTER TABLE cache ADD COLUMN last_used TEXT")
             conn.commit()
         self._thread_local.sqlite_conn = conn
         return conn
@@ -360,11 +370,13 @@ class ResolverCache:
             conn = self._get_sqlite_conn()
             placeholders = ",".join("?" * len(target_namespaces))
             rows = conn.execute(
-                f"SELECT namespace, key, value FROM cache " f"WHERE namespace IN ({placeholders})",
+                f"SELECT namespace, key, value, last_used FROM cache "
+                f"WHERE namespace IN ({placeholders})",
                 target_namespaces,
             ).fetchall()
-            for ns, k, raw in rows:
+            for ns, k, raw, last_used in rows:
                 self._disk_preload[(ns, k)] = json.loads(raw)
+                self._preload_last_used[(ns, k)] = last_used
                 total += 1
                 if total % 500 == 0:
                     rss_delta = proc.memory_info().rss - initial_rss
@@ -425,17 +437,44 @@ class ResolverCache:
         if self.cache_dir is None:
             return None
         # Check in-memory preload before hitting SQLite
+        today = self.clock().isoformat()
         preloaded = self._disk_preload.get((namespace, key))
         if preloaded is not None:
+            if self._preload_last_used.get((namespace, key)) != today:
+                self._touch(namespace, key, today)
+                self._preload_last_used[(namespace, key)] = today
             return preloaded
         try:
             conn = self._get_sqlite_conn()
             row = conn.execute(
-                "SELECT value FROM cache WHERE namespace=? AND key=?", (namespace, key)
+                "SELECT value, last_used FROM cache WHERE namespace=? AND key=?",
+                (namespace, key),
             ).fetchone()
-            return json.loads(row[0]) if row else None
+            if row is None:
+                return None
+            value = json.loads(row[0])
         except Exception:
             return None
+        if row[1] != today:
+            self._touch(namespace, key, today)
+        return value
+
+    def _touch(self, namespace: str, key: str, today: str) -> None:
+        """Record today as the last day of use of one row.
+
+        load_json calls this only when the stored day differs from today, so most
+        reads write nothing. A failed write (for example, a locked DB) only loses
+        the use record, never the read.
+        """
+        try:
+            conn = self._get_sqlite_conn()
+            conn.execute(
+                "UPDATE cache SET last_used=? WHERE namespace=? AND key=?",
+                (today, namespace, key),
+            )
+            conn.commit()
+        except Exception:
+            return
 
     def save_json(self, namespace: str, key: str, data: Dict[str, Any]) -> None:
         if self.cache_dir is None:
@@ -443,12 +482,85 @@ class ResolverCache:
         try:
             conn = self._get_sqlite_conn()
             conn.execute(
-                "INSERT OR REPLACE INTO cache(namespace, key, value) VALUES (?,?,?)",
-                (namespace, key, json.dumps(data)),
+                "INSERT OR REPLACE INTO cache(namespace, key, value, last_used) "
+                "VALUES (?,?,?,?)",
+                (namespace, key, json.dumps(data), self.clock().isoformat()),
             )
             conn.commit()
         except Exception:
             return
+
+    def used_bytes(self) -> int:
+        """Return the bytes of the cache file that hold data (free pages excluded)."""
+        if self.cache_dir is None:
+            return 0
+        conn = self._get_sqlite_conn()
+        page_count = conn.execute("PRAGMA page_count").fetchone()[0]
+        freelist = conn.execute("PRAGMA freelist_count").fetchone()[0]
+        page_size = conn.execute("PRAGMA page_size").fetchone()[0]
+        return int((page_count - freelist) * page_size)
+
+    def cache_stats(self) -> List[Dict[str, Any]]:
+        """Return one dict per namespace: namespace, rows, and payload bytes.
+
+        The payload bytes are the sum of the key and value lengths in bytes.
+        """
+        if self.cache_dir is None:
+            return []
+        conn = self._get_sqlite_conn()
+        rows = conn.execute(
+            "SELECT namespace, COUNT(*), "
+            "SUM(LENGTH(CAST(key AS BLOB)) + LENGTH(CAST(value AS BLOB))) "
+            "FROM cache GROUP BY namespace ORDER BY namespace"
+        ).fetchall()
+        return [{"namespace": ns, "rows": n, "bytes": int(b or 0)} for ns, n, b in rows]
+
+    def prune(self, max_bytes: int) -> int:
+        """Remove the least recently used rows until used_bytes() < max_bytes.
+
+        Rows without a last_used day (from before use tracking) go first.
+        The prune does not run VACUUM: VACUUM needs an exclusive lock and twice
+        the disk space, and SQLite reuses the freed pages. Returns the rows removed.
+        """
+        if self.cache_dir is None:
+            return 0
+        conn = self._get_sqlite_conn()
+        removed = 0
+        while True:
+            used = self.used_bytes()
+            if used < max_bytes:
+                break
+            total = conn.execute("SELECT COUNT(*) FROM cache").fetchone()[0]
+            if total == 0:
+                break
+            # Estimate the rows to remove from the share of bytes over the limit.
+            # Later passes remove fewer rows as the cache gets close to the limit.
+            batch = max(1, int(total * (used - max_bytes) / used))
+            cur = conn.execute(
+                "DELETE FROM cache WHERE rowid IN "
+                "(SELECT rowid FROM cache ORDER BY last_used ASC, rowid ASC LIMIT ?)",
+                (batch,),
+            )
+            conn.commit()
+            removed += cur.rowcount
+        if removed:
+            self._disk_preload.clear()
+            self._preload_last_used.clear()
+        return removed
+
+    def clear(self, namespace: Optional[str] = None) -> int:
+        """Remove all rows, or only the rows of one namespace. Returns the rows removed."""
+        if self.cache_dir is None:
+            return 0
+        conn = self._get_sqlite_conn()
+        if namespace is None:
+            cur = conn.execute("DELETE FROM cache")
+        else:
+            cur = conn.execute("DELETE FROM cache WHERE namespace=?", (namespace,))
+        conn.commit()
+        self._disk_preload.clear()
+        self._preload_last_used.clear()
+        return int(cur.rowcount)
 
     def load_invalid_versions(self, ecosystem: str, package_name: str) -> Set[str]:
         """Load known-invalid version strings from disk into memory, return the set."""

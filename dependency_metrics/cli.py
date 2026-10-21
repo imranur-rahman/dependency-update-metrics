@@ -701,6 +701,30 @@ def _load_input_csv(path: Path, default_end_date: Optional[str] = None) -> List[
     return rows
 
 
+def _run_cache_command(args: argparse.Namespace, output_dir: Path) -> None:
+    """Run the cache flags in order: clear, prune, then stats (so stats show the result)."""
+    cache = ResolverCache(cache_dir=output_dir / "cache")
+    if args.cache_clear:
+        removed = cache.clear(args.cache_namespace)
+        scope = f"namespace {args.cache_namespace}" if args.cache_namespace else "all namespaces"
+        print(f"Removed {removed} cache rows from {scope}.")
+    if args.cache_prune_gb is not None:
+        removed = cache.prune(int(args.cache_prune_gb * 1024**3))
+        print(
+            f"Removed {removed} cache rows. "
+            f"The cache uses {cache.used_bytes() / 1024**3:.3f} GB of data."
+        )
+    if args.cache_stats:
+        stats = cache.cache_stats()
+        print(f"{'namespace':<24} {'rows':>10} {'MB':>10}")
+        for row in stats:
+            print(f"{row['namespace']:<24} {row['rows']:>10} {row['bytes'] / 1024**2:>10.2f}")
+        total_rows = sum(row["rows"] for row in stats)
+        total_mb = sum(row["bytes"] for row in stats) / 1024**2
+        print(f"{'total':<24} {total_rows:>10} {total_mb:>10.2f}")
+        print(f"Cache file data: {cache.used_bytes() / 1024**3:.3f} GB")
+
+
 def main():
     """Main entry point for the CLI."""
     parser = argparse.ArgumentParser(
@@ -758,6 +782,32 @@ def main():
 
     parser.add_argument(
         "--build-osv", action="store_true", help="Build the OSV vulnerability database"
+    )
+
+    parser.add_argument(
+        "--cache-stats",
+        action="store_true",
+        help="Show the rows and the size of each namespace in <output-dir>/cache/cache.db",
+    )
+
+    parser.add_argument(
+        "--cache-prune-gb",
+        type=float,
+        default=None,
+        metavar="N",
+        help="Remove the least recently used cache rows until the cache holds less than N GB",
+    )
+
+    parser.add_argument(
+        "--cache-clear",
+        action="store_true",
+        help="Remove all cache rows (or only the rows of --cache-namespace)",
+    )
+
+    parser.add_argument(
+        "--cache-namespace",
+        default=None,
+        help="With --cache-clear, remove only the rows of this namespace",
     )
 
     parser.add_argument(
@@ -845,6 +895,10 @@ def main():
     # Validate arguments
     if args.weighting_type == "exponential" and args.half_life is None:
         parser.error("--half-life is required when --weighting-type is exponential")
+    if args.cache_namespace is not None and not args.cache_clear:
+        parser.error("--cache-namespace is valid only together with --cache-clear")
+    if args.cache_prune_gb is not None and args.cache_prune_gb < 0:
+        parser.error("--cache-prune-gb must be 0 or more")
 
     if args.ecosystem:
         args.ecosystem = _normalize_ecosystem(args.ecosystem)
@@ -882,6 +936,10 @@ def main():
     _file_handler.setFormatter(logging.Formatter("%(asctime)s %(levelname)s %(name)s: %(message)s"))
     _file_handler.setLevel(logging.DEBUG)
     _dm_logger.addHandler(_file_handler)
+
+    if args.cache_stats or args.cache_clear or args.cache_prune_gb is not None:
+        _run_cache_command(args, output_dir)
+        sys.exit(0)
 
     if args.input_csv:
 

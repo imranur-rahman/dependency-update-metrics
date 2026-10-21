@@ -83,6 +83,19 @@ dependency-metrics \
   --build-osv
 ```
 
+### Inspect and limit the resolver cache
+
+The resolver cache (`<output-dir>/cache/cache.db`) records the day on which each row was last used. These flags act on the cache and then exit:
+
+```bash
+dependency-metrics --output-dir ./output --cache-stats          # rows and size of each namespace
+dependency-metrics --output-dir ./output --cache-prune-gb 20    # remove least recently used rows until < 20 GB
+dependency-metrics --output-dir ./output --cache-clear          # remove all rows
+dependency-metrics --output-dir ./output --cache-clear --cache-namespace npm_time
+```
+
+A prune does not run `VACUUM`, because `VACUUM` needs an exclusive lock and twice the disk space. The file keeps its size, and SQLite reuses the freed pages.
+
 ### Export detailed worksheets
 
 ```bash
