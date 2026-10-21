@@ -115,7 +115,7 @@ print(f"Average TTR: {results['ttr']:.2f} days")
 - `--end-date`: End date for analysis (YYYY-MM-DD) [Default: today]
 - `--weighting-type`: Weighting method (`linear`, `exponential`, `inverse`, `disable`) [Default: disable]
 - `--half-life`: Half-life in days (required for exponential weighting)
-- `--build-osv`: Build/update the OSV vulnerability database
+- `--build-osv`: Build or rebuild the OSV vulnerability database. It downloads the npm, PyPI, and crates.io OSV zips (about 260 MB in total). Without `--package`, it only rebuilds the database.
 - `--get-osv`: Export OSV data for the package's dependencies
 - `--get-worksheets`: Export detailed analysis worksheets to Excel
 - `--output-dir`: Output directory for results [Default: ./output]

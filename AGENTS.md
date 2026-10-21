@@ -38,7 +38,7 @@ These results look like bugs, but they are correct.
 - A dependency with no version constraint always resolves to the newest version, so its MTTR is close to 0.
 - With `--weighting-type disable`, TTU and TTR are sums of days. With weights, they are weighted means. These are different quantities.
 - `--per-release` builds one continuous timeline per dependency. All `dependency_frames` sit on the result of the last release.
-- Single-package mode reads `osv_database.parquet` from `--output-dir`. If the file is missing, every MTTR is 0. `--build-osv` downloads about 2.4 GB.
+- Single-package mode reads `osv_database.parquet` from `--output-dir`. If the file is missing, every MTTR is 0. `--build-osv` downloads the OSV zips for npm, PyPI, and crates.io, about 260 MB in total (219 MB, 37 MB, and 3.6 MB on 2026-10-21). It reads the records directly from the zips and replaces the index in one rename. `--build-osv` without `--package` only rebuilds the index. `OSVBuilder.index_date()` returns the build date that the index file holds.
 
 ## Cache rules
 

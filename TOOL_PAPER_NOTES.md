@@ -105,8 +105,8 @@ one exists. Don't fabricate references — search and confirm.)*
           │ ├──────────────────┤ │     │                           │
           │ │ DepsDevResolver   │ │     │  OSVBuilder               │
           │ │ (depsdev_        │ │     │  (osv_builder.py)         │
-          │ │  resolver.py)     │ │     │  downloads OSV "all.zip"  │
-          │ │  → DepsDevClient  │ │     │  (~2.4GB), parses to a    │
+          │ │  resolver.py)     │ │     │  downloads 3 OSV zips     │
+          │ │  → DepsDevClient  │ │     │  (~260MB), parses to a    │
           │ │   (depsdev_       │ │     │  flat Parquet table       │
           │ │    client.py)     │ │     │                           │
           │ └──────────────────┘ │     └───────────────────────────┘
@@ -147,8 +147,10 @@ one exists. Don't fabricate references — search and confirm.)*
   `DepsDevClient`). Selected by `--depsdev`.
 - **`VulnerabilityService` Protocol / `OSVService`** — remediation-window
   logic against a prebuilt OSV snapshot (see §5.2).
-- **`OSVBuilder`** — one-time ETL: downloads OSV's full `all.zip` export
-  (~2.4GB, ~1.9M raw JSON advisories across every ecosystem OSV tracks),
+- **`OSVBuilder`** — one-time ETL: downloads OSV's per-ecosystem `all.zip`
+  exports for npm, PyPI, and crates.io (~219MB + ~37MB + ~3.6MB on
+  2026-10-21, in place of the ~2.78GB export of every ecosystem), reads each
+  JSON record directly from the zip (no extract step), and
   parses `introduced`/`fixed` event pairs per affected package into a flat
   Parquet table (`osv_service.py`'s consumer then indexes it in memory as
   `package → [vuln records]` — `build_osv_index()`, `analyzer.py:38`).
@@ -299,8 +301,8 @@ the interval counts as remediated (`True`) by construction.
 
 ### 5.2 Bulk OSV snapshot + in-memory index, not per-package API calls
 
-`OSVBuilder` downloads OSV's entire cross-ecosystem advisory export once
-(~2.4GB zip, ~1.9M JSON records) and flattens it to a single Parquet table
+`OSVBuilder` downloads OSV's advisory exports for npm, PyPI, and crates.io
+once (~260MB of zips in total) and flattens them to a single Parquet table
 of `(vul_id, ecosystem, package, vul_introduced, vul_fixed, severity)` rows —
 one row per `introduced`→`fixed` event pair per affected range
 (`osv_builder.py:140`). At analysis time this is loaded once and indexed as
@@ -617,7 +619,7 @@ for each:
 
 | Data | Where the cost is paid | Why |
 |---|---|---|
-| OSV vulnerability corpus | **Storage**, once (2.4GB download → 66MB Parquet) | Reused across *every* package/interval in a run; small enough (~10^6 rows) to hold a full in-memory index (`build_osv_index`) after the one-time ETL — turns a per-interval network call into an O(1) dict lookup. |
+| OSV vulnerability corpus | **Storage**, once (~260MB download → Parquet) | Reused across *every* package/interval in a run; small enough (~10^6 rows) to hold a full in-memory index (`build_osv_index`) after the one-time ETL — turns a per-interval network call into an O(1) dict lookup. |
 | Per-version package/dependency metadata | **Storage**, forever (SQLite disk cache) | Immutable once published (§5.3/8.4) — free to cache forever, reused across runs and `--resume`. |
 | Package-level version lists | **Network**, small recurring cost | Mutable collection (§8.4) — the staleness check trades a per-run re-fetch for correctness; only historical, fixed `end_date` values get to skip it. |
 | Hot per-process lookups (constraint resolution, metadata) | **Memory**, bounded | In-front-of-disk in-memory caches (`metadata_cache`, `npm_resolve_cache`, etc., `cache_config.py`) with explicit size caps and FIFO/LRU eviction — a multi-thousand-package run holding every fetched blob in memory indefinitely would exhaust RAM long before finishing; evicted entries fall back to the disk cache, not the network, so eviction costs recomputation-from-disk, not a network round-trip. |

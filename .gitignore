@@ -146,6 +146,7 @@ data/
 # OSV database files
 *.parquet
 osv-all.zip
+.osv-build-*/
 
 # Excel files
 *.xlsx

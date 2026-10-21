@@ -55,6 +55,19 @@ _OSV_ECOSYSTEM_NAMES = {
 }
 
 
+def _build_osv_index_file(output_dir: Path) -> None:
+    """Download the OSV zips and replace the OSV index in ``output_dir``."""
+    log = logging.getLogger("dependency_metrics")
+    log.info("Building OSV vulnerability database...")
+    osv_builder = OSVBuilder(output_dir)
+    osv_df = osv_builder.build_database(force=True)
+    log.info(
+        "OSV database built with %s records (index date %s)",
+        len(osv_df),
+        osv_builder.index_date(),
+    )
+
+
 def _normalize_ecosystem(value: Any) -> str:
     """Normalize supported ecosystem aliases to internal names."""
     raw = str(value or "").strip().lower()
@@ -757,7 +770,12 @@ def main():
     )
 
     parser.add_argument(
-        "--build-osv", action="store_true", help="Build the OSV vulnerability database"
+        "--build-osv",
+        action="store_true",
+        help=(
+            "Download the npm, PyPI, and crates.io OSV zips (about 260 MB) and rebuild "
+            "the OSV vulnerability database. Without --package, only rebuild it."
+        ),
     )
 
     parser.add_argument(
@@ -1922,6 +1940,11 @@ def main():
             )
 
     else:
+        if args.build_osv and not args.package:
+            # Only rebuild the OSV index (for example, from a scheduled job).
+            _build_osv_index_file(output_dir)
+            sys.exit(0)
+
         if not args.ecosystem or not args.package:
             parser.error("--ecosystem and --package are required unless --input-csv is provided.")
 
@@ -1939,12 +1962,7 @@ def main():
 
         # Build OSV database if requested
         if args.build_osv:
-            logging.getLogger("dependency_metrics").info("Building OSV vulnerability database...")
-            osv_builder = OSVBuilder(output_dir)
-            osv_df = osv_builder.build_database()
-            logging.getLogger("dependency_metrics").info(
-                "OSV database built with %s records", len(osv_df)
-            )
+            _build_osv_index_file(output_dir)
 
         # Analyze package dependencies
         logging.getLogger("dependency_metrics").info(
