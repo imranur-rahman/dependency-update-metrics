@@ -146,6 +146,17 @@ export function isFinished(job) {
 
 const FINAL_STATES = ["done", "error", "cancelled"];
 
+// Return true while the user can cancel the Job: it waits or runs.
+export function canCancel(job) {
+  return job.state === "queued" || job.state === "running";
+}
+
+// Return the request that cancels a Job (DELETE /api/jobs/{id}). The event stream of the
+// Job then sends "cancelled".
+export function cancelRequest(hostUrl, jobId) {
+  return { url: `${hostUrl}/api/jobs/${encodeURIComponent(jobId)}`, method: "DELETE" };
+}
+
 // The names of the server-sent events of GET /api/jobs/{id}/events: one for each Job state.
 // Each event holds the same body as GET /api/jobs/{id}.
 export const JOB_EVENTS = ["queued", "running", ...FINAL_STATES];

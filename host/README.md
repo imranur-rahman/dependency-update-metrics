@@ -9,7 +9,7 @@ See `GLOSSARY.md` and spec #1.
 |---|---|
 | `dmhost/app.py` | The FastAPI app. `create_app(queue=, analysis=, turnstile_check=, allowed_origins=)` takes its dependencies as arguments, so that tests can give fakes. `create_app_from_env()` builds the production app. |
 | `dmhost/job_queue.py` | `JobQueue`: the SQLite table that holds the Jobs. The API and the workers share it. |
-| `dmhost/worker.py` | `Worker`: takes the oldest waiting Job, runs the analysis for each package, and stores the result. `python -m dmhost.worker` starts one worker process. |
+| `dmhost/worker.py` | `Worker`: takes the oldest waiting Job, runs the analysis for each package, and stores the result. With `JobLimits`, it runs each Job in a new child process and stops the child on cancel, on the timeout, or over the RSS limit. `WorkerPool` runs several workers in parallel. `python -m dmhost.worker` starts the pool. |
 | `dmhost/events.py` | The event stream of a Job (`GET /api/jobs/{id}/events`). `EventStreamSettings` holds its timing; `create_app(event_stream=)` takes it. |
 | `dmhost/tool_analysis.py` | `ToolAnalysis`: the analysis function of the workers. It runs the Tool, always with deps.dev data. |
 | `dmhost/models.py` | The request and response shapes of the API. |
@@ -32,6 +32,14 @@ both read them.
   (1-based) and `package_count`, `done` with `results` (one Tool result for each package), or `error` with `message`. The worker runs the packages in
   sequence. A package whose analysis raises gets a result with `error` set, and the other packages
   keep their results. The Job is `error` only when every package raised.
+- `DELETE /api/jobs/{id}` cancels a Job that waits or runs, and returns the Job (`cancelled`). A waiting
+  Job leaves the queue. A running Job stops within one worker poll (0.5 seconds). A Job in a final
+  state does not change. A Job continues when its event stream closes, for example when the user
+  closes the tab.
+- A Job that runs longer than the timeout (15 minutes) gets `error` with the message
+  "The analysis took too long". A Job whose child process goes over the RSS limit (2 GB) gets the
+  "Something went wrong" message. The check is the one of the Tool's `--max-worker-memory-mb`
+  (`psutil` RSS), and the Host logs the RSS under the job ID.
 - `GET /api/jobs/{id}/events` sends the same bodies as server-sent events. Each event has the state as
   its name (`queued`, `running`, `done`, `error`, or `cancelled`). The stream sends the current state
   first, then one event each time the body changes, and it ends after a final state. It sends a
@@ -63,6 +71,9 @@ Environment variables change the defaults:
 | `DM_HOST_DB` | `host-data/jobs.db` | The SQLite file of the Job queue |
 | `DM_HOST_OUTPUT_DIR` | `host-data/tool` | The Tool output directory (cache and OSV index) |
 | `DM_HOST_ALLOWED_ORIGINS` | `http://localhost:8000` | Comma-separated Webapp origins that CORS allows |
+| `DM_HOST_WORKERS` | `6` | The number of workers. Each worker runs one Job at a time |
+| `DM_HOST_JOB_TIMEOUT_SECONDS` | `900` | The time after which a running Job stops with "The analysis took too long" |
+| `DM_HOST_WORKER_MEMORY_MB` | `2048` | The RSS limit of the child process of one Job, in MB (`0` means no limit) |
 
 The Webapp sends its requests to the URL in the `data-host-url` attribute of the `#try-it` section in
 `webapp/site/index.html` (`http://localhost:8080` by default).

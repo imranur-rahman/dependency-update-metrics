@@ -65,6 +65,14 @@ def create_app(
             raise HTTPException(status_code=404, detail="Job not found")
         return job_view(queue, job)
 
+    @app.delete("/api/jobs/{job_id}")
+    def cancel_job(job_id: str) -> Dict[str, Any]:
+        # A Job in a final state does not change, so a second cancel gets the same body.
+        job = queue.cancel(job_id)
+        if job is None:
+            raise HTTPException(status_code=404, detail="Job not found")
+        return job_view(queue, job)
+
     @app.get("/api/jobs/{job_id}/events")
     def job_event_stream(job_id: str) -> StreamingResponse:
         if queue.get(job_id) is None:

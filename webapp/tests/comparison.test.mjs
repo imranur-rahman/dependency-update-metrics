@@ -11,6 +11,8 @@ import {
   requestFromForm,
   describeJob,
   isFinished,
+  canCancel,
+  cancelRequest,
   resultRows,
   formatDays,
   progressOf,
@@ -171,10 +173,26 @@ test("a finished Job shows no progress bar", () => {
 });
 
 test("a cancelled Job is finished", () => {
-  const job = { job_id: "example-job-id", state: "cancelled" };
+  const job = example("job_cancelled");
 
   assert.equal(describeJob(job), "Cancelled");
   assert.equal(isFinished(job), true);
+  assert.equal(progressOf(job), null);
+});
+
+test("the user can cancel a Job only while it waits or runs", () => {
+  assert.equal(canCancel(example("job_queued")), true);
+  assert.equal(canCancel(example("job_running")), true);
+  for (const name of ["job_done_window_summary", "job_error", "job_cancelled"]) {
+    assert.equal(canCancel(example(name)), false, name);
+  }
+});
+
+test("the cancel request is a DELETE of the Job", () => {
+  assert.deepEqual(cancelRequest("http://localhost:8080", "a b"), {
+    url: "http://localhost:8080/api/jobs/a%20b",
+    method: "DELETE",
+  });
 });
 
 test("the page listens to one event for each Job state", () => {
