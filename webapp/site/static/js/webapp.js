@@ -11,6 +11,7 @@ import {
   packageErrors,
   dateErrors,
   submitErrorMessage,
+  botCheckError,
   canAddPackage,
   withComparison,
   comparisonFromSearch,
@@ -51,6 +52,7 @@ const endDateInput = document.getElementById("end-date");
 const chartFigure = document.getElementById("result-chart-figure");
 const chartCanvas = document.getElementById("result-chart");
 const csvButton = document.getElementById("download-csv");
+const botCheckMessage = document.getElementById("bot-check-error");
 
 let chart = null;
 let csv = { text: "", fileName: "" };
@@ -156,6 +158,18 @@ function localToday() {
   const now = new Date();
   const pad = (n) => String(n).padStart(2, "0");
   return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+}
+
+// --- Bot check (Cloudflare Turnstile) ---
+
+function showBotCheckError(text) {
+  botCheckMessage.textContent = text ?? "";
+  botCheckMessage.hidden = !text;
+}
+
+// A token works only once, so the widget needs a new token after each submit.
+function resetBotCheck() {
+  window.turnstile?.reset();
 }
 
 // --- Shareable URL ---
@@ -348,7 +362,10 @@ form.addEventListener("submit", async (event) => {
   showHalfLifeError(halfLifeText);
   const dateTexts = dateErrors(data.get("startDate"), data.get("endDate"), localToday());
   showDateErrors(dateTexts);
-  if (errors.length > 0 || halfLifeText || dateTexts.length > 0) return;
+  const token = data.get("cf-turnstile-response");
+  const botCheckText = botCheckError(token);
+  showBotCheckError(botCheckText);
+  if (errors.length > 0 || halfLifeText || dateTexts.length > 0 || botCheckText) return;
   const body = requestFromForm(
     {
       ecosystem: data.get("ecosystem"),
@@ -358,7 +375,7 @@ form.addEventListener("submit", async (event) => {
       weightingType: data.get("weightingType"),
       halfLife: data.get("halfLife"),
     },
-    "", // Ticket #10 adds the Turnstile token.
+    token,
   );
   const { turnstile_token: _token, ...comparison } = body;
   showComparisonInUrl(comparison);
@@ -387,6 +404,7 @@ form.addEventListener("submit", async (event) => {
     showProgress(null);
     showStatus("Something went wrong. Try again later.");
   } finally {
+    resetBotCheck();
     submitButton.disabled = false;
   }
 });

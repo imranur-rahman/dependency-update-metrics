@@ -322,11 +322,24 @@
           </div>
         </div>
         <div class="field">
+          <!-- The Cloudflare Turnstile widget (the bot check). data-sitekey is the site key of the
+               Webapp. 1x00000000000000000000AA is the Cloudflare test key that always passes; the
+               deploy (ticket #15) puts the real site key here. The secret key is only on the Host.
+               The widget puts its token in the form field "cf-turnstile-response". -->
+          <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA"></div>
+          <p class="help is-danger" id="bot-check-error" hidden></p>
+        </div>
+        <div class="field">
           <div class="control">
             <button class="button is-dark" id="submit-comparison" type="submit">Compute</button>
           </div>
         </div>
       </form>
+      <p class="is-size-7 mt-2" id="privacy-note">
+        Privacy: the Host stores the package names that you submit, so that it can show and reuse the
+        results. For the rate limits, it stores a hash of your IP address for one hour, and it never
+        stores the IP address itself. Cloudflare Turnstile checks that a person sends the form.
+      </p>
       <p id="job-status" class="mt-4" role="status" aria-live="polite"></p>
       <progress id="job-progress" class="progress is-small is-dark mt-2" aria-label="Job progress" hidden></progress>
       <p id="results-note" class="is-size-7 mt-2" hidden></p>
@@ -346,6 +359,7 @@
     </div>
   </section>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" integrity="sha512-CQBWl4fJHWbryGE+Pc7UAxWMUMNMWzWxF4SQo9CgkJIN1kx6djDQZjh3Y8SZ1d+6I+1zze6Z7kHXO7q3UyZAWw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script type="module" src="static/js/webapp.js"></script>
 
   <!-- Design goals -->

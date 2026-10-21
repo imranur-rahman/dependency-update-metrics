@@ -14,6 +14,9 @@ See `GLOSSARY.md` and spec #1.
 | `dmhost/tool_analysis.py` | `ToolAnalysis`: the analysis function of the workers. It runs the Tool, always with deps.dev data. |
 | `dmhost/models.py` | The request and response shapes of the API. |
 | `dmhost/settings.py` | The configuration values, read from environment variables. |
+| `dmhost/limits.py` | `SubmitLimits` (the per-IP limits and the queue cap) and `IpHasher` (the keyed hash of an IP address). |
+| `dmhost/turnstile.py` | `TurnstileVerifier`: the Cloudflare Turnstile check. It takes the HTTP call as `post=`, so that tests need no network. |
+| `dmhost/client_ip.py` | `client_ip()`: the address of the user behind Caddy. |
 | `tests/` | The Host tests. They use FastAPI's `TestClient`, run the queue and the worker in the test process, and need no network. |
 
 `contract/examples/` (at the repo root) holds example API bodies. The Host tests and the Webapp tests
@@ -31,6 +34,24 @@ both read them.
   rules of its ecosystem (`PACKAGE_NAME_RULES` in `dmhost/models.py`). The `end_date` is after the
   `start_date` and not later than the latest date in any time zone (UTC+14). The Host does not limit
   the window length. A body that breaks a rule gets `422`.
+- Abuse protection: `POST /api/jobs` first checks `turnstile_token` with Cloudflare Siteverify. A
+  refused token gets `403`. Then one SQLite transaction checks the limits and adds the Job
+  (`JobQueue.admit`):
+  - 1 active (waiting or running) Job for each IP address, and 10 Jobs for each IP address in each
+    hour. A submit over a limit gets `429` with `Too many requests, try again in N min` and a
+    `Retry-After` header. For the hourly limit, N is the time until the oldest Job leaves the hour.
+    For the active limit, the Host cannot know when the Job ends, so N is 1.
+  - 20 waiting Jobs for all users. A submit over the cap gets `503` with `The server is busy, try later`.
+
+  The Host stores only an HMAC-SHA256 hash of the IP address (key `DM_HOST_IP_HASH_KEY`), in the
+  table `submitters`. It removes each hash one hour after the submit, or when the Job ends if the
+  Job is still active then. SQLite overwrites removed rows (`secure_delete`), and the API
+  truncates the WAL file after a removal, so the hash does not stay in the file. Do not turn on the
+  uvicorn access log in production (`--no-access-log`), because it writes each client address.
+- Client IP: the API reads `X-Forwarded-For` only when the TCP peer is a trusted proxy
+  (`DM_HOST_TRUSTED_PROXIES`, the Caddy container). It then takes the rightmost address that is
+  not a trusted proxy, because Caddy adds the address of its peer at the end and a user can put
+  false addresses only in front of it. A request from any other peer uses the peer address.
 - `GET /api/jobs/{id}` returns the Job: `queued` with `position`, `running` with `package_index`
   (1-based) and `package_count`, `done` with `results` (one Tool result for each package), or `error` with `message`. The worker runs the packages in
   sequence. A package whose analysis raises gets a result with `error` set, and the other packages
@@ -54,8 +75,10 @@ Run each command from the repo root, in the venv.
 
 1. Install the Tool and the Host dependencies:
    `pip install -e . && pip install -r host/requirements.txt`
-2. Start the API on port 8080:
-   `PYTHONPATH=host uvicorn --factory dmhost.app:create_app_from_env --port 8080`
+2. Start the API on port 8080, with the Cloudflare test secret key that always passes:
+   `DM_HOST_TURNSTILE_SECRET=1x0000000000000000000000000000000AA PYTHONPATH=host uvicorn --factory dmhost.app:create_app_from_env --port 8080`
+   The Webapp uses the matching test site key `1x00000000000000000000AA`. The Turnstile check
+   calls Cloudflare, so the local run needs the network.
 3. In a second terminal, start one worker:
    `PYTHONPATH=host python -m dmhost.worker`
 4. In a third terminal, serve the Webapp on port 8000:
@@ -72,10 +95,17 @@ Environment variables change the defaults:
 |---|---|---|
 | `DM_HOST_DB` | `host-data/jobs.db` | The SQLite file of the Job queue |
 | `DM_HOST_OUTPUT_DIR` | `host-data/tool` | The Tool output directory (cache and OSV index) |
-| `DM_HOST_ALLOWED_ORIGINS` | `http://localhost:8000` | Comma-separated Webapp origins that CORS allows |
+| `DM_HOST_ALLOWED_ORIGINS` | `http://localhost:8000` | Comma-separated Webapp origins that CORS allows. In production: `https://imranur-rahman.github.io` only |
+| `DM_HOST_TURNSTILE_SECRET` | none (the API does not start without it) | The Turnstile secret key. Keep it only on the instance, never in the repo |
+| `DM_HOST_MAX_ACTIVE_JOBS_PER_IP` | `1` | Waiting and running Jobs for each IP address |
+| `DM_HOST_MAX_JOBS_PER_IP_PER_HOUR` | `10` | Jobs for each IP address in each hour |
+| `DM_HOST_MAX_WAITING_JOBS` | `20` | Waiting Jobs for all users |
+| `DM_HOST_IP_HASH_KEY` | a random key at each start | The key of the IP hash. Without it, a restart resets the limits |
+| `DM_HOST_TRUSTED_PROXIES` | none | Comma-separated addresses or CIDR networks of the proxies whose `X-Forwarded-For` the API reads (the Caddy container, for example the Docker network) |
 
 The Webapp sends its requests to the URL in the `data-host-url` attribute of the `#try-it` section in
-`webapp/site/index.html` (`http://localhost:8080` by default).
+`webapp/site/index.html` (`http://localhost:8080` by default). The Turnstile site key is the
+`data-sitekey` attribute of the `.cf-turnstile` widget in the same file.
 
 ## Checks
 

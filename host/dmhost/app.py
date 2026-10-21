@@ -9,26 +9,43 @@
 - ``turnstile_check``: a function ``(token, remote_ip) -> bool`` that checks the bot token.
 - ``allowed_origins``: the browser origins that CORS allows (the Webapp origin).
 - ``event_stream``: the timing of ``GET /api/jobs/{id}/events`` (see ``events.py``).
+- ``limits``: the per-IP limits and the queue cap (see ``limits.py``). The default is
+  :data:`NO_LIMITS`, so that tests of other features can submit many Jobs from one client.
+  ``create_app_from_env`` gives the configured limits.
+- ``ip_hasher``: the function that turns an IP address into the hash that the queue stores.
+- ``trusted_proxies``: the proxies (Caddy) whose ``X-Forwarded-For`` the API reads
+  (see ``client_ip.py``).
+- ``clock``: the function that gives the current time. Tests give a fake clock.
 
 ``create_app_from_env`` builds the production app from :class:`HostSettings`.
 """
 
 from __future__ import annotations
 
-from typing import Any, Callable, Dict, Optional, Sequence
+import logging
+import threading
+import time
+from typing import Any, Callable, Dict, Sequence
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 
+from .client_ip import Network, client_ip
+from .errors import SERVER_BUSY, too_many_requests
 from .events import EventStreamSettings, job_events
 from .job_queue import JobQueue
+from .limits import NO_LIMITS, IpHasher, QueueFull, RateLimited, SubmitLimits
 from .models import DONE, ERROR, QUEUED, RUNNING, CreateJobRequest, Job
-from .settings import HostSettings, accept_all_tokens
+from .settings import HostSettings
 from .tool_analysis import ToolAnalysis
+from .turnstile import TurnstileCheck, TurnstileVerifier
 from .worker import Analysis
 
-TurnstileCheck = Callable[[str, Optional[str]], bool]
+logger = logging.getLogger(__name__)
+
+# How often the production API removes the IP hashes that are older than the window.
+_FORGET_INTERVAL_S = 60.0
 
 
 def create_app(
@@ -38,6 +55,10 @@ def create_app(
     turnstile_check: TurnstileCheck,
     allowed_origins: Sequence[str] = (),
     event_stream: EventStreamSettings = EventStreamSettings(),
+    limits: SubmitLimits = NO_LIMITS,
+    ip_hasher: Callable[[str], str] = IpHasher(),
+    trusted_proxies: Sequence[Network] = (),
+    clock: Callable[[], float] = time.time,
 ) -> FastAPI:
     """Build the Host API over ``queue``."""
     app = FastAPI(title="dependency-metrics Host")
@@ -48,14 +69,31 @@ def create_app(
         allow_origins=list(allowed_origins),
         allow_methods=["GET", "POST", "DELETE"],
         allow_headers=["Content-Type"],
+        expose_headers=["Retry-After"],
     )
 
     @app.post("/api/jobs", status_code=202)
     def create_job(body: CreateJobRequest, request: Request) -> Dict[str, str]:
-        remote_ip = request.client.host if request.client else None
+        remote_ip = client_ip(
+            request.client.host if request.client else None,
+            request.headers.get("x-forwarded-for"),
+            trusted_proxies,
+        )
         if not turnstile_check(body.turnstile_token, remote_ip):
             raise HTTPException(status_code=403, detail="The bot check failed")
-        job_id = queue.add(body.comparison())
+        comparison = body.comparison()
+        # Ticket #14 (reuse of a stored result) goes here: return the stored result with
+        # 200 before ``admit``, so that a reused result does not count against the limits.
+        try:
+            job_id = queue.admit(comparison, ip_hasher(remote_ip or ""), limits, clock())
+        except RateLimited as limited:
+            raise HTTPException(
+                status_code=429,
+                detail=too_many_requests(limited.retry_after_minutes),
+                headers={"Retry-After": str(max(1, round(limited.retry_after_seconds)))},
+            )
+        except QueueFull:
+            raise HTTPException(status_code=503, detail=SERVER_BUSY)
         return {"job_id": job_id}
 
     @app.get("/api/jobs/{job_id}")
@@ -98,10 +136,28 @@ def job_view(queue: JobQueue, job: Job) -> Dict[str, Any]:
 def create_app_from_env() -> FastAPI:
     """Build the app from the environment (``uvicorn --factory dmhost.app:create_app_from_env``)."""
     settings = HostSettings.from_env()
+    queue = JobQueue(settings.db_path)
+    _forget_submitters_on_a_timer(queue, settings.limits.window_seconds)
     return create_app(
-        queue=JobQueue(settings.db_path),
+        queue=queue,
         analysis=ToolAnalysis(settings.output_dir),
-        # Ticket #10 replaces this with the Cloudflare Turnstile check.
-        turnstile_check=accept_all_tokens,
+        turnstile_check=TurnstileVerifier(settings.turnstile_secret),
         allowed_origins=settings.allowed_origins,
+        limits=settings.limits,
+        ip_hasher=IpHasher(settings.ip_hash_key),
+        trusted_proxies=settings.trusted_proxies,
     )
+
+
+def _forget_submitters_on_a_timer(queue: JobQueue, window_seconds: float) -> None:
+    """Remove old IP hashes once each minute, also when no submit comes."""
+
+    def forget_forever() -> None:
+        while True:
+            try:
+                queue.forget_old_submitters(window_seconds)
+            except Exception:  # noqa: BLE001 - the timer must not stop
+                logger.exception("Could not remove old IP hashes")
+            time.sleep(_FORGET_INTERVAL_S)
+
+    threading.Thread(target=forget_forever, name="forget-ip-hashes", daemon=True).start()

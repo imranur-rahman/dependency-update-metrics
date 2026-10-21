@@ -28,3 +28,21 @@ test("every local asset that the homepage references exists", () => {
   const missing = refs.filter((ref) => !existsSync(join(siteDir, ref.split(/[?#]/)[0])));
   assert.deepEqual(missing, []);
 });
+
+test("the homepage shows the Turnstile widget with the site key of the Webapp", () => {
+  const html = readFileSync(join(siteDir, "index.html"), "utf8");
+  const widget = html.match(/<div[^>]*class="cf-turnstile"[^>]*>/);
+
+  assert.ok(widget, "the Turnstile widget is missing");
+  assert.match(widget[0], /data-sitekey="[0-9A-Za-z_-]+"/);
+  assert.match(html, /<script src="https:\/\/challenges\.cloudflare\.com\/turnstile\/v0\/api\.js"/);
+});
+
+test("the homepage has the privacy note on the stored package names and IP hashes", () => {
+  const html = readFileSync(join(siteDir, "index.html"), "utf8");
+  const note = html.match(/<p[^>]*id="privacy-note"[^>]*>([\s\S]*?)<\/p>/);
+
+  assert.ok(note, "the privacy note is missing");
+  assert.match(note[1], /package names/);
+  assert.match(note[1], /hash of your IP address/);
+});
