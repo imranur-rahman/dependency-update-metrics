@@ -16,7 +16,7 @@ source metrics_venv/bin/activate
 pytest tests/ -q
 ```
 
-The suite has 308 tests and runs offline in a few seconds. Every resolver receives its cache and HTTP client through its constructor, so tests inject fixture data and never call a registry, deps.dev, or OSV. CI runs the suite on Ubuntu, macOS, and Windows with Python 3.10, 3.11, and 3.12.
+The suite has 309 tests and runs offline in a few seconds. Every resolver receives its cache and HTTP client through its constructor, so tests inject fixture data and never call a registry, deps.dev, or OSV. CI runs the suite on Ubuntu, macOS, and Windows with Python 3.10, 3.11, and 3.12.
 
 This document covers the Tool. The Host and the Webapp have their own tests:
 
@@ -55,6 +55,7 @@ Both read the shared API examples in `contract/examples/`. The done examples are
 | Host: the Host reused a done Job in which a package or a release failed on the server side, for 72 hours (#1 review) | `host/tests/test_result_reuse.py::test_done_job_with_a_package_that_failed_on_the_server_is_not_reused`, `host/tests/test_result_reuse.py::test_done_job_with_a_failed_release_is_not_reused`, `host/tests/test_result_reuse.py::test_reuse_skips_a_newer_job_with_a_server_error_and_takes_an_older_clean_one` |
 | Host: the Host deleted Jobs older than 30 days only on a submit, so with no submits it kept them (#1 review) | `host/tests/test_result_reuse.py::test_timer_cleanup_deletes_jobs_older_than_30_days_without_a_submit` |
 | Webapp: the Window summary and the Per-release CSV downloads of one window had the same file name (#1 review) | `webapp/tests/comparison.test.mjs`: "two downloads that differ only in the mode or the weighting get different file names" |
+| The single-package `--per-release` summary log failed with a "Logging error" on a failed release, whose MTTU and MTTR are None (#1 review) | `test_cli_single_package.py::test_cli_per_release_log_shows_a_failed_release_as_error` |
 | Host: a Job that a worker claimed between two reads showed as queued with position 0, or as running with package 0 of 0 (#5) | `host/tests/test_job_events.py::test_stream_sends_the_states_in_order_with_position_and_package_index` |
 
 ### OSV build tests

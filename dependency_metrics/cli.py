@@ -237,6 +237,12 @@ def _make_timeout_result(
     return {"row_num": row_num, "summary": summary, "dependency_frames": []}
 
 
+def _log_days(value: Any) -> str:
+    """Return a number of days with two decimals for the log, or "error" for a release
+    that failed (its MTTU and MTTR are None)."""
+    return "error" if value is None else f"{float(value):.2f}"
+
+
 def _worker_make_resolver(eco: str, pkg: str, start: datetime, end: datetime):
     """Create a resolver for *pkg* using the worker-process ``_WORKER_STATE``."""
     from .resolvers import CratesResolver, NpmResolver, PyPIResolver as _PyPIResolverCls
@@ -2054,10 +2060,10 @@ def main():
                         s = r["summary"]
                         mttr = s.get("mttr", s.get("mttr_all_severities", 0.0))
                         _logger.info(
-                            "  v%-20s  MTTU=%.2f  MTTR=%.2f  deps=%s  status=%s",
+                            "  v%-20s  MTTU=%s  MTTR=%s  deps=%s  status=%s",
                             s.get("package_version", ""),
-                            s.get("mttu", 0.0),
-                            mttr,
+                            _log_days(s.get("mttu", 0.0)),
+                            _log_days(mttr),
                             s.get("num_dependencies", 0),
                             s.get("status", ""),
                         )
