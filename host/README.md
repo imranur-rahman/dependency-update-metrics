@@ -22,10 +22,15 @@ both read them.
 
 - `POST /api/jobs` takes a Comparison (`ecosystem`, `packages`, `start_date`, `end_date`, `mode`,
   `weighting_type`, `half_life`) and `turnstile_token`. It returns `202` with `{"job_id": ...}`.
+  `ecosystem` is `npm`, `pypi`, or `cargo`, and all packages are from it. `packages` holds 1 to 5
+  names with no duplicates. Two names are duplicates when they differ only in case (and, for PyPI,
+  in runs of `-`, `_`, and `.`).
   `weighting_type` is `disable`, `linear`, `exponential`, or `inverse`. Exponential weighting needs a
   `half_life` from 1 to 3650 days; the other types drop `half_life`. A body that breaks a rule gets `422`.
 - `GET /api/jobs/{id}` returns the Job: `queued` with `position`, `running`, `done` with `results`
-  (one Tool result for each package), or `error` with `message`.
+  (one Tool result for each package), or `error` with `message`. The worker runs the packages in
+  sequence. A package whose analysis raises gets a result with `error` set, and the other packages
+  keep their results. The Job is `error` only when every package raised.
 
 ## Run the Host and the Webapp locally
 
@@ -39,7 +44,7 @@ Run each command from the repo root, in the venv.
    `PYTHONPATH=host python -m dmhost.worker`
 4. In a third terminal, serve the Webapp on port 8000:
    `python -m http.server -d webapp/site 8000`
-5. Open http://localhost:8000/#try-it, enter a package, and click "Compute".
+5. Open http://localhost:8000/#try-it, enter 1 to 5 packages, and click "Compute".
 
 The API and the worker keep their data in `host-data/` (the Job queue in `host-data/jobs.db`, and the
 Tool cache and OSV index in `host-data/tool/`). Without an OSV index, every MTTR is 0. To build the
