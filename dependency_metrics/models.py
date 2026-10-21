@@ -48,3 +48,18 @@ class DependencyIntervalRecord:
     remediated: bool
     age_of_interval_days: float
     weight: float
+
+
+@dataclass(frozen=True)
+class ProgressEvent:
+    """One progress step of an analysis.
+
+    ``stage`` is ``"dependencies"`` (Window summary: one event after each direct
+    dependency) or ``"releases"`` (Per-release: one event after each release).
+    ``done`` of ``total`` units are complete; ``item`` names the unit that completed.
+    """
+
+    stage: str
+    done: int
+    total: int
+    item: str = ""

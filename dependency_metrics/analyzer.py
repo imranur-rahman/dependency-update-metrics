@@ -12,7 +12,7 @@ import psutil
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, Tuple
+from typing import Any, Callable, Dict, Iterable, List, Optional, Tuple
 
 import numpy as np
 import pandas as pd
@@ -21,6 +21,7 @@ from packaging import version as pkg_version
 from .osv_builder import OSVBuilder
 from .osv_service import OSVService
 from .interfaces import PackageResolver
+from .models import ProgressEvent
 from .resolvers import (
     CratesResolver,
     NpmResolver,
@@ -606,6 +607,7 @@ class DependencyAnalyzer:
         osv_df: Optional[pd.DataFrame] = None,
         max_memory_mb: int = 0,
         generate_dep_frames: bool = False,
+        progress: Optional[Callable[[ProgressEvent], None]] = None,
     ) -> List[Dict[str, Any]]:
         """Compute MTTU/MTTR at every release of the parent package within [start_date, end_date].
 
@@ -613,6 +615,8 @@ class DependencyAnalyzer:
           - Uses the dependency set declared by version R.
           - Window = [start_date, R].
           - Emits one result dict per release point.
+
+        If ``progress`` is given, it receives a ``"releases"`` event after each release.
         """
         start_date = row["start_date"]
         end_date = row["end_date"]
@@ -761,14 +765,18 @@ class DependencyAnalyzer:
                     base["mttr"] = 0.0
                 return base
 
-            return [
-                {
-                    "row_num": row.get("row_num"),
-                    "summary": _empty_summary(ver, release_date),
-                    "dependency_frames": [],
-                }
-                for ver, release_date in releases_in_window
-            ]
+            empty_results = []
+            for _idx, (ver, release_date) in enumerate(releases_in_window, start=1):
+                empty_results.append(
+                    {
+                        "row_num": row.get("row_num"),
+                        "summary": _empty_summary(ver, release_date),
+                        "dependency_frames": [],
+                    }
+                )
+                if progress is not None:
+                    progress(ProgressEvent("releases", _idx, len(releases_in_window), ver))
+            return empty_results
 
         # Fetch all dep metadata in parallel
         dep_metadata_cache: Dict[str, Dict] = {}
@@ -1140,6 +1148,8 @@ class DependencyAnalyzer:
                     "dependency_frames": list(dep_frames.values()) if is_last_release else [],
                 }
             )
+            if progress is not None:
+                progress(ProgressEvent("releases", _rel_idx + 1, _n_releases, ver))
 
         return results
 
@@ -1589,8 +1599,15 @@ class DependencyAnalyzer:
 
         return ttu, ttr
 
-    def analyze(self, osv_df: Optional[pd.DataFrame] = None) -> Dict[str, Any]:
+    def analyze(
+        self,
+        osv_df: Optional[pd.DataFrame] = None,
+        progress: Optional[Callable[[ProgressEvent], None]] = None,
+    ) -> Dict[str, Any]:
         """Run complete analysis.
+
+        If ``progress`` is given, it receives a ``"dependencies"`` event after each
+        direct dependency.
 
         Returns:
             Dictionary with analysis results
@@ -1632,7 +1649,7 @@ class DependencyAnalyzer:
         ttu_values = []
         ttr_values = []
 
-        for dep_name, dep_constraint in dependencies.items():
+        for dep_index, dep_name in enumerate(dependencies, start=1):
             logger.info("  Analyzing %s...", dep_name)
 
             try:
@@ -1657,7 +1674,9 @@ class DependencyAnalyzer:
                 logger.error("    Error: %s", e)
                 if "Error getting highest semver version for" in str(e):
                     raise
-                continue
+            finally:
+                if progress is not None:
+                    progress(ProgressEvent("dependencies", dep_index, len(dependencies), dep_name))
 
         # Calculate averages
         avg_ttu = sum(ttu_values) / len(ttu_values) if ttu_values else 0.0

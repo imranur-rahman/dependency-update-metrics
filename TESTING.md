@@ -16,7 +16,7 @@ source metrics_venv/bin/activate
 pytest tests/ -q
 ```
 
-The suite has 272 tests and runs offline in a few seconds. Every resolver receives its cache and HTTP client through its constructor, so tests inject fixture data and never call a registry, deps.dev, or OSV. CI runs the suite on Ubuntu, macOS, and Windows with Python 3.10, 3.11, and 3.12.
+The suite has 289 tests and runs offline in a few seconds. Every resolver receives its cache and HTTP client through its constructor, so tests inject fixture data and never call a registry, deps.dev, or OSV. CI runs the suite on Ubuntu, macOS, and Windows with Python 3.10, 3.11, and 3.12.
 
 This document covers the Tool. The Webapp tests use Node's built-in test runner: `node --test webapp/tests/*.test.mjs`. The Host tests go in `host/tests/`.
 
@@ -25,7 +25,7 @@ This document covers the Tool. The Webapp tests use Node's built-in test runner:
 | Type | What it checks | Where |
 |---|---|---|
 | Unit | One component in isolation, with injected fixture data | `test_depsdev_resolver.py`, `test_depsdev_client.py`, `test_npm_resolver.py`, `test_pypi_resolver.py`, `test_pypi_version_resolution.py`, `test_crates_resolver.py`, `test_npm_semver.py`, `test_resolver_cache.py`, `test_cache_config.py`, `test_osv.py`, `test_severity_breakdown.py`, `test_time_utils.py`, `test_models.py`, `test_reporting.py`, `test_basic.py` |
-| Integration | Components working together: the analyzer over stubbed resolvers, and the real `cli.main()` with stubbed resolvers and an in-process executor (`in_process_executor` fixture in `conftest.py`) | `test_per_release.py`, `test_dependency_first_use.py`, `test_bulk_csv.py`, `test_cli_resume.py`, `test_cli_progress.py` |
+| Integration | Components working together: the analyzer over stubbed resolvers, the public `analyze()` function over an injected fixture resolver or deps.dev client stub (Window summary and Per-release results, plain-data output, errors, and progress events), and the real `cli.main()` with stubbed resolvers and an in-process executor (`in_process_executor` fixture in `conftest.py`) | `test_per_release.py`, `test_dependency_first_use.py`, `test_api.py`, `test_bulk_csv.py`, `test_cli_resume.py`, `test_cli_progress.py`, `test_cli_single_package.py` |
 | System | The whole tool, end to end, on 90 real packages (npm, PyPI, Cargo) with live data | The case study in `case_study/` (see below); run by hand, not in CI |
 | Regression | Each bug found in real use has a test that fails on the old code | See the table below |
 | Acceptance | — | Not automated. The authors are also the main users, which the review names as the usual reason acceptance testing is rare in research software. |
@@ -71,7 +71,7 @@ The OSV build tests in `test_osv.py` write small fixture zips for npm, PyPI, and
 
 | Technique (Kanewala and Bieman) | How we use it | Where |
 |---|---|---|
-| Simplified data, so the correct output can be computed by hand | Tiny timelines with a known answer | `test_per_release.py::test_mttu_mttr_exponential_two_releases` (MTTU is exactly 365 days), `test_per_release.py::test_no_deps_returns_zero_metrics`, `test_metamorphic.py::test_source_scenario_has_nonzero_metrics` (214 days) |
+| Simplified data, so the correct output can be computed by hand | Tiny timelines with a known answer | `test_per_release.py::test_mttu_mttr_exponential_two_releases` (MTTU is exactly 365 days), `test_api.py::test_window_summary_returns_mttu_mttr_and_dependency_count` (579 days), `test_per_release.py::test_no_deps_returns_zero_metrics`, `test_metamorphic.py::test_source_scenario_has_nonzero_metrics` (214 days) |
 | Metamorphic testing: check how the output must change when the input changes in a known way | Four relations, below | `test_metamorphic.py` |
 | Pseudo oracle: compare against an independent implementation | The case study compares our scores with reference scores for the same packages and windows: 72 of 90 match exactly, and 82 are within one day. This counts as a pseudo oracle only if the reference scores came from an independent implementation. | `case_study/analyze_results.py` (columns `mttu_provided`, `mttu_recomputed`) |
 
