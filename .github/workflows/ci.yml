@@ -1,10 +1,36 @@
-name: CI/CD
+# Tool CI/CD: lint, test, build, and publish the dependency-metrics package.
+# Keep this file name: the PyPI trusted publisher names ci.yml.
+name: Tool CI/CD
 
 on:
   push:
     branches: [ main, develop ]
+    paths:
+      - 'dependency_metrics/**'
+      - 'tests/**'
+      - 'vendor/**'
+      - '.gitmodules'
+      - 'pyproject.toml'
+      - 'requirements.txt'
+      - 'requirements-dev.txt'
+      - 'MANIFEST.in'
+      - 'README.md'
+      - 'LICENSE'
+      - '.github/workflows/ci.yml'
   pull_request:
     branches: [ main ]
+    paths:
+      - 'dependency_metrics/**'
+      - 'tests/**'
+      - 'vendor/**'
+      - '.gitmodules'
+      - 'pyproject.toml'
+      - 'requirements.txt'
+      - 'requirements-dev.txt'
+      - 'MANIFEST.in'
+      - 'README.md'
+      - 'LICENSE'
+      - '.github/workflows/ci.yml'
   release:
     types: [ published ]
 
