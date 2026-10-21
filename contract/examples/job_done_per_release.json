@@ -41,7 +41,7 @@
           "mttr": null,
           "num_dependencies": 0,
           "status": "error",
-          "error": "deps.dev has no manifest for mypkg 1.1.0"
+          "error": "Something went wrong (ref: example-job-id)"
         },
         {
           "package_version": "1.2.0",

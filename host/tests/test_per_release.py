@@ -112,7 +112,7 @@ def test_comparison_with_an_unknown_mode_is_refused(tmp_path):
     assert response.status_code == 422
 
 
-def test_per_release_comparison_gets_one_row_for_each_release_from_the_tool(tmp_path):
+def test_per_release_comparison_gets_one_row_for_each_release_from_the_tool(tmp_path, caplog):
     client_stub = depsdev_client_stub()
     queue = JobQueue(tmp_path / "jobs.db")
     analysis = ToolAnalysis(
@@ -140,7 +140,14 @@ def test_per_release_comparison_gets_one_row_for_each_release_from_the_tool(tmp_
     rows = [(r["package_version"], r["status"], r["mttu"]) for r in mypkg["releases"]]
     # 1.0.0: depA is up to date. 1.2.0 (2022-01-01): outdated from 2021-06-01, 214 days.
     assert rows == [("1.0.0", "ok", 0.0), ("1.1.0", "error", None), ("1.2.0", "ok", 214.0)]
-    assert mypkg["releases"][1]["error"] == "deps.dev has no manifest for mypkg 1.1.0"
+    # The page shows only a user message. The log keeps the full error under the job ID.
+    assert mypkg["releases"][1]["error"] == f"Something went wrong (ref: {job_id})"
+    assert "deps.dev has no manifest" not in json.dumps(body)
+    assert any(
+        job_id in record.getMessage()
+        and "deps.dev has no manifest for mypkg 1.1.0" in record.getMessage()
+        for record in caplog.records
+    )
     assert mypkg["error"] == ""
     # yourpkg 2.0.0 (2021-12-01): outdated from 2021-06-01, 183 days.
     assert [(r["package_version"], r["mttu"]) for r in yourpkg["releases"]] == [

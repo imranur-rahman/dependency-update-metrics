@@ -118,7 +118,7 @@ test("a Per-release Job gives one table row for each release, with the error of 
       mttu: "–",
       mttr: "–",
       dependencies: 0,
-      error: "deps.dev has no manifest for mypkg 1.1.0",
+      error: "Something went wrong (ref: example-job-id)",
     },
     { package: "mypkg", version: "1.2.0", releaseDate: "2022-01-01", mttu: "214.0", mttr: "214.0", dependencies: 1, error: "" },
     { package: "yourpkg", version: "1.0.0", releaseDate: "2021-03-01", mttu: "0.0", mttr: "0.0", dependencies: 1, error: "" },
@@ -161,7 +161,7 @@ test("the Per-release CSV download has the same columns and values as the table"
     rowsToCsv(resultRows(job), tableColumns(job.comparison.mode)),
     "Package,Version,Release date,MTTU (days),MTTR (days),Dependencies,Error\r\n" +
       "mypkg,1.0.0,2021-01-01,0.0,0.0,1,\r\n" +
-      "mypkg,1.1.0,2021-09-01,,,0,deps.dev has no manifest for mypkg 1.1.0\r\n" +
+      "mypkg,1.1.0,2021-09-01,,,0,Something went wrong (ref: example-job-id)\r\n" +
       "mypkg,1.2.0,2022-01-01,214.0,214.0,1,\r\n" +
       "yourpkg,1.0.0,2021-03-01,0.0,0.0,1,\r\n" +
       "yourpkg,2.0.0,2021-12-01,183.0,183.0,1,\r\n",

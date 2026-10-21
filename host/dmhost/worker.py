@@ -10,6 +10,7 @@ import logging
 import time
 from typing import Any, Callable, Dict, List, Optional
 
+from . import errors
 from .job_queue import JobQueue
 from .models import Comparison, Job
 
@@ -33,19 +34,26 @@ class Worker:
         # The packages run in sequence. A failure of one package stores its error and
         # does not stop the others (spec #1, "Job execution").
         results: List[Dict[str, Any]] = []
-        failures = 0
+        failure_messages: List[str] = []
         packages = job.comparison.packages
         for index, package in enumerate(packages, start=1):
             self.queue.set_progress(job.job_id, index, len(packages))
             try:
-                results.append(self.analysis(job.comparison, package))
-            except Exception:
-                logger.exception("Job %s: package %s failed", job.job_id, package)
-                failures += 1
-                results.append(failed_result(job.comparison, package, _generic_message(job)))
-        if failures == len(results):
-            # No package gave a result, so the Job itself failed.
-            self.queue.fail(job.job_id, _generic_message(job))
+                results.append(user_facing_result(self.analysis(job.comparison, package), job))
+            except Exception as error:
+                # The log has the full error under the job ID. The page gets only the message.
+                logger.exception("Job %s: package %s failed: %s", job.job_id, package, error)
+                message = errors.message_for(error, job.job_id)
+                failure_messages.append(message)
+                results.append(failed_result(job.comparison, package, message))
+        if len(failure_messages) == len(results):
+            # No package gave a result, so the Job itself failed. When all packages failed
+            # for one reason, the Job shows that reason.
+            reasons = set(failure_messages)
+            message = (
+                reasons.pop() if len(reasons) == 1 else errors.something_went_wrong(job.job_id)
+            )
+            self.queue.fail(job.job_id, message)
         else:
             self.queue.finish(job.job_id, results)
         return True
@@ -57,8 +65,45 @@ class Worker:
                 time.sleep(poll_seconds)
 
 
-def _generic_message(job: Job) -> str:
-    return f"Something went wrong (ref: {job.job_id})"
+def user_facing_result(result: Dict[str, Any], job: Job) -> Dict[str, Any]:
+    """Return ``result`` with each Tool error replaced by a user message.
+
+    The Tool reports a failure that it caught as ``error`` text (``AnalysisResult``). The
+    text can hold internal details, so the Host logs it under the job ID and the page gets
+    :func:`errors.something_went_wrong`. A failure with its own message raises in the
+    analysis function (see :mod:`dmhost.errors`). The same holds for the error of each
+    Per-release row (a release that failed), so the other releases keep their values.
+    """
+    message = errors.something_went_wrong(job.job_id)
+    package = result.get("package")
+    releases = result.get("releases") or []
+    if any(release.get("error") for release in releases):
+        releases = [_user_facing_release(release, package, job, message) for release in releases]
+        result = {**result, "releases": releases}
+    detail = result.get("error") or ""
+    if not detail:
+        return result
+    logger.error("Job %s: package %s failed: %s", job.job_id, package, detail)
+    summary = result.get("summary")
+    if summary is not None:
+        summary = {**summary, "error": message}
+    return {**result, "error": message, "summary": summary}
+
+
+def _user_facing_release(
+    release: Dict[str, Any], package: Any, job: Job, message: str
+) -> Dict[str, Any]:
+    detail = release.get("error") or ""
+    if not detail:
+        return release
+    logger.error(
+        "Job %s: package %s release %s failed: %s",
+        job.job_id,
+        package,
+        release.get("package_version"),
+        detail,
+    )
+    return {**release, "error": message}
 
 
 def failed_result(comparison: Comparison, package: str, message: str) -> Dict[str, Any]:

@@ -5,6 +5,7 @@ from fastapi.testclient import TestClient
 
 from contract_examples import load_example, with_job_id
 from dmhost import JobQueue, Worker, create_app
+from dmhost.errors import PackageNotFound
 
 
 def fake_analysis_from_example(comparison, package):
@@ -274,3 +275,73 @@ def test_half_life_is_dropped_when_the_weighting_is_not_exponential(queue):
 
     job = client.get(f"/api/jobs/{response.json()['job_id']}").json()
     assert job["comparison"]["half_life"] is None
+
+
+def test_error_that_the_tool_reports_shows_only_the_message_with_the_job_id(queue, caplog):
+    def analysis(comparison, package):
+        result = renamed_example_analysis(comparison, package)
+        if package == "bad":
+            detail = "Worker RSS 2300 MB exceeds the limit of 2048 MB"
+            summary = {**result["summary"], "mttu": None, "mttr": None, "status": "error"}
+            return {**result, "summary": {**summary, "error": detail}, "error": detail}
+        return result
+
+    client = make_client(queue)
+    job_id = submit_comparison(client, packages=["good", "bad"]).json()["job_id"]
+
+    Worker(queue, analysis).run_once()
+    body = client.get(f"/api/jobs/{job_id}").json()
+
+    assert body["state"] == "done"
+    good, bad = body["results"]
+    assert good["summary"]["mttu"] == 579.0
+    assert bad["error"] == f"Something went wrong (ref: {job_id})"
+    assert bad["summary"]["error"] == f"Something went wrong (ref: {job_id})"
+    assert "2048 MB" not in str(body)
+    logged = [r.getMessage() for r in caplog.records]
+    assert any(job_id in line and "bad" in line and "2048 MB" in line for line in logged)
+
+
+def test_log_of_a_raised_error_has_the_job_id_and_the_full_error(queue, caplog):
+    def broken_analysis(comparison, package):
+        raise RuntimeError("deps.dev is down")
+
+    client = make_client(queue)
+    job_id = submit(client)
+
+    Worker(queue, broken_analysis).run_once()
+
+    record = next(r for r in caplog.records if job_id in r.getMessage())
+    assert "deps.dev is down" in record.getMessage()
+    assert record.exc_info is not None
+
+
+def test_job_whose_packages_fail_for_different_reasons_shows_the_message_with_the_job_id(queue):
+    def analysis(comparison, package):
+        if package == "missing":
+            raise PackageNotFound("404 for missing")
+        raise RuntimeError("deps.dev is down")
+
+    client = make_client(queue)
+    job_id = submit_comparison(client, packages=["missing", "broken"]).json()["job_id"]
+
+    Worker(queue, analysis).run_once()
+    body = client.get(f"/api/jobs/{job_id}").json()
+
+    assert body["state"] == "error"
+    assert body["message"] == f"Something went wrong (ref: {job_id})"
+
+
+def test_job_whose_only_package_is_not_found_shows_package_not_found(queue):
+    def analysis(comparison, package):
+        raise PackageNotFound("404 Client Error")
+
+    client = make_client(queue)
+    job_id = submit(client)
+
+    Worker(queue, analysis).run_once()
+    body = client.get(f"/api/jobs/{job_id}").json()
+
+    assert body["state"] == "error"
+    assert body["message"] == "Package not found in deps.dev"
+    assert "404" not in str(body)
