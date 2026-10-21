@@ -17,7 +17,7 @@ and the steps for each later deploy.
 | `worker` | the worker pool (`python -m dmhost.worker`, `DM_HOST_WORKERS` workers) |
 | `caddy` | HTTPS on ports 80 and 443 for `<subdomain>.duckdns.org`, with automatic Let's Encrypt certificates and no access log |
 | `duckdns` | sets the DuckDNS record to the public IP of the VM every 10 minutes |
-| `ballast` | ticket #16 adds it (ADR 0001) |
+| `ballast` | holds idle memory, so that memory use stays at 25% of the RAM and Oracle does not reclaim the VM (ADR 0001, see "Idle protection") |
 
 The image (`host/Dockerfile`) is `python:3.12-slim`. It installs the Tool and the Host from
 the commit that you deploy. The named volumes keep the data across deploys:
@@ -72,22 +72,27 @@ The workflow fails if a variable is missing, so a deploy never ships the local v
    ```
 
    The script installs Docker, opens ports 80 and 443 in the instance firewall (iptables), and
-   turns swap off. It also installs the cron job of the disk alert. Log out and in again
+   turns swap off. It also installs two cron jobs: the disk alert (every 15 minutes) and the
+   weekly maintenance (every Sunday at 04:00 UTC). Log out and in again
    after it, so that your user can run `docker`.
 
    Oracle's Ubuntu images block ports 80 and 443 in iptables. So you need step 3 AND this
    step; one alone does not open the ports.
-5. **Keep swap off.** ADR 0001 needs a VM with no swap. The ballast (#16) holds idle memory,
-   and with swap the kernel moves those pages out, so memory use falls below Oracle's idle
-   threshold. Check with `swapon --show`: the command must show nothing. Do not add a swap
-   file later.
+5. **Keep swap off.** Do not add swap to the VM, now or later. ADR 0001 needs a VM with no
+   swap. The ballast holds idle memory, and with swap the kernel moves those idle pages to
+   the swap device. Then memory use falls below Oracle's idle threshold, and Oracle can
+   reclaim the VM. Check with `swapon --show`: the command must show nothing.
 6. **DuckDNS.** Sign in at https://www.duckdns.org/ and add a subdomain. Set its IP to the
    public IP of the VM. Copy the token.
 7. **Turnstile.** In the Cloudflare dashboard, open Turnstile and add a widget for the
    hostname `imranur-rahman.github.io` in Managed mode. Copy the site key and the secret key.
-8. **Disk alert.** Sign up at https://healthchecks.io/ and add a check with a period of 15
-   minutes and a grace time of 30 minutes. Copy its ping URL. `host/disk-check.sh` pings it
-   every 15 minutes, and pings `<url>/fail` when the disk is 80% full or more.
+8. **Disk alert and maintenance alert.** Sign up at https://healthchecks.io/ and add a check
+   with a period of 15 minutes and a grace time of 30 minutes. Copy its ping URL to
+   `DM_HOST_DISK_CHECK_URL`. `host/disk-check.sh` pings it every 15 minutes, and pings
+   `<url>/fail` when the disk is 80% full or more. Add a second check with a period of 7 days
+   and a grace time of 1 day. Copy its ping URL to `DM_HOST_MAINTENANCE_CHECK_URL`.
+   `host/weekly-maintenance.sh` pings it after each run, and pings `<url>/fail` when a step
+   fails.
 9. **host/.env.** On the VM, copy `host/.env.example` to `host/.env`. Fill in each value from
    steps 6 to 8. Make the IP hash key once with `openssl rand -hex 32` and keep it, because a
    new key resets the per-IP limits. Then run `chmod 600 host/.env`.
@@ -106,6 +111,11 @@ The workflow fails if a variable is missing, so a deploy never ships the local v
     full Comparison.
 14. **Uptime monitor.** In UptimeRobot (free), add an HTTP(s) monitor for
     `https://<subdomain>.duckdns.org/api/health` with a 5-minute interval and an e-mail alert.
+15. **One week later: check the OCI memory metric.** Do this one time, 7 days after the
+    first deploy, because Oracle measures the idle rule over 7 days. In the OCI console, open
+    the instance, then Metrics, then "Memory Utilization". Set the interval to 1 hour, the
+    statistic to P95, and the window to the last 7 days. The value must be above 20% for the
+    whole week. If it is not, check the ballast (see "Idle protection").
 
 ## Each deploy
 
@@ -138,3 +148,43 @@ So deploy when `docker compose logs --tail 20 worker` shows no running Job.
   iptables (`sudo iptables -L INPUT -n --line-numbers`).
 - The Webapp shows a network error: check that `DM_HOST_ALLOWED_ORIGINS` in `host/.env` is
   `https://imranur-rahman.github.io`, and that the `DM_HOST_URL` variable has no trailing slash.
+
+## Idle protection (the ballast)
+
+Oracle can reclaim an Always Free A1 instance when its CPU, network, and memory use all
+stay below 20% at the 95th percentile over 7 days (ADR 0001). The `ballast` service
+(`dmhost/ballast.py`) keeps the memory use at 25% of the RAM:
+
+- Every 2 seconds, it reads `MemTotal` and `MemAvailable` from `/proc/meminfo`. A container
+  sees the values of the whole VM, so the API, the workers, and the Job child processes all
+  count, with no per-process bookkeeping.
+- It holds only the gap between 25% of the RAM and the use of the rest of the VM, in chunks
+  of 64 MB. It writes to each page of each chunk, so the pages count as used memory.
+- When the workers use more, the gap gets smaller, and the ballast releases chunks. When
+  the workers use more than 25% of the RAM, the ballast holds nothing.
+- It has `oom_score_adj: 1000`. If memory runs out before the ballast releases its chunks,
+  the kernel stops the ballast first, not a Job. Docker then starts it again
+  (`restart: always`).
+
+Do not remove the ballast as "unused", and do not add swap (step 5). Checks:
+
+- `docker compose logs --tail 20 ballast` shows the size that the ballast holds now.
+- `free -m` on a quiet VM shows about 25% of the RAM as used.
+
+## Weekly maintenance
+
+Cron runs `host/weekly-maintenance.sh` every Sunday at 04:00 UTC (`host/vm-setup.sh` installs
+the entry, `crontab -l` shows it). The script runs `python -m dmhost.maintenance` in a worker
+container, with these steps:
+
+1. `dependency-metrics --build-osv --output-dir /data/tool` rebuilds the OSV index from the
+   npm, PyPI, and crates.io zips. The Tool writes the new index to a temporary file and
+   renames it, so a failed rebuild keeps the old index. A new index also stops the reuse of
+   older results (the reuse key holds the index date).
+2. `dependency-metrics --cache-prune-gb 10 --output-dir /data/tool` prunes the
+   ResolverCache to 10 GB. This step runs also after a failed rebuild, because the cache
+   size does not depend on the index.
+
+The script exits with 1 when a step fails, and pings `DM_HOST_MAINTENANCE_CHECK_URL/fail`.
+The log is `~/dmhost-maintenance.log` on the VM. To run the maintenance by hand, run
+`bash host/weekly-maintenance.sh`.

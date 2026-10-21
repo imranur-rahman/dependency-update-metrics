@@ -100,12 +100,23 @@ services:
     logging: *logging
 
   # --- Ballast (ticket #16) -------------------------------------------------------------
-  # Ticket #16 adds the elastic memory ballast here (ADR 0001). It keeps memory use above
-  # Oracle's idle threshold. Do not remove it as "unused" when it is in place.
-  # ballast:
-  #   <<: *host
-  #   command: [...]
-  #   oom_score_adj: 1000
+  # The elastic memory ballast (ADR 0001, dmhost/ballast.py). It keeps the memory use of the
+  # VM at 25% of the RAM, so that Oracle does not reclaim the idle instance. It holds only
+  # the gap to the memory use of the whole VM (from /proc/meminfo), so it releases memory
+  # when the workers and their Job child processes use more.
+  # Do not remove it as "unused". It is the only thing that keeps a quiet VM alive.
+  ballast:
+    <<: *host
+    command: ["python", "-m", "dmhost.ballast"]
+    # The kernel stops the ballast first when memory is short, so a Job never fails because
+    # of it. Docker then starts it again.
+    oom_score_adj: 1000
+    restart: always
+    # The ballast needs no network, no data, and no secrets.
+    network_mode: none
+    volumes: []
+    env_file: []
+    environment: {}
   # ---------------------------------------------------------------------------------------
 
 networks:
