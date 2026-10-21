@@ -31,9 +31,11 @@ class Worker:
         if job is None:
             return False
         try:
-            results: List[Dict[str, Any]] = [
-                self.analysis(job.comparison, package) for package in job.comparison.packages
-            ]
+            results: List[Dict[str, Any]] = []
+            packages = job.comparison.packages
+            for index, package in enumerate(packages, start=1):
+                self.queue.set_progress(job.job_id, index, len(packages))
+                results.append(self.analysis(job.comparison, package))
         except Exception:
             logger.exception("Job %s failed", job.job_id)
             self.queue.fail(job.job_id, f"Something went wrong (ref: {job.job_id})")

@@ -10,6 +10,7 @@ See `GLOSSARY.md` and spec #1.
 | `dmhost/app.py` | The FastAPI app. `create_app(queue=, analysis=, turnstile_check=, allowed_origins=)` takes its dependencies as arguments, so that tests can give fakes. `create_app_from_env()` builds the production app. |
 | `dmhost/job_queue.py` | `JobQueue`: the SQLite table that holds the Jobs. The API and the workers share it. |
 | `dmhost/worker.py` | `Worker`: takes the oldest waiting Job, runs the analysis for each package, and stores the result. `python -m dmhost.worker` starts one worker process. |
+| `dmhost/events.py` | The event stream of a Job (`GET /api/jobs/{id}/events`). `EventStreamSettings` holds its timing; `create_app(event_stream=)` takes it. |
 | `dmhost/tool_analysis.py` | `ToolAnalysis`: the analysis function of the workers. It runs the Tool, always with deps.dev data. |
 | `dmhost/models.py` | The request and response shapes of the API. |
 | `dmhost/settings.py` | The configuration values, read from environment variables. |
@@ -22,8 +23,14 @@ both read them.
 
 - `POST /api/jobs` takes a Comparison (`ecosystem`, `packages`, `start_date`, `end_date`, `mode`,
   `weighting_type`, `half_life`) and `turnstile_token`. It returns `202` with `{"job_id": ...}`.
-- `GET /api/jobs/{id}` returns the Job: `queued` with `position`, `running`, `done` with `results`
-  (one Tool result for each package), or `error` with `message`.
+- `GET /api/jobs/{id}` returns the Job: `queued` with `position`, `running` with `package_index`
+  (1-based) and `package_count`, `done` with `results` (one Tool result for each package), or `error`
+  with `message`.
+- `GET /api/jobs/{id}/events` sends the same bodies as server-sent events. Each event has the state as
+  its name (`queued`, `running`, `done`, `error`, or `cancelled`). The stream sends the current state
+  first, then one event each time the body changes, and it ends after a final state. It sends a
+  heartbeat comment (`: heartbeat`) after 15 seconds with no event. It also ends after 5 minutes,
+  because the browser connects again by itself and gets the current state first.
 
 ## Run the Host and the Webapp locally
 

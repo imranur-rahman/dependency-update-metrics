@@ -14,6 +14,9 @@ QUEUED = "queued"
 RUNNING = "running"
 DONE = "done"
 ERROR = "error"
+# Ticket #11 adds the cancel request. The event stream and the Webapp already treat it as final.
+CANCELLED = "cancelled"
+FINAL_STATES = frozenset({DONE, ERROR, CANCELLED})
 
 
 class Comparison(BaseModel):
@@ -45,3 +48,8 @@ class Job(BaseModel):
     comparison: Comparison
     results: List[Dict[str, Any]] = []
     message: str = ""
+    # The package that the worker analyzes now: 1-based index, and the number of packages.
+    package_index: int = 0
+    package_count: int = 0
+    # The 1-based place of a waiting Job in the queue (``JobQueue.get`` fills it), else 0.
+    position: int = 0

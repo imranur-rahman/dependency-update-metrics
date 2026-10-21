@@ -54,6 +54,23 @@ def test_worker_runs_the_job_and_the_result_is_done(queue):
     assert response.json() == with_job_id(load_example("job_done_window_summary"), job_id)
 
 
+def test_running_job_shows_which_package_the_worker_analyzes(queue):
+    client = make_client(queue)
+    request = load_example("create_job_request")
+    request["packages"] = ["mypkg", "otherpkg"]
+    job_id = client.post("/api/jobs", json=request).json()["job_id"]
+    seen = {}
+
+    def analysis_that_reads_the_job(comparison, package):
+        seen[package] = client.get(f"/api/jobs/{job_id}").json()
+        return {"package": package}
+
+    Worker(queue, analysis_that_reads_the_job).run_once()
+
+    assert seen["otherpkg"] == with_job_id(load_example("job_running"), job_id)
+    assert (seen["mypkg"]["package_index"], seen["mypkg"]["package_count"]) == (1, 2)
+
+
 def test_job_whose_analysis_raises_shows_a_message_with_the_job_id(queue):
     def broken_analysis(comparison, package):
         raise RuntimeError("deps.dev is down")

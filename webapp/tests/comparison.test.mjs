@@ -13,6 +13,10 @@ import {
   isFinished,
   resultRows,
   formatDays,
+  progressOf,
+  jobIdFromUrl,
+  urlWithJobId,
+  JOB_EVENTS,
 } from "../site/static/js/comparison.js";
 
 const contractDir = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "contract", "examples");
@@ -32,6 +36,46 @@ test("the form gives the request body that the Host accepts", () => {
 test("a queued Job shows its queue position", () => {
   assert.equal(describeJob(example("job_queued")), "Queued (position 1)");
   assert.equal(isFinished(example("job_queued")), false);
+});
+
+test("a queued Job shows a progress bar with no value", () => {
+  assert.deepEqual(progressOf(example("job_queued")), { value: null, max: null });
+});
+
+test("a running Job shows which package the Host analyzes", () => {
+  const job = example("job_running");
+
+  assert.equal(describeJob(job), "Running (package 2 of 2)");
+  assert.equal(isFinished(job), false);
+  assert.deepEqual(progressOf(job), { value: 1, max: 2 });
+});
+
+test("a finished Job shows no progress bar", () => {
+  assert.equal(progressOf(example("job_done_window_summary")), null);
+  assert.equal(progressOf(example("job_error")), null);
+});
+
+test("a cancelled Job is finished", () => {
+  const job = { job_id: "example-job-id", state: "cancelled" };
+
+  assert.equal(describeJob(job), "Cancelled");
+  assert.equal(isFinished(job), true);
+});
+
+test("the page listens to one event for each Job state", () => {
+  assert.deepEqual(JOB_EVENTS, ["queued", "running", "done", "error", "cancelled"]);
+});
+
+test("the job ID goes into the page URL and back, and keeps the other parts", () => {
+  const url = urlWithJobId("https://example.org/site/?ecosystem=npm#try-it", "abc123");
+
+  assert.equal(url, "https://example.org/site/?ecosystem=npm&job=abc123#try-it");
+  assert.equal(jobIdFromUrl(url), "abc123");
+});
+
+test("a page URL with no job ID gives null", () => {
+  assert.equal(jobIdFromUrl("https://example.org/site/#try-it"), null);
+  assert.equal(jobIdFromUrl("https://example.org/site/?job=#try-it"), null);
 });
 
 test("a Job that failed shows the message of the Host", () => {
