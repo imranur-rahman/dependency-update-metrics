@@ -15,7 +15,7 @@ from contextlib import contextmanager
 from pathlib import Path
 from typing import Any, Dict, Iterator, List, Optional
 
-from .models import DONE, ERROR, QUEUED, RUNNING, Comparison, Job
+from .models import CANCELLED, DONE, ERROR, QUEUED, RUNNING, Comparison, Job
 
 _BUSY_TIMEOUT_S = 10.0
 
@@ -135,21 +135,48 @@ class JobQueue:
                 (package_index, package_count, job_id),
             )
 
-    def finish(self, job_id: str, results: List[Dict[str, Any]]) -> None:
-        """Store the results of a Job and mark it as done."""
-        self._end(job_id, DONE, results=json.dumps(results))
+    def finish(self, job_id: str, results: List[Dict[str, Any]]) -> bool:
+        """Store the results of a running Job and mark it as done.
 
-    def fail(self, job_id: str, message: str) -> None:
-        """Store the user message of a Job that failed and mark it as an error."""
-        self._end(job_id, ERROR, message=message)
+        Return ``False`` (and change nothing) if the Job no longer runs."""
+        return self._end(job_id, DONE, results=json.dumps(results))
 
-    def _end(self, job_id: str, state: str, results: str = "[]", message: str = "") -> None:
+    def fail(self, job_id: str, message: str) -> bool:
+        """Store the user message of a running Job that failed and mark it as an error.
+
+        Return ``False`` (and change nothing) if the Job no longer runs."""
+        return self._end(job_id, ERROR, message=message)
+
+    def state(self, job_id: str) -> Optional[str]:
+        """Return the state of the Job, or ``None`` if the queue has no Job with this ID."""
+        with self._connect() as conn:
+            row = conn.execute("SELECT state FROM jobs WHERE job_id = ?", (job_id,)).fetchone()
+        return None if row is None else str(row["state"])
+
+    def cancel(self, job_id: str) -> Optional[Job]:
+        """Cancel a Job that waits or runs, and return the Job after the change.
+
+        A waiting Job leaves the queue at once. A running Job gets the state ``cancelled``,
+        and its worker stops the analysis when it sees the state. A Job in a final state
+        does not change. Return ``None`` if the queue has no Job with this ID.
+        """
         with self._connect() as conn:
             conn.execute(
-                "UPDATE jobs SET state = ?, results = ?, message = ?, finished_at = ? "
-                "WHERE job_id = ?",
-                (state, results, message, time.time(), job_id),
+                "UPDATE jobs SET state = ?, finished_at = ? WHERE job_id = ? AND state IN (?, ?)",
+                (CANCELLED, time.time(), job_id, QUEUED, RUNNING),
             )
+        return self.get(job_id)
+
+    def _end(self, job_id: str, state: str, results: str = "[]", message: str = "") -> bool:
+        # Only a running Job can end. A Job that the user cancelled, or that the worker
+        # already stopped (for example on the timeout), keeps its state.
+        with self._connect() as conn:
+            cursor = conn.execute(
+                "UPDATE jobs SET state = ?, results = ?, message = ?, finished_at = ? "
+                "WHERE job_id = ? AND state = ?",
+                (state, results, message, time.time(), job_id, RUNNING),
+            )
+            return cursor.rowcount == 1
 
     def position(self, job_id: str) -> int:
         """Return the 1-based place of a waiting Job in the queue."""

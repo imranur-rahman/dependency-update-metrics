@@ -4,6 +4,8 @@ import {
   requestFromForm,
   describeJob,
   isFinished,
+  canCancel,
+  cancelRequest,
   resultRows,
   needsHalfLife,
   halfLifeError,
@@ -43,6 +45,7 @@ const statusLine = document.getElementById("job-status");
 const progressBar = document.getElementById("job-progress");
 const table = document.getElementById("result-table");
 const submitButton = document.getElementById("submit-comparison");
+const cancelButton = document.getElementById("cancel-job");
 const hostUrl = section.dataset.hostUrl.replace(/\/$/, "");
 const weightingSelect = document.getElementById("weighting-type");
 const halfLifeField = document.getElementById("half-life-field");
@@ -68,6 +71,8 @@ const csvButton = document.getElementById("download-csv");
 let chart = null;
 let releaseCharts = [];
 let csv = { text: "", fileName: "" };
+// The Job that the page shows now, so that the Cancel button knows which Job to cancel.
+let currentJobId = null;
 
 // --- Weighting fields (ticket #8) ---
 
@@ -216,6 +221,8 @@ function showProgress(progress) {
 }
 
 function showJob(job) {
+  currentJobId = job.job_id;
+  cancelButton.hidden = !canCancel(job);
   showStatus(describeJob(job));
   showProgress(progressOf(job));
   if (job.state === "done") showResult(job);
@@ -397,6 +404,23 @@ function followJob(jobId) {
   });
 }
 
+// Cancel the Job that the page shows. The event stream then sends "cancelled", and the
+// page shows it. A Job that the user only leaves (for example, a closed tab) continues.
+async function cancelJob() {
+  if (currentJobId === null) return;
+  const { url, method } = cancelRequest(hostUrl, currentJobId);
+  cancelButton.disabled = true;
+  try {
+    const response = await fetch(url, { method });
+    if (!response.ok) throw new Error(`DELETE returned ${response.status}`);
+    showJob(await response.json());
+  } catch (error) {
+    console.error(error);
+  } finally {
+    cancelButton.disabled = false;
+  }
+}
+
 // Put the job ID in the page URL, so that a reload shows the same Job.
 function rememberJob(jobId) {
   history.replaceState(null, "", urlWithJobId(location.href, jobId));
@@ -414,6 +438,7 @@ async function resumeJobFromUrl() {
   } catch (error) {
     console.error(error);
     showProgress(null);
+    cancelButton.hidden = true;
     showStatus("Something went wrong. Try again later.");
   } finally {
     submitButton.disabled = false;
@@ -468,6 +493,7 @@ form.addEventListener("submit", async (event) => {
   } catch (error) {
     console.error(error);
     showProgress(null);
+    cancelButton.hidden = true;
     showStatus("Something went wrong. Try again later.");
   } finally {
     submitButton.disabled = false;
@@ -477,6 +503,7 @@ form.addEventListener("submit", async (event) => {
 weightingSelect.addEventListener("change", showWeightingFields);
 addPackageButton.addEventListener("click", () => addPackageField()?.focus());
 csvButton.addEventListener("click", downloadCsv);
+cancelButton.addEventListener("click", cancelJob);
 showWeightingFields();
 renumberPackageFields();
 fillFormFromUrl();
