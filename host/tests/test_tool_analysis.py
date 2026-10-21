@@ -203,3 +203,32 @@ def test_failed_deps_dev_request_is_not_reported_as_a_window_without_releases(tm
 
     assert body["state"] == "error"
     assert body["message"] == f"Something went wrong (ref: {job_id})"
+
+
+def test_unknown_package_is_known_from_the_tool_outcome_without_a_second_request(tmp_path):
+    # The Tool says "package not found" itself, so the Host does not ask deps.dev again.
+    client = depsdev_client_stub_without("nope")
+
+    job_id, body = run_comparison(tmp_path, client, packages=["nope"])
+
+    assert body["message"] == "Package not found in deps.dev"
+    asked = [call.args[1] for call in client.get_package.call_args_list]
+    assert asked.count("nope") == 1
+
+
+@pytest.mark.parametrize("mode", ["window_summary", "per_release"])
+def test_failed_dependency_lookup_shows_something_went_wrong_not_a_zero(tmp_path, mode):
+    client = depsdev_client_stub()
+    known = client.get_package.side_effect
+
+    def get_package(system, name, end_date=None):
+        if name == "depA":
+            raise requests.ConnectionError("connection reset")
+        return known(system, name, end_date)
+
+    client.get_package.side_effect = get_package
+
+    job_id, body = run_comparison(tmp_path, client, mode=mode)
+
+    assert body["state"] == "error"
+    assert body["message"] == f"Something went wrong (ref: {job_id})"
