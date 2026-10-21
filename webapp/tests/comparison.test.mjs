@@ -20,6 +20,8 @@ import {
   urlWithJobId,
   JOB_EVENTS,
   packageErrors,
+  dateErrors,
+  submitErrorMessage,
   canAddPackage,
   withComparison,
   comparisonFromSearch,
@@ -406,4 +408,70 @@ test("the note near the results says what the numbers are", () => {
   assert.doesNotMatch(resultsNote("disable"), /weighted mean/);
   assert.match(resultsNote("exponential"), /weighted mean/);
   assert.notEqual(resultsNote("disable"), resultsNote("linear"));
+});
+
+// The same names as the Host test (host/tests/test_input_checks.py), so both sides agree.
+const VALID_NAMES = {
+  npm: ["express", "@babel/core", "lodash.merge", "JSONStream"],
+  pypi: ["requests", "zope.interface", "Flask_SQLAlchemy", "a"],
+  cargo: ["serde", "tokio-util", "winapi_x86"],
+};
+const INVALID_NAMES = {
+  npm: ["has space", ".hidden", "_private", "@scope", "a/b", "x".repeat(215)],
+  pypi: ["-requests", "requests.", "re quests", "@babel/core"],
+  cargo: ["1serde", "serde.json", "x".repeat(65)],
+};
+
+test("the form accepts the package names that match the rules of the ecosystem", () => {
+  for (const [ecosystem, names] of Object.entries(VALID_NAMES)) {
+    for (const name of names) assert.deepEqual(packageErrors(ecosystem, [name]), [], name);
+  }
+});
+
+test("the form refuses the package names that break the rules of the ecosystem", () => {
+  for (const [ecosystem, names] of Object.entries(INVALID_NAMES)) {
+    for (const name of names) assert.equal(packageErrors(ecosystem, [name]).length, 1, name);
+  }
+  assert.deepEqual(packageErrors("cargo", ["serde.json"]), [
+    "serde.json is not a valid Cargo package name.",
+  ]);
+});
+
+test("the form accepts a window whose end date is after the start date and not in the future", () => {
+  assert.deepEqual(dateErrors("2020-01-01", "2020-01-02", "2026-10-21"), []);
+  assert.deepEqual(dateErrors("1990-01-01", "2026-10-21", "2026-10-21"), []);
+});
+
+test("the form refuses an end date that is not after the start date or is in the future", () => {
+  assert.deepEqual(dateErrors("2023-01-01", "2020-01-01", "2026-10-21"), [
+    "The end date must be after the start date.",
+  ]);
+  assert.deepEqual(dateErrors("2023-01-01", "2023-01-01", "2026-10-21"), [
+    "The end date must be after the start date.",
+  ]);
+  assert.deepEqual(dateErrors("2020-01-01", "2026-10-22", "2026-10-21"), [
+    "The end date must not be in the future.",
+  ]);
+  assert.deepEqual(dateErrors("", "2020-01-01", "2026-10-21"), ["Enter a start date and an end date."]);
+});
+
+test("a package that failed shows its message in the table, and the others show results", () => {
+  const rows = resultRows(example("job_done_with_package_error"));
+
+  assert.deepEqual(rows, [
+    { package: "mypkg", mttu: "579.0", mttr: "579.0", dependencies: 1, error: "" },
+    { package: "nope", mttu: "–", mttr: "–", dependencies: 0, error: "Package not found in deps.dev" },
+  ]);
+});
+
+test("a refused submit shows the message of the Host, and never internal details", () => {
+  assert.equal(
+    submitErrorMessage({ detail: "Too many requests, try again in 12 min" }),
+    "Too many requests, try again in 12 min",
+  );
+  assert.equal(submitErrorMessage({ detail: "The server is busy, try later" }), "The server is busy, try later");
+  // A 422 body of FastAPI holds a list of internal check results.
+  const generic = "Something went wrong. Try again later.";
+  assert.equal(submitErrorMessage({ detail: [{ loc: ["body"], msg: "Value error" }] }), generic);
+  assert.equal(submitErrorMessage(null), generic);
 });

@@ -1,0 +1,56 @@
+{
+  "job_id": "example-job-id",
+  "state": "done",
+  "comparison": {
+    "ecosystem": "pypi",
+    "packages": [
+      "mypkg",
+      "nope"
+    ],
+    "start_date": "2020-01-01",
+    "end_date": "2023-01-01",
+    "mode": "window_summary",
+    "weighting_type": "disable",
+    "half_life": null
+  },
+  "results": [
+    {
+      "ecosystem": "pypi",
+      "package": "mypkg",
+      "mode": "window_summary",
+      "start_date": "2020-01-01",
+      "end_date": "2023-01-01",
+      "weighting_type": "disable",
+      "half_life": null,
+      "data_source": "depsdev",
+      "summary": {
+        "mttu": 579.0,
+        "mttr": 579.0,
+        "num_dependencies": 1,
+        "status": "ok",
+        "error": ""
+      },
+      "releases": [],
+      "error": ""
+    },
+    {
+      "ecosystem": "pypi",
+      "package": "nope",
+      "mode": "window_summary",
+      "start_date": "2020-01-01",
+      "end_date": "2023-01-01",
+      "weighting_type": "disable",
+      "half_life": null,
+      "data_source": "depsdev",
+      "summary": {
+        "mttu": null,
+        "mttr": null,
+        "num_dependencies": 0,
+        "status": "error",
+        "error": "Package not found in deps.dev"
+      },
+      "releases": [],
+      "error": "Package not found in deps.dev"
+    }
+  ]
+}

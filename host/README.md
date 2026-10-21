@@ -27,11 +27,21 @@ both read them.
   names with no duplicates. Two names are duplicates when they differ only in case (and, for PyPI,
   in runs of `-`, `_`, and `.`).
   `weighting_type` is `disable`, `linear`, `exponential`, or `inverse`. Exponential weighting needs a
-  `half_life` from 1 to 3650 days; the other types drop `half_life`. A body that breaks a rule gets `422`.
+  `half_life` from 1 to 3650 days; the other types drop `half_life`. Each name matches the naming
+  rules of its ecosystem (`PACKAGE_NAME_RULES` in `dmhost/models.py`). The `end_date` is after the
+  `start_date` and not later than the latest date in any time zone (UTC+14). The Host does not limit
+  the window length. A body that breaks a rule gets `422`.
 - `GET /api/jobs/{id}` returns the Job: `queued` with `position`, `running` with `package_index`
   (1-based) and `package_count`, `done` with `results` (one Tool result for each package), or `error` with `message`. The worker runs the packages in
   sequence. A package whose analysis raises gets a result with `error` set, and the other packages
-  keep their results. The Job is `error` only when every package raised.
+  keep their results. The Job is `error` only when every package raised. If all packages failed
+  for one reason, the Job `message` is that reason. Otherwise it is the generic message.
+- Error messages: the page shows only the six messages in `dmhost/errors.py`. The Host logs the full
+  error under the job ID (`Job <id>: package <name> failed: <error>`). The Tool reports an unknown
+  package and a window without a release in the same way (`DepsDevResolver` turns a failed
+  GetPackage request into an empty version list). So `ToolAnalysis` asks deps.dev for the package
+  again: a `404` raises `PackageNotFound`, and a listing with no release in the window raises
+  `NoReleasesInWindow`. Every other Tool error gets `Something went wrong (ref: <job id>)`.
 - `DELETE /api/jobs/{id}` cancels a Job that waits or runs, and returns the Job (`cancelled`). A waiting
   Job leaves the queue. A running Job stops within one worker poll (0.5 seconds). A Job in a final
   state does not change. A Job continues when its event stream closes, for example when the user

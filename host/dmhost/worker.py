@@ -22,15 +22,13 @@ from typing import Any, Callable, Dict, List, Optional
 
 import psutil
 
+from . import errors
 from .job_queue import JobQueue
 from .models import RUNNING, Comparison, Job
 
 logger = logging.getLogger(__name__)
 
 Analysis = Callable[[Comparison, str], Dict[str, Any]]
-
-# The user message of a Job that reached the timeout (spec #1, "Error mapping").
-TIMEOUT_MESSAGE = "The analysis took too long"
 
 
 @dataclass(frozen=True)
@@ -96,7 +94,11 @@ class Worker:
             child.join()
         if stop_reason is not None:
             logger.error("Job %s: stopped, %s", job.job_id, stop_reason)
-            message = TIMEOUT_MESSAGE if stop_reason == "timeout" else _generic_message(job)
+            message = (
+                errors.TOOK_TOO_LONG
+                if stop_reason == "timeout"
+                else errors.something_went_wrong(job.job_id)
+            )
             self.queue.fail(job.job_id, message)
         elif self.queue.state(job.job_id) == RUNNING:
             # The child process ended without a result, for example because the kernel
@@ -106,7 +108,7 @@ class Worker:
                 job.job_id,
                 child.exitcode,
             )
-            self.queue.fail(job.job_id, _generic_message(job))
+            self.queue.fail(job.job_id, errors.something_went_wrong(job.job_id))
 
     def _watch(self, job: Job, child: Any, started: float, limits: JobLimits) -> Optional[str]:
         """Wait for the child process. Return why the worker must stop it, or ``None``
@@ -195,7 +197,7 @@ def run_job(queue: JobQueue, analysis: Analysis, job: Job) -> None:
     stops when the Job no longer runs (the user cancelled it).
     """
     results: List[Dict[str, Any]] = []
-    failures = 0
+    failure_messages: List[str] = []
     packages = job.comparison.packages
     for index, package in enumerate(packages, start=1):
         if queue.state(job.job_id) != RUNNING:
@@ -203,16 +205,40 @@ def run_job(queue: JobQueue, analysis: Analysis, job: Job) -> None:
             return
         queue.set_progress(job.job_id, index, len(packages))
         try:
-            results.append(analysis(job.comparison, package))
-        except Exception:
-            logger.exception("Job %s: package %s failed", job.job_id, package)
-            failures += 1
-            results.append(failed_result(job.comparison, package, _generic_message(job)))
-    if failures == len(results):
-        # No package gave a result, so the Job itself failed.
-        queue.fail(job.job_id, _generic_message(job))
+            results.append(user_facing_result(analysis(job.comparison, package), job))
+        except Exception as error:
+            # The log has the full error under the job ID. The page gets only the message.
+            logger.exception("Job %s: package %s failed: %s", job.job_id, package, error)
+            message = errors.message_for(error, job.job_id)
+            failure_messages.append(message)
+            results.append(failed_result(job.comparison, package, message))
+    if len(failure_messages) == len(results):
+        # No package gave a result, so the Job itself failed. When all packages failed
+        # for one reason, the Job shows that reason.
+        reasons = set(failure_messages)
+        message = reasons.pop() if len(reasons) == 1 else errors.something_went_wrong(job.job_id)
+        queue.fail(job.job_id, message)
     else:
         queue.finish(job.job_id, results)
+
+
+def user_facing_result(result: Dict[str, Any], job: Job) -> Dict[str, Any]:
+    """Return ``result`` with each Tool error replaced by a user message.
+
+    The Tool reports a failure that it caught as ``error`` text (``AnalysisResult``). The
+    text can hold internal details, so the Host logs it under the job ID and the page gets
+    :func:`errors.something_went_wrong`. A failure with its own message raises in the
+    analysis function (see :mod:`dmhost.errors`).
+    """
+    detail = result.get("error") or ""
+    if not detail:
+        return result
+    logger.error("Job %s: package %s failed: %s", job.job_id, result.get("package"), detail)
+    message = errors.something_went_wrong(job.job_id)
+    summary = result.get("summary")
+    if summary is not None:
+        summary = {**summary, "error": message}
+    return {**result, "error": message, "summary": summary}
 
 
 def _run_job_in_child(queue: JobQueue, analysis: Analysis, job: Job) -> None:
@@ -251,10 +277,6 @@ def _kill_process_tree(pid: Optional[int]) -> None:
             each.kill()
         except psutil.Error:
             pass
-
-
-def _generic_message(job: Job) -> str:
-    return f"Something went wrong (ref: {job.job_id})"
 
 
 def failed_result(comparison: Comparison, package: str, message: str) -> Dict[str, Any]:

@@ -11,6 +11,8 @@ import {
   halfLifeError,
   resultsNote,
   packageErrors,
+  dateErrors,
+  submitErrorMessage,
   canAddPackage,
   withComparison,
   comparisonFromSearch,
@@ -46,6 +48,9 @@ const resultsNoteLine = document.getElementById("results-note");
 const packageFields = document.getElementById("package-fields");
 const addPackageButton = document.getElementById("add-package");
 const packageMessage = document.getElementById("package-error");
+const dateMessage = document.getElementById("date-error");
+const startDateInput = document.getElementById("start-date");
+const endDateInput = document.getElementById("end-date");
 const chartFigure = document.getElementById("result-chart-figure");
 const chartCanvas = document.getElementById("result-chart");
 const csvButton = document.getElementById("download-csv");
@@ -139,6 +144,23 @@ function showPackageErrors(errors) {
   packageMessage.textContent = errors.join(" ");
   packageMessage.hidden = errors.length === 0;
   for (const input of packageInputs()) input.classList.toggle("is-danger", errors.length > 0);
+}
+
+// --- Date fields ---
+
+function showDateErrors(errors) {
+  dateMessage.textContent = errors.join(" ");
+  dateMessage.hidden = errors.length === 0;
+  for (const input of [startDateInput, endDateInput]) {
+    input.classList.toggle("is-danger", errors.length > 0);
+  }
+}
+
+// Return the date of the user as "YYYY-MM-DD", in the time zone of the browser.
+function localToday() {
+  const now = new Date();
+  const pad = (n) => String(n).padStart(2, "0");
+  return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
 }
 
 // --- Shareable URL ---
@@ -349,7 +371,9 @@ form.addEventListener("submit", async (event) => {
   showPackageErrors(errors);
   const halfLifeText = halfLifeError(data.get("weightingType"), data.get("halfLife"));
   showHalfLifeError(halfLifeText);
-  if (errors.length > 0 || halfLifeText) return;
+  const dateTexts = dateErrors(data.get("startDate"), data.get("endDate"), localToday());
+  showDateErrors(dateTexts);
+  if (errors.length > 0 || halfLifeText || dateTexts.length > 0) return;
   const body = requestFromForm(
     {
       ecosystem: data.get("ecosystem"),
@@ -372,7 +396,14 @@ form.addEventListener("submit", async (event) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     });
-    if (!response.ok) throw new Error(`POST returned ${response.status}`);
+    if (!response.ok) {
+      // The Host gives a user message for a refused submit (for example, a rate limit).
+      const refusal = await response.json().catch(() => null);
+      console.error(`POST returned ${response.status}`, refusal);
+      showProgress(null);
+      showStatus(submitErrorMessage(refusal));
+      return;
+    }
     const { job_id: jobId } = await response.json();
     rememberJob(jobId);
     await followJob(jobId);

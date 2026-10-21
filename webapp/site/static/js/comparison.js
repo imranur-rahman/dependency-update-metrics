@@ -23,6 +23,51 @@ export function packageKey(ecosystem, name) {
   return ecosystem === "pypi" ? key.replace(/[-_.]+/g, "-") : key;
 }
 
+const ECOSYSTEM_LABELS = { npm: "npm", pypi: "PyPI", cargo: "Cargo" };
+
+// The naming rules of each ecosystem: a pattern for the whole name and the most characters.
+// The Host checks the same rules (PACKAGE_NAME_RULES in host/dmhost/models.py).
+// - npm: an optional "@scope/" and URL-safe characters, not "." or "_" first, at most 214.
+//   Old names can have capitals (for example "JSONStream").
+// - PyPI: letters, digits, ".", "_", and "-", with a letter or a digit at each end (PEP 508).
+// - Cargo: a letter, then letters, digits, "_", and "-", at most 64 characters (crates.io).
+const PACKAGE_NAME_RULES = {
+  npm: { pattern: /^(@[A-Za-z0-9~-][A-Za-z0-9._~-]*\/)?[A-Za-z0-9~-][A-Za-z0-9._~-]*$/, maxLength: 214 },
+  pypi: { pattern: /^[A-Za-z0-9]([A-Za-z0-9._-]*[A-Za-z0-9])?$/, maxLength: Infinity },
+  cargo: { pattern: /^[A-Za-z][A-Za-z0-9_-]{0,63}$/, maxLength: 64 },
+};
+
+// Return true when the name matches the naming rules of the ecosystem.
+export function packageNameMatchesRules(ecosystem, name) {
+  const rule = PACKAGE_NAME_RULES[ecosystem];
+  if (rule === undefined) return false;
+  return name.length <= rule.maxLength && rule.pattern.test(name);
+}
+
+// Return the messages for the date fields of the form, or [] when they are correct.
+// All dates are "YYYY-MM-DD" text. today is the date of the user, so that the form never
+// refuses a date that the user can see on a calendar. The Host checks the same rules.
+export function dateErrors(startDate, endDate, today) {
+  if (!startDate || !endDate) return ["Enter a start date and an end date."];
+  // "YYYY-MM-DD" text sorts in the same order as the dates.
+  if (endDate <= startDate) return ["The end date must be after the start date."];
+  if (endDate > today) return ["The end date must not be in the future."];
+  return [];
+}
+
+// The text that the page shows when a request to the Host fails and the Host gives no
+// message that the page can show.
+const GENERIC_ERROR = "Something went wrong. Try again later.";
+
+// Return the message for a refused POST /api/jobs. body is the JSON body of the response,
+// or null. The Host gives a user message as a text "detail" (for example, for the rate
+// limits and the busy queue). Other bodies hold internal details, so the page shows a
+// generic text.
+export function submitErrorMessage(body) {
+  const detail = body?.detail;
+  return typeof detail === "string" && detail !== "" ? detail : GENERIC_ERROR;
+}
+
 // Return the messages for the package fields of the form, or [] when they are correct.
 export function packageErrors(ecosystem, packages) {
   const names = cleanPackages(packages);
@@ -31,6 +76,10 @@ export function packageErrors(ecosystem, packages) {
   const seen = new Set();
   const errors = [];
   for (const name of names) {
+    if (!packageNameMatchesRules(ecosystem, name)) {
+      errors.push(`${name} is not a valid ${ECOSYSTEM_LABELS[ecosystem] ?? ecosystem} package name.`);
+      continue;
+    }
     const key = packageKey(ecosystem, name);
     if (seen.has(key)) errors.push(`${name} is in the Comparison twice.`);
     seen.add(key);
