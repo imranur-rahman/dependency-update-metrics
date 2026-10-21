@@ -6,7 +6,7 @@
 from __future__ import annotations
 
 import re
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
 from typing import Any, Dict, List, Literal, Optional
 
 from pydantic import BaseModel, Field, model_validator
@@ -28,6 +28,37 @@ MAX_HALF_LIFE_DAYS = 3650
 
 
 MAX_PACKAGES = 5
+
+# The time zone that is furthest ahead of UTC (UTC+14). A user there can have a date one day
+# after the UTC date, so the Host accepts an end date up to the latest date on Earth.
+_LATEST_UTC_OFFSET = timedelta(hours=14)
+
+
+def latest_date_now() -> date:
+    """Return the latest calendar date in any time zone now (an end date may be this date)."""
+    return (datetime.now(timezone.utc) + _LATEST_UTC_OFFSET).date()
+
+
+# The naming rules of each ecosystem. The Webapp logic module uses the same rules
+# (PACKAGE_NAME_RULES in comparison.js).
+# - npm: an optional "@scope/" and a name of URL-safe characters that does not start with
+#   "." or "_", at most 214 characters (validate-npm-package-name). Old names can have
+#   capitals (for example "JSONStream"), so the rule accepts them.
+# - PyPI: letters, digits, ".", "_", and "-", with a letter or a digit at each end (PEP 508).
+# - Cargo: a letter, then letters, digits, "_", and "-", at most 64 characters (crates.io).
+PACKAGE_NAME_RULES = {
+    "npm": re.compile(r"(@[A-Za-z0-9~-][A-Za-z0-9._~-]*/)?[A-Za-z0-9~-][A-Za-z0-9._~-]*"),
+    "pypi": re.compile(r"[A-Za-z0-9]([A-Za-z0-9._-]*[A-Za-z0-9])?"),
+    "cargo": re.compile(r"[A-Za-z][A-Za-z0-9_-]{0,63}"),
+}
+MAX_PACKAGE_NAME_LENGTH = {"npm": 214}
+
+
+def package_name_matches_rules(ecosystem: str, name: str) -> bool:
+    """Return true if ``name`` matches the naming rules of ``ecosystem``."""
+    if len(name) > MAX_PACKAGE_NAME_LENGTH.get(ecosystem, len(name)):
+        return False
+    return PACKAGE_NAME_RULES[ecosystem].fullmatch(name) is not None
 
 
 def package_key(ecosystem: str, name: str) -> str:
@@ -62,10 +93,25 @@ class Comparison(BaseModel):
         names = [name.strip() for name in self.packages]
         if any(not name for name in names):
             raise ValueError("A package name is empty")
+        for name in names:
+            if not package_name_matches_rules(self.ecosystem, name):
+                raise ValueError(f"{name!r} is not a valid {self.ecosystem} package name")
         keys = [package_key(self.ecosystem, name) for name in names]
         if len(set(keys)) != len(keys):
             raise ValueError("The Comparison holds the same package twice")
         self.packages = names
+        return self
+
+    @model_validator(mode="after")
+    def _check_dates(self) -> "Comparison":
+        """The end date is after the start date and not in the future.
+
+        The Host does not limit the window length, because the job timeout stops a long Job.
+        """
+        if self.end_date <= self.start_date:
+            raise ValueError("The end date must be after the start date")
+        if self.end_date > latest_date_now():
+            raise ValueError("The end date must not be in the future")
         return self
 
     @model_validator(mode="after")
