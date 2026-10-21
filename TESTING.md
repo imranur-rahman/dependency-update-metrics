@@ -16,7 +16,7 @@ source metrics_venv/bin/activate
 pytest tests/ -q
 ```
 
-The suite has 290 tests and runs offline in a few seconds. Every resolver receives its cache and HTTP client through its constructor, so tests inject fixture data and never call a registry, deps.dev, or OSV. CI runs the suite on Ubuntu, macOS, and Windows with Python 3.10, 3.11, and 3.12.
+The suite has 308 tests and runs offline in a few seconds. Every resolver receives its cache and HTTP client through its constructor, so tests inject fixture data and never call a registry, deps.dev, or OSV. CI runs the suite on Ubuntu, macOS, and Windows with Python 3.10, 3.11, and 3.12.
 
 This document covers the Tool. The Host and the Webapp have their own tests:
 
