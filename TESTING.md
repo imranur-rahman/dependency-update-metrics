@@ -22,8 +22,8 @@ This document covers the Tool. The Host and the Webapp have their own tests:
 
 | Part | Command | What the tests check |
 |---|---|---|
-| Host | `pytest host/tests` | The HTTP API through FastAPI's `TestClient`. `create_app` takes a fake analysis function and a fake Turnstile check, and the tests run the queue and the worker (`Worker.run_once()`) in the test process. They check the Comparison rules (1 to 5 packages, no duplicates, one ecosystem) and that a failed package keeps the results of the other packages. `test_tool_analysis.py` runs the real Tool with a deps.dev client stub, from submit to result. |
-| Webapp | `node --test webapp/tests/*.test.mjs` | The logic module `webapp/site/static/js/comparison.js` (form to request body, the package rules, the half-life rule, the axis label and the results note, the round trip between a Comparison and the page URL, Job status text, the bar chart data, result table rows, and the CSV text) and the published folder (local assets, and Chart.js from cdnjs with an exact version). The Chart.js drawing and the page layout get a manual smoke check. |
+| Host | `pytest host/tests` | The HTTP API through FastAPI's `TestClient`. `create_app` takes a fake analysis function and a fake Turnstile check, and the tests run the queue and the worker (`Worker.run_once()`) in the test process. They check the Comparison rules (1 to 5 packages, no duplicates, one ecosystem) and that a failed package keeps the results of the other packages. `test_job_events.py` reads the event stream while a worker in a second thread runs the Jobs. `test_tool_analysis.py` runs the real Tool with a deps.dev client stub, from submit to result. |
+| Webapp | `node --test webapp/tests/*.test.mjs` | The logic module `webapp/site/static/js/comparison.js` (form to request body, the package rules, the half-life rule, the axis label and the results note, the round trip between a Comparison and the page URL, Job status text and progress, the job ID in the page URL, the bar chart data, result table rows, and the CSV text) and the published folder (local assets, and Chart.js from cdnjs with an exact version). The Chart.js drawing and the page layout get a manual smoke check. |
 
 Both read the shared API examples in `contract/examples/`. The done example is the real Tool output for the scenario in `host/tests/test_tool_analysis.py`, so the contract matches what the Tool returns.
 
@@ -49,6 +49,7 @@ Both read the shared API examples in `contract/examples/`. The done example is t
 | Excel sheet titles with forbidden characters crashed the export (`189a64f`) | `test_reporting.py::test_safe_sheet_name_replaces_invalid_characters_and_truncates`, `test_reporting.py::test_export_worksheets_sanitizes_scoped_dependency_name`, `test_reporting.py::test_export_per_release_worksheets_sanitizes_scoped_dependency_name` |
 | `--build-osv` did not rebuild an index that already existed (#13) | `test_osv.py::test_cli_build_osv_alone_rebuilds_existing_index` |
 | Host: the API and a worker that opened a new Job queue file at once failed with "database is locked" (#4) | `host/tests/test_job_queue.py::test_api_and_workers_that_open_one_new_queue_file_at_once_all_succeed` |
+| Host: a Job that a worker claimed between two reads showed as queued with position 0, or as running with package 0 of 0 (#5) | `host/tests/test_job_events.py::test_stream_sends_the_states_in_order_with_position_and_package_index` |
 
 ### OSV build tests
 

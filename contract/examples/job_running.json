@@ -1,0 +1,15 @@
+{
+  "job_id": "example-job-id",
+  "state": "running",
+  "package_index": 2,
+  "package_count": 2,
+  "comparison": {
+    "ecosystem": "pypi",
+    "packages": ["mypkg", "otherpkg"],
+    "start_date": "2020-01-01",
+    "end_date": "2023-01-01",
+    "mode": "window_summary",
+    "weighting_type": "disable",
+    "half_life": null
+  }
+}

@@ -1,5 +1,6 @@
 """Tests for the Job queue that the API and the workers share."""
 
+import sqlite3
 import threading
 
 from dmhost import JobQueue
@@ -30,6 +31,29 @@ def test_api_and_workers_that_open_one_new_queue_file_at_once_all_succeed(tmp_pa
         start.reset()
 
     assert errors == []
+
+
+def test_queue_file_from_before_the_progress_columns_still_stores_progress(tmp_path):
+    db_path = tmp_path / "jobs.db"
+    with sqlite3.connect(db_path) as conn:
+        conn.execute(
+            "CREATE TABLE jobs (job_id TEXT PRIMARY KEY, state TEXT NOT NULL, "
+            "comparison TEXT NOT NULL, results TEXT NOT NULL DEFAULT '[]', "
+            "message TEXT NOT NULL DEFAULT '', created_at REAL NOT NULL, "
+            "started_at REAL, finished_at REAL)"
+        )
+    conn.close()
+    queue = JobQueue(db_path)
+    comparison = Comparison(
+        ecosystem="npm", packages=["a", "b"], start_date="2023-01-01", end_date="2025-01-01"
+    )
+    job_id = queue.add(comparison)
+
+    queue.claim_next()
+    queue.set_progress(job_id, 2, 2)
+
+    job = queue.get(job_id)
+    assert (job.package_index, job.package_count) == (2, 2)
 
 
 def test_two_queue_objects_over_one_file_see_the_same_jobs(tmp_path):

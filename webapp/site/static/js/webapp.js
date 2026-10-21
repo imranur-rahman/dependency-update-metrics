@@ -18,9 +18,12 @@ import {
   TABLE_COLUMNS,
   rowsToCsv,
   csvFileName,
+  progressOf,
+  jobIdFromUrl,
+  urlWithJobId,
+  JOB_EVENTS,
 } from "./comparison.js";
 
-const POLL_MS = 2000;
 // Colors of the bar chart: slots 1 and 2 of the validated categorical palette
 // (blue, orange), so that the two series stay apart for color-blind readers.
 const SERIES_COLORS = { MTTU: "#2a78d6", MTTR: "#eb6834" };
@@ -28,6 +31,7 @@ const SERIES_COLORS = { MTTU: "#2a78d6", MTTR: "#eb6834" };
 const section = document.getElementById("try-it");
 const form = document.getElementById("comparison-form");
 const statusLine = document.getElementById("job-status");
+const progressBar = document.getElementById("job-progress");
 const table = document.getElementById("result-table");
 const submitButton = document.getElementById("submit-comparison");
 const hostUrl = section.dataset.hostUrl.replace(/\/$/, "");
@@ -160,6 +164,26 @@ function showStatus(text) {
   statusLine.textContent = text;
 }
 
+// Show a bar with no value while the Job waits, and the share of packages that are done
+// while it runs. A finished Job shows no bar.
+function showProgress(progress) {
+  progressBar.hidden = progress === null;
+  if (progress === null) return;
+  if (progress.value === null) {
+    progressBar.removeAttribute("value");
+    progressBar.removeAttribute("max");
+  } else {
+    progressBar.max = progress.max;
+    progressBar.value = progress.value;
+  }
+}
+
+function showJob(job) {
+  showStatus(describeJob(job));
+  showProgress(progressOf(job));
+  if (job.state === "done") showResult(job);
+}
+
 function showRows(rows) {
   const headerRow = document.createElement("tr");
   for (const [, header] of TABLE_COLUMNS) {
@@ -246,17 +270,49 @@ async function getJob(jobId) {
   return response.json();
 }
 
-// Get the Job state with a plain GET until the Job is finished.
-// Ticket #5 replaces this loop with the server-sent event stream.
-async function followJob(jobId) {
-  for (;;) {
-    const job = await getJob(jobId);
-    showStatus(describeJob(job));
-    if (isFinished(job)) {
-      if (job.state === "done") showResult(job);
-      return;
+// Show each state of the Job from the server-sent event stream, until the Job is finished.
+// When the connection drops, EventSource connects again by itself, and the Host sends the
+// current state first. The promise resolves when the Job is finished.
+function followJob(jobId) {
+  return new Promise((resolve, reject) => {
+    const source = new EventSource(`${hostUrl}/api/jobs/${encodeURIComponent(jobId)}/events`);
+    for (const name of JOB_EVENTS) {
+      source.addEventListener(name, (event) => {
+        const job = JSON.parse(event.data);
+        showJob(job);
+        if (isFinished(job)) {
+          source.close();
+          resolve(job);
+        }
+      });
     }
-    await new Promise((resolve) => setTimeout(resolve, POLL_MS));
+    source.addEventListener("error", () => {
+      // CLOSED means that the browser does not try again (for example, a 404).
+      if (source.readyState === EventSource.CLOSED) reject(new Error("The event stream closed"));
+    });
+  });
+}
+
+// Put the job ID in the page URL, so that a reload shows the same Job.
+function rememberJob(jobId) {
+  history.replaceState(null, "", urlWithJobId(location.href, jobId));
+}
+
+// After a reload, get the current state of the Job in the URL at once, then follow it.
+async function resumeJobFromUrl() {
+  const jobId = jobIdFromUrl(location.href);
+  if (jobId === null) return;
+  submitButton.disabled = true;
+  try {
+    const job = await getJob(jobId);
+    showJob(job);
+    if (!isFinished(job)) await followJob(jobId);
+  } catch (error) {
+    console.error(error);
+    showProgress(null);
+    showStatus("Something went wrong. Try again later.");
+  } finally {
+    submitButton.disabled = false;
   }
 }
 
@@ -293,9 +349,11 @@ form.addEventListener("submit", async (event) => {
     });
     if (!response.ok) throw new Error(`POST returned ${response.status}`);
     const { job_id: jobId } = await response.json();
+    rememberJob(jobId);
     await followJob(jobId);
   } catch (error) {
     console.error(error);
+    showProgress(null);
     showStatus("Something went wrong. Try again later.");
   } finally {
     submitButton.disabled = false;
@@ -308,3 +366,4 @@ csvButton.addEventListener("click", downloadCsv);
 showWeightingFields();
 renumberPackageFields();
 fillFormFromUrl();
+resumeJobFromUrl();

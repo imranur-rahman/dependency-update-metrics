@@ -34,7 +34,9 @@ class Worker:
         # does not stop the others (spec #1, "Job execution").
         results: List[Dict[str, Any]] = []
         failures = 0
-        for package in job.comparison.packages:
+        packages = job.comparison.packages
+        for index, package in enumerate(packages, start=1):
+            self.queue.set_progress(job.job_id, index, len(packages))
             try:
                 results.append(self.analysis(job.comparison, package))
             except Exception:
