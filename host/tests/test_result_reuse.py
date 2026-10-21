@@ -285,3 +285,22 @@ def test_queue_file_from_before_reuse_still_reuses_results(tmp_path):
     run_a_done_job(client, queue)
 
     assert submit(client).status_code == 200
+
+
+def test_timer_cleanup_deletes_jobs_older_than_30_days_without_a_submit(tmp_path, clock):
+    from dmhost.app import clean_up_queue
+    from dmhost.reuse import ReusePolicy
+
+    queue = JobQueue(tmp_path / "jobs.db", clock=clock)
+    client = TestClient(
+        create_app(queue=queue, analysis=fake_analysis, turnstile_check=lambda t, ip: True)
+    )
+    old_job = run_a_done_job(client, queue)
+    clock.advance(29 * DAY)
+    recent_job = run_a_done_job(client, queue, packages=["otherpkg"])
+    clock.advance(1 * DAY + 1)
+
+    clean_up_queue(queue, window_seconds=HOUR, reuse=ReusePolicy())
+
+    assert queue.get(old_job) is None
+    assert queue.get(recent_job) is not None

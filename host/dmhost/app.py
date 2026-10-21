@@ -57,8 +57,9 @@ from .worker import Analysis
 
 logger = logging.getLogger(__name__)
 
-# How often the production API removes the IP hashes that are older than the window.
-_FORGET_INTERVAL_S = 60.0
+# How often the production API removes the IP hashes that are older than the window, and
+# the Job records that are older than the retention time.
+_CLEAN_UP_INTERVAL_S = 60.0
 
 
 def create_app(
@@ -179,7 +180,7 @@ def create_app_from_env() -> FastAPI:
     """Build the app from the environment (``uvicorn --factory dmhost.app:create_app_from_env``)."""
     settings = HostSettings.from_env()
     queue = JobQueue(settings.db_path)
-    _forget_submitters_on_a_timer(queue, settings.limits.window_seconds)
+    _clean_up_queue_on_a_timer(queue, settings.limits.window_seconds)
     return create_app(
         queue=queue,
         analysis=ToolAnalysis(settings.output_dir),
@@ -192,15 +193,24 @@ def create_app_from_env() -> FastAPI:
     )
 
 
-def _forget_submitters_on_a_timer(queue: JobQueue, window_seconds: float) -> None:
-    """Remove old IP hashes once each minute, also when no submit comes."""
+def clean_up_queue(queue: JobQueue, window_seconds: float, reuse: ReusePolicy) -> None:
+    """Remove the IP hashes that are older than the window, and the Job records that are
+    older than the retention time (30 days)."""
+    queue.forget_old_submitters(window_seconds)
+    delete_expired_jobs(queue, reuse)
 
-    def forget_forever() -> None:
+
+def _clean_up_queue_on_a_timer(
+    queue: JobQueue, window_seconds: float, reuse: ReusePolicy = ReusePolicy()
+) -> None:
+    """Run :func:`clean_up_queue` once each minute, also when no submit comes."""
+
+    def clean_up_forever() -> None:
         while True:
             try:
-                queue.forget_old_submitters(window_seconds)
+                clean_up_queue(queue, window_seconds, reuse)
             except Exception:  # noqa: BLE001 - the timer must not stop
-                logger.exception("Could not remove old IP hashes")
-            time.sleep(_FORGET_INTERVAL_S)
+                logger.exception("Could not remove old IP hashes and old Jobs")
+            time.sleep(_CLEAN_UP_INTERVAL_S)
 
-    threading.Thread(target=forget_forever, name="forget-ip-hashes", daemon=True).start()
+    threading.Thread(target=clean_up_forever, name="clean-up-queue", daemon=True).start()
