@@ -8,12 +8,18 @@ works from many threads and processes.
 from __future__ import annotations
 
 import json
+import os
 import sqlite3
 import time
 import uuid
 from contextlib import contextmanager
 from pathlib import Path
 from typing import Any, Callable, Dict, Iterator, List, Optional
+
+if os.name == "nt":  # pragma: no cover - the Host runs on Linux
+    import msvcrt
+else:
+    import fcntl
 
 from .limits import QueueFull, RateLimited, SubmitLimits
 from .models import CANCELLED, DONE, ERROR, QUEUED, RUNNING, Comparison, Job
@@ -59,6 +65,37 @@ _ADDED_COLUMNS = {
     "reuse_key": "TEXT",
 }
 
+
+@contextmanager
+def _exclusive_lock(lock_path: Path) -> Iterator[None]:
+    """Hold an exclusive lock on ``lock_path`` across threads and processes.
+
+    Each call opens the file again, so two threads of one process also wait for each other.
+    The operating system frees the lock when the holder ends, also after a crash, so a
+    stale lock file does not block the next start.
+    """
+    with open(lock_path, "a+b") as lock_file:
+        if os.name == "nt":  # pragma: no cover
+            lock_file.seek(0)
+            while True:
+                try:
+                    msvcrt.locking(lock_file.fileno(), msvcrt.LK_LOCK, 1)
+                    break
+                except OSError:  # LK_LOCK gives up after 10 seconds; wait again
+                    continue
+            try:
+                yield
+            finally:
+                lock_file.seek(0)
+                msvcrt.locking(lock_file.fileno(), msvcrt.LK_UNLCK, 1)
+        else:
+            fcntl.flock(lock_file.fileno(), fcntl.LOCK_EX)
+            try:
+                yield
+            finally:
+                fcntl.flock(lock_file.fileno(), fcntl.LOCK_UN)
+
+
 # A clock gives the current time in seconds since the epoch, as ``time.time`` does.
 Clock = Callable[[], float]
 
@@ -77,24 +114,33 @@ class JobQueue:
         self._set_up()
 
     def _set_up(self) -> None:
-        # The API and the workers can open a new file at the same time. SQLite does not
-        # call the busy handler for the switch to WAL, so the loser gets "database is
-        # locked" at once. Retry for as long as the busy timeout of other statements.
+        # The API and the workers can open the file at the same time, so only one of them
+        # at a time runs the set-up (the WAL switch, the tables, the migration). Without
+        # the lock, SQLite fails in two ways:
+        # - It does not call the busy handler for the switch to WAL, so the loser gets
+        #   "database is locked" at once.
+        # - Two connections that close at once can both skip the last checkpoint, so
+        #   jobs.db-wal stays. SQLite deletes the WAL of a database with 0 pages when it
+        #   opens it, and the second of two openers gets "disk I/O error"
+        #   (SQLITE_IOERR_DELETE_NOENT).
+        # The lock covers only set-up. Other connections can still hold the file, so keep
+        # the retry for "locked" for as long as the busy timeout of other statements.
         deadline = time.monotonic() + _BUSY_TIMEOUT_S
-        while True:
-            try:
-                with self._connect() as conn:
-                    conn.execute("PRAGMA journal_mode=WAL")
-                    conn.execute(_SCHEMA)
-                    conn.execute(_SUBMITTERS_SCHEMA)
-                    _add_missing_columns(conn)
-                    for index in _INDEXES:
-                        conn.execute(index)
-                return
-            except sqlite3.OperationalError as exc:
-                if "locked" not in str(exc) or time.monotonic() > deadline:
-                    raise
-                time.sleep(0.01)
+        with _exclusive_lock(self.db_path.with_name(self.db_path.name + ".lock")):
+            while True:
+                try:
+                    with self._connect() as conn:
+                        conn.execute("PRAGMA journal_mode=WAL")
+                        conn.execute(_SCHEMA)
+                        conn.execute(_SUBMITTERS_SCHEMA)
+                        _add_missing_columns(conn)
+                        for index in _INDEXES:
+                            conn.execute(index)
+                    return
+                except sqlite3.OperationalError as exc:
+                    if "locked" not in str(exc) or time.monotonic() > deadline:
+                        raise
+                    time.sleep(0.01)
 
     @contextmanager
     def _connect(self) -> Iterator[sqlite3.Connection]:
