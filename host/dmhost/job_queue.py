@@ -210,16 +210,16 @@ class JobQueue:
                 conn.execute("PRAGMA wal_checkpoint(TRUNCATE)")
         return removed
 
-    def latest_done_job(self, reuse_key: str, max_age_seconds: float) -> Optional[Job]:
-        """Return the newest done Job with ``reuse_key`` that finished at most
-        ``max_age_seconds`` ago, or ``None``."""
+    def done_jobs(self, reuse_key: str, max_age_seconds: float) -> List[Job]:
+        """Return the done Jobs with ``reuse_key`` that finished at most ``max_age_seconds``
+        ago, the newest first."""
         with self._connect() as conn:
-            row = conn.execute(
+            rows = conn.execute(
                 "SELECT * FROM jobs WHERE reuse_key = ? AND state = ? AND finished_at >= ? "
-                "ORDER BY finished_at DESC LIMIT 1",
+                "ORDER BY finished_at DESC",
                 (reuse_key, DONE, self.clock() - max_age_seconds),
-            ).fetchone()
-        return None if row is None else _job(row)
+            ).fetchall()
+        return [_job(row) for row in rows]
 
     def delete_jobs_older_than(self, max_age_seconds: float) -> int:
         """Delete the Jobs that were submitted more than ``max_age_seconds`` ago, and
