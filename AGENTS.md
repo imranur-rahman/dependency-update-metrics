@@ -44,10 +44,12 @@ These results look like bugs, but they are correct.
 
 `ResolverCache` (`<output-dir>/cache/cache.db`) holds two kinds of data:
 
-- Per-version data never changes, so the cache keeps it forever.
+- Per-version data never changes, so the cache keeps it until a prune (`--cache-prune-gb`) or a clear (`--cache-clear`) removes it.
 - Version listings grow with each release. The tool fetches a listing again when the end date is later than the newest cached release.
 
 When you add a cached lookup, decide which of the two kinds it is.
+
+Each row records in `last_used` the day of its last read or write. A read writes that day only when the day changes, so most reads write nothing. A prune removes the rows with the oldest `last_used` first, and does not run `VACUUM`.
 
 ## Scale requirements
 
