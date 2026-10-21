@@ -83,6 +83,12 @@ dependency-metrics \
   --build-osv
 ```
 
+`--build-osv` downloads the OSV zips for npm, PyPI, and crates.io (about 219 MB, 37 MB, and 3.6 MB on 2026-10-21). It reads the records directly from the zips, so it needs no disk space for extracted files. It writes the new `osv_database.parquet` to a temporary path and then renames it into place, so a failed build keeps the old database. Run `--build-osv` again to rebuild the database with new OSV data. To rebuild it without an analysis, leave out `--ecosystem` and `--package`:
+
+```bash
+dependency-metrics --build-osv --output-dir output
+```
+
 ### Inspect and limit the resolver cache
 
 The resolver cache (`<output-dir>/cache/cache.db`) records the day on which each row was last used. These flags act on the cache and then exit:

@@ -16,7 +16,7 @@ source metrics_venv/bin/activate
 pytest tests/ -q
 ```
 
-The suite has 265 tests and runs offline in a few seconds. Every resolver receives its cache and HTTP client through its constructor, so tests inject fixture data and never call a registry, deps.dev, or OSV. CI runs the suite on Ubuntu, macOS, and Windows with Python 3.10, 3.11, and 3.12.
+The suite has 272 tests and runs offline in a few seconds. Every resolver receives its cache and HTTP client through its constructor, so tests inject fixture data and never call a registry, deps.dev, or OSV. CI runs the suite on Ubuntu, macOS, and Windows with Python 3.10, 3.11, and 3.12.
 
 This document covers the Tool. The Webapp tests use Node's built-in test runner: `node --test webapp/tests/*.test.mjs`. The Host tests go in `host/tests/`.
 
@@ -40,6 +40,20 @@ This document covers the Tool. The Webapp tests use Node's built-in test runner:
 | Cached version lists missed newer releases (`58f05ac`) | `*_refetches_when_end_date_exceeds_cached_versions` and `*_disk_cache_hit_when_end_date_already_covered` in `test_npm_resolver.py`, `test_pypi_resolver.py`, `test_crates_resolver.py`, `test_depsdev_client.py`, and `test_depsdev_resolver.py` |
 | Scoped npm names created subdirectories in output paths (`26aabad`) | `test_reporting.py::test_scoped_npm_package_name_does_not_create_subdirectory`, `test_reporting.py::test_safe_filename_stem_replaces_path_separators` |
 | Excel sheet titles with forbidden characters crashed the export (`189a64f`) | `test_reporting.py::test_safe_sheet_name_replaces_invalid_characters_and_truncates`, `test_reporting.py::test_export_worksheets_sanitizes_scoped_dependency_name`, `test_reporting.py::test_export_per_release_worksheets_sanitizes_scoped_dependency_name` |
+| `--build-osv` did not rebuild an index that already existed (#13) | `test_osv.py::test_cli_build_osv_alone_rebuilds_existing_index` |
+
+### OSV build tests
+
+The OSV build tests in `test_osv.py` write small fixture zips for npm, PyPI, and crates.io and inject a fake download function through the `fetch_zip` argument of `OSVBuilder`, so they run offline.
+
+| What it checks | Test |
+|---|---|
+| The build from the three ecosystem zips gives the same index rows as the old build from the extracted `all.zip`. The expected rows come from the old code. | `test_osv_build_from_ecosystem_zips_matches_old_extracted_build` |
+| The build extracts no files and leaves only the index in the output directory | `test_osv_build_does_not_extract_files_and_leaves_only_the_index` |
+| A failed download keeps the old index | `test_failed_osv_download_keeps_old_index` |
+| A write that stops partway keeps the old index, because the new index replaces it in one rename | `test_osv_index_write_that_fails_midway_keeps_old_index` |
+| The index file holds its build date, and an index from an old build has no date | `test_osv_build_records_index_date`, `test_osv_index_date_is_none_for_index_from_old_build` |
+| `--build-osv` without `--package` rebuilds an index that exists | `test_cli_build_osv_alone_rebuilds_existing_index` |
 
 ### Cache size and use tracking
 
