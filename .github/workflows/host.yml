@@ -7,6 +7,7 @@ on:
     branches: [ main, develop ]
     paths:
       - 'host/**'
+      - 'contract/**'
       - 'dependency_metrics/**'
       - 'pyproject.toml'
       - 'requirements.txt'
@@ -15,6 +16,7 @@ on:
     branches: [ main ]
     paths:
       - 'host/**'
+      - 'contract/**'
       - 'dependency_metrics/**'
       - 'pyproject.toml'
       - 'requirements.txt'
@@ -39,18 +41,13 @@ jobs:
         python -m pip install --upgrade pip
         pip install black flake8 pytest
         pip install -e .
-        if [ -f host/requirements.txt ]; then pip install -r host/requirements.txt; fi
+        pip install -r host/requirements.txt
 
-    # The Host is a placeholder until its first code ticket, so each step skips when
-    # there is nothing to check.
     - name: Run black
-      run: |
-        if [ -n "$(find host -name '*.py')" ]; then black --check host/; else echo "No Python files in host/"; fi
+      run: black --check host/
 
     - name: Run flake8
-      run: |
-        if [ -n "$(find host -name '*.py')" ]; then flake8 host/ --max-line-length=100; else echo "No Python files in host/"; fi
+      run: flake8 host/ --max-line-length=100
 
     - name: Run tests
-      run: |
-        if [ -d host/tests ]; then pytest host/tests -v; else echo "No host/tests folder"; fi
+      run: pytest host/tests -v

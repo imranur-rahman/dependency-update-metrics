@@ -12,6 +12,8 @@ The repository holds the three parts that `GLOSSARY.md` defines. Each part has i
 | Host | `host/` | `.github/workflows/host.yml` (also runs when `dependency_metrics/` changes, because the Host runs the Tool) |
 | Webapp | `webapp/site/` (published), `webapp/tests/` | `.github/workflows/webapp.yml` (tests with `node --test webapp/tests/*.test.mjs`, then publishes `webapp/site/` to GitHub Pages from `main`) |
 
+`contract/examples/` holds example bodies of the Host API. The Host tests and the Webapp tests both read them, so a change to the API contract fails a test on both sides. A change in `contract/` runs the Host CI and the Webapp CI.
+
 `docs/` holds the ADRs (`docs/adr/`) and the agent docs (`docs/agents/`). GitHub Pages does not publish `docs/`. Only the files in `webapp/site/` are public on the site.
 
 ## Setup and checks
