@@ -33,6 +33,52 @@ def test_api_and_workers_that_open_one_new_queue_file_at_once_all_succeed(tmp_pa
     assert errors == []
 
 
+def _stale_wal_files(tmp_path):
+    """Return the -wal and -shm bytes of a WAL file that a live connection still holds."""
+    source = tmp_path / "source.db"
+    live = sqlite3.connect(source, isolation_level=None)
+    live.execute("PRAGMA journal_mode=WAL")
+    live.execute("PRAGMA wal_autocheckpoint=0")
+    live.execute("CREATE TABLE t (x)")
+    live.execute("INSERT INTO t VALUES (1)")
+    wal = (tmp_path / "source.db-wal").read_bytes()
+    shm = (tmp_path / "source.db-shm").read_bytes()
+    live.close()
+    return wal, shm
+
+
+def test_api_and_workers_that_open_an_empty_queue_file_with_a_stale_wal_all_succeed(tmp_path):
+    # Regression: two connections that close at once can leave jobs.db-wal behind. SQLite
+    # deletes the WAL of a database with 0 pages when it opens it, and two openers that do
+    # this at once made the second one fail with "disk I/O error" (SQLITE_IOERR_DELETE_NOENT).
+    wal, shm = _stale_wal_files(tmp_path)
+    start = threading.Barrier(8)
+    errors = []
+
+    for round_index in range(100):
+        db_path = tmp_path / f"round{round_index}" / "jobs.db"
+        db_path.parent.mkdir()
+        db_path.write_bytes(b"")
+        (db_path.parent / "jobs.db-wal").write_bytes(wal)
+        (db_path.parent / "jobs.db-shm").write_bytes(shm)
+
+        def open_queue():
+            start.wait()
+            try:
+                JobQueue(db_path)
+            except Exception as exc:  # noqa: BLE001 - the test collects every failure
+                errors.append(exc)
+
+        threads = [threading.Thread(target=open_queue) for _ in range(8)]
+        for thread in threads:
+            thread.start()
+        for thread in threads:
+            thread.join()
+        start.reset()
+
+    assert errors == []
+
+
 def test_queue_file_from_before_the_progress_columns_still_stores_progress(tmp_path):
     db_path = tmp_path / "jobs.db"
     with sqlite3.connect(db_path) as conn:

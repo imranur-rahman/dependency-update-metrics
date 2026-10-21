@@ -49,6 +49,7 @@ Both read the shared API examples in `contract/examples/`. The done examples are
 | Excel sheet titles with forbidden characters crashed the export (`189a64f`) | `test_reporting.py::test_safe_sheet_name_replaces_invalid_characters_and_truncates`, `test_reporting.py::test_export_worksheets_sanitizes_scoped_dependency_name`, `test_reporting.py::test_export_per_release_worksheets_sanitizes_scoped_dependency_name` |
 | `--build-osv` did not rebuild an index that already existed (#13) | `test_osv.py::test_cli_build_osv_alone_rebuilds_existing_index` |
 | Host: the API and a worker that opened a new Job queue file at once failed with "database is locked" (#4) | `host/tests/test_job_queue.py::test_api_and_workers_that_open_one_new_queue_file_at_once_all_succeed` |
+| Host: several openers of an empty Job queue file with a stale `jobs.db-wal` failed with "disk I/O error" (`SQLITE_IOERR_DELETE_NOENT`), about 1 in 30 runs of the test above (#1) | `host/tests/test_job_queue.py::test_api_and_workers_that_open_an_empty_queue_file_with_a_stale_wal_all_succeed` |
 | Host: a Job that a worker claimed between two reads showed as queued with position 0, or as running with package 0 of 0 (#5) | `host/tests/test_job_events.py::test_stream_sends_the_states_in_order_with_position_and_package_index` |
 
 ### OSV build tests
