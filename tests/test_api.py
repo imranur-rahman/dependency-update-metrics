@@ -438,3 +438,14 @@ def test_depsdev_failed_dependency_lookup_stops_a_bulk_row(tmp_path):
 
     with pytest.raises(DataSourceError, match="depA"):
         analyzer.analyze_bulk_rows([row], osv_df=pd.DataFrame([VULN_A]))
+
+
+def test_public_types_name_the_values_of_the_plain_data_contract():
+    from typing import get_args
+
+    import dependency_metrics as dm
+
+    assert set(get_args(dm.Mode)) == {"window_summary", "per_release"}
+    assert set(get_args(dm.DataSource)) == {"native", "depsdev"}
+    assert set(get_args(dm.Status)) == {"ok", "no_deps", "error"}
+    assert set(get_args(dm.ProgressStage)) == {"dependencies", "releases"}

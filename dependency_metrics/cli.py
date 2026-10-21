@@ -2039,7 +2039,7 @@ def main():
                 raise_errors=True,
             )
             if args.per_release:
-                release_results = analysis.details
+                release_results = analysis.analyzer_output
                 if not release_results:
                     _logger.info("No releases found in window for %s", args.package)
                 else:
@@ -2079,7 +2079,7 @@ def main():
                         if excel_file is not None:
                             _logger.info("Per-release worksheets saved to: %s", excel_file)
             else:
-                results = analysis.details
+                results = analysis.analyzer_output
 
                 # Output results
                 print_summary(

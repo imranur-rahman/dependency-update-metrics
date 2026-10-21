@@ -812,7 +812,7 @@ class DependencyAnalyzer:
                 return base
 
             empty_results = []
-            for _idx, (ver, release_date) in enumerate(releases_in_window, start=1):
+            for release_index, (ver, release_date) in enumerate(releases_in_window, start=1):
                 empty_results.append(
                     {
                         "row_num": row.get("row_num"),
@@ -821,7 +821,7 @@ class DependencyAnalyzer:
                     }
                 )
                 if progress is not None:
-                    progress(ProgressEvent("releases", _idx, len(releases_in_window), ver))
+                    progress(ProgressEvent("releases", release_index, len(releases_in_window), ver))
             return _mark_failed_releases(empty_results, manifest_errors)
 
         # Fetch all dep metadata in parallel
