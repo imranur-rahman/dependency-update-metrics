@@ -55,6 +55,12 @@ export function dateErrors(startDate, endDate, today) {
   return [];
 }
 
+// Return the message for a submit without a token from the Turnstile widget (the bot
+// check), or null when the form has a token. The Host refuses a submit without a token.
+export function botCheckError(token) {
+  return token ? null : "Wait for the bot check to complete, then click Compute.";
+}
+
 // The text that the page shows when a request to the Host fails and the Host gives no
 // message that the page can show.
 const GENERIC_ERROR = "Something went wrong. Try again later.";

@@ -1,8 +1,6 @@
 """The configuration values of the Host, read from environment variables.
 
-``host/README.md`` lists the variables (``DM_HOST_DB``, ``DM_HOST_OUTPUT_DIR``,
-``DM_HOST_ALLOWED_ORIGINS``, ``DM_HOST_WORKERS``, ``DM_HOST_JOB_TIMEOUT_SECONDS``,
-``DM_HOST_WORKER_MEMORY_MB``) and their defaults.
+``host/README.md`` lists the variables (``DM_HOST_*``) and their defaults.
 """
 
 from __future__ import annotations
@@ -10,8 +8,10 @@ from __future__ import annotations
 import os
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Optional, Tuple
+from typing import Mapping, Optional, Tuple
 
+from .client_ip import Network, parse_networks
+from .limits import SubmitLimits
 from .worker import JobLimits
 
 
@@ -24,22 +24,42 @@ class HostSettings:
     workers: int = 6
     # The timeout and the RSS limit of each Job (spec #1: 15 minutes and 2 GB).
     job_limits: JobLimits = JobLimits()
+    limits: SubmitLimits = SubmitLimits()
+    # The secret key of the Turnstile widget. It is only on the instance, never in the repo.
+    turnstile_secret: str = ""
+    # The key of the IP hash. Without it, the API makes a random key at each start.
+    ip_hash_key: Optional[bytes] = None
+    trusted_proxies: Tuple[Network, ...] = ()
 
     @classmethod
-    def from_env(cls) -> "HostSettings":
-        origins = os.environ.get("DM_HOST_ALLOWED_ORIGINS", "http://localhost:8000")
+    def from_env(cls, env: Optional[Mapping[str, str]] = None) -> "HostSettings":
+        env = os.environ if env is None else env
+        defaults = SubmitLimits()
+        limits = SubmitLimits(
+            max_active_jobs_per_ip=int(
+                env.get("DM_HOST_MAX_ACTIVE_JOBS_PER_IP", defaults.max_active_jobs_per_ip)
+            ),
+            max_jobs_per_ip_per_window=int(
+                env.get("DM_HOST_MAX_JOBS_PER_IP_PER_HOUR", defaults.max_jobs_per_ip_per_window)
+            ),
+            max_waiting_jobs=int(env.get("DM_HOST_MAX_WAITING_JOBS", defaults.max_waiting_jobs)),
+        )
+        hash_key = env.get("DM_HOST_IP_HASH_KEY", "")
         return cls(
-            db_path=Path(os.environ.get("DM_HOST_DB", "host-data/jobs.db")),
-            output_dir=Path(os.environ.get("DM_HOST_OUTPUT_DIR", "host-data/tool")),
-            allowed_origins=tuple(o.strip() for o in origins.split(",") if o.strip()),
-            workers=int(os.environ.get("DM_HOST_WORKERS", "6")),
+            db_path=Path(env.get("DM_HOST_DB", "host-data/jobs.db")),
+            output_dir=Path(env.get("DM_HOST_OUTPUT_DIR", "host-data/tool")),
+            allowed_origins=_split(env.get("DM_HOST_ALLOWED_ORIGINS", "http://localhost:8000")),
+            limits=limits,
+            turnstile_secret=env.get("DM_HOST_TURNSTILE_SECRET", ""),
+            ip_hash_key=hash_key.encode("utf-8") if hash_key else None,
+            trusted_proxies=tuple(parse_networks(_split(env.get("DM_HOST_TRUSTED_PROXIES", "")))),
+            workers=int(env.get("DM_HOST_WORKERS", "6")),
             job_limits=JobLimits(
-                timeout_seconds=float(os.environ.get("DM_HOST_JOB_TIMEOUT_SECONDS", "900")),
-                max_rss_mb=int(os.environ.get("DM_HOST_WORKER_MEMORY_MB", "2048")),
+                timeout_seconds=float(env.get("DM_HOST_JOB_TIMEOUT_SECONDS", "900")),
+                max_rss_mb=int(env.get("DM_HOST_WORKER_MEMORY_MB", "2048")),
             ),
         )
 
 
-def accept_all_tokens(token: str, remote_ip: Optional[str]) -> bool:
-    """A Turnstile check that accepts every token. For local runs until ticket #10."""
-    return True
+def _split(value: str) -> Tuple[str, ...]:
+    return tuple(part.strip() for part in value.split(",") if part.strip())

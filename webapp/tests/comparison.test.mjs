@@ -35,6 +35,7 @@ import {
   halfLifeError,
   axisLabel,
   resultsNote,
+  botCheckError,
 } from "../site/static/js/comparison.js";
 
 const contractDir = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "contract", "examples");
@@ -462,6 +463,17 @@ test("a package that failed shows its message in the table, and the others show 
     { package: "mypkg", mttu: "579.0", mttr: "579.0", dependencies: 1, error: "" },
     { package: "nope", mttu: "–", mttr: "–", dependencies: 0, error: "Package not found in deps.dev" },
   ]);
+});
+
+test("a submit that a limit of the Host refuses shows the message of the Host", () => {
+  assert.equal(submitErrorMessage(example("submit_rate_limited")), "Too many requests, try again in 40 min");
+  assert.equal(submitErrorMessage(example("submit_server_busy")), "The server is busy, try later");
+});
+
+test("the form needs a token from the bot check", () => {
+  assert.equal(botCheckError(""), "Wait for the bot check to complete, then click Compute.");
+  assert.equal(botCheckError(null), "Wait for the bot check to complete, then click Compute.");
+  assert.equal(botCheckError("XXXX.DUMMY.TOKEN.XXXX"), null);
 });
 
 test("a refused submit shows the message of the Host, and never internal details", () => {

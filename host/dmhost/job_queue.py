@@ -15,6 +15,7 @@ from contextlib import contextmanager
 from pathlib import Path
 from typing import Any, Callable, Dict, Iterator, List, Optional
 
+from .limits import QueueFull, RateLimited, SubmitLimits
 from .models import CANCELLED, DONE, ERROR, QUEUED, RUNNING, Comparison, Job
 
 _BUSY_TIMEOUT_S = 10.0
@@ -36,6 +37,16 @@ CREATE TABLE IF NOT EXISTS jobs (
 """
 
 # ``_set_up`` creates the indexes after it adds the missing columns.
+# The IP hash of each Job that came through ``admit`` (ticket #10). A row lives only for the
+# rate-limit window, or until its Job ends if the Job is still active at the end of the window.
+_SUBMITTERS_SCHEMA = """
+CREATE TABLE IF NOT EXISTS submitters (
+    job_id TEXT PRIMARY KEY,
+    ip_hash TEXT NOT NULL,
+    submitted_at REAL NOT NULL
+)
+"""
+
 _INDEXES = (
     "CREATE INDEX IF NOT EXISTS jobs_reuse_key ON jobs (reuse_key, finished_at)",
     "CREATE INDEX IF NOT EXISTS jobs_created_at ON jobs (created_at)",
@@ -75,6 +86,7 @@ class JobQueue:
                 with self._connect() as conn:
                     conn.execute("PRAGMA journal_mode=WAL")
                     conn.execute(_SCHEMA)
+                    conn.execute(_SUBMITTERS_SCHEMA)
                     _add_missing_columns(conn)
                     for index in _INDEXES:
                         conn.execute(index)
@@ -88,6 +100,9 @@ class JobQueue:
     def _connect(self) -> Iterator[sqlite3.Connection]:
         conn = sqlite3.connect(self.db_path, timeout=_BUSY_TIMEOUT_S, isolation_level=None)
         conn.row_factory = sqlite3.Row
+        # SQLite overwrites deleted rows with zeros, so a removed IP hash does not stay in a
+        # free page of the file.
+        conn.execute("PRAGMA secure_delete=ON")
         try:
             yield conn
         finally:
@@ -98,14 +113,56 @@ class JobQueue:
 
         ``reuse_key`` (see ``reuse.py``) lets a later Comparison find the result of this Job.
         """
-        job_id = uuid.uuid4().hex
         with self._connect() as conn:
-            conn.execute(
-                "INSERT INTO jobs (job_id, state, comparison, created_at, reuse_key) "
-                "VALUES (?, ?, ?, ?, ?)",
-                (job_id, QUEUED, comparison.model_dump_json(), self.clock(), reuse_key),
-            )
+            return _insert_job(conn, comparison, self.clock(), reuse_key)
+
+    def admit(
+        self,
+        comparison: Comparison,
+        ip_hash: str,
+        limits: SubmitLimits,
+        reuse_key: Optional[str] = None,
+    ) -> str:
+        """Add a new Job for the user with the IP hash ``ip_hash`` if the limits allow it.
+
+        Return the job ID. Raise :class:`RateLimited` when the user has the maximum number
+        of active Jobs or of Jobs in the window, and :class:`QueueFull` when the queue holds
+        the maximum number of waiting Jobs. One write transaction checks the limits and adds
+        the Job, so two submits at the same time cannot both pass the last free place.
+
+        Only Jobs that come through this method count against the limits. A submit that
+        reuses a stored result does not call it.
+        """
+        now = self.clock()
+        with self._connect() as conn:
+            conn.execute("BEGIN IMMEDIATE")
+            try:
+                _forget_submitters(conn, now - limits.window_seconds)
+                _check_limits(conn, ip_hash, limits, now)
+                job_id = _insert_job(conn, comparison, now, reuse_key)
+                conn.execute(
+                    "INSERT INTO submitters (job_id, ip_hash, submitted_at) VALUES (?, ?, ?)",
+                    (job_id, ip_hash, now),
+                )
+            except BaseException:
+                conn.execute("ROLLBACK")
+                raise
+            conn.execute("COMMIT")
         return job_id
+
+    def forget_old_submitters(self, window_seconds: float) -> int:
+        """Remove the IP hashes that are older than the window, and return how many.
+
+        A hash of a Job that is still active stays until the Job ends, because the limit on
+        active Jobs needs it. ``admit`` also calls this, and the API calls it on a timer, so
+        that the hashes go away when no new submit comes.
+        """
+        with self._connect() as conn:
+            removed = _forget_submitters(conn, self.clock() - window_seconds)
+            if removed:
+                # Removed rows can stay in old frames of the WAL file until a checkpoint.
+                conn.execute("PRAGMA wal_checkpoint(TRUNCATE)")
+        return removed
 
     def latest_done_job(self, reuse_key: str, max_age_seconds: float) -> Optional[Job]:
         """Return the newest done Job with ``reuse_key`` that finished at most
@@ -233,6 +290,51 @@ def _position(conn: sqlite3.Connection, job_id: str) -> int:
         (QUEUED, job_id),
     ).fetchone()
     return int(row[0])
+
+
+def _insert_job(
+    conn: sqlite3.Connection, comparison: Comparison, now: float, reuse_key: Optional[str]
+) -> str:
+    job_id = uuid.uuid4().hex
+    conn.execute(
+        "INSERT INTO jobs (job_id, state, comparison, created_at, reuse_key) "
+        "VALUES (?, ?, ?, ?, ?)",
+        (job_id, QUEUED, comparison.model_dump_json(), now, reuse_key),
+    )
+    return job_id
+
+
+def _forget_submitters(conn: sqlite3.Connection, cutoff: float) -> int:
+    cursor = conn.execute(
+        "DELETE FROM submitters WHERE submitted_at <= ? AND job_id NOT IN "
+        "(SELECT job_id FROM jobs WHERE state IN (?, ?))",
+        (cutoff, QUEUED, RUNNING),
+    )
+    return cursor.rowcount
+
+
+def _check_limits(conn: sqlite3.Connection, ip_hash: str, limits: SubmitLimits, now: float) -> None:
+    # LEFT JOIN: a Job that the retention removed still counts for its hour.
+    rows = conn.execute(
+        "SELECT s.submitted_at, j.state FROM submitters s LEFT JOIN jobs j USING (job_id) "
+        "WHERE s.ip_hash = ? ORDER BY s.submitted_at",
+        (ip_hash,),
+    ).fetchall()
+    waits = []
+    active = sum(1 for row in rows if row["state"] in (QUEUED, RUNNING))
+    if active >= limits.max_active_jobs_per_ip:
+        waits.append(limits.active_job_retry_seconds)
+    cutoff = now - limits.window_seconds
+    in_window = [row["submitted_at"] for row in rows if row["submitted_at"] > cutoff]
+    if len(in_window) >= limits.max_jobs_per_ip_per_window:
+        # The user can submit again when enough old Jobs leave the window.
+        leaves = in_window[len(in_window) - limits.max_jobs_per_ip_per_window]
+        waits.append(leaves + limits.window_seconds - now)
+    if waits:
+        raise RateLimited(max(waits))
+    waiting = conn.execute("SELECT COUNT(*) FROM jobs WHERE state = ?", (QUEUED,)).fetchone()
+    if int(waiting[0]) >= limits.max_waiting_jobs:
+        raise QueueFull()
 
 
 def _add_missing_columns(conn: sqlite3.Connection) -> None:
