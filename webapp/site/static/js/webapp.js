@@ -1,6 +1,14 @@
 // Page code of the Webapp section ("Try It"). It reads the form, sends the Comparison
 // to the Host, and shows the result. All logic that has no DOM code is in comparison.js.
-import { requestFromForm, describeJob, isFinished, resultRows } from "./comparison.js";
+import {
+  requestFromForm,
+  describeJob,
+  isFinished,
+  resultRows,
+  needsHalfLife,
+  halfLifeError,
+  resultsNote,
+} from "./comparison.js";
 
 const POLL_MS = 2000;
 
@@ -10,6 +18,32 @@ const statusLine = document.getElementById("job-status");
 const table = document.getElementById("result-table");
 const submitButton = document.getElementById("submit-comparison");
 const hostUrl = section.dataset.hostUrl.replace(/\/$/, "");
+const weightingSelect = document.getElementById("weighting-type");
+const halfLifeField = document.getElementById("half-life-field");
+const halfLifeInput = document.getElementById("half-life");
+const halfLifeMessage = document.getElementById("half-life-error");
+const resultsNoteLine = document.getElementById("results-note");
+
+// Show the half-life field only for the weighting type that needs it.
+function showWeightingFields() {
+  halfLifeField.classList.toggle("is-hidden", !needsHalfLife(weightingSelect.value));
+  showHalfLifeError(null);
+}
+
+function showHalfLifeError(text) {
+  halfLifeMessage.textContent = text ?? "";
+  halfLifeMessage.hidden = !text;
+  halfLifeInput.classList.toggle("is-danger", Boolean(text));
+}
+
+// Show the note that says what the numbers of the result are (a sum or a weighted mean).
+function showResultsNote(weightingType) {
+  resultsNoteLine.textContent = weightingType ? resultsNote(weightingType) : "";
+  resultsNoteLine.hidden = !weightingType;
+}
+
+weightingSelect.addEventListener("change", showWeightingFields);
+showWeightingFields();
 
 function showStatus(text) {
   statusLine.textContent = text;
@@ -44,7 +78,10 @@ async function followJob(jobId) {
     const job = await getJob(jobId);
     showStatus(describeJob(job));
     if (isFinished(job)) {
-      if (job.state === "done") showRows(resultRows(job));
+      if (job.state === "done") {
+        showRows(resultRows(job));
+        showResultsNote(job.comparison.weighting_type);
+      }
       return;
     }
     await new Promise((resolve) => setTimeout(resolve, POLL_MS));
@@ -54,17 +91,23 @@ async function followJob(jobId) {
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   const data = new FormData(form);
+  const halfLifeText = halfLifeError(data.get("weightingType"), data.get("halfLife"));
+  showHalfLifeError(halfLifeText);
+  if (halfLifeText) return;
   const body = requestFromForm(
     {
       ecosystem: data.get("ecosystem"),
       package: data.get("package"),
       startDate: data.get("startDate"),
       endDate: data.get("endDate"),
+      weightingType: data.get("weightingType"),
+      halfLife: data.get("halfLife"),
     },
     "", // Ticket #10 adds the Turnstile token.
   );
   submitButton.disabled = true;
   showRows([]);
+  showResultsNote(null);
   showStatus("Sending");
   try {
     const response = await fetch(`${hostUrl}/api/jobs`, {

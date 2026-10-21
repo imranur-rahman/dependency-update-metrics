@@ -22,6 +22,8 @@ both read them.
 
 - `POST /api/jobs` takes a Comparison (`ecosystem`, `packages`, `start_date`, `end_date`, `mode`,
   `weighting_type`, `half_life`) and `turnstile_token`. It returns `202` with `{"job_id": ...}`.
+  `weighting_type` is `disable`, `linear`, `exponential`, or `inverse`. Exponential weighting needs a
+  `half_life` from 1 to 3650 days; the other types drop `half_life`. A body that breaks a rule gets `422`.
 - `GET /api/jobs/{id}` returns the Job: `queued` with `position`, `running`, `done` with `results`
   (one Tool result for each package), or `error` with `message`.
 

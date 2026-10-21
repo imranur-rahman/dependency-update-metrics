@@ -127,6 +127,21 @@ def test_comparison_of_five_packages_is_accepted(queue):
     assert response.status_code == 202
 
 
+def comparison_with(**fields):
+    body = load_example("create_job_request")
+    body.update(fields)
+    return body
+
+
+@pytest.mark.parametrize("weighting_type", ["disable", "linear", "inverse"])
+def test_weighting_types_without_a_half_life_are_accepted(queue, weighting_type):
+    client = make_client(queue)
+
+    response = client.post("/api/jobs", json=comparison_with(weighting_type=weighting_type))
+
+    assert response.status_code == 202
+
+
 @pytest.mark.parametrize(
     "packages",
     [
@@ -199,3 +214,46 @@ def test_worker_runs_each_package_in_sequence_and_one_failure_does_not_stop_the_
     assert failed["error"] == f"Something went wrong (ref: {job_id})"
     assert failed["summary"]["status"] == "error"
     assert "deps.dev is down" not in str(body)
+
+
+@pytest.mark.parametrize("half_life", [1, 180, 3650])
+def test_exponential_weighting_accepts_a_half_life_from_1_to_3650_days(queue, half_life):
+    client = make_client(queue)
+
+    response = client.post(
+        "/api/jobs", json=comparison_with(weighting_type="exponential", half_life=half_life)
+    )
+
+    assert response.status_code == 202
+    job = client.get(f"/api/jobs/{response.json()['job_id']}").json()
+    assert job["comparison"]["weighting_type"] == "exponential"
+    assert job["comparison"]["half_life"] == half_life
+
+
+@pytest.mark.parametrize("half_life", [None, 0, 0.5, 3651, -10])
+def test_exponential_weighting_without_a_valid_half_life_is_refused(queue, half_life):
+    client = make_client(queue)
+
+    response = client.post(
+        "/api/jobs", json=comparison_with(weighting_type="exponential", half_life=half_life)
+    )
+
+    assert response.status_code == 422
+    assert Worker(queue, fake_analysis_from_example).run_once() is False
+
+
+def test_unknown_weighting_type_is_refused(queue):
+    client = make_client(queue)
+
+    response = client.post("/api/jobs", json=comparison_with(weighting_type="quadratic"))
+
+    assert response.status_code == 422
+
+
+def test_half_life_is_dropped_when_the_weighting_is_not_exponential(queue):
+    client = make_client(queue)
+
+    response = client.post("/api/jobs", json=comparison_with(weighting_type="linear", half_life=90))
+
+    job = client.get(f"/api/jobs/{response.json()['job_id']}").json()
+    assert job["comparison"]["half_life"] is None

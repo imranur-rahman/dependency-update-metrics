@@ -19,8 +19,14 @@ import {
   comparisonFromSearch,
   formFromComparison,
   barChartData,
+  barChartAxisLabel,
   rowsToCsv,
   csvFileName,
+  WEIGHTING_TYPES,
+  needsHalfLife,
+  halfLifeError,
+  axisLabel,
+  resultsNote,
 } from "../site/static/js/comparison.js";
 
 const contractDir = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "contract", "examples");
@@ -109,8 +115,33 @@ test("a shared link fills the form", () => {
     endDate: "2024-06-30",
     mode: "window_summary",
     weightingType: "disable",
-    halfLife: null,
+    halfLife: "",
   });
+});
+
+test("a shared link fills the weighting type and the half-life", () => {
+  const search = "?ecosystem=npm&package=express&start_date=2023-01-01&end_date=2025-01-01" +
+    "&mode=window_summary&weighting_type=exponential&half_life=90";
+
+  const form = formFromComparison(comparisonFromSearch(search));
+
+  assert.equal(form.weightingType, "exponential");
+  assert.equal(form.halfLife, "90");
+});
+
+test("the form state survives the round trip through the request and the URL", () => {
+  const form = {
+    ecosystem: "pypi",
+    packages: ["requests", "flask"],
+    startDate: "2021-01-01",
+    endDate: "2024-01-01",
+    mode: "window_summary",
+    weightingType: "exponential",
+    halfLife: "180",
+  };
+  const { turnstile_token: _token, ...comparison } = requestFromForm(form, "t");
+
+  assert.deepEqual(formFromComparison(comparisonFromSearch(withComparison("", comparison))), form);
 });
 
 test("a queued Job shows its queue position", () => {
@@ -187,6 +218,14 @@ test("the bar chart of the contract example has one group", () => {
   });
 });
 
+test("the bar chart axis label follows the weighting type of the Job", () => {
+  const job = threePackageJob();
+  assert.equal(barChartAxisLabel(job), "Days (sum over intervals)");
+
+  job.comparison.weighting_type = "linear";
+  assert.equal(barChartAxisLabel(job), "Days (weighted mean)");
+});
+
 test("the table shows the values and the error of each package", () => {
   assert.deepEqual(resultRows(threePackageJob()), [
     { package: "fast", mttu: "12.3", mttr: "0.0", dependencies: 4, error: "" },
@@ -229,4 +268,80 @@ test("days show with one decimal", () => {
   assert.equal(formatDays(0), "0.0");
   assert.equal(formatDays(12.345), "12.3");
   assert.equal(formatDays(null), "–");
+});
+
+test("the form offers the four weighting types of the Tool", () => {
+  assert.deepEqual(WEIGHTING_TYPES, ["disable", "linear", "exponential", "inverse"]);
+});
+
+test("only exponential weighting needs the half-life field", () => {
+  assert.equal(needsHalfLife("exponential"), true);
+  for (const type of ["disable", "linear", "inverse"]) assert.equal(needsHalfLife(type), false);
+});
+
+test("exponential weighting accepts a half-life from 1 to 3650 days", () => {
+  for (const value of ["1", "180", "3650", "90.5"]) {
+    assert.equal(halfLifeError("exponential", value), null, value);
+  }
+});
+
+test("exponential weighting refuses a missing or out-of-range half-life", () => {
+  for (const value of ["", "  ", "0", "0.5", "3651", "-1", "abc", undefined]) {
+    assert.equal(
+      halfLifeError("exponential", value),
+      "Enter a half-life from 1 to 3650 days.",
+      String(value),
+    );
+  }
+});
+
+test("the other weighting types ignore the half-life field", () => {
+  assert.equal(halfLifeError("linear", "0"), null);
+  assert.equal(halfLifeError("disable", ""), null);
+});
+
+test("the request body holds the weighting type and the half-life", () => {
+  const form = {
+    ecosystem: "pypi",
+    packages: ["mypkg"],
+    startDate: "2020-01-01",
+    endDate: "2023-01-01",
+    weightingType: "exponential",
+    halfLife: "180",
+  };
+
+  const body = requestFromForm(form, "example-token");
+
+  assert.equal(body.weighting_type, "exponential");
+  assert.equal(body.half_life, 180);
+});
+
+test("the request body has no half-life for the other weighting types", () => {
+  const form = {
+    ecosystem: "pypi",
+    packages: ["mypkg"],
+    startDate: "2020-01-01",
+    endDate: "2023-01-01",
+    weightingType: "linear",
+    halfLife: "180",
+  };
+
+  const body = requestFromForm(form, "example-token");
+
+  assert.equal(body.weighting_type, "linear");
+  assert.equal(body.half_life, null);
+});
+
+test("the axis label says a sum without weighting and a weighted mean with weighting", () => {
+  assert.equal(axisLabel("disable"), "Days (sum over intervals)");
+  for (const type of ["linear", "exponential", "inverse"]) {
+    assert.equal(axisLabel(type), "Days (weighted mean)");
+  }
+});
+
+test("the note near the results says what the numbers are", () => {
+  assert.match(resultsNote("disable"), /sum/);
+  assert.doesNotMatch(resultsNote("disable"), /weighted mean/);
+  assert.match(resultsNote("exponential"), /weighted mean/);
+  assert.notEqual(resultsNote("disable"), resultsNote("linear"));
 });

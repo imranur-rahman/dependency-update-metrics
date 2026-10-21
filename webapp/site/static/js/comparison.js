@@ -43,17 +43,28 @@ export function canAddPackage(packages) {
   return packages.length < MAX_PACKAGES;
 }
 
+// The weighting types of the Tool (--weighting-type). "disable" is the default.
+export const WEIGHTING_TYPES = ["disable", "linear", "exponential", "inverse"];
+const NO_WEIGHTING = "disable";
+const EXPONENTIAL = "exponential";
+// Exponential weighting needs a half-life in this range of days. The Host checks the same rule.
+const MIN_HALF_LIFE_DAYS = 1;
+const MAX_HALF_LIFE_DAYS = 3650;
+
 // Return the body of POST /api/jobs for the form state and the Turnstile token.
-// form: { ecosystem, packages, startDate, endDate } with dates as "YYYY-MM-DD".
+// form: { ecosystem, packages, startDate, endDate, weightingType, halfLife } with dates as
+// "YYYY-MM-DD" and halfLife as the text of the field. Without weightingType, the body has
+// no weighting. The body has a half-life only for exponential weighting.
 export function requestFromForm(form, turnstileToken) {
+  const weightingType = form.weightingType || NO_WEIGHTING;
   return {
     ecosystem: form.ecosystem,
     packages: cleanPackages(form.packages),
     start_date: form.startDate,
     end_date: form.endDate,
     mode: "window_summary",
-    weighting_type: "disable",
-    half_life: null,
+    weighting_type: weightingType,
+    half_life: needsHalfLife(weightingType) ? Number(form.halfLife) : null,
     turnstile_token: turnstileToken,
   };
 }
@@ -96,7 +107,8 @@ export function comparisonFromSearch(search) {
   };
 }
 
-// Return the form state for a Comparison (the reverse of requestFromForm).
+// Return the form state for a Comparison (the reverse of requestFromForm), so that a
+// shared link fills the form. halfLife is the text of the field, as in requestFromForm.
 export function formFromComparison(comparison) {
   return {
     ecosystem: comparison.ecosystem,
@@ -105,7 +117,7 @@ export function formFromComparison(comparison) {
     endDate: comparison.end_date,
     mode: comparison.mode,
     weightingType: comparison.weighting_type,
-    halfLife: comparison.half_life,
+    halfLife: comparison.half_life === null ? "" : String(comparison.half_life),
   };
 }
 
@@ -162,6 +174,12 @@ export function barChartData(job) {
   };
 }
 
+// Return the y-axis label of the bar chart of a done Job. It follows the weighting type,
+// because a sum of days and a weighted mean are different quantities (axisLabel).
+export function barChartAxisLabel(job) {
+  return axisLabel(job.comparison.weighting_type);
+}
+
 // The columns of the result table and of the CSV download, in order: [row key, header].
 // The page code builds the table from this list, so the table and the CSV always match.
 export const TABLE_COLUMNS = [
@@ -194,4 +212,38 @@ export function csvFileName(comparison) {
 // Return a number of days with one decimal, or a dash when there is no value.
 export function formatDays(days) {
   return typeof days === "number" ? days.toFixed(1) : NO_VALUE;
+}
+
+// Return true when the weighting type needs a half-life (the form shows the field only then).
+export function needsHalfLife(weightingType) {
+  return weightingType === EXPONENTIAL;
+}
+
+// Return the error text for the half-life field, or null when the value is valid.
+// halfLife is the text of the field. Only exponential weighting checks it.
+export function halfLifeError(weightingType, halfLife) {
+  if (!needsHalfLife(weightingType)) return null;
+  const text = String(halfLife ?? "").trim();
+  const days = Number(text);
+  if (text === "" || !Number.isFinite(days) || days < MIN_HALF_LIFE_DAYS || days > MAX_HALF_LIFE_DAYS) {
+    return `Enter a half-life from ${MIN_HALF_LIFE_DAYS} to ${MAX_HALF_LIFE_DAYS} days.`;
+  }
+  return null;
+}
+
+// Return the y-axis label of the charts for the weighting type. Without weighting, the Tool
+// gives a sum of days; with weighting, it gives a weighted mean of days.
+export function axisLabel(weightingType) {
+  return weightingType === NO_WEIGHTING ? "Days (sum over intervals)" : "Days (weighted mean)";
+}
+
+// Return the one-line note near the results that says what the numbers are.
+export function resultsNote(weightingType) {
+  if (weightingType === NO_WEIGHTING) {
+    return "Without weighting, MTTU and MTTR are the sum of the days over all intervals.";
+  }
+  return (
+    `With ${weightingType} weighting, MTTU and MTTR are a weighted mean of days. ` +
+    "Do not compare them with values that have no weighting."
+  );
 }
