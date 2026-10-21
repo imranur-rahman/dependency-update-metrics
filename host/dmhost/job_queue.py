@@ -28,9 +28,17 @@ CREATE TABLE IF NOT EXISTS jobs (
     message TEXT NOT NULL DEFAULT '',
     created_at REAL NOT NULL,
     started_at REAL,
-    finished_at REAL
+    finished_at REAL,
+    package_index INTEGER NOT NULL DEFAULT 0,
+    package_count INTEGER NOT NULL DEFAULT 0
 )
 """
+
+# Columns that later tickets added. ``_set_up`` adds each one that an existing file lacks.
+_ADDED_COLUMNS = {
+    "package_index": "INTEGER NOT NULL DEFAULT 0",
+    "package_count": "INTEGER NOT NULL DEFAULT 0",
+}
 
 
 class JobQueue:
@@ -51,6 +59,7 @@ class JobQueue:
                 with self._connect() as conn:
                     conn.execute("PRAGMA journal_mode=WAL")
                     conn.execute(_SCHEMA)
+                    _add_missing_columns(conn)
                 return
             except sqlite3.OperationalError as exc:
                 if "locked" not in str(exc) or time.monotonic() > deadline:
@@ -77,10 +86,20 @@ class JobQueue:
         return job_id
 
     def get(self, job_id: str) -> Optional[Job]:
-        """Return the Job, or ``None`` if the queue has no Job with this ID."""
+        """Return the Job, or ``None`` if the queue has no Job with this ID.
+
+        A waiting Job has its ``position``. One read transaction reads the Job and the
+        position, so a worker that claims the Job between the two reads cannot give a
+        waiting Job with position 0.
+        """
         with self._connect() as conn:
+            conn.execute("BEGIN")
             row = conn.execute("SELECT * FROM jobs WHERE job_id = ?", (job_id,)).fetchone()
-        return _job(row) if row is not None else None
+            position = _position(conn, job_id) if row and row["state"] == QUEUED else 0
+            conn.execute("COMMIT")
+        if row is None:
+            return None
+        return _job(row).model_copy(update={"position": position})
 
     def claim_next(self) -> Optional[Job]:
         """Mark the oldest waiting Job as running and return it, or ``None`` if none waits.
@@ -95,12 +114,26 @@ class JobQueue:
             if row is None:
                 conn.execute("COMMIT")
                 return None
+            # The Job starts at package 1, so no reader sees a running Job with no package.
+            count = len(Comparison.model_validate_json(row["comparison"]).packages)
             conn.execute(
-                "UPDATE jobs SET state = ?, started_at = ? WHERE job_id = ?",
-                (RUNNING, time.time(), row["job_id"]),
+                "UPDATE jobs SET state = ?, started_at = ?, package_index = 1, package_count = ? "
+                "WHERE job_id = ?",
+                (RUNNING, time.time(), count, row["job_id"]),
             )
             conn.execute("COMMIT")
-        return _job(row).model_copy(update={"state": RUNNING})
+        return _job(row).model_copy(
+            update={"state": RUNNING, "package_index": 1, "package_count": count}
+        )
+
+    def set_progress(self, job_id: str, package_index: int, package_count: int) -> None:
+        """Store that the worker now analyzes package ``package_index`` (1-based) of
+        ``package_count``."""
+        with self._connect() as conn:
+            conn.execute(
+                "UPDATE jobs SET package_index = ?, package_count = ? WHERE job_id = ?",
+                (package_index, package_count, job_id),
+            )
 
     def finish(self, job_id: str, results: List[Dict[str, Any]]) -> None:
         """Store the results of a Job and mark it as done."""
@@ -121,12 +154,28 @@ class JobQueue:
     def position(self, job_id: str) -> int:
         """Return the 1-based place of a waiting Job in the queue."""
         with self._connect() as conn:
-            row = conn.execute(
-                "SELECT COUNT(*) FROM jobs WHERE state = ? AND rowid <= "
-                "(SELECT rowid FROM jobs WHERE job_id = ?)",
-                (QUEUED, job_id),
-            ).fetchone()
-        return int(row[0])
+            return _position(conn, job_id)
+
+
+def _position(conn: sqlite3.Connection, job_id: str) -> int:
+    row = conn.execute(
+        "SELECT COUNT(*) FROM jobs WHERE state = ? AND rowid <= "
+        "(SELECT rowid FROM jobs WHERE job_id = ?)",
+        (QUEUED, job_id),
+    ).fetchone()
+    return int(row[0])
+
+
+def _add_missing_columns(conn: sqlite3.Connection) -> None:
+    present = {row["name"] for row in conn.execute("PRAGMA table_info(jobs)")}
+    for name, declaration in _ADDED_COLUMNS.items():
+        if name not in present:
+            try:
+                conn.execute(f"ALTER TABLE jobs ADD COLUMN {name} {declaration}")
+            except sqlite3.OperationalError as exc:
+                # Another process added the column after the check.
+                if "duplicate column" not in str(exc):
+                    raise
 
 
 def _job(row: sqlite3.Row) -> Job:
@@ -136,4 +185,6 @@ def _job(row: sqlite3.Row) -> Job:
         comparison=Comparison.model_validate_json(row["comparison"]),
         results=json.loads(row["results"]),
         message=row["message"],
+        package_index=row["package_index"],
+        package_count=row["package_count"],
     )

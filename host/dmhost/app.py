@@ -8,6 +8,7 @@
   worker (tests, local runs) can use the same function as the app.
 - ``turnstile_check``: a function ``(token, remote_ip) -> bool`` that checks the bot token.
 - ``allowed_origins``: the browser origins that CORS allows (the Webapp origin).
+- ``event_stream``: the timing of ``GET /api/jobs/{id}/events`` (see ``events.py``).
 
 ``create_app_from_env`` builds the production app from :class:`HostSettings`.
 """
@@ -18,9 +19,11 @@ from typing import Any, Callable, Dict, Optional, Sequence
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import StreamingResponse
 
+from .events import EventStreamSettings, job_events
 from .job_queue import JobQueue
-from .models import DONE, ERROR, QUEUED, CreateJobRequest, Job
+from .models import DONE, ERROR, QUEUED, RUNNING, CreateJobRequest, Job
 from .settings import HostSettings, accept_all_tokens
 from .tool_analysis import ToolAnalysis
 from .worker import Analysis
@@ -34,6 +37,7 @@ def create_app(
     analysis: Analysis,
     turnstile_check: TurnstileCheck,
     allowed_origins: Sequence[str] = (),
+    event_stream: EventStreamSettings = EventStreamSettings(),
 ) -> FastAPI:
     """Build the Host API over ``queue``."""
     app = FastAPI(title="dependency-metrics Host")
@@ -61,6 +65,17 @@ def create_app(
             raise HTTPException(status_code=404, detail="Job not found")
         return job_view(queue, job)
 
+    @app.get("/api/jobs/{job_id}/events")
+    def job_event_stream(job_id: str) -> StreamingResponse:
+        if queue.get(job_id) is None:
+            raise HTTPException(status_code=404, detail="Job not found")
+        return StreamingResponse(
+            job_events(queue, job_id, job_view, event_stream),
+            media_type="text/event-stream",
+            # Proxies (Caddy) must pass each event on at once and not cache the stream.
+            headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+        )
+
     return app
 
 
@@ -68,7 +83,10 @@ def job_view(queue: JobQueue, job: Job) -> Dict[str, Any]:
     """Return the body of ``GET /api/jobs/{id}`` for ``job``."""
     view: Dict[str, Any] = {"job_id": job.job_id, "state": job.state}
     if job.state == QUEUED:
-        view["position"] = queue.position(job.job_id)
+        view["position"] = job.position
+    elif job.state == RUNNING:
+        view["package_index"] = job.package_index
+        view["package_count"] = job.package_count
     view["comparison"] = job.comparison.model_dump(mode="json")
     if job.state == DONE:
         view["results"] = job.results
