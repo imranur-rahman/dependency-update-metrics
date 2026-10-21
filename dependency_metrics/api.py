@@ -50,12 +50,17 @@ class WindowSummary:
 
 @dataclass(frozen=True)
 class ReleaseResult:
-    """MTTU and MTTR at one release, over the window from the start date to the release."""
+    """MTTU and MTTR at one release, over the window from the start date to the release.
+
+    ``status`` is ``"ok"``, ``"no_deps"``, or ``"error"``. On an error, ``mttu`` and
+    ``mttr`` are ``None`` and ``error`` holds the message; the other releases keep
+    their values.
+    """
 
     package_version: str
     package_release_date: str
-    mttu: float
-    mttr: float
+    mttu: Optional[float]
+    mttr: Optional[float]
     num_dependencies: int
     status: str
     error: str = ""
@@ -211,9 +216,13 @@ def _release_result(summary: Dict[str, Any]) -> ReleaseResult:
     return ReleaseResult(
         package_version=str(summary.get("package_version", "")),
         package_release_date=str(summary.get("package_release_date", "")),
-        mttu=float(summary.get("mttu", 0.0)),
-        mttr=float(summary.get("mttr", summary.get("mttr_all_severities", 0.0))),
+        mttu=_days(summary.get("mttu", 0.0)),
+        mttr=_days(summary.get("mttr", summary.get("mttr_all_severities", 0.0))),
         num_dependencies=int(summary.get("num_dependencies", 0)),
         status=str(summary.get("status", "")),
         error=str(summary.get("error", "")),
     )
+
+
+def _days(value: Any) -> Optional[float]:
+    return None if value is None else float(value)

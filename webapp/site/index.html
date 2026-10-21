@@ -298,6 +298,19 @@
         <div class="columns">
           <div class="column">
             <div class="field">
+              <label class="label" for="mode">Mode</label>
+              <div class="control">
+                <div class="select is-fullwidth">
+                  <select id="mode" name="mode">
+                    <option value="window_summary" selected>Window summary (one value for each package)</option>
+                    <option value="per_release">Per-release (one value for each release)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
               <label class="label" for="weighting-type">Weighting</label>
               <div class="control">
                 <div class="select is-fullwidth">
@@ -333,6 +346,17 @@
       <figure class="mt-4" id="result-chart-figure" hidden>
         <div style="position: relative; height: 320px;">
           <canvas id="result-chart" role="img" aria-label="Bar chart of MTTU and MTTR for each package. The table below holds the same values."></canvas>
+        </div>
+      </figure>
+      <!-- Per-release: two line charts, because MTTU values are often much larger than MTTR values. -->
+      <figure class="mt-4" id="release-charts-figure" hidden>
+        <p class="has-text-weight-semibold">MTTU at each release</p>
+        <div style="position: relative; height: 280px;">
+          <canvas id="release-chart-mttu" role="img" aria-label="Line chart of MTTU at each release date, one line for each package. A gap is a release that failed. The table below holds the same values."></canvas>
+        </div>
+        <p class="has-text-weight-semibold mt-4">MTTR at each release</p>
+        <div style="position: relative; height: 280px;">
+          <canvas id="release-chart-mttr" role="img" aria-label="Line chart of MTTR at each release date, one line for each package. A gap is a release that failed. The table below holds the same values."></canvas>
         </div>
       </figure>
       <div class="table-container mt-4">

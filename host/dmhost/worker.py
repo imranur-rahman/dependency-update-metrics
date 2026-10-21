@@ -71,17 +71,39 @@ def user_facing_result(result: Dict[str, Any], job: Job) -> Dict[str, Any]:
     The Tool reports a failure that it caught as ``error`` text (``AnalysisResult``). The
     text can hold internal details, so the Host logs it under the job ID and the page gets
     :func:`errors.something_went_wrong`. A failure with its own message raises in the
-    analysis function (see :mod:`dmhost.errors`).
+    analysis function (see :mod:`dmhost.errors`). The same holds for the error of each
+    Per-release row (a release that failed), so the other releases keep their values.
     """
+    message = errors.something_went_wrong(job.job_id)
+    package = result.get("package")
+    releases = result.get("releases") or []
+    if any(release.get("error") for release in releases):
+        releases = [_user_facing_release(release, package, job, message) for release in releases]
+        result = {**result, "releases": releases}
     detail = result.get("error") or ""
     if not detail:
         return result
-    logger.error("Job %s: package %s failed: %s", job.job_id, result.get("package"), detail)
-    message = errors.something_went_wrong(job.job_id)
+    logger.error("Job %s: package %s failed: %s", job.job_id, package, detail)
     summary = result.get("summary")
     if summary is not None:
         summary = {**summary, "error": message}
     return {**result, "error": message, "summary": summary}
+
+
+def _user_facing_release(
+    release: Dict[str, Any], package: Any, job: Job, message: str
+) -> Dict[str, Any]:
+    detail = release.get("error") or ""
+    if not detail:
+        return release
+    logger.error(
+        "Job %s: package %s release %s failed: %s",
+        job.job_id,
+        package,
+        release.get("package_version"),
+        detail,
+    )
+    return {**release, "error": message}
 
 
 def failed_result(comparison: Comparison, package: str, message: str) -> Dict[str, Any]:
