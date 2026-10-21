@@ -242,7 +242,7 @@
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">Try It</h2>
       <p class="has-text-centered mb-5">
-        Compute MTTU and MTTR for one package with deps.dev data.
+        Compare MTTU and MTTR of up to 5 packages from one ecosystem, with deps.dev data.
       </p>
       <form id="comparison-form">
         <div class="columns">
@@ -262,10 +262,17 @@
           </div>
           <div class="column">
             <div class="field">
-              <label class="label" for="package">Package</label>
-              <div class="control">
-                <input class="input" id="package" name="package" type="text" placeholder="express" required>
+              <label class="label" for="package-1">Packages (1 to 5)</label>
+              <!-- webapp.js adds and removes the package fields. -->
+              <div id="package-fields">
+                <div class="field has-addons package-field">
+                  <div class="control is-expanded">
+                    <input class="input" id="package-1" name="packages" type="text" placeholder="express" aria-label="Package 1">
+                  </div>
+                </div>
               </div>
+              <button class="button is-small is-light" id="add-package" type="button">Add package</button>
+              <p class="help is-danger" id="package-error" hidden></p>
             </div>
           </div>
         </div>
@@ -287,6 +294,32 @@
             </div>
           </div>
         </div>
+        <div class="columns">
+          <div class="column">
+            <div class="field">
+              <label class="label" for="weighting-type">Weighting</label>
+              <div class="control">
+                <div class="select is-fullwidth">
+                  <select id="weighting-type" name="weightingType">
+                    <option value="disable" selected>disable (sum of days)</option>
+                    <option value="linear">linear</option>
+                    <option value="exponential">exponential</option>
+                    <option value="inverse">inverse</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column is-hidden" id="half-life-field">
+            <div class="field">
+              <label class="label" for="half-life">Half-life (days)</label>
+              <div class="control">
+                <input class="input" id="half-life" name="halfLife" type="number" min="1" max="3650" step="any" value="180">
+              </div>
+              <p class="help is-danger" id="half-life-error" hidden></p>
+            </div>
+          </div>
+        </div>
         <div class="field">
           <div class="control">
             <button class="button is-dark" id="submit-comparison" type="submit">Compute</button>
@@ -295,22 +328,23 @@
       </form>
       <p id="job-status" class="mt-4" role="status" aria-live="polite"></p>
       <progress id="job-progress" class="progress is-small is-dark mt-2" aria-label="Job progress" hidden></progress>
+      <p id="results-note" class="is-size-7 mt-2" hidden></p>
+      <figure class="mt-4" id="result-chart-figure" hidden>
+        <div style="position: relative; height: 320px;">
+          <canvas id="result-chart" role="img" aria-label="Bar chart of MTTU and MTTR for each package. The table below holds the same values."></canvas>
+        </div>
+      </figure>
       <div class="table-container mt-4">
+        <!-- webapp.js builds the header from TABLE_COLUMNS in comparison.js, the same columns as the CSV. -->
         <table class="table is-fullwidth is-striped" id="result-table" hidden>
-          <thead>
-            <tr>
-              <th>Package</th>
-              <th>MTTU (days)</th>
-              <th>MTTR (days)</th>
-              <th>Dependencies</th>
-              <th>Error</th>
-            </tr>
-          </thead>
+          <thead></thead>
           <tbody></tbody>
         </table>
       </div>
+      <button class="button is-small is-light" id="download-csv" type="button" hidden>Download CSV</button>
     </div>
   </section>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" integrity="sha512-CQBWl4fJHWbryGE+Pc7UAxWMUMNMWzWxF4SQo9CgkJIN1kx6djDQZjh3Y8SZ1d+6I+1zze6Z7kHXO7q3UyZAWw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script type="module" src="static/js/webapp.js"></script>
 
   <!-- Design goals -->

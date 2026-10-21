@@ -80,3 +80,27 @@ def test_submitted_comparison_gets_the_tool_result_from_depsdev_data(tmp_path):
 
     assert body == with_job_id(load_example("job_done_window_summary"), job_id)
     assert body["results"][0]["data_source"] == "depsdev"
+
+
+def test_the_tool_gets_the_weighting_type_and_the_half_life_of_the_comparison(tmp_path):
+    queue = JobQueue(tmp_path / "jobs.db")
+    analysis = ToolAnalysis(
+        output_dir=tmp_path,
+        depsdev_client=depsdev_client_stub(),
+        osv_df=pd.DataFrame([VULN_A]),
+    )
+    client = TestClient(
+        create_app(queue=queue, analysis=analysis, turnstile_check=lambda token, ip: True)
+    )
+    request = load_example("create_job_request")
+    request.update(weighting_type="exponential", half_life=180)
+
+    job_id = client.post("/api/jobs", json=request).json()["job_id"]
+    Worker(queue, analysis).run_once()
+    result = client.get(f"/api/jobs/{job_id}").json()["results"][0]
+
+    assert result["weighting_type"] == "exponential"
+    assert result["half_life"] == 180
+    assert result["summary"]["status"] == "ok"
+    # A weighted mean of days is not the sum of 579 days that "disable" gives.
+    assert result["summary"]["mttu"] != 579.0
