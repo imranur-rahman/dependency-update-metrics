@@ -26,6 +26,7 @@ from concurrent.futures import (
 from concurrent.futures.process import BrokenProcessPool
 
 from .analyzer import DependencyAnalyzer, build_osv_index
+from .api import DEPSDEV, NATIVE, PER_RELEASE, WINDOW_SUMMARY, analyze
 from .osv_builder import OSVBuilder
 from .resolvers import ResolverCache
 from .depsdev_client import DepsDevClient
@@ -1950,37 +1951,23 @@ def main():
         logging.getLogger("dependency_metrics").info(
             "Analyzing %s package: %s", args.ecosystem, args.package
         )
-        _single_resolver = None
-        if args.depsdev:
-            _single_cache = ResolverCache(cache_dir=output_dir / "cache")
-            _single_client = DepsDevClient(cache=_single_cache)
-            _single_resolver = DepsDevResolver(
-                system={"npm": "NPM", "pypi": "PYPI", "cargo": "CARGO"}.get(
-                    args.ecosystem, args.ecosystem.upper()
-                ),
+        try:
+            _logger = logging.getLogger("dependency_metrics")
+            analysis = analyze(
+                ecosystem=args.ecosystem,
                 package=args.package,
                 start_date=start_date,
                 end_date=end_date,
-                client=_single_client,
+                mode=PER_RELEASE if args.per_release else WINDOW_SUMMARY,
+                weighting_type=args.weighting_type,
+                half_life=args.half_life,
+                data_source=DEPSDEV if args.depsdev else NATIVE,
+                output_dir=output_dir,
+                dependency_frames=args.get_worksheets,
+                raise_errors=True,
             )
-        analyzer = DependencyAnalyzer(
-            ecosystem=args.ecosystem,
-            package=args.package,
-            start_date=start_date,
-            end_date=end_date,
-            weighting_type=args.weighting_type,
-            half_life=args.half_life,
-            output_dir=output_dir,
-            resolver=_single_resolver,
-        )
-
-        try:
-            _logger = logging.getLogger("dependency_metrics")
             if args.per_release:
-                row = {"start_date": start_date, "end_date": end_date}
-                release_results = analyzer.analyze_at_release_points(
-                    row, generate_dep_frames=args.get_worksheets
-                )
+                release_results = analysis.details
                 if not release_results:
                     _logger.info("No releases found in window for %s", args.package)
                 else:
@@ -2020,7 +2007,7 @@ def main():
                         if excel_file is not None:
                             _logger.info("Per-release worksheets saved to: %s", excel_file)
             else:
-                results = analyzer.analyze()
+                results = analysis.details
 
                 # Output results
                 print_summary(
