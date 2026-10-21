@@ -13,7 +13,7 @@ import time
 import uuid
 from contextlib import contextmanager
 from pathlib import Path
-from typing import Any, Dict, Iterator, List, Optional
+from typing import Any, Callable, Dict, Iterator, List, Optional
 
 from .models import CANCELLED, DONE, ERROR, QUEUED, RUNNING, Comparison, Job
 
@@ -30,22 +30,38 @@ CREATE TABLE IF NOT EXISTS jobs (
     started_at REAL,
     finished_at REAL,
     package_index INTEGER NOT NULL DEFAULT 0,
-    package_count INTEGER NOT NULL DEFAULT 0
+    package_count INTEGER NOT NULL DEFAULT 0,
+    reuse_key TEXT
 )
 """
+
+# ``_set_up`` creates the indexes after it adds the missing columns.
+_INDEXES = (
+    "CREATE INDEX IF NOT EXISTS jobs_reuse_key ON jobs (reuse_key, finished_at)",
+    "CREATE INDEX IF NOT EXISTS jobs_created_at ON jobs (created_at)",
+)
 
 # Columns that later tickets added. ``_set_up`` adds each one that an existing file lacks.
 _ADDED_COLUMNS = {
     "package_index": "INTEGER NOT NULL DEFAULT 0",
     "package_count": "INTEGER NOT NULL DEFAULT 0",
+    "reuse_key": "TEXT",
 }
+
+# A clock gives the current time in seconds since the epoch, as ``time.time`` does.
+Clock = Callable[[], float]
 
 
 class JobQueue:
-    """The SQLite table that holds the Jobs, in submit order."""
+    """The SQLite table that holds the Jobs, in submit order.
 
-    def __init__(self, db_path: Path | str) -> None:
+    ``clock`` gives the time that the queue stores and compares (``time.time`` by
+    default). Tests give a clock that they can move.
+    """
+
+    def __init__(self, db_path: Path | str, clock: Clock = time.time) -> None:
         self.db_path = Path(db_path)
+        self.clock = clock
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
         self._set_up()
 
@@ -60,6 +76,8 @@ class JobQueue:
                     conn.execute("PRAGMA journal_mode=WAL")
                     conn.execute(_SCHEMA)
                     _add_missing_columns(conn)
+                    for index in _INDEXES:
+                        conn.execute(index)
                 return
             except sqlite3.OperationalError as exc:
                 if "locked" not in str(exc) or time.monotonic() > deadline:
@@ -75,15 +93,39 @@ class JobQueue:
         finally:
             conn.close()
 
-    def add(self, comparison: Comparison) -> str:
-        """Put a new Job at the end of the queue and return its job ID."""
+    def add(self, comparison: Comparison, reuse_key: Optional[str] = None) -> str:
+        """Put a new Job at the end of the queue and return its job ID.
+
+        ``reuse_key`` (see ``reuse.py``) lets a later Comparison find the result of this Job.
+        """
         job_id = uuid.uuid4().hex
         with self._connect() as conn:
             conn.execute(
-                "INSERT INTO jobs (job_id, state, comparison, created_at) VALUES (?, ?, ?, ?)",
-                (job_id, QUEUED, comparison.model_dump_json(), time.time()),
+                "INSERT INTO jobs (job_id, state, comparison, created_at, reuse_key) "
+                "VALUES (?, ?, ?, ?, ?)",
+                (job_id, QUEUED, comparison.model_dump_json(), self.clock(), reuse_key),
             )
         return job_id
+
+    def latest_done_job(self, reuse_key: str, max_age_seconds: float) -> Optional[Job]:
+        """Return the newest done Job with ``reuse_key`` that finished at most
+        ``max_age_seconds`` ago, or ``None``."""
+        with self._connect() as conn:
+            row = conn.execute(
+                "SELECT * FROM jobs WHERE reuse_key = ? AND state = ? AND finished_at >= ? "
+                "ORDER BY finished_at DESC LIMIT 1",
+                (reuse_key, DONE, self.clock() - max_age_seconds),
+            ).fetchone()
+        return None if row is None else _job(row)
+
+    def delete_jobs_older_than(self, max_age_seconds: float) -> int:
+        """Delete the Jobs that were submitted more than ``max_age_seconds`` ago, and
+        return how many the queue deleted."""
+        with self._connect() as conn:
+            cursor = conn.execute(
+                "DELETE FROM jobs WHERE created_at < ?", (self.clock() - max_age_seconds,)
+            )
+            return cursor.rowcount
 
     def get(self, job_id: str) -> Optional[Job]:
         """Return the Job, or ``None`` if the queue has no Job with this ID.
@@ -119,7 +161,7 @@ class JobQueue:
             conn.execute(
                 "UPDATE jobs SET state = ?, started_at = ?, package_index = 1, package_count = ? "
                 "WHERE job_id = ?",
-                (RUNNING, time.time(), count, row["job_id"]),
+                (RUNNING, self.clock(), count, row["job_id"]),
             )
             conn.execute("COMMIT")
         return _job(row).model_copy(
@@ -163,7 +205,7 @@ class JobQueue:
         with self._connect() as conn:
             conn.execute(
                 "UPDATE jobs SET state = ?, finished_at = ? WHERE job_id = ? AND state IN (?, ?)",
-                (CANCELLED, time.time(), job_id, QUEUED, RUNNING),
+                (CANCELLED, self.clock(), job_id, QUEUED, RUNNING),
             )
         return self.get(job_id)
 
@@ -174,7 +216,7 @@ class JobQueue:
             cursor = conn.execute(
                 "UPDATE jobs SET state = ?, results = ?, message = ?, finished_at = ? "
                 "WHERE job_id = ? AND state = ?",
-                (state, results, message, time.time(), job_id, RUNNING),
+                (state, results, message, self.clock(), job_id, RUNNING),
             )
             return cursor.rowcount == 1
 
