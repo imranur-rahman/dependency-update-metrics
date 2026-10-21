@@ -12,6 +12,7 @@ from typing import Mapping, Optional, Tuple
 
 from .client_ip import Network, parse_networks
 from .limits import SubmitLimits
+from .worker import JobLimits
 
 
 @dataclass(frozen=True)
@@ -19,6 +20,10 @@ class HostSettings:
     db_path: Path
     output_dir: Path
     allowed_origins: Tuple[str, ...]
+    # The number of worker threads; each runs one Job at a time (spec #1: 6).
+    workers: int = 6
+    # The timeout and the RSS limit of each Job (spec #1: 15 minutes and 2 GB).
+    job_limits: JobLimits = JobLimits()
     limits: SubmitLimits = SubmitLimits()
     # The secret key of the Turnstile widget. It is only on the instance, never in the repo.
     turnstile_secret: str = ""
@@ -48,6 +53,11 @@ class HostSettings:
             turnstile_secret=env.get("DM_HOST_TURNSTILE_SECRET", ""),
             ip_hash_key=hash_key.encode("utf-8") if hash_key else None,
             trusted_proxies=tuple(parse_networks(_split(env.get("DM_HOST_TRUSTED_PROXIES", "")))),
+            workers=int(env.get("DM_HOST_WORKERS", "6")),
+            job_limits=JobLimits(
+                timeout_seconds=float(env.get("DM_HOST_JOB_TIMEOUT_SECONDS", "900")),
+                max_rss_mb=int(env.get("DM_HOST_WORKER_MEMORY_MB", "2048")),
+            ),
         )
 
 

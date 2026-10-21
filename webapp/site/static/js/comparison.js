@@ -98,6 +98,11 @@ export function canAddPackage(packages) {
   return packages.length < MAX_PACKAGES;
 }
 
+// The modes of a Comparison (GLOSSARY.md). The Host checks the same names (Mode).
+export const MODES = ["window_summary", "per_release"];
+const WINDOW_SUMMARY = "window_summary";
+const PER_RELEASE = "per_release";
+
 // The weighting types of the Tool (--weighting-type). "disable" is the default.
 export const WEIGHTING_TYPES = ["disable", "linear", "exponential", "inverse"];
 const NO_WEIGHTING = "disable";
@@ -107,9 +112,9 @@ const MIN_HALF_LIFE_DAYS = 1;
 const MAX_HALF_LIFE_DAYS = 3650;
 
 // Return the body of POST /api/jobs for the form state and the Turnstile token.
-// form: { ecosystem, packages, startDate, endDate, weightingType, halfLife } with dates as
-// "YYYY-MM-DD" and halfLife as the text of the field. Without weightingType, the body has
-// no weighting. The body has a half-life only for exponential weighting.
+// form: { ecosystem, packages, startDate, endDate, mode, weightingType, halfLife } with
+// dates as "YYYY-MM-DD" and halfLife as the text of the field. Without mode, the body asks
+// for a Window summary. Without weightingType, the body has no weighting. The body has a half-life only for exponential weighting.
 export function requestFromForm(form, turnstileToken) {
   const weightingType = form.weightingType || NO_WEIGHTING;
   return {
@@ -117,7 +122,7 @@ export function requestFromForm(form, turnstileToken) {
     packages: cleanPackages(form.packages),
     start_date: form.startDate,
     end_date: form.endDate,
-    mode: "window_summary",
+    mode: form.mode || WINDOW_SUMMARY,
     weighting_type: weightingType,
     half_life: needsHalfLife(weightingType) ? Number(form.halfLife) : null,
     turnstile_token: turnstileToken,
@@ -201,6 +206,17 @@ export function isFinished(job) {
 
 const FINAL_STATES = ["done", "error", "cancelled"];
 
+// Return true while the user can cancel the Job: it waits or runs.
+export function canCancel(job) {
+  return job.state === "queued" || job.state === "running";
+}
+
+// Return the request that cancels a Job (DELETE /api/jobs/{id}). The event stream of the
+// Job then sends "cancelled".
+export function cancelRequest(hostUrl, jobId) {
+  return { url: `${hostUrl}/api/jobs/${encodeURIComponent(jobId)}`, method: "DELETE" };
+}
+
 // The names of the server-sent events of GET /api/jobs/{id}/events: one for each Job state.
 // Each event holds the same body as GET /api/jobs/{id}.
 export const JOB_EVENTS = ["queued", "running", ...FINAL_STATES];
@@ -229,8 +245,10 @@ export function urlWithJobId(href, jobId) {
   return url.toString();
 }
 
-// Return one table row for each package of a done Window summary Job.
+// Return the table rows of a done Job: one row for each package (Window summary), or one
+// row for each release of each package (Per-release).
 export function resultRows(job) {
+  if (job.comparison.mode === PER_RELEASE) return perReleaseRows(job);
   return job.results.map((result) => {
     const summary = result.summary ?? {};
     return {
@@ -241,6 +259,59 @@ export function resultRows(job) {
       error: result.error || summary.error || "",
     };
   });
+}
+
+// Return one row for each release of each package of a done Per-release Job. A package
+// that failed has no releases, so it gets one row with its error and no values.
+function perReleaseRows(job) {
+  return job.results.flatMap((result) => {
+    if (result.releases.length === 0) {
+      return [
+        {
+          package: result.package,
+          version: NO_VALUE,
+          releaseDate: NO_VALUE,
+          mttu: NO_VALUE,
+          mttr: NO_VALUE,
+          dependencies: 0,
+          error: result.error,
+        },
+      ];
+    }
+    return result.releases.map((release) => ({
+      package: result.package,
+      version: release.package_version,
+      releaseDate: release.package_release_date,
+      mttu: formatDays(release.mttu),
+      mttr: formatDays(release.mttr),
+      dependencies: release.num_dependencies,
+      error: release.error,
+    }));
+  });
+}
+
+// Return the Chart.js data of one line chart of a done Per-release Job. metric is "mttu"
+// or "mttr"; the page shows each in its own chart, because MTTU values are often much
+// larger than MTTR values. Each package has one line. A point has x = the release date
+// (milliseconds, UTC) for a linear x-axis, y = the days, and the release version.
+// A release with a status that is not "ok" has y = null, so that the line has a gap there
+// and does not show a value of 0. The page code adds the colors.
+export function lineChartData(job, metric) {
+  return {
+    datasets: job.results.map((result) => ({
+      label: result.package,
+      data: result.releases.map((release) => ({
+        x: Date.parse(`${release.package_release_date}T00:00:00Z`),
+        y: release.status === "ok" && typeof release[metric] === "number" ? release[metric] : null,
+        version: release.package_version,
+      })),
+    })),
+  };
+}
+
+// Return the y-axis label of the line charts of a done Job (see axisLabel).
+export function lineChartAxisLabel(job) {
+  return axisLabel(job.comparison.weighting_type);
 }
 
 // Return the Chart.js data of the grouped bar chart of a done Window summary Job: one
@@ -277,15 +348,29 @@ export const TABLE_COLUMNS = [
   ["error", "Error"],
 ];
 
-// Return the CSV text of the table rows (resultRows). A cell that shows a dash in the
-// table (no value) is empty in the CSV, so that spreadsheet tools read it as missing.
-export function rowsToCsv(rows) {
+// The columns of the Per-release table and CSV: TABLE_COLUMNS with the release columns.
+export const PER_RELEASE_COLUMNS = [
+  TABLE_COLUMNS[0],
+  ["version", "Version"],
+  ["releaseDate", "Release date"],
+  ...TABLE_COLUMNS.slice(1),
+];
+
+// Return the columns of the table and the CSV for the mode of a Comparison.
+export function tableColumns(mode) {
+  return mode === PER_RELEASE ? PER_RELEASE_COLUMNS : TABLE_COLUMNS;
+}
+
+// Return the CSV text of the table rows (resultRows), with the given columns
+// (tableColumns). A cell that shows a dash in the table (no value) is empty in the CSV,
+// so that spreadsheet tools read it as missing.
+export function rowsToCsv(rows, columns = TABLE_COLUMNS) {
   const cell = (value) => {
     const text = value === NO_VALUE ? "" : String(value);
     return /[",\r\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
   };
-  const lines = [TABLE_COLUMNS.map(([, header]) => cell(header))];
-  for (const row of rows) lines.push(TABLE_COLUMNS.map(([key]) => cell(row[key])));
+  const lines = [columns.map(([, header]) => cell(header))];
+  for (const row of rows) lines.push(columns.map(([key]) => cell(row[key])));
   return lines.map((line) => `${line.join(",")}\r\n`).join("");
 }
 

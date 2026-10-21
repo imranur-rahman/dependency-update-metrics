@@ -3,7 +3,17 @@
 from .app import create_app
 from .events import EventStreamSettings
 from .job_queue import JobQueue
+from .reuse import ReusePolicy
 from .tool_analysis import ToolAnalysis
-from .worker import Worker
+from .worker import JobLimits, Worker, WorkerPool
 
-__all__ = ["EventStreamSettings", "JobQueue", "ToolAnalysis", "Worker", "create_app"]
+__all__ = [
+    "EventStreamSettings",
+    "JobLimits",
+    "JobQueue",
+    "ReusePolicy",
+    "ToolAnalysis",
+    "Worker",
+    "WorkerPool",
+    "create_app",
+]

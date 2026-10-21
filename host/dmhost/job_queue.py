@@ -13,10 +13,10 @@ import time
 import uuid
 from contextlib import contextmanager
 from pathlib import Path
-from typing import Any, Dict, Iterator, List, Optional
+from typing import Any, Callable, Dict, Iterator, List, Optional
 
 from .limits import QueueFull, RateLimited, SubmitLimits
-from .models import DONE, ERROR, QUEUED, RUNNING, Comparison, Job
+from .models import CANCELLED, DONE, ERROR, QUEUED, RUNNING, Comparison, Job
 
 _BUSY_TIMEOUT_S = 10.0
 
@@ -31,10 +31,12 @@ CREATE TABLE IF NOT EXISTS jobs (
     started_at REAL,
     finished_at REAL,
     package_index INTEGER NOT NULL DEFAULT 0,
-    package_count INTEGER NOT NULL DEFAULT 0
+    package_count INTEGER NOT NULL DEFAULT 0,
+    reuse_key TEXT
 )
 """
 
+# ``_set_up`` creates the indexes after it adds the missing columns.
 # The IP hash of each Job that came through ``admit`` (ticket #10). A row lives only for the
 # rate-limit window, or until its Job ends if the Job is still active at the end of the window.
 _SUBMITTERS_SCHEMA = """
@@ -45,18 +47,32 @@ CREATE TABLE IF NOT EXISTS submitters (
 )
 """
 
+_INDEXES = (
+    "CREATE INDEX IF NOT EXISTS jobs_reuse_key ON jobs (reuse_key, finished_at)",
+    "CREATE INDEX IF NOT EXISTS jobs_created_at ON jobs (created_at)",
+)
+
 # Columns that later tickets added. ``_set_up`` adds each one that an existing file lacks.
 _ADDED_COLUMNS = {
     "package_index": "INTEGER NOT NULL DEFAULT 0",
     "package_count": "INTEGER NOT NULL DEFAULT 0",
+    "reuse_key": "TEXT",
 }
+
+# A clock gives the current time in seconds since the epoch, as ``time.time`` does.
+Clock = Callable[[], float]
 
 
 class JobQueue:
-    """The SQLite table that holds the Jobs, in submit order."""
+    """The SQLite table that holds the Jobs, in submit order.
 
-    def __init__(self, db_path: Path | str) -> None:
+    ``clock`` gives the time that the queue stores and compares (``time.time`` by
+    default). Tests give a clock that they can move.
+    """
+
+    def __init__(self, db_path: Path | str, clock: Clock = time.time) -> None:
         self.db_path = Path(db_path)
+        self.clock = clock
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
         self._set_up()
 
@@ -72,6 +88,8 @@ class JobQueue:
                     conn.execute(_SCHEMA)
                     conn.execute(_SUBMITTERS_SCHEMA)
                     _add_missing_columns(conn)
+                    for index in _INDEXES:
+                        conn.execute(index)
                 return
             except sqlite3.OperationalError as exc:
                 if "locked" not in str(exc) or time.monotonic() > deadline:
@@ -90,17 +108,20 @@ class JobQueue:
         finally:
             conn.close()
 
-    def add(self, comparison: Comparison) -> str:
-        """Put a new Job at the end of the queue and return its job ID."""
+    def add(self, comparison: Comparison, reuse_key: Optional[str] = None) -> str:
+        """Put a new Job at the end of the queue and return its job ID.
+
+        ``reuse_key`` (see ``reuse.py``) lets a later Comparison find the result of this Job.
+        """
         with self._connect() as conn:
-            return _insert_job(conn, comparison, time.time())
+            return _insert_job(conn, comparison, self.clock(), reuse_key)
 
     def admit(
         self,
         comparison: Comparison,
         ip_hash: str,
         limits: SubmitLimits,
-        now: Optional[float] = None,
+        reuse_key: Optional[str] = None,
     ) -> str:
         """Add a new Job for the user with the IP hash ``ip_hash`` if the limits allow it.
 
@@ -110,16 +131,15 @@ class JobQueue:
         the Job, so two submits at the same time cannot both pass the last free place.
 
         Only Jobs that come through this method count against the limits. A submit that
-        reuses a stored result (ticket #14) must not call it.
+        reuses a stored result does not call it.
         """
-        now = time.time() if now is None else now
-        cutoff = now - limits.window_seconds
+        now = self.clock()
         with self._connect() as conn:
             conn.execute("BEGIN IMMEDIATE")
             try:
-                _forget_submitters(conn, cutoff)
+                _forget_submitters(conn, now - limits.window_seconds)
                 _check_limits(conn, ip_hash, limits, now)
-                job_id = _insert_job(conn, comparison, now)
+                job_id = _insert_job(conn, comparison, now, reuse_key)
                 conn.execute(
                     "INSERT INTO submitters (job_id, ip_hash, submitted_at) VALUES (?, ?, ?)",
                     (job_id, ip_hash, now),
@@ -130,20 +150,39 @@ class JobQueue:
             conn.execute("COMMIT")
         return job_id
 
-    def forget_old_submitters(self, window_seconds: float, now: Optional[float] = None) -> int:
+    def forget_old_submitters(self, window_seconds: float) -> int:
         """Remove the IP hashes that are older than the window, and return how many.
 
         A hash of a Job that is still active stays until the Job ends, because the limit on
         active Jobs needs it. ``admit`` also calls this, and the API calls it on a timer, so
         that the hashes go away when no new submit comes.
         """
-        now = time.time() if now is None else now
         with self._connect() as conn:
-            removed = _forget_submitters(conn, now - window_seconds)
+            removed = _forget_submitters(conn, self.clock() - window_seconds)
             if removed:
                 # Removed rows can stay in old frames of the WAL file until a checkpoint.
                 conn.execute("PRAGMA wal_checkpoint(TRUNCATE)")
         return removed
+
+    def latest_done_job(self, reuse_key: str, max_age_seconds: float) -> Optional[Job]:
+        """Return the newest done Job with ``reuse_key`` that finished at most
+        ``max_age_seconds`` ago, or ``None``."""
+        with self._connect() as conn:
+            row = conn.execute(
+                "SELECT * FROM jobs WHERE reuse_key = ? AND state = ? AND finished_at >= ? "
+                "ORDER BY finished_at DESC LIMIT 1",
+                (reuse_key, DONE, self.clock() - max_age_seconds),
+            ).fetchone()
+        return None if row is None else _job(row)
+
+    def delete_jobs_older_than(self, max_age_seconds: float) -> int:
+        """Delete the Jobs that were submitted more than ``max_age_seconds`` ago, and
+        return how many the queue deleted."""
+        with self._connect() as conn:
+            cursor = conn.execute(
+                "DELETE FROM jobs WHERE created_at < ?", (self.clock() - max_age_seconds,)
+            )
+            return cursor.rowcount
 
     def get(self, job_id: str) -> Optional[Job]:
         """Return the Job, or ``None`` if the queue has no Job with this ID.
@@ -179,7 +218,7 @@ class JobQueue:
             conn.execute(
                 "UPDATE jobs SET state = ?, started_at = ?, package_index = 1, package_count = ? "
                 "WHERE job_id = ?",
-                (RUNNING, time.time(), count, row["job_id"]),
+                (RUNNING, self.clock(), count, row["job_id"]),
             )
             conn.execute("COMMIT")
         return _job(row).model_copy(
@@ -195,21 +234,48 @@ class JobQueue:
                 (package_index, package_count, job_id),
             )
 
-    def finish(self, job_id: str, results: List[Dict[str, Any]]) -> None:
-        """Store the results of a Job and mark it as done."""
-        self._end(job_id, DONE, results=json.dumps(results))
+    def finish(self, job_id: str, results: List[Dict[str, Any]]) -> bool:
+        """Store the results of a running Job and mark it as done.
 
-    def fail(self, job_id: str, message: str) -> None:
-        """Store the user message of a Job that failed and mark it as an error."""
-        self._end(job_id, ERROR, message=message)
+        Return ``False`` (and change nothing) if the Job no longer runs."""
+        return self._end(job_id, DONE, results=json.dumps(results))
 
-    def _end(self, job_id: str, state: str, results: str = "[]", message: str = "") -> None:
+    def fail(self, job_id: str, message: str) -> bool:
+        """Store the user message of a running Job that failed and mark it as an error.
+
+        Return ``False`` (and change nothing) if the Job no longer runs."""
+        return self._end(job_id, ERROR, message=message)
+
+    def state(self, job_id: str) -> Optional[str]:
+        """Return the state of the Job, or ``None`` if the queue has no Job with this ID."""
+        with self._connect() as conn:
+            row = conn.execute("SELECT state FROM jobs WHERE job_id = ?", (job_id,)).fetchone()
+        return None if row is None else str(row["state"])
+
+    def cancel(self, job_id: str) -> Optional[Job]:
+        """Cancel a Job that waits or runs, and return the Job after the change.
+
+        A waiting Job leaves the queue at once. A running Job gets the state ``cancelled``,
+        and its worker stops the analysis when it sees the state. A Job in a final state
+        does not change. Return ``None`` if the queue has no Job with this ID.
+        """
         with self._connect() as conn:
             conn.execute(
-                "UPDATE jobs SET state = ?, results = ?, message = ?, finished_at = ? "
-                "WHERE job_id = ?",
-                (state, results, message, time.time(), job_id),
+                "UPDATE jobs SET state = ?, finished_at = ? WHERE job_id = ? AND state IN (?, ?)",
+                (CANCELLED, self.clock(), job_id, QUEUED, RUNNING),
             )
+        return self.get(job_id)
+
+    def _end(self, job_id: str, state: str, results: str = "[]", message: str = "") -> bool:
+        # Only a running Job can end. A Job that the user cancelled, or that the worker
+        # already stopped (for example on the timeout), keeps its state.
+        with self._connect() as conn:
+            cursor = conn.execute(
+                "UPDATE jobs SET state = ?, results = ?, message = ?, finished_at = ? "
+                "WHERE job_id = ? AND state = ?",
+                (state, results, message, self.clock(), job_id, RUNNING),
+            )
+            return cursor.rowcount == 1
 
     def position(self, job_id: str) -> int:
         """Return the 1-based place of a waiting Job in the queue."""
@@ -226,11 +292,14 @@ def _position(conn: sqlite3.Connection, job_id: str) -> int:
     return int(row[0])
 
 
-def _insert_job(conn: sqlite3.Connection, comparison: Comparison, now: float) -> str:
+def _insert_job(
+    conn: sqlite3.Connection, comparison: Comparison, now: float, reuse_key: Optional[str]
+) -> str:
     job_id = uuid.uuid4().hex
     conn.execute(
-        "INSERT INTO jobs (job_id, state, comparison, created_at) VALUES (?, ?, ?, ?)",
-        (job_id, QUEUED, comparison.model_dump_json(), now),
+        "INSERT INTO jobs (job_id, state, comparison, created_at, reuse_key) "
+        "VALUES (?, ?, ?, ?, ?)",
+        (job_id, QUEUED, comparison.model_dump_json(), now, reuse_key),
     )
     return job_id
 
@@ -245,8 +314,9 @@ def _forget_submitters(conn: sqlite3.Connection, cutoff: float) -> int:
 
 
 def _check_limits(conn: sqlite3.Connection, ip_hash: str, limits: SubmitLimits, now: float) -> None:
+    # LEFT JOIN: a Job that the retention removed still counts for its hour.
     rows = conn.execute(
-        "SELECT s.submitted_at, j.state FROM submitters s JOIN jobs j USING (job_id) "
+        "SELECT s.submitted_at, j.state FROM submitters s LEFT JOIN jobs j USING (job_id) "
         "WHERE s.ip_hash = ? ORDER BY s.submitted_at",
         (ip_hash,),
     ).fetchall()

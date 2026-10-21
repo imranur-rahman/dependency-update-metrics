@@ -299,3 +299,41 @@ def test_per_release_to_dict_is_plain_json(tmp_path):
         "status": "ok",
         "error": "",
     }
+
+
+class FailingReleaseResolver(FixtureResolver):
+    """The scenario above with a release 1.1.0 between the two. Its manifest cannot be read."""
+
+    def __init__(self, failing_version: str):
+        super().__init__(
+            pkg_releases={
+                "1.0.0": _utc(2021, 1, 1),
+                "1.1.0": _utc(2021, 9, 1),
+                "1.2.0": _utc(2022, 1, 1),
+            }
+        )
+        self._failing_version = failing_version
+
+    def get_version_dependencies(self, package: str, version: str) -> Dict[str, str]:
+        if package == "mypkg" and version == self._failing_version:
+            raise RuntimeError(f"Manifest of {package}@{version} is not available")
+        return super().get_version_dependencies(package, version)
+
+
+def test_per_release_release_that_fails_gives_an_error_row_and_the_others_stay(tmp_path):
+    # 1.0.0: depA is up to date, 0 days. 1.2.0 (2022-01-01): depA is outdated and
+    # unremediated from 2021-06-01, 214 days. 1.1.0 has no values, only its error.
+    result = _analyze(tmp_path, mode="per_release", resolver=FailingReleaseResolver("1.1.0"))
+
+    assert result.error == ""
+    rows = [(r.package_version, r.status, r.mttu, r.mttr) for r in result.releases]
+    assert rows == [
+        ("1.0.0", "ok", pytest.approx(0.0), pytest.approx(0.0)),
+        ("1.1.0", "error", None, None),
+        ("1.2.0", "ok", pytest.approx(214.0), pytest.approx(214.0)),
+    ]
+    failed = result.releases[1]
+    assert failed.error == "Manifest of mypkg@1.1.0 is not available"
+    assert failed.package_release_date == "2021-09-01"
+    assert failed.num_dependencies == 0
+    assert json.loads(json.dumps(result.to_dict()))["releases"][1]["mttu"] is None

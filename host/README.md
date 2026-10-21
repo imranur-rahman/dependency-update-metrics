@@ -9,8 +9,9 @@ See `GLOSSARY.md` and spec #1.
 |---|---|
 | `dmhost/app.py` | The FastAPI app. `create_app(queue=, analysis=, turnstile_check=, allowed_origins=)` takes its dependencies as arguments, so that tests can give fakes. `create_app_from_env()` builds the production app. |
 | `dmhost/job_queue.py` | `JobQueue`: the SQLite table that holds the Jobs. The API and the workers share it. |
-| `dmhost/worker.py` | `Worker`: takes the oldest waiting Job, runs the analysis for each package, and stores the result. `python -m dmhost.worker` starts one worker process. |
+| `dmhost/worker.py` | `Worker`: takes the oldest waiting Job, runs the analysis for each package, and stores the result. With `JobLimits`, it runs each Job in a new child process and stops the child on cancel, on the timeout, or over the RSS limit. `WorkerPool` runs several workers in parallel. `python -m dmhost.worker` starts the pool. |
 | `dmhost/events.py` | The event stream of a Job (`GET /api/jobs/{id}/events`). `EventStreamSettings` holds its timing; `create_app(event_stream=)` takes it. |
+| `dmhost/reuse.py` | Result reuse and retention: `reuse_key`, `find_reusable_job`, `delete_expired_jobs`, and `ReusePolicy` (72 hours, 30 days). |
 | `dmhost/tool_analysis.py` | `ToolAnalysis`: the analysis function of the workers. It runs the Tool, always with deps.dev data. |
 | `dmhost/models.py` | The request and response shapes of the API. |
 | `dmhost/settings.py` | The configuration values, read from environment variables. |
@@ -34,9 +35,18 @@ both read them.
   rules of its ecosystem (`PACKAGE_NAME_RULES` in `dmhost/models.py`). The `end_date` is after the
   `start_date` and not later than the latest date in any time zone (UTC+14). The Host does not limit
   the window length. A body that breaks a rule gets `422`.
+- Result reuse: if a done Job with the same reuse key finished in the last 72 hours, `POST /api/jobs`
+  returns `200` with the body of `GET /api/jobs/{id}` for that Job, and starts no Job. The reuse key is
+  the ecosystem, the set of packages (order, case, and PyPI separators do not matter, see
+  `package_key()`), the window, the mode, the weighting type, the half-life, and the build date of the
+  OSV index (`OSVBuilder.index_date()`). So a rebuild of the OSV index stops the reuse of older
+  results. A Job that ended in `error` or `cancelled` is not reused. The rate limits run after the
+  reuse lookup, so a reused result does not count against them.
+- Retention: each `POST /api/jobs` first deletes the Job records that were submitted more than 30
+  days ago. A `GET` for a deleted Job returns `404`.
 - Abuse protection: `POST /api/jobs` first checks `turnstile_token` with Cloudflare Siteverify. A
-  refused token gets `403`. Then one SQLite transaction checks the limits and adds the Job
-  (`JobQueue.admit`):
+  refused token gets `403`. After the retention delete and the reuse lookup (below), one SQLite
+  transaction checks the limits and adds the Job (`JobQueue.admit`):
   - 1 active (waiting or running) Job for each IP address, and 10 Jobs for each IP address in each
     hour. A submit over a limit gets `429` with `Too many requests, try again in N min` and a
     `Retry-After` header. For the hourly limit, N is the time until the oldest Job leaves the hour.
@@ -63,6 +73,14 @@ both read them.
   GetPackage request into an empty version list). So `ToolAnalysis` asks deps.dev for the package
   again: a `404` raises `PackageNotFound`, and a listing with no release in the window raises
   `NoReleasesInWindow`. Every other Tool error gets `Something went wrong (ref: <job id>)`.
+- `DELETE /api/jobs/{id}` cancels a Job that waits or runs, and returns the Job (`cancelled`). A waiting
+  Job leaves the queue. A running Job stops within one worker poll (0.5 seconds). A Job in a final
+  state does not change. A Job continues when its event stream closes, for example when the user
+  closes the tab.
+- A Job that runs longer than the timeout (15 minutes) gets `error` with the message
+  "The analysis took too long". A Job whose child process goes over the RSS limit (2 GB) gets the
+  "Something went wrong" message. The check is the one of the Tool's `--max-worker-memory-mb`
+  (`psutil` RSS), and the Host logs the RSS under the job ID.
 - `GET /api/jobs/{id}/events` sends the same bodies as server-sent events. Each event has the state as
   its name (`queued`, `running`, `done`, `error`, or `cancelled`). The stream sends the current state
   first, then one event each time the body changes, and it ends after a final state. It sends a
@@ -96,6 +114,9 @@ Environment variables change the defaults:
 | `DM_HOST_DB` | `host-data/jobs.db` | The SQLite file of the Job queue |
 | `DM_HOST_OUTPUT_DIR` | `host-data/tool` | The Tool output directory (cache and OSV index) |
 | `DM_HOST_ALLOWED_ORIGINS` | `http://localhost:8000` | Comma-separated Webapp origins that CORS allows. In production: `https://imranur-rahman.github.io` only |
+| `DM_HOST_WORKERS` | `6` | The number of workers. Each worker runs one Job at a time |
+| `DM_HOST_JOB_TIMEOUT_SECONDS` | `900` | The time after which a running Job stops with "The analysis took too long" |
+| `DM_HOST_WORKER_MEMORY_MB` | `2048` | The RSS limit of the child process of one Job, in MB (`0` means no limit) |
 | `DM_HOST_TURNSTILE_SECRET` | none (the API does not start without it) | The Turnstile secret key. Keep it only on the instance, never in the repo |
 | `DM_HOST_MAX_ACTIVE_JOBS_PER_IP` | `1` | Waiting and running Jobs for each IP address |
 | `DM_HOST_MAX_JOBS_PER_IP_PER_HOUR` | `10` | Jobs for each IP address in each hour |

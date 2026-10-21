@@ -32,13 +32,13 @@ def done_analysis(comparison, package):
 
 
 @pytest.fixture
-def queue(tmp_path):
-    return JobQueue(tmp_path / "jobs.db")
+def clock():
+    return FakeClock()
 
 
 @pytest.fixture
-def clock():
-    return FakeClock()
+def queue(tmp_path, clock):
+    return JobQueue(tmp_path / "jobs.db", clock=clock)
 
 
 def make_app(queue, clock, limits=SubmitLimits(), **options):
@@ -47,7 +47,6 @@ def make_app(queue, clock, limits=SubmitLimits(), **options):
         analysis=done_analysis,
         turnstile_check=lambda token, remote_ip: True,
         limits=limits,
-        clock=clock,
         **options,
     )
 
@@ -57,8 +56,11 @@ def client_at(app, ip="203.0.113.7"):
     return TestClient(app, client=(ip, 50000))
 
 
-def submit(client, **headers):
-    return client.post("/api/jobs", json=load_example("create_job_request"), headers=headers)
+def submit(client, package="mypkg", **headers):
+    """Submit the example Comparison for ``package``. A done Job of the same Comparison gives a
+    reused result, so a test that needs a new Job after a done Job uses another package."""
+    body = {**load_example("create_job_request"), "packages": [package]}
+    return client.post("/api/jobs", json=body, headers=headers)
 
 
 def test_second_submit_while_the_first_job_is_active_is_refused(queue, clock):
@@ -81,13 +83,49 @@ def test_submits_at_the_same_time_from_one_user_get_only_one_job(queue, clock):
     assert codes == [202] + [429] * 7
 
 
+def test_reused_result_does_not_count_against_the_per_ip_limits(queue, clock):
+    # One Job per hour and one active Job: only the first submit starts a Job.
+    limits = SubmitLimits(max_active_jobs_per_ip=1, max_jobs_per_ip_per_window=1)
+    client = client_at(make_app(queue, clock, limits=limits))
+    assert submit(client).status_code == 202
+    Worker(queue, done_analysis).run_once()
+
+    reused = [submit(client).status_code for _ in range(3)]
+    other = client.post(
+        "/api/jobs", json={**load_example("create_job_request"), "packages": ["otherpkg"]}
+    )
+
+    # The same Comparison gives the stored result three times. A new Comparison is the
+    # second Job in the hour, so the hourly limit refuses it.
+    assert reused == [200, 200, 200]
+    assert other.status_code == 429
+
+
+def test_reused_result_is_given_while_the_user_has_an_active_job(queue, clock):
+    limits = SubmitLimits(max_active_jobs_per_ip=1, max_jobs_per_ip_per_window=10)
+    client = client_at(make_app(queue, clock, limits=limits))
+    submit(client)
+    Worker(queue, done_analysis).run_once()
+    other = {**load_example("create_job_request"), "packages": ["otherpkg"]}
+    assert client.post("/api/jobs", json=other).status_code == 202
+
+    # The user has one active Job, so a new Job waits. The stored result needs no Job.
+    reused = submit(client)
+    third = client.post(
+        "/api/jobs", json={**load_example("create_job_request"), "packages": ["third"]}
+    )
+
+    assert reused.status_code == 200
+    assert third.status_code == 429
+
+
 def test_user_can_submit_again_when_the_active_job_ends(queue, clock):
     client = client_at(make_app(queue, clock))
     submit(client)
 
     Worker(queue, done_analysis).run_once()
 
-    assert submit(client).status_code == 202
+    assert submit(client, "otherpkg").status_code == 202
 
 
 def test_active_job_of_one_user_does_not_stop_another_user(queue, clock):
@@ -166,10 +204,10 @@ def test_configured_limits_change_what_the_host_allows(queue, clock):
     limits = SubmitLimits(max_active_jobs_per_ip=2, max_jobs_per_ip_per_window=3)
     client = client_at(make_app(queue, clock, limits=limits))
 
-    codes = [submit(client).status_code for _ in range(3)]
+    codes = [submit(client, f"pkg{i}").status_code for i in range(3)]
     Worker(queue, done_analysis).run_once()
     Worker(queue, done_analysis).run_once()
-    codes += [submit(client).status_code for _ in range(2)]
+    codes += [submit(client, f"new{i}").status_code for i in range(2)]
 
     # Two active Jobs pass and the third waits. After the two end, the hourly limit of 3
     # allows one more Job.
@@ -226,7 +264,7 @@ def test_host_removes_the_ip_hash_after_the_rate_limit_window(queue, clock):
     assert stored in queue_file_bytes(queue)
 
     clock.advance(ONE_HOUR + 1)
-    queue.forget_old_submitters(ONE_HOUR, now=clock())
+    queue.forget_old_submitters(ONE_HOUR)
 
     assert stored not in queue_file_bytes(queue)
 
@@ -238,7 +276,7 @@ def test_hash_of_a_job_that_is_still_active_stays_until_the_job_ends(queue, cloc
     submit(client)
     clock.advance(ONE_HOUR + 1)
 
-    assert queue.forget_old_submitters(ONE_HOUR, now=clock()) == 0
+    assert queue.forget_old_submitters(ONE_HOUR) == 0
     assert submit(client).status_code == 429
 
 
@@ -263,7 +301,6 @@ def app_behind_caddy(queue, clock, seen_ips):
         analysis=done_analysis,
         turnstile_check=record_ip,
         limits=SubmitLimits(),
-        clock=clock,
         trusted_proxies=parse_networks(["10.0.0.0/8"]),
     )
 
@@ -388,7 +425,6 @@ def test_submit_with_a_refused_turnstile_token_adds_no_job(queue, clock):
         analysis=done_analysis,
         turnstile_check=TurnstileVerifier("secret-key", post=siteverify),
         limits=SubmitLimits(),
-        clock=clock,
     )
 
     response = submit(client_at(app))

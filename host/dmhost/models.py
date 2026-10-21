@@ -29,6 +29,11 @@ MAX_HALF_LIFE_DAYS = 3650
 
 MAX_PACKAGES = 5
 
+# The modes of a Comparison (GLOSSARY.md): one value for each package over the window, or
+# one value for each release of each package. The Tool has the same names (``api.MODES``).
+Mode = Literal["window_summary", "per_release"]
+
+
 # The time zone that is furthest ahead of UTC (UTC+14). A user there can have a date one day
 # after the UTC date, so the Host accepts an end date up to the latest date on Earth.
 _LATEST_UTC_OFFSET = timedelta(hours=14)
@@ -84,7 +89,7 @@ class Comparison(BaseModel):
     packages: List[str] = Field(min_length=1, max_length=MAX_PACKAGES)
     start_date: date
     end_date: date
-    mode: str = "window_summary"
+    mode: Mode = "window_summary"
     weighting_type: WeightingType = "disable"
     half_life: Optional[float] = None
 

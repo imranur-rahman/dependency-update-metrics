@@ -45,6 +45,26 @@ def build_osv_index(osv_df: pd.DataFrame) -> Dict[str, List[Dict]]:
     return index
 
 
+def _mark_failed_releases(
+    results: List[Dict[str, Any]], manifest_errors: Dict[str, str]
+) -> List[Dict[str, Any]]:
+    """Give each release whose manifest failed status "error", its message, and no values.
+
+    A per-release value of ``None`` means "no value", so that the release is a gap and not
+    a 0. The other releases keep their values.
+    """
+    for result in results:
+        summary = result["summary"]
+        message = manifest_errors.get(summary["package_version"])
+        if message is None:
+            continue
+        for key in summary:
+            if key == "mttu" or key.startswith("mttr"):
+                summary[key] = None
+        summary.update(num_dependencies=0, status="error", error=message)
+    return results
+
+
 class DependencyAnalyzer:
     """Analyze dependency update and remediation metrics."""
 
@@ -658,9 +678,22 @@ class DependencyAnalyzer:
         # point in history (see version_history below), which can require knowing
         # the constraint declared by a version released before start_date; and a
         # dependency's first-use date can only be found by walking from the start.
+        #
+        # A manifest that cannot be read counts as a version without dependencies, the
+        # same as the resolvers that return {} on a failed fetch. If that version is a
+        # release in the window, its row gets status "error" and no values, so that a
+        # reader does not take it for a release with an MTTU of 0.
         full_per_version_deps: Dict[str, Dict[str, str]] = {}
+        manifest_errors: Dict[str, str] = {}
         for ver, _ in all_pkg_versions:
-            full_per_version_deps[ver] = self.resolver.get_version_dependencies(self.package, ver)
+            try:
+                full_per_version_deps[ver] = self.resolver.get_version_dependencies(
+                    self.package, ver
+                )
+            except Exception as exc:
+                logger.warning("Dependencies of %s@%s failed: %s", self.package, ver, exc)
+                manifest_errors[ver] = str(exc) or type(exc).__name__
+                full_per_version_deps[ver] = {}
         per_version_deps: Dict[str, Dict[str, str]] = {
             ver: full_per_version_deps[ver] for ver, _ in releases_in_window
         }
@@ -776,7 +809,7 @@ class DependencyAnalyzer:
                 )
                 if progress is not None:
                     progress(ProgressEvent("releases", _idx, len(releases_in_window), ver))
-            return empty_results
+            return _mark_failed_releases(empty_results, manifest_errors)
 
         # Fetch all dep metadata in parallel
         dep_metadata_cache: Dict[str, Dict] = {}
@@ -1151,7 +1184,7 @@ class DependencyAnalyzer:
             if progress is not None:
                 progress(ProgressEvent("releases", _rel_idx + 1, _n_releases, ver))
 
-        return results
+        return _mark_failed_releases(results, manifest_errors)
 
     def get_all_versions_with_dates(
         self, metadata: Dict, package_name: Optional[str] = None
