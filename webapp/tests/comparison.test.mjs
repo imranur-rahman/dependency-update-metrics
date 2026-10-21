@@ -36,6 +36,8 @@ import {
   axisLabel,
   resultsNote,
   botCheckError,
+  packageKey,
+  packageNameMatchesRules,
 } from "../site/static/js/comparison.js";
 
 const contractDir = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "contract", "examples");
@@ -503,4 +505,13 @@ test("a refused submit shows the message of the Host, and never internal details
   const generic = "Something went wrong. Try again later.";
   assert.equal(submitErrorMessage({ detail: [{ loc: ["body"], msg: "Value error" }] }), generic);
   assert.equal(submitErrorMessage(null), generic);
+});
+
+// The Host tests (host/tests/test_input_checks.py) read the same cases, so the JavaScript and
+// the Python rules cannot drift apart.
+test("the package name rules and the package key match the shared contract cases", () => {
+  for (const { ecosystem, name, key, valid } of example("package_names").cases) {
+    assert.equal(packageNameMatchesRules(ecosystem, name), valid, `${ecosystem}: ${name}`);
+    assert.equal(packageKey(ecosystem, name), key, `${ecosystem}: ${name}`);
+  }
 });
