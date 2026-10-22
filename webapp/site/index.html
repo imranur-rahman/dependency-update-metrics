@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Primary Meta Tags -->
-  <meta name="title" content="DependencyUpdateMetric - Imranur Rahman, Mahzabina Tamanna, Laurie Williams">
+  <meta name="title" content="DependencyUpdateMetric - Imranur Rahman, Ranindya Paramitha, Mahzabina Tamanna, Laurie Williams">
   <meta name="description" content="DependencyUpdateMetric measures how fast open-source packages update their dependencies (MTTU) and remediate known vulnerabilities (MTTR) over time, for npm, PyPI, and Cargo.">
   <meta name="keywords" content="software supply chain, dependency management, technical lag, vulnerability remediation, MTTU, MTTR, mining software repositories, npm, PyPI, Cargo">
-  <meta name="author" content="Imranur Rahman, Mahzabina Tamanna, Laurie Williams">
+  <meta name="author" content="Imranur Rahman, Ranindya Paramitha, Mahzabina Tamanna, Laurie Williams">
   <meta name="robots" content="index, follow">
   <meta name="language" content="English">
 
@@ -86,6 +86,7 @@
     "license": "https://opensource.org/licenses/MIT",
     "author": [
       {"@type": "Person", "name": "Imranur Rahman", "affiliation": {"@type": "Organization", "name": "North Carolina State University"}},
+      {"@type": "Person", "name": "Ranindya Paramitha", "affiliation": {"@type": "Organization", "name": "North Carolina State University"}},
       {"@type": "Person", "name": "Mahzabina Tamanna", "affiliation": {"@type": "Organization", "name": "North Carolina State University"}},
       {"@type": "Person", "name": "Laurie Williams", "affiliation": {"@type": "Organization", "name": "North Carolina State University"}}
     ],
@@ -115,11 +116,11 @@
         </button>
       </div>
       <div class="works-list">
-        <a href="https://arxiv.org/abs/2403.17382" class="work-item" target="_blank" rel="noopener">
+        <a href="https://arxiv.org/abs/2403.17382v4" class="work-item" target="_blank" rel="noopener">
           <div class="work-info">
-            <h5>No Vulnerability Data, No Problem: Towards Predicting Mean Time To Remediate In Open Source Software Dependencies</h5>
+            <h5>How Quickly Do Development Teams Update Their Vulnerable Dependencies?</h5>
             <p>Defines the MTTU and MTTR metrics that this tool computes.</p>
-            <span class="work-venue">arXiv:2403.17382</span>
+            <span class="work-venue">arXiv:2403.17382v4</span>
           </div>
           <i class="fas fa-external-link-alt"></i>
         </a>
@@ -155,6 +156,7 @@
             <h2 class="subtitle is-4">How fast do open-source packages update their dependencies and remediate known vulnerabilities, over time?</h2>
             <div class="is-size-5 publication-authors">
               <span class="author-block">Imranur Rahman,</span>
+              <span class="author-block">Ranindya Paramitha,</span>
               <span class="author-block">Mahzabina Tamanna,</span>
               <span class="author-block">Laurie Williams</span>
             </div>
@@ -451,12 +453,12 @@ dependency-metrics --input-csv input.csv --workers 8 --output-dir output</code><
       <h2 class="title is-3 has-text-centered">Validation</h2>
       <div class="columns has-text-centered">
         <div class="column">
-          <div class="stat">253</div>
+          <div class="stat">309</div>
           <div class="stat-label">offline tests: unit, integration, regression, and metamorphic</div>
         </div>
         <div class="column">
           <div class="stat">72 / 90</div>
-          <div class="stat-label">case-study packages whose scores match the reference scores exactly</div>
+          <div class="stat-label">case-study packages whose scores match the reference scores exactly (80 within one day)</div>
         </div>
         <div class="column">
           <div class="stat">&lt; 1 g CO<sub>2</sub>e</div>
@@ -510,7 +512,7 @@ dependency-metrics --input-csv input.csv --workers 8 --output-dir output</code><
       <p>Until the paper is published, please cite the software:</p>
       <pre id="bibtex-code"><code>@software{rahman2026dependencyupdatemetric,
   title  = {DependencyUpdateMetric: Mean Time To Update and Mean Time To Remediate for Open-Source Dependencies},
-  author = {Rahman, Imranur and Tamanna, Mahzabina and Williams, Laurie},
+  author = {Rahman, Imranur and Paramitha, Ranindya and Tamanna, Mahzabina and Williams, Laurie},
   year   = {2026},
   url    = {https://github.com/imranur-rahman/dependency-update-metrics}
 }</code></pre>
