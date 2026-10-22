@@ -881,10 +881,3 @@ a:focus {
   font-weight: 500;
 }
 
-.tryit-results-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}

@@ -380,13 +380,7 @@
       </form>
       <!-- The results. webapp.js shows this card only when a Job is done. -->
       <div class="tryit-card mt-5" id="results-card" hidden>
-        <div class="tryit-results-header">
-          <h3 class="title is-4 mb-0">Results</h3>
-          <button class="button is-small is-link is-light" id="download-csv" type="button">
-            <span class="icon is-small"><i class="fas fa-download"></i></span>
-            <span>Download CSV</span>
-          </button>
-        </div>
+        <h3 class="title is-4 mb-0">Results</h3>
         <p id="results-note" class="is-size-7 mt-2 has-text-grey" hidden></p>
         <figure class="mt-4" id="result-chart-figure" hidden>
           <div style="position: relative; height: 320px;">
@@ -410,6 +404,12 @@
             <thead></thead>
             <tbody></tbody>
           </table>
+        </div>
+        <div class="has-text-right mt-3">
+          <button class="button is-small is-link is-light" id="download-csv" type="button">
+            <span class="icon is-small"><i class="fas fa-download"></i></span>
+            <span>Download CSV</span>
+          </button>
         </div>
       </div>
     </div>
