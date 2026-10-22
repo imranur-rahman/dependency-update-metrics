@@ -1,0 +1,6 @@
+# Python dependencies of the Host. The Host also needs the Tool: `pip install -e .` from the repo root.
+fastapi==0.158.1
+uvicorn==0.54.0
+# httpx sends the Turnstile Siteverify request (dmhost/turnstile.py). FastAPI's TestClient
+# in host/tests/ also uses it.
+httpx==0.28.1

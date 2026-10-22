@@ -60,7 +60,7 @@ def test_osv_builder_initialization():
         builder = OSVBuilder(Path(tmpdir))
 
         assert builder.output_dir == Path(tmpdir)
-        assert builder.osv_dir == Path(tmpdir) / "osv-data"
+        assert builder.osv_db_file == Path(tmpdir) / "osv_database.parquet"
 
 
 def test_semver_transformation():

@@ -26,10 +26,11 @@ from concurrent.futures import (
 from concurrent.futures.process import BrokenProcessPool
 
 from .analyzer import DependencyAnalyzer, build_osv_index
+from .api import DEPSDEV, NATIVE, PER_RELEASE, WINDOW_SUMMARY, analyze
 from .osv_builder import OSVBuilder
 from .resolvers import ResolverCache
 from .depsdev_client import DepsDevClient
-from .depsdev_resolver import DepsDevResolver
+from .depsdev_resolver import DepsDevResolver, depsdev_system
 from .reporting import (
     export_osv_data,
     export_per_release_worksheets,
@@ -53,6 +54,19 @@ _OSV_ECOSYSTEM_NAMES = {
     "pypi": "PYPI",
     "cargo": "CRATES.IO",
 }
+
+
+def _build_osv_index_file(output_dir: Path) -> None:
+    """Download the OSV zips and replace the OSV index in ``output_dir``."""
+    log = logging.getLogger("dependency_metrics")
+    log.info("Building OSV vulnerability database...")
+    osv_builder = OSVBuilder(output_dir)
+    osv_df = osv_builder.build_database(force=True)
+    log.info(
+        "OSV database built with %s records (index date %s)",
+        len(osv_df),
+        osv_builder.index_date(),
+    )
 
 
 def _normalize_ecosystem(value: Any) -> str:
@@ -223,6 +237,12 @@ def _make_timeout_result(
     return {"row_num": row_num, "summary": summary, "dependency_frames": []}
 
 
+def _log_days(value: Any) -> str:
+    """Return a number of days with two decimals for the log, or "error" for a release
+    that failed (its MTTU and MTTR are None)."""
+    return "error" if value is None else f"{float(value):.2f}"
+
+
 def _worker_make_resolver(eco: str, pkg: str, start: datetime, end: datetime):
     """Create a resolver for *pkg* using the worker-process ``_WORKER_STATE``."""
     from .resolvers import CratesResolver, NpmResolver, PyPIResolver as _PyPIResolverCls
@@ -233,11 +253,9 @@ def _worker_make_resolver(eco: str, pkg: str, start: datetime, end: datetime):
         "pypi": "https://pypi.org/pypi",
         "cargo": "https://crates.io",
     }
-    _eco_to_system = {"npm": "NPM", "pypi": "PYPI", "cargo": "CARGO"}
-
     if ws["use_depsdev"] and ws["depsdev_client"] is not None:
         return DepsDevResolver(
-            system=_eco_to_system.get(eco, eco.upper()),
+            system=depsdev_system(eco),
             package=pkg,
             start_date=start,
             end_date=end,
@@ -701,6 +719,30 @@ def _load_input_csv(path: Path, default_end_date: Optional[str] = None) -> List[
     return rows
 
 
+def _run_cache_command(args: argparse.Namespace, output_dir: Path) -> None:
+    """Run the cache flags in order: clear, prune, then stats (so stats show the result)."""
+    cache = ResolverCache(cache_dir=output_dir / "cache")
+    if args.cache_clear:
+        removed = cache.clear(args.cache_namespace)
+        scope = f"namespace {args.cache_namespace}" if args.cache_namespace else "all namespaces"
+        print(f"Removed {removed} cache rows from {scope}.")
+    if args.cache_prune_gb is not None:
+        removed = cache.prune(int(args.cache_prune_gb * 1024**3))
+        print(
+            f"Removed {removed} cache rows. "
+            f"The cache uses {cache.used_bytes() / 1024**3:.3f} GB of data."
+        )
+    if args.cache_stats:
+        stats = cache.cache_stats()
+        print(f"{'namespace':<24} {'rows':>10} {'MB':>10}")
+        for row in stats:
+            print(f"{row['namespace']:<24} {row['rows']:>10} {row['bytes'] / 1024**2:>10.2f}")
+        total_rows = sum(row["rows"] for row in stats)
+        total_mb = sum(row["bytes"] for row in stats) / 1024**2
+        print(f"{'total':<24} {total_rows:>10} {total_mb:>10.2f}")
+        print(f"Cache file data: {cache.used_bytes() / 1024**3:.3f} GB")
+
+
 def main():
     """Main entry point for the CLI."""
     parser = argparse.ArgumentParser(
@@ -757,7 +799,38 @@ def main():
     )
 
     parser.add_argument(
-        "--build-osv", action="store_true", help="Build the OSV vulnerability database"
+        "--build-osv",
+        action="store_true",
+        help=(
+            "Download the npm, PyPI, and crates.io OSV zips (about 260 MB) and rebuild "
+            "the OSV vulnerability database. Without --package, only rebuild it."
+        ),
+    )
+
+    parser.add_argument(
+        "--cache-stats",
+        action="store_true",
+        help="Show the rows and the size of each namespace in <output-dir>/cache/cache.db",
+    )
+
+    parser.add_argument(
+        "--cache-prune-gb",
+        type=float,
+        default=None,
+        metavar="N",
+        help="Remove the least recently used cache rows until the cache holds less than N GB",
+    )
+
+    parser.add_argument(
+        "--cache-clear",
+        action="store_true",
+        help="Remove all cache rows (or only the rows of --cache-namespace)",
+    )
+
+    parser.add_argument(
+        "--cache-namespace",
+        default=None,
+        help="With --cache-clear, remove only the rows of this namespace",
     )
 
     parser.add_argument(
@@ -845,6 +918,10 @@ def main():
     # Validate arguments
     if args.weighting_type == "exponential" and args.half_life is None:
         parser.error("--half-life is required when --weighting-type is exponential")
+    if args.cache_namespace is not None and not args.cache_clear:
+        parser.error("--cache-namespace is valid only together with --cache-clear")
+    if args.cache_prune_gb is not None and args.cache_prune_gb < 0:
+        parser.error("--cache-prune-gb must be 0 or more")
 
     if args.ecosystem:
         args.ecosystem = _normalize_ecosystem(args.ecosystem)
@@ -882,6 +959,10 @@ def main():
     _file_handler.setFormatter(logging.Formatter("%(asctime)s %(levelname)s %(name)s: %(message)s"))
     _file_handler.setLevel(logging.DEBUG)
     _dm_logger.addHandler(_file_handler)
+
+    if args.cache_stats or args.cache_clear or args.cache_prune_gb is not None:
+        _run_cache_command(args, output_dir)
+        sys.exit(0)
 
     if args.input_csv:
 
@@ -1156,14 +1237,12 @@ def main():
         if args.depsdev:
             _depsdev_client = DepsDevClient(cache=resolver_cache)
 
-        _eco_to_system = {"npm": "NPM", "pypi": "PYPI", "cargo": "CARGO"}
-
         def _make_resolver(eco: str, pkg: str, start=None, end=None):
             _start = start or default_start_date
             _end = end or datetime.today()
             if args.depsdev and _depsdev_client is not None:
                 return DepsDevResolver(
-                    system=_eco_to_system.get(eco, eco.upper()),
+                    system=depsdev_system(eco),
                     package=pkg,
                     start_date=_start,
                     end_date=_end,
@@ -1922,6 +2001,11 @@ def main():
             )
 
     else:
+        if args.build_osv and not args.package:
+            # Only rebuild the OSV index (for example, from a scheduled job).
+            _build_osv_index_file(output_dir)
+            sys.exit(0)
+
         if not args.ecosystem or not args.package:
             parser.error("--ecosystem and --package are required unless --input-csv is provided.")
 
@@ -1939,48 +2023,29 @@ def main():
 
         # Build OSV database if requested
         if args.build_osv:
-            logging.getLogger("dependency_metrics").info("Building OSV vulnerability database...")
-            osv_builder = OSVBuilder(output_dir)
-            osv_df = osv_builder.build_database()
-            logging.getLogger("dependency_metrics").info(
-                "OSV database built with %s records", len(osv_df)
-            )
+            _build_osv_index_file(output_dir)
 
         # Analyze package dependencies
         logging.getLogger("dependency_metrics").info(
             "Analyzing %s package: %s", args.ecosystem, args.package
         )
-        _single_resolver = None
-        if args.depsdev:
-            _single_cache = ResolverCache(cache_dir=output_dir / "cache")
-            _single_client = DepsDevClient(cache=_single_cache)
-            _single_resolver = DepsDevResolver(
-                system={"npm": "NPM", "pypi": "PYPI", "cargo": "CARGO"}.get(
-                    args.ecosystem, args.ecosystem.upper()
-                ),
+        try:
+            _logger = logging.getLogger("dependency_metrics")
+            analysis = analyze(
+                ecosystem=args.ecosystem,
                 package=args.package,
                 start_date=start_date,
                 end_date=end_date,
-                client=_single_client,
+                mode=PER_RELEASE if args.per_release else WINDOW_SUMMARY,
+                weighting_type=args.weighting_type,
+                half_life=args.half_life,
+                data_source=DEPSDEV if args.depsdev else NATIVE,
+                output_dir=output_dir,
+                dependency_frames=args.get_worksheets,
+                raise_errors=True,
             )
-        analyzer = DependencyAnalyzer(
-            ecosystem=args.ecosystem,
-            package=args.package,
-            start_date=start_date,
-            end_date=end_date,
-            weighting_type=args.weighting_type,
-            half_life=args.half_life,
-            output_dir=output_dir,
-            resolver=_single_resolver,
-        )
-
-        try:
-            _logger = logging.getLogger("dependency_metrics")
             if args.per_release:
-                row = {"start_date": start_date, "end_date": end_date}
-                release_results = analyzer.analyze_at_release_points(
-                    row, generate_dep_frames=args.get_worksheets
-                )
+                release_results = analysis.analyzer_output
                 if not release_results:
                     _logger.info("No releases found in window for %s", args.package)
                 else:
@@ -1995,10 +2060,10 @@ def main():
                         s = r["summary"]
                         mttr = s.get("mttr", s.get("mttr_all_severities", 0.0))
                         _logger.info(
-                            "  v%-20s  MTTU=%.2f  MTTR=%.2f  deps=%s  status=%s",
+                            "  v%-20s  MTTU=%s  MTTR=%s  deps=%s  status=%s",
                             s.get("package_version", ""),
-                            s.get("mttu", 0.0),
-                            mttr,
+                            _log_days(s.get("mttu", 0.0)),
+                            _log_days(mttr),
                             s.get("num_dependencies", 0),
                             s.get("status", ""),
                         )
@@ -2020,7 +2085,7 @@ def main():
                         if excel_file is not None:
                             _logger.info("Per-release worksheets saved to: %s", excel_file)
             else:
-                results = analyzer.analyze()
+                results = analysis.analyzer_output
 
                 # Output results
                 print_summary(

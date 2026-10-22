@@ -146,6 +146,7 @@ data/
 # OSV database files
 *.parquet
 osv-all.zip
+.osv-build-*/
 
 # Excel files
 *.xlsx
@@ -168,3 +169,6 @@ Thumbs.db
 
 # Paper
 mttu-mttr-tool-paper/
+
+# Local data of the Host (Job queue, Tool cache, OSV index)
+host-data/

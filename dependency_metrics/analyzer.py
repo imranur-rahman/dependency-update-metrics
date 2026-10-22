@@ -12,7 +12,7 @@ import psutil
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, Tuple
+from typing import Any, Callable, Dict, Iterable, List, Optional, Tuple
 
 import numpy as np
 import pandas as pd
@@ -20,7 +20,9 @@ from packaging import version as pkg_version
 
 from .osv_builder import OSVBuilder
 from .osv_service import OSVService
+from .errors import DataSourceError, PackageNotFoundError
 from .interfaces import PackageResolver
+from .models import ProgressEvent
 from .resolvers import (
     CratesResolver,
     NpmResolver,
@@ -42,6 +44,36 @@ def build_osv_index(osv_df: pd.DataFrame) -> Dict[str, List[Dict]]:
         for pkg_name, group in osv_df.groupby("package"):
             index[pkg_name] = group.to_dict("records")
     return index
+
+
+def _mark_failed_releases(
+    results: List[Dict[str, Any]], manifest_errors: Dict[str, str]
+) -> List[Dict[str, Any]]:
+    """Give each release whose manifest failed status "error", its message, and no values.
+
+    A per-release value of ``None`` means "no value", so that the release is a gap and not
+    a 0. The other releases keep their values.
+    """
+    for result in results:
+        summary = result["summary"]
+        message = manifest_errors.get(summary["package_version"])
+        if message is None:
+            continue
+        for key in summary:
+            if key == "mttu" or key.startswith("mttr"):
+                summary[key] = None
+        summary.update(num_dependencies=0, status="error", error=message)
+    return results
+
+
+def _must_stop_analysis(error: BaseException) -> bool:
+    """Return true if the failure of one dependency must stop the whole analysis.
+
+    The data source did not answer (after its retries), so a result without the
+    dependency would look like a real value. A dependency that the data source does not
+    know (``PackageNotFoundError``) is skipped, as before.
+    """
+    return isinstance(error, DataSourceError) and not isinstance(error, PackageNotFoundError)
 
 
 class DependencyAnalyzer:
@@ -367,6 +399,8 @@ class DependencyAnalyzer:
                     try:
                         dep_metadata_cache[dep_name] = fut.result(timeout=120)
                     except Exception as exc:
+                        if _must_stop_analysis(exc):
+                            raise
                         logger.warning("Failed to fetch metadata for %s: %s", dep_name, exc)
                         dep_metadata_cache[dep_name] = {}
 
@@ -606,6 +640,7 @@ class DependencyAnalyzer:
         osv_df: Optional[pd.DataFrame] = None,
         max_memory_mb: int = 0,
         generate_dep_frames: bool = False,
+        progress: Optional[Callable[[ProgressEvent], None]] = None,
     ) -> List[Dict[str, Any]]:
         """Compute MTTU/MTTR at every release of the parent package within [start_date, end_date].
 
@@ -613,6 +648,8 @@ class DependencyAnalyzer:
           - Uses the dependency set declared by version R.
           - Window = [start_date, R].
           - Emits one result dict per release point.
+
+        If ``progress`` is given, it receives a ``"releases"`` event after each release.
         """
         start_date = row["start_date"]
         end_date = row["end_date"]
@@ -654,9 +691,22 @@ class DependencyAnalyzer:
         # point in history (see version_history below), which can require knowing
         # the constraint declared by a version released before start_date; and a
         # dependency's first-use date can only be found by walking from the start.
+        #
+        # A manifest that cannot be read counts as a version without dependencies, the
+        # same as the resolvers that return {} on a failed fetch. If that version is a
+        # release in the window, its row gets status "error" and no values, so that a
+        # reader does not take it for a release with an MTTU of 0.
         full_per_version_deps: Dict[str, Dict[str, str]] = {}
+        manifest_errors: Dict[str, str] = {}
         for ver, _ in all_pkg_versions:
-            full_per_version_deps[ver] = self.resolver.get_version_dependencies(self.package, ver)
+            try:
+                full_per_version_deps[ver] = self.resolver.get_version_dependencies(
+                    self.package, ver
+                )
+            except Exception as exc:
+                logger.warning("Dependencies of %s@%s failed: %s", self.package, ver, exc)
+                manifest_errors[ver] = str(exc) or type(exc).__name__
+                full_per_version_deps[ver] = {}
         per_version_deps: Dict[str, Dict[str, str]] = {
             ver: full_per_version_deps[ver] for ver, _ in releases_in_window
         }
@@ -761,14 +811,18 @@ class DependencyAnalyzer:
                     base["mttr"] = 0.0
                 return base
 
-            return [
-                {
-                    "row_num": row.get("row_num"),
-                    "summary": _empty_summary(ver, release_date),
-                    "dependency_frames": [],
-                }
-                for ver, release_date in releases_in_window
-            ]
+            empty_results = []
+            for release_index, (ver, release_date) in enumerate(releases_in_window, start=1):
+                empty_results.append(
+                    {
+                        "row_num": row.get("row_num"),
+                        "summary": _empty_summary(ver, release_date),
+                        "dependency_frames": [],
+                    }
+                )
+                if progress is not None:
+                    progress(ProgressEvent("releases", release_index, len(releases_in_window), ver))
+            return _mark_failed_releases(empty_results, manifest_errors)
 
         # Fetch all dep metadata in parallel
         dep_metadata_cache: Dict[str, Dict] = {}
@@ -782,6 +836,8 @@ class DependencyAnalyzer:
                 try:
                     dep_metadata_cache[dep_name] = fut.result()
                 except Exception as exc:
+                    if _must_stop_analysis(exc):
+                        raise
                     logger.warning("Failed to fetch metadata for %s: %s", dep_name, exc)
                     dep_metadata_cache[dep_name] = {}
 
@@ -1140,8 +1196,10 @@ class DependencyAnalyzer:
                     "dependency_frames": list(dep_frames.values()) if is_last_release else [],
                 }
             )
+            if progress is not None:
+                progress(ProgressEvent("releases", _rel_idx + 1, _n_releases, ver))
 
-        return results
+        return _mark_failed_releases(results, manifest_errors)
 
     def get_all_versions_with_dates(
         self, metadata: Dict, package_name: Optional[str] = None
@@ -1589,8 +1647,15 @@ class DependencyAnalyzer:
 
         return ttu, ttr
 
-    def analyze(self, osv_df: Optional[pd.DataFrame] = None) -> Dict[str, Any]:
+    def analyze(
+        self,
+        osv_df: Optional[pd.DataFrame] = None,
+        progress: Optional[Callable[[ProgressEvent], None]] = None,
+    ) -> Dict[str, Any]:
         """Run complete analysis.
+
+        If ``progress`` is given, it receives a ``"dependencies"`` event after each
+        direct dependency.
 
         Returns:
             Dictionary with analysis results
@@ -1632,7 +1697,7 @@ class DependencyAnalyzer:
         ttu_values = []
         ttr_values = []
 
-        for dep_name, dep_constraint in dependencies.items():
+        for dep_index, dep_name in enumerate(dependencies, start=1):
             logger.info("  Analyzing %s...", dep_name)
 
             try:
@@ -1655,9 +1720,11 @@ class DependencyAnalyzer:
                 logger.error(f"Error analyzing {dep_name}: {e}")
                 logger.error(traceback.format_exc())
                 logger.error("    Error: %s", e)
-                if "Error getting highest semver version for" in str(e):
+                if "Error getting highest semver version for" in str(e) or _must_stop_analysis(e):
                     raise
-                continue
+            finally:
+                if progress is not None:
+                    progress(ProgressEvent("dependencies", dep_index, len(dependencies), dep_name))
 
         # Calculate averages
         avg_ttu = sum(ttu_values) / len(ttu_values) if ttu_values else 0.0

@@ -4,6 +4,7 @@ import json
 import sqlite3
 import threading
 from collections import OrderedDict
+from datetime import date
 from pathlib import Path
 
 import pytest
@@ -250,7 +251,7 @@ def test_sqlite_table_has_expected_schema(tmp_path):
     conn = sqlite3.connect(str(db_path))
     cols = {row[1] for row in conn.execute("PRAGMA table_info(cache)").fetchall()}
     conn.close()
-    assert cols == {"namespace", "key", "value"}
+    assert cols == {"namespace", "key", "value", "last_used"}
 
 
 def test_save_json_overwrites_existing_key(tmp_path):
@@ -409,3 +410,198 @@ def test_warm_from_disk_preloaded_entry_bypasses_sqlite_on_load(tmp_path):
     # load_json should serve the preloaded (original) value, not the updated one
     result = cache.load_json("depsdev_package", "NPM:lodash")
     assert result == original
+
+
+# ---------------------------------------------------------------------------
+# Use tracking (last_used column), stats, prune, clear
+# ---------------------------------------------------------------------------
+
+
+def _make_legacy_db(db_path: Path, rows) -> None:
+    """Create a cache.db with the schema from before the last_used column."""
+    db_path.parent.mkdir(parents=True, exist_ok=True)
+    conn = sqlite3.connect(str(db_path))
+    conn.execute(
+        "CREATE TABLE cache (namespace TEXT NOT NULL, key TEXT NOT NULL, "
+        "value TEXT NOT NULL, PRIMARY KEY (namespace, key))"
+    )
+    conn.executemany("INSERT INTO cache VALUES (?,?,?)", rows)
+    conn.commit()
+    conn.close()
+
+
+def test_legacy_cache_file_gets_last_used_column_without_data_loss(tmp_path):
+    db_path = tmp_path / "cache" / "cache.db"
+    _make_legacy_db(
+        db_path,
+        [("ns", "a", json.dumps({"v": 1})), ("other", "b", json.dumps({"v": 2}))],
+    )
+
+    cache = _make_cache(tmp_path)
+
+    assert cache.load_json("ns", "a") == {"v": 1}
+    assert cache.load_json("other", "b") == {"v": 2}
+    conn = sqlite3.connect(str(db_path))
+    cols = {row[1] for row in conn.execute("PRAGMA table_info(cache)").fetchall()}
+    conn.close()
+    assert "last_used" in cols
+
+
+class _Clock:
+    """A settable stand-in for date.today, so tests control the day of use."""
+
+    def __init__(self, day: date) -> None:
+        self.day = day
+
+    def __call__(self) -> date:
+        return self.day
+
+
+def test_prune_keeps_most_recently_used_rows_and_falls_below_limit(tmp_path):
+    clock = _Clock(date(2026, 1, 1))
+    cache = ResolverCache(cache_dir=tmp_path / "cache", clock=clock)
+    big = {"blob": "x" * 8000}
+    # Row i is written on day i, so a higher i means a more recent use.
+    for i in range(10):
+        clock.day = date(2026, 1, 1 + i)
+        cache.save_json("ns", f"k{i}", big)
+    # A read on a later day counts as a use: k0 becomes the most recent row.
+    clock.day = date(2026, 2, 1)
+    assert cache.load_json("ns", "k0") == big
+
+    full = cache.used_bytes()
+    limit = full // 2
+    removed = cache.prune(limit)
+
+    assert removed > 0
+    assert cache.used_bytes() < limit
+    kept = {f"k{i}" for i in range(10) if cache.load_json("ns", f"k{i}") is not None}
+    assert "k0" in kept
+    # The kept rows are the most recent ones: k0, then k9, k8, ... downward.
+    expected_order = ["k0"] + [f"k{i}" for i in range(9, 0, -1)]
+    assert kept == set(expected_order[: len(kept)])
+
+
+def test_prune_under_limit_removes_nothing(tmp_path):
+    cache = _make_cache(tmp_path)
+    cache.save_json("ns", "a", {"v": 1})
+
+    assert cache.prune(10 * 1024**3) == 0
+    assert cache.load_json("ns", "a") == {"v": 1}
+
+
+def test_prune_removes_legacy_rows_without_last_used_first(tmp_path):
+    db_path = tmp_path / "cache" / "cache.db"
+    _make_legacy_db(db_path, [("ns", "old", json.dumps({"blob": "x" * 8000}))])
+    cache = ResolverCache(cache_dir=tmp_path / "cache", clock=_Clock(date(2026, 1, 1)))
+    cache.save_json("ns", "new", {"blob": "y" * 8000})
+
+    cache.prune(cache.used_bytes() - 1)
+
+    assert cache.load_json("ns", "new") is not None
+    conn = sqlite3.connect(str(db_path))
+    keys = {r[0] for r in conn.execute("SELECT key FROM cache").fetchall()}
+    conn.close()
+    assert keys == {"new"}
+
+
+def test_clear_without_namespace_removes_all_rows(tmp_path):
+    cache = _make_cache(tmp_path)
+    cache.save_json("a", "1", {"v": 1})
+    cache.save_json("b", "2", {"v": 2})
+
+    assert cache.clear() == 2
+    assert cache.load_json("a", "1") is None
+    assert cache.load_json("b", "2") is None
+
+
+def test_clear_with_namespace_removes_only_that_namespace(tmp_path):
+    cache = _make_cache(tmp_path)
+    cache.save_json("a", "1", {"v": 1})
+    cache.save_json("a", "2", {"v": 2})
+    cache.save_json("b", "3", {"v": 3})
+
+    assert cache.clear("a") == 2
+    assert cache.load_json("a", "1") is None
+    assert cache.load_json("b", "3") == {"v": 3}
+
+
+def test_cache_stats_shows_rows_and_bytes_per_namespace(tmp_path):
+    cache = _make_cache(tmp_path)
+    cache.save_json("a", "k1", {"v": 1})  # key 2 bytes + value '{"v": 1}' 8 bytes
+    cache.save_json("a", "k2", {"v": 2})
+    cache.save_json("b", "key", {})  # key 3 bytes + value '{}' 2 bytes
+
+    assert cache.cache_stats() == [
+        {"namespace": "a", "rows": 2, "bytes": 20},
+        {"namespace": "b", "rows": 1, "bytes": 5},
+    ]
+
+
+# ---------------------------------------------------------------------------
+# CLI cache flags: --cache-stats, --cache-prune-gb, --cache-clear, --cache-namespace
+# ---------------------------------------------------------------------------
+
+
+def _run_cli(tmp_path: Path, *flags: str) -> int:
+    from unittest.mock import patch
+
+    from dependency_metrics.cli import main
+
+    argv = ["cli", "--output-dir", str(tmp_path), *flags]
+    with patch("sys.argv", argv), pytest.raises(SystemExit) as exc_info:
+        main()
+    return exc_info.value.code
+
+
+def _seed_cli_cache(tmp_path: Path) -> ResolverCache:
+    cache = ResolverCache(cache_dir=tmp_path / "cache")
+    cache.save_json("npm_time", "lodash", {"v": 1})
+    cache.save_json("npm_time", "react", {"v": 2})
+    cache.save_json("metadata", "npm:lodash", {"v": 3})
+    return cache
+
+
+def test_cli_cache_stats_shows_rows_and_size_per_namespace(tmp_path, capsys):
+    _seed_cli_cache(tmp_path)
+
+    assert _run_cli(tmp_path, "--cache-stats") == 0
+
+    out = capsys.readouterr().out
+    lines = {line.split()[0]: line.split() for line in out.splitlines() if line.strip()}
+    assert lines["npm_time"][1] == "2"
+    assert lines["metadata"][1] == "1"
+
+
+def test_cli_cache_clear_removes_all_rows(tmp_path):
+    _seed_cli_cache(tmp_path)
+
+    assert _run_cli(tmp_path, "--cache-clear") == 0
+
+    assert _make_cache(tmp_path).cache_stats() == []
+
+
+def test_cli_cache_clear_with_namespace_removes_only_that_namespace(tmp_path):
+    _seed_cli_cache(tmp_path)
+
+    assert _run_cli(tmp_path, "--cache-clear", "--cache-namespace", "npm_time") == 0
+
+    stats = _make_cache(tmp_path).cache_stats()
+    assert [s["namespace"] for s in stats] == ["metadata"]
+
+
+def test_cli_cache_namespace_without_clear_is_an_error(tmp_path):
+    _seed_cli_cache(tmp_path)
+
+    assert _run_cli(tmp_path, "--cache-namespace", "npm_time") == 2
+
+
+def test_cli_cache_prune_gb_falls_below_limit(tmp_path):
+    cache = ResolverCache(cache_dir=tmp_path / "cache")
+    for i in range(10):
+        cache.save_json("ns", f"k{i}", {"blob": "x" * 8000})
+    limit_bytes = cache.used_bytes() // 2
+
+    assert _run_cli(tmp_path, "--cache-prune-gb", str(limit_bytes / 1024**3)) == 0
+
+    assert _make_cache(tmp_path).used_bytes() < limit_bytes

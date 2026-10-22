@@ -2,12 +2,26 @@
 
 `dependency-metrics` computes MTTU and MTTR (mean time to update / to remediate) for the direct dependencies of an npm, PyPI, or Cargo package. `README.md` and `USAGE.md` describe the CLI.
 
+## Repository layout
+
+The repository holds the three parts that `GLOSSARY.md` defines. Each part has its own folder and its own CI workflow, and each workflow runs only when a file of its part changes.
+
+| Part | Folders | CI workflow |
+|---|---|---|
+| Tool | `dependency_metrics/`, `tests/`, `pyproject.toml`, `vendor/` | `.github/workflows/ci.yml` (also builds and publishes to PyPI; keep the file name, because the PyPI trusted publisher names it) |
+| Host | `host/` | `.github/workflows/host.yml` (also runs when `dependency_metrics/` changes, because the Host runs the Tool) |
+| Webapp | `webapp/site/` (published), `webapp/tests/` | `.github/workflows/webapp.yml` (tests with `node --test webapp/tests/*.test.mjs`, then publishes `webapp/site/` to GitHub Pages from `main`) |
+
+`contract/examples/` holds example bodies of the Host API. The Host tests and the Webapp tests both read them, so a change to the API contract fails a test on both sides. A change in `contract/` runs the Host CI and the Webapp CI.
+
+`docs/` holds the ADRs (`docs/adr/`) and the agent docs (`docs/agents/`). GitHub Pages does not publish `docs/`. Only the files in `webapp/site/` are public on the site.
+
 ## Setup and checks
 
 - `vendor/pip` is a git submodule: a patched `pip` fork (github.com/imranur-rahman/pip) that resolves PyPI constraints as of a date. Clone with `--recurse-submodules`. Make changes to it in the fork.
 - Locally, run every command inside the venv: `source metrics_venv/bin/activate && <command>`.
 - Tests: `pytest tests/ -q`. CI runs them on ubuntu, macos, and windows with Python 3.10, 3.11, and 3.12.
-- CI lints `dependency_metrics/` only, with `black --check`, `flake8 --max-line-length=100`, and `mypy --ignore-missing-imports`. Run `black dependency_metrics/` before each commit.
+- The Tool CI lints `dependency_metrics/` only, with `black --check`, `flake8 --max-line-length=100`, and `mypy --ignore-missing-imports`. Run `black dependency_metrics/` before each commit.
 
 ## Tests run offline
 
@@ -22,7 +36,7 @@ Turn each bug fix into a regression test. `TESTING.md` maps each test type to it
 ## Architecture
 
 - `analyzer.py` holds the interval timeline and the TTU/TTR scoring. It reads package data only through the `PackageResolver` protocol (`interfaces.py`). Registry and HTTP code belongs in the resolvers.
-- To add an ecosystem that deps.dev indexes, extend `_SYSTEM_TO_ECOSYSTEM` in `depsdev_resolver.py` and add a constraint matcher for that ecosystem.
+- To add an ecosystem that deps.dev indexes, extend `_SYSTEM_TO_ECOSYSTEM` in `depsdev_resolver.py` and add a constraint matcher for that ecosystem. `ECOSYSTEM_TO_SYSTEM` (the one map that `api.py` and `cli.py` use through `depsdev_system()`; the Host goes through `analyze()`) comes from it; add other names of an ecosystem, such as `crates.io`, there.
 - To add a native ecosystem:
   1. Write a new resolver that implements `PackageResolver`.
   2. Select it in `DependencyAnalyzer.__init__`.
@@ -38,16 +52,18 @@ These results look like bugs, but they are correct.
 - A dependency with no version constraint always resolves to the newest version, so its MTTR is close to 0.
 - With `--weighting-type disable`, TTU and TTR are sums of days. With weights, they are weighted means. These are different quantities.
 - `--per-release` builds one continuous timeline per dependency. All `dependency_frames` sit on the result of the last release.
-- Single-package mode reads `osv_database.parquet` from `--output-dir`. If the file is missing, every MTTR is 0. `--build-osv` downloads about 2.4 GB.
+- Single-package mode reads `osv_database.parquet` from `--output-dir`. If the file is missing, every MTTR is 0. `--build-osv` downloads the OSV zips for npm, PyPI, and crates.io, about 260 MB in total (219 MB, 37 MB, and 3.6 MB on 2026-10-21). It reads the records directly from the zips and replaces the index in one rename. `--build-osv` without `--package` only rebuilds the index. `OSVBuilder.index_date()` returns the build date that the index file holds.
 
 ## Cache rules
 
 `ResolverCache` (`<output-dir>/cache/cache.db`) holds two kinds of data:
 
-- Per-version data never changes, so the cache keeps it forever.
+- Per-version data never changes, so the cache keeps it until a prune (`--cache-prune-gb`) or a clear (`--cache-clear`) removes it.
 - Version listings grow with each release. The tool fetches a listing again when the end date is later than the newest cached release.
 
 When you add a cached lookup, decide which of the two kinds it is.
+
+Each row records in `last_used` the day of its last read or write. A read writes that day only when the day changes, so most reads write nothing. A prune removes the rows with the oldest `last_used` first, and does not run `VACUUM`.
 
 ## Scale requirements
 

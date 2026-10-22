@@ -1,0 +1,133 @@
+# The Host on the Oracle VM: the API, the worker pool, Caddy, and the DuckDNS updater.
+#
+# Run from the host/ folder, with the secrets in host/.env (copy .env.example):
+#
+#   docker compose up -d --build
+#
+# host/RUNBOOK.md has the full deploy steps.
+name: dmhost
+
+x-host: &host
+  build:
+    # The repo root, so that the image installs the Tool from the same commit as the Host.
+    context: ..
+    dockerfile: host/Dockerfile
+  image: dmhost:latest
+  env_file: .env
+  environment:
+    # The image layout fixes these paths, so .env does not set them.
+    DM_HOST_DB: /data/queue/jobs.db
+    DM_HOST_OUTPUT_DIR: /data/tool
+    # The API reads X-Forwarded-For only from the Caddy container (its fixed address below).
+    DM_HOST_TRUSTED_PROXIES: 172.30.0.10
+  volumes:
+    - queue:/data/queue
+    - osv-index:/data/tool
+    - resolver-cache:/data/tool/cache
+  restart: unless-stopped
+  logging: &logging
+    driver: json-file
+    options:
+      max-size: 10m
+      max-file: "3"
+
+services:
+  api:
+    <<: *host
+    networks:
+      host-net:
+    # No published port: only Caddy reaches the API.
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/api/health', timeout=5)"
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+  worker:
+    <<: *host
+    command: ["python", "-m", "dmhost.worker"]
+    networks:
+      host-net:
+    # The pool stops after SIGTERM. A Job that runs then ends as "Something went wrong".
+    stop_grace_period: 30s
+
+  caddy:
+    image: caddy:2.8.4-alpine
+    restart: unless-stopped
+    depends_on:
+      - api
+    # Only the values that the Caddyfile reads; Compose takes them from host/.env.
+    environment:
+      DM_HOST_DUCKDNS_SUBDOMAIN: ${DM_HOST_DUCKDNS_SUBDOMAIN:?set it in host/.env}
+      DM_HOST_ACME_EMAIL: ${DM_HOST_ACME_EMAIL:?set it in host/.env}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    networks:
+      host-net:
+        ipv4_address: 172.30.0.10
+    logging: *logging
+
+  # Points <DM_HOST_DUCKDNS_SUBDOMAIN>.duckdns.org to the public IP of the VM every 10 minutes.
+  # The DuckDNS token is only in host/.env on the VM. The log line shows only the answer of
+  # DuckDNS (OK or KO), not the URL, so the token does not go to the log.
+  duckdns:
+    image: curlimages/curl:8.10.1
+    restart: unless-stopped
+    environment:
+      DM_HOST_DUCKDNS_SUBDOMAIN: ${DM_HOST_DUCKDNS_SUBDOMAIN:?set it in host/.env}
+      DM_HOST_DUCKDNS_TOKEN: ${DM_HOST_DUCKDNS_TOKEN:?set it in host/.env}
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        while true; do
+          answer=$$(curl -s --max-time 30 \
+            "https://www.duckdns.org/update?domains=$${DM_HOST_DUCKDNS_SUBDOMAIN}&token=$${DM_HOST_DUCKDNS_TOKEN}&ip=")
+          echo "DuckDNS update: $${answer:-no answer}"
+          sleep 600
+        done
+    logging: *logging
+
+  # --- Ballast (ticket #16) -------------------------------------------------------------
+  # The elastic memory ballast (ADR 0001, dmhost/ballast.py). It keeps the memory use of the
+  # VM at 25% of the RAM, so that Oracle does not reclaim the idle instance. It holds only
+  # the gap to the memory use of the whole VM (from /proc/meminfo), so it releases memory
+  # when the workers and their Job child processes use more.
+  # Do not remove it as "unused". It is the only thing that keeps a quiet VM alive.
+  ballast:
+    <<: *host
+    command: ["python", "-m", "dmhost.ballast"]
+    # The kernel stops the ballast first when memory is short, so a Job never fails because
+    # of it. Docker then starts it again.
+    oom_score_adj: 1000
+    restart: always
+    # The ballast needs no network, no data, and no secrets.
+    network_mode: none
+    volumes: []
+    env_file: []
+    environment: {}
+  # ---------------------------------------------------------------------------------------
+
+networks:
+  host-net:
+    ipam:
+      config:
+        - subnet: 172.30.0.0/24
+
+volumes:
+  queue:
+  osv-index:
+  resolver-cache:
+  caddy-data:
+  caddy-config:
