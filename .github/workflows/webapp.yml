@@ -62,7 +62,8 @@ jobs:
 
     # index.html keeps the local Host URL and the Turnstile test key. This step puts the
     # production values from the repository variables (Settings > Secrets and variables >
-    # Actions > Variables) into the published copy. It fails if a variable is missing.
+    # Actions > Variables) into the published copy. With neither variable set, it publishes the
+    # homepage without the analysis form. With only one set, it fails.
     - name: Configure the Host URL and the Turnstile site key
       env:
         DM_HOST_URL: ${{ vars.DM_HOST_URL }}
