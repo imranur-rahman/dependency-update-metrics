@@ -52,3 +52,19 @@ test("a Host URL with a path or a trailing slash is refused", () => {
     /Host URL/,
   );
 });
+
+test("with no Host configured, the homepage ships without the analysis form", () => {
+  const html = configureHomepage(homepage, { hostUrl: "", siteKey: "" });
+
+  assert.doesNotMatch(html, /id="comparison-form"/);
+  assert.doesNotMatch(html, /static\/js\/webapp\.js/);
+  assert.doesNotMatch(html, /challenges\.cloudflare\.com/);
+  assert.doesNotMatch(html, /data-host-url="http:\/\/localhost/);
+  assert.match(html, /id="try-it"[^>]*>[\s\S]*not online yet/);
+  assert.match(html, /<\/html>\s*$/);
+});
+
+test("with only one of the two values set, the deploy still fails", () => {
+  assert.throws(() => configureHomepage(homepage, { hostUrl: "", siteKey: production.siteKey }), /Host URL/);
+  assert.throws(() => configureHomepage(homepage, { hostUrl: production.hostUrl, siteKey: "" }), /site key/);
+});

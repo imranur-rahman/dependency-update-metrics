@@ -57,6 +57,7 @@ Both read the shared API examples in `contract/examples/`. The done examples are
 | Webapp: the Window summary and the Per-release CSV downloads of one window had the same file name (#1 review) | `webapp/tests/comparison.test.mjs`: "two downloads that differ only in the mode or the weighting get different file names" |
 | The single-package `--per-release` summary log failed with a "Logging error" on a failed release, whose MTTU and MTTR are None (#1 review) | `test_cli_single_package.py::test_cli_per_release_log_shows_a_failed_release_as_error` |
 | Host: a Job that a worker claimed between two reads showed as queued with position 0, or as running with package 0 of 0 (#5) | `host/tests/test_job_events.py::test_stream_sends_the_states_in_order_with_position_and_package_index` |
+| The Pages deploy failed and the homepage went offline when no Host was configured | `webapp/tests/configure.test.mjs`: "with no Host configured, the homepage ships without the analysis form", "with only one of the two values set, the deploy still fails" |
 
 ### OSV build tests
 

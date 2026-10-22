@@ -8,6 +8,8 @@
 //   node webapp/configure.mjs <index.html>
 //
 // The script refuses a missing or malformed value, so a deploy never ships the local values.
+// When neither variable is set (no Host is online yet), it removes the analysis form and its
+// scripts and shows a short notice, so that the rest of the homepage still publishes.
 import { readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
@@ -15,8 +17,29 @@ const HOST_URL = /^https:\/\/[A-Za-z0-9.-]+(?::\d+)?$/;
 const SITE_KEY = /^[0-9A-Za-z_-]+$/;
 const HOST_URL_ATTRIBUTE = /(id="try-it" data-host-url=")[^"]*(")/;
 const SITE_KEY_ATTRIBUTE = /(class="cf-turnstile" data-sitekey=")[^"]*(")/;
+const TRY_IT_SECTION = /<section class="section" id="try-it"[\s\S]*?<\/section>/;
+const WEBAPP_SCRIPTS = [
+  /\s*<script src="https:\/\/cdnjs\.cloudflare\.com\/ajax\/libs\/Chart\.js\/[^"]*"[^>]*><\/script>/,
+  /\s*<script src="https:\/\/challenges\.cloudflare\.com\/turnstile\/[^"]*"[^>]*><\/script>/,
+  /\s*<script type="module" src="static\/js\/webapp\.js"><\/script>/,
+];
+const OFFLINE_SECTION = `<section class="section" id="try-it">
+    <div class="container is-max-desktop content">
+      <h2 class="title is-3">Try it</h2>
+      <p>The analysis service is not online yet. Until it is, install the tool from PyPI and
+        run it on your machine.</p>
+    </div>
+  </section>`;
+
+function withoutWebapp(html) {
+  if (!TRY_IT_SECTION.test(html)) throw new Error("The homepage has no try-it section");
+  let page = html.replace(TRY_IT_SECTION, OFFLINE_SECTION);
+  for (const script of WEBAPP_SCRIPTS) page = page.replace(script, "");
+  return page;
+}
 
 export function configureHomepage(html, { hostUrl, siteKey }) {
+  if (!hostUrl && !siteKey) return withoutWebapp(html);
   if (!hostUrl) throw new Error("The Host URL is missing (DM_HOST_URL)");
   if (!HOST_URL.test(hostUrl)) {
     throw new Error(`The Host URL must be HTTPS with no path or trailing slash: ${hostUrl}`);
@@ -43,5 +66,9 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     siteKey: process.env.DM_TURNSTILE_SITE_KEY,
   });
   writeFileSync(path, html);
-  console.log(`Configured ${path} for ${process.env.DM_HOST_URL}`);
+  console.log(
+    process.env.DM_HOST_URL
+      ? `Configured ${path} for ${process.env.DM_HOST_URL}`
+      : `Configured ${path} without the analysis form (no Host is set)`,
+  );
 }
