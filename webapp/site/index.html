@@ -471,7 +471,7 @@ dependency-metrics --input-csv input.csv --workers 8 --output-dir output</code><
     </div>
   </section>
 
-  <!-- Validation and carbon footprint -->
+  <!-- Validation -->
   <section class="section">
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">Validation</h2>
@@ -481,12 +481,12 @@ dependency-metrics --input-csv input.csv --workers 8 --output-dir output</code><
           <div class="stat-label">offline tests: unit, integration, regression, and metamorphic</div>
         </div>
         <div class="column">
-          <div class="stat">72 / 90</div>
-          <div class="stat-label">case-study packages whose scores match the reference scores exactly (80 within one day)</div>
+          <div class="stat">90 / 90</div>
+          <div class="stat-label">case-study packages manually verified: the dependency resolution at each release point and the MTTU and MTTR computation</div>
         </div>
         <div class="column">
-          <div class="stat">&lt; 1 g CO<sub>2</sub>e</div>
-          <div class="stat-label">for a full run over 90 packages (6,601 release points)</div>
+          <div class="stat">72 / 90</div>
+          <div class="stat-label">case-study packages whose scores match the reference scores of prior work exactly (80 within one day)</div>
         </div>
       </div>
       <div class="content has-text-centered">
