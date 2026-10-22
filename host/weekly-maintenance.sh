@@ -10,7 +10,8 @@
 set -uo pipefail
 
 host_dir=$(cd "$(dirname "$0")" && pwd)
-cd "$host_dir"
+# No set -e here (the script must ping the check after a failure), so stop by hand.
+cd "$host_dir" || exit 1
 
 echo "== Weekly maintenance, $(date -u +%Y-%m-%dT%H:%M:%SZ)"
 docker compose run --rm -T worker python -m dmhost.maintenance
