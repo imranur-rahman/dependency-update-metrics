@@ -22,6 +22,7 @@ import {
   barChartAxisLabel,
   lineChartData,
   lineChartAxisLabel,
+  chartHasValues,
   tableColumns,
   rowsToCsv,
   csvFileName,
@@ -280,6 +281,11 @@ function showChart(job) {
     return;
   }
   const data = barChartData(job);
+  // A Job without values (each package failed or has no dependencies) shows no chart.
+  if (!chartHasValues(data)) {
+    chartFigure.hidden = true;
+    return;
+  }
   for (const dataset of data.datasets) {
     const color = SERIES_COLORS[dataset.label];
     Object.assign(dataset, { backgroundColor: color, borderColor: color, borderRadius: 4 });
@@ -314,9 +320,17 @@ function showReleaseCharts(job) {
     releaseChartsFigure.hidden = true;
     return;
   }
+  const chartData = Object.fromEntries(
+    Object.keys(releaseCanvases).map((metric) => [metric, lineChartData(job, metric)]),
+  );
+  // A Job without values (each release failed or has no dependencies) shows no charts.
+  if (!Object.values(chartData).some(chartHasValues)) {
+    releaseChartsFigure.hidden = true;
+    return;
+  }
   releaseChartsFigure.hidden = false;
   for (const [metric, canvas] of Object.entries(releaseCanvases)) {
-    const data = lineChartData(job, metric);
+    const data = chartData[metric];
     data.datasets.forEach((dataset, index) => {
       const color = PACKAGE_COLORS[index % PACKAGE_COLORS.length];
       Object.assign(dataset, {
@@ -343,7 +357,7 @@ function showReleaseCharts(job) {
                 title: (items) => formatReleaseDate(items[0].parsed.x),
                 label: (item) =>
                   `${item.dataset.label} ${item.raw.version}: ${
-                    item.raw.y === null ? "failed" : `${item.raw.y.toFixed(1)} days`
+                    item.raw.y === null ? "no value" : `${item.raw.y.toFixed(1)} days`
                   }`,
               },
             },

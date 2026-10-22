@@ -7,6 +7,32 @@
 
 const NO_VALUE = "–";
 
+// The error text of a package or a release without dependencies. MTTU and MTTR are means
+// over the dependencies, so the Tool cannot compute them; its value of 0 is not a result.
+export const NO_DEPENDENCIES_ERROR = "No dependencies, so MTTU and MTTR cannot be computed.";
+
+// Return true when a summary or a release of the Host API has no dependencies: the Tool
+// gives the status "no_deps", or "ok" with 0 dependencies (a release in Per-release mode).
+function hasNoDependencies(entry) {
+  return entry?.status === "no_deps" || (entry?.status === "ok" && entry.num_dependencies === 0);
+}
+
+// Return the days of a summary or a release for one metric ("mttu" or "mttr"), or null
+// when the entry has no value: it failed, or it has no dependencies.
+function metricValue(entry, metric) {
+  if (entry?.status !== "ok" || hasNoDependencies(entry)) return null;
+  return typeof entry[metric] === "number" ? entry[metric] : null;
+}
+
+// Return the values of a summary or a release for a table row: the days of both metrics,
+// and the error text.
+function rowValues(entry, error) {
+  if (hasNoDependencies(entry)) {
+    return { mttu: NO_VALUE, mttr: NO_VALUE, error: error || NO_DEPENDENCIES_ERROR };
+  }
+  return { mttu: formatDays(entry?.mttu), mttr: formatDays(entry?.mttr), error };
+}
+
 // The most packages in one Comparison. The Host checks the same limit (MAX_PACKAGES).
 export const MAX_PACKAGES = 5;
 
@@ -251,12 +277,13 @@ export function resultRows(job) {
   if (job.comparison.mode === PER_RELEASE) return perReleaseRows(job);
   return job.results.map((result) => {
     const summary = result.summary ?? {};
+    const values = rowValues(summary, result.error || summary.error || "");
     return {
       package: result.package,
-      mttu: formatDays(summary.mttu),
-      mttr: formatDays(summary.mttr),
+      mttu: values.mttu,
+      mttr: values.mttr,
       dependencies: summary.num_dependencies ?? 0,
-      error: result.error || summary.error || "",
+      error: values.error,
     };
   });
 }
@@ -278,15 +305,18 @@ function perReleaseRows(job) {
         },
       ];
     }
-    return result.releases.map((release) => ({
-      package: result.package,
-      version: release.package_version,
-      releaseDate: release.package_release_date,
-      mttu: formatDays(release.mttu),
-      mttr: formatDays(release.mttr),
-      dependencies: release.num_dependencies,
-      error: release.error,
-    }));
+    return result.releases.map((release) => {
+      const values = rowValues(release, release.error);
+      return {
+        package: result.package,
+        version: release.package_version,
+        releaseDate: release.package_release_date,
+        mttu: values.mttu,
+        mttr: values.mttr,
+        dependencies: release.num_dependencies,
+        error: values.error,
+      };
+    });
   });
 }
 
@@ -294,15 +324,15 @@ function perReleaseRows(job) {
 // or "mttr"; the page shows each in its own chart, because MTTU values are often much
 // larger than MTTR values. Each package has one line. A point has x = the release date
 // (milliseconds, UTC) for a linear x-axis, y = the days, and the release version.
-// A release with a status that is not "ok" has y = null, so that the line has a gap there
-// and does not show a value of 0. The page code adds the colors.
+// A release with a status that is not "ok", or without dependencies, has y = null, so that
+// the line has a gap there and does not show a value of 0. The page code adds the colors.
 export function lineChartData(job, metric) {
   return {
     datasets: job.results.map((result) => ({
       label: result.package,
       data: result.releases.map((release) => ({
         x: Date.parse(`${release.package_release_date}T00:00:00Z`),
-        y: release.status === "ok" && typeof release[metric] === "number" ? release[metric] : null,
+        y: metricValue(release, metric),
         version: release.package_version,
       })),
     })),
@@ -316,13 +346,10 @@ export function lineChartAxisLabel(job) {
 
 // Return the Chart.js data of the grouped bar chart of a done Window summary Job: one
 // group for each package, with an MTTU bar and an MTTR bar. A package without a value
-// (for example, a package that failed) has null, so that it shows no bar and not a 0.
-// The page code adds the colors.
+// (a package that failed, or a package without dependencies) has null, so that it shows
+// no bar and not a 0. The page code adds the colors.
 export function barChartData(job) {
-  const value = (result, key) => {
-    const days = result.summary?.[key];
-    return typeof days === "number" ? days : null;
-  };
+  const value = (result, key) => metricValue(result.summary, key);
   return {
     labels: job.results.map((result) => result.package),
     datasets: [
@@ -330,6 +357,14 @@ export function barChartData(job) {
       { label: "MTTR", data: job.results.map((result) => value(result, "mttr")) },
     ],
   };
+}
+
+// Return true when the Chart.js data of barChartData or lineChartData has at least one
+// value. The page hides a chart without values, so that it does not show an empty chart.
+export function chartHasValues(data) {
+  return data.datasets.some((dataset) =>
+    dataset.data.some((point) => (point !== null && typeof point === "object" ? point.y : point) !== null),
+  );
 }
 
 // Return the y-axis label of the bar chart of a done Job. It follows the weighting type,

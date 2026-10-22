@@ -20,6 +20,8 @@ import {
   rowsToCsv,
   TABLE_COLUMNS,
   MODES,
+  chartHasValues,
+  NO_DEPENDENCIES_ERROR,
 } from "../site/static/js/comparison.js";
 
 const contractDir = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "contract", "examples");
@@ -166,4 +168,25 @@ test("the Per-release CSV download has the same columns and values as the table"
       "yourpkg,1.0.0,2021-03-01,0.0,0.0,1,\r\n" +
       "yourpkg,2.0.0,2021-12-01,183.0,183.0,1,\r\n",
   );
+});
+
+test("a release without dependencies is a gap and shows an error, also with the status ok", () => {
+  const job = perReleaseJob();
+  Object.assign(job.results[0].releases[0], { status: "ok", mttu: 0, mttr: 0, num_dependencies: 0 });
+
+  const [mypkg] = lineChartData(job, "mttu").datasets;
+  const [row] = resultRows(job);
+
+  assert.deepEqual(mypkg.data.map((point) => point.y), [null, null, 214]);
+  assert.deepEqual([row.mttu, row.mttr, row.error], ["–", "–", NO_DEPENDENCIES_ERROR]);
+});
+
+test("line charts in which no release has a value have no values", () => {
+  const job = perReleaseJob();
+  for (const result of job.results) {
+    for (const release of result.releases) Object.assign(release, { status: "no_deps", num_dependencies: 0 });
+  }
+
+  assert.equal(chartHasValues(lineChartData(job, "mttu")), false);
+  assert.equal(chartHasValues(lineChartData(perReleaseJob(), "mttu")), true);
 });

@@ -38,6 +38,8 @@ import {
   botCheckError,
   packageKey,
   packageNameMatchesRules,
+  chartHasValues,
+  NO_DEPENDENCIES_ERROR,
 } from "../site/static/js/comparison.js";
 
 const contractDir = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "contract", "examples");
@@ -514,4 +516,25 @@ test("the package name rules and the package key match the shared contract cases
     assert.equal(packageNameMatchesRules(ecosystem, name), valid, `${ecosystem}: ${name}`);
     assert.equal(packageKey(ecosystem, name), key, `${ecosystem}: ${name}`);
   }
+});
+
+// A Window summary Job in which mypkg has no dependencies: the Tool gives "no_deps" and 0 days.
+const noDependenciesJob = () => {
+  const job = example("job_done_window_summary");
+  Object.assign(job.results[0].summary, { mttu: 0, mttr: 0, num_dependencies: 0, status: "no_deps" });
+  return job;
+};
+
+test("a package without dependencies shows an error, not 0 days", () => {
+  assert.deepEqual(resultRows(noDependenciesJob()), [
+    { package: "mypkg", mttu: "–", mttr: "–", dependencies: 0, error: NO_DEPENDENCIES_ERROR },
+  ]);
+});
+
+test("a package without dependencies has no bar, and a chart without bars has no values", () => {
+  const data = barChartData(noDependenciesJob());
+
+  assert.deepEqual(data.datasets.map((dataset) => dataset.data), [[null], [null]]);
+  assert.equal(chartHasValues(data), false);
+  assert.equal(chartHasValues(barChartData(example("job_done_window_summary"))), true);
 });
