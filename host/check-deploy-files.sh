@@ -21,7 +21,9 @@ echo "== 1/3 Scripts"
 for script in ./*.sh; do
   bash -n "$script"
 done
-shellcheck ./*.sh
+# Warnings and errors only: the info notes flag the wizard library's helpers that a wizard
+# does not call.
+shellcheck --severity=warning ./*.sh
 
 echo "== 2/3 compose.yaml"
 # .env.example leaves the secrets and the address empty, and compose.yaml refuses an empty
