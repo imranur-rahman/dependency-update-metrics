@@ -350,7 +350,7 @@ pause
 
 # ── 10 ───────────────────────────────────────────────────────────────────
 stage "VM: build the OSV index"
-say "Without the OSV index every MTTR is 0. The build downloads about 260 MB."
+say "Without the OSV index every MTTR is 0. The build downloads the OSV zips of npm, PyPI, and crates.io."
 if confirm "Build the OSV index on the VM now?"; then
   ssh "${DM_VM_USER}@${DM_VM_IP}" "cd dependency-update-metrics/host && \
     docker compose run --rm worker dependency-metrics --build-osv --output-dir /data/tool"
