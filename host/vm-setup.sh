@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 # Prepares the VM (Ubuntu 24.04, x86-64 or arm64) for the Host. Run it on the VM, from the repo:
 #
-#   bash host/vm-setup.sh
+#   bash host/vm-setup.sh [--allow-non-lts]
 #
-# It is safe to run again. It:
+# It is safe to run again. It stops on an Ubuntu release that is not LTS, because an interim
+# release gets updates for only 9 months (--allow-non-lts skips this check). Then it:
 #   1. installs Docker, Docker Compose, and git;
 #   2. opens ports 80 and 443 in the instance firewall (Oracle's Ubuntu images block them;
 #      on Google's images the rules change nothing);
@@ -15,6 +16,15 @@
 set -euo pipefail
 
 host_dir=$(cd "$(dirname "$0")" && pwd)
+
+# shellcheck source=/dev/null
+. /etc/os-release
+if [[ "${VERSION:-}" != *LTS* && "${1:-}" != "--allow-non-lts" ]]; then
+  echo "This VM runs ${PRETTY_NAME:-an unknown release}, which is not an Ubuntu LTS release." >&2
+  echo "Make the VM again from an LTS image (host/RUNBOOK.md, step 2)," >&2
+  echo "or run: bash host/vm-setup.sh --allow-non-lts" >&2
+  exit 1
+fi
 
 echo "== 1/5 Docker"
 sudo apt-get update -q

@@ -51,3 +51,14 @@ jobs:
 
     - name: Run tests
       run: pytest host/tests -v
+
+  # The scripts, compose.yaml, and the Caddyfile run only on the VM, so this job checks them
+  # here. ubuntu-latest has bash, shellcheck, and docker.
+  deploy-files:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Check the deploy files
+      run: bash host/check-deploy-files.sh

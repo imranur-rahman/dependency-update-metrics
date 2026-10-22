@@ -22,6 +22,7 @@ The repository holds the three parts that `GLOSSARY.md` defines. Each part has i
 - Locally, run every command inside the venv: `source metrics_venv/bin/activate && <command>`.
 - Tests: `pytest tests/ -q`. CI runs them on ubuntu, macos, and windows with Python 3.10, 3.11, and 3.12.
 - The Tool CI lints `dependency_metrics/` only, with `black --check`, `flake8 --max-line-length=100`, and `mypy --ignore-missing-imports`. Run `black dependency_metrics/` before each commit.
+- The deploy files in `host/` (scripts, `compose.yaml`, `Caddyfile`) run only on the VM. Check a change to them with `bash host/check-deploy-files.sh` (needs shellcheck and docker).
 
 ## Tests run offline
 
