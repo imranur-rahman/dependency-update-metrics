@@ -212,47 +212,50 @@ if [[ ! -f "$ENV_FILE" ]]; then
   (umask 077 && cp "$HOST_DIR/.env.example" "$ENV_FILE")
 fi
 
-banner "Deploy the Host to Oracle Always Free (ticket #15)"
+banner "Deploy the Host to Google Compute Engine (ticket #15, ADR 0002)"
 
 # ── 1 ────────────────────────────────────────────────────────────────────
-stage "Oracle Cloud: the free-tier account"
-say "The Host runs on an Oracle Always Free Ampere A1 VM."
-warn "Keep the account on the free tier. Do not upgrade to Pay As You Go (ADR 0001)."
-open_url "https://signup.cloud.oracle.com/"
-step "Sign up, or sign in if you already have an account."
-step "Pick a home region with Ampere A1 capacity. You cannot change it later."
-pause "Press Enter when you can see the OCI console."
+stage "Google Cloud: the project and the budget alert"
+say "The Host runs on an e2-standard-2 VM (about \$55 a month), paid by the research credit."
+warn "Set the budget alert before you make the VM. When the credit ends, Google bills the card."
+open_url "https://console.cloud.google.com/projectcreate"
+step "Make a project (for example dependency-metrics), or pick the project of the credit."
+step "Check that the billing account of the project holds the credit (Billing > Credits)."
+open_url "https://console.cloud.google.com/billing/budgets"
+step "Click Create budget. Scope: the project. Amount: \$60 a month."
+step "Keep the alerts at 50%, 90%, and 100% of the budget, with e-mail to the billing admins."
+open_url "https://console.cloud.google.com/apis/library/compute.googleapis.com"
+step "Click Enable for the Compute Engine API."
+pause "Press Enter when the budget is saved and the API is on."
 
 # ── 2 ────────────────────────────────────────────────────────────────────
-stage "Oracle Cloud: the VM"
-open_url "https://cloud.oracle.com/compute/instances/create"
-step "Image: Change image > Ubuntu > Canonical Ubuntu 24.04 (the aarch64 build)."
-step "Shape: Change shape > Ampere > VM.Standard.A1.Flex, 4 OCPUs, 24 GB memory."
-step "Networking: a public subnet, and 'Assign a public IPv4 address' on."
-step "SSH keys: upload your public key (for example ~/.ssh/id_ed25519.pub)."
-step "Boot volume: keep the default (47 GB)."
-step "Click Create. If you get 'Out of capacity', try another availability domain."
-step "On the instance page, copy the Public IP address."
-ask DM_VM_IP "Paste the public IP of the VM:"
-ask DM_VM_USER "SSH user on the VM (Enter for ubuntu):" || true
-DM_VM_USER="${DM_VM_USER:-ubuntu}"
-note "The wizard keeps the IP only for this run. It does not write it to a file."
+stage "Google Cloud: the VM"
+open_url "https://console.cloud.google.com/compute/instancesAdd"
+step "Region: us-east1 (South Carolina). Zone: any."
+step "Machine configuration: E2 > e2-standard-2 (2 vCPU, 8 GB memory)."
+step "VM provisioning model: Standard. Do not use Spot, because Google can stop a Spot VM."
+step "OS and storage: Ubuntu 24.04 LTS (x86/64), Balanced persistent disk, 50 GB."
+step "Networking: tick 'Allow HTTP traffic' and 'Allow HTTPS traffic'."
+step "Security > Manage access: add your public key (for example ~/.ssh/id_ed25519.pub)."
+step "Click Create."
+ask DM_VM_USER "SSH user on the VM (the name that the console shows next to your key):"
 pause
 
 # ── 3 ────────────────────────────────────────────────────────────────────
-stage "Oracle Cloud: open ports 80 and 443 in the security list"
-say "Caddy needs ports 80 and 443 to get the Let's Encrypt certificate and serve HTTPS."
-step "On the instance page, click the subnet link, then its security list."
-step "Open the Default Security List and click Add Ingress Rules."
-step "Rule 1: Source CIDR 0.0.0.0/0, IP protocol TCP, destination port 80."
-step "Rule 2: Source CIDR 0.0.0.0/0, IP protocol TCP, destination port 443."
-note "Stage 4 opens the same ports in the instance firewall. You need both."
-pause "Press Enter when both rules are saved."
+stage "Google Cloud: a static IP address"
+say "A static address keeps the IP of the VM after a stop, so DuckDNS and HTTPS stay valid."
+say "It costs the same as the address that the VM already uses."
+open_url "https://console.cloud.google.com/networking/addresses/list"
+step "Find the External IP of the VM. Click the three dots, then 'Promote to static IP address'."
+step "Name: dmhost. Click Reserve."
+ask DM_VM_IP "Paste the static IP of the VM:"
+note "The wizard keeps the IP only for this run. It does not write it to a file."
+pause
 
 # ── 4 ────────────────────────────────────────────────────────────────────
 stage "VM: Docker, firewall, swap off, repo"
 say "This stage connects to ${DM_VM_USER}@${DM_VM_IP} with SSH and runs host/vm-setup.sh."
-say "The script installs Docker, opens 80/443 in iptables, and turns swap off (ADR 0001)."
+say "The script installs Docker and the cron jobs of the disk alert and the weekly maintenance."
 ask DM_DEPLOY_BRANCH "Branch to deploy (Enter for main):" || true
 DM_DEPLOY_BRANCH="${DM_DEPLOY_BRANCH:-main}"
 if confirm "Run the setup on the VM now?"; then
@@ -347,7 +350,7 @@ pause
 
 # ── 10 ───────────────────────────────────────────────────────────────────
 stage "VM: build the OSV index"
-say "Without the OSV index every MTTR is 0. The build downloads about 2.4 GB."
+say "Without the OSV index every MTTR is 0. The build downloads about 260 MB."
 if confirm "Build the OSV index on the VM now?"; then
   ssh "${DM_VM_USER}@${DM_VM_IP}" "cd dependency-update-metrics/host && \
     docker compose run --rm worker dependency-metrics --build-osv --output-dir /data/tool"
@@ -379,7 +382,7 @@ pause "Press Enter when the Comparison shows its results."
 
 # ── 12 ───────────────────────────────────────────────────────────────────
 stage "UptimeRobot: the uptime monitor"
-say "Oracle can change its idle policy, so a monitor checks the Host (ADR 0001)."
+say "A monitor tells you by e-mail when the Host stops answering."
 open_url "https://dashboard.uptimerobot.com/"
 step "Sign up (free) and click New monitor."
 step "Type: HTTP(s). URL: ${DM_HOST_URL}/api/health. Interval: 5 minutes."

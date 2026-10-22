@@ -1,5 +1,7 @@
 # Keep the Oracle free-tier host alive with a memory ballast
 
+The Host moved to Google Compute Engine (ADR 0002). This ADR applies only when the Host runs on an Oracle Always Free VM again.
+
 The Host runs on an Oracle Always Free Ampere A1 instance. Oracle can reclaim an Always Free instance when its CPU, network, and memory use all stay below 20% at the 95th percentile over 7 days. Memory counts only on A1 shapes. We stay on the free tier and do not change the account to Pay As You Go, so a quiet week can cause Oracle to reclaim the instance. Therefore a ballast service holds anonymous memory, so that memory use stays above the threshold all the time.
 
 ## Considered Options

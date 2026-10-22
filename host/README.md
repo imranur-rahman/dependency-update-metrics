@@ -20,7 +20,7 @@ See `GLOSSARY.md` and spec #1.
 | `dmhost/client_ip.py` | `client_ip()`: the address of the user behind Caddy. |
 | `dmhost/ballast.py` | The memory ballast (ADR 0001): `ballast_bytes()` sizes it from the memory use of the whole VM (`MemoryInfo` from /proc/meminfo); `Ballast(read_meminfo=)` holds and releases the memory. `python -m dmhost.ballast` runs it. |
 | `dmhost/maintenance.py` | `run_weekly_maintenance(output_dir, run=)`: the OSV rebuild, then the cache prune to 10 GB. `python -m dmhost.maintenance` exits with 1 when a step fails. |
-| `Dockerfile`, `compose.yaml`, `Caddyfile`, `.env.example` | The deploy to the Oracle VM: the image, the services (API, workers, Caddy, DuckDNS, ballast), the HTTPS front, and the configuration values. |
+| `Dockerfile`, `compose.yaml`, `Caddyfile`, `.env.example` | The deploy to the Google Compute Engine VM (ADR 0002): the image, the services (API, workers, Caddy, DuckDNS, and the ballast, which only an Oracle VM starts), the HTTPS front, and the configuration values. |
 | `RUNBOOK.md`, `wizard.sh`, `vm-setup.sh`, `deploy.sh`, `disk-check.sh`, `weekly-maintenance.sh` | The deploy steps. `RUNBOOK.md` lists the human steps and each deploy; `bash host/wizard.sh` walks a person through the first setup. |
 | `tests/` | The Host tests. They use FastAPI's `TestClient`, run the queue and the worker in the test process, and need no network. |
 

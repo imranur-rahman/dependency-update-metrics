@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
-# Prepares the Oracle VM (Ubuntu, arm64) for the Host. Run it on the VM, from the repo:
+# Prepares the VM (Ubuntu 24.04, x86-64 or arm64) for the Host. Run it on the VM, from the repo:
 #
 #   bash host/vm-setup.sh
 #
 # It is safe to run again. It:
 #   1. installs Docker, Docker Compose, and git;
-#   2. opens ports 80 and 443 in the instance firewall (Oracle's Ubuntu images block them);
-#   3. turns swap off (ADR 0001: the kernel must not move the ballast pages to swap);
+#   2. opens ports 80 and 443 in the instance firewall (Oracle's Ubuntu images block them;
+#      on Google's images the rules change nothing);
+#   3. turns swap off (ADR 0001: on Oracle, the kernel must not move the ballast pages to swap;
+#      Google's Ubuntu images have no swap);
 #   4. installs the cron job of the disk alert (host/disk-check.sh, every 15 minutes);
 #   5. installs the cron job of the weekly maintenance (host/weekly-maintenance.sh, every
 #      Sunday at 04:00 UTC: the OSV rebuild, then the cache prune to 10 GB).
@@ -48,7 +50,7 @@ chmod +x "$host_dir/disk-check.sh" "$host_dir/deploy.sh" "$host_dir/weekly-maint
   echo "*/15 * * * * $host_dir/disk-check.sh >/dev/null 2>&1" ) | crontab -
 
 echo "== 5/5 Weekly maintenance cron job"
-# The VM clock is UTC on Oracle's Ubuntu images. The log is in the home folder, not in the repo.
+# The VM clock is UTC on the Ubuntu images of Google and Oracle. The log is in the home folder, not in the repo.
 ( crontab -l 2>/dev/null | grep -v 'weekly-maintenance.sh' || true
   echo "0 4 * * 0 $host_dir/weekly-maintenance.sh >>\$HOME/dmhost-maintenance.log 2>&1" ) | crontab -
 crontab -l
