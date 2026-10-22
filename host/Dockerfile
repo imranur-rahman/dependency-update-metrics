@@ -5,9 +5,9 @@
 #
 #   docker build -f host/Dockerfile -t dmhost .
 #
-# python:3.12-slim is a multi-arch image, so the same file builds on the arm64 Oracle VM
-# and on an amd64 laptop. The Host always uses deps.dev data, so the image does not need
-# the vendored pip fork (vendor/pip).
+# python:3.12-slim is a multi-arch image, so the same file builds on the x86-64 Google VM,
+# on an arm64 Oracle VM, and on a laptop. The Host always uses deps.dev data, so the image
+# does not need the vendored pip fork (vendor/pip).
 FROM python:3.12-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
