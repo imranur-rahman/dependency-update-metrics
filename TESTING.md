@@ -91,7 +91,7 @@ The OSV build tests in `test_osv.py` write small fixture zips for npm, PyPI, and
 |---|---|---|
 | Simplified data, so the correct output can be computed by hand | Tiny timelines with a known answer | `test_per_release.py::test_mttu_mttr_exponential_two_releases` (MTTU is exactly 365 days), `test_api.py::test_window_summary_returns_mttu_mttr_and_dependency_count` (579 days), `test_per_release.py::test_no_deps_returns_zero_metrics`, `test_metamorphic.py::test_source_scenario_has_nonzero_metrics` (214 days) |
 | Metamorphic testing: check how the output must change when the input changes in a known way | Four relations, below | `test_metamorphic.py` |
-| Pseudo oracle: compare against an independent implementation | The case study compares our scores with reference scores for the same packages and windows: 72 of 90 match exactly, and 82 are within one day. This counts as a pseudo oracle only if the reference scores came from an independent implementation. | `case_study/analyze_results.py` (columns `mttu_provided`, `mttu_recomputed`) |
+| Pseudo oracle: compare against an independent implementation | The case study compares our scores with reference scores for the same packages and windows: 72 of 90 match exactly, and 80 are within one day (run of 2026-10-22, with `--weighting-type inverse`). This counts as a pseudo oracle only if the reference scores came from an independent implementation. | `case_study/analyze_results.py` (columns `mttu_provided`, `mttu_recomputed`) |
 
 ### Metamorphic relations
 

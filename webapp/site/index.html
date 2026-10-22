@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Primary Meta Tags -->
-  <meta name="title" content="DependencyUpdateMetric - Imranur Rahman, Ranindya Paramitha, Mahzabina Tamanna, Laurie Williams">
-  <meta name="description" content="DependencyUpdateMetric measures how fast open-source packages update their dependencies (MTTU) and remediate known vulnerabilities (MTTR) over time, for npm, PyPI, and Cargo.">
+  <meta name="title" content="MTTX - Imranur Rahman, Ranindya Paramitha, Mahzabina Tamanna, Laurie Williams">
+  <meta name="description" content="MTTX measures how fast open-source packages update their dependencies (MTTU) and remediate known vulnerable dependencies (MTTR) over time, for npm, PyPI, and Cargo.">
   <meta name="keywords" content="software supply chain, dependency management, technical lag, vulnerability remediation, MTTU, MTTR, mining software repositories, npm, PyPI, Cargo">
   <meta name="author" content="Imranur Rahman, Ranindya Paramitha, Mahzabina Tamanna, Laurie Williams">
   <meta name="robots" content="index, follow">
@@ -15,16 +15,16 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="North Carolina State University">
-  <meta property="og:title" content="DependencyUpdateMetric">
-  <meta property="og:description" content="Measure how fast open-source packages update their dependencies (MTTU) and remediate known vulnerabilities (MTTR) over time, for npm, PyPI, and Cargo.">
+  <meta property="og:title" content="MTTX">
+  <meta property="og:description" content="Measure how fast open-source packages update their dependencies (MTTU) and remediate known vulnerable dependencies (MTTR) over time, for npm, PyPI, and Cargo.">
   <meta property="og:url" content="https://imranur-rahman.github.io/dependency-update-metrics/">
   <meta property="og:image" content="https://imranur-rahman.github.io/dependency-update-metrics/static/images/architecture.png">
-  <meta property="og:image:alt" content="Architecture of DependencyUpdateMetric">
+  <meta property="og:image:alt" content="Architecture of MTTX">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="DependencyUpdateMetric">
-  <meta name="twitter:description" content="Measure how fast open-source packages update their dependencies (MTTU) and remediate known vulnerabilities (MTTR) over time.">
+  <meta name="twitter:title" content="MTTX">
+  <meta name="twitter:description" content="Measure how fast open-source packages update their dependencies (MTTU) and remediate known vulnerable dependencies (MTTR) over time.">
   <meta name="twitter:image" content="https://imranur-rahman.github.io/dependency-update-metrics/static/images/architecture.png">
 
   <meta name="theme-color" content="#2563eb">
@@ -35,7 +35,7 @@
   <link rel="preconnect" href="https://ajax.googleapis.com">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
 
-  <title>DependencyUpdateMetric: MTTU and MTTR for Open-Source Dependencies</title>
+  <title>MTTX: MTTU and MTTR for Open-Source Dependencies</title>
 
   <!-- Critical CSS -->
   <link rel="stylesheet" href="static/css/bulma.min.css">
@@ -79,8 +79,8 @@
   {
     "@context": "https://schema.org",
     "@type": "SoftwareSourceCode",
-    "name": "DependencyUpdateMetric",
-    "description": "Measures how fast open-source packages update their dependencies (MTTU) and remediate known vulnerabilities (MTTR) over time, for npm, PyPI, and Cargo.",
+    "name": "MTTX",
+    "description": "Measures how fast open-source packages update their dependencies (MTTU) and remediate known vulnerable dependencies (MTTR) over time, for npm, PyPI, and Cargo.",
     "codeRepository": "https://github.com/imranur-rahman/dependency-update-metrics",
     "programmingLanguage": "Python",
     "license": "https://opensource.org/licenses/MIT",
@@ -152,8 +152,8 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">DependencyUpdateMetric</h1>
-            <h2 class="subtitle is-4">How fast do open-source packages update their dependencies and remediate known vulnerabilities, over time?</h2>
+            <h1 class="title is-2 publication-title">Beyond Stars: MTTX To Measure Developers' Responsiveness to Dependency Update and Remediation</h1>
+            <h2 class="subtitle is-4">How fast do open-source packages update their dependencies and remediate known vulnerable dependencies, over time?</h2>
             <div class="is-size-5 publication-authors">
               <span class="author-block">Imranur Rahman,</span>
               <span class="author-block">Ranindya Paramitha,</span>
@@ -206,9 +206,9 @@
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body has-text-centered">
-        <img src="static/images/architecture.png" alt="Architecture of DependencyUpdateMetric: inputs, CLI, historical dependency resolver, OSV index, dependency analyzer, and reporting" loading="lazy" style="max-width: 760px; width: 100%;">
+        <img src="static/images/architecture.png" alt="Architecture of MTTX: inputs, CLI, historical dependency resolver, OSV index, dependency analyzer, and reporting" loading="lazy" style="max-width: 760px; width: 100%;">
         <p class="figure-caption">
-          Architecture of DependencyUpdateMetric. Numbers give the order of the steps. The resolver resolves each version constraint as of a past date, and the dashed slots show where a new ecosystem plugs in.
+          Architecture of MTTX. Numbers give the order of the steps. The resolver resolves each version constraint as of a past date, and the dashed slots show where a new ecosystem plugs in.
         </p>
       </div>
     </div>
@@ -224,7 +224,7 @@
             <p>
               Software composition analysis tools tell you whether a project is out of date or vulnerable <em>now</em>.
               They do not tell you how the project behaved <em>over time</em>.
-              DependencyUpdateMetric fills this gap.
+              MTTX fills this gap.
               It computes two metrics for the direct dependencies of a package in npm, PyPI, or Cargo:
               <strong>Mean Time To Update (MTTU)</strong>, how long the dependencies stay behind their newest version, and
               <strong>Mean Time To Remediate (MTTR)</strong>, how long the dependencies keep a known vulnerability after a fix is available.
@@ -248,7 +248,7 @@
       <p class="has-text-centered mb-5">
         Compare MTTU and MTTR of up to 5 packages from one ecosystem, with deps.dev data.
       </p>
-      <form id="comparison-form">
+      <form id="comparison-form" class="tryit-card" novalidate>
         <div class="columns">
           <div class="column is-one-quarter">
             <div class="field">
@@ -267,16 +267,22 @@
           <div class="column">
             <div class="field">
               <label class="label" for="package-1">Packages (1 to 5)</label>
-              <!-- webapp.js adds and removes the package fields. -->
+              <!-- webapp.js adds and removes the package fields. The first field holds the
+                   Add package button on its right. -->
               <div id="package-fields">
                 <div class="field has-addons package-field">
                   <div class="control is-expanded">
                     <input class="input" id="package-1" name="packages" type="text" placeholder="express" aria-label="Package 1">
                   </div>
+                  <div class="control">
+                    <button class="button is-link" id="add-package" type="button">
+                      <span class="icon is-small"><i class="fas fa-plus"></i></span>
+                      <span>Add package</span>
+                    </button>
+                  </div>
                 </div>
               </div>
-              <button class="button is-small is-light" id="add-package" type="button">Add package</button>
-              <p class="help is-danger" id="package-error" hidden></p>
+              <p class="tryit-error" id="package-error" role="alert" hidden></p>
             </div>
           </div>
         </div>
@@ -295,24 +301,30 @@
               <div class="control">
                 <input class="input" id="end-date" name="endDate" type="date" value="2025-01-01" required>
               </div>
-              <p class="help is-danger" id="date-error" hidden></p>
             </div>
           </div>
         </div>
-        <div class="columns">
-          <div class="column">
-            <div class="field">
-              <label class="label" for="mode">Mode</label>
-              <div class="control">
-                <div class="select is-fullwidth">
-                  <select id="mode" name="mode">
-                    <option value="window_summary" selected>Window summary (one value for each package)</option>
-                    <option value="per_release">Per-release (one value for each release)</option>
-                  </select>
-                </div>
-              </div>
-            </div>
+        <p class="tryit-error" id="date-error" role="alert" hidden></p>
+        <div class="field">
+          <span class="label" id="mode-label">What do you want to see?</span>
+          <div class="tryit-choice" role="radiogroup" aria-labelledby="mode-label">
+            <label class="tryit-option">
+              <input type="radio" name="mode" value="window_summary" checked>
+              <span>
+                <strong>One value for each package</strong>
+                <small>MTTU and MTTR over the whole period, as a bar chart.</small>
+              </span>
+            </label>
+            <label class="tryit-option">
+              <input type="radio" name="mode" value="per_release">
+              <span>
+                <strong>A value at each release</strong>
+                <small>How MTTU and MTTR changed over time, as line charts.</small>
+              </span>
+            </label>
           </div>
+        </div>
+        <div class="columns">
           <div class="column">
             <div class="field">
               <label class="label" for="weighting-type">Weighting</label>
@@ -334,7 +346,7 @@
               <div class="control">
                 <input class="input" id="half-life" name="halfLife" type="number" min="1" max="3650" step="any" value="180">
               </div>
-              <p class="help is-danger" id="half-life-error" hidden></p>
+              <p class="tryit-error" id="half-life-error" role="alert" hidden></p>
             </div>
           </div>
         </div>
@@ -345,49 +357,61 @@
                DM_TURNSTILE_SITE_KEY, see webapp/configure.mjs). The secret key is only on the Host.
                The widget puts its token in the form field "cf-turnstile-response". -->
           <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA"></div>
-          <p class="help is-danger" id="bot-check-error" hidden></p>
+          <p class="tryit-error" id="bot-check-error" role="alert" hidden></p>
         </div>
         <div class="field is-grouped">
           <div class="control">
-            <button class="button is-dark" id="submit-comparison" type="submit">Compute</button>
+            <button class="button is-link is-medium tryit-submit" id="submit-comparison" type="submit">Compute</button>
           </div>
           <div class="control">
-            <button class="button" id="cancel-job" type="button" hidden>Cancel</button>
+            <button class="button is-medium" id="cancel-job" type="button" hidden>Cancel</button>
           </div>
         </div>
+        <!-- The status of the Job. webapp.js adds is-error for a failed or refused Job. -->
+        <div class="tryit-status" id="job-status-box" hidden>
+          <p id="job-status" role="status" aria-live="polite"></p>
+          <progress id="job-progress" class="progress is-small is-link mt-2" aria-label="Job progress" hidden></progress>
+        </div>
+        <p class="is-size-7 mt-4 has-text-grey" id="privacy-note">
+          Privacy: the Host stores the package names that you submit, so that it can show and reuse the
+          results. For the rate limits, it stores a hash of your IP address for one hour, and it never
+          stores the IP address itself. Cloudflare Turnstile checks that a person sends the form.
+        </p>
       </form>
-      <p class="is-size-7 mt-2" id="privacy-note">
-        Privacy: the Host stores the package names that you submit, so that it can show and reuse the
-        results. For the rate limits, it stores a hash of your IP address for one hour, and it never
-        stores the IP address itself. Cloudflare Turnstile checks that a person sends the form.
-      </p>
-      <p id="job-status" class="mt-4" role="status" aria-live="polite"></p>
-      <progress id="job-progress" class="progress is-small is-dark mt-2" aria-label="Job progress" hidden></progress>
-      <p id="results-note" class="is-size-7 mt-2" hidden></p>
-      <figure class="mt-4" id="result-chart-figure" hidden>
-        <div style="position: relative; height: 320px;">
-          <canvas id="result-chart" role="img" aria-label="Bar chart of MTTU and MTTR for each package. The table below holds the same values."></canvas>
+      <!-- The results. webapp.js shows this card only when a Job is done. -->
+      <div class="tryit-card mt-5" id="results-card" hidden>
+        <div class="tryit-results-header">
+          <h3 class="title is-4 mb-0">Results</h3>
+          <button class="button is-small is-link is-light" id="download-csv" type="button">
+            <span class="icon is-small"><i class="fas fa-download"></i></span>
+            <span>Download CSV</span>
+          </button>
         </div>
-      </figure>
-      <!-- Per-release: two line charts, because MTTU values are often much larger than MTTR values. -->
-      <figure class="mt-4" id="release-charts-figure" hidden>
-        <p class="has-text-weight-semibold">MTTU at each release</p>
-        <div style="position: relative; height: 280px;">
-          <canvas id="release-chart-mttu" role="img" aria-label="Line chart of MTTU at each release date, one line for each package. A gap is a release that failed. The table below holds the same values."></canvas>
+        <p id="results-note" class="is-size-7 mt-2 has-text-grey" hidden></p>
+        <figure class="mt-4" id="result-chart-figure" hidden>
+          <div style="position: relative; height: 320px;">
+            <canvas id="result-chart" role="img" aria-label="Bar chart of MTTU and MTTR for each package. The table below holds the same values."></canvas>
+          </div>
+        </figure>
+        <!-- Per-release: two line charts, because MTTU values are often much larger than MTTR values. -->
+        <figure class="mt-4" id="release-charts-figure" hidden>
+          <p class="has-text-weight-semibold">MTTU at each release</p>
+          <div style="position: relative; height: 280px;">
+            <canvas id="release-chart-mttu" role="img" aria-label="Line chart of MTTU at each release date, one line for each package. A gap is a release that failed. The table below holds the same values."></canvas>
+          </div>
+          <p class="has-text-weight-semibold mt-4">MTTR at each release</p>
+          <div style="position: relative; height: 280px;">
+            <canvas id="release-chart-mttr" role="img" aria-label="Line chart of MTTR at each release date, one line for each package. A gap is a release that failed. The table below holds the same values."></canvas>
+          </div>
+        </figure>
+        <div class="table-container mt-4">
+          <!-- webapp.js builds the header from TABLE_COLUMNS in comparison.js, the same columns as the CSV. -->
+          <table class="table is-fullwidth is-striped is-hoverable" id="result-table" hidden>
+            <thead></thead>
+            <tbody></tbody>
+          </table>
         </div>
-        <p class="has-text-weight-semibold mt-4">MTTR at each release</p>
-        <div style="position: relative; height: 280px;">
-          <canvas id="release-chart-mttr" role="img" aria-label="Line chart of MTTR at each release date, one line for each package. A gap is a release that failed. The table below holds the same values."></canvas>
-        </div>
-      </figure>
-      <div class="table-container mt-4">
-        <!-- webapp.js builds the header from TABLE_COLUMNS in comparison.js, the same columns as the CSV. -->
-        <table class="table is-fullwidth is-striped" id="result-table" hidden>
-          <thead></thead>
-          <tbody></tbody>
-        </table>
       </div>
-      <button class="button is-small is-light" id="download-csv" type="button" hidden>Download CSV</button>
     </div>
   </section>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" integrity="sha512-CQBWl4fJHWbryGE+Pc7UAxWMUMNMWzWxF4SQo9CgkJIN1kx6djDQZjh3Y8SZ1d+6I+1zze6Z7kHXO7q3UyZAWw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -511,7 +535,7 @@ dependency-metrics --input-csv input.csv --workers 8 --output-dir output</code><
       </div>
       <p>Until the paper is published, please cite the software:</p>
       <pre id="bibtex-code"><code>@software{rahman2026dependencyupdatemetric,
-  title  = {DependencyUpdateMetric: Mean Time To Update and Mean Time To Remediate for Open-Source Dependencies},
+  title  = {MTTX: Mean Time To Update and Mean Time To Remediate for Open-Source Dependencies},
   author = {Rahman, Imranur and Paramitha, Ranindya and Tamanna, Mahzabina and Williams, Laurie},
   year   = {2026},
   url    = {https://github.com/imranur-rahman/dependency-update-metrics}

@@ -751,3 +751,140 @@ a:focus {
 
 
 
+
+/* The hidden attribute always hides an element. Bulma sets display on some elements (for
+   example .progress, figure, .button), which would otherwise override it. */
+[hidden] {
+  display: none !important;
+}
+
+/* --- Try It --- */
+#try-it {
+  background: var(--background-secondary);
+}
+
+.tryit-card {
+  background: var(--background-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 2rem;
+}
+
+#try-it .label {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+#try-it .input,
+#try-it .select select {
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+#try-it .input:focus,
+#try-it .select select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgb(37 99 235 / 0.15);
+}
+
+#try-it .package-field {
+  margin-bottom: 0.5rem;
+}
+
+#try-it .button.is-link:not(.is-light) {
+  background-color: var(--primary-color);
+}
+
+#try-it .button.is-link:not(.is-light):hover {
+  background-color: var(--primary-hover);
+}
+
+.tryit-submit {
+  min-width: 10rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* The mode choice: two cards that the user clicks. */
+.tryit-choice {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 0.75rem;
+}
+
+.tryit-option {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+
+.tryit-option:hover {
+  border-color: var(--primary-color);
+}
+
+.tryit-option:has(input:checked) {
+  border-color: var(--primary-color);
+  background-color: rgb(37 99 235 / 0.06);
+  box-shadow: 0 0 0 1px var(--primary-color);
+}
+
+.tryit-option input {
+  margin-top: 0.3rem;
+  accent-color: var(--primary-color);
+}
+
+.tryit-option strong {
+  display: block;
+  color: var(--text-primary);
+}
+
+.tryit-option small {
+  display: block;
+  color: var(--text-secondary);
+}
+
+/* An error of a field: a red box with an icon, so that the user sees it. */
+.tryit-error {
+  margin-top: 0.5rem;
+  padding: 0.6rem 0.9rem;
+  border-left: 4px solid #dc2626;
+  border-radius: 6px;
+  background-color: #fef2f2;
+  color: #b91c1c;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.tryit-error::before {
+  content: "\26A0\FE0E  ";
+}
+
+/* The status of the Job. A failed or refused Job shows in red. */
+.tryit-status {
+  margin-top: 1rem;
+  padding: 0.8rem 1rem;
+  border-radius: var(--border-radius);
+  background-color: var(--background-accent);
+  color: var(--text-primary);
+}
+
+.tryit-status.is-error {
+  border-left: 4px solid #dc2626;
+  background-color: #fef2f2;
+  color: #b91c1c;
+  font-weight: 500;
+}
+
+.tryit-results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}

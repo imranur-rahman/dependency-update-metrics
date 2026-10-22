@@ -43,6 +43,8 @@ const PACKAGE_POINT_STYLES = ["circle", "rect", "triangle", "rectRot", "crossRot
 const section = document.getElementById("try-it");
 const form = document.getElementById("comparison-form");
 const statusLine = document.getElementById("job-status");
+const statusBox = document.getElementById("job-status-box");
+const resultsCard = document.getElementById("results-card");
 const progressBar = document.getElementById("job-progress");
 const table = document.getElementById("result-table");
 const submitButton = document.getElementById("submit-comparison");
@@ -66,7 +68,6 @@ const releaseCanvases = {
   mttu: document.getElementById("release-chart-mttu"),
   mttr: document.getElementById("release-chart-mttr"),
 };
-const modeSelect = document.getElementById("mode");
 const csvButton = document.getElementById("download-csv");
 const botCheckMessage = document.getElementById("bot-check-error");
 
@@ -130,9 +131,10 @@ function addPackageField(value = "") {
   const removeControl = document.createElement("div");
   removeControl.className = "control";
   const remove = document.createElement("button");
-  remove.className = "button";
+  remove.className = "button is-danger is-light";
   remove.type = "button";
-  remove.textContent = "Remove";
+  remove.setAttribute("aria-label", "Remove this package");
+  remove.innerHTML = '<span class="icon is-small"><i class="fas fa-times"></i></span><span>Remove</span>';
   remove.addEventListener("click", () => {
     field.remove();
     renumberPackageFields();
@@ -202,7 +204,7 @@ function fillFormFromUrl() {
   setPackageFields(state.packages);
   form.elements.startDate.value = state.startDate;
   form.elements.endDate.value = state.endDate;
-  if (state.mode) modeSelect.value = state.mode;
+  if (state.mode) form.elements.mode.value = state.mode;
   weightingSelect.value = state.weightingType;
   if (state.halfLife !== "") halfLifeInput.value = state.halfLife;
   showWeightingFields();
@@ -216,8 +218,11 @@ function showComparisonInUrl(comparison) {
 
 // --- Results ---
 
-function showStatus(text) {
+// Show the status of the Job. An error (a failed or refused Job) shows in red.
+function showStatus(text, isError = false) {
   statusLine.textContent = text;
+  statusBox.hidden = !text;
+  statusBox.classList.toggle("is-error", isError);
 }
 
 // Show a bar with no value while the Job waits, and the share of packages that are done
@@ -237,7 +242,7 @@ function showProgress(progress) {
 function showJob(job) {
   currentJobId = job.job_id;
   cancelButton.hidden = !canCancel(job);
-  showStatus(describeJob(job));
+  showStatus(describeJob(job), job.state === "error");
   showProgress(progressOf(job));
   if (job.state === "done") showResult(job);
 }
@@ -370,7 +375,9 @@ function showCsvButton(job) {
   csvButton.hidden = false;
 }
 
+// Show the results card only for a done Job.
 function showResult(job) {
+  resultsCard.hidden = job === null;
   showRows(job === null ? [] : resultRows(job), tableColumns(job?.comparison.mode));
   showChart(job);
   showReleaseCharts(job);
@@ -453,7 +460,7 @@ async function resumeJobFromUrl() {
     console.error(error);
     showProgress(null);
     cancelButton.hidden = true;
-    showStatus("Something went wrong. Try again later.");
+    showStatus("Something went wrong. Try again later.", true);
   } finally {
     submitButton.disabled = false;
   }
@@ -501,7 +508,7 @@ form.addEventListener("submit", async (event) => {
       const refusal = await response.json().catch(() => null);
       console.error(`POST returned ${response.status}`, refusal);
       showProgress(null);
-      showStatus(submitErrorMessage(refusal));
+      showStatus(submitErrorMessage(refusal), true);
       return;
     }
     const { job_id: jobId } = await response.json();
@@ -511,7 +518,7 @@ form.addEventListener("submit", async (event) => {
     console.error(error);
     showProgress(null);
     cancelButton.hidden = true;
-    showStatus("Something went wrong. Try again later.");
+    showStatus("Something went wrong. Try again later.", true);
   } finally {
     resetBotCheck();
     submitButton.disabled = false;
