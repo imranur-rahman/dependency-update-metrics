@@ -18,7 +18,7 @@ chmod 600 .env
 
 git pull --ff-only
 docker compose up -d --build --remove-orphans
-# Each build leaves the old image without a tag. The boot volume is only 47 GB.
+# Each build leaves the old image without a tag. The boot disk is only 50 GB.
 docker image prune -f
 
 echo "Waiting for GET /api/health ..."

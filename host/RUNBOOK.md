@@ -47,9 +47,8 @@ homepage (`webapp/configure.mjs`):
 - `DM_HOST_URL`: `https://<subdomain>.duckdns.org`, with no trailing slash.
 - `DM_TURNSTILE_SITE_KEY`: the Turnstile site key.
 
-The workflow fails if only one of the two variables is set, or if a value is malformed, so
-a deploy never ships the local values (`http://localhost:8080` and the Turnstile test key).
-When neither variable is set, the workflow publishes the homepage without the analysis form.
+The header of `webapp/configure.mjs` says which values the workflow accepts, so a deploy
+never ships the local values (`http://localhost:8080` and the Turnstile test key).
 
 ## First setup (human steps)
 
@@ -104,7 +103,8 @@ When neither variable is set, the workflow publishes the homepage without the an
    steps 6 to 8. Make the IP hash key once with `openssl rand -hex 32` and keep it, because a
    new key resets the per-IP limits. Then run `chmod 600 host/.env`.
 10. **Deploy.** Run `bash host/deploy.sh` on the VM (see "Each deploy").
-11. **OSV index.** Without it, every MTTR is 0. The build downloads about 260 MB:
+11. **OSV index.** Without it, every MTTR is 0. The build downloads the OSV zips of npm,
+    PyPI, and crates.io (AGENTS.md has the current size):
 
     ```bash
     cd host
