@@ -3,7 +3,9 @@ Command-line interface for the dependency metrics tool.
 """
 
 import argparse
+import contextlib
 import gc
+import json
 import io
 import multiprocessing
 import os
@@ -12,7 +14,7 @@ import logging
 import time
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, TextIO, cast
 
 import psutil
 
@@ -26,7 +28,17 @@ from concurrent.futures import (
 from concurrent.futures.process import BrokenProcessPool
 
 from .analyzer import DependencyAnalyzer, build_osv_index
-from .api import DEPSDEV, NATIVE, PER_RELEASE, WINDOW_SUMMARY, analyze
+from .api import (
+    DEPSDEV,
+    NATIVE,
+    PER_RELEASE,
+    WINDOW_SUMMARY,
+    AnalysisResult,
+    DataSource,
+    Mode,
+    analyze,
+    failed_result,
+)
 from .osv_builder import OSVBuilder
 from .resolvers import ResolverCache
 from .depsdev_client import DepsDevClient
@@ -904,6 +916,15 @@ def main():
         help="Report MTTR separately for Critical, High, Medium, Low, and all_severities",
     )
 
+    parser.add_argument(
+        "--json",
+        action="store_true",
+        help=(
+            "Single-package mode only. Print the result as one JSON object on stdout, in the "
+            "shape of a Host API result. Logs and progress go to stderr."
+        ),
+    )
+
     parser.add_argument("--verbose", action="store_true", help="Enable debug logging")
 
     parser.add_argument(
@@ -922,6 +943,8 @@ def main():
         parser.error("--cache-namespace is valid only together with --cache-clear")
     if args.cache_prune_gb is not None and args.cache_prune_gb < 0:
         parser.error("--cache-prune-gb must be 0 or more")
+    if args.json and (args.input_csv or not args.package):
+        parser.error("--json needs --package and does not work with --input-csv")
 
     if args.ecosystem:
         args.ecosystem = _normalize_ecosystem(args.ecosystem)
@@ -2021,104 +2044,145 @@ def main():
 
         start_date = default_start_date
 
-        # Build OSV database if requested
-        if args.build_osv:
-            _build_osv_index_file(output_dir)
-
-        # Analyze package dependencies
-        logging.getLogger("dependency_metrics").info(
-            "Analyzing %s package: %s", args.ecosystem, args.package
-        )
+        # With --json, stdout holds only the result, so everything else goes to stderr.
+        json_stdout = sys.stdout
+        redirect = contextlib.redirect_stdout(sys.stderr) if args.json else contextlib.nullcontext()
         try:
-            _logger = logging.getLogger("dependency_metrics")
-            analysis = analyze(
-                ecosystem=args.ecosystem,
-                package=args.package,
-                start_date=start_date,
-                end_date=end_date,
-                mode=PER_RELEASE if args.per_release else WINDOW_SUMMARY,
-                weighting_type=args.weighting_type,
-                half_life=args.half_life,
-                data_source=DEPSDEV if args.depsdev else NATIVE,
-                output_dir=output_dir,
-                dependency_frames=args.get_worksheets,
-                raise_errors=True,
-            )
-            if args.per_release:
-                release_results = analysis.analyzer_output
-                if not release_results:
-                    _logger.info("No releases found in window for %s", args.package)
-                else:
-                    _logger.info("\n" + "=" * 60)
-                    _logger.info("PER-RELEASE ANALYSIS RESULTS")
-                    _logger.info("=" * 60)
-                    _logger.info("Package: %s", args.package)
-                    _logger.info("Ecosystem: %s", args.ecosystem)
-                    _logger.info("Period: %s to %s", start_date.date(), end_date.date())
-                    _logger.info("-" * 60)
-                    for r in release_results:
-                        s = r["summary"]
-                        mttr = s.get("mttr", s.get("mttr_all_severities", 0.0))
-                        _logger.info(
-                            "  v%-20s  MTTU=%s  MTTR=%s  deps=%s  status=%s",
-                            s.get("package_version", ""),
-                            _log_days(s.get("mttu", 0.0)),
-                            _log_days(mttr),
-                            s.get("num_dependencies", 0),
-                            s.get("status", ""),
-                        )
-                    _logger.info("=" * 60)
-
-                    summary_df = pd.DataFrame([r["summary"] for r in release_results])
-                    csv_path = (
-                        output_dir / f"{safe_filename_stem(args.package)}_per_release_results.csv"
-                    )
-                    summary_df.to_csv(csv_path, index=False)
-                    _logger.info("Per-release results saved to: %s", csv_path)
-
-                    if args.get_worksheets:
-                        excel_file = export_per_release_worksheets(
-                            release_results,
-                            output_dir,
-                            args.package,
-                        )
-                        if excel_file is not None:
-                            _logger.info("Per-release worksheets saved to: %s", excel_file)
-            else:
-                results = analysis.analyzer_output
-
-                # Output results
-                print_summary(
-                    package=args.package,
-                    ecosystem=args.ecosystem,
-                    start_date=start_date,
-                    end_date=end_date,
-                    weighting_type=args.weighting_type,
-                    half_life=args.half_life,
-                    results=results,
-                )
-
-                results_file = save_results_json(results, output_dir, args.package)
-                _logger.info("Results saved to: %s", results_file)
-
-                # Export OSV data if requested
-                if args.get_osv:
-                    osv_file = export_osv_data(results, output_dir, args.package)
-                    if osv_file is not None:
-                        _logger.info("OSV data saved to: %s", osv_file)
-
-                # Export worksheets if requested
-                if args.get_worksheets:
-                    excel_file = export_worksheets(results, output_dir, args.package)
-                    if excel_file is not None:
-                        _logger.info("Worksheets saved to: %s", excel_file)
-
+            with redirect:
+                analysis = _run_single_package(args, output_dir, start_date, end_date)
         except Exception as e:
             logging.getLogger("dependency_metrics").error("Error during analysis: %s", e)
             import traceback
 
             traceback.print_exc()
+            if args.json:
+                failed = failed_result(
+                    ecosystem=args.ecosystem,
+                    package=args.package,
+                    mode=_mode(args),
+                    start_date=start_date.date().isoformat(),
+                    end_date=end_date.date().isoformat(),
+                    weighting_type=args.weighting_type,
+                    half_life=args.half_life,
+                    data_source=_data_source(args),
+                    message=str(e) or type(e).__name__,
+                )
+                _print_json(failed, json_stdout)
             sys.exit(1)
+        if args.json:
+            _print_json(analysis, json_stdout)
+
+
+def _mode(args: argparse.Namespace) -> Mode:
+    return PER_RELEASE if args.per_release else WINDOW_SUMMARY
+
+
+def _data_source(args: argparse.Namespace) -> DataSource:
+    return DEPSDEV if args.depsdev else NATIVE
+
+
+def _print_json(result: AnalysisResult, stream: TextIO) -> None:
+    """Write ``result`` as one JSON object (the Host API result shape) to ``stream``."""
+    stream.write(json.dumps(result.to_dict()) + "\n")
+    stream.flush()
+
+
+def _run_single_package(
+    args: argparse.Namespace, output_dir: Path, start_date: datetime, end_date: datetime
+) -> AnalysisResult:
+    """Analyze one package (``--package``), log the result, and write the result files.
+
+    It raises the error of a failed analysis.
+    """
+    # Build OSV database if requested
+    if args.build_osv:
+        _build_osv_index_file(output_dir)
+
+    # Analyze package dependencies
+    logging.getLogger("dependency_metrics").info(
+        "Analyzing %s package: %s", args.ecosystem, args.package
+    )
+    _logger = logging.getLogger("dependency_metrics")
+    analysis = analyze(
+        ecosystem=args.ecosystem,
+        package=args.package,
+        start_date=start_date,
+        end_date=end_date,
+        mode=_mode(args),
+        weighting_type=args.weighting_type,
+        half_life=args.half_life,
+        data_source=_data_source(args),
+        output_dir=output_dir,
+        dependency_frames=args.get_worksheets,
+        raise_errors=True,
+    )
+    if args.per_release:
+        release_results = cast(List[Dict[str, Any]], analysis.analyzer_output)
+        if not release_results:
+            _logger.info("No releases found in window for %s", args.package)
+        else:
+            _logger.info("\n" + "=" * 60)
+            _logger.info("PER-RELEASE ANALYSIS RESULTS")
+            _logger.info("=" * 60)
+            _logger.info("Package: %s", args.package)
+            _logger.info("Ecosystem: %s", args.ecosystem)
+            _logger.info("Period: %s to %s", start_date.date(), end_date.date())
+            _logger.info("-" * 60)
+            for r in release_results:
+                s = r["summary"]
+                mttr = s.get("mttr", s.get("mttr_all_severities", 0.0))
+                _logger.info(
+                    "  v%-20s  MTTU=%s  MTTR=%s  deps=%s  status=%s",
+                    s.get("package_version", ""),
+                    _log_days(s.get("mttu", 0.0)),
+                    _log_days(mttr),
+                    s.get("num_dependencies", 0),
+                    s.get("status", ""),
+                )
+            _logger.info("=" * 60)
+
+            summary_df = pd.DataFrame([r["summary"] for r in release_results])
+            csv_path = output_dir / f"{safe_filename_stem(args.package)}_per_release_results.csv"
+            summary_df.to_csv(csv_path, index=False)
+            _logger.info("Per-release results saved to: %s", csv_path)
+
+            if args.get_worksheets:
+                excel_file = export_per_release_worksheets(
+                    release_results,
+                    output_dir,
+                    args.package,
+                )
+                if excel_file is not None:
+                    _logger.info("Per-release worksheets saved to: %s", excel_file)
+    else:
+        results = cast(Dict[str, Any], analysis.analyzer_output)
+
+        # Output results
+        print_summary(
+            package=args.package,
+            ecosystem=args.ecosystem,
+            start_date=start_date,
+            end_date=end_date,
+            weighting_type=args.weighting_type,
+            half_life=args.half_life,
+            results=results,
+        )
+
+        results_file = save_results_json(results, output_dir, args.package)
+        _logger.info("Results saved to: %s", results_file)
+
+        # Export OSV data if requested
+        if args.get_osv:
+            osv_file = export_osv_data(results, output_dir, args.package)
+            if osv_file is not None:
+                _logger.info("OSV data saved to: %s", osv_file)
+
+        # Export worksheets if requested
+        if args.get_worksheets:
+            excel_file = export_worksheets(results, output_dir, args.package)
+            if excel_file is not None:
+                _logger.info("Worksheets saved to: %s", excel_file)
+    return analysis
 
 
 if __name__ == "__main__":

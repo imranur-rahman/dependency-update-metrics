@@ -21,6 +21,7 @@ from dataclasses import dataclass
 from typing import Any, Callable, Dict, List, Optional
 
 import psutil
+from dependency_metrics import api
 
 from . import errors
 from .job_queue import JobQueue
@@ -304,33 +305,20 @@ def _kill_process_tree(pid: Optional[int]) -> None:
 def failed_result(comparison: Comparison, package: str, message: str) -> Dict[str, Any]:
     """Return the result of one package whose analysis raised, in the shape of a Tool result.
 
-    The shape is the one of ``AnalysisResult.to_dict()`` for an error, so that the Webapp
+    The Tool builds the shape (``dependency_metrics.api.failed_result``), so the Webapp
     reads a failed package the same way as a package that the Tool reports as an error.
     """
-    window_summary = comparison.mode == "window_summary"
-    return {
-        "ecosystem": comparison.ecosystem,
-        "package": package,
-        "mode": comparison.mode,
-        "start_date": comparison.start_date.isoformat(),
-        "end_date": comparison.end_date.isoformat(),
-        "weighting_type": comparison.weighting_type,
-        "half_life": comparison.half_life,
-        "data_source": "depsdev",
-        "summary": (
-            {
-                "mttu": None,
-                "mttr": None,
-                "num_dependencies": 0,
-                "status": "error",
-                "error": message,
-            }
-            if window_summary
-            else None
-        ),
-        "releases": [],
-        "error": message,
-    }
+    return api.failed_result(
+        ecosystem=comparison.ecosystem,
+        package=package,
+        mode=comparison.mode,
+        start_date=comparison.start_date.isoformat(),
+        end_date=comparison.end_date.isoformat(),
+        weighting_type=comparison.weighting_type,
+        half_life=comparison.half_life,
+        data_source=api.DEPSDEV,
+        message=message,
+    ).to_dict()
 
 
 def main() -> None:
