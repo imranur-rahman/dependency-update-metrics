@@ -42,12 +42,23 @@ export async function run(): Promise<void> {
   const first = await hintLabels(document);
   assert.equal(first.get(5), "computing…");
 
+  // The fresh user data dir has no OSV index, so MTTR waits for the index (#30).
   const expected = new Map([
-    [5, "MTTU 579 d · MTTR 579 d"],
+    [5, "MTTU 579 d · MTTR needs the OSV index"],
     [6, "could not compute since 'left-pad' has no dependencies"],
     [9, "error: Package not found in deps.dev"],
   ]);
-  let last = first;
+  await waitForLabels(document, expected);
+
+  // The rebuild command builds the index of the fake Tool, and the hints get the MTTR.
+  await vscode.commands.executeCommand("mttx.rebuildOsvIndex");
+  expected.set(5, "MTTU 579 d · MTTR 579 d");
+  await waitForLabels(document, expected);
+  console.log("MTTX integration test passed");
+}
+
+async function waitForLabels(document: vscode.TextDocument, expected: Map<number, string>): Promise<void> {
+  let last = new Map<number, string>();
   try {
     await waitFor(async () => {
       last = await hintLabels(document);
@@ -56,5 +67,4 @@ export async function run(): Promise<void> {
   } catch {
     assert.deepEqual(Object.fromEntries(last), Object.fromEntries(expected));
   }
-  console.log("MTTX integration test passed");
 }

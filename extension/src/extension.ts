@@ -5,10 +5,11 @@ import { join } from "node:path";
 
 import * as vscode from "vscode";
 
-import { hintText } from "./core/display.ts";
+import { hintText, type HintContext } from "./core/display.ts";
 import { parseManifest } from "./core/manifest.ts";
 import { ResultStore } from "./core/resultStore.ts";
 import { windowStartDate } from "./core/tool.ts";
+import { OsvIndex, REBUILD_COMMAND } from "./osvIndex.ts";
 import { ProcessToolRunner, toolCommand } from "./processToolRunner.ts";
 
 // `scheme: "file"` skips untitled documents and Git diffs. A filter with only a pattern
@@ -20,10 +21,17 @@ class HintProvider implements vscode.InlayHintsProvider, vscode.Disposable {
   readonly onDidChangeInlayHints = this.changed.event;
   private store: ResultStore;
   private readonly makeStore: () => ResultStore;
+  private readonly hintContext: () => HintContext;
 
-  constructor(makeStore: () => ResultStore) {
+  constructor(makeStore: () => ResultStore, hintContext: () => HintContext) {
     this.makeStore = makeStore;
+    this.hintContext = hintContext;
     this.store = this.newStore();
+  }
+
+  // Show the hints again with the same states, for example after the OSV index state changes.
+  redraw(): void {
+    this.changed.fire();
   }
 
   // Forget all states and run the Tool again, for example after a settings change.
@@ -39,7 +47,7 @@ class HintProvider implements vscode.InlayHintsProvider, vscode.Disposable {
     for (const dep of parseManifest(document.fileName, document.getText())) {
       const end = document.lineAt(dep.line).range.end;
       if (!range.contains(end)) continue;
-      const hint = new vscode.InlayHint(end, hintText(this.store.get(dep), dep.name));
+      const hint = new vscode.InlayHint(end, hintText(this.store.get(dep), dep.name, this.hintContext()));
       hint.paddingLeft = true;
       hints.push(hint);
     }
@@ -72,9 +80,18 @@ export function activate(context: vscode.ExtensionContext): void {
       outputDir,
     }));
   };
-  const provider = new HintProvider(makeStore);
+  // The OSV index (#30): without it, the hints show "MTTR needs the OSV index".
+  const osvIndex = new OsvIndex(
+    context,
+    outputDir,
+    () => toolCommand(vscode.workspace.getConfiguration("mttx").get<string>("toolPath", "")),
+    (rebuilt) => (rebuilt ? provider.reset() : provider.redraw()),
+  );
+  const provider = new HintProvider(makeStore, () => ({ osvIndex: osvIndex.available }));
+  void osvIndex.start();
 
   context.subscriptions.push(
+    vscode.commands.registerCommand(REBUILD_COMMAND, () => osvIndex.rebuild()),
     provider,
     vscode.languages.registerInlayHintsProvider(MANIFESTS, provider),
     vscode.workspace.onDidChangeConfiguration((event) => {

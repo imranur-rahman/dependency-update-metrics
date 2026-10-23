@@ -26,6 +26,13 @@
     "onLanguage:json"
   ],
   "contributes": {
+    "commands": [
+      {
+        "command": "mttx.rebuildOsvIndex",
+        "title": "Rebuild OSV index",
+        "category": "MTTX"
+      }
+    ],
     "configuration": {
       "title": "MTTX",
       "properties": {

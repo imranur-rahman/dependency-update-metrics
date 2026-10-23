@@ -47,8 +47,18 @@ export function hasNoDependencies(entry: Pick<MetricsEntry, "status" | "num_depe
   return entry.status === "no_deps" || (entry.status === "ok" && entry.num_dependencies === 0);
 }
 
+// What the hint knows besides the Tool result. `osvIndex: false` means that the OSV index
+// does not exist: the Tool then gives an MTTR of 0 that is not true (#30).
+export interface HintContext {
+  osvIndex: boolean;
+}
+
 // Return the inlay hint text for one dependency.
-export function hintText(state: DependencyState, packageName: string): string {
+export function hintText(
+  state: DependencyState,
+  packageName: string,
+  context: HintContext = { osvIndex: true },
+): string {
   if (state.kind === "computing") return "computing…";
   if (state.kind === "failed") return errorText(state.message);
   const { result } = state;
@@ -60,7 +70,8 @@ export function hintText(state: DependencyState, packageName: string): string {
   if (summary.status !== "ok" || summary.mttu === null || summary.mttr === null) {
     return errorText(result.error || summary.error || "the Tool gave no value");
   }
-  return `MTTU ${Math.round(summary.mttu)} d · MTTR ${Math.round(summary.mttr)} d`;
+  const mttr = context.osvIndex ? `${Math.round(summary.mttr)} d` : "needs the OSV index";
+  return `MTTU ${Math.round(summary.mttu)} d · MTTR ${mttr}`;
 }
 
 function errorText(message: string): string {
