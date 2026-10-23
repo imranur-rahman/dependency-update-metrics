@@ -1,4 +1,5 @@
-# Tool CI/CD: lint, test, build, and publish the dependency-metrics package.
+# Tool CI/CD: lint, test, build, and publish the dependency-metrics package and its
+# container image (ghcr.io/imranur-rahman/mttx, see image/README.md).
 # Keep this file name: the PyPI trusted publisher names ci.yml.
 name: Tool CI/CD
 
@@ -9,6 +10,7 @@ on:
       - 'dependency_metrics/**'
       - 'tests/**'
       - 'vendor/**'
+      - 'image/**'
       - '.gitmodules'
       - 'pyproject.toml'
       - 'requirements.txt'
@@ -23,6 +25,7 @@ on:
       - 'dependency_metrics/**'
       - 'tests/**'
       - 'vendor/**'
+      - 'image/**'
       - '.gitmodules'
       - 'pyproject.toml'
       - 'requirements.txt'
@@ -33,6 +36,8 @@ on:
       - '.github/workflows/ci.yml'
   release:
     types: [ published ]
+  # Run the tests and the image build on any branch by hand (no publish, no push).
+  workflow_dispatch:
 
 jobs:
   test:
@@ -155,3 +160,154 @@ jobs:
 
     - name: Publish to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
+
+  # Build both images on each push and PR (no push to GHCR), so that a broken image
+  # fails before a release.
+  image:
+    runs-on: ubuntu-latest
+    if: github.event_name != 'release'
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: true
+
+    - uses: docker/setup-buildx-action@v3
+
+    - name: Build the image without the OSV index
+      uses: docker/build-push-action@v6
+      with:
+        context: .
+        file: image/Dockerfile
+        target: tool
+        load: true
+        tags: mttx:ci
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+
+    - name: Build the OSV index with the image
+      id: osv
+      run: bash image/build-osv-index.sh mttx:ci osv-index >> "$GITHUB_OUTPUT"
+
+    - name: Build the image with the OSV index
+      uses: docker/build-push-action@v6
+      with:
+        context: .
+        file: image/Dockerfile
+        target: osv
+        build-contexts: osvindex=osv-index
+        build-args: OSV_INDEX_DATE=${{ steps.osv.outputs.date }}
+        load: true
+        tags: mttx:ci-osv
+        cache-from: type=gha
+
+    - name: Check the images
+      run: bash image/check-image.sh mttx:ci mttx:ci-osv "${{ steps.osv.outputs.date }}"
+
+  # After the PyPI publish of a release, push two tags for amd64 and arm64:
+  # <version> and latest (no OSV index), and <version>-osv-<YYYY-MM-DD> (index inside).
+  image-release:
+    runs-on: ubuntu-latest
+    needs: publish
+    if: github.event_name == 'release' && !startsWith(github.event.release.tag_name, 'extension-v')
+    permissions:
+      contents: read
+      packages: write
+    env:
+      IMAGE: ghcr.io/imranur-rahman/mttx
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: true
+
+    - name: Read the version and the commits, and check the tag
+      id: meta
+      env:
+        TAG: ${{ github.event.release.tag_name }}
+      run: |
+        version=$(python3 -c 'import tomllib; print(tomllib.load(open("pyproject.toml", "rb"))["project"]["version"])')
+        if [ "${TAG#v}" != "$version" ]; then
+          echo "::error::The release tag $TAG does not name the version $version in pyproject.toml"
+          exit 1
+        fi
+        echo "version=$version" >> "$GITHUB_OUTPUT"
+        echo "pip_commit=$(git -C vendor/pip rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+    - uses: docker/setup-qemu-action@v3
+    - uses: docker/setup-buildx-action@v3
+
+    - uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Build the image for amd64, to build the OSV index
+      uses: docker/build-push-action@v6
+      with:
+        context: .
+        file: image/Dockerfile
+        target: tool
+        load: true
+        tags: mttx:release
+
+    - name: Build the OSV index with the image
+      id: osv
+      run: bash image/build-osv-index.sh mttx:release osv-index >> "$GITHUB_OUTPUT"
+
+    - name: Push the image without the OSV index
+      id: push-tool
+      uses: docker/build-push-action@v6
+      with:
+        context: .
+        file: image/Dockerfile
+        target: tool
+        platforms: linux/amd64,linux/arm64
+        push: true
+        tags: |
+          ${{ env.IMAGE }}:${{ steps.meta.outputs.version }}
+          ${{ env.IMAGE }}:latest
+        build-args: |
+          VERSION=${{ steps.meta.outputs.version }}
+          REVISION=${{ github.sha }}
+          PIP_COMMIT=${{ steps.meta.outputs.pip_commit }}
+
+    - name: Push the image with the OSV index
+      id: push-osv
+      uses: docker/build-push-action@v6
+      with:
+        context: .
+        file: image/Dockerfile
+        target: osv
+        platforms: linux/amd64,linux/arm64
+        push: true
+        build-contexts: osvindex=osv-index
+        tags: ${{ env.IMAGE }}:${{ steps.meta.outputs.version }}-osv-${{ steps.osv.outputs.date }}
+        build-args: |
+          VERSION=${{ steps.meta.outputs.version }}
+          REVISION=${{ github.sha }}
+          PIP_COMMIT=${{ steps.meta.outputs.pip_commit }}
+          OSV_INDEX_DATE=${{ steps.osv.outputs.date }}
+
+    - name: Check the pushed images
+      run: |
+        bash image/check-image.sh \
+          "$IMAGE@${{ steps.push-tool.outputs.digest }}" \
+          "$IMAGE@${{ steps.push-osv.outputs.digest }}" \
+          "${{ steps.osv.outputs.date }}"
+
+    - name: Write the tags and the digests to the job summary
+      env:
+        VERSION: ${{ steps.meta.outputs.version }}
+        OSV_DATE: ${{ steps.osv.outputs.date }}
+        TOOL_DIGEST: ${{ steps.push-tool.outputs.digest }}
+        OSV_DIGEST: ${{ steps.push-osv.outputs.digest }}
+      run: |
+        {
+          echo "### $IMAGE"
+          echo "| Tags | Digest |"
+          echo "|---|---|"
+          echo "| \`$VERSION\`, \`latest\` | \`$TOOL_DIGEST\` |"
+          echo "| \`$VERSION-osv-$OSV_DATE\` | \`$OSV_DIGEST\` |"
+        } >> "$GITHUB_STEP_SUMMARY"

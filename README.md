@@ -27,6 +27,20 @@ cd dependency-update-metrics
 pip install -e .
 ```
 
+### With Docker (exact reruns)
+
+The container image `ghcr.io/imranur-rahman/mttx` holds the Tool with pinned dependencies and the patched pip, so a rerun years later uses the same environment:
+
+```bash
+docker run --rm -v "$PWD:/data" ghcr.io/imranur-rahman/mttx:<version>-osv-<YYYY-MM-DD> \
+  --package express --ecosystem npm --start-date 2024-01-01 --end-date 2025-01-01
+```
+
+- `mttx:<version>` (and `latest`) has no OSV index. MTTR needs `--build-osv` once, as with pip.
+- `mttx:<version>-osv-<YYYY-MM-DD>` holds the OSV index built on that date, so MTTR is the same in each rerun.
+
+The results and the cache go to `/data`. For exact reruns, cite the image digest (`ghcr.io/imranur-rahman/mttx@sha256:…`), not the tag. See [image/README.md](image/README.md).
+
 ## Usage
 
 ### As a command-line tool

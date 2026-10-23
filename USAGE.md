@@ -26,6 +26,25 @@ pip install -r requirements.txt
 pip install -e .
 ```
 
+### Run the container image
+
+The image needs only Docker. It holds the Tool, its pinned dependencies, the patched pip, and the npm CLI:
+
+```bash
+# No OSV index inside: MTTR needs --build-osv once; /data keeps the index
+docker run --rm -v "$PWD:/data" ghcr.io/imranur-rahman/mttx:<version> --build-osv \
+  --package requests --ecosystem pypi --start-date 2024-01-01 --end-date 2025-01-01
+
+# The OSV index of one date inside: the same MTTR in each rerun
+docker run --rm -v "$PWD:/data" ghcr.io/imranur-rahman/mttx:<version>-osv-<YYYY-MM-DD> \
+  --package requests --ecosystem pypi --start-date 2024-01-01 --end-date 2025-01-01
+
+# Print the date of the index inside
+docker run --rm ghcr.io/imranur-rahman/mttx:<version>-osv-<YYYY-MM-DD> --osv-index-date
+```
+
+The output dir is `/data`. On Linux, add `--user "$(id -u):$(id -g)"`, so that the result files belong to you. For exact reruns, cite the image digest (`ghcr.io/imranur-rahman/mttx@sha256:…`), because a tag can move. `image/README.md` lists the tags and the labels.
+
 ### Verify installation
 
 ```bash
