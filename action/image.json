@@ -1,7 +1,7 @@
 {
   "repository": "ghcr.io/imranur-rahman/mttx",
-  "version": "0.2.0",
-  "osvTag": null,
-  "digest": null,
-  "osvDigest": null
+  "version": "0.2.1",
+  "osvTag": "0.2.1-osv-2026-10-23",
+  "digest": "sha256:c9b79473d3ddfb5edf6b903770d3fffa678333bd64cada8be0aa7b9733fa2586",
+  "osvDigest": "sha256:3d528b998884f985e484b1da0cceb1219930c1d38625e18bb9ed9f69bce5c2eb"
 }
