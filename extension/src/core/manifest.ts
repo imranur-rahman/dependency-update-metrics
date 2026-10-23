@@ -1,8 +1,9 @@
 // The manifest parsers of the core module. This module has no `vscode` import, so that
 // `node --test` tests it directly.
 
-// The ecosystems that the Extension reads. #28 adds "pypi" and "cargo".
-export type Ecosystem = "npm";
+// The ecosystems of the Tool. The manifest parsers read npm only; #28 adds the parsers for
+// "pypi" and "cargo". A Comparison takes all three.
+export type Ecosystem = "npm" | "pypi" | "cargo";
 
 // One direct dependency in a manifest. The line and the columns are 0-based and count
 // UTF-16 code units, as VS Code positions do. The columns cover the name with its quotes.

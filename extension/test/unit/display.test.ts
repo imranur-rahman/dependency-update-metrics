@@ -7,7 +7,6 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
 import { hintText, hasNoDependencies, hoverMarkdown, type ToolResult } from "../../src/core/display.ts";
-// @ts-expect-error The Webapp module is plain JavaScript without type declarations.
 import { resultRows, NO_DEPENDENCIES_ERROR } from "../../../webapp/site/static/js/comparison.js";
 
 const EXAMPLES = join(import.meta.dirname, "..", "..", "..", "contract", "examples");
