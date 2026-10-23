@@ -15,6 +15,7 @@ import {
   botCheckError,
   canAddPackage,
   packageLimitNote,
+  packageLimitNoteAction,
   withComparison,
   comparisonFromSearch,
   formFromComparison,
@@ -33,11 +34,13 @@ import {
   JOB_EVENTS,
   SAMPLE_COMPARISON_PATH,
   sampleLabel,
+  sampleUrl,
 } from "./comparison.js";
-import { explainComparison } from "./explanation.js";
+import { explanationBlocks } from "./explanation.js";
 import {
-  submitErrorNotice,
+  refusalNotice,
   connectionErrorNotice,
+  sampleErrorNotice,
   jobErrorNotice,
   doneJobNotice,
   errorCell,
@@ -130,17 +133,24 @@ function packageValues() {
   return packageInputs().map((input) => input.value);
 }
 
-// Give each package field its number, and allow a new field only below the limit.
+// The number of package fields at the last renumber, so that the limit note shows only when
+// the count changes to the limit.
+let packageCount = null;
+
+// Give each package field its number, and allow a new field only below the limit. The limit
+// note (role="alert") shows once, when the count changes to the limit.
 function renumberPackageFields() {
   packageInputs().forEach((input, index) => {
     input.id = `package-${index + 1}`;
     input.setAttribute("aria-label", `Package ${index + 1}`);
   });
-  addPackageButton.disabled = !canAddPackage(packageValues());
-  const limitNote = packageLimitNote(packageValues());
-  if (limitNote) {
-    showNotification(packageLimit, { message: limitNote }, { tone: "info", scroll: false });
-  } else {
+  const packages = packageValues();
+  addPackageButton.disabled = !canAddPackage(packages);
+  const action = packageLimitNoteAction(packageCount, packages);
+  packageCount = packages.length;
+  if (action === "show") {
+    showNotification(packageLimit, { message: packageLimitNote(packages) }, { tone: "info", scroll: false });
+  } else if (action === "clear") {
     clearNotification(packageLimit);
   }
 }
@@ -406,39 +416,38 @@ function showCsvButton(job) {
   csvButton.hidden = false;
 }
 
-// Show the Explanation under the results: one paragraph for each package with a value,
-// then the shared Limitations list. A Job without a value shows none.
+// Show the Explanation under the results: the blocks of explanation.js (the heading, one
+// paragraph for each package with a value, then the shared Limitations list). A Job without
+// a value shows none.
 function showExplanation(job) {
   const box = document.getElementById("results-explanation");
-  const { packages, limitations } = job === null ? { packages: [], limitations: [] } : explainComparison(job);
-  const children = [];
-  if (packages.length > 0) {
-    const heading = document.createElement("h4");
-    heading.className = "title is-6 mb-2";
-    heading.textContent = "What the results mean";
-    children.push(heading);
-  }
-  for (const item of packages) {
-    const paragraph = document.createElement("p");
-    const title = document.createElement("strong");
-    title.textContent = `${item.title}: `;
-    paragraph.append(title, item.sentences.join(" "));
-    children.push(paragraph);
-  }
-  if (limitations.length > 0) {
-    const heading = document.createElement("p");
-    heading.className = "has-text-weight-semibold mb-1";
-    heading.textContent = "Limitations";
+  const children = (job === null ? [] : explanationBlocks(job)).map(explanationElement);
+  box.replaceChildren(...children);
+  box.hidden = children.length === 0;
+}
+
+// Return the element of one Explanation block.
+function explanationElement(block) {
+  if (block.kind === "list") {
     const list = document.createElement("ul");
-    for (const text of limitations) {
+    for (const text of block.items) {
       const entry = document.createElement("li");
       entry.textContent = text;
       list.append(entry);
     }
-    children.push(heading, list);
+    return list;
   }
-  box.replaceChildren(...children);
-  box.hidden = children.length === 0;
+  if (block.kind === "paragraph") {
+    const paragraph = document.createElement("p");
+    const title = document.createElement("strong");
+    title.textContent = `${block.title}: `;
+    paragraph.append(title, block.text);
+    return paragraph;
+  }
+  const heading = document.createElement(block.kind === "heading" ? "h4" : "p");
+  heading.className = block.kind === "heading" ? "title is-6 mb-2" : "has-text-weight-semibold mb-1";
+  heading.textContent = block.text;
+  return heading;
 }
 
 // Show the results card only for a done Job.
@@ -487,7 +496,7 @@ async function getJob(jobId) {
     // The Host gives a user message (for example "Job not found"); the error carries its notice.
     const refusal = await response.json().catch(() => null);
     throw Object.assign(new Error(`GET returned ${response.status}`), {
-      notice: submitErrorNotice(refusal),
+      notice: refusalNotice(refusal),
     });
   }
   return response.json();
@@ -597,7 +606,7 @@ form.addEventListener("submit", async (event) => {
       // The Host gives a user message for a refused submit (for example, a rate limit).
       const refusal = await response.json().catch(() => null);
       console.error(`POST returned ${response.status}`, refusal);
-      showError(submitErrorNotice(refusal));
+      showError(refusalNotice(refusal));
       return;
     }
     const { job_id: jobId } = await response.json();
@@ -623,6 +632,7 @@ async function showSample() {
     if (!response.ok) throw new Error(`GET ${SAMPLE_COMPARISON_PATH} returned ${response.status}`);
     const sample = await response.json();
     fillForm(sample.comparison);
+    history.replaceState(null, "", sampleUrl(location.href, sample.comparison));
     currentJobId = null;
     cancelButton.hidden = true;
     clearNotification(jobNotice);
@@ -632,7 +642,7 @@ async function showSample() {
     scrollToElement(resultsCard);
   } catch (error) {
     console.error(error);
-    showError(connectionErrorNotice());
+    showError(sampleErrorNotice());
   } finally {
     sampleButton.disabled = false;
   }

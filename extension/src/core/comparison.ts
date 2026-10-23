@@ -7,7 +7,7 @@ import { hasNoDependencies, noDependenciesText, type ToolResult } from "./displa
 import type { Ecosystem } from "./manifest.ts";
 import type { ToolOutcome, ToolRequest } from "./tool.ts";
 import { packageErrors, resultRows } from "../../../webapp/site/static/js/comparison.js";
-import { explainComparison } from "../../../webapp/site/static/js/explanation.js";
+import { explanationBlocks } from "../../../webapp/site/static/js/explanation.js";
 
 // The "comparison" object of a Host Job (contract/examples/).
 export interface JobComparison {
@@ -26,6 +26,9 @@ export interface ComparisonJob {
   state: "done";
   comparison: JobComparison;
   results: ToolResult[];
+  // The build date of the OSV index, when the Extension knows it. The Limitations of the
+  // Explanation name it (explanation.js).
+  osv_index_date?: string;
 }
 
 // What the command asks the Tool for: the packages, and the window, the weighting, and the
@@ -108,7 +111,12 @@ const JOB_ID = "mttx-extension";
 // package in the order of the request, so that comparison.js shows it as the Webapp does.
 // The window, the mode, and the weighting come from the first result, because the Tool
 // runs of one Comparison share them. A run without a result becomes a package error.
-export function comparisonJob(request: ComparisonRequest, outcomes: ToolOutcome[]): ComparisonJob {
+// osvIndexDate is the build date of the OSV index, when the Extension knows it.
+export function comparisonJob(
+  request: ComparisonRequest,
+  outcomes: ToolOutcome[],
+  osvIndexDate?: string,
+): ComparisonJob {
   const results = outcomes.map((outcome, index) =>
     outcome.kind === "result"
       ? outcome.result
@@ -128,6 +136,7 @@ export function comparisonJob(request: ComparisonRequest, outcomes: ToolOutcome[
       half_life: first.half_life,
     },
     results,
+    ...(osvIndexDate ? { osv_index_date: osvIndexDate } : {}),
   };
 }
 
@@ -164,20 +173,30 @@ export function noDependenciesNotes(job: ComparisonJob): string[] {
   return job.results.filter(withoutDependencies).map((result) => noDependenciesText(result.package));
 }
 
-// What the panel shows under the charts: one Explanation paragraph for each package with a
-// value ("<title>: <sentences>"), then the shared Limitations list (explanation.js). Both
-// are empty when no package has a value.
+// One block of the Explanation (explanationBlocks in explanation.js), which the webview
+// draws the same way as the Webapp.
+export type ExplanationBlock =
+  | { kind: "heading"; text: string }
+  | { kind: "subheading"; text: string }
+  | { kind: "paragraph"; title: string; text: string }
+  | { kind: "list"; items: string[] };
+
+// The text of the Explanation that the panel shows under the charts, for the report: one
+// paragraph for each package with a value ("<title>: <sentences>"), then the shared
+// Limitations list. Both are empty when no package has a value.
 export interface ExplanationContent {
   paragraphs: string[];
   limitations: string[];
 }
 
 export function explanationContent(job: ComparisonJob): ExplanationContent {
-  const { packages, limitations } = explainComparison(job);
-  return {
-    paragraphs: packages.map((item: { title: string; sentences: string[] }) => `${item.title}: ${item.sentences.join(" ")}`),
-    limitations,
-  };
+  const blocks = explanationBlocks(job) as ExplanationBlock[];
+  const content: ExplanationContent = { paragraphs: [], limitations: [] };
+  for (const block of blocks) {
+    if (block.kind === "paragraph") content.paragraphs.push(`${block.title}: ${block.text}`);
+    if (block.kind === "list") content.limitations.push(...block.items);
+  }
+  return content;
 }
 
 // Return the result of a package whose Tool run gave no result, in the shape of

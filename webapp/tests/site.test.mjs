@@ -88,6 +88,12 @@ test("the results card shows the Explanation under the result table", () => {
   assert.ok(card.indexOf('id="results-explanation"') > card.indexOf('id="result-table"'));
 });
 
+test("the page draws the Explanation from the blocks of explanation.js", () => {
+  const code = readFileSync(join(siteDir, "static", "js", "webapp.js"), "utf8");
+  assert.match(code, /explanationBlocks\(job\)/);
+  assert.doesNotMatch(code, /What the results mean|"Limitations"/);
+});
+
 test("the page shows errors in in-page notifications with role=\"alert\", never window.alert()", () => {
   const html = readFileSync(join(siteDir, "index.html"), "utf8");
   for (const id of ["job-notice", "results-notice", "package-limit"]) {
@@ -121,4 +127,8 @@ test("the Sample Comparison loads from the published folder, not from the Host",
   assert.ok(loader, "showSample() is missing in webapp.js");
   assert.match(loader[1], /fetch\(SAMPLE_COMPARISON_PATH\)/);
   assert.doesNotMatch(loader[1], /hostUrl|EventSource/);
+  // A failure shows the notice of the sample, not the notice of a lost Host connection.
+  assert.match(loader[1], /sampleErrorNotice\(\)/);
+  assert.doesNotMatch(loader[1], /connectionErrorNotice/);
+  assert.match(loader[1], /sampleUrl\(/);
 });

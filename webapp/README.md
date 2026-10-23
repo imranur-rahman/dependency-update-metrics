@@ -18,8 +18,8 @@ To see the page locally, serve the published folder: `python -m http.server -d w
 
 The button "Show a sample Comparison" in the Try It section shows precomputed results, with no
 Job and no request to the Host. The page reads them from
-`webapp/site/static/sample/sample_comparison.json`: npm `express`, `koa`, and `fastify`, Window
-summary, 2024-01-01 to 2025-12-31, no weighting. The file is the body of a done Job (the shape of
+`webapp/site/static/sample/sample_comparison.json`. `SAMPLE` in `webapp/sample/make_sample.py`
+defines the Comparison. The file is the body of a done Job (the shape of
 `contract/examples/job_done_window_summary.json`) plus `computed_on` and `osv_index_date`. The page
 shows `computed_on` as "Precomputed on <date>".
 

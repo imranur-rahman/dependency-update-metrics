@@ -16,6 +16,7 @@ import {
   type WebviewMessage,
 } from "./core/comparison.ts";
 import type { Ecosystem } from "./core/manifest.ts";
+import { CHART_SIZE } from "../../webapp/site/static/js/comparison.js";
 import type { PackageKey } from "./core/resultStore.ts";
 import type { ToolOutcome } from "./core/tool.ts";
 import { toolRequest } from "./core/settings.ts";
@@ -27,11 +28,13 @@ const TITLE = "MTTX: Compare packages";
 // (`ResultStore.analyze`), with its queue limit (`mttx.parallelRuns`), its one-day cache, and
 // the request of the settings, so that a Comparison reuses the hint values and gives the same
 // values. A settings change resets that store, and its runs end with a failed outcome, which
-// the table shows as a package error. Return what the webview drew, or undefined when the
-// user cancels.
+// the table shows as a package error. osvIndexDate gives the build date of the OSV index, or
+// undefined when it is unknown or missing. Return what the webview drew, or undefined when
+// the user cancels.
 export async function compare(
   extensionUri: vscode.Uri,
   analyze: (keys: PackageKey[]) => Promise<ToolOutcome[]>,
+  osvIndexDate: () => string | undefined,
   args: unknown,
 ): Promise<ComparisonReport | undefined> {
   const parsed = readSettings();
@@ -80,7 +83,7 @@ export async function compare(
   const keys = names.names.map((name) => ({ ecosystem, name }));
   const outcomes = await Promise.race([analyze(keys), panel.rendered]);
   if (!Array.isArray(outcomes)) return undefined;
-  panel.show({ type: "job", job: comparisonJob(request, outcomes) });
+  panel.show({ type: "job", job: comparisonJob(request, outcomes, osvIndexDate()) });
   return panel.rendered;
 }
 
@@ -145,7 +148,7 @@ function pageHtml(webview: vscode.Webview, script: vscode.Uri): string {
   body { color: var(--vscode-foreground); background: var(--vscode-editor-background); font-family: var(--vscode-font-family); font-size: var(--vscode-font-size); padding: 0 16px 16px; }
   .note, .status { color: var(--vscode-descriptionForeground); }
   .chart-box { margin-top: 12px; margin-bottom: 12px; }
-  .explanation { max-width: 720px; margin: 0 auto; }
+  .explanation { max-width: ${CHART_SIZE.maxWidth}px; margin: 0 auto; }
   .explanation h3 { font-size: 1.1em; margin: 16px 0 4px; }
   table.results { border-collapse: collapse; margin-top: 12px; }
   table.results th, table.results td { border-bottom: 1px solid var(--vscode-panel-border); padding: 4px 12px 4px 0; text-align: left; vertical-align: top; }

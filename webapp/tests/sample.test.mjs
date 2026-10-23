@@ -9,6 +9,9 @@ import { fileURLToPath } from "node:url";
 import {
   sampleLabel,
   SAMPLE_COMPARISON_PATH,
+  sampleUrl,
+  jobIdFromUrl,
+  comparisonFromSearch,
   resultRows,
   barChartData,
   chartHasValues,
@@ -80,5 +83,26 @@ test("each package of the Sample Comparison has a value, a chart bar, and an Exp
   }
   assert.equal(resultRows(sample).length, 3);
   assert.ok(chartHasValues(barChartData(sample)));
-  assert.equal(explainComparison(sample).packages.length, 3);
+  const explanation = explainComparison(sample);
+  assert.equal(explanation.packages.length, 3);
+  assert.ok(explanation.limitations.some((text) => text.includes(`as of ${sample.osv_index_date}`)));
+});
+
+test("the URL of the Sample Comparison has no job ID, so a reload shows the sample again", () => {
+  const comparison = {
+    ecosystem: "npm",
+    packages: ["express", "koa"],
+    start_date: "2024-01-01",
+    end_date: "2025-12-31",
+    mode: "window_summary",
+    weighting_type: "disable",
+    half_life: null,
+  };
+  const before = "https://example.test/site/?job=abc&ecosystem=pypi&package=django#top";
+  const url = sampleUrl(before, comparison);
+  assert.equal(jobIdFromUrl(url), null);
+  const parsed = new URL(url);
+  assert.equal(parsed.pathname, "/site/");
+  assert.equal(parsed.hash, "#try-it");
+  assert.deepEqual(comparisonFromSearch(parsed.search), comparison);
 });

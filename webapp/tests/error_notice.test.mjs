@@ -8,8 +8,9 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import {
-  submitErrorNotice,
+  refusalNotice,
   connectionErrorNotice,
+  sampleErrorNotice,
   jobErrorNotice,
   packageErrorNotice,
   doneJobNotice,
@@ -21,7 +22,7 @@ const examples = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "cont
 const example = (name) => JSON.parse(readFileSync(join(examples, name), "utf8"));
 
 test("a refused submit at the rate limit tells the user how long to wait", () => {
-  assert.deepEqual(submitErrorNotice(example("submit_rate_limited.json")), {
+  assert.deepEqual(refusalNotice(example("submit_rate_limited.json")), {
     title: "Too many requests",
     message: "Too many requests, try again in 40 min",
     nextStep: "Wait 40 min, then click Compute again.",
@@ -29,7 +30,7 @@ test("a refused submit at the rate limit tells the user how long to wait", () =>
 });
 
 test("a refused submit while the server is busy asks the user to try again in a minute", () => {
-  assert.deepEqual(submitErrorNotice(example("submit_server_busy.json")), {
+  assert.deepEqual(refusalNotice(example("submit_server_busy.json")), {
     title: "The server is busy",
     message: "The server is busy, try later",
     nextStep: "Try again in a minute.",
@@ -37,7 +38,7 @@ test("a refused submit while the server is busy asks the user to try again in a 
 });
 
 test("a failed bot check asks the user to reload the page", () => {
-  assert.deepEqual(submitErrorNotice({ detail: "The bot check failed" }), {
+  assert.deepEqual(refusalNotice({ detail: "The bot check failed" }), {
     title: "The bot check failed",
     message: "The bot check failed",
     nextStep: "Reload the page, wait for the bot check, then click Compute again.",
@@ -46,7 +47,7 @@ test("a failed bot check asks the user to reload the page", () => {
 
 test("a refused submit without a user message shows a generic notice", () => {
   for (const body of [null, {}, { detail: [{ loc: ["body"], msg: "internal" }] }]) {
-    assert.deepEqual(submitErrorNotice(body), {
+    assert.deepEqual(refusalNotice(body), {
       title: "Something went wrong",
       message: "Something went wrong. Try again later.",
       nextStep: "Try again in a few minutes.",
@@ -55,7 +56,7 @@ test("a refused submit without a user message shows a generic notice", () => {
 });
 
 test("a Job that the Host does not know asks the user to compute again", () => {
-  assert.deepEqual(submitErrorNotice({ detail: "Job not found" }), {
+  assert.deepEqual(refusalNotice({ detail: "Job not found" }), {
     title: "Job not found",
     message: "Job not found",
     nextStep: "The server keeps a Job for 30 days. Click Compute to run the Comparison again.",
@@ -67,6 +68,13 @@ test("a lost connection to the Host asks the user to check the connection", () =
     title: "No connection to the server",
     message: "The page cannot reach the server.",
     nextStep: "Check your internet connection, then try again in a minute.",
+  });
+});
+
+test("a Sample Comparison that cannot load asks the user to reload, not to check the server", () => {
+  assert.deepEqual(sampleErrorNotice(), {
+    title: "The sample could not load",
+    message: "The sample could not load. Reload the page.",
   });
 });
 

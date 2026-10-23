@@ -75,7 +75,7 @@ function noticeForMessage(message) {
 // body is the JSON body of the response, or null. The Host gives a user message for the
 // rate limits, the busy queue, the bot check, and an unknown Job; other bodies get the
 // generic message of submitErrorMessage.
-export function submitErrorNotice(body) {
+export function refusalNotice(body) {
   return noticeForMessage(submitErrorMessage(body));
 }
 
@@ -87,6 +87,12 @@ export function connectionErrorNotice() {
     message: "The page cannot reach the server.",
     nextStep: "Check your internet connection, then try again in a minute.",
   };
+}
+
+// Return the notice for a Sample Comparison file that could not load. The sample makes no
+// request to the Host, so the notice does not name the server.
+export function sampleErrorNotice() {
+  return { title: "The sample could not load", message: "The sample could not load. Reload the page." };
 }
 
 // Return the notice for a failed Job (state "error"). job.message is a Host user message.

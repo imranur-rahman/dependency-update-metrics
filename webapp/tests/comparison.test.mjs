@@ -15,6 +15,7 @@ import {
   cancelRequest,
   resultRows,
   formatDays,
+  hasValue,
   progressOf,
   jobIdFromUrl,
   urlWithJobId,
@@ -24,6 +25,7 @@ import {
   submitErrorMessage,
   canAddPackage,
   packageLimitNote,
+  packageLimitNoteAction,
   withComparison,
   comparisonFromSearch,
   formFromComparison,
@@ -87,6 +89,16 @@ test("the form allows a new package field only while it has fewer than 5", () =>
 test("the form tells the user when the Comparison holds 5 packages", () => {
   assert.equal(packageLimitNote(["a", "b", "c", "d"]), "");
   assert.equal(packageLimitNote(["a", "b", "c", "d", "e"]), "A Comparison holds at most 5 packages.");
+});
+
+test("the package limit note shows only when the count changes to 5", () => {
+  const five = ["a", "b", "c", "d", "e"];
+  assert.equal(packageLimitNoteAction(4, five), "show");
+  assert.equal(packageLimitNoteAction(null, five), "show");
+  // A renumber at the same count (for example, after the form is filled) shows it not again.
+  assert.equal(packageLimitNoteAction(5, five), "keep");
+  assert.equal(packageLimitNoteAction(5, ["a", "b", "c", "d"]), "clear");
+  assert.equal(packageLimitNoteAction(null, ["a"]), "clear");
 });
 
 test("a Comparison survives the round trip through the page URL", () => {
@@ -239,7 +251,7 @@ test("a done Window summary Job gives one table row for each package", () => {
   assert.equal(describeJob(job), "Done");
   assert.equal(isFinished(job), true);
   assert.deepEqual(resultRows(job), [
-    { package: "mypkg", mttu: "579.0", mttr: "579.0", dependencies: 1, error: "" },
+    { package: "mypkg", mttu: "579.00", mttr: "579.00", dependencies: 1, error: "" },
   ]);
 });
 
@@ -299,10 +311,10 @@ test("the bar chart of the contract example has one group", () => {
 
 test("the bar chart axis label follows the weighting type of the Job", () => {
   const job = threePackageJob();
-  assert.equal(barChartAxisLabel(job), "Days (sum over intervals)");
+  assert.equal(barChartAxisLabel(job), "Total days");
 
   job.comparison.weighting_type = "linear";
-  assert.equal(barChartAxisLabel(job), "Days (weighted mean)");
+  assert.equal(barChartAxisLabel(job), "Average days");
 });
 
 test("every chart has one shared size: at most 720 px wide, and one height", () => {
@@ -350,24 +362,24 @@ test("the bar chart is compact: a small legend and few y-axis ticks", () => {
 
 test("the bar chart options carry the axis label of the weighting type", () => {
   const job = threePackageJob();
-  assert.deepEqual(barChartOptions(job).scales.y.title, { display: true, text: "Days (sum over intervals)" });
+  assert.deepEqual(barChartOptions(job).scales.y.title, { display: true, text: "Total days" });
 
   job.comparison.weighting_type = "linear";
-  assert.equal(barChartOptions(job).scales.y.title.text, "Days (weighted mean)");
+  assert.equal(barChartOptions(job).scales.y.title.text, "Average days");
 });
 
-test("the bar chart tooltip shows the days with one decimal, and no value for a missing bar", () => {
+test("the bar chart tooltip shows the days with two decimals, and no value for a missing bar", () => {
   const { label } = barChartOptions(threePackageJob()).plugins.tooltip.callbacks;
 
-  assert.equal(label({ dataset: { label: "MTTU" }, raw: 300.5 }), "MTTU: 300.5 days");
+  assert.equal(label({ dataset: { label: "MTTU" }, raw: 300.5 }), "MTTU: 300.50 days");
   assert.equal(label({ dataset: { label: "MTTR" }, raw: null }), "MTTR: no value");
 });
 
 test("the table shows the values and the error of each package", () => {
   assert.deepEqual(resultRows(threePackageJob()), [
-    { package: "fast", mttu: "12.3", mttr: "0.0", dependencies: 4, error: "" },
+    { package: "fast", mttu: "12.25", mttr: "0.00", dependencies: 4, error: "" },
     { package: "missing", mttu: "–", mttr: "–", dependencies: 0, error: "Package not found in deps.dev" },
-    { package: "slow", mttu: "300.5", mttr: "41.0", dependencies: 20, error: "" },
+    { package: "slow", mttu: "300.50", mttr: "41.00", dependencies: 20, error: "" },
   ]);
 });
 
@@ -375,9 +387,9 @@ test("the CSV download has the same columns and values as the table", () => {
   assert.equal(
     rowsToCsv(resultRows(threePackageJob())),
     "Package,MTTU (days),MTTR (days),Dependencies,Error\r\n" +
-      "fast,12.3,0.0,4,\r\n" +
+      "fast,12.25,0.00,4,\r\n" +
       "missing,,,0,Package not found in deps.dev\r\n" +
-      "slow,300.5,41.0,20,\r\n",
+      "slow,300.50,41.00,20,\r\n",
   );
 });
 
@@ -418,9 +430,9 @@ test("two downloads that differ only in the mode or the weighting get different 
   );
 });
 
-test("days show with one decimal", () => {
-  assert.equal(formatDays(0), "0.0");
-  assert.equal(formatDays(12.345), "12.3");
+test("days show with two decimals", () => {
+  assert.equal(formatDays(0), "0.00");
+  assert.equal(formatDays(12.346), "12.35");
   assert.equal(formatDays(null), "–");
 });
 
@@ -486,18 +498,27 @@ test("the request body has no half-life for the other weighting types", () => {
   assert.equal(body.half_life, null);
 });
 
-test("the axis label says a sum without weighting and a weighted mean with weighting", () => {
-  assert.equal(axisLabel("disable"), "Days (sum over intervals)");
+test("the axis label says total days without weighting and average days with weighting", () => {
+  assert.equal(axisLabel("disable"), "Total days");
   for (const type of ["linear", "exponential", "inverse"]) {
-    assert.equal(axisLabel(type), "Days (weighted mean)");
+    assert.equal(axisLabel(type), "Average days");
   }
 });
 
-test("the note near the results says what the numbers are", () => {
-  assert.match(resultsNote("disable"), /sum/);
-  assert.doesNotMatch(resultsNote("disable"), /weighted mean/);
-  assert.match(resultsNote("exponential"), /weighted mean/);
-  assert.notEqual(resultsNote("disable"), resultsNote("linear"));
+test("the note near the results says plainly what the numbers are", () => {
+  assert.equal(
+    resultsNote("disable"),
+    "Total days: for each direct dependency, the days that it was behind the newest version (MTTU) " +
+      "or on a version with a known vulnerability after a fix was available (MTTR), added up, " +
+      "then averaged over the direct dependencies.",
+  );
+  assert.equal(
+    resultsNote("linear"),
+    "Average days, with linear weighting: for each direct dependency, the days that it was behind the newest " +
+      "version (MTTU) or on a version with a known vulnerability after a fix was available (MTTR), as a " +
+      "weighted average in which recent days count more. Do not compare them with total days.",
+  );
+  assert.match(resultsNote("exponential"), /^Average days, with exponential weighting: /);
 });
 
 // The same names as the Host test (host/tests/test_input_checks.py), so both sides agree.
@@ -549,7 +570,7 @@ test("a package that failed shows its message in the table, and the others show 
   const rows = resultRows(example("job_done_with_package_error"));
 
   assert.deepEqual(rows, [
-    { package: "mypkg", mttu: "579.0", mttr: "579.0", dependencies: 1, error: "" },
+    { package: "mypkg", mttu: "579.00", mttr: "579.00", dependencies: 1, error: "" },
     { package: "nope", mttu: "–", mttr: "–", dependencies: 0, error: "Package not found in deps.dev" },
   ]);
 });
@@ -592,6 +613,16 @@ const noDependenciesJob = () => {
   Object.assign(job.results[0].summary, { mttu: 0, mttr: 0, num_dependencies: 0, status: "no_deps" });
   return job;
 };
+
+test("an entry has a value only with the status ok, dependencies, and both metrics", () => {
+  const entry = { status: "ok", num_dependencies: 2, mttu: 1, mttr: 0, error: "" };
+  assert.equal(hasValue(entry), true);
+  assert.equal(hasValue({ ...entry, num_dependencies: 0 }), false);
+  assert.equal(hasValue({ ...entry, status: "no_deps" }), false);
+  assert.equal(hasValue({ ...entry, status: "error", mttu: null, mttr: null }), false);
+  assert.equal(hasValue({ ...entry, mttr: null }), false);
+  assert.equal(hasValue(null), false);
+});
 
 test("a package without dependencies shows an error, not 0 days", () => {
   assert.deepEqual(resultRows(noDependenciesJob()), [

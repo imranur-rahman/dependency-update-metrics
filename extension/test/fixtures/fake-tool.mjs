@@ -3,7 +3,7 @@
 //   left-pad    -> status no_deps
 //   nope        -> the package error of the contract, exit code 1
 //   bad-args    -> no JSON, an argparse error on stderr, exit code 2
-//   any other   -> the ok result of the contract (MTTU 579 d, MTTR 579 d)
+//   any other   -> the ok result of the contract (MTTU 579.00 d, MTTR 579.00 d)
 // It waits MTTX_FAKE_TOOL_DELAY_MS milliseconds (default 0) before it prints, so that a test
 // can see "computing…". It writes its arguments to MTTX_FAKE_TOOL_LOG when that is set.
 import { appendFileSync, existsSync, readFileSync, writeFileSync } from "node:fs";

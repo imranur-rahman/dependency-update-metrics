@@ -88,7 +88,7 @@ test("a package without dependencies shows the no-dependencies text and no bar s
     ],
   );
   assert.deepEqual(comparisonRows(job), [
-    { package: "mypkg", mttu: "579.0", mttr: "579.0", dependencies: 1, error: "" },
+    { package: "mypkg", mttu: "579.00", mttr: "579.00", dependencies: 1, error: "" },
     {
       package: "left-pad",
       mttu: "–",
@@ -121,13 +121,22 @@ test("the panel shows one Explanation paragraph for each package with a value, t
   ]);
   assert.deepEqual(explanationContent(job), {
     paragraphs: [
-      "mypkg: MTTU is 579.0 days: in this time window, a direct dependency of mypkg was behind the newest " +
-        "available version for a sum of 579.0 days, as a mean over the direct dependencies. MTTR is 579.0 days: " +
+      "mypkg: MTTU is 579.00 days: in this time window, a direct dependency of mypkg was behind the newest " +
+        "available version for 579.00 days in total, on average over the direct dependencies. MTTR is 579.00 days: " +
         "in this time window, a direct dependency of mypkg stayed on a version with a known vulnerability after " +
-        "a fix was available for a sum of 579.0 days, as a mean over the direct dependencies.",
+        "a fix was available for 579.00 days in total, on average over the direct dependencies.",
     ],
     limitations: LIMITATIONS,
   });
+});
+
+test("the Limitations of the panel name the build date of the OSV index", () => {
+  const [ok] = exampleJob("job_done_window_summary.json").results as ToolResult[];
+  const job = comparisonJob(request({ packages: ["mypkg"] }), [{ kind: "result", result: ok }], "2026-10-21");
+  assert.equal(job.osv_index_date, "2026-10-21");
+  assert.match(explanationContent(job).limitations[1], /^The results use the OSV data as of 2026-10-21, /);
+  const withoutDate = comparisonJob(request({ packages: ["mypkg"] }), [{ kind: "result", result: ok }]);
+  assert.equal("osv_index_date" in withoutDate, false);
 });
 
 test("a Comparison where each package failed has no Explanation in the panel", () => {
@@ -158,6 +167,14 @@ test("the webview chart boxes take the shared size of the Webapp charts", () => 
   const boxRule = /\.chart-box \{([^}]*)\}/.exec(source("comparisonPanel.ts"));
   assert.ok(boxRule, "the panel style has no .chart-box rule");
   assert.doesNotMatch(boxRule[1], /width|height/);
+  // The Explanation takes the width of the charts from CHART_SIZE, not a copy of the number.
+  assert.match(source("comparisonPanel.ts"), /\.explanation \{ max-width: \$\{CHART_SIZE\.maxWidth\}px;/);
+});
+
+test("the webview draws the Explanation from the blocks of explanation.js", () => {
+  const webview = readFileSync(join(import.meta.dirname, "..", "..", "src", "webview", "main.ts"), "utf8");
+  assert.match(webview, /explanationBlocks\(job\)/);
+  assert.doesNotMatch(webview, /What the results mean|"Limitations"/);
 });
 
 test("the hover link starts a Comparison with the package of the dependency", () => {

@@ -29,14 +29,14 @@ const [okResult]: ToolResult[] = JSON.parse(
 test("without the OSV index, the hint shows MTTU and says that MTTR needs the index", () => {
   assert.equal(
     hintText({ kind: "result", result: okResult }, "mypkg", { osvIndex: false }),
-    "MTTU 579 d · MTTR needs the OSV index",
+    "MTTU 579.00 d · MTTR needs the OSV index",
   );
 });
 
 test("without the OSV index, the hover also says that MTTR needs the index", () => {
   const target = { name: "mypkg", section: "dependencies" };
   const hover = hoverMarkdown({ kind: "result", result: okResult }, target, { osvIndex: false });
-  assert.match(hover, /MTTU 579\.\d days · MTTR needs the OSV index/);
+  assert.match(hover, /MTTU 579\.\d\d days · MTTR needs the OSV index/);
 });
 
 test("the index state comes from the JSON line of --osv-index-date", () => {
