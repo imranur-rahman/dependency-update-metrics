@@ -1,0 +1,21 @@
+# A demo project for the MTTX extension. Open this folder in VS Code to see
+# the MTTU and MTTR of each dependency.
+[package]
+name = "mttx-demo"
+version = "1.0.0"
+edition = "2021"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+tokio = { version = "1", features = ["full"] }
+reqwest = "0.12"
+http1 = { package = "http", version = "1" }
+
+[dev-dependencies]
+criterion = "0.5"
+
+[build-dependencies]
+cc = "1"
+
+[target.'cfg(windows)'.dependencies]
+winapi = { version = "0.3", features = ["winuser"] }

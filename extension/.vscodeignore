@@ -16,3 +16,4 @@ tsconfig.json
 esbuild.mjs
 .vscode-test.mjs
 *.vsix
+demo/**
