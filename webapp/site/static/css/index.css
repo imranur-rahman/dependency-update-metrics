@@ -1084,3 +1084,20 @@ a:focus {
     text-align: center;
   }
 }
+
+/* "More container options" in the Analyze and reproduce panel. */
+.more-options {
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+}
+
+.more-options summary {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.more-options .content {
+  margin-top: 0.75rem;
+}

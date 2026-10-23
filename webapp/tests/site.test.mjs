@@ -179,3 +179,34 @@ test("the docker command uses the image tag and digest that the Action pins", ()
   assert.ok(command, "the docker command is missing");
   assert.ok(command[1].includes(`${image.repository}:${image.osvTag}@${image.osvDigest}`));
 });
+
+test("every container command uses the image version that the Action pins", () => {
+  const image = JSON.parse(readFileSync(join(siteDir, "..", "..", "action", "image.json"), "utf8"));
+  const refs = [...workflowSection().matchAll(/ghcr\.io\/imranur-rahman\/mttx:([^\s@"<]+)/g)].map((m) => m[1]);
+  assert.ok(refs.length >= 5, "the container commands are missing");
+  for (const tag of refs) assert.ok([image.version, image.osvTag].includes(tag), `the tag ${tag} is not ${image.version} or ${image.osvTag}`);
+});
+
+test("every container analysis reads deps.dev, as the web dashboard and the Action do", () => {
+  const commands = [...workflowSection().matchAll(/docker run[\s\S]*?(?=\n\n|<\/code>)/g)].map((m) => m[0]);
+  const analyses = commands.filter((command) => command.includes("--ecosystem") || command.includes("--input-csv"));
+  assert.ok(analyses.length >= 5, "the container analyses are missing");
+  for (const command of analyses) assert.match(command, /--depsdev/, `no --depsdev in: ${command}`);
+});
+
+test("the links at the top of the homepage name every place where MTTX is published", () => {
+  const html = readFileSync(join(siteDir, "index.html"), "utf8");
+  const links = html.match(/<div class="publication-links">([\s\S]*?)<\/div>/);
+  assert.ok(links, "the links at the top are missing");
+  for (const url of [
+    "https://github.com/imranur-rahman/dependency-update-metrics",
+    "https://pypi.org/project/dependency-update-metrics/",
+    "https://marketplace.visualstudio.com/items?itemName=imranur-rahman.mttx",
+    "https://open-vsx.org/extension/imranur-rahman/mttx",
+    "https://github.com/marketplace/actions/mttx-dependency-update-metrics",
+    "https://github.com/imranur-rahman/dependency-update-metrics/pkgs/container/mttx",
+  ]) {
+    assert.ok(links[1].includes(`href="${url}"`), `the top link ${url} is missing`);
+  }
+  assert.match(links[1], /Zenodo/);
+});

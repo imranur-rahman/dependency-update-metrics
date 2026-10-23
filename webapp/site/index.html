@@ -181,6 +181,48 @@
                   </a>
                 </span>
                 <span class="link-block">
+                  <a href="https://pypi.org/project/dependency-update-metrics/" target="_blank" rel="noopener"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-python"></i></span>
+                    <span>PyPI</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://marketplace.visualstudio.com/items?itemName=imranur-rahman.mttx" target="_blank" rel="noopener"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-code"></i></span>
+                    <span>VS Code Extension</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://open-vsx.org/extension/imranur-rahman/mttx" target="_blank" rel="noopener"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-puzzle-piece"></i></span>
+                    <span>Open VSX Extension</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/marketplace/actions/mttx-dependency-update-metrics" target="_blank" rel="noopener"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-cogs"></i></span>
+                    <span>GitHub Action</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/imranur-rahman/dependency-update-metrics/pkgs/container/mttx" target="_blank" rel="noopener"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-docker"></i></span>
+                    <span>Container (GHCR)</span>
+                  </a>
+                </span>
+                <!-- Zenodo: replace with the DOI link when the archive is public -->
+                <span class="link-block">
+                  <a class="button is-normal is-rounded is-dark is-static-soon" title="Coming soon" aria-disabled="true">
+                    <span class="icon"><i class="fas fa-archive"></i></span>
+                    <span>Zenodo (soon)</span>
+                  </a>
+                </span>
+                <span class="link-block">
                   <a href="https://github.com/imranur-rahman/dependency-update-metrics/blob/main/ALGORITHM.md" target="_blank" rel="noopener"
                      class="external-link button is-normal is-rounded is-dark">
                     <span class="icon"><i class="fas fa-book"></i></span>
@@ -659,6 +701,34 @@ dependency-metrics --input-csv input.csv --workers 8 --output-dir output</code><
              "num_dependencies": 28, "status": "ok"}}</code></pre>
           </div>
         </div>
+        <details class="more-options">
+          <summary>More container options</summary>
+          <div class="content">
+            <p>Each command reads the package data from deps.dev (<code>--depsdev</code>), as the web dashboard and the GitHub Action do, so that the values agree. Without <code>--depsdev</code>, the Tool reads the registry of each ecosystem.</p>
+            <p>Pull the image once, so that later runs start at once:</p>
+            <pre class="cli"><code>docker pull ghcr.io/imranur-rahman/mttx:0.2.1-osv-2026-10-23</code></pre>
+            <p>On Linux, add <code>--user</code>, so that the result files in your folder belong to you and not to root:</p>
+            <pre class="cli"><code>docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/data" \
+  ghcr.io/imranur-rahman/mttx:0.2.1-osv-2026-10-23 \
+  --ecosystem npm --package express --start-date 2024-01-01 --end-date 2025-12-31 --depsdev</code></pre>
+            <p>MTTU and MTTR at every release of a package, and a batch of packages from <code>input.csv</code> in the current folder:</p>
+            <pre class="cli"><code>docker run --rm -v "$PWD:/data" ghcr.io/imranur-rahman/mttx:0.2.1-osv-2026-10-23 \
+  --ecosystem pypi --package requests \
+  --start-date 2020-01-01 --end-date 2021-01-01 --per-release --depsdev
+
+docker run --rm -v "$PWD:/data" ghcr.io/imranur-rahman/mttx:0.2.1-osv-2026-10-23 \
+  --input-csv /data/input.csv --workers 8 --depsdev</code></pre>
+            <p>For the vulnerability data of today, use the plain tag. It has no OSV index, so the first run with <code>--build-osv</code> downloads the OSV data and keeps the index in your folder for later runs:</p>
+            <pre class="cli"><code>docker run --rm -v "$PWD:/data" ghcr.io/imranur-rahman/mttx:0.2.1 \
+  --ecosystem npm --package express --start-date 2024-01-01 --end-date 2025-12-31 --depsdev --build-osv</code></pre>
+            <p>Print the build date of the OSV index that a run uses:</p>
+            <pre class="cli"><code>docker run --rm ghcr.io/imranur-rahman/mttx:0.2.1-osv-2026-10-23 --osv-index-date</code></pre>
+            <p>
+              The mounted folder keeps the output of each run: the results (for example <code>express_results.json</code>), the log <code>run.log</code>, and the cache <code>cache/cache.db</code>, which a later run reuses.
+              Do not add <code>--build-osv</code> to the <code>-osv-</code> tag; <a href="https://github.com/imranur-rahman/dependency-update-metrics/blob/main/image/README.md" target="_blank" rel="noopener">image/README.md</a> gives the reason and all other details.
+            </p>
+          </div>
+        </details>
         <p>
           Cite the image digest for an exact rerun. The <a href="https://github.com/imranur-rahman/dependency-update-metrics#readme" target="_blank" rel="noopener">README</a> lists all options,
           <a href="https://github.com/imranur-rahman/dependency-update-metrics/blob/main/ALGORITHM.md" target="_blank" rel="noopener">ALGORITHM.md</a> describes how the metrics are computed, and
