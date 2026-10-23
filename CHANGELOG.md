@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] - 2026-10-23
+
+### Added
+- `--json` prints one result as JSON on stdout, also for a failed package (exit code 1).
+- `--osv-index-date` prints the build date of the OSV index.
+- Public `analyze()` API with a progress callback, used by the hosted web version.
+- Per-release mode results with a status for each release (`ok`, `no_deps`, `error`).
+- `--build-osv` builds the OSV index from the npm, PyPI, and crates.io zips.
+- Cache size flags (`--cache-prune-gb`, `--cache-clear`) and cache use tracking.
+
+### Changed
+- deps.dev failures now raise errors instead of returning empty data.
+- One map from ecosystem to deps.dev system.
+
 ## [0.1.0] - 2025-11-11
 
 ### Added
