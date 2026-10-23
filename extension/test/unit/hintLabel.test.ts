@@ -2,7 +2,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-import { hintLabel } from "../../src/core/hintLabel.ts";
+import { dependencyAt, hintLabel } from "../../src/core/hintLabel.ts";
 import { parseManifest } from "../../src/core/manifest.ts";
 
 test("a dependency alone on its line gets the hint text only", () => {
@@ -16,4 +16,11 @@ test("dependencies that share a line get their names in front of the hint text",
     deps.map((dep) => hintLabel(dep, deps, "computing…")),
     ["requests: computing…", "numpy: computing…"],
   );
+});
+
+test("the dependency at a position is the one under the cursor, else the first of the line", () => {
+  const deps = parseManifest("pyproject.toml", '[project]\ndependencies = ["requests", "numpy"]\n');
+  assert.equal(dependencyAt(deps, 1, 30)?.name, "numpy");
+  assert.equal(dependencyAt(deps, 1, 0)?.name, "requests");
+  assert.equal(dependencyAt(deps, 0, 0), undefined);
 });

@@ -23,6 +23,18 @@ async function hintLabels(document: vscode.TextDocument): Promise<Map<number, st
   return labels;
 }
 
+async function hoverText(document: vscode.TextDocument, position: vscode.Position): Promise<string> {
+  const hovers = await vscode.commands.executeCommand<vscode.Hover[]>(
+    "vscode.executeHoverProvider",
+    document.uri,
+    position,
+  );
+  return hovers
+    .flatMap((hover) => hover.contents)
+    .map((content) => (typeof content === "string" ? content : content.value))
+    .join("\n");
+}
+
 async function waitFor(check: () => Promise<boolean>): Promise<void> {
   const end = Date.now() + TIMEOUT_MS;
   while (!(await check())) {
@@ -56,6 +68,23 @@ export async function run(): Promise<void> {
   } catch {
     assert.deepEqual(Object.fromEntries(last), Object.fromEntries(expected));
   }
+
+  // The hover shows the details behind a hint, and the full error of a failed package.
+  const expressHover = await hoverText(document, new vscode.Position(5, 6));
+  assert.match(expressHover, /Window: \d{4}-\d{2}-\d{2} to \d{4}-\d{2}-\d{2}/);
+  assert.match(expressHover, /Section: `dependencies`/);
+  const nopeHover = await hoverText(document, new vscode.Position(9, 6));
+  assert.match(nopeHover, /Package not found in deps\.dev/);
+  assert.match(nopeHover, /Section: `devDependencies`/);
+
+  // A settings change refreshes the hints. Exponential weighting without a half-life fails
+  // the settings check, so each hint shows the message of the check.
+  const config = vscode.workspace.getConfiguration("mttx");
+  await config.update("weightingType", "exponential", vscode.ConfigurationTarget.Global);
+  await waitFor(async () => (await hintLabels(document)).get(5)?.startsWith("error: Exponential weighting") ?? false);
+  await config.update("weightingType", undefined, vscode.ConfigurationTarget.Global);
+
+  await vscode.commands.executeCommand("mttx.openSettings");
 
   await expectHints(join(folder, "pyproject.toml"), [
     [4, "MTTU 579 d · MTTR 579 d"],
