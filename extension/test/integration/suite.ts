@@ -75,6 +75,10 @@ export async function run(): Promise<void> {
   assert.match(nopeHover, /Package not found in deps\.dev/);
   assert.match(nopeHover, /Section: `devDependencies`/);
 
+  // The command analyzes the open manifest. The values are fresh, so the hints stay.
+  await vscode.commands.executeCommand("mttx.analyzeDependencies");
+  assert.deepEqual(Object.fromEntries(await hintLabels(document)), Object.fromEntries(expected));
+
   // A settings change refreshes the hints. Exponential weighting without a half-life fails
   // the settings check, so each hint shows the message of the check.
   const config = vscode.workspace.getConfiguration("mttx");

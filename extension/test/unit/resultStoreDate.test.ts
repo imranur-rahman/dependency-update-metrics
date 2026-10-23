@@ -27,7 +27,7 @@ function storeWith(outcome: ToolOutcome, now: Date): ResultStore {
     outputDir: "",
     timeoutSeconds: 600,
   };
-  return new ResultStore(runner, () => request, () => now);
+  return new ResultStore({ runner, makeRequest: () => request, now: () => now });
 }
 
 async function finished(store: ResultStore) {
