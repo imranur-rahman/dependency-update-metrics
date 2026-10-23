@@ -23,6 +23,7 @@ import {
   dateErrors,
   submitErrorMessage,
   canAddPackage,
+  packageLimitNote,
   withComparison,
   comparisonFromSearch,
   formFromComparison,
@@ -79,6 +80,11 @@ test("the form refuses no package, a sixth package, and duplicates", () => {
 test("the form allows a new package field only while it has fewer than 5", () => {
   assert.equal(canAddPackage(["a", "b", "c", "d"]), true);
   assert.equal(canAddPackage(["a", "b", "c", "d", "e"]), false);
+});
+
+test("the form tells the user when the Comparison holds 5 packages", () => {
+  assert.equal(packageLimitNote(["a", "b", "c", "d"]), "");
+  assert.equal(packageLimitNote(["a", "b", "c", "d", "e"]), "A Comparison holds at most 5 packages.");
 });
 
 test("a Comparison survives the round trip through the page URL", () => {
