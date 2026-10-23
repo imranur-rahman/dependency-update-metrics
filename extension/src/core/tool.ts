@@ -4,13 +4,26 @@
 import type { Ecosystem } from "./manifest.ts";
 import type { DependencyState, ToolResult } from "./display.ts";
 
-// One Tool run: one package of one ecosystem over a window from the start date to today.
-// #31 adds the settings (data source, window, weighting) to this request.
+export type DataSource = "depsdev" | "native";
+
+// The values of `--weighting-type` in dependency_metrics/cli.py.
+export const WEIGHTING_TYPES = ["disable", "linear", "exponential", "inverse"] as const;
+export type WeightingType = (typeof WEIGHTING_TYPES)[number];
+
+// One Tool run: one package of one ecosystem over a window from the start date to the end
+// date (both YYYY-MM-DD). src/core/settings.ts makes the request from the `mttx.*` settings.
+// halfLife is null unless the weighting is exponential. The runner stops a run after
+// timeoutSeconds, because `--package-timeout` works only in the bulk CSV mode of the Tool.
 export interface ToolRequest {
   ecosystem: Ecosystem;
   packageName: string;
+  dataSource: DataSource;
   startDate: string;
+  endDate: string;
+  weightingType: WeightingType;
+  halfLife: number | null;
   outputDir: string;
+  timeoutSeconds: number;
 }
 
 // The end state of one Tool run.
@@ -32,21 +45,15 @@ export interface ToolOutput {
 
 export const DEFAULT_WINDOW_YEARS = 2;
 
-// Return the arguments of `dependency-metrics` for one request. The Extension always uses
-// deps.dev (ADR 0003) and the JSON output.
+// Return the arguments of `dependency-metrics` for one request, with the JSON output.
 export function toolArgs(request: ToolRequest): string[] {
-  return [
-    "--ecosystem",
-    request.ecosystem,
-    "--package",
-    request.packageName,
-    "--json",
-    "--depsdev",
-    "--start-date",
-    request.startDate,
-    "--output-dir",
-    request.outputDir,
-  ];
+  const args = ["--ecosystem", request.ecosystem, "--package", request.packageName, "--json"];
+  if (request.dataSource === "depsdev") args.push("--depsdev");
+  args.push("--start-date", request.startDate, "--end-date", request.endDate);
+  args.push("--weighting-type", request.weightingType);
+  if (request.halfLife !== null) args.push("--half-life", String(request.halfLife));
+  args.push("--output-dir", request.outputDir);
+  return args;
 }
 
 // Return the start date (YYYY-MM-DD) of a window that ends today, in the local time zone.
