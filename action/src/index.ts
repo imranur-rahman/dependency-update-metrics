@@ -13,7 +13,8 @@ import { runToolCommand, toolCommand } from "../../extension/src/processToolRunn
 import imageJson from "../image.json" with { type: "json" };
 import { dockerTool, IMAGE_OUTPUT_DIR, imageReference, type PinnedImage } from "./docker.ts";
 import { gitManifestChanges, restCommentStore } from "./github.ts";
-import { runAction, type ActionIO, type PullRequest, type ToolProcess } from "./main.ts";
+import type { OsvIndexSource } from "./inputs.ts";
+import { runAction, type ActionIO, type PullRequest, type ToolSeam } from "./main.ts";
 
 const env = process.env;
 
@@ -32,7 +33,9 @@ function command(name: string, message: string): void {
   process.stdout.write(`::${name} title=MTTX::${text}\n`);
 }
 
-function tool(values: Record<string, string>): { tool: ToolProcess; outputDir: string } {
+// The Tool seam: the fake Tool of MTTX_ACTION_TOOL, or the GHCR image for the osv-index
+// input. The runner folder MTTX_DATA_DIR holds the Tool cache and the OSV index.
+function openTool(osvIndex: OsvIndexSource): ToolSeam {
   const dataDir = env.MTTX_DATA_DIR || resolve(env.RUNNER_TEMP ?? ".", "mttx-data");
   mkdirSync(dataDir, { recursive: true });
   const fake = env.MTTX_ACTION_TOOL;
@@ -40,8 +43,7 @@ function tool(values: Record<string, string>): { tool: ToolProcess; outputDir: s
     const fakeCommand = toolCommand(fake);
     return { tool: (args, timeoutMs) => runToolCommand(fakeCommand, args, timeoutMs === undefined ? {} : { timeoutMs }), outputDir: dataDir };
   }
-  const fresh = values["osv-index"]?.trim() === "fresh";
-  const image = imageReference(imageJson as PinnedImage, fresh ? "fresh" : "image");
+  const image = imageReference(imageJson as PinnedImage, osvIndex);
   process.stdout.write(`MTTX runs the Tool in ${image}\n`);
   const mount = { hostDir: dataDir, uid: process.getuid?.() ?? 0, gid: process.getgid?.() ?? 0 };
   return { tool: dockerTool(image, mount), outputDir: IMAGE_OUTPUT_DIR };
@@ -66,16 +68,12 @@ function pullRequest(token: string): PullRequest | undefined {
 }
 
 async function main(): Promise<number> {
-  if (process.platform !== "linux" && !env.MTTX_ACTION_TOOL) {
-    command("error", "The MTTX Action runs only on Linux runners, because it needs Docker. Use runs-on: ubuntu-latest.");
-    return 1;
-  }
   const values = inputs();
   const pr = pullRequest(values["github-token"] ?? "");
   const io: ActionIO = {
     inputs: values,
     today: new Date(),
-    ...tool(values),
+    openTool,
     ...(pr ? { pullRequest: pr } : {}),
     setOutput(name, value) {
       if (!env.GITHUB_OUTPUT) return;

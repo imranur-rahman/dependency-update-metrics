@@ -8,6 +8,7 @@ import { join } from "node:path";
 
 import type { SpawnResult } from "../../extension/src/spawnProcess.ts";
 import type { ManifestChange } from "../src/added.ts";
+import type { OsvIndexSource } from "../src/inputs.ts";
 import { runAction, type ActionIO, type Comment, type CommentStore, type ToolProcess } from "../src/main.ts";
 import { COMMENT_MARKER } from "../src/report.ts";
 
@@ -71,7 +72,10 @@ function fakeComments(existing: Comment[] = []): CommentStore & { comments: Comm
   };
 }
 
-function fakeIO(inputs: Record<string, string>, extra: Partial<ActionIO> = {}) {
+// `tool` is the Tool seam that openTool gives; `opened` records the osv-index of each call.
+function fakeIO(inputs: Record<string, string>, extra: Partial<ActionIO> & { tool?: ToolProcess } = {}) {
+  const { tool = fakeTool().run, ...rest } = extra;
+  const opened: OsvIndexSource[] = [];
   const outputs: Record<string, string> = {};
   const files: Record<string, string> = {};
   const errors: string[] = [];
@@ -80,8 +84,10 @@ function fakeIO(inputs: Record<string, string>, extra: Partial<ActionIO> = {}) {
   const io: ActionIO = {
     inputs,
     today: new Date(2026, 9, 23),
-    outputDir: "/data",
-    tool: fakeTool().run,
+    openTool: (osvIndex) => {
+      opened.push(osvIndex);
+      return { tool, outputDir: "/data" };
+    },
     setOutput: (name, value) => {
       outputs[name] = value;
     },
@@ -94,9 +100,9 @@ function fakeIO(inputs: Record<string, string>, extra: Partial<ActionIO> = {}) {
     error: (message) => errors.push(message),
     warning: (message) => warnings.push(message),
     info: () => {},
-    ...extra,
+    ...rest,
   };
-  return { io, outputs, files, errors, warnings, summary: () => summary };
+  return { io, outputs, files, errors, warnings, opened, summary: () => summary };
 }
 
 test("target packages: the outputs, the job summary, and the badge files for npm, PyPI, and Cargo", async () => {
@@ -104,6 +110,7 @@ test("target packages: the outputs, the job summary, and the badge files for npm
     const tool = fakeTool();
     const run = fakeIO({ packages: `${name}, left-pad`, ecosystem }, { tool: tool.run });
     assert.equal(await runAction(run.io), 0);
+    assert.deepEqual(run.opened, ["image"], "the default osv-index opens the image with the index inside");
     const results = JSON.parse(run.outputs.results);
     assert.deepEqual(results.map((row: { package: string; status: string }) => [row.package, row.status]), [
       [name, "ok"],
@@ -150,6 +157,7 @@ test("an invalid input fails the step before a Tool run", async () => {
   assert.equal(await runAction(run.io), 1);
   assert.deepEqual(run.errors, ['Input ecosystem "maven" is not one of npm, pypi, cargo.']);
   assert.deepEqual(tool.calls, []);
+  assert.deepEqual(run.opened, []);
 });
 
 test("osv-index fresh builds the index of today when the index is older, and skips the build when it is new", async () => {
@@ -157,6 +165,7 @@ test("osv-index fresh builds the index of today when the index is older, and ski
   const run = fakeIO({ packages: "express", ecosystem: "npm", "osv-index": "fresh" }, { tool: old.run });
   assert.equal(await runAction(run.io), 0);
   assert.ok(old.calls.some((args) => args.includes("--build-osv")));
+  assert.deepEqual(run.opened, ["fresh"], "the Tool seam gets the checked osv-index input");
   assert.match(run.summary(), /OSV data as of 2026-10-23/);
 
   const fresh = fakeTool("2026-10-23");
@@ -211,6 +220,7 @@ test("target pull-request: a pull request that adds no dependencies gets no comm
   assert.equal(await runAction(run.io), 0);
   assert.equal(comments.comments.length, 0);
   assert.deepEqual(tool.calls, []);
+  assert.deepEqual(run.opened, [], "no package opens no Tool seam");
   assert.equal(run.outputs.added, "[]");
   assert.equal(run.outputs["comment-url"], "");
 });

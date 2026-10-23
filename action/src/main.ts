@@ -10,13 +10,20 @@ import { formatDate } from "../../extension/src/core/tool.ts";
 import type { SpawnResult } from "../../extension/src/spawnProcess.ts";
 import { formatDays } from "../../webapp/site/static/js/comparison.js";
 import { addedDependencies, type AddedDependency, type ManifestChange } from "./added.ts";
-import { parseInputs, type ActionConfig } from "./inputs.ts";
+import { parseInputs, type ActionConfig, type OsvIndexSource } from "./inputs.ts";
 import { badgeFiles, COMMENT_MARKER, outputRows, reportMarkdown, thresholdFailures, type PackageOutcome } from "./report.ts";
 
 // The one seam of the Tool: run `dependency-metrics` with these arguments. The real seam runs
 // the Tool in the GHCR image (src/docker.ts); the tests pass a fake. timeoutMs stops a slow
 // run.
 export type ToolProcess = (args: string[], timeoutMs?: number) => Promise<SpawnResult>;
+
+// The Tool seam for one run of the Action, and the `--output-dir` of the Tool, as the Tool
+// sees it.
+export interface ToolSeam {
+  tool: ToolProcess;
+  outputDir: string;
+}
 
 export interface Comment {
   id: number;
@@ -40,9 +47,9 @@ export interface PullRequest {
 export interface ActionIO {
   inputs: Record<string, string>;
   today: Date;
-  // The `--output-dir` of the Tool, as the Tool sees it.
-  outputDir: string;
-  tool: ToolProcess;
+  // Open the Tool seam for the checked osv-index input. The Action calls it once, after the
+  // input check, and only when there is a package to analyze.
+  openTool(osvIndex: OsvIndexSource): ToolSeam;
   // Undefined when the event is not a pull request.
   pullRequest?: PullRequest;
   setOutput(name: string, value: string): void;
@@ -89,10 +96,11 @@ export async function runAction(io: ActionIO): Promise<number> {
     return 0;
   }
 
-  const osvIndexDate = await prepareOsvIndex(io, config);
+  const seam = io.openTool(config.osvIndex);
+  const osvIndexDate = await prepareOsvIndex(io, seam, config);
   const outcomes = await runPool(packages, config.settings.parallelRuns, async (dep): Promise<PackageOutcome> => {
     io.info(`Analyzing ${dep.name} (${dep.ecosystem})`);
-    return { ...dep, outcome: await analyze(io, config, dep) };
+    return { ...dep, outcome: await analyze(io, seam, config, dep) };
   });
 
   const rows = outputRows(outcomes);
@@ -124,23 +132,23 @@ export async function runAction(io: ActionIO): Promise<number> {
 
 // Return the build date of the OSV index that the Tool uses, or undefined when it has none.
 // With osv-index fresh, the Tool builds the index when it is not from today.
-async function prepareOsvIndex(io: ActionIO, config: ActionConfig): Promise<string | undefined> {
-  let state = parseOsvIndexDate((await io.tool(osvIndexDateArgs(io.outputDir))).stdout);
+async function prepareOsvIndex(io: ActionIO, { tool, outputDir }: ToolSeam, config: ActionConfig): Promise<string | undefined> {
+  let state = parseOsvIndexDate((await tool(osvIndexDateArgs(outputDir))).stdout);
   const today = formatDate(io.today);
   if (config.osvIndex === "fresh" && !(state?.kind === "built" && state.date === today)) {
     io.info("Building the OSV index of today. AGENTS.md of imranur-rahman/dependency-update-metrics gives the download size.");
-    const build = await io.tool(buildOsvArgs(io.outputDir));
+    const build = await tool(buildOsvArgs(outputDir));
     if (build.exitCode !== 0) io.warning(`The OSV index build failed: ${lastLine(build)}`);
-    state = parseOsvIndexDate((await io.tool(osvIndexDateArgs(io.outputDir))).stdout);
+    state = parseOsvIndexDate((await tool(osvIndexDateArgs(outputDir))).stdout);
   }
   if (state?.kind === "built") return state.date;
   io.warning("The Tool has no OSV index, so each MTTR is 0. Use the default image, or osv-index: fresh.");
   return undefined;
 }
 
-async function analyze(io: ActionIO, config: ActionConfig, dep: AddedDependency): Promise<ToolOutcome> {
-  const request = toolRequest(dep, config.settings, io.today, io.outputDir);
-  const output = await io.tool(toolArgs(request), request.timeoutSeconds * 1000);
+async function analyze(io: ActionIO, { tool, outputDir }: ToolSeam, config: ActionConfig, dep: AddedDependency): Promise<ToolOutcome> {
+  const request = toolRequest(dep, config.settings, io.today, outputDir);
+  const output = await tool(toolArgs(request), request.timeoutSeconds * 1000);
   if (output.timedOut) {
     return { kind: "failed", message: `the Tool stopped after ${request.timeoutSeconds} s (package-timeout-seconds)` };
   }
