@@ -75,7 +75,7 @@ function noticeForMessage(message) {
 // body is the JSON body of the response, or null. The Host gives a user message for the
 // rate limits, the busy queue, the bot check, and an unknown Job; other bodies get the
 // generic message of submitErrorMessage.
-export function submitErrorNotice(body) {
+export function refusalNotice(body) {
   return noticeForMessage(submitErrorMessage(body));
 }
 

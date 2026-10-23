@@ -36,7 +36,7 @@ import {
 } from "./comparison.js";
 import { explanationBlocks } from "./explanation.js";
 import {
-  submitErrorNotice,
+  refusalNotice,
   connectionErrorNotice,
   jobErrorNotice,
   doneJobNotice,
@@ -486,7 +486,7 @@ async function getJob(jobId) {
     // The Host gives a user message (for example "Job not found"); the error carries its notice.
     const refusal = await response.json().catch(() => null);
     throw Object.assign(new Error(`GET returned ${response.status}`), {
-      notice: submitErrorNotice(refusal),
+      notice: refusalNotice(refusal),
     });
   }
   return response.json();
@@ -596,7 +596,7 @@ form.addEventListener("submit", async (event) => {
       // The Host gives a user message for a refused submit (for example, a rate limit).
       const refusal = await response.json().catch(() => null);
       console.error(`POST returned ${response.status}`, refusal);
-      showError(submitErrorNotice(refusal));
+      showError(refusalNotice(refusal));
       return;
     }
     const { job_id: jobId } = await response.json();
