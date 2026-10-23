@@ -6,7 +6,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
-import { hintText, hasNoDependencies, type ToolResult } from "../../src/core/display.ts";
+import { hintText, hasNoDependencies, hoverMarkdown, type ToolResult } from "../../src/core/display.ts";
 // @ts-expect-error The Webapp module is plain JavaScript without type declarations.
 import { resultRows, NO_DEPENDENCIES_ERROR } from "../../../webapp/site/static/js/comparison.js";
 
@@ -76,4 +76,59 @@ test("the no-dependencies rule is the rule of the Webapp", () => {
     const webappSaysNoDeps = resultRows(job)[0].error === NO_DEPENDENCIES_ERROR;
     assert.equal(hasNoDependencies(entry), webappSaysNoDeps, JSON.stringify(entry));
   }
+});
+
+// The hover (#27): the details behind the hint.
+function assertHas(text: string, parts: string[]): void {
+  for (const part of parts) {
+    assert.ok(text.includes(part), `missing ${JSON.stringify(part)} in:\n${text}`);
+  }
+}
+
+test("the hover of a result shows the window, the dependencies, the source, the date, and the section", () => {
+  const text = hoverMarkdown(
+    { kind: "result", result: okResult, computedOn: "2026-10-22" },
+    { name: "mypkg", section: "devDependencies" },
+  );
+  assertHas(text, [
+    "MTTU 579.0 days · MTTR 579.0 days",
+    "Window: 2020-01-01 to 2023-01-01",
+    "Dependencies of `mypkg`: 1",
+    "Data source: deps.dev",
+    "Computed on: 2026-10-22",
+    "Section: `devDependencies`",
+  ]);
+});
+
+test("the hover of a package without dependencies repeats the no-dependencies text", () => {
+  const result = withSummary({ mttu: 0, mttr: 0, num_dependencies: 0, status: "no_deps" });
+  const text = hoverMarkdown({ kind: "result", result }, { name: "left-pad", section: "dependencies" });
+  assertHas(text, [
+    "could not compute since 'left-pad' has no dependencies",
+    "Window: 2020-01-01 to 2023-01-01",
+    "Section: `dependencies`",
+  ]);
+  assert.ok(!text.includes("MTTU"), text);
+});
+
+test("the hover of a package that the Tool could not analyze shows the full Tool error", () => {
+  const message = `${"Package nope not found in NPM after 3 retries ".repeat(3)}\nsecond line`;
+  const result = { ...failedResult, error: message };
+  assert.ok(hintText({ kind: "result", result }, "nope").length < 60);
+  const text = hoverMarkdown({ kind: "result", result }, { name: "nope", section: "dependencies" });
+  assertHas(text, [message, "Window: 2020-01-01 to 2023-01-01", "Section: `dependencies`"]);
+  assert.ok(!text.includes("MTTU"), text);
+});
+
+test("the hover of a Tool run without a result shows the full message", () => {
+  const message = "spawn dependency-metrics ENOENT\nwith ``` backticks and a long tail";
+  const text = hoverMarkdown({ kind: "failed", message }, { name: "express", section: "dependencies" });
+  assertHas(text, [message, "Section: `dependencies`"]);
+  // The fence is longer than any backtick run in the message, so the message stays literal.
+  assert.match(text, /^````$/m);
+});
+
+test("the hover of a running Tool says that it computes", () => {
+  const text = hoverMarkdown({ kind: "computing" }, { name: "express", section: "dependencies" });
+  assertHas(text, ["computing…", "Section: `dependencies`"]);
 });

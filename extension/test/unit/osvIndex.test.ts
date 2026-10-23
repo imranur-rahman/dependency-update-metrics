@@ -6,7 +6,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
-import { hintText, type ToolResult } from "../../src/core/display.ts";
+import { hintText, hoverMarkdown, type ToolResult } from "../../src/core/display.ts";
 import {
   OSV_PROMPT,
   buildOsvArgs,
@@ -28,6 +28,12 @@ test("without the OSV index, the hint shows MTTU and says that MTTR needs the in
     hintText({ kind: "result", result: okResult }, "mypkg", { osvIndex: false }),
     "MTTU 579 d · MTTR needs the OSV index",
   );
+});
+
+test("without the OSV index, the hover also says that MTTR needs the index", () => {
+  const target = { name: "mypkg", section: "dependencies" };
+  const hover = hoverMarkdown({ kind: "result", result: okResult }, target, { osvIndex: false });
+  assert.match(hover, /MTTU 579\.\d days · MTTR needs the OSV index/);
 });
 
 test("the index state comes from the JSON line of --osv-index-date", () => {

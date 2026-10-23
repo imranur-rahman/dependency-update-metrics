@@ -1,11 +1,11 @@
-// The thin `vscode` layer: it registers the inlay hint provider for package.json and
-// connects it to the core module and the Tool runner.
+// The thin `vscode` layer: it registers the inlay hint provider and the hover provider for
+// package.json and connects them to the core module and the Tool runner.
 import { mkdirSync } from "node:fs";
 import { join } from "node:path";
 
 import * as vscode from "vscode";
 
-import { hintText, type HintContext } from "./core/display.ts";
+import { hintText, hoverMarkdown, type HintContext } from "./core/display.ts";
 import { parseManifest } from "./core/manifest.ts";
 import { ResultStore } from "./core/resultStore.ts";
 import { windowStartDate } from "./core/tool.ts";
@@ -16,7 +16,7 @@ import { ProcessToolRunner, toolCommand } from "./processToolRunner.ts";
 // matches any language. #28 adds pyproject.toml and Cargo.toml.
 const MANIFESTS: vscode.DocumentSelector = [{ scheme: "file", pattern: "**/package.json" }];
 
-class HintProvider implements vscode.InlayHintsProvider, vscode.Disposable {
+class HintProvider implements vscode.InlayHintsProvider, vscode.HoverProvider, vscode.Disposable {
   private readonly changed = new vscode.EventEmitter<void>();
   readonly onDidChangeInlayHints = this.changed.event;
   private store: ResultStore;
@@ -52,6 +52,17 @@ class HintProvider implements vscode.InlayHintsProvider, vscode.Disposable {
       hints.push(hint);
     }
     return hints;
+  }
+
+  // The hover of a dependency line shows the details behind the hint, or the full error.
+  provideHover(document: vscode.TextDocument, position: vscode.Position): vscode.Hover | undefined {
+    if (/[\\/]node_modules[\\/]/.test(document.uri.fsPath)) return undefined;
+    const dep = parseManifest(document.fileName, document.getText()).find(
+      (candidate) => candidate.line === position.line,
+    );
+    if (!dep) return undefined;
+    const markdown = new vscode.MarkdownString(hoverMarkdown(this.store.get(dep), dep, this.hintContext()));
+    return new vscode.Hover(markdown, document.lineAt(dep.line).range);
   }
 
   dispose(): void {
@@ -94,6 +105,7 @@ export function activate(context: vscode.ExtensionContext): void {
     vscode.commands.registerCommand(REBUILD_COMMAND, () => osvIndex.rebuild()),
     provider,
     vscode.languages.registerInlayHintsProvider(MANIFESTS, provider),
+    vscode.languages.registerHoverProvider(MANIFESTS, provider),
     vscode.workspace.onDidChangeConfiguration((event) => {
       if (event.affectsConfiguration("mttx")) provider.reset();
     }),
