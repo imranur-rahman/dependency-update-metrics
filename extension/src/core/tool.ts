@@ -63,12 +63,13 @@ export function windowStartDate(today: Date, years = DEFAULT_WINDOW_YEARS): stri
   const year = today.getFullYear() - years;
   const month = today.getMonth();
   const lastDay = new Date(year, month + 1, 0).getDate();
-  const day = Math.min(today.getDate(), lastDay);
-  return `${year}-${pad(month + 1)}-${pad(day)}`;
+  return formatDate(new Date(year, month, Math.min(today.getDate(), lastDay)));
 }
 
-function pad(value: number): string {
-  return String(value).padStart(2, "0");
+// Return the date (YYYY-MM-DD) of a time in the local time zone.
+export function formatDate(time: Date): string {
+  const pad = (value: number) => String(value).padStart(2, "0");
+  return `${time.getFullYear()}-${pad(time.getMonth() + 1)}-${pad(time.getDate())}`;
 }
 
 // Turn the output of a finished Tool process into an outcome. The Tool prints its JSON

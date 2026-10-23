@@ -5,7 +5,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
-import { windowStartDate, parseToolOutput } from "../../src/core/tool.ts";
+import { formatDate, windowStartDate, parseToolOutput } from "../../src/core/tool.ts";
 
 const EXAMPLES = join(import.meta.dirname, "..", "..", "..", "contract", "examples");
 
@@ -40,4 +40,9 @@ test("a Tool that prints no JSON and nothing on stderr fails with its exit code"
     kind: "failed",
     message: "the Tool printed no result (exit code 0)",
   });
+});
+
+test("a date prints as YYYY-MM-DD in the local time zone", () => {
+  assert.equal(formatDate(new Date(2026, 0, 5, 23, 59)), "2026-01-05");
+  assert.equal(formatDate(new Date(2026, 10, 30, 0, 0)), "2026-11-30");
 });

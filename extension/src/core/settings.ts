@@ -8,6 +8,7 @@ import type { ResultContext } from "./resultCache.ts";
 import type { PackageKey } from "./resultStore.ts";
 import {
   DEFAULT_WINDOW_YEARS,
+  formatDate,
   windowStartDate,
   type DataSource,
   type ToolRequest,
@@ -159,7 +160,7 @@ function invalid(message: string): ParsedSettings {
 function isDate(text: string): boolean {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(text)) return false;
   const date = localDate(text);
-  return windowStartDate(date, 0) === text;
+  return formatDate(date) === text;
 }
 
 // Return the Tool request for one package. Without an end date the window ends today, and
@@ -172,7 +173,7 @@ export function toolRequest(key: PackageKey, settings: Settings, today: Date, de
     packageName: key.name,
     dataSource: settings.dataSource,
     startDate: settings.startDate || windowStartDate(end, settings.windowYears),
-    endDate: windowStartDate(end, 0),
+    endDate: formatDate(end),
     weightingType: settings.weightingType,
     halfLife: settings.halfLife,
     outputDir: toolOutputDir(settings, defaultDir),

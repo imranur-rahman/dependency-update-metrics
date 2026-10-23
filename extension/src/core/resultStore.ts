@@ -6,7 +6,7 @@ import type { DependencyState } from "./display.ts";
 import type { Ecosystem } from "./manifest.ts";
 import { FRESH_MS, type ResultCache, type ResultContext } from "./resultCache.ts";
 import { DEFAULT_SETTINGS } from "./settings.ts";
-import type { ToolOutcome, ToolRequest, ToolRunner } from "./tool.ts";
+import { formatDate, type ToolOutcome, type ToolRequest, type ToolRunner } from "./tool.ts";
 
 export interface PackageKey {
   ecosystem: Ecosystem;
@@ -148,7 +148,7 @@ export class ResultStore implements PackageStates {
       state: {
         kind: "result",
         result: cached.result,
-        computedOn: localDate(new Date(cached.savedAt)),
+        computedOn: formatDate(new Date(cached.savedAt)),
       },
       freshUntil: cached.savedAt + FRESH_MS,
     };
@@ -184,7 +184,7 @@ export class ResultStore implements PackageStates {
   // A result carries the local date of the run, so that the hover can show it.
   private finish(id: string, request: ToolRequest, context: ResultContext | undefined, outcome: ToolOutcome): void {
     const now = this.now();
-    const state = outcome.kind === "result" ? { ...outcome, computedOn: localDate(now) } : outcome;
+    const state = outcome.kind === "result" ? { ...outcome, computedOn: formatDate(now) } : outcome;
     this.entries.set(id, { state, freshUntil: now.getTime() + FRESH_MS });
     if (outcome.kind === "result" && !outcome.result.error && context) {
       // A failed write loses only the cache entry, and the next session runs the Tool again.
@@ -207,10 +207,4 @@ export class ResultStore implements PackageStates {
 
 function idOf(key: PackageKey): string {
   return `${key.ecosystem}:${key.name}`;
-}
-
-// Return the date (YYYY-MM-DD) of a time in the local time zone.
-function localDate(time: Date): string {
-  const pad = (value: number) => String(value).padStart(2, "0");
-  return `${time.getFullYear()}-${pad(time.getMonth() + 1)}-${pad(time.getDate())}`;
 }
