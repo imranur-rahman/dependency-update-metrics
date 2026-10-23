@@ -5,6 +5,7 @@
 
 import { hasNoDependencies, noDependenciesText, type ToolResult } from "./display.ts";
 import type { Ecosystem } from "./manifest.ts";
+import type { ResultStore } from "./resultStore.ts";
 import type { ToolOutcome } from "./tool.ts";
 import { packageErrors, resultRows } from "../../../webapp/site/static/js/comparison.js";
 
@@ -54,6 +55,23 @@ export const COMPARISON_ECOSYSTEMS: readonly Ecosystem[] = ["npm", "pypi", "carg
 export const SERIES_COLORS: Readonly<Record<string, string>> = { MTTU: "#2a78d6", MTTR: "#eb6834" };
 export const PACKAGE_COLORS: readonly string[] = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4"];
 
+// The messages from the panel to the webview: a status line while the Tool runs, then the
+// done Job.
+export type PanelMessage = { type: "status"; text: string } | { type: "job"; job: ComparisonJob };
+
+// The messages from the webview to the panel. The webview sends "ready" when it listens,
+// and "rendered" after it drew a Job.
+export type WebviewMessage = { type: "ready" } | { type: "rendered"; report: ComparisonReport };
+
+// What the webview drew: the IDs of the charts that it drew, the text of the table cells
+// (the header first), and the content security policy violations. The command returns it,
+// so that the integration test checks the webview.
+export interface ComparisonReport {
+  charts: string[];
+  rows: string[][];
+  violations: string[];
+}
+
 // The arguments of the command "mttx.compare". Without them, the command asks for both.
 export interface CompareArgs {
   ecosystem?: Ecosystem;
@@ -77,6 +95,33 @@ export function parsePackageNames(ecosystem: Ecosystem, text: string): PackageNa
   const names = text.split(/[\s,]+/).filter((name) => name !== "");
   const [error] = packageErrors(ecosystem, names) as string[];
   return error ? { error } : { names };
+}
+
+// The part of the result store that a Comparison uses.
+export type OutcomeSource = Pick<ResultStore, "get" | "onDidUpdate">;
+
+// Return the outcome of each package, in the order of the names. The store runs the Tool
+// with its queue and its request (the window and the other settings), so that a Comparison
+// gives the same values as the hints.
+export function comparisonOutcomes(
+  store: OutcomeSource,
+  ecosystem: Ecosystem,
+  names: string[],
+): Promise<ToolOutcome[]> {
+  return new Promise((resolve) => {
+    const read = (): ToolOutcome[] | undefined => {
+      const states = names.map((name) => store.get({ ecosystem, name }));
+      return states.every((state) => state.kind !== "computing") ? (states as ToolOutcome[]) : undefined;
+    };
+    const done = read();
+    if (done) return resolve(done);
+    const stop = store.onDidUpdate(() => {
+      const outcomes = read();
+      if (!outcomes) return;
+      stop();
+      resolve(outcomes);
+    });
+  });
 }
 
 // The job ID of each Job that the Extension builds. The Extension has no Host, so the ID

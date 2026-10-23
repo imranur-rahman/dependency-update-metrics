@@ -6,6 +6,8 @@ import { join } from "node:path";
 
 import * as vscode from "vscode";
 
+import type { ComparisonReport } from "../../src/core/comparison.ts";
+
 const TIMEOUT_MS = 30_000;
 
 async function hintLabels(document: vscode.TextDocument): Promise<Map<number, string>> {
@@ -76,5 +78,36 @@ export async function run(): Promise<void> {
   const nopeHover = await hoverText(document, new vscode.Position(9, 6));
   assert.match(nopeHover, /Package not found in deps\.dev/);
   assert.match(nopeHover, /Section: `devDependencies`/);
+  assert.match(expressHover, /\[Compare with alternatives\]\(command:mttx\.compare\?/);
+
+  await checkComparison();
   console.log("MTTX integration test passed");
+}
+
+// The arguments of the hover link fill the input box; the test accepts it. The command
+// returns what the webview drew, so the test sees that comparison.js and Chart.js ran
+// under the content security policy.
+async function checkComparison(): Promise<void> {
+  let settled = false;
+  const reportPromise = Promise.resolve(
+    vscode.commands.executeCommand<ComparisonReport | undefined>("mttx.compare", {
+      ecosystem: "npm",
+      packages: ["express", "left-pad"],
+    }),
+  ).finally(() => (settled = true));
+  await waitFor(async () => {
+    if (!settled) await vscode.commands.executeCommand("workbench.action.acceptSelectedQuickOpenItem");
+    return settled;
+  });
+  const report = await reportPromise;
+  assert.ok(report, "the command returns the report of the webview");
+  assert.deepEqual(report.violations, []);
+  assert.deepEqual(report.charts, ["bar"]);
+  assert.deepEqual(report.rows, [
+    ["Package", "MTTU (days)", "MTTR (days)", "Dependencies", "Error"],
+    ["express", "579.0", "579.0", "1", ""],
+    ["left-pad", "–", "–", "0", "could not compute since 'left-pad' has no dependencies"],
+  ]);
+  const tabs = vscode.window.tabGroups.all.flatMap((group) => group.tabs);
+  assert.ok(tabs.some((tab) => tab.input instanceof vscode.TabInputWebview && tab.label === "MTTX Comparison"));
 }

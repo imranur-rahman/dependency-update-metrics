@@ -9,12 +9,15 @@ import { join } from "node:path";
 import {
   compareLink,
   comparisonJob,
+  comparisonOutcomes,
   comparisonRows,
   PACKAGE_COLORS,
   parsePackageNames,
   SERIES_COLORS,
 } from "../../src/core/comparison.ts";
 import type { ToolResult } from "../../src/core/display.ts";
+import { ResultStore } from "../../src/core/resultStore.ts";
+import type { ToolRunner } from "../../src/core/tool.ts";
 import { barChartData } from "../../../webapp/site/static/js/comparison.js";
 
 test("the input takes 1 to 5 names, split by commas or spaces", () => {
@@ -100,6 +103,27 @@ test("the hover link starts a Comparison with the package of the dependency", ()
   assert.ok(match, link);
   assert.ok(!/[\s()]/.test(match[1]), "the link target has no space and no parenthesis");
   assert.deepEqual(JSON.parse(decodeURIComponent(match[1])), [{ ecosystem: "npm", packages: ["@types/node"] }]);
+});
+
+test("the Comparison gets the outcome of each package through the result store", async () => {
+  const [ok] = exampleJob("job_done_window_summary.json").results as ToolResult[];
+  const runner: ToolRunner = {
+    run: async (request) =>
+      request.packageName === "nope"
+        ? { kind: "failed", message: "no result" }
+        : { kind: "result", result: { ...ok, package: request.packageName } },
+  };
+  const store = new ResultStore(runner, (key) => ({
+    ecosystem: key.ecosystem,
+    packageName: key.name,
+    startDate: "2024-10-22",
+    outputDir: "out",
+  }));
+  const outcomes = await comparisonOutcomes(store, "npm", ["express", "nope", "koa"]);
+  assert.deepEqual(
+    outcomes.map((outcome) => (outcome.kind === "result" ? outcome.result.package : outcome.message)),
+    ["express", "no result", "koa"],
+  );
 });
 
 test("a Tool run without a result becomes a package error in the Job", () => {
