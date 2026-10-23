@@ -200,7 +200,17 @@ export function activate(context: vscode.ExtensionContext): void {
   };
   pruneCache();
 
+  // A manifest that another program writes or creates (for example `npm install` or a Git
+  // checkout) gets its hints again. The watcher skips node_modules/ and .venv/.
+  const manifestWatcher = vscode.workspace.createFileSystemWatcher(MANIFEST_PATTERN);
+  const onManifest = (uri: vscode.Uri) => {
+    if (isAnalyzedManifest(uri.fsPath)) provider.redraw();
+  };
+  manifestWatcher.onDidChange(onManifest);
+  manifestWatcher.onDidCreate(onManifest);
+
   context.subscriptions.push(
+    manifestWatcher,
     vscode.commands.registerCommand(REBUILD_COMMAND, () => osvIndex.rebuild()),
     provider,
     vscode.languages.registerInlayHintsProvider(MANIFESTS, provider),

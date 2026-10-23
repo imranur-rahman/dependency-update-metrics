@@ -2,6 +2,7 @@
 // starts it), opens the fixture package.json, and reads the inlay hints that the Extension
 // gives with the fake Tool.
 import assert from "node:assert/strict";
+import { mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 import * as vscode from "vscode";
@@ -101,6 +102,7 @@ export async function run(): Promise<void> {
     [5, "MTTU 579 d · MTTR 579 d"],
     [7, "error: Package not found in deps.dev"],
   ]);
+  await checkEditedManifest(folder);
   console.log("MTTX integration test passed");
 }
 
@@ -130,6 +132,27 @@ async function checkComparison(): Promise<void> {
   ]);
   const tabs = vscode.window.tabGroups.all.flatMap((group) => group.tabs);
   assert.ok(tabs.some((tab) => tab.input instanceof vscode.TabInputWebview && tab.label === "MTTX Comparison"));
+}
+
+// A manifest that a tool other than the editor writes (for example `npm install` or a Git
+// checkout) gets the hints of its new dependencies.
+async function checkEditedManifest(folder: string): Promise<void> {
+  const dir = join(folder, "edited");
+  const path = join(dir, "package.json");
+  const manifest = (deps: Record<string, string>) => `${JSON.stringify({ dependencies: deps }, null, 2)}\n`;
+  mkdirSync(dir, { recursive: true });
+  try {
+    writeFileSync(path, manifest({ express: "^4.18.0" }));
+    await expectHints(path, [[2, "MTTU 579 d · MTTR 579 d"]]);
+    writeFileSync(path, manifest({ express: "^4.18.0", "left-pad": "1.3.0" }));
+    await expectHints(path, [
+      [2, "MTTU 579 d · MTTR 579 d"],
+      [3, "could not compute since 'left-pad' has no dependencies"],
+    ]);
+  } finally {
+    await vscode.commands.executeCommand("workbench.action.closeActiveEditor");
+    rmSync(dir, { recursive: true, force: true });
+  }
 }
 
 // Open a manifest and wait for the final hint labels on its lines. The labels of the hints on

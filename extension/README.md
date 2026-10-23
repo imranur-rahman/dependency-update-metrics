@@ -27,7 +27,7 @@ In Remote SSH, WSL, and Codespaces, the Extension runs on the machine that holds
 - **No dependencies:** a package that has no dependencies of its own gets the text `could not compute since '<package>' has no dependencies`. It does not get a value of 0 days.
 - **Errors:** a short error shows in the hint, and the full error shows in the hover.
 
-By default, the values cover the last 2 years. The Extension reuses a value for one day. It analyzes a manifest only when you open it, and it skips `node_modules/` and `.venv/`.
+By default, the values cover the last 2 years. The Extension reuses a value for one day. It analyzes a manifest only when you open it, and it skips `node_modules/` and `.venv/`. When another program changes or creates a manifest (for example `npm install` or a Git checkout), the hints update.
 
 ## Commands
 
