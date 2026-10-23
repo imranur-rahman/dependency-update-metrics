@@ -608,8 +608,20 @@ export function resultsNote(weightingType) {
 
 // The path of the Sample Comparison file, relative to the homepage. The file is a done Job
 // of the Host (the shape of contract/examples/job_done_window_summary.json) plus
-// "computed_on". The script in webapp/sample/ makes it again with the Tool.
+// "computed_on" and "osv_index_date". The script in webapp/sample/ makes it again with the
+// Tool.
 export const SAMPLE_COMPARISON_PATH = "static/sample/sample_comparison.json";
+
+// Return the page URL for the Sample Comparison: the URL `href` with the sample Comparison
+// in place of any Comparison and without a job ID, so that a reload fills the form with the
+// sample and does not show an older Job.
+export function sampleUrl(href, comparison) {
+  const url = new URL(href);
+  url.searchParams.delete(JOB_PARAM);
+  url.search = withComparison(url.search, comparison);
+  url.hash = "#try-it";
+  return url.toString();
+}
 
 // Return the label that tells the reader when the Tool computed the Sample Comparison.
 export function sampleLabel(sample) {

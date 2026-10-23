@@ -33,11 +33,13 @@ import {
   JOB_EVENTS,
   SAMPLE_COMPARISON_PATH,
   sampleLabel,
+  sampleUrl,
 } from "./comparison.js";
 import { explanationBlocks } from "./explanation.js";
 import {
   refusalNotice,
   connectionErrorNotice,
+  sampleErrorNotice,
   jobErrorNotice,
   doneJobNotice,
   errorCell,
@@ -622,6 +624,7 @@ async function showSample() {
     if (!response.ok) throw new Error(`GET ${SAMPLE_COMPARISON_PATH} returned ${response.status}`);
     const sample = await response.json();
     fillForm(sample.comparison);
+    history.replaceState(null, "", sampleUrl(location.href, sample.comparison));
     currentJobId = null;
     cancelButton.hidden = true;
     clearNotification(jobNotice);
@@ -631,7 +634,7 @@ async function showSample() {
     scrollToElement(resultsCard);
   } catch (error) {
     console.error(error);
-    showError(connectionErrorNotice());
+    showError(sampleErrorNotice());
   } finally {
     sampleButton.disabled = false;
   }

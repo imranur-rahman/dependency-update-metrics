@@ -10,6 +10,7 @@ import { fileURLToPath } from "node:url";
 import {
   refusalNotice,
   connectionErrorNotice,
+  sampleErrorNotice,
   jobErrorNotice,
   packageErrorNotice,
   doneJobNotice,
@@ -67,6 +68,13 @@ test("a lost connection to the Host asks the user to check the connection", () =
     title: "No connection to the server",
     message: "The page cannot reach the server.",
     nextStep: "Check your internet connection, then try again in a minute.",
+  });
+});
+
+test("a Sample Comparison that cannot load asks the user to reload, not to check the server", () => {
+  assert.deepEqual(sampleErrorNotice(), {
+    title: "The sample could not load",
+    message: "The sample could not load. Reload the page.",
   });
 });
 

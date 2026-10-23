@@ -127,4 +127,8 @@ test("the Sample Comparison loads from the published folder, not from the Host",
   assert.ok(loader, "showSample() is missing in webapp.js");
   assert.match(loader[1], /fetch\(SAMPLE_COMPARISON_PATH\)/);
   assert.doesNotMatch(loader[1], /hostUrl|EventSource/);
+  // A failure shows the notice of the sample, not the notice of a lost Host connection.
+  assert.match(loader[1], /sampleErrorNotice\(\)/);
+  assert.doesNotMatch(loader[1], /connectionErrorNotice/);
+  assert.match(loader[1], /sampleUrl\(/);
 });

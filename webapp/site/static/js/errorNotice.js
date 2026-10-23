@@ -89,6 +89,12 @@ export function connectionErrorNotice() {
   };
 }
 
+// Return the notice for a Sample Comparison file that could not load. The sample makes no
+// request to the Host, so the notice does not name the server.
+export function sampleErrorNotice() {
+  return { title: "The sample could not load", message: "The sample could not load. Reload the page." };
+}
+
 // Return the notice for a failed Job (state "error"). job.message is a Host user message.
 export function jobErrorNotice(job) {
   const notice = noticeForMessage(job.message || "");
