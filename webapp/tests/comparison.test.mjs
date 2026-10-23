@@ -28,6 +28,8 @@ import {
   formFromComparison,
   barChartData,
   barChartAxisLabel,
+  barChartOptions,
+  CHART_HEIGHTS,
   rowsToCsv,
   csvFileName,
   WEIGHTING_TYPES,
@@ -293,6 +295,32 @@ test("the bar chart axis label follows the weighting type of the Job", () => {
 
   job.comparison.weighting_type = "linear";
   assert.equal(barChartAxisLabel(job), "Days (weighted mean)");
+});
+
+test("the bar chart is compact: shorter than 320 px, a small legend, and few y-axis ticks", () => {
+  const options = barChartOptions(threePackageJob());
+
+  assert.ok(CHART_HEIGHTS.bar <= 220, `the bar chart is ${CHART_HEIGHTS.bar} px high`);
+  assert.equal(options.maintainAspectRatio, false);
+  assert.equal(options.plugins.legend.labels.boxWidth, 12);
+  assert.ok(options.plugins.legend.labels.font.size >= 11, "the legend text stays readable");
+  assert.equal(options.scales.y.ticks.maxTicksLimit, 4);
+  assert.equal(options.scales.y.beginAtZero, true);
+});
+
+test("the bar chart options carry the axis label of the weighting type", () => {
+  const job = threePackageJob();
+  assert.deepEqual(barChartOptions(job).scales.y.title, { display: true, text: "Days (sum over intervals)" });
+
+  job.comparison.weighting_type = "linear";
+  assert.equal(barChartOptions(job).scales.y.title.text, "Days (weighted mean)");
+});
+
+test("the bar chart tooltip shows the days with one decimal, and no value for a missing bar", () => {
+  const { label } = barChartOptions(threePackageJob()).plugins.tooltip.callbacks;
+
+  assert.equal(label({ dataset: { label: "MTTU" }, raw: 300.5 }), "MTTU: 300.5 days");
+  assert.equal(label({ dataset: { label: "MTTR" }, raw: null }), "MTTR: no value");
 });
 
 test("the table shows the values and the error of each package", () => {
