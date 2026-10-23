@@ -7,7 +7,7 @@ import { join } from "node:path";
 
 import type { ToolResult } from "../../src/core/display.ts";
 import { ResultStore } from "../../src/core/resultStore.ts";
-import type { ToolOutcome, ToolRunner } from "../../src/core/tool.ts";
+import type { ToolOutcome, ToolRequest, ToolRunner } from "../../src/core/tool.ts";
 
 const EXAMPLES = join(import.meta.dirname, "..", "..", "..", "contract", "examples");
 const [okResult]: ToolResult[] = JSON.parse(
@@ -16,7 +16,17 @@ const [okResult]: ToolResult[] = JSON.parse(
 
 function storeWith(outcome: ToolOutcome, now: Date): ResultStore {
   const runner: ToolRunner = { run: async () => outcome };
-  const request = { ecosystem: "npm" as const, packageName: "mypkg", startDate: "", outputDir: "" };
+  const request: ToolRequest = {
+    ecosystem: "npm",
+    packageName: "mypkg",
+    dataSource: "depsdev",
+    startDate: "",
+    endDate: "",
+    weightingType: "disable",
+    halfLife: null,
+    outputDir: "",
+    timeoutSeconds: 600,
+  };
   return new ResultStore(runner, () => request, () => now);
 }
 

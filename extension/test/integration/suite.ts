@@ -81,6 +81,15 @@ export async function run(): Promise<void> {
   assert.match(expressHover, /\[Compare with alternatives\]\(command:mttx\.compare\?/);
 
   await checkComparison();
+
+  // A settings change refreshes the hints. Exponential weighting without a half-life fails
+  // the settings check, so each hint shows the message of the check.
+  const config = vscode.workspace.getConfiguration("mttx");
+  await config.update("weightingType", "exponential", vscode.ConfigurationTarget.Global);
+  await waitFor(async () => (await hintLabels(document)).get(5)?.startsWith("error: Exponential weighting") ?? false);
+  await config.update("weightingType", undefined, vscode.ConfigurationTarget.Global);
+
+  await vscode.commands.executeCommand("mttx.openSettings");
   console.log("MTTX integration test passed");
 }
 
