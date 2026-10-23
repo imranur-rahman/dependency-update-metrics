@@ -49,7 +49,7 @@ docker run --rm ghcr.io/imranur-rahman/mttx:0.2.0-osv-2026-10-23 --osv-index-dat
 
 ## CI
 
-- On each push and PR that changes the Tool or `image/`, the `image` job builds both targets for amd64 (no push), builds a real OSV index with the image (`image/build-osv-index.sh`), and runs `image/check-image.sh`.
+- On each push and PR that changes the Tool or `image/`, the `image` job builds both targets for amd64 (no push), and runs `image/check-image.sh`. It builds a real OSV index with the image (`image/build-osv-index.sh`) once a week: `actions/cache` keeps the index under the ISO week, and the script keeps an index that it finds. When `image/` changes, the job also builds the plain target for arm64 (no load, no run), so that an arm64 break shows before a release.
 - `image/check-image.sh` checks that `--help` starts with no network, that a native PyPI run writes to `/data` and leaves no `~/.dependency_metrics/vendor`, and that the `-osv-` image prints the date of its tag with a mount on `/data`.
 - On a release (not `extension-v*` or `action-v*`), the `image-release` job runs after the PyPI publish. It pushes both tags, then runs the same checks on the pushed digests.
 

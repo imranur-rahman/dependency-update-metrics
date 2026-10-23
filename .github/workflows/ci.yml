@@ -175,7 +175,8 @@ jobs:
       uses: pypa/gh-action-pypi-publish@release/v1
 
   # Build both images on each push and PR (no push to GHCR), so that a broken image
-  # fails before a release.
+  # fails before a release. The OSV index comes from the cache of the ISO week, so the job
+  # downloads the OSV data about once a week; the release job always builds a new index.
   image:
     runs-on: ubuntu-latest
     if: github.event_name != 'release'
@@ -184,6 +185,29 @@ jobs:
     - uses: actions/checkout@v4
       with:
         submodules: true
+        # The full history, to find whether image/ changed.
+        fetch-depth: 0
+
+    - name: Find the week and whether image/ changed
+      id: meta
+      env:
+        BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+      run: |
+        echo "week=$(date -u +%G-W%V)" >> "$GITHUB_OUTPUT"
+        # A manual run, a new branch, or an unknown base builds arm64 too.
+        if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ] || [ -z "$BASE" ] \
+          || ! git cat-file -e "$BASE^{commit}" 2>/dev/null \
+          || ! git diff --quiet "$BASE" HEAD -- image/; then
+          echo "image_changed=true" >> "$GITHUB_OUTPUT"
+        else
+          echo "image_changed=false" >> "$GITHUB_OUTPUT"
+        fi
+
+    - name: Restore the OSV index of the week
+      uses: actions/cache@v4
+      with:
+        path: osv-index/osv_database.parquet
+        key: mttx-image-osv-${{ steps.meta.outputs.week }}
 
     - uses: docker/setup-buildx-action@v3
 
@@ -216,6 +240,22 @@ jobs:
 
     - name: Check the images
       run: bash image/check-image.sh mttx:ci mttx:ci-osv "${{ steps.osv.outputs.date }}"
+
+    # A change in image/ also builds the arm64 image (no load, no run), so that an arm64
+    # break shows before a release.
+    - uses: docker/setup-qemu-action@v3
+      if: steps.meta.outputs.image_changed == 'true'
+
+    - name: Build the image without the OSV index for arm64
+      if: steps.meta.outputs.image_changed == 'true'
+      uses: docker/build-push-action@v6
+      with:
+        context: .
+        file: image/Dockerfile
+        target: tool
+        platforms: linux/arm64
+        cache-from: type=gha,scope=arm64
+        cache-to: type=gha,mode=max,scope=arm64
 
   # After the PyPI publish of a release, push two tags for amd64 and arm64:
   # <version> and latest (no OSV index), and <version>-osv-<YYYY-MM-DD> (index inside).
