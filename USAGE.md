@@ -89,6 +89,13 @@ dependency-metrics \
 dependency-metrics --build-osv --output-dir output
 ```
 
+`--osv-index-date` prints the build date of the database in `--output-dir` as one JSON line, and then exits. It prints `null` when there is no database:
+
+```bash
+dependency-metrics --osv-index-date --output-dir output
+# {"osv_index_date": "2026-10-21"}
+```
+
 ### Inspect and limit the resolver cache
 
 The resolver cache (`<output-dir>/cache/cache.db`) records the day on which each row was last used. These flags act on the cache and then exit:

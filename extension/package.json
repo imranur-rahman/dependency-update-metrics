@@ -38,6 +38,11 @@
         "command": "mttx.openSettings",
         "title": "Open Settings",
         "category": "MTTX"
+      },
+      {
+        "command": "mttx.rebuildOsvIndex",
+        "title": "Rebuild OSV index",
+        "category": "MTTX"
       }
     ],
     "configuration": {

@@ -54,20 +54,18 @@ export async function run(): Promise<void> {
   const first = await hintLabels(document);
   assert.equal(first.get(5), "computing…");
 
+  // The fresh user data dir has no OSV index, so MTTR waits for the index (#30).
   const expected = new Map([
-    [5, "MTTU 579 d · MTTR 579 d"],
+    [5, "MTTU 579 d · MTTR needs the OSV index"],
     [6, "could not compute since 'left-pad' has no dependencies"],
     [9, "error: Package not found in deps.dev"],
   ]);
-  let last = first;
-  try {
-    await waitFor(async () => {
-      last = await hintLabels(document);
-      return [...expected].every(([line, label]) => last.get(line) === label);
-    });
-  } catch {
-    assert.deepEqual(Object.fromEntries(last), Object.fromEntries(expected));
-  }
+  await waitForLabels(document, expected);
+
+  // The rebuild command builds the index of the fake Tool, and the hints get the MTTR.
+  await vscode.commands.executeCommand("mttx.rebuildOsvIndex");
+  expected.set(5, "MTTU 579 d · MTTR 579 d");
+  await waitForLabels(document, expected);
 
   // The hover shows the details behind a hint, and the full error of a failed package.
   const expressHover = await hoverText(document, new vscode.Position(5, 6));
@@ -108,6 +106,18 @@ async function expectHints(path: string, lines: Array<[number, string]>): Promis
     await waitFor(async () => {
       last = await joinedHintLabels(document);
       return last.size === expected.size && [...expected].every(([line, label]) => last.get(line) === label);
+    });
+  } catch {
+    assert.deepEqual(Object.fromEntries(last), Object.fromEntries(expected));
+  }
+}
+
+async function waitForLabels(document: vscode.TextDocument, expected: Map<number, string>): Promise<void> {
+  let last = new Map<number, string>();
+  try {
+    await waitFor(async () => {
+      last = await hintLabels(document);
+      return [...expected].every(([line, label]) => last.get(line) === label);
     });
   } catch {
     assert.deepEqual(Object.fromEntries(last), Object.fromEntries(expected));

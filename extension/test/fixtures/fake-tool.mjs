@@ -6,7 +6,7 @@
 //   any other   -> the ok result of the contract (MTTU 579 d, MTTR 579 d)
 // It waits MTTX_FAKE_TOOL_DELAY_MS milliseconds (default 0) before it prints, so that a test
 // can see "computing…". It writes its arguments to MTTX_FAKE_TOOL_LOG when that is set.
-import { appendFileSync, readFileSync } from "node:fs";
+import { appendFileSync, existsSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -17,6 +17,25 @@ const packageName = option("--package");
 
 if (process.env.MTTX_FAKE_TOOL_LOG) {
   appendFileSync(process.env.MTTX_FAKE_TOOL_LOG, `${JSON.stringify(args)}\n`);
+}
+
+// The OSV index of the fake Tool is a file with its build date in --output-dir.
+// --osv-index-date prints that date; --build-osv writes it (MTTX_FAKE_OSV_BUILD_FAIL: fails).
+const indexFile = join(option("--output-dir") ?? ".", "fake-osv-index-date");
+if (args.includes("--osv-index-date")) {
+  const date = existsSync(indexFile) ? readFileSync(indexFile, "utf8").trim() : null;
+  process.stdout.write(`${JSON.stringify({ osv_index_date: date })}\n`);
+  process.exit(0);
+}
+if (args.includes("--build-osv")) {
+  process.stderr.write("WARNING: Downloading OSV data from https://example.test/npm/all.zip\n");
+  if (process.env.MTTX_FAKE_OSV_BUILD_FAIL) {
+    process.stderr.write("ERROR: Failed to download https://example.test/npm/all.zip\n");
+    process.exit(1);
+  }
+  process.stderr.write(" 50%|█████     | 1.0M/2.0M\r100%|██████████| 2.0M/2.0M\n");
+  writeFileSync(indexFile, "2026-10-21\n");
+  process.exit(0);
 }
 
 function example(name, index) {

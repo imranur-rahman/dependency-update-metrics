@@ -5,12 +5,13 @@ import { join } from "node:path";
 
 import * as vscode from "vscode";
 
-import { hintText, hoverMarkdown } from "./core/display.ts";
+import { hintText, hoverMarkdown, type HintContext } from "./core/display.ts";
 import { dependencyAt, hintLabel } from "./core/hintLabel.ts";
 import { parseManifest } from "./core/manifest.ts";
 import { ResultStore } from "./core/resultStore.ts";
-import { cachePruneArgs, toolRequest } from "./core/settings.ts";
+import { cachePruneArgs, toolOutputDir, toolRequest } from "./core/settings.ts";
 import type { ToolRequest, ToolRunner } from "./core/tool.ts";
+import { OsvIndex, REBUILD_COMMAND } from "./osvIndex.ts";
 import { ProcessToolRunner, pruneToolCache, toolCommand } from "./processToolRunner.ts";
 import { readSettings } from "./settings.ts";
 
@@ -27,10 +28,17 @@ class HintProvider implements vscode.InlayHintsProvider, vscode.HoverProvider, v
   readonly onDidChangeInlayHints = this.changed.event;
   private store: ResultStore;
   private readonly makeStore: () => ResultStore;
+  private readonly hintContext: () => HintContext;
 
-  constructor(makeStore: () => ResultStore) {
+  constructor(makeStore: () => ResultStore, hintContext: () => HintContext) {
     this.makeStore = makeStore;
+    this.hintContext = hintContext;
     this.store = this.newStore();
+  }
+
+  // Show the hints again with the same states, for example after the OSV index state changes.
+  redraw(): void {
+    this.changed.fire();
   }
 
   // Forget all states and run the Tool again, for example after a settings change.
@@ -47,7 +55,7 @@ class HintProvider implements vscode.InlayHintsProvider, vscode.HoverProvider, v
     for (const dep of deps) {
       const end = document.lineAt(dep.line).range.end;
       if (!range.contains(end)) continue;
-      const text = hintText(this.store.get(dep), dep.name);
+      const text = hintText(this.store.get(dep), dep.name, this.hintContext());
       const hint = new vscode.InlayHint(end, hintLabel(dep, deps, text));
       hint.paddingLeft = true;
       hints.push(hint);
@@ -61,7 +69,7 @@ class HintProvider implements vscode.InlayHintsProvider, vscode.HoverProvider, v
     const deps = parseManifest(document.fileName, document.getText());
     const dep = dependencyAt(deps, position.line, position.character);
     if (!dep) return undefined;
-    const markdown = new vscode.MarkdownString(hoverMarkdown(this.store.get(dep), dep));
+    const markdown = new vscode.MarkdownString(hoverMarkdown(this.store.get(dep), dep, this.hintContext()));
     return new vscode.Hover(markdown, document.lineAt(dep.line).range);
   }
 
@@ -94,7 +102,18 @@ export function activate(context: vscode.ExtensionContext): void {
       toolRequest(key, parsed.settings, new Date(), outputDir),
     );
   };
-  const provider = new HintProvider(makeStore);
+  // The OSV index (#30) is in the Tool output dir. Without it, MTTR "needs the OSV index".
+  const osvIndex = new OsvIndex(
+    context,
+    () => {
+      const parsed = readSettings();
+      return parsed.ok ? toolOutputDir(parsed.settings, outputDir) : outputDir;
+    },
+    command,
+    (rebuilt) => (rebuilt ? provider.reset() : provider.redraw()),
+  );
+  const provider = new HintProvider(makeStore, () => ({ osvIndex: osvIndex.available }));
+  void osvIndex.start();
 
   // The Tool prunes its cache only in a run of its own, so the Extension prunes it at the
   // start and after a change to the cache settings.
@@ -105,6 +124,7 @@ export function activate(context: vscode.ExtensionContext): void {
   pruneCache();
 
   context.subscriptions.push(
+    vscode.commands.registerCommand(REBUILD_COMMAND, () => osvIndex.rebuild()),
     provider,
     vscode.languages.registerInlayHintsProvider(MANIFESTS, provider),
     vscode.languages.registerHoverProvider(MANIFESTS, provider),
@@ -112,6 +132,9 @@ export function activate(context: vscode.ExtensionContext): void {
       if (event.affectsConfiguration("mttx")) provider.reset();
       if (event.affectsConfiguration("mttx.cacheFolder") || event.affectsConfiguration("mttx.cacheSizeLimitGb")) {
         pruneCache();
+      }
+      if (event.affectsConfiguration("mttx.cacheFolder") || event.affectsConfiguration("mttx.toolPath")) {
+        void osvIndex.start();
       }
     }),
     vscode.commands.registerCommand("mttx.openSettings", () =>

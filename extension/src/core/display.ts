@@ -51,6 +51,7 @@ const DATA_SOURCE_NAMES: Record<string, string> = {
 };
 
 const MAX_ERROR_LENGTH = 50;
+const NEEDS_OSV_INDEX = "needs the OSV index";
 
 // Return true when a summary or a release has no dependencies: the Tool gives the status
 // "no_deps", or "ok" with 0 dependencies. The Webapp uses the same rule
@@ -59,19 +60,34 @@ export function hasNoDependencies(entry: Pick<MetricsEntry, "status" | "num_depe
   return entry.status === "no_deps" || (entry.status === "ok" && entry.num_dependencies === 0);
 }
 
+// What the hint knows besides the Tool result. `osvIndex: false` means that the OSV index
+// does not exist: the Tool then gives an MTTR of 0 that is not true (#30).
+export interface HintContext {
+  osvIndex: boolean;
+}
+
 // Return the inlay hint text for one dependency.
-export function hintText(state: DependencyState, packageName: string): string {
+export function hintText(
+  state: DependencyState,
+  packageName: string,
+  context: HintContext = { osvIndex: true },
+): string {
   if (state.kind === "computing") return "computing…";
   if (state.kind === "failed") return errorText(state.message);
   const value = resultValue(state.result);
   if (value.kind === "error") return errorText(value.message);
   if (value.kind === "no_deps") return noDependenciesText(packageName);
-  return `MTTU ${Math.round(value.mttu)} d · MTTR ${Math.round(value.mttr)} d`;
+  const mttr = context.osvIndex ? `${Math.round(value.mttr)} d` : NEEDS_OSV_INDEX;
+  return `MTTU ${Math.round(value.mttu)} d · MTTR ${mttr}`;
 }
 
 // Return the Markdown text of the hover for one dependency: the details behind the hint,
 // or the full error. The text has no command links; the `vscode` layer adds them.
-export function hoverMarkdown(state: DependencyState, target: HoverTarget): string {
+export function hoverMarkdown(
+  state: DependencyState,
+  target: HoverTarget,
+  context: HintContext = { osvIndex: true },
+): string {
   const name = inlineCode(target.name);
   const lines: string[] = [`**MTTX** · ${name}`, ""];
   if (state.kind === "computing") {
@@ -86,7 +102,8 @@ export function hoverMarkdown(state: DependencyState, target: HoverTarget): stri
     } else if (value.kind === "no_deps") {
       lines.push(escapeMarkdown(noDependenciesText(target.name)), "");
     } else {
-      lines.push(`MTTU ${days(value.mttu)} · MTTR ${days(value.mttr)}`, "");
+      const mttr = context.osvIndex ? days(value.mttr) : NEEDS_OSV_INDEX;
+      lines.push(`MTTU ${days(value.mttu)} · MTTR ${mttr}`, "");
     }
     lines.push(`- Window: ${result.start_date} to ${result.end_date}`);
     if (value.kind !== "error") {
