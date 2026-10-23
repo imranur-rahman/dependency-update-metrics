@@ -11,6 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Container image `ghcr.io/imranur-rahman/mttx` with pinned dependencies and the patched pip; the `<version>-osv-<YYYY-MM-DD>` tag holds the OSV index of that date.
 - `DEPENDENCY_METRICS_OUTPUT_DIR` sets the default of `--output-dir`, and `DEPENDENCY_METRICS_OSV_INDEX` names the OSV index file.
 
+## [0.2.1] - 2026-10-24
+
+### Added
+- A container image of the Tool on GitHub Container Registry, `ghcr.io/imranur-rahman/mttx`, for amd64 and arm64. Each release pushes two tags: `<version>` without an OSV index, and `<version>-osv-<YYYY-MM-DD>` with the OSV index of that date inside. The image holds the patched pip at the commit of the release and pins every Python dependency. See `image/README.md`.
+- `DEPENDENCY_METRICS_OUTPUT_DIR` sets the default of `--output-dir`, and `DEPENDENCY_METRICS_OSV_INDEX` names the OSV index file.
+
+### Changed
+- The release job checks the tag against `pyproject.toml` before the PyPI publish.
+
 ## [0.2.0] - 2026-10-23
 
 ### Added
