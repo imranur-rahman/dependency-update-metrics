@@ -1,0 +1,34 @@
+# A comment with "dependencies = ['not-a-dependency']"
+[project]
+name = "odd"
+description = """
+dependencies = ["inside-a-string"]
+"""
+dependencies = [ # a comment in the list
+  "  spaced.name  [extra1, extra2] (>=1.0) ; sys_platform == 'win32'",
+  "direct @ https://example.com/direct.tar.gz",
+  "zope.interface",
+  """multi""",
+  "trailing-comma",
+]
+"optional-dependencies".all = ["dotted-key>=1"]
+
+[[tool.mypy.overrides]]
+module = "x.*"
+
+[tool.poetry.dependencies]
+Python = ">=3.10"
+"quoted.name" = "1"
+local = { path = "../local" }
+repo = { git = "https://example.com/repo.git" }
+several = [
+  { version = "1", python = "<3.11" },
+  { version = "2", python = ">=3.11" },
+]
+
+[tool.poetry.dependencies.table-form]
+version = "^1"
+
+[dependency-groups]
+lint = [{ include-group = "x" }, "ruff",
+  "mypy"]

@@ -1,4 +1,4 @@
-// The thin `vscode` layer: it registers the inlay hint provider for package.json and
+// The thin `vscode` layer: it registers the inlay hint provider for the manifests and
 // connects it to the core module and the Tool runner.
 import { mkdirSync } from "node:fs";
 import { join } from "node:path";
@@ -6,14 +6,19 @@ import { join } from "node:path";
 import * as vscode from "vscode";
 
 import { hintText } from "./core/display.ts";
+import { hintLabel } from "./core/hintLabel.ts";
 import { parseManifest } from "./core/manifest.ts";
 import { ResultStore } from "./core/resultStore.ts";
 import { windowStartDate } from "./core/tool.ts";
 import { ProcessToolRunner, toolCommand } from "./processToolRunner.ts";
 
 // `scheme: "file"` skips untitled documents and Git diffs. A filter with only a pattern
-// matches any language. #28 adds pyproject.toml and Cargo.toml.
-const MANIFESTS: vscode.DocumentSelector = [{ scheme: "file", pattern: "**/package.json" }];
+// matches any language, which the TOML files need, because VS Code has no TOML language.
+const MANIFESTS: vscode.DocumentSelector = [
+  { scheme: "file", pattern: "**/package.json" },
+  { scheme: "file", pattern: "**/pyproject.toml" },
+  { scheme: "file", pattern: "**/Cargo.toml" },
+];
 
 class HintProvider implements vscode.InlayHintsProvider, vscode.Disposable {
   private readonly changed = new vscode.EventEmitter<void>();
@@ -36,10 +41,12 @@ class HintProvider implements vscode.InlayHintsProvider, vscode.Disposable {
   provideInlayHints(document: vscode.TextDocument, range: vscode.Range): vscode.InlayHint[] {
     if (/[\\/]node_modules[\\/]/.test(document.uri.fsPath)) return [];
     const hints: vscode.InlayHint[] = [];
-    for (const dep of parseManifest(document.fileName, document.getText())) {
+    const deps = parseManifest(document.fileName, document.getText());
+    for (const dep of deps) {
       const end = document.lineAt(dep.line).range.end;
       if (!range.contains(end)) continue;
-      const hint = new vscode.InlayHint(end, hintText(this.store.get(dep), dep.name));
+      const text = hintText(this.store.get(dep), dep.name);
+      const hint = new vscode.InlayHint(end, hintLabel(dep, deps, text));
       hint.paddingLeft = true;
       hints.push(hint);
     }

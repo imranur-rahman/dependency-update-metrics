@@ -1,7 +1,7 @@
 {
   "name": "mttx",
   "displayName": "MTTX",
-  "description": "MTTU and MTTR of each dependency in package.json",
+  "description": "MTTU and MTTR of each dependency in package.json, pyproject.toml, and Cargo.toml",
   "version": "0.0.1",
   "publisher": "imranur-rahman",
   "license": "MIT",
@@ -23,6 +23,8 @@
   "main": "./dist/extension.js",
   "activationEvents": [
     "workspaceContains:**/package.json",
+    "workspaceContains:**/pyproject.toml",
+    "workspaceContains:**/Cargo.toml",
     "onLanguage:json"
   ],
   "contributes": {

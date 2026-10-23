@@ -1,0 +1,9 @@
+[project]
+name = "mttx-fixture-workspace"
+version = "1.0.0"
+dependencies = [
+  "requests>=2",
+]
+
+[project.optional-dependencies]
+test = ["pytest", "left-pad"]

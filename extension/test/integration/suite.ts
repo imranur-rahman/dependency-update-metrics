@@ -56,5 +56,46 @@ export async function run(): Promise<void> {
   } catch {
     assert.deepEqual(Object.fromEntries(last), Object.fromEntries(expected));
   }
+
+  await expectHints(join(folder, "pyproject.toml"), [
+    [4, "MTTU 579 d · MTTR 579 d"],
+    [8, "pytest: MTTU 579 d · MTTR 579 dleft-pad: could not compute since 'left-pad' has no dependencies"],
+  ]);
+  await expectHints(join(folder, "Cargo.toml"), [
+    [5, "MTTU 579 d · MTTR 579 d"],
+    [7, "error: Package not found in deps.dev"],
+  ]);
   console.log("MTTX integration test passed");
+}
+
+// Open a manifest and wait for the final hint labels on its lines. The labels of the hints on
+// one line join without a separator.
+async function expectHints(path: string, lines: Array<[number, string]>): Promise<void> {
+  const document = await vscode.workspace.openTextDocument(path);
+  await vscode.window.showTextDocument(document);
+  const expected = new Map(lines);
+  let last = new Map<number, string>();
+  try {
+    await waitFor(async () => {
+      last = await joinedHintLabels(document);
+      return last.size === expected.size && [...expected].every(([line, label]) => last.get(line) === label);
+    });
+  } catch {
+    assert.deepEqual(Object.fromEntries(last), Object.fromEntries(expected));
+  }
+}
+
+async function joinedHintLabels(document: vscode.TextDocument): Promise<Map<number, string>> {
+  const range = new vscode.Range(0, 0, document.lineCount, 0);
+  const hints = await vscode.commands.executeCommand<vscode.InlayHint[]>(
+    "vscode.executeInlayHintProvider",
+    document.uri,
+    range,
+  );
+  const labels = new Map<number, string>();
+  for (const hint of hints) {
+    const label = typeof hint.label === "string" ? hint.label : hint.label.map((p) => p.value).join("");
+    labels.set(hint.position.line, (labels.get(hint.position.line) ?? "") + label);
+  }
+  return labels;
 }
