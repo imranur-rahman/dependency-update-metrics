@@ -129,6 +129,8 @@ async function checkComparison(): Promise<void> {
   assert.equal(report.explanation.paragraphs.length, 1);
   assert.match(report.explanation.paragraphs[0], /^express: MTTU is 579\.0 days: /);
   assert.equal(report.explanation.limitations.length, 5);
+  // The OSV index is built at this point, so the Limitations name its build date.
+  assert.match(report.explanation.limitations[1], /as of \d{4}-\d{2}-\d{2}, the build date of the OSV index/);
   assert.deepEqual(report.rows, [
     ["Package", "MTTU (days)", "MTTR (days)", "Dependencies", "Error"],
     ["express", "579.0", "579.0", "1", ""],

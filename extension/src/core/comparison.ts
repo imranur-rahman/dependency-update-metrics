@@ -26,6 +26,9 @@ export interface ComparisonJob {
   state: "done";
   comparison: JobComparison;
   results: ToolResult[];
+  // The build date of the OSV index, when the Extension knows it. The Limitations of the
+  // Explanation name it (explanation.js).
+  osv_index_date?: string;
 }
 
 // What the command asks the Tool for: the packages, and the window, the weighting, and the
@@ -108,7 +111,12 @@ const JOB_ID = "mttx-extension";
 // package in the order of the request, so that comparison.js shows it as the Webapp does.
 // The window, the mode, and the weighting come from the first result, because the Tool
 // runs of one Comparison share them. A run without a result becomes a package error.
-export function comparisonJob(request: ComparisonRequest, outcomes: ToolOutcome[]): ComparisonJob {
+// osvIndexDate is the build date of the OSV index, when the Extension knows it.
+export function comparisonJob(
+  request: ComparisonRequest,
+  outcomes: ToolOutcome[],
+  osvIndexDate?: string,
+): ComparisonJob {
   const results = outcomes.map((outcome, index) =>
     outcome.kind === "result"
       ? outcome.result
@@ -128,6 +136,7 @@ export function comparisonJob(request: ComparisonRequest, outcomes: ToolOutcome[
       half_life: first.half_life,
     },
     results,
+    ...(osvIndexDate ? { osv_index_date: osvIndexDate } : {}),
   };
 }
 

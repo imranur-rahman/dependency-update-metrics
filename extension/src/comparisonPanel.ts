@@ -27,11 +27,13 @@ const TITLE = "MTTX: Compare packages";
 // (`ResultStore.analyze`), with its queue limit (`mttx.parallelRuns`), its one-day cache, and
 // the request of the settings, so that a Comparison reuses the hint values and gives the same
 // values. A settings change resets that store, and its runs end with a failed outcome, which
-// the table shows as a package error. Return what the webview drew, or undefined when the
-// user cancels.
+// the table shows as a package error. osvIndexDate gives the build date of the OSV index, or
+// undefined when it is unknown or missing. Return what the webview drew, or undefined when
+// the user cancels.
 export async function compare(
   extensionUri: vscode.Uri,
   analyze: (keys: PackageKey[]) => Promise<ToolOutcome[]>,
+  osvIndexDate: () => string | undefined,
   args: unknown,
 ): Promise<ComparisonReport | undefined> {
   const parsed = readSettings();
@@ -80,7 +82,7 @@ export async function compare(
   const keys = names.names.map((name) => ({ ecosystem, name }));
   const outcomes = await Promise.race([analyze(keys), panel.rendered]);
   if (!Array.isArray(outcomes)) return undefined;
-  panel.show({ type: "job", job: comparisonJob(request, outcomes) });
+  panel.show({ type: "job", job: comparisonJob(request, outcomes, osvIndexDate()) });
   return panel.rendered;
 }
 

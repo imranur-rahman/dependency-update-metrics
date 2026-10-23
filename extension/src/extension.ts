@@ -233,7 +233,12 @@ export function activate(context: vscode.ExtensionContext): void {
     ),
     vscode.commands.registerCommand("mttx.analyzeDependencies", () => analyzeOpenManifest(provider)),
     vscode.commands.registerCommand("mttx.compare", (args?: unknown) =>
-      compare(context.extensionUri, (keys) => provider.analyzePackages(keys), args),
+      compare(
+        context.extensionUri,
+        (keys) => provider.analyzePackages(keys),
+        () => (osvIndex.state?.kind === "built" ? osvIndex.state.date : undefined),
+        args,
+      ),
     ),
   );
 }

@@ -142,6 +142,24 @@ test("a Comparison has one Explanation for each package with a value and one Lim
   assert.deepEqual(explanation.limitations, LIMITATIONS);
 });
 
+test("the Limitations name the date of the OSV index when the Job carries one", () => {
+  const job = {
+    comparison: { mode: "window_summary", weighting_type: "disable", half_life: null },
+    results: [summaryResult({ mttu: 1, mttr: 0 })],
+    osv_index_date: "2026-10-21",
+  };
+  const { limitations } = explainComparison(job);
+  assert.equal(
+    limitations[1],
+    "The results use the OSV data as of 2026-10-21, the build date of the OSV index. A vulnerability that OSV added later does not count.",
+  );
+  assert.deepEqual(
+    limitations.filter((_, index) => index !== 1),
+    LIMITATIONS.filter((_, index) => index !== 1),
+  );
+  assert.deepEqual(explainComparison({ ...job, osv_index_date: null }).limitations, LIMITATIONS);
+});
+
 test("a Comparison without a value has no Explanation and no Limitations", () => {
   const job = {
     comparison: { mode: "window_summary", weighting_type: "disable", half_life: null },

@@ -80,5 +80,7 @@ test("each package of the Sample Comparison has a value, a chart bar, and an Exp
   }
   assert.equal(resultRows(sample).length, 3);
   assert.ok(chartHasValues(barChartData(sample)));
-  assert.equal(explainComparison(sample).packages.length, 3);
+  const explanation = explainComparison(sample);
+  assert.equal(explanation.packages.length, 3);
+  assert.ok(explanation.limitations.some((text) => text.includes(`as of ${sample.osv_index_date}`)));
 });

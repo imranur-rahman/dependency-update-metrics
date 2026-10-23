@@ -16,6 +16,21 @@ export const LIMITATIONS = [
   "The results depend on the declared version constraints and on the release dates in the registry.",
 ];
 
+// The index of the OSV limitation in LIMITATIONS.
+const OSV_LIMITATION = 1;
+
+// Return the Limitations list. With the build date of the OSV index (the Sample Comparison
+// and the Extension know it), the OSV limitation names the date.
+export function limitationsFor(osvIndexDate) {
+  const list = [...LIMITATIONS];
+  if (typeof osvIndexDate === "string" && osvIndexDate !== "") {
+    list[OSV_LIMITATION] =
+      `The results use the OSV data as of ${osvIndexDate}, the build date of the OSV index. ` +
+      "A vulnerability that OSV added later does not count.";
+  }
+  return list;
+}
+
 // The words of each metric: the full sentence and the short hover line, for a value of 0.0
 // and for other values. The MTTR text never says that no dependency was vulnerable: the
 // result has no count of vulnerable versions and no flag for a missing OSV index.
@@ -108,10 +123,11 @@ export function explainResult(result) {
 
 // Return the Explanation of a done Job: { packages, limitations }. packages holds one
 // Explanation for each result with a value, in the order of the results. limitations is the
-// shared list, or [] when no package has a value.
+// shared list (with the date of the OSV index when the Job has "osv_index_date"), or []
+// when no package has a value.
 export function explainComparison(job) {
   const packages = job.results.map(explainResult).filter((item) => item !== null);
-  return { packages, limitations: packages.length > 0 ? [...LIMITATIONS] : [] };
+  return { packages, limitations: packages.length > 0 ? limitationsFor(job.osv_index_date) : [] };
 }
 
 // Return the one short line of the Extension hover for a result, or null when the result

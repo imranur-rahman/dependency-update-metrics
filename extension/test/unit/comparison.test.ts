@@ -130,6 +130,15 @@ test("the panel shows one Explanation paragraph for each package with a value, t
   });
 });
 
+test("the Limitations of the panel name the build date of the OSV index", () => {
+  const [ok] = exampleJob("job_done_window_summary.json").results as ToolResult[];
+  const job = comparisonJob(request({ packages: ["mypkg"] }), [{ kind: "result", result: ok }], "2026-10-21");
+  assert.equal(job.osv_index_date, "2026-10-21");
+  assert.match(explanationContent(job).limitations[1], /^The results use the OSV data as of 2026-10-21, /);
+  const withoutDate = comparisonJob(request({ packages: ["mypkg"] }), [{ kind: "result", result: ok }]);
+  assert.equal("osv_index_date" in withoutDate, false);
+});
+
 test("a Comparison where each package failed has no Explanation in the panel", () => {
   const failed = exampleJob("job_done_with_package_error.json").results[1] as ToolResult;
   const job = comparisonJob(request({ packages: ["nope"] }), [{ kind: "result", result: failed }]);
