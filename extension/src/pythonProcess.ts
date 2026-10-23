@@ -1,39 +1,19 @@
 // The real process runner and file system for src/core/toolEnvironment.ts, and the command
 // that runs the Tool from the venv. This module has no `vscode` import.
 
-import { spawn } from "node:child_process";
 import { access, readFile, writeFile } from "node:fs/promises";
 
-import type { ProcessResult, RunProcess, ToolFiles } from "./core/toolEnvironment.ts";
+import type { RunProcess, ToolFiles } from "./core/toolEnvironment.ts";
 import type { ToolCommand } from "./processToolRunner.ts";
+import { spawnProcess } from "./spawnProcess.ts";
 
-// Run a program with an args array (no shell) and collect its output. A program that does
-// not start, or that its timeout stops, gives a result with `error`.
-export const runProcess: RunProcess = (file, args, options = {}) =>
-  new Promise<ProcessResult>((resolve) => {
-    const child = spawn(file, args, {
-      timeout: options.timeoutMs,
-      windowsHide: true,
-      env: { ...process.env, PYTHONIOENCODING: "utf-8" },
-    });
-    const stdout: Buffer[] = [];
-    const stderr: Buffer[] = [];
-    let error: string | undefined;
-    child.stdout.on("data", (chunk: Buffer) => stdout.push(chunk));
-    child.stderr.on("data", (chunk: Buffer) => stderr.push(chunk));
-    child.on("error", (err) => {
-      error = err.message;
-    });
-    child.on("close", (exitCode, signal) => {
-      if (!error && signal) error = `stopped by ${signal}`;
-      resolve({
-        exitCode,
-        stdout: Buffer.concat(stdout).toString("utf8"),
-        stderr: Buffer.concat(stderr).toString("utf8"),
-        error,
-      });
-    });
-  });
+// Run a program and collect its output. A program that does not start, or that its timeout
+// stops, gives a result with `error`.
+export const runProcess: RunProcess = async (file, args, options = {}) => {
+  const result = await spawnProcess(file, args, { timeoutMs: options.timeoutMs });
+  const error = result.error ?? (result.signal ? `stopped by ${result.signal}` : undefined);
+  return { exitCode: result.exitCode, stdout: result.stdout, stderr: result.stderr, error };
+};
 
 export const nodeToolFiles: ToolFiles = {
   exists: (path) => access(path).then(

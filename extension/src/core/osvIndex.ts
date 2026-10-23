@@ -3,6 +3,8 @@
 // the index: `--osv-index-date` prints its build date, and `--build-osv` builds it.
 // This module has no `vscode` import.
 
+import { lastJsonObject } from "./jsonLine.ts";
+
 // What the Extension knows about the index in the Tool output dir.
 export type OsvIndexState = { kind: "missing" } | { kind: "built"; date: string };
 
@@ -81,17 +83,7 @@ export function progressLine(chunk: string): string | undefined {
 // Return the index state from the stdout of `dependency-metrics --osv-index-date`, or
 // undefined when stdout has no such JSON line (for example, from an older Tool).
 export function parseOsvIndexDate(stdout: string): OsvIndexState | undefined {
-  for (const line of stdout.trim().split(/\r?\n/).reverse()) {
-    if (!line.startsWith("{")) continue;
-    try {
-      const value: unknown = JSON.parse(line);
-      if (typeof value !== "object" || value === null || !("osv_index_date" in value)) continue;
-      const date = value.osv_index_date;
-      if (date === null) return { kind: "missing" };
-      if (typeof date === "string") return { kind: "built", date };
-    } catch {
-      continue;
-    }
-  }
-  return undefined;
+  const date = lastJsonObject(stdout, (value) => "osv_index_date" in value)?.osv_index_date;
+  if (date === null) return { kind: "missing" };
+  return typeof date === "string" ? { kind: "built", date } : undefined;
 }

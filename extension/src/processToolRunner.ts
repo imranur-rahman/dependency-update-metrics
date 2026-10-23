@@ -1,12 +1,11 @@
-// The real Tool runner: it spawns `dependency-metrics` as a child process. It has no
+// The real Tool runner: it runs `dependency-metrics` as a child process. It has no
 // `vscode` import, so that `node --test` runs it with the fake Tool script.
 
-import { spawn } from "node:child_process";
-
 import { parseToolOutput, toolArgs, type ToolOutcome, type ToolRequest, type ToolRunner } from "./core/tool.ts";
+import { spawnProcess, type SpawnOptions, type SpawnResult } from "./spawnProcess.ts";
 
-// The program that runs the Tool, and the arguments before the Tool arguments.
-// #29 adds the managed venv: { file: <venv python>, args: ["-m", "dependency_metrics.cli"] }.
+// The program that runs the Tool, the arguments before the Tool arguments, and the extra
+// variables of its environment. The venv command is in src/pythonProcess.ts.
 export interface ToolCommand {
   file: string;
   args: string[];
@@ -26,22 +25,27 @@ export function toolCommand(toolPath: string): ToolCommand {
   return { file, args: [] };
 }
 
+// Run the Tool command with more arguments through the spawn helper. The variables of the
+// command come before `env`.
+export function runToolCommand(
+  command: ToolCommand,
+  toolArgs: string[],
+  options: SpawnOptions = {},
+): Promise<SpawnResult> {
+  return spawnProcess(command.file, [...command.args, ...toolArgs], {
+    ...options,
+    env: { ...command.env, ...options.env },
+  });
+}
+
 // Run the Tool once with the arguments of cachePruneArgs() (src/core/settings.ts), and
 // return its exit code, or null when the Tool does not start. The output does not matter.
-export function pruneToolCache(
+export async function pruneToolCache(
   command: ToolCommand,
   pruneArgs: string[],
   env: Record<string, string> = {},
 ): Promise<number | null> {
-  return new Promise((resolve) => {
-    const child = spawn(command.file, [...command.args, ...pruneArgs], {
-      stdio: "ignore",
-      windowsHide: true,
-      env: { ...process.env, ...command.env, ...env },
-    });
-    child.on("error", () => resolve(null));
-    child.on("close", (exitCode) => resolve(exitCode));
-  });
+  return (await runToolCommand(command, pruneArgs, { env })).exitCode;
 }
 
 export class ProcessToolRunner implements ToolRunner {
@@ -53,47 +57,17 @@ export class ProcessToolRunner implements ToolRunner {
     this.env = env;
   }
 
-  run(request: ToolRequest, signal?: AbortSignal): Promise<ToolOutcome> {
-    const { file, args, env } = this.command;
-    return new Promise((resolve) => {
-      // An args array needs no shell, so a package name never reaches a shell parser.
-      const child = spawn(file, [...args, ...toolArgs(request)], {
-        signal,
-        windowsHide: true,
-        env: { ...process.env, ...env, ...this.env, PYTHONIOENCODING: "utf-8" },
-      });
-      const stdout: Buffer[] = [];
-      const stderr: Buffer[] = [];
-      child.stdout.on("data", (chunk: Buffer) => stdout.push(chunk));
-      child.stderr.on("data", (chunk: Buffer) => stderr.push(chunk));
-      // The Tool has no timeout in single-package mode, so the runner stops a slow run.
-      let timedOut = false;
-      const timer = setTimeout(() => {
-        timedOut = true;
-        child.kill();
-      }, request.timeoutSeconds * 1000);
-      // ENOENT (no such Tool) and an abort arrive here, and then no "close" event follows
-      // for a process that never started.
-      child.on("error", (error) => {
-        clearTimeout(timer);
-        resolve({ kind: "failed", message: `could not start the Tool ${file}: ${error.message}` });
-      });
-      // "close" comes after the process ends and its output streams close, so stdout is whole.
-      child.on("close", (exitCode) => {
-        clearTimeout(timer);
-        if (timedOut) {
-          const message = `the Tool stopped after ${request.timeoutSeconds} s (mttx.packageTimeoutSeconds)`;
-          resolve({ kind: "failed", message });
-          return;
-        }
-        resolve(
-          parseToolOutput({
-            stdout: Buffer.concat(stdout).toString("utf8"),
-            stderr: Buffer.concat(stderr).toString("utf8"),
-            exitCode,
-          }),
-        );
-      });
+  // The Tool has no timeout in single-package mode, so the runner stops a slow run.
+  async run(request: ToolRequest, signal?: AbortSignal): Promise<ToolOutcome> {
+    const output = await runToolCommand(this.command, toolArgs(request), {
+      env: this.env,
+      signal,
+      timeoutMs: request.timeoutSeconds * 1000,
     });
+    if (output.timedOut) {
+      return { kind: "failed", message: `the Tool stopped after ${request.timeoutSeconds} s (mttx.packageTimeoutSeconds)` };
+    }
+    if (output.error) return { kind: "failed", message: `could not start the Tool ${this.command.file}: ${output.error}` };
+    return parseToolOutput(output);
   }
 }

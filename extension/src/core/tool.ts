@@ -3,6 +3,7 @@
 
 import type { Ecosystem } from "./manifest.ts";
 import type { DependencyState, ToolResult } from "./display.ts";
+import { lastJsonObject } from "./jsonLine.ts";
 
 export type DataSource = "depsdev" | "native";
 
@@ -74,23 +75,10 @@ function pad(value: number): string {
 // result also when the package fails (exit code 1), so stdout counts before the exit code.
 export function parseToolOutput(output: ToolOutput): ToolOutcome {
   const result = lastJsonObject(output.stdout);
-  if (result) return { kind: "result", result };
+  if (result) return { kind: "result", result: result as unknown as ToolResult };
   const lastLine = output.stderr.trim().split(/\r?\n/).pop()?.trim();
   return {
     kind: "failed",
     message: lastLine || `the Tool printed no result (exit code ${output.exitCode})`,
   };
-}
-
-function lastJsonObject(stdout: string): ToolResult | undefined {
-  const lines = stdout.trim().split(/\r?\n/).reverse();
-  for (const line of lines) {
-    if (!line.startsWith("{")) continue;
-    try {
-      return JSON.parse(line) as ToolResult;
-    } catch {
-      return undefined;
-    }
-  }
-  return undefined;
 }
