@@ -40,8 +40,8 @@ export class OsvIndex implements vscode.Disposable {
   private readonly outputDir: () => string;
   // Waits for the Tool setup, so that the index processes use the venv Tool too.
   private readonly command: () => Promise<ReadyCommand>;
-  // Called when the state changes. `rebuilt` is true after a build, so that the hints run
-  // the Tool again and get the MTTR values.
+  // Called when the state changes. `rebuilt` is true after a build or a new index state, so
+  // that the hints run the Tool again and get the MTTR values of the new index.
   private readonly onDidChange: (rebuilt: boolean) => void;
 
   constructor(
