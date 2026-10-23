@@ -59,6 +59,9 @@ from .reporting import (
 # ---------------------------------------------------------------------------
 
 _WORKER_STATE: Dict[str, Any] = {}
+# Environment value that sets the default of --output-dir (/data in the container image).
+OUTPUT_DIR_ENV = "DEPENDENCY_METRICS_OUTPUT_DIR"
+
 _VALID_ECOSYSTEMS = {"npm", "pypi", "cargo"}
 _ECOSYSTEM_ALIASES = {"crates.io": "cargo"}
 _OSV_ECOSYSTEM_NAMES = {
@@ -824,7 +827,8 @@ def main():
         action="store_true",
         help=(
             'Print {"osv_index_date": "YYYY-MM-DD"} with the build date of the OSV index '
-            "in --output-dir (null when there is no index), and stop."
+            "in --output-dir, or of the file that $DEPENDENCY_METRICS_OSV_INDEX names "
+            "(null when there is no index), and stop."
         ),
     )
 
@@ -867,7 +871,9 @@ def main():
     )
 
     parser.add_argument(
-        "--output-dir", default="./output", help="Output directory for results. Default: ./output"
+        "--output-dir",
+        default=os.environ.get(OUTPUT_DIR_ENV) or "./output",
+        help=f"Output directory for results. Default: ${OUTPUT_DIR_ENV}, else ./output",
     )
 
     parser.add_argument(

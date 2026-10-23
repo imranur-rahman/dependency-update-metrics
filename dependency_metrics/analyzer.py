@@ -18,7 +18,7 @@ import numpy as np
 import pandas as pd
 from packaging import version as pkg_version
 
-from .osv_builder import OSVBuilder
+from .osv_builder import OSVBuilder, osv_index_file
 from .osv_service import OSVService
 from .errors import DataSourceError, PackageNotFoundError
 from .interfaces import PackageResolver
@@ -182,7 +182,7 @@ class DependencyAnalyzer:
             return self._osv_df, self._osv_index
 
         if osv_df is None:
-            osv_db_file = self.output_dir / "osv_database.parquet"
+            osv_db_file = osv_index_file(self.output_dir)
             osv_df = pd.read_parquet(osv_db_file) if osv_db_file.exists() else pd.DataFrame()
 
         if len(osv_df) > 0:
@@ -1683,7 +1683,7 @@ class DependencyAnalyzer:
 
         # Load or build OSV database
         if osv_df is None:
-            osv_db_file = self.output_dir / "osv_database.parquet"
+            osv_db_file = osv_index_file(self.output_dir)
             if osv_db_file.exists():
                 osv_df = pd.read_parquet(osv_db_file)
             else:
