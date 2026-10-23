@@ -124,6 +124,11 @@ export function canAddPackage(packages) {
   return packages.length < MAX_PACKAGES;
 }
 
+// Return the note that the form shows when the Comparison is full, or "" below the limit.
+export function packageLimitNote(packages) {
+  return canAddPackage(packages) ? "" : `A Comparison holds at most ${MAX_PACKAGES} packages.`;
+}
+
 // The modes of a Comparison (GLOSSARY.md). The Host checks the same names (Mode).
 export const MODES = ["window_summary", "per_release"];
 const WINDOW_SUMMARY = "window_summary";
