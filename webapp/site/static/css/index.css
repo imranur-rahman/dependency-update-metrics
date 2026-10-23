@@ -771,15 +771,15 @@ a:focus {
   padding: 2rem;
 }
 
-/* A chart box holds one Chart.js canvas. webapp.js sets its height (CHART_HEIGHTS).
-   min-width: 0 lets a chart in a column shrink when the window gets narrower. */
+/* A chart box holds one Chart.js canvas. webapp.js sets its size and centers it
+   (chartBoxStyle in comparison.js), so the CSS sets no size here. */
 #try-it .chart-box {
   position: relative;
-  min-width: 0;
 }
 
-#release-charts-figure .column {
-  min-width: 0;
+/* The title of a line chart is centered over the centered chart. */
+#try-it .chart-title {
+  text-align: center;
 }
 
 #try-it .label {

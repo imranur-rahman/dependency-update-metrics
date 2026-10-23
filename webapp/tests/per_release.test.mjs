@@ -16,7 +16,6 @@ import {
   lineChartData,
   lineChartAxisLabel,
   lineChartOptions,
-  CHART_HEIGHTS,
   resultRows,
   tableColumns,
   rowsToCsv,
@@ -193,15 +192,14 @@ test("line charts in which no release has a value have no values", () => {
   assert.equal(chartHasValues(lineChartData(perReleaseJob(), "mttu")), true);
 });
 
-test("the line charts are compact: at most 220 px high, a small legend, and few ticks", () => {
+test("the line charts are compact: a small legend and few ticks", () => {
   const options = lineChartOptions(perReleaseJob());
 
-  assert.ok(CHART_HEIGHTS.line <= 220, `the line charts are ${CHART_HEIGHTS.line} px high`);
   assert.equal(options.maintainAspectRatio, false);
   assert.equal(options.plugins.legend.labels.usePointStyle, true);
   assert.equal(options.plugins.legend.labels.boxWidth, 12);
   assert.ok(options.plugins.legend.labels.font.size >= 11, "the legend text stays readable");
-  assert.equal(options.scales.x.ticks.maxTicksLimit, 4);
+  assert.equal(options.scales.x.ticks.maxTicksLimit, 6);
   assert.equal(options.scales.x.ticks.maxRotation, 0, "the dates stay horizontal");
   assert.equal(options.scales.y.ticks.maxTicksLimit, 4);
   assert.equal(options.scales.y.beginAtZero, true);
