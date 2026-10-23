@@ -82,7 +82,9 @@ export async function runAction(io: ActionIO): Promise<number> {
     io.setOutput("mttu", "");
     io.setOutput("mttr", "");
     io.setOutput("over-threshold", "false");
-    io.setOutput("comment-url", (await updateOldComment(io)) ?? "");
+    // A comment of an earlier push gets the text that the pull request adds none, so that
+    // it shows no old values. No comment stays no comment.
+    io.setOutput("comment-url", (await upsertComment(io, `${COMMENT_MARKER}\n${NO_DEPENDENCIES_ADDED}\n`, false)) ?? "");
     io.appendSummary(`${NO_DEPENDENCIES_ADDED}\n`);
     return 0;
   }
@@ -110,7 +112,7 @@ export async function runAction(io: ActionIO): Promise<number> {
   });
   io.appendSummary(`${markdown}\n`);
   if (pullRequest) {
-    io.setOutput("comment-url", (await writeComment(io, markdown)) ?? "");
+    io.setOutput("comment-url", (await upsertComment(io, markdown, true)) ?? "");
   } else {
     for (const file of badgeFiles(rows, config.thresholds)) {
       io.writeFile(`${config.badgeDir}/${file.fileName}`, `${JSON.stringify(file.json)}\n`);
@@ -146,30 +148,17 @@ async function analyze(io: ActionIO, config: ActionConfig, dep: AddedDependency)
   return parseToolOutput(output);
 }
 
-// Write the report as the one comment of the Action: update the comment of an earlier push,
-// or create it. Return its URL. A comment that cannot be written (for example, the read-only
-// token of a pull request from a fork) gives a warning; the job summary still has the report.
-async function writeComment(io: ActionIO, markdown: string): Promise<string | undefined> {
-  const { comments } = io.pullRequest!;
-  try {
-    const old = (await comments.list()).find((comment) => comment.body.startsWith(COMMENT_MARKER));
-    const comment = old ? await comments.update(old.id, markdown) : await comments.create(markdown);
-    return comment.url;
-  } catch (error) {
-    io.warning(`The Action could not write the pull request comment: ${(error as Error).message}`);
-    return undefined;
-  }
-}
-
-// When the pull request adds no dependencies, a comment of an earlier push gets the text
-// that it adds none, so that it shows no old values. No comment stays no comment.
-async function updateOldComment(io: ActionIO): Promise<string | undefined> {
+// Write `body` as the one comment of the Action: update the comment of an earlier push, or
+// create one when `create` is true. Return its URL, or undefined when there is no comment. A
+// comment that cannot be written (for example, the read-only token of a pull request from a
+// fork) gives a warning; the job summary still has the report.
+async function upsertComment(io: ActionIO, body: string, create: boolean): Promise<string | undefined> {
   if (!io.pullRequest) return undefined;
   const { comments } = io.pullRequest;
   try {
     const old = (await comments.list()).find((comment) => comment.body.startsWith(COMMENT_MARKER));
-    if (!old) return undefined;
-    return (await comments.update(old.id, `${COMMENT_MARKER}\n${NO_DEPENDENCIES_ADDED}\n`)).url;
+    if (old) return (await comments.update(old.id, body)).url;
+    return create ? (await comments.create(body)).url : undefined;
   } catch (error) {
     io.warning(`The Action could not write the pull request comment: ${(error as Error).message}`);
     return undefined;
