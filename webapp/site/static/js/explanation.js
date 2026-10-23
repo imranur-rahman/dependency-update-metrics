@@ -35,7 +35,7 @@ export function limitationsFor(osvIndexDate) {
   return list;
 }
 
-// The words of each metric: the full sentence and the short hover line, for a value of 0.0
+// The words of each metric: the full sentence and the short hover line, for a value of 0.00
 // and for other values. The MTTR text never says that no dependency was vulnerable: the
 // result has no count of vulnerable versions and no flag for a missing OSV index.
 const METRIC_WORDS = {
@@ -53,8 +53,8 @@ const METRIC_WORDS = {
   },
 };
 
-// Return true when a value shows as 0.0. The text follows the value that the reader sees,
-// so a value of 0.03 days gets the 0.0 sentence.
+// Return true when a value shows as 0.00. The text follows the value that the reader sees,
+// so a value of 0.003 days gets the 0.00 sentence.
 function showsZero(days) {
   return formatDays(days) === formatDays(0);
 }
@@ -159,7 +159,7 @@ export function hoverExplanation(result) {
   const mttuText = showsZero(entry.mttu) ? mttu.hoverZero : `${mttu.hover} for ${amountWords(entry.mttu, result).hover}`;
   let mttrText = mttr.hoverZero;
   if (!showsZero(entry.mttr)) {
-    // After the 0.0 text of MTTU, the MTTR part needs its own subject.
+    // After the 0.00 text of MTTU, the MTTR part needs its own subject.
     const subject = showsZero(entry.mttu) ? "a direct dependency stayed " : "";
     mttrText = `${subject}${mttr.hover} for ${amountWords(entry.mttr, result).hover}`;
   }

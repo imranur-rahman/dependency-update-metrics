@@ -48,22 +48,22 @@ const MTTU_ZERO = "In this time window, each direct dependency used the newest a
 const MTTR_ZERO =
   "In this time window, no direct dependency stayed on a version with a known vulnerability after a fix was available.";
 
-test("MTTU 0.0 and MTTR 0.0 use the agreed sentences", () => {
+test("MTTU 0.00 and MTTR 0.00 use the agreed sentences", () => {
   const explanation = explainResult(summaryResult({ mttu: 0, mttr: 0 }));
   assert.deepEqual(explanation.sentences, [MTTU_ZERO, MTTR_ZERO]);
 });
 
-test("a value that shows as 0.0 uses the agreed 0.0 sentences", () => {
-  const explanation = explainResult(summaryResult({ mttu: 0.03, mttr: 0.049 }));
+test("a value that shows as 0.00 uses the agreed 0.00 sentences", () => {
+  const explanation = explainResult(summaryResult({ mttu: 0.003, mttr: 0.0049 }));
   assert.deepEqual(explanation.sentences, [MTTU_ZERO, MTTR_ZERO]);
   assert.equal(
-    hoverExplanation(summaryResult({ mttu: 0.03, mttr: 0.04 })),
+    hoverExplanation(summaryResult({ mttu: 0.003, mttr: 0.004 })),
     "Each direct dependency used the newest version at all times, and none stayed on a known vulnerable version after a fix was available.",
   );
-  assert.match(explainResult(summaryResult({ mttu: 0.05, mttr: 0 })).sentences[0], /^MTTU is 0\.1 days: /);
+  assert.match(explainResult(summaryResult({ mttu: 0.006, mttr: 0 })).sentences[0], /^MTTU is 0\.01 days: /);
 });
 
-test("MTTR 0.0 never claims that no dependency was vulnerable", () => {
+test("MTTR 0.00 never claims that no dependency was vulnerable", () => {
   const { sentences } = explainResult(summaryResult({ mttu: 0, mttr: 0 }));
   for (const sentence of sentences) assert.doesNotMatch(sentence, /had no vulnerab|no vulnerable/i);
   assert.doesNotMatch(hoverExplanation(summaryResult({ mttu: 0, mttr: 0 })), /had no vulnerab|no vulnerable/i);
@@ -73,16 +73,16 @@ test("without weighting, each metric gets one sentence that says it is a total p
   const explanation = explainResult(summaryResult({ mttu: 579, mttr: 12.25 }));
   assert.equal(explanation.title, "mypkg");
   assert.deepEqual(explanation.sentences, [
-    "MTTU is 579.0 days: in this time window, a direct dependency of mypkg was behind the newest available version for 579.0 days in total, on average over the direct dependencies.",
-    "MTTR is 12.3 days: in this time window, a direct dependency of mypkg stayed on a version with a known vulnerability after a fix was available for 12.3 days in total, on average over the direct dependencies.",
+    "MTTU is 579.00 days: in this time window, a direct dependency of mypkg was behind the newest available version for 579.00 days in total, on average over the direct dependencies.",
+    "MTTR is 12.25 days: in this time window, a direct dependency of mypkg stayed on a version with a known vulnerability after a fix was available for 12.25 days in total, on average over the direct dependencies.",
   ]);
 });
 
 test("with exponential weighting, the text says on average and names the half-life", () => {
   const result = summaryResult({ mttu: 4, mttr: 1.5 }, { weighting: "exponential", halfLife: 180 });
   assert.deepEqual(explainResult(result).sentences, [
-    "MTTU is 4.0 days: in this time window, a direct dependency of mypkg was behind the newest available version for 4.0 days on average, with exponential weighting and a half-life of 180 days.",
-    "MTTR is 1.5 days: in this time window, a direct dependency of mypkg stayed on a version with a known vulnerability after a fix was available for 1.5 days on average, with exponential weighting and a half-life of 180 days.",
+    "MTTU is 4.00 days: in this time window, a direct dependency of mypkg was behind the newest available version for 4.00 days on average, with exponential weighting and a half-life of 180 days.",
+    "MTTR is 1.50 days: in this time window, a direct dependency of mypkg stayed on a version with a known vulnerability after a fix was available for 1.50 days on average, with exponential weighting and a half-life of 180 days.",
   ]);
 });
 
@@ -90,7 +90,7 @@ test("with linear weighting, the text says on average and names the weighting", 
   const result = summaryResult({ mttu: 4, mttr: 0 }, { weighting: "linear" });
   assert.equal(
     explainResult(result).sentences[0],
-    "MTTU is 4.0 days: in this time window, a direct dependency of mypkg was behind the newest available version for 4.0 days on average, with linear weighting.",
+    "MTTU is 4.00 days: in this time window, a direct dependency of mypkg was behind the newest available version for 4.00 days on average, with linear weighting.",
   );
 });
 
@@ -115,8 +115,8 @@ test("Per-release explains the latest release and the change over the window", (
   assert.deepEqual(explanation.sentences, [
     MTTU_ZERO,
     MTTR_ZERO,
-    "MTTU went from 4.0 to 0.0 days over 3 releases.",
-    "MTTR went from 2.0 to 0.0 days over 3 releases.",
+    "MTTU went from 4.00 to 0.00 days over 3 releases.",
+    "MTTR went from 2.00 to 0.00 days over 3 releases.",
   ]);
 });
 
@@ -204,11 +204,11 @@ test("the hover line is short and follows the values and the weighting", () => {
   );
   assert.equal(
     hoverExplanation(summaryResult({ mttu: 579, mttr: 12 })),
-    "A direct dependency was behind the newest version for 579.0 days in total (mean over the direct dependencies), and on a known vulnerable version after a fix for 12.0 days in total (mean over the direct dependencies).",
+    "A direct dependency was behind the newest version for 579.00 days in total (mean over the direct dependencies), and on a known vulnerable version after a fix for 12.00 days in total (mean over the direct dependencies).",
   );
   assert.equal(
     hoverExplanation(summaryResult({ mttu: 4, mttr: 0 }, { weighting: "exponential", halfLife: 90 })),
-    "A direct dependency was behind the newest version for 4.0 days on average (half-life 90 days), and none stayed on a known vulnerable version after a fix was available.",
+    "A direct dependency was behind the newest version for 4.00 days on average (half-life 90 days), and none stayed on a known vulnerable version after a fix was available.",
   );
   assert.equal(hoverExplanation(summaryResult({ mttu: 0, mttr: 0, status: "no_deps", num_dependencies: 0 })), null);
 });

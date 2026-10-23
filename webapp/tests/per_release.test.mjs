@@ -113,7 +113,7 @@ test("the line chart axis label follows the weighting type of the Job", () => {
 
 test("a Per-release Job gives one table row for each release, with the error of the failed one", () => {
   assert.deepEqual(resultRows(perReleaseJob()), [
-    { package: "mypkg", version: "1.0.0", releaseDate: "2021-01-01", mttu: "0.0", mttr: "0.0", dependencies: 1, error: "" },
+    { package: "mypkg", version: "1.0.0", releaseDate: "2021-01-01", mttu: "0.00", mttr: "0.00", dependencies: 1, error: "" },
     {
       package: "mypkg",
       version: "1.1.0",
@@ -123,9 +123,9 @@ test("a Per-release Job gives one table row for each release, with the error of 
       dependencies: 0,
       error: "Something went wrong (ref: example-job-id)",
     },
-    { package: "mypkg", version: "1.2.0", releaseDate: "2022-01-01", mttu: "214.0", mttr: "214.0", dependencies: 1, error: "" },
-    { package: "yourpkg", version: "1.0.0", releaseDate: "2021-03-01", mttu: "0.0", mttr: "0.0", dependencies: 1, error: "" },
-    { package: "yourpkg", version: "2.0.0", releaseDate: "2021-12-01", mttu: "183.0", mttr: "183.0", dependencies: 1, error: "" },
+    { package: "mypkg", version: "1.2.0", releaseDate: "2022-01-01", mttu: "214.00", mttr: "214.00", dependencies: 1, error: "" },
+    { package: "yourpkg", version: "1.0.0", releaseDate: "2021-03-01", mttu: "0.00", mttr: "0.00", dependencies: 1, error: "" },
+    { package: "yourpkg", version: "2.0.0", releaseDate: "2021-12-01", mttu: "183.00", mttr: "183.00", dependencies: 1, error: "" },
   ]);
 });
 
@@ -163,11 +163,11 @@ test("the Per-release CSV download has the same columns and values as the table"
   assert.equal(
     rowsToCsv(resultRows(job), tableColumns(job.comparison.mode)),
     "Package,Version,Release date,MTTU (days),MTTR (days),Dependencies,Error\r\n" +
-      "mypkg,1.0.0,2021-01-01,0.0,0.0,1,\r\n" +
+      "mypkg,1.0.0,2021-01-01,0.00,0.00,1,\r\n" +
       "mypkg,1.1.0,2021-09-01,,,0,Something went wrong (ref: example-job-id)\r\n" +
-      "mypkg,1.2.0,2022-01-01,214.0,214.0,1,\r\n" +
-      "yourpkg,1.0.0,2021-03-01,0.0,0.0,1,\r\n" +
-      "yourpkg,2.0.0,2021-12-01,183.0,183.0,1,\r\n",
+      "mypkg,1.2.0,2022-01-01,214.00,214.00,1,\r\n" +
+      "yourpkg,1.0.0,2021-03-01,0.00,0.00,1,\r\n" +
+      "yourpkg,2.0.0,2021-12-01,183.00,183.00,1,\r\n",
   );
 });
 
@@ -227,6 +227,6 @@ test("the line chart shows release dates on the x-axis and in the tooltip title"
 test("the line chart tooltip names the package, the version, and the days", () => {
   const { label } = lineChartOptions(perReleaseJob()).plugins.tooltip.callbacks;
 
-  assert.equal(label({ dataset: { label: "mypkg" }, raw: { y: 214, version: "1.2.0" } }), "mypkg 1.2.0: 214.0 days");
+  assert.equal(label({ dataset: { label: "mypkg" }, raw: { y: 214, version: "1.2.0" } }), "mypkg 1.2.0: 214.00 days");
   assert.equal(label({ dataset: { label: "mypkg" }, raw: { y: null, version: "1.1.0" } }), "mypkg 1.1.0: no value");
 });

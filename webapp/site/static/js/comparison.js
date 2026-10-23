@@ -447,7 +447,7 @@ function compactLegend(labels = {}) {
 // The most labels on a y-axis. Three or four values give enough scale for days.
 const MAX_Y_TICKS = 4;
 
-// Return the tooltip text of one value: the series name and the days with one decimal.
+// Return the tooltip text of one value: the series name and the days with two decimals.
 function tooltipValue(name, days) {
   return `${name}: ${days === null ? "no value" : `${formatDays(days)} days`}`;
 }
@@ -574,9 +574,10 @@ export function csvFileName(comparison) {
   return `mttu-mttr_${parts.map((part) => safe(String(part))).join("_")}.csv`;
 }
 
-// Return a number of days with one decimal, or a dash when there is no value.
+// Return a number of days with two decimals, or a dash when there is no value. The table,
+// the CSV, the chart tooltips, the Explanation, and the Extension all show days this way.
 export function formatDays(days) {
-  return typeof days === "number" ? days.toFixed(1) : NO_VALUE;
+  return typeof days === "number" ? days.toFixed(2) : NO_VALUE;
 }
 
 // Return true when the weighting type needs a half-life (the form shows the field only then).

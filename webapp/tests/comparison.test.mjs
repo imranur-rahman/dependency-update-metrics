@@ -251,7 +251,7 @@ test("a done Window summary Job gives one table row for each package", () => {
   assert.equal(describeJob(job), "Done");
   assert.equal(isFinished(job), true);
   assert.deepEqual(resultRows(job), [
-    { package: "mypkg", mttu: "579.0", mttr: "579.0", dependencies: 1, error: "" },
+    { package: "mypkg", mttu: "579.00", mttr: "579.00", dependencies: 1, error: "" },
   ]);
 });
 
@@ -368,18 +368,18 @@ test("the bar chart options carry the axis label of the weighting type", () => {
   assert.equal(barChartOptions(job).scales.y.title.text, "Days (weighted mean)");
 });
 
-test("the bar chart tooltip shows the days with one decimal, and no value for a missing bar", () => {
+test("the bar chart tooltip shows the days with two decimals, and no value for a missing bar", () => {
   const { label } = barChartOptions(threePackageJob()).plugins.tooltip.callbacks;
 
-  assert.equal(label({ dataset: { label: "MTTU" }, raw: 300.5 }), "MTTU: 300.5 days");
+  assert.equal(label({ dataset: { label: "MTTU" }, raw: 300.5 }), "MTTU: 300.50 days");
   assert.equal(label({ dataset: { label: "MTTR" }, raw: null }), "MTTR: no value");
 });
 
 test("the table shows the values and the error of each package", () => {
   assert.deepEqual(resultRows(threePackageJob()), [
-    { package: "fast", mttu: "12.3", mttr: "0.0", dependencies: 4, error: "" },
+    { package: "fast", mttu: "12.25", mttr: "0.00", dependencies: 4, error: "" },
     { package: "missing", mttu: "–", mttr: "–", dependencies: 0, error: "Package not found in deps.dev" },
-    { package: "slow", mttu: "300.5", mttr: "41.0", dependencies: 20, error: "" },
+    { package: "slow", mttu: "300.50", mttr: "41.00", dependencies: 20, error: "" },
   ]);
 });
 
@@ -387,9 +387,9 @@ test("the CSV download has the same columns and values as the table", () => {
   assert.equal(
     rowsToCsv(resultRows(threePackageJob())),
     "Package,MTTU (days),MTTR (days),Dependencies,Error\r\n" +
-      "fast,12.3,0.0,4,\r\n" +
+      "fast,12.25,0.00,4,\r\n" +
       "missing,,,0,Package not found in deps.dev\r\n" +
-      "slow,300.5,41.0,20,\r\n",
+      "slow,300.50,41.00,20,\r\n",
   );
 });
 
@@ -430,9 +430,9 @@ test("two downloads that differ only in the mode or the weighting get different 
   );
 });
 
-test("days show with one decimal", () => {
-  assert.equal(formatDays(0), "0.0");
-  assert.equal(formatDays(12.345), "12.3");
+test("days show with two decimals", () => {
+  assert.equal(formatDays(0), "0.00");
+  assert.equal(formatDays(12.346), "12.35");
   assert.equal(formatDays(null), "–");
 });
 
@@ -561,7 +561,7 @@ test("a package that failed shows its message in the table, and the others show 
   const rows = resultRows(example("job_done_with_package_error"));
 
   assert.deepEqual(rows, [
-    { package: "mypkg", mttu: "579.0", mttr: "579.0", dependencies: 1, error: "" },
+    { package: "mypkg", mttu: "579.00", mttr: "579.00", dependencies: 1, error: "" },
     { package: "nope", mttu: "–", mttr: "–", dependencies: 0, error: "Package not found in deps.dev" },
   ]);
 });

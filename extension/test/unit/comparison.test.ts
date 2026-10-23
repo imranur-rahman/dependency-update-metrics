@@ -88,7 +88,7 @@ test("a package without dependencies shows the no-dependencies text and no bar s
     ],
   );
   assert.deepEqual(comparisonRows(job), [
-    { package: "mypkg", mttu: "579.0", mttr: "579.0", dependencies: 1, error: "" },
+    { package: "mypkg", mttu: "579.00", mttr: "579.00", dependencies: 1, error: "" },
     {
       package: "left-pad",
       mttu: "–",
@@ -121,10 +121,10 @@ test("the panel shows one Explanation paragraph for each package with a value, t
   ]);
   assert.deepEqual(explanationContent(job), {
     paragraphs: [
-      "mypkg: MTTU is 579.0 days: in this time window, a direct dependency of mypkg was behind the newest " +
-        "available version for 579.0 days in total, on average over the direct dependencies. MTTR is 579.0 days: " +
+      "mypkg: MTTU is 579.00 days: in this time window, a direct dependency of mypkg was behind the newest " +
+        "available version for 579.00 days in total, on average over the direct dependencies. MTTR is 579.00 days: " +
         "in this time window, a direct dependency of mypkg stayed on a version with a known vulnerability after " +
-        "a fix was available for 579.0 days in total, on average over the direct dependencies.",
+        "a fix was available for 579.00 days in total, on average over the direct dependencies.",
     ],
     limitations: LIMITATIONS,
   });
