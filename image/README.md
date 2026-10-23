@@ -20,9 +20,9 @@ The release job writes the digest of each tag to its job summary. Cite the diges
 - The container runs as root. On Linux, add `--user "$(id -u):$(id -g)"`, so that the files in your folder belong to you.
 
 ```bash
-docker run --rm -v "$PWD:/data" ghcr.io/imranur-rahman/mttx:0.2.0-osv-2026-10-23 \
+docker run --rm -v "$PWD:/data" ghcr.io/imranur-rahman/mttx:0.2.1-osv-2026-10-23 \
   --package express --ecosystem npm --start-date 2024-01-01 --end-date 2025-01-01
-docker run --rm ghcr.io/imranur-rahman/mttx:0.2.0-osv-2026-10-23 --osv-index-date
+docker run --rm ghcr.io/imranur-rahman/mttx:0.2.1-osv-2026-10-23 --osv-index-date
 ```
 
 ## What makes a rebuild give the same image
