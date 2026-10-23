@@ -876,19 +876,12 @@ a:focus {
   content: "\26A0\FE0E  ";
 }
 
-/* The status of the Job. A failed or refused Job shows in red. */
+/* The status of the Job while it waits or runs. An error shows in a notification. */
 .tryit-status {
   margin-top: 1rem;
   padding: 0.8rem 1rem;
   border-radius: var(--border-radius);
   background-color: var(--background-accent);
   color: var(--text-primary);
-}
-
-.tryit-status.is-error {
-  border-left: 4px solid #dc2626;
-  background-color: #fef2f2;
-  color: #b91c1c;
-  font-weight: 500;
 }
 

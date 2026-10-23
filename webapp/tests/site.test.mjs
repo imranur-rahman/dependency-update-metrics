@@ -70,3 +70,17 @@ test("each chart keeps its aria-label", () => {
     assert.match(canvas[0], /aria-label="[^"]*The table below holds the same values\."/);
   }
 });
+
+test("the page shows errors in in-page notifications with role=\"alert\", never window.alert()", () => {
+  const html = readFileSync(join(siteDir, "index.html"), "utf8");
+  for (const id of ["job-notice", "results-notice"]) {
+    assert.match(html, new RegExp(`<div[^>]*id="${id}"`), `the container ${id} is missing`);
+  }
+  const jsDir = join(siteDir, "static", "js");
+  const notification = readFileSync(join(jsDir, "notification.js"), "utf8");
+  assert.match(notification, /setAttribute\("role", "alert"\)/);
+  for (const name of ["webapp.js", "index.js", "comparison.js", "errorNotice.js", "notification.js"]) {
+    const code = readFileSync(join(jsDir, name), "utf8").replace(/\/\/.*$/gm, "");
+    assert.doesNotMatch(code, /\balert\s*\(/, `${name} calls alert()`);
+  }
+});
