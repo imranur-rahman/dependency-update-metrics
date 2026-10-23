@@ -25,6 +25,7 @@ import {
   submitErrorMessage,
   canAddPackage,
   packageLimitNote,
+  packageLimitNoteAction,
   withComparison,
   comparisonFromSearch,
   formFromComparison,
@@ -88,6 +89,16 @@ test("the form allows a new package field only while it has fewer than 5", () =>
 test("the form tells the user when the Comparison holds 5 packages", () => {
   assert.equal(packageLimitNote(["a", "b", "c", "d"]), "");
   assert.equal(packageLimitNote(["a", "b", "c", "d", "e"]), "A Comparison holds at most 5 packages.");
+});
+
+test("the package limit note shows only when the count changes to 5", () => {
+  const five = ["a", "b", "c", "d", "e"];
+  assert.equal(packageLimitNoteAction(4, five), "show");
+  assert.equal(packageLimitNoteAction(null, five), "show");
+  // A renumber at the same count (for example, after the form is filled) shows it not again.
+  assert.equal(packageLimitNoteAction(5, five), "keep");
+  assert.equal(packageLimitNoteAction(5, ["a", "b", "c", "d"]), "clear");
+  assert.equal(packageLimitNoteAction(null, ["a"]), "clear");
 });
 
 test("a Comparison survives the round trip through the page URL", () => {

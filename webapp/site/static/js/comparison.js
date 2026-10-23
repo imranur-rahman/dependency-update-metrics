@@ -135,6 +135,15 @@ export function packageLimitNote(packages) {
   return canAddPackage(packages) ? "" : `A Comparison holds at most ${MAX_PACKAGES} packages.`;
 }
 
+// Return what the page does with the package limit note after a change of the package
+// fields: "show" when the count changes to the limit, "keep" when the count stays at the
+// limit (so that the note does not show again on each renumber), and "clear" below the
+// limit. previousCount is the count before the change, or null on the first call.
+export function packageLimitNoteAction(previousCount, packages) {
+  if (canAddPackage(packages)) return "clear";
+  return previousCount === packages.length ? "keep" : "show";
+}
+
 // The modes of a Comparison (GLOSSARY.md). The Host checks the same names (Mode).
 export const MODES = ["window_summary", "per_release"];
 const WINDOW_SUMMARY = "window_summary";

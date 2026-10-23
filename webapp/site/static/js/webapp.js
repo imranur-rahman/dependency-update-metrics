@@ -15,6 +15,7 @@ import {
   botCheckError,
   canAddPackage,
   packageLimitNote,
+  packageLimitNoteAction,
   withComparison,
   comparisonFromSearch,
   formFromComparison,
@@ -132,17 +133,24 @@ function packageValues() {
   return packageInputs().map((input) => input.value);
 }
 
-// Give each package field its number, and allow a new field only below the limit.
+// The number of package fields at the last renumber, so that the limit note shows only when
+// the count changes to the limit.
+let packageCount = null;
+
+// Give each package field its number, and allow a new field only below the limit. The limit
+// note (role="alert") shows once, when the count changes to the limit.
 function renumberPackageFields() {
   packageInputs().forEach((input, index) => {
     input.id = `package-${index + 1}`;
     input.setAttribute("aria-label", `Package ${index + 1}`);
   });
-  addPackageButton.disabled = !canAddPackage(packageValues());
-  const limitNote = packageLimitNote(packageValues());
-  if (limitNote) {
-    showNotification(packageLimit, { message: limitNote }, { tone: "info", scroll: false });
-  } else {
+  const packages = packageValues();
+  addPackageButton.disabled = !canAddPackage(packages);
+  const action = packageLimitNoteAction(packageCount, packages);
+  packageCount = packages.length;
+  if (action === "show") {
+    showNotification(packageLimit, { message: packageLimitNote(packages) }, { tone: "info", scroll: false });
+  } else if (action === "clear") {
     clearNotification(packageLimit);
   }
 }
