@@ -22,7 +22,7 @@ import {
   barChartOptions,
   lineChartData,
   lineChartOptions,
-  CHART_HEIGHTS,
+  chartBoxStyle,
   chartHasValues,
   tableColumns,
   rowsToCsv,
@@ -73,9 +73,9 @@ const releaseCanvases = {
 const csvButton = document.getElementById("download-csv");
 const botCheckMessage = document.getElementById("bot-check-error");
 
-// Each chart box gets its compact height from comparison.js, which the Extension shares.
+// Each chart box gets the shared size from comparison.js, which the Extension shares.
 for (const box of document.querySelectorAll(".chart-box")) {
-  box.style.height = `${CHART_HEIGHTS[box.dataset.chart]}px`;
+  Object.assign(box.style, chartBoxStyle());
 }
 
 let chart = null;
@@ -294,7 +294,7 @@ function showChart(job) {
   }
   for (const dataset of data.datasets) {
     const color = SERIES_COLORS[dataset.label];
-    Object.assign(dataset, { backgroundColor: color, borderColor: color, borderRadius: 4 });
+    Object.assign(dataset, { backgroundColor: color, borderColor: color });
   }
   chartFigure.hidden = false;
   chart = new window.Chart(chartCanvas, { type: "bar", data, options: barChartOptions(job) });
@@ -325,9 +325,6 @@ function showReleaseCharts(job) {
       Object.assign(dataset, {
         borderColor: color,
         backgroundColor: color,
-        borderWidth: 2,
-        pointRadius: 3,
-        pointHoverRadius: 5,
         pointStyle: PACKAGE_POINT_STYLES[index % PACKAGE_POINT_STYLES.length],
         spanGaps: false,
       });
