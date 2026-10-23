@@ -6,6 +6,7 @@ import * as vscode from "vscode";
 import {
   OSV_PROMPT,
   consentFromAnswer,
+  osvIndexChanged,
   osvIndexText,
   shouldAskForOsvIndex,
   type OsvConsent,
@@ -16,12 +17,16 @@ import type { ToolCommand } from "./processToolRunner.ts";
 
 export const REBUILD_COMMAND = "mttx.rebuildOsvIndex";
 const CONSENT_KEY = "mttx.osvIndexConsent";
+// The last index state that the Tool gave for an output dir, in global state. A new session
+// starts with it, so that the cached values show before the Tool gives the state again.
+const stateKey = (outputDir: string) => `mttx.osvIndexState:${outputDir}`;
 
 // The command of the Tool after its setup (#29), or the message of a setup without a Tool.
 export type ReadyCommand = { ok: true; command: ToolCommand } | { ok: false; message: string };
 
 export class OsvIndex {
-  // Undefined until the Tool gives the state, or when the Tool cannot give it.
+  // The last state that the Tool gave for the output dir. Undefined before the first state,
+  // or when the Tool cannot give it.
   state: OsvIndexState | undefined;
   private building: Promise<void> | undefined;
   private readonly context: vscode.ExtensionContext;
@@ -43,6 +48,7 @@ export class OsvIndex {
     this.outputDir = outputDir;
     this.command = command;
     this.onDidChange = onDidChange;
+    this.state = this.saved();
   }
 
   // True unless the Tool says that there is no index. An unknown state shows the MTTR.
@@ -100,10 +106,20 @@ export class OsvIndex {
     }
   }
 
+  // Read the state from the Tool. `rebuilt` is also true when the Tool gives a new state,
+  // so that the hints drop the values of the old state.
   private async refresh(rebuilt = false): Promise<void> {
+    const outputDir = this.outputDir();
+    // The output dir can change with `mttx.cacheFolder`; its last state applies at once.
+    const before = (this.state = this.saved());
     // A setup without a Tool leaves the state unknown, so the prompt does not show.
     const ready = await this.command();
-    this.state = ready.ok ? await readOsvIndex(ready.command, this.outputDir()) : undefined;
-    this.onDidChange(rebuilt);
+    this.state = ready.ok ? await readOsvIndex(ready.command, outputDir) : undefined;
+    if (this.state) await this.context.globalState.update(stateKey(outputDir), this.state);
+    this.onDidChange(rebuilt || osvIndexChanged(before, this.state));
+  }
+
+  private saved(): OsvIndexState | undefined {
+    return this.context.globalState.get<OsvIndexState>(stateKey(this.outputDir()));
   }
 }

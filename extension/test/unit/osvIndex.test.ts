@@ -11,6 +11,7 @@ import {
   OSV_PROMPT,
   buildOsvArgs,
   consentFromAnswer,
+  osvIndexChanged,
   osvIndexDateArgs,
   osvIndexText,
   parseOsvIndexDate,
@@ -92,4 +93,17 @@ test("the progress shows the last line of the build output, also of a tqdm bar",
 test("the Tool arguments read and build the index in the Tool output dir", () => {
   assert.deepEqual(osvIndexDateArgs("/out"), ["--osv-index-date", "--output-dir", "/out"]);
   assert.deepEqual(buildOsvArgs("/out"), ["--build-osv", "--output-dir", "/out"]);
+});
+
+test("the index changed only when the Tool gives a known state that differs from the last known one", () => {
+  const built = { kind: "built", date: "2026-10-21" } as const;
+  const rebuilt = { kind: "built", date: "2026-10-23" } as const;
+  const missing = { kind: "missing" } as const;
+  // For example, a build by hand with --build-osv while VS Code was closed.
+  assert.equal(osvIndexChanged(built, rebuilt), true);
+  assert.equal(osvIndexChanged(missing, built), true);
+  assert.equal(osvIndexChanged(built, built), false);
+  // Without a last known state, the store skipped the cache, so no value is stale.
+  assert.equal(osvIndexChanged(undefined, built), false);
+  assert.equal(osvIndexChanged(built, undefined), false);
 });

@@ -4,7 +4,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 
 import type { ToolResult } from "../../src/core/display.ts";
-import { ResultCache, type CacheStorage } from "../../src/core/resultCache.ts";
+import { ResultCache, type CacheStorage, type ResultContext } from "../../src/core/resultCache.ts";
 import { ResultStore, type PackageKey } from "../../src/core/resultStore.ts";
 import type { ToolOutcome, ToolRequest, ToolRunner } from "../../src/core/tool.ts";
 
@@ -71,6 +71,13 @@ class MemoryStorage implements CacheStorage {
   }
 }
 
+// The window definition and the OSV index state of the settings in these tests.
+const CONTEXT: ResultContext = { window: { windowYears: 2, startDate: "", endDate: "" }, osvIndex: "2026-10-21" };
+const cached = (results: ResultCache, context: ResultContext = CONTEXT) => ({
+  results,
+  context: () => context,
+});
+
 const settle = () => new Promise((resolve) => setImmediate(resolve));
 
 test("the store runs at most the set number of Tool processes at a time", async () => {
@@ -94,9 +101,9 @@ test("the store runs at most the set number of Tool processes at a time", async 
 test("a fresh value from the cache shows at once, without a Tool run", async () => {
   const now = Date.parse("2026-10-22T09:00:00Z");
   const cache = new ResultCache(new MemoryStorage(), () => now);
-  await cache.set(makeRequest(key("express")), result("express"));
+  await cache.set(makeRequest(key("express")), CONTEXT, result("express"));
   const runner = new FakeRunner();
-  const store = new ResultStore({ runner, makeRequest, cache });
+  const store = new ResultStore({ runner, makeRequest, cache: cached(cache) });
 
   const state = store.get(key("express"));
   assert.deepEqual(state?.kind === "result" && state.result, result("express"));
@@ -107,12 +114,12 @@ test("a fresh value from the cache shows at once, without a Tool run", async () 
 test("a value from the cache carries the local date of the run that computed it", async () => {
   const savedAt = new Date(2026, 9, 21, 23, 30).getTime();
   const storage = new MemoryStorage();
-  await new ResultCache(storage, () => savedAt).set(makeRequest(key("express")), result("express"));
+  await new ResultCache(storage, () => savedAt).set(makeRequest(key("express")), CONTEXT, result("express"));
   const now = new Date(2026, 9, 22, 8, 0);
   const store = new ResultStore({
     runner: new FakeRunner(),
     makeRequest,
-    cache: new ResultCache(storage, () => now.getTime()),
+    cache: cached(new ResultCache(storage, () => now.getTime())),
     now: () => now,
   });
 
@@ -127,7 +134,7 @@ test("a result of a Tool run goes into the cache, so that the next session shows
   let now = Date.parse("2026-10-22T09:00:00Z");
   const storage = new MemoryStorage();
   const runner = new FakeRunner();
-  const first = new ResultStore({ runner, makeRequest, cache: new ResultCache(storage, () => now) });
+  const first = new ResultStore({ runner, makeRequest, cache: cached(new ResultCache(storage, () => now)) });
   first.get(key("express"));
   await settle();
   runner.finish("express");
@@ -135,7 +142,7 @@ test("a result of a Tool run goes into the cache, so that the next session shows
   first.dispose();
 
   now += 60 * 60 * 1000;
-  const second = new ResultStore({ runner, makeRequest, cache: new ResultCache(storage, () => now) });
+  const second = new ResultStore({ runner, makeRequest, cache: cached(new ResultCache(storage, () => now)) });
   assert.equal(second.get(key("express"))?.kind, "result");
   assert.deepEqual(runner.started, ["express"]);
 });
@@ -144,13 +151,13 @@ test("a failed run does not go into the cache, so that the next session runs the
   const now = Date.parse("2026-10-22T09:00:00Z");
   const storage = new MemoryStorage();
   const runner = new FakeRunner();
-  const first = new ResultStore({ runner, makeRequest, cache: new ResultCache(storage, () => now) });
+  const first = new ResultStore({ runner, makeRequest, cache: cached(new ResultCache(storage, () => now)) });
   first.get(key("express"));
   await settle();
   runner.finish("express", { kind: "failed", message: "spawn dependency-metrics ENOENT" });
   await settle();
 
-  const second = new ResultStore({ runner, makeRequest, cache: new ResultCache(storage, () => now) });
+  const second = new ResultStore({ runner, makeRequest, cache: cached(new ResultCache(storage, () => now)) });
   assert.equal(second.get(key("express"))?.kind, "computing");
 });
 
@@ -166,8 +173,8 @@ test("with automatic runs off, an unknown package gets no state and no Tool run"
 test("with automatic runs off, a fresh value from the cache still shows at once", async () => {
   const now = Date.parse("2026-10-22T09:00:00Z");
   const cache = new ResultCache(new MemoryStorage(), () => now);
-  await cache.set(makeRequest(key("express")), result("express"));
-  const store = new ResultStore({ runner: new FakeRunner(), makeRequest, cache, automaticRuns: false });
+  await cache.set(makeRequest(key("express")), CONTEXT, result("express"));
+  const store = new ResultStore({ runner: new FakeRunner(), makeRequest, cache: cached(cache), automaticRuns: false });
 
   assert.equal(store.get(key("express"))?.kind, "result");
 });
@@ -175,12 +182,12 @@ test("with automatic runs off, a fresh value from the cache still shows at once"
 test("analyze runs the Tool for the packages without a fresh value, and gives all outcomes", async () => {
   const now = Date.parse("2026-10-22T09:00:00Z");
   const cache = new ResultCache(new MemoryStorage(), () => now);
-  await cache.set(makeRequest(key("a")), result("a"));
+  await cache.set(makeRequest(key("a")), CONTEXT, result("a"));
   const runner = new FakeRunner();
   const store = new ResultStore({
     runner,
     makeRequest,
-    cache,
+    cache: cached(cache),
     automaticRuns: false,
     now: () => new Date(now),
   });
@@ -252,4 +259,67 @@ test("a value older than one day gets a new Tool run in a long session", async (
   assert.equal(store.get(key("express"))?.kind, "computing");
   await settle();
   assert.deepEqual(runner.started, ["express", "express"]);
+});
+
+// A run in another session: it finishes the run of the package and stops the store.
+async function runOnce(store: ResultStore, runner: FakeRunner, name: string): Promise<void> {
+  store.get(key(name));
+  await settle();
+  runner.finish(name);
+  await settle();
+  store.dispose();
+}
+
+test("a cached value stays fresh for 24 hours across local midnight, because the key holds the window definition", async () => {
+  const storage = new MemoryStorage();
+  const runner = new FakeRunner();
+  // The window ends today, so the computed end date changes at local midnight.
+  const requestOn = (endDate: string) => (k: PackageKey) => ({ ...makeRequest(k), endDate });
+  let now = new Date(2026, 9, 22, 23, 0);
+  const first = new ResultStore({
+    runner,
+    makeRequest: requestOn("2026-10-22"),
+    cache: cached(new ResultCache(storage, () => now.getTime())),
+    now: () => now,
+  });
+  await runOnce(first, runner, "express");
+
+  now = new Date(2026, 9, 23, 1, 0);
+  const second = new ResultStore({
+    runner,
+    makeRequest: requestOn("2026-10-23"),
+    cache: cached(new ResultCache(storage, () => now.getTime())),
+    now: () => now,
+  });
+  assert.equal(second.get(key("express"))?.kind, "result");
+  await settle();
+  assert.deepEqual(runner.started, ["express"]);
+});
+
+test("a value computed without the OSV index is not fresh after an index build", async () => {
+  const now = Date.parse("2026-10-22T09:00:00Z");
+  const storage = new MemoryStorage();
+  const runner = new FakeRunner();
+  const noIndex = { ...CONTEXT, osvIndex: "none" };
+  const first = new ResultStore({ runner, makeRequest, cache: cached(new ResultCache(storage, () => now), noIndex) });
+  await runOnce(first, runner, "express");
+
+  const built = { ...CONTEXT, osvIndex: "2026-10-22" };
+  const second = new ResultStore({ runner, makeRequest, cache: cached(new ResultCache(storage, () => now), built) });
+  assert.equal(second.get(key("express"))?.kind, "computing");
+  await settle();
+  assert.deepEqual(runner.started, ["express", "express"]);
+});
+
+test("while the OSV index state is unknown, the store neither reads nor writes the cache", async () => {
+  const now = Date.parse("2026-10-22T09:00:00Z");
+  const storage = new MemoryStorage();
+  const cache = new ResultCache(storage, () => now);
+  await cache.set(makeRequest(key("express")), CONTEXT, result("express"));
+  const runner = new FakeRunner();
+  const unknown = new ResultStore({ runner, makeRequest, cache: { results: cache, context: () => undefined } });
+
+  assert.equal(unknown.get(key("express"))?.kind, "computing");
+  await runOnce(unknown, runner, "left-pad");
+  assert.equal(cache.get(makeRequest(key("left-pad")), CONTEXT), undefined);
 });

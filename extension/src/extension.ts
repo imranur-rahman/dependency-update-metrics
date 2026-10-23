@@ -13,7 +13,7 @@ import { dependencyAt, hintLabel } from "./core/hintLabel.ts";
 import { parseManifest } from "./core/manifest.ts";
 import { ResultCache } from "./core/resultCache.ts";
 import { DEFAULT_PARALLEL_RUNS, ResultStore, type PackageKey } from "./core/resultStore.ts";
-import { cachePruneArgs, toolOutputDir, toolRequest } from "./core/settings.ts";
+import { cachePruneArgs, resultContext, toolOutputDir, toolRequest } from "./core/settings.ts";
 import type { ToolOutcome, ToolRequest, ToolRunner } from "./core/tool.ts";
 import { OsvIndex, REBUILD_COMMAND, type ReadyCommand } from "./osvIndex.ts";
 import {
@@ -172,7 +172,7 @@ export function activate(context: vscode.ExtensionContext): void {
     return new ResultStore({
       runner,
       makeRequest: (key) => toolRequest(key, parsed.settings, new Date(), outputDir),
-      cache,
+      cache: { results: cache, context: () => resultContext(parsed.settings, osvIndex.state) },
       ...runControl,
     });
   };

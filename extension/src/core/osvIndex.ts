@@ -44,6 +44,15 @@ export function consentFromAnswer(answer: string | undefined): OsvConsent {
   return answer === OSV_PROMPT.build ? "accepted" : "declined";
 }
 
+// Return true when the Tool gives a known index state that differs from the last known
+// state, for example after a build by hand with `--build-osv`. Then the values of the old
+// state are stale. An unknown state on either side changes nothing, because the result
+// store skips the cache while the state is unknown.
+export function osvIndexChanged(before: OsvIndexState | undefined, after: OsvIndexState | undefined): boolean {
+  if (before === undefined || after === undefined) return false;
+  return JSON.stringify(before) !== JSON.stringify(after);
+}
+
 // Return a short text about the index, for the rebuild command and the status.
 export function osvIndexText(index: OsvIndexState | undefined): string {
   if (index === undefined) return "OSV index date unknown";

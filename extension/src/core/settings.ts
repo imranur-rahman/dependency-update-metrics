@@ -2,6 +2,8 @@
 // request that they make. This module has no `vscode` import; src/settings.ts reads the
 // values from VS Code and passes them here.
 
+import type { OsvIndexState } from "./osvIndex.ts";
+import type { ResultContext } from "./resultCache.ts";
 import type { PackageKey } from "./resultStore.ts";
 import {
   DEFAULT_WINDOW_YEARS,
@@ -136,6 +138,18 @@ export function toolRequest(key: PackageKey, settings: Settings, today: Date, de
     halfLife: settings.halfLife,
     outputDir: toolOutputDir(settings, defaultDir),
     timeoutSeconds: settings.packageTimeoutSeconds,
+  };
+}
+
+// Return the context of a cached result: the window definition of the settings and the OSV
+// index state. An unknown index state gives undefined, so that the result store skips the
+// cache until the Tool gives the state.
+export function resultContext(settings: Settings, osvIndex: OsvIndexState | undefined): ResultContext | undefined {
+  if (osvIndex === undefined) return undefined;
+  const { windowYears, startDate, endDate } = settings;
+  return {
+    window: { windowYears, startDate, endDate },
+    osvIndex: osvIndex.kind === "built" ? osvIndex.date : "none",
   };
 }
 

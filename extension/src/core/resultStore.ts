@@ -4,7 +4,7 @@
 
 import type { DependencyState } from "./display.ts";
 import type { Ecosystem } from "./manifest.ts";
-import { FRESH_MS, type ResultCache } from "./resultCache.ts";
+import { FRESH_MS, type ResultCache, type ResultContext } from "./resultCache.ts";
 import type { ToolOutcome, ToolRequest, ToolRunner } from "./tool.ts";
 
 export interface PackageKey {
@@ -20,9 +20,10 @@ export interface ResultStoreOptions {
   makeRequest: (key: PackageKey) => ToolRequest;
   // The most Tool processes that run at a time (the setting `mttx.parallelRuns`).
   parallelRuns?: number;
-  // The cache that keeps the results across sessions. Without it, the store keeps the
-  // results only in memory.
-  cache?: ResultCache;
+  // The cache that keeps the results across sessions, and the context of a result now. A
+  // context of undefined (the OSV index state is not known yet) skips the cache. Without a
+  // cache, the store keeps the results only in memory.
+  cache?: { results: ResultCache; context: () => ResultContext | undefined };
   // The clock: for the age of a value, and for the date of a value that the hover shows.
   now?: () => Date;
   // false: `get` starts no Tool run, and only `analyze` does (the setting `mttx.automaticRuns`).
@@ -48,7 +49,7 @@ export class ResultStore {
   private readonly listeners = new Set<() => void>();
   private readonly runner: ToolRunner;
   private readonly makeRequest: (key: PackageKey) => ToolRequest;
-  private readonly cache: ResultCache | undefined;
+  private readonly cache: ResultStoreOptions["cache"];
   private readonly now: () => Date;
   private readonly abort = new AbortController();
   private readonly parallelRuns: number;
@@ -108,7 +109,8 @@ export class ResultStore {
     const id = idOf(key);
     const entry = this.entries.get(id);
     if (entry && (entry.run || this.now().getTime() < entry.freshUntil)) return entry;
-    const cached = this.cache?.get(this.makeRequest(key));
+    const context = this.cache?.context();
+    const cached = context && this.cache?.results.get(this.makeRequest(key), context);
     if (!cached) return undefined;
     const fresh: Entry = {
       state: {
@@ -126,6 +128,8 @@ export class ResultStore {
   private start(key: PackageKey): Entry {
     const id = idOf(key);
     const request = this.makeRequest(key);
+    // The context when the run starts: a build during the run gives the result no new date.
+    const context = this.cache?.context();
     const entry: Entry = { state: { kind: "computing" }, freshUntil: 0 };
     entry.run = new Promise<ToolOutcome>((resolve) => {
       this.waiting.push({
@@ -133,7 +137,7 @@ export class ResultStore {
           const outcome = await this.runner.run(request, this.abort.signal);
           resolve(outcome);
           if (this.abort.signal.aborted) return;
-          this.finish(id, request, outcome);
+          this.finish(id, request, context, outcome);
         },
         cancel: () => resolve({ kind: "failed", message: "the run stopped" }),
       });
@@ -146,13 +150,13 @@ export class ResultStore {
   // Keep the outcome for one day. Only a result without a package error goes into the cache,
   // so that the next session runs a failed package again.
   // A result carries the local date of the run, so that the hover can show it.
-  private finish(id: string, request: ToolRequest, outcome: ToolOutcome): void {
+  private finish(id: string, request: ToolRequest, context: ResultContext | undefined, outcome: ToolOutcome): void {
     const now = this.now();
     const state = outcome.kind === "result" ? { ...outcome, computedOn: localDate(now) } : outcome;
     this.entries.set(id, { state, freshUntil: now.getTime() + FRESH_MS });
-    if (outcome.kind === "result" && !outcome.result.error) {
+    if (outcome.kind === "result" && !outcome.result.error && context) {
       // A failed write loses only the cache entry, and the next session runs the Tool again.
-      this.cache?.set(request, outcome.result).catch(() => undefined);
+      this.cache?.results.set(request, context, outcome.result).catch(() => undefined);
     }
     for (const listener of this.listeners) listener();
   }

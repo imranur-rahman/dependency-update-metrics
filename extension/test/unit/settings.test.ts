@@ -3,7 +3,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-import { cachePruneArgs, parseSettings, toolRequest } from "../../src/core/settings.ts";
+import { cachePruneArgs, parseSettings, resultContext, toolRequest } from "../../src/core/settings.ts";
 import { toolArgs } from "../../src/core/tool.ts";
 
 const TODAY = new Date("2026-10-22T09:00:00");
@@ -116,4 +116,16 @@ test("a half-life without exponential weighting does not reach the Tool", () => 
   const args = argsFor({ weightingType: "linear", halfLife: 30 });
   assert.equal(args.includes("--half-life"), false);
   assert.deepEqual(args.slice(10, 12), ["--weighting-type", "linear"]);
+});
+
+test("the context of a cached result holds the window definition and the OSV index date", () => {
+  const parsed = parseSettings({ windowYears: 3, endDate: "2026-01-31" });
+  assert.ok(parsed.ok);
+  assert.deepEqual(resultContext(parsed.settings, { kind: "built", date: "2026-10-21" }), {
+    window: { windowYears: 3, startDate: "", endDate: "2026-01-31" },
+    osvIndex: "2026-10-21",
+  });
+  assert.equal(resultContext(parsed.settings, { kind: "missing" })?.osvIndex, "none");
+  // An unknown index state gives no context, so the store skips the cache.
+  assert.equal(resultContext(parsed.settings, undefined), undefined);
 });
