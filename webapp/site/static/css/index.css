@@ -885,3 +885,202 @@ a:focus {
   color: var(--text-primary);
 }
 
+
+/* "Use MTTX in Your Workflow": three stages in a row, and one stage under all of them. */
+.workflow-lead {
+  max-width: 46rem;
+  margin: 0 auto 1.5rem;
+  color: var(--text-secondary);
+}
+
+.pipeline {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: stretch;
+  margin-bottom: 1.25rem;
+}
+
+.pipeline-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 1rem 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background: var(--background-primary);
+  color: var(--text-primary);
+  font: inherit;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s, background-color 0.15s;
+}
+
+.pipeline-stage:hover {
+  border-color: var(--primary-color);
+}
+
+.pipeline-stage:focus-visible {
+  outline: 3px solid rgb(37 99 235 / 0.4);
+  outline-offset: 2px;
+}
+
+.pipeline-stage.is-active {
+  border-color: var(--primary-color);
+  background: rgb(37 99 235 / 0.06);
+  box-shadow: 0 0 0 1px var(--primary-color), var(--shadow-md);
+}
+
+.pipeline-stage small {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.pipeline-step {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.6rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--background-accent);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.5rem;
+}
+
+.pipeline-stage.is-active .pipeline-step {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.pipeline-icon {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.pipeline-arrow {
+  display: flex;
+  align-items: center;
+  color: var(--text-light);
+}
+
+.pipeline-foundation {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.75rem;
+  border-style: dashed;
+}
+
+.pipeline-foundation small {
+  text-align: left;
+}
+
+.pipeline-panel {
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  background: var(--background-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.pipeline-panel .column {
+  min-width: 0;
+}
+
+/* Long button labels wrap on a narrow screen (Bulma keeps a button on one line). */
+.pipeline-stage,
+.pipeline-panel .button {
+  white-space: normal;
+  height: auto;
+}
+
+.pipeline-panel pre.cli {
+  position: relative;
+  max-width: 100%;
+  padding: 1rem !important;
+  font-size: 0.8rem !important;
+}
+
+.workflow-steps {
+  margin: 0 0 1rem 1.25rem;
+}
+
+.install-card {
+  height: 100%;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+}
+
+.install-title {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.copy-button {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--background-primary);
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.copy-button:hover {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/* A sample pull request comment, drawn like a comment on GitHub. */
+.pr-comment {
+  margin-bottom: 0.5rem;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.pr-comment-header {
+  padding: 0.5rem 0.9rem;
+  border-bottom: 1px solid #d0d7de;
+  background: #f6f8fa;
+  font-size: 0.85rem;
+}
+
+.pr-comment-body {
+  padding: 0.9rem;
+  font-size: 0.85rem;
+}
+
+.pr-comment-title {
+  margin-bottom: 0.25rem !important;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+  .pipeline {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pipeline-arrow {
+    justify-content: center;
+    transform: rotate(90deg);
+  }
+
+  .pipeline-foundation {
+    flex-direction: column;
+  }
+
+  .pipeline-foundation small {
+    text-align: center;
+  }
+}
