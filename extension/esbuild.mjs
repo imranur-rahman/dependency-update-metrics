@@ -21,6 +21,20 @@ await esbuild.build({
   outfile: "dist/extension.js",
 });
 
+// The page code of the Comparison webview, with Chart.js and the Webapp comparison.js.
+await esbuild.build({
+  bundle: true,
+  format: "iife",
+  platform: "browser",
+  target: "es2022",
+  minify: production,
+  sourcemap: !production,
+  sourcesContent: false,
+  logLevel: "info",
+  entryPoints: ["src/webview/main.ts"],
+  outfile: "dist/webview.js",
+});
+
 if (!production) {
   await esbuild.build({
     ...common,

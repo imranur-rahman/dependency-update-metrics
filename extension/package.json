@@ -38,6 +38,11 @@
         "command": "mttx.openSettings",
         "title": "Open Settings",
         "category": "MTTX"
+      },
+      {
+        "command": "mttx.compare",
+        "title": "Compare packages",
+        "category": "MTTX"
       }
     ],
     "configuration": {

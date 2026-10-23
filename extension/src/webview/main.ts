@@ -5,6 +5,7 @@
 /// <reference lib="dom" />
 
 import Chart from "chart.js/auto";
+import type { ChartOptions } from "chart.js";
 
 import {
   barChartData,
@@ -92,7 +93,8 @@ function drawBarChart(job: ComparisonJob): string[] {
     const color = SERIES_COLORS[dataset.label];
     Object.assign(dataset, { backgroundColor: color, borderColor: color, borderRadius: 4 });
   }
-  charts.push(new Chart(chartCanvas("bar", CHART_HEIGHTS.bar), { type: "bar", data, options: barChartOptions(job) }));
+  const options = barChartOptions(job) as ChartOptions<"bar">;
+  charts.push(new Chart(chartCanvas("bar", CHART_HEIGHTS.bar), { type: "bar", data, options }));
   return ["bar"];
 }
 
@@ -116,7 +118,8 @@ function drawLineCharts(job: ComparisonJob): string[] {
       });
     });
     const canvas = chartCanvas(metric, CHART_HEIGHTS.line);
-    charts.push(new Chart(canvas, { type: "line", data, options: lineChartOptions(job) }));
+    const options = lineChartOptions(job) as ChartOptions<"line">;
+    charts.push(new Chart(canvas, { type: "line", data, options }));
   });
   return metrics;
 }
@@ -134,7 +137,7 @@ function chartCanvas(id: string, height: number): HTMLCanvasElement {
 
 // Add the result table, and return the text of its cells, the header row first.
 function drawTable(job: ComparisonJob): string[][] {
-  const columns: Array<[string, string]> = tableColumns(job.comparison.mode);
+  const columns = tableColumns(job.comparison.mode) as Array<[string, string]>;
   const rows: Array<Record<string, unknown>> =
     job.comparison.mode === "per_release" ? resultRows(job) : comparisonRows(job);
   const text = [columns.map(([, header]) => header), ...rows.map((row) => columns.map(([key]) => String(row[key])))];

@@ -5,6 +5,8 @@ import { join } from "node:path";
 
 import * as vscode from "vscode";
 
+import { compare } from "./comparisonPanel.ts";
+import { compareLink } from "./core/comparison.ts";
 import { hintText, hoverMarkdown } from "./core/display.ts";
 import { dependencyAt, hintLabel } from "./core/hintLabel.ts";
 import { parseManifest } from "./core/manifest.ts";
@@ -62,6 +64,8 @@ class HintProvider implements vscode.InlayHintsProvider, vscode.HoverProvider, v
     const dep = dependencyAt(deps, position.line, position.character);
     if (!dep) return undefined;
     const markdown = new vscode.MarkdownString(hoverMarkdown(this.store.get(dep), dep));
+    markdown.appendMarkdown(`\n\n${compareLink(dep)}`);
+    markdown.isTrusted = { enabledCommands: ["mttx.compare"] };
     return new vscode.Hover(markdown, document.lineAt(dep.line).range);
   }
 
@@ -117,6 +121,7 @@ export function activate(context: vscode.ExtensionContext): void {
     vscode.commands.registerCommand("mttx.openSettings", () =>
       vscode.commands.executeCommand("workbench.action.openSettings", "@ext:imranur-rahman.mttx"),
     ),
+    vscode.commands.registerCommand("mttx.compare", (args?: unknown) => compare(context.extensionUri, makeStore, args)),
   );
 }
 
