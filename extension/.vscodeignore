@@ -1,0 +1,18 @@
+# Files that `vsce package` leaves out of the .vsix. The esbuild bundle
+# dist/extension.js holds every runtime dependency, so the package needs no
+# node_modules (package with --no-dependencies). Check the contents with `npx vsce ls`.
+.vscode/**
+.vscode-test/**
+node_modules/**
+src/**
+test/**
+scripts/**
+out/**
+**/*.map
+**/*.ts
+.gitignore
+package-lock.json
+tsconfig.json
+esbuild.mjs
+.vscode-test.mjs
+*.vsix
