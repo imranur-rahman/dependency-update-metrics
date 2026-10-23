@@ -24,6 +24,14 @@ docker run --rm -v "$data:/data" --entrypoint sh "$tool_image" -c '
   fi'
 test -s "$data/requests_results.json"
 
+echo "== a native npm run works as a user that is not root (docker run --user)"
+# An own folder, because the root runs above leave files in $data that this user cannot write.
+user_data=$(mktemp -d)
+chmod 777 "$user_data"
+docker run --rm --user 65534:65534 -v "$user_data:/data" "$tool_image" --ecosystem npm --package express \
+  --start-date 2024-01-01 --end-date 2024-03-01 --json > "$user_data/express.json"
+grep -q '"status": "ok"' "$user_data/express.json"
+
 echo "== the plain image has no OSV index"
 test "$(docker run --rm --network none -v "$data:/data" "$tool_image" --osv-index-date)" \
   = '{"osv_index_date": null}'
