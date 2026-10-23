@@ -39,7 +39,7 @@ import {
   doneJobNotice,
   errorCell,
 } from "./errorNotice.js";
-import { showNotification, clearNotification } from "./notification.js";
+import { showNotification, clearNotification, scrollToElement } from "./notification.js";
 
 // Colors of the bar chart: slots 1 and 2 of the validated categorical palette
 // (blue, orange), so that the two series stay apart for color-blind readers.
@@ -132,8 +132,12 @@ function renumberPackageFields() {
     input.setAttribute("aria-label", `Package ${index + 1}`);
   });
   addPackageButton.disabled = !canAddPackage(packageValues());
-  packageLimit.textContent = packageLimitNote(packageValues());
-  packageLimit.hidden = !packageLimit.textContent;
+  const limitNote = packageLimitNote(packageValues());
+  if (limitNote) {
+    showNotification(packageLimit, { message: limitNote }, { tone: "info", scroll: false });
+  } else {
+    clearNotification(packageLimit);
+  }
 }
 
 function addPackageField(value = "") {
@@ -277,7 +281,11 @@ function showJob(job) {
   clearNotification(jobNotice);
   showStatus(describeJob(job));
   showProgress(progressOf(job));
-  if (job.state === "done") showResult(job);
+  if (job.state === "done") {
+    showResult(job);
+    // The results card holds the notice of a failed package, so one scroll shows both.
+    scrollToElement(resultsCard);
+  }
 }
 
 // Show the text of an error cell in red, with the next step under it (errorCell). A cell
@@ -408,7 +416,7 @@ function showResult(job) {
 function showPackageFailures(job) {
   const notice = job === null ? null : doneJobNotice(job);
   if (notice === null) clearNotification(resultsNotice);
-  else showNotification(resultsNotice, notice);
+  else showNotification(resultsNotice, notice, { scroll: false });
 }
 
 function downloadCsv() {
