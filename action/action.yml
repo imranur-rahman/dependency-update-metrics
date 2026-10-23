@@ -1,4 +1,4 @@
-name: MTTX
+name: MTTX Dependency Update Metrics
 description: MTTU and MTTR of npm, PyPI, and Cargo packages, and of the dependencies that a pull request adds
 author: Imranur Rahman
 branding:
