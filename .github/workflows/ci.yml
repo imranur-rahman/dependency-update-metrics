@@ -121,6 +121,19 @@ jobs:
       with:
         python-version: '3.11'
 
+    # Before the PyPI publish: a release tag of the Tool must name the version in
+    # pyproject.toml, so that a wrong tag publishes nothing.
+    - name: Check the release tag
+      if: github.event_name == 'release' && !startsWith(github.event.release.tag_name, 'extension-v') && !startsWith(github.event.release.tag_name, 'action-v')
+      env:
+        TAG: ${{ github.event.release.tag_name }}
+      run: |
+        version=$(python3 -c 'import tomllib; print(tomllib.load(open("pyproject.toml", "rb"))["project"]["version"])')
+        if [ "${TAG#v}" != "$version" ]; then
+          echo "::error::The release tag $TAG does not name the version $version in pyproject.toml"
+          exit 1
+        fi
+
     - name: Install build dependencies
       run: |
         python -m pip install --upgrade pip
@@ -206,10 +219,10 @@ jobs:
 
   # After the PyPI publish of a release, push two tags for amd64 and arm64:
   # <version> and latest (no OSV index), and <version>-osv-<YYYY-MM-DD> (index inside).
+  # It runs only when publish runs, and the build job already checked the tag.
   image-release:
     runs-on: ubuntu-latest
     needs: publish
-    if: github.event_name == 'release' && !startsWith(github.event.release.tag_name, 'extension-v') && !startsWith(github.event.release.tag_name, 'action-v')
     permissions:
       contents: read
       packages: write
@@ -221,16 +234,10 @@ jobs:
       with:
         submodules: true
 
-    - name: Read the version and the commits, and check the tag
+    - name: Read the version and the commits
       id: meta
-      env:
-        TAG: ${{ github.event.release.tag_name }}
       run: |
         version=$(python3 -c 'import tomllib; print(tomllib.load(open("pyproject.toml", "rb"))["project"]["version"])')
-        if [ "${TAG#v}" != "$version" ]; then
-          echo "::error::The release tag $TAG does not name the version $version in pyproject.toml"
-          exit 1
-        fi
         echo "version=$version" >> "$GITHUB_OUTPUT"
         echo "pip_commit=$(git -C vendor/pip rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
