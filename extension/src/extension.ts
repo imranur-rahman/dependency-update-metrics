@@ -12,9 +12,9 @@ import { hintText, hoverMarkdown, type HintContext } from "./core/display.ts";
 import { dependencyAt, hintLabel } from "./core/hintLabel.ts";
 import { parseManifest } from "./core/manifest.ts";
 import { ResultCache } from "./core/resultCache.ts";
-import { DEFAULT_PARALLEL_RUNS, ResultStore, type PackageKey } from "./core/resultStore.ts";
+import { InvalidSettingsStore, ResultStore, type PackageKey, type PackageStates } from "./core/resultStore.ts";
 import { cachePruneArgs, resultContext, toolOutputDir, toolRequest } from "./core/settings.ts";
-import type { ToolOutcome, ToolRequest, ToolRunner } from "./core/tool.ts";
+import type { ToolOutcome } from "./core/tool.ts";
 import { OsvIndex, REBUILD_COMMAND, type ReadyCommand } from "./osvIndex.ts";
 import {
   PYTHON_DOWNLOAD_URL,
@@ -26,7 +26,7 @@ import {
 } from "./core/toolEnvironment.ts";
 import { ProcessToolRunner, pruneToolCache, toolCommand, type ToolCommand } from "./processToolRunner.ts";
 import { nodeToolFiles, runProcess, venvToolCommand } from "./pythonProcess.ts";
-import { readSettings } from "./settings.ts";
+import { checkedSettings, readSettings } from "./settings.ts";
 
 // `scheme: "file"` skips untitled documents and Git diffs. A filter with only a pattern
 // matches any language, which the TOML files need, because VS Code has no TOML language. The
@@ -36,11 +36,11 @@ const MANIFESTS: vscode.DocumentSelector = [{ scheme: "file", pattern: MANIFEST_
 class HintProvider implements vscode.InlayHintsProvider, vscode.HoverProvider, vscode.Disposable {
   private readonly changed = new vscode.EventEmitter<void>();
   readonly onDidChangeInlayHints = this.changed.event;
-  private store: ResultStore;
-  private readonly makeStore: () => ResultStore;
+  private store: PackageStates;
+  private readonly makeStore: () => PackageStates;
   private readonly hintContext: () => HintContext;
 
-  constructor(makeStore: () => ResultStore, hintContext: () => HintContext) {
+  constructor(makeStore: () => PackageStates, hintContext: () => HintContext) {
     this.makeStore = makeStore;
     this.hintContext = hintContext;
     this.store = this.newStore();
@@ -115,7 +115,7 @@ class HintProvider implements vscode.InlayHintsProvider, vscode.HoverProvider, v
     this.changed.dispose();
   }
 
-  private newStore(): ResultStore {
+  private newStore(): PackageStates {
     const store = this.makeStore();
     store.onDidUpdate(() => this.changed.fire());
     return store;
@@ -129,9 +129,8 @@ export function activate(context: vscode.ExtensionContext): void {
   // The results persist across VS Code restarts in global state.
   const cache = new ResultCache(context.globalState);
 
-  // The Tool setup (#29): `mttx.toolPath`, or the venv in the global storage folder. A
-  // setup ends after `provider` exists, because prepareTool always waits at least once.
-  const toolPathSetting = () => vscode.workspace.getConfiguration("mttx").get<string>("toolPath", "");
+  // The Tool setup: `mttx.toolPath`, or the venv in the global storage folder. A setup ends
+  // after `provider` exists, because prepareTool always waits at least once.
   const venvDir = join(context.globalStorageUri.fsPath, "venv");
   const setups = new ToolSetupCache(async (toolPath) => {
     const setup = await prepareTool({
@@ -146,42 +145,40 @@ export function activate(context: vscode.ExtensionContext): void {
     void showSetupMessage(setup);
     return setup;
   });
-  // The command of the Tool after the setup, or the message of a setup without a Tool. The
-  // cache prune and the OSV index processes wait for it, the same way the Tool runs do.
+  // The command of the Tool after the setup, or the message of a setup without a Tool or of
+  // the settings check. The cache prune and the OSV index processes wait for it, the same
+  // way the Tool runs do.
   const readyCommand = async (): Promise<ReadyCommand> => {
-    const setup = await setups.get(toolPathSetting());
+    const parsed = readSettings();
+    if (!parsed.ok) return { ok: false, message: parsed.message };
+    const setup = await setups.get(parsed.settings.toolPath);
     if (setup.kind === "venv" || setup.kind === "toolPath") return { ok: true, command: setupCommand(setup) };
     return { ok: false, message: setup.message };
   };
 
-  const makeStore = () => {
-    const config = vscode.workspace.getConfiguration("mttx");
-    const runControl = {
-      parallelRuns: config.get<number>("parallelRuns", DEFAULT_PARALLEL_RUNS),
-      automaticRuns: config.get<boolean>("automaticRuns", true),
-    };
+  const makeStore = (): PackageStates => {
     const parsed = readSettings();
     if (!parsed.ok) {
-      // Each hint shows the message, and the store never starts the Tool.
+      // Each hint shows the message, and no Tool run starts.
       void vscode.window.showWarningMessage(`MTTX: ${parsed.message}`);
-      const failed: ToolRunner = { run: async () => ({ kind: "failed", message: parsed.message }) };
-      return new ResultStore({ runner: failed, makeRequest: () => ({}) as ToolRequest, ...runControl });
+      return new InvalidSettingsStore(parsed.message);
     }
-    const setup = setups.get(toolPathSetting());
-    const runner = new SetupToolRunner(setup, (ready) => new ProcessToolRunner(setupCommand(ready)));
+    const { settings } = parsed;
+    const setup = setups.get(settings.toolPath);
     return new ResultStore({
-      runner,
-      makeRequest: (key) => toolRequest(key, parsed.settings, new Date(), outputDir),
-      cache: { results: cache, context: () => resultContext(parsed.settings, osvIndex.state) },
-      ...runControl,
+      runner: new SetupToolRunner(setup, (ready) => new ProcessToolRunner(setupCommand(ready))),
+      makeRequest: (key) => toolRequest(key, settings, new Date(), outputDir),
+      cache: { results: cache, context: () => resultContext(settings, osvIndex.state) },
+      parallelRuns: settings.parallelRuns,
+      automaticRuns: settings.automaticRuns,
     });
   };
-  // The OSV index (#30) is in the Tool output dir. Without it, MTTR "needs the OSV index".
+  // The OSV index is in the Tool output dir. Without it, MTTR "needs the OSV index".
   const osvIndex = new OsvIndex(
     context,
     () => {
-      const parsed = readSettings();
-      return parsed.ok ? toolOutputDir(parsed.settings, outputDir) : outputDir;
+      const settings = checkedSettings();
+      return settings ? toolOutputDir(settings, outputDir) : outputDir;
     },
     readyCommand,
     (rebuilt) => (rebuilt ? provider.reset() : provider.redraw()),
@@ -192,10 +189,10 @@ export function activate(context: vscode.ExtensionContext): void {
   // The Tool prunes its cache only in a run of its own, so the Extension prunes it at the
   // start and after a change to the cache settings.
   const pruneCache = () => {
-    const parsed = readSettings();
-    if (!parsed.ok) return;
+    const settings = checkedSettings();
+    if (!settings) return;
     void readyCommand().then((ready) => {
-      if (ready.ok) return pruneToolCache(ready.command, cachePruneArgs(parsed.settings, outputDir));
+      if (ready.ok) return pruneToolCache(ready.command, cachePruneArgs(settings, outputDir));
     });
   };
   pruneCache();

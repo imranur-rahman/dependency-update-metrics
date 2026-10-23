@@ -5,7 +5,7 @@ import assert from "node:assert/strict";
 
 import type { ToolResult } from "../../src/core/display.ts";
 import { ResultCache, type CacheStorage, type ResultContext } from "../../src/core/resultCache.ts";
-import { ResultStore, type PackageKey } from "../../src/core/resultStore.ts";
+import { InvalidSettingsStore, ResultStore, type PackageKey } from "../../src/core/resultStore.ts";
 import type { ToolOutcome, ToolRequest, ToolRunner } from "../../src/core/tool.ts";
 
 // A Tool runner that finishes a run only when the test says so.
@@ -322,4 +322,15 @@ test("while the OSV index state is unknown, the store neither reads nor writes t
   assert.equal(unknown.get(key("express"))?.kind, "computing");
   await runOnce(unknown, runner, "left-pad");
   assert.equal(cache.get(makeRequest(key("left-pad")), CONTEXT), undefined);
+});
+
+test("with invalid settings, each package shows the message of the check, and no Tool run starts", async () => {
+  const message = "Exponential weighting needs mttx.halfLife from 1 to 3650 days.";
+  const store = new InvalidSettingsStore(message);
+
+  assert.deepEqual(store.get(key("express")), { kind: "failed", message });
+  assert.deepEqual(await store.analyze([key("a"), key("b")]), [
+    { kind: "failed", message },
+    { kind: "failed", message },
+  ]);
 });

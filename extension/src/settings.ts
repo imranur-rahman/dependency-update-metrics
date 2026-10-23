@@ -2,26 +2,20 @@
 // src/core/settings.ts, which has no `vscode` import.
 import * as vscode from "vscode";
 
-import { parseSettings, type ParsedSettings } from "./core/settings.ts";
+import { DEFAULT_SETTINGS, parseSettings, type ParsedSettings, type Settings } from "./core/settings.ts";
 
-// The settings that src/core/settings.ts checks. #32 and #29 read their own settings.
-const KEYS = [
-  "dataSource",
-  "windowYears",
-  "startDate",
-  "endDate",
-  "weightingType",
-  "halfLife",
-  "packageTimeoutSeconds",
-  "cacheFolder",
-  "cacheSizeLimitGb",
-] as const;
-
-// Read and check the settings that change a Tool run. Each view that runs the Tool (the
-// hints, the Compare view) calls this before it makes a request with toolRequest().
+// Read and check all `mttx.*` settings. Each part of the Extension that needs a setting
+// calls this, so that one check covers every setting.
 export function readSettings(): ParsedSettings {
   const config = vscode.workspace.getConfiguration("mttx");
-  const raw: Record<string, unknown> = {};
-  for (const key of KEYS) raw[key] = config.get(key);
+  const raw: Partial<Record<keyof Settings, unknown>> = {};
+  for (const key of Object.keys(DEFAULT_SETTINGS) as Array<keyof Settings>) raw[key] = config.get(key);
   return parseSettings(raw);
+}
+
+// Return the checked settings, or undefined when the check fails. A part that shows the
+// message of the check calls readSettings() instead.
+export function checkedSettings(): Settings | undefined {
+  const parsed = readSettings();
+  return parsed.ok ? parsed.settings : undefined;
 }

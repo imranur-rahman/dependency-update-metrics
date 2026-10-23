@@ -3,8 +3,20 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-import { cachePruneArgs, parseSettings, resultContext, toolRequest } from "../../src/core/settings.ts";
-import { toolArgs } from "../../src/core/tool.ts";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+
+import {
+  cachePruneArgs,
+  DATA_SOURCES,
+  DEFAULT_SETTINGS,
+  parseSettings,
+  resultContext,
+  SETTING_RANGES,
+  toolRequest,
+} from "../../src/core/settings.ts";
+import { toolArgs, WEIGHTING_TYPES } from "../../src/core/tool.ts";
+import { halfLifeError } from "../../../webapp/site/static/js/comparison.js";
 
 const TODAY = new Date("2026-10-22T09:00:00");
 const PACKAGE = { ecosystem: "npm" as const, name: "express" };
@@ -82,6 +94,9 @@ const INVALID: Array<[string, Record<string, unknown>, string]> = [
   ],
   ["a package timeout of 5 s", { packageTimeoutSeconds: 5 }, "mttx.packageTimeoutSeconds must be a whole number of 10 or more."],
   ["a negative cache size limit", { cacheSizeLimitGb: -1 }, "mttx.cacheSizeLimitGb must be a number of 0 or more."],
+  ["0 parallel runs", { parallelRuns: 0 }, "mttx.parallelRuns must be a whole number from 1 to 16."],
+  ["17 parallel runs", { parallelRuns: 17 }, "mttx.parallelRuns must be a whole number from 1 to 16."],
+  ["automatic runs that are not on or off", { automaticRuns: "yes" }, "mttx.automaticRuns must be true or false."],
 ];
 
 test("the default run stops after 600 s and keeps its cache in the default folder", () => {
@@ -128,4 +143,51 @@ test("the context of a cached result holds the window definition and the OSV ind
   assert.equal(resultContext(parsed.settings, { kind: "missing" })?.osvIndex, "none");
   // An unknown index state gives no context, so the store skips the cache.
   assert.equal(resultContext(parsed.settings, undefined), undefined);
+});
+
+test("the run control and the Tool path are checked settings with defaults", () => {
+  const parsed = parseSettings({});
+  assert.ok(parsed.ok);
+  assert.deepEqual(
+    { parallelRuns: parsed.settings.parallelRuns, automaticRuns: parsed.settings.automaticRuns, toolPath: parsed.settings.toolPath },
+    { parallelRuns: 2, automaticRuns: true, toolPath: "" },
+  );
+  const set = parseSettings({ parallelRuns: 4, automaticRuns: false, toolPath: " /opt/bin/dependency-metrics " });
+  assert.ok(set.ok);
+  assert.deepEqual(
+    { parallelRuns: set.settings.parallelRuns, automaticRuns: set.settings.automaticRuns, toolPath: set.settings.toolPath },
+    { parallelRuns: 4, automaticRuns: false, toolPath: "/opt/bin/dependency-metrics" },
+  );
+});
+
+// The Settings editor shows the defaults, the enums, and the ranges of package.json, and the
+// settings check uses the core constants, so the two must not drift apart.
+const PROPERTIES: Record<string, Record<string, unknown>> = JSON.parse(
+  readFileSync(join(import.meta.dirname, "..", "..", "package.json"), "utf8"),
+).contributes.configuration.properties;
+
+test("package.json contributes exactly the settings that the core module checks", () => {
+  assert.deepEqual(
+    Object.keys(PROPERTIES).map((key) => key.replace(/^mttx\./, "")).sort(),
+    Object.keys(DEFAULT_SETTINGS).sort(),
+  );
+});
+
+test("the defaults, the enums, and the ranges of package.json equal the core constants", () => {
+  for (const [key, property] of Object.entries(PROPERTIES)) {
+    const name = key.replace(/^mttx\./, "") as keyof typeof DEFAULT_SETTINGS;
+    assert.deepEqual(property.default, DEFAULT_SETTINGS[name], `default of ${key}`);
+    const range = SETTING_RANGES[name as keyof typeof SETTING_RANGES] as { minimum?: number; maximum?: number } | undefined;
+    assert.equal(property.minimum, range?.minimum, `minimum of ${key}`);
+    assert.equal(property.maximum, range?.maximum, `maximum of ${key}`);
+  }
+  assert.deepEqual(PROPERTIES["mttx.dataSource"].enum, [...DATA_SOURCES]);
+  assert.deepEqual(PROPERTIES["mttx.weightingType"].enum, [...WEIGHTING_TYPES]);
+});
+
+test("the half-life range equals the range of the Webapp comparison.js", () => {
+  const { minimum, maximum } = SETTING_RANGES.halfLife;
+  for (const [days, valid] of [[minimum - 0.5, false], [minimum, true], [maximum, true], [maximum + 1, false]] as const) {
+    assert.equal(halfLifeError("exponential", String(days)) === null, valid, `${days} days`);
+  }
 });

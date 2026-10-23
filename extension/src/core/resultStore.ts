@@ -5,14 +5,13 @@
 import type { DependencyState } from "./display.ts";
 import type { Ecosystem } from "./manifest.ts";
 import { FRESH_MS, type ResultCache, type ResultContext } from "./resultCache.ts";
+import { DEFAULT_SETTINGS } from "./settings.ts";
 import type { ToolOutcome, ToolRequest, ToolRunner } from "./tool.ts";
 
 export interface PackageKey {
   ecosystem: Ecosystem;
   name: string;
 }
-
-export const DEFAULT_PARALLEL_RUNS = 2;
 
 export interface ResultStoreOptions {
   runner: ToolRunner;
@@ -43,7 +42,40 @@ interface Entry {
   run?: Promise<ToolOutcome>;
 }
 
-export class ResultStore {
+// The states of the packages, and the runs that fill them. The hints and the Comparison read
+// the states through this interface.
+export interface PackageStates {
+  get(key: PackageKey): DependencyState | undefined;
+  analyze(keys: PackageKey[]): Promise<ToolOutcome[]>;
+  onDidUpdate(listener: () => void): () => void;
+  dispose(): void;
+}
+
+// The states while the settings check fails: each package shows the message of the check,
+// and no Tool run starts.
+export class InvalidSettingsStore implements PackageStates {
+  private readonly outcome: ToolOutcome;
+
+  constructor(message: string) {
+    this.outcome = { kind: "failed", message };
+  }
+
+  get(_key: PackageKey): DependencyState {
+    return this.outcome;
+  }
+
+  analyze(keys: PackageKey[]): Promise<ToolOutcome[]> {
+    return Promise.resolve(keys.map(() => this.outcome));
+  }
+
+  onDidUpdate(_listener: () => void): () => void {
+    return () => undefined;
+  }
+
+  dispose(): void {}
+}
+
+export class ResultStore implements PackageStates {
   private readonly entries = new Map<string, Entry>();
   private readonly waiting: QueuedRun[] = [];
   private readonly listeners = new Set<() => void>();
@@ -61,7 +93,7 @@ export class ResultStore {
     this.makeRequest = options.makeRequest;
     this.cache = options.cache;
     this.now = options.now ?? (() => new Date());
-    this.parallelRuns = Math.max(1, Math.floor(options.parallelRuns ?? DEFAULT_PARALLEL_RUNS));
+    this.parallelRuns = Math.max(1, Math.floor(options.parallelRuns ?? DEFAULT_SETTINGS.parallelRuns));
     this.automaticRuns = options.automaticRuns ?? true;
   }
 

@@ -1,7 +1,8 @@
-// The `mttx.*` settings as plain values: their check, the analysis window, and the Tool
-// request that they make. This module has no `vscode` import; src/settings.ts reads the
-// values from VS Code and passes them here.
+// The `mttx.*` settings as plain values: their defaults and ranges, their check, the
+// analysis window, and the Tool request that they make. This module has no `vscode` import;
+// src/settings.ts reads the values from VS Code and passes them here.
 
+import { halfLifeError } from "../../../webapp/site/static/js/comparison.js";
 import type { OsvIndexState } from "./osvIndex.ts";
 import type { ResultContext } from "./resultCache.ts";
 import type { PackageKey } from "./resultStore.ts";
@@ -14,19 +15,10 @@ import {
   type WeightingType,
 } from "./tool.ts";
 
-const DATA_SOURCES: readonly DataSource[] = ["depsdev", "native"];
+export const DATA_SOURCES: readonly DataSource[] = ["depsdev", "native"];
 
-// Exponential weighting needs a half-life in this range of days. The Webapp and the Host
-// check the same rule (webapp/site/static/js/comparison.js).
-const MIN_HALF_LIFE_DAYS = 1;
-const MAX_HALF_LIFE_DAYS = 3650;
-
-const DEFAULT_PACKAGE_TIMEOUT_SECONDS = 600;
-const MIN_PACKAGE_TIMEOUT_SECONDS = 10;
-const DEFAULT_CACHE_SIZE_LIMIT_GB = 5;
-
-// The checked settings that change a Tool run. An empty startDate, endDate, or cacheFolder
-// means "not set".
+// The checked `mttx.*` settings. An empty startDate, endDate, cacheFolder, or toolPath means
+// "not set".
 export interface Settings {
   dataSource: DataSource;
   windowYears: number;
@@ -37,30 +29,62 @@ export interface Settings {
   packageTimeoutSeconds: number;
   cacheFolder: string;
   cacheSizeLimitGb: number;
+  toolPath: string;
+  parallelRuns: number;
+  automaticRuns: boolean;
 }
+
+// The default of each setting. package.json repeats them for the Settings editor, and a unit
+// test checks that both hold the same values.
+export const DEFAULT_SETTINGS: Readonly<Settings> = {
+  dataSource: "depsdev",
+  windowYears: DEFAULT_WINDOW_YEARS,
+  startDate: "",
+  endDate: "",
+  weightingType: "disable",
+  halfLife: null,
+  packageTimeoutSeconds: 600,
+  cacheFolder: "",
+  cacheSizeLimitGb: 5,
+  toolPath: "",
+  parallelRuns: 2,
+  automaticRuns: true,
+};
+
+// The ranges of the number settings. package.json repeats them, and a unit test checks that
+// both hold the same values. The half-life range is the range of `halfLifeError` in the
+// Webapp comparison.js, which the check uses; a unit test pins it too.
+export const SETTING_RANGES = {
+  windowYears: { minimum: 1 },
+  halfLife: { minimum: 1, maximum: 3650 },
+  packageTimeoutSeconds: { minimum: 10 },
+  cacheSizeLimitGb: { minimum: 0 },
+  parallelRuns: { minimum: 1, maximum: 16 },
+} as const;
 
 export type ParsedSettings = { ok: true; settings: Settings } | { ok: false; message: string };
 
 // Check the raw values of the `mttx.*` settings (keys without the prefix). A missing value
 // gets its default.
-export function parseSettings(raw: Record<string, unknown>): ParsedSettings {
-  const dataSource = raw.dataSource ?? "depsdev";
+export function parseSettings(raw: Partial<Record<keyof Settings, unknown>>): ParsedSettings {
+  const value = <K extends keyof Settings>(key: K): unknown => raw[key] ?? DEFAULT_SETTINGS[key];
+  const dataSource = value("dataSource");
   if (!DATA_SOURCES.includes(dataSource as DataSource)) {
     return invalid(`mttx.dataSource "${dataSource}" is not one of ${DATA_SOURCES.join(", ")}.`);
   }
-  const weightingType = raw.weightingType ?? "disable";
+  const weightingType = value("weightingType");
   if (!WEIGHTING_TYPES.includes(weightingType as WeightingType)) {
     return invalid(`mttx.weightingType "${weightingType}" is not one of ${WEIGHTING_TYPES.join(", ")}.`);
   }
-  const windowYears = raw.windowYears ?? DEFAULT_WINDOW_YEARS;
-  if (!Number.isInteger(windowYears) || (windowYears as number) < 1) {
-    return invalid("mttx.windowYears must be a whole number of 1 or more.");
+  const windowYears = value("windowYears");
+  if (!isWholeNumber(windowYears, SETTING_RANGES.windowYears)) {
+    return invalid(`mttx.windowYears must be a whole number of ${SETTING_RANGES.windowYears.minimum} or more.`);
   }
-  const startDate = String(raw.startDate ?? "").trim();
-  const endDate = String(raw.endDate ?? "").trim();
-  for (const [key, value] of [["startDate", startDate], ["endDate", endDate]]) {
-    if (value !== "" && !isDate(value)) {
-      return invalid(`mttx.${key} "${value}" is not a date in the form YYYY-MM-DD.`);
+  const startDate = String(value("startDate")).trim();
+  const endDate = String(value("endDate")).trim();
+  for (const [key, date] of [["startDate", startDate], ["endDate", endDate]]) {
+    if (date !== "" && !isDate(date)) {
+      return invalid(`mttx.${key} "${date}" is not a date in the form YYYY-MM-DD.`);
     }
   }
   if (startDate !== "" && endDate !== "" && startDate >= endDate) {
@@ -69,20 +93,27 @@ export function parseSettings(raw: Record<string, unknown>): ParsedSettings {
   let halfLife: number | null = null;
   if (weightingType === "exponential") {
     halfLife = raw.halfLife as number;
-    if (typeof halfLife !== "number" || !(halfLife >= MIN_HALF_LIFE_DAYS && halfLife <= MAX_HALF_LIFE_DAYS)) {
-      return invalid(
-        `Exponential weighting needs mttx.halfLife from ${MIN_HALF_LIFE_DAYS} to ${MAX_HALF_LIFE_DAYS} days.`,
-      );
+    if (typeof halfLife !== "number" || halfLifeError(weightingType, String(halfLife)) !== null) {
+      const { minimum, maximum } = SETTING_RANGES.halfLife;
+      return invalid(`Exponential weighting needs mttx.halfLife from ${minimum} to ${maximum} days.`);
     }
   }
-  const packageTimeoutSeconds = raw.packageTimeoutSeconds ?? DEFAULT_PACKAGE_TIMEOUT_SECONDS;
-  if (!Number.isInteger(packageTimeoutSeconds) || (packageTimeoutSeconds as number) < MIN_PACKAGE_TIMEOUT_SECONDS) {
-    return invalid(`mttx.packageTimeoutSeconds must be a whole number of ${MIN_PACKAGE_TIMEOUT_SECONDS} or more.`);
+  const packageTimeoutSeconds = value("packageTimeoutSeconds");
+  if (!isWholeNumber(packageTimeoutSeconds, SETTING_RANGES.packageTimeoutSeconds)) {
+    const { minimum } = SETTING_RANGES.packageTimeoutSeconds;
+    return invalid(`mttx.packageTimeoutSeconds must be a whole number of ${minimum} or more.`);
   }
-  const cacheSizeLimitGb = raw.cacheSizeLimitGb ?? DEFAULT_CACHE_SIZE_LIMIT_GB;
-  if (typeof cacheSizeLimitGb !== "number" || !(cacheSizeLimitGb >= 0)) {
-    return invalid("mttx.cacheSizeLimitGb must be a number of 0 or more.");
+  const cacheSizeLimitGb = value("cacheSizeLimitGb");
+  if (typeof cacheSizeLimitGb !== "number" || !(cacheSizeLimitGb >= SETTING_RANGES.cacheSizeLimitGb.minimum)) {
+    return invalid(`mttx.cacheSizeLimitGb must be a number of ${SETTING_RANGES.cacheSizeLimitGb.minimum} or more.`);
   }
+  const parallelRuns = value("parallelRuns");
+  if (!isWholeNumber(parallelRuns, SETTING_RANGES.parallelRuns)) {
+    const { minimum, maximum } = SETTING_RANGES.parallelRuns;
+    return invalid(`mttx.parallelRuns must be a whole number from ${minimum} to ${maximum}.`);
+  }
+  const automaticRuns = value("automaticRuns");
+  if (typeof automaticRuns !== "boolean") return invalid("mttx.automaticRuns must be true or false.");
   return {
     ok: true,
     settings: {
@@ -93,10 +124,18 @@ export function parseSettings(raw: Record<string, unknown>): ParsedSettings {
       weightingType: weightingType as WeightingType,
       halfLife,
       packageTimeoutSeconds: packageTimeoutSeconds as number,
-      cacheFolder: String(raw.cacheFolder ?? "").trim(),
+      cacheFolder: String(value("cacheFolder")).trim(),
       cacheSizeLimitGb,
+      toolPath: String(value("toolPath")).trim(),
+      parallelRuns: parallelRuns as number,
+      automaticRuns,
     },
   };
+}
+
+// True for a whole number in the range.
+function isWholeNumber(value: unknown, range: { minimum: number; maximum?: number }): boolean {
+  return Number.isInteger(value) && (value as number) >= range.minimum && (value as number) <= (range.maximum ?? Infinity);
 }
 
 // Return the `--output-dir` of the Tool: the cache folder of the settings, or the default
