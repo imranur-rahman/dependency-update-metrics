@@ -144,7 +144,7 @@ function pageHtml(webview: vscode.Webview, script: vscode.Uri): string {
 <style nonce="${nonce}">
   body { color: var(--vscode-foreground); background: var(--vscode-editor-background); font-family: var(--vscode-font-family); font-size: var(--vscode-font-size); padding: 0 16px 16px; }
   .note, .status { color: var(--vscode-descriptionForeground); }
-  .chart-box { position: relative; max-width: 720px; margin: 12px 0; }
+  .chart-box { margin-top: 12px; margin-bottom: 12px; }
   table.results { border-collapse: collapse; margin-top: 12px; }
   table.results th, table.results td { border-bottom: 1px solid var(--vscode-panel-border); padding: 4px 12px 4px 0; text-align: left; vertical-align: top; }
 </style>

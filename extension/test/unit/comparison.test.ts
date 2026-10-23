@@ -116,6 +116,17 @@ test("the webview charts use the colors of the Webapp charts", () => {
   assert.deepEqual(PACKAGE_POINT_STYLES, ["circle", "rect", "triangle", "rectRot", "crossRot"]);
 });
 
+test("the webview chart boxes take the shared size of the Webapp charts", () => {
+  const source = (...path: string[]) => readFileSync(join(import.meta.dirname, "..", "..", "src", ...path), "utf8");
+  const webview = source("webview", "main.ts");
+  assert.match(webview, /Object\.assign\(box\.style, chartBoxStyle\(\)\);/);
+  assert.doesNotMatch(webview, /style\.(height|width|maxWidth) =/);
+  // The style element of the panel sets no size, so that chartBoxStyle is the one source.
+  const boxRule = /\.chart-box \{([^}]*)\}/.exec(source("comparisonPanel.ts"));
+  assert.ok(boxRule, "the panel style has no .chart-box rule");
+  assert.doesNotMatch(boxRule[1], /width|height/);
+});
+
 test("the hover link starts a Comparison with the package of the dependency", () => {
   const link = compareLink({ ecosystem: "npm", name: "@types/node" });
   const match = /^\[Compare with alternatives\]\(command:mttx\.compare\?(.+)\)$/.exec(link);

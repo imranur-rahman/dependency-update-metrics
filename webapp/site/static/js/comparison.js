@@ -378,9 +378,45 @@ export function barChartAxisLabel(job) {
   return axisLabel(job.comparison.weighting_type);
 }
 
-// The heights of the charts in CSS pixels. The charts are compact, so that the charts and
-// the result table fit on one screen. The page code sets the height of each chart box.
-export const CHART_HEIGHTS = { bar: 200, line: 220 };
+// The one size of every chart in CSS pixels, in the Webapp and in the Extension webview.
+// The charts sit in one column, so a wide window does not stretch them too far, and they
+// stay short, so that a chart and the start of the result table fit on one screen.
+export const CHART_SIZE = { maxWidth: 720, height: 220 };
+
+// Return the inline style of a chart box (CSSOM property names). The page code of the
+// Webapp and of the webview assigns it to each box, so both places use CHART_SIZE. The box
+// is centered and shrinks on a narrow screen. Each call returns a new object.
+export function chartBoxStyle() {
+  return {
+    position: "relative",
+    width: "100%",
+    maxWidth: `${CHART_SIZE.maxWidth}px`,
+    height: `${CHART_SIZE.height}px`,
+    marginLeft: "auto",
+    marginRight: "auto",
+  };
+}
+
+// The styles of the chart elements: thin lines, small points, and bars with round corners.
+// The dataset colors come from the page code. Each call returns a new object, because
+// Chart.js keeps the options of each chart.
+function chartElements() {
+  return {
+    line: { borderWidth: 1.5 },
+    point: { radius: 2, hoverRadius: 4 },
+    bar: { borderRadius: 3 },
+  };
+}
+
+// The bar thickness is a dataset option in Chart.js, so it goes in options.datasets. The
+// bars stay narrow when the chart is wide and the Job has few packages.
+const MAX_BAR_THICKNESS = 32;
+
+// A light y-axis grid. A gray with a low alpha shows on a light and on a dark background,
+// so the Webapp and the webview themes use the same value.
+function lightGrid() {
+  return { color: "rgba(128, 128, 128, 0.15)" };
+}
 
 // The legend of each chart: small color boxes and small text, so that the legend takes one
 // short line. The text stays at 12 px, so that it stays readable. Each call returns a new
@@ -407,6 +443,8 @@ export function barChartOptions(job) {
   return {
     maintainAspectRatio: false,
     interaction: { mode: "index", intersect: false },
+    elements: chartElements(),
+    datasets: { bar: { maxBarThickness: MAX_BAR_THICKNESS } },
     plugins: {
       legend: compactLegend(),
       tooltip: { callbacks: { label: (item) => tooltipValue(item.dataset.label, item.raw) } },
@@ -416,14 +454,15 @@ export function barChartOptions(job) {
       y: {
         beginAtZero: true,
         ticks: { maxTicksLimit: MAX_Y_TICKS },
+        grid: lightGrid(),
         title: { display: true, text: barChartAxisLabel(job) },
       },
     },
   };
 }
 
-// The most labels on the x-axis of a line chart. Four dates fit in a half-width chart.
-const MAX_X_TICKS = 4;
+// The most labels on the x-axis of a line chart. Six dates fit in a chart of full width.
+const MAX_X_TICKS = 6;
 
 // Return a release date of the x-axis (milliseconds, UTC) as "YYYY-MM-DD".
 function formatReleaseDate(ms) {
@@ -437,6 +476,7 @@ export function lineChartOptions(job) {
   return {
     maintainAspectRatio: false,
     interaction: { mode: "nearest", intersect: false },
+    elements: chartElements(),
     plugins: {
       // Chart.js draws a point style with a diameter of about 1.4 times boxHeight.
       legend: compactLegend({ usePointStyle: true, boxHeight: 8 }),
@@ -458,6 +498,7 @@ export function lineChartOptions(job) {
       y: {
         beginAtZero: true,
         ticks: { maxTicksLimit: MAX_Y_TICKS },
+        grid: lightGrid(),
         title: { display: true, text: lineChartAxisLabel(job) },
       },
     },
