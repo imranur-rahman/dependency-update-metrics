@@ -1,0 +1,12 @@
+{
+  "name": "mttx-fixture-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "express": "^4.18.0",
+    "left-pad": "1.3.0"
+  },
+  "devDependencies": {
+    "nope": "1.0.0"
+  }
+}

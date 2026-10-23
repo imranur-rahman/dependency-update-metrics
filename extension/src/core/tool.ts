@@ -1,0 +1,89 @@
+// The Tool runner interface, the command-line arguments of one Tool run, and the rules that
+// turn the Tool output into a dependency state. This module has no `vscode` import.
+
+import type { Ecosystem } from "./manifest.ts";
+import type { DependencyState, ToolResult } from "./display.ts";
+
+// One Tool run: one package of one ecosystem over a window from the start date to today.
+// #31 adds the settings (data source, window, weighting) to this request.
+export interface ToolRequest {
+  ecosystem: Ecosystem;
+  packageName: string;
+  startDate: string;
+  outputDir: string;
+}
+
+// The end state of one Tool run.
+export type ToolOutcome = Exclude<DependencyState, { kind: "computing" }>;
+
+// Runs the Tool for one package. The real runner spawns the Tool process
+// (src/processToolRunner.ts); #29 gives it the managed venv, and #32 puts a queue and a
+// cache in front of it.
+export interface ToolRunner {
+  run(request: ToolRequest, signal?: AbortSignal): Promise<ToolOutcome>;
+}
+
+// The output of one finished Tool process.
+export interface ToolOutput {
+  stdout: string;
+  stderr: string;
+  exitCode: number | null;
+}
+
+export const DEFAULT_WINDOW_YEARS = 2;
+
+// Return the arguments of `dependency-metrics` for one request. The Extension always uses
+// deps.dev (ADR 0003) and the JSON output.
+export function toolArgs(request: ToolRequest): string[] {
+  return [
+    "--ecosystem",
+    request.ecosystem,
+    "--package",
+    request.packageName,
+    "--json",
+    "--depsdev",
+    "--start-date",
+    request.startDate,
+    "--output-dir",
+    request.outputDir,
+  ];
+}
+
+// Return the start date (YYYY-MM-DD) of a window that ends today, in the local time zone.
+// A 29 February that does not exist in the start year becomes 28 February.
+export function windowStartDate(today: Date, years = DEFAULT_WINDOW_YEARS): string {
+  const year = today.getFullYear() - years;
+  const month = today.getMonth();
+  const lastDay = new Date(year, month + 1, 0).getDate();
+  const day = Math.min(today.getDate(), lastDay);
+  return `${year}-${pad(month + 1)}-${pad(day)}`;
+}
+
+function pad(value: number): string {
+  return String(value).padStart(2, "0");
+}
+
+// Turn the output of a finished Tool process into an outcome. The Tool prints its JSON
+// result also when the package fails (exit code 1), so stdout counts before the exit code.
+export function parseToolOutput(output: ToolOutput): ToolOutcome {
+  const result = lastJsonObject(output.stdout);
+  if (result) return { kind: "result", result };
+  const lastLine = output.stderr.trim().split(/\r?\n/).pop()?.trim();
+  return {
+    kind: "failed",
+    message: lastLine || `the Tool printed no result (exit code ${output.exitCode})`,
+  };
+}
+
+function lastJsonObject(stdout: string): ToolResult | undefined {
+  const lines = stdout.trim().split(/\r?\n/).reverse();
+  for (const line of lines) {
+    if (!line.startsWith("{")) continue;
+    try {
+      return JSON.parse(line) as ToolResult;
+    } catch {
+      return undefined;
+    }
+  }
+  return undefined;
+}

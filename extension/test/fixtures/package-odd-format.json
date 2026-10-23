@@ -1,0 +1,16 @@
+{
+  "name": "odd",
+  "config": {
+    "dependencies": { "not-a-dependency": "1" }
+  },
+  "scripts": { "test": "echo \"{\\\"dependencies\\\": 1}\"" },
+  "overrides": { "foo": { "bar": "1" } },
+  "dependencies":
+  {     "a-b"   :   "1.0.0",
+    "c\"d": "2"
+  },
+  "workspaces": ["packages/*"],
+  "devDependencies": {"nested": {"x": "1"},
+    "late": "1"
+  }
+}
