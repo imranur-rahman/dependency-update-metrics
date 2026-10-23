@@ -2,6 +2,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import pandas as pd
+import pytest
 
 from dependency_metrics.analyzer import DependencyAnalyzer
 from dependency_metrics.osv_service import OSVService
@@ -477,3 +478,30 @@ def test_osv_index_date_is_none_for_index_from_old_build(tmp_path: Path):
     )
 
     assert OSVBuilder(tmp_path).index_date() is None
+
+
+@pytest.mark.parametrize("built", [False, True])
+def test_cli_osv_index_date_prints_the_date_as_json(tmp_path: Path, capsys, built):
+    """The Extension reads the index date with `--osv-index-date`, so that the Tool stays
+    the single source of the index location and its date. No index prints null."""
+    import json
+    from unittest.mock import patch
+
+    from dependency_metrics.cli import main
+    from dependency_metrics.osv_builder import OSVBuilder
+
+    if built:
+        OSVBuilder(
+            tmp_path,
+            fetch_zip=_fixture_fetcher([]),
+            clock=lambda: datetime(2026, 10, 21, 23, 30, tzinfo=timezone.utc),
+        ).build_database()
+
+    with patch("sys.argv", ["cli", "--osv-index-date", "--output-dir", str(tmp_path)]):
+        with pytest.raises(SystemExit) as exc_info:
+            main()
+
+    assert exc_info.value.code == 0
+    out = capsys.readouterr().out
+    assert out.endswith("\n")
+    assert json.loads(out) == {"osv_index_date": "2026-10-21" if built else None}

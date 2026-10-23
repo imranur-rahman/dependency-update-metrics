@@ -820,6 +820,15 @@ def main():
     )
 
     parser.add_argument(
+        "--osv-index-date",
+        action="store_true",
+        help=(
+            'Print {"osv_index_date": "YYYY-MM-DD"} with the build date of the OSV index '
+            "in --output-dir (null when there is no index), and stop."
+        ),
+    )
+
+    parser.add_argument(
         "--cache-stats",
         action="store_true",
         help="Show the rows and the size of each namespace in <output-dir>/cache/cache.db",
@@ -966,6 +975,12 @@ def main():
     # Create output directory
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
+
+    if args.osv_index_date:
+        # The Extension reads the date here, so that the Tool alone knows the index file.
+        index_date = OSVBuilder(output_dir).index_date()
+        print(json.dumps({"osv_index_date": index_date.isoformat() if index_date else None}))
+        sys.exit(0)
 
     # Configure logging — explicit handlers with propagate=False to prevent double-printing
     _dm_logger = logging.getLogger("dependency_metrics")

@@ -116,6 +116,7 @@ print(f"Average TTR: {results['ttr']:.2f} days")
 - `--weighting-type`: Weighting method (`linear`, `exponential`, `inverse`, `disable`) [Default: disable]
 - `--half-life`: Half-life in days (required for exponential weighting)
 - `--build-osv`: Build or rebuild the OSV vulnerability database. It downloads the npm, PyPI, and crates.io OSV zips (about 260 MB in total). Without `--package`, it only rebuilds the database.
+- `--osv-index-date`: Print the build date of the OSV database as JSON (`null` when there is no database), then exit
 - `--cache-stats`: Show the rows and the size of each namespace in the resolver cache (`<output-dir>/cache/cache.db`), then exit
 - `--cache-prune-gb N`: Remove the least recently used cache rows until the cache holds less than N GB of data, then exit. The prune does not run `VACUUM`, so the file does not shrink; SQLite reuses the freed pages
 - `--cache-clear`: Remove all cache rows, then exit
