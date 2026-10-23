@@ -15,7 +15,8 @@ The release job writes the digest of each tag to its job summary. Cite the diges
 
 - The entrypoint is the `dependency-metrics` CLI. With no arguments, the image prints `--help`.
 - The output dir is `/data` (`DEPENDENCY_METRICS_OUTPUT_DIR=/data`), so `-v "$PWD:/data"` keeps the results and the cache. `--output-dir` still wins.
-- The `-osv-` tag keeps its index at `/opt/mttx/osv/osv_database.parquet` (`DEPENDENCY_METRICS_OSV_INDEX`), so a mount on `/data` does not hide it. The Tool reads and builds the index at that path, also with `--build-osv`. For a fresh index that you keep in `/data`, use the plain tag.
+- The `-osv-` tag keeps its index at `/opt/mttx/osv/osv_database.parquet` (`DEPENDENCY_METRICS_OSV_INDEX`), so a mount on `/data` does not hide it. The Tool reads and builds the index at that path, also with `--build-osv`.
+- Do not run `--build-osv` on the `-osv-` tag. `/opt/mttx/osv` belongs to root, so the build fails with `--user`. Without `--user`, the new index stays in the container, and `--rm` removes it. For a fresh index, use the plain tag, which builds the index in `/data`. To build it with an `-osv-` tag, add `-e DEPENDENCY_METRICS_OSV_INDEX=/data/osv_database.parquet`.
 - The container runs as root. On Linux, add `--user "$(id -u):$(id -g)"`, so that the files in your folder belong to you.
 
 ```bash
