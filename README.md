@@ -128,6 +128,7 @@ print(f"Average TTR: {results['ttr']:.2f} days")
 - `--package-timeout`: Per-package analysis timeout in seconds (bulk CSV mode only). Packages that exceed this time receive an error row and are skipped [Default: disabled]
 - `--resume`: Resume bulk CSV runs by skipping completed rows and retrying errors
 - `--per-release`: Compute MTTU/MTTR at every release of the parent package within the window (one output row per release)
+- `--json`: Print the result as one JSON object on stdout, in the result shape of the Host API (needs `--package`; see `USAGE.md`)
 
 ## Weighting Methods
 
