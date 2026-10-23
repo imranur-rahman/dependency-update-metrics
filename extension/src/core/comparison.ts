@@ -161,6 +161,8 @@ export function noDependenciesNotes(job: ComparisonJob): string[] {
   return job.results.filter(withoutDependencies).map((result) => noDependenciesText(result.package));
 }
 
+// Return the result of a package whose Tool run gave no result, in the shape of
+// `failed_result` in dependency_metrics/api.py: a Window summary with an "error" summary.
 function failedResult(request: ComparisonRequest, packageName: string, message: string): ToolResult {
   return {
     ecosystem: request.ecosystem,
@@ -171,7 +173,7 @@ function failedResult(request: ComparisonRequest, packageName: string, message: 
     weighting_type: request.weightingType,
     half_life: request.halfLife,
     data_source: request.dataSource,
-    summary: null,
+    summary: { mttu: null, mttr: null, num_dependencies: 0, status: "error", error: message },
     releases: [],
     error: message,
   };

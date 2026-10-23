@@ -151,3 +151,12 @@ test("a Tool run without a result becomes a package error with the settings of t
     { package: "express", mttu: "–", mttr: "–", dependencies: 0, error: "spawn dependency-metrics ENOENT" },
   ]);
 });
+
+test("a Tool run without a result has the shape of the failed result of the Tool contract", () => {
+  const example = exampleJob("job_done_with_package_error.json");
+  const job = comparisonJob(request({ ecosystem: "pypi", packages: ["mypkg", "nope"] }), [
+    { kind: "result", result: example.results[0] },
+    { kind: "failed", message: "Package not found in deps.dev" },
+  ]);
+  assert.deepEqual(job.results[1], example.results[1]);
+});
