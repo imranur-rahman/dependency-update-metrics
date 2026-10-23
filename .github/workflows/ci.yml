@@ -36,6 +36,8 @@ on:
       - '.github/workflows/ci.yml'
   release:
     types: [ published ]
+  # Run the tests and the image build on any branch by hand (no publish, no push).
+  workflow_dispatch:
 
 jobs:
   test:
