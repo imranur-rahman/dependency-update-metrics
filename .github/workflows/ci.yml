@@ -141,8 +141,8 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     needs: build
-    # A release of an extension-v* tag belongs to the Extension (extension.yml), not to the Tool.
-    if: github.event_name == 'release' && !startsWith(github.event.release.tag_name, 'extension-v')
+    # A release of an extension-v* or action-v* tag belongs to the Extension (extension.yml) or the Action (github-action.yml), not to the Tool.
+    if: github.event_name == 'release' && !startsWith(github.event.release.tag_name, 'extension-v') && !startsWith(github.event.release.tag_name, 'action-v')
     # PyPI trusted publishing: no API token is stored. The PyPI project must list this
     # repository, this workflow file (ci.yml), and the "pypi" environment as a trusted publisher.
     environment:
@@ -209,7 +209,7 @@ jobs:
   image-release:
     runs-on: ubuntu-latest
     needs: publish
-    if: github.event_name == 'release' && !startsWith(github.event.release.tag_name, 'extension-v')
+    if: github.event_name == 'release' && !startsWith(github.event.release.tag_name, 'extension-v') && !startsWith(github.event.release.tag_name, 'action-v')
     permissions:
       contents: read
       packages: write

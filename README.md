@@ -95,6 +95,18 @@ If `end_date` is omitted, the CLI `--end-date` value is used; when `--end-date` 
 Extra columns are allowed; duplicates are removed by `ecosystem, package_name, end_date`.
 Bulk mode computes metrics per package using the latest dependency set.
 
+### In GitHub Actions
+
+The MTTX Action runs the Tool image in a workflow. It reports the MTTU and MTTR of chosen packages (with badges and thresholds), or comments on a pull request with the MTTU and MTTR of the dependencies that it adds. See [`action/README.md`](action/README.md).
+
+```yaml
+- uses: imranur-rahman/mttx-action@v1
+  with:
+    packages: express, koa
+    ecosystem: npm
+    max-mttr-days: 30
+```
+
 ### As a Python module
 
 ```python
