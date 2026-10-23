@@ -249,9 +249,9 @@
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body has-text-centered">
-        <img src="static/images/architecture.png" alt="Architecture of MTTX: inputs, CLI, historical dependency resolver, OSV index, dependency analyzer, and reporting" loading="lazy" style="max-width: 760px; width: 100%;">
+        <img src="static/images/architecture.png" alt="Architecture of MTTX: inputs, CLI, historical dependency resolver, OSV index, dependency analyzer, and reporting, with the interactive dashboard, the IDE extensions, and the GitHub Action, which run the CLI" loading="lazy" style="max-width: 760px; width: 100%;">
         <p class="figure-caption">
-          Architecture of MTTX. Numbers give the order of the steps. The resolver resolves each version constraint as of a past date, and the dashed slots show where a new ecosystem plugs in.
+          Architecture of MTTX. Numbers give the order of the steps. The resolver resolves each version constraint as of a past date, and the dashed slots show where a new ecosystem plugs in. At the bottom, the interactive dashboard, the IDE extensions, and the GitHub Action run the CLI and show its results.
         </p>
       </div>
     </div>
@@ -265,16 +265,17 @@
           <h2 class="title is-3">Overview</h2>
           <div class="content has-text-justified">
             <p>
-              Software composition analysis tools tell you whether a project is out of date or vulnerable <em>now</em>.
-              They do not tell you how the project behaved <em>over time</em>.
-              MTTX fills this gap.
+              Developers often choose a dependency by its GitHub stars and download counts, but these signals are cheap and easy to fake.
+              MTTX gives a signal of observed behavior instead: how quickly the developers of a package responded to new dependency releases and to security fixes over time.
               It computes two metrics for the direct dependencies of a package in npm, PyPI, or Cargo:
               <strong>Mean Time To Update (MTTU)</strong>, how long the dependencies stay behind their newest version, and
               <strong>Mean Time To Remediate (MTTR)</strong>, how long the dependencies keep a known vulnerability after a fix is available.
             </p>
             <p>
-              The tool resolves every version constraint as of a past date, so it never uses data from the future.
-              It can compute the metrics for one time window or at every past release of a package, and it runs in batches over thousands of packages.
+              Prior work computed these metrics with a research prototype for a fixed set of packages.
+              MTTX computes them for any package and time window, with each version constraint resolved as of a past date, so it never uses data from the future.
+              It brings the values to each point where developers decide on a dependency: an interactive dashboard to select one, an IDE extension while they code, and a GitHub Action in CI.
+              All of them run one CLI, which researchers can also run in batches over thousands of packages.
             </p>
           </div>
         </div>
@@ -478,33 +479,6 @@
   <script type="module" src="static/js/webapp.js"></script>
   <script type="module" src="static/js/pipeline.js"></script>
 
-  <!-- Design goals -->
-  <section class="section">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Design Goals</h2>
-      <div class="columns">
-        <div class="column">
-          <div class="box goal-card">
-            <h3 class="title is-5"><i class="fas fa-check-circle"></i>&nbsp; Correctness</h3>
-            <p>Every value is right, and a reader can check it. Constraints resolve as of each past date, MTTR counts a vulnerability only after its fix is published, and optional worksheets list every interval.</p>
-          </div>
-        </div>
-        <div class="column">
-          <div class="box goal-card scal">
-            <h3 class="title is-5"><i class="fas fa-tachometer-alt"></i>&nbsp; Scalability</h3>
-            <p>A study can analyze thousands of packages over their full histories. Batches run in parallel workers, a cache stores registry data, the OSV index is a lookup in memory, and <code>--resume</code> continues after a crash.</p>
-          </div>
-        </div>
-        <div class="column">
-          <div class="box goal-card ext">
-            <h3 class="title is-5"><i class="fas fa-puzzle-piece"></i>&nbsp; Extensibility</h3>
-            <p>Researchers can add ecosystems, data sources, and analysis choices. Every resolver implements one <code>PackageResolver</code> protocol, and every analysis choice is a command-line option.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Use MTTX in your workflow: one stage for each place where a dependency decision happens.
        pipeline.js switches the panels and copies the commands. The image tag and digest of the
        Reproduce panel are the ones in action/image.json (site.test.mjs checks that they match). -->
@@ -522,7 +496,7 @@
           <span class="pipeline-step">1</span>
           <span class="pipeline-icon"><i class="fas fa-search" aria-hidden="true"></i></span>
           <strong>Select</strong>
-          <small>Web dashboard</small>
+          <small>Interactive dashboard</small>
         </button>
         <span class="pipeline-arrow" aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
         <button class="pipeline-stage" type="button" role="tab" id="stage-tab-develop" aria-controls="stage-develop" aria-selected="false" tabindex="-1">
@@ -549,7 +523,7 @@
       <div class="pipeline-panel" role="tabpanel" id="stage-select" aria-labelledby="stage-tab-select">
         <h3 class="title is-5">Compare candidate packages before you add one</h3>
         <p>
-          The web dashboard on this page compares up to five packages from one ecosystem, with no installation.
+          The interactive dashboard on this page compares up to five packages from one ecosystem, with no installation.
           Our server runs the Tool with deps.dev data and shows a bar chart, a table, and a plain-English Explanation of each value.
           Per-release mode adds line charts that show how MTTU and MTTR changed at each release.
         </p>
@@ -696,7 +670,7 @@ dependency-metrics --input-csv input.csv --workers 8 --output-dir output</code><
   ghcr.io/imranur-rahman/mttx:0.2.1-osv-2026-10-23@sha256:3d528b998884f985e484b1da0cceb1219930c1d38625e18bb9ed9f69bce5c2eb \
   --ecosystem npm --package express \
   --start-date 2024-01-01 --end-date 2025-12-31 --depsdev --json</code></pre>
-            <p class="is-size-7">Output (shortened). The values equal the sample Comparison of the web dashboard:</p>
+            <p class="is-size-7">Output (shortened). The values equal the sample Comparison of the interactive dashboard:</p>
             <pre class="cli"><code>{"package": "express", "data_source": "depsdev",
  "summary": {"mttu": 120.31748718584655, "mttr": 3.0759126984126985,
              "num_dependencies": 28, "status": "ok"}}</code></pre>
@@ -705,7 +679,7 @@ dependency-metrics --input-csv input.csv --workers 8 --output-dir output</code><
         <details class="more-options">
           <summary>More container options</summary>
           <div class="content">
-            <p>Each command reads the package data from deps.dev (<code>--depsdev</code>), as the web dashboard and the GitHub Action do, so that the values agree. Without <code>--depsdev</code>, the Tool reads the registry of each ecosystem.</p>
+            <p>Each command reads the package data from deps.dev (<code>--depsdev</code>), as the interactive dashboard and the GitHub Action do, so that the values agree. Without <code>--depsdev</code>, the Tool reads the registry of each ecosystem.</p>
             <p>Pull the image once, so that later runs start at once:</p>
             <pre class="cli"><code>docker pull ghcr.io/imranur-rahman/mttx:0.2.1-osv-2026-10-23</code></pre>
             <p>On Linux, add <code>--user</code>, so that the result files in your folder belong to you and not to root:</p>
@@ -762,6 +736,7 @@ docker run --rm -v "$PWD:/data" ghcr.io/imranur-rahman/mttx:0.2.1-osv-2026-10-23
         <p>
           The test types follow research on testing scientific software; <a href="https://github.com/imranur-rahman/dependency-update-metrics/blob/main/TESTING.md" target="_blank" rel="noopener">TESTING.md</a> maps each type to its tests.
           CI runs the suite on Ubuntu, macOS, and Windows with Python 3.10&ndash;3.12.
+          All front ends run the same CLI, so they give the same values: for <code>express</code> (npm, 2024&ndash;2025, deps.dev), the interactive dashboard, the container image, and the GitHub Action all report an MTTU of 120.32 days and an MTTR of 3.08 days.
         </p>
       </div>
     </div>
@@ -774,7 +749,8 @@ docker run --rm -v "$PWD:/data" ghcr.io/imranur-rahman/mttx:0.2.1-osv-2026-10-23
       <div class="content">
         <ul>
           <li><strong>Researchers</strong> who study technical lag, software supply chains, or maintainer behavior can compute MTTU and MTTR for thousands of packages and get a full time series per package.</li>
-          <li><strong>Developers</strong> can compare how promptly candidate libraries keep their own dependencies current and patched.</li>
+          <li><strong>Developers</strong> can compare how promptly candidate libraries keep their own dependencies current and patched, in the interactive dashboard before they choose one and in their IDE while they code.</li>
+          <li><strong>Development teams</strong> can report MTTU and MTTR in CI with the GitHub Action, and review the dependencies that each pull request adds.</li>
           <li><strong>Security teams</strong> can run a batch over their portfolio to find the projects that lag behind available fixes.</li>
           <li><strong>Builders of security metrics</strong>, such as the OpenSSF Scorecard, can use MTTU and MTTR as signals of maintenance.</li>
         </ul>
