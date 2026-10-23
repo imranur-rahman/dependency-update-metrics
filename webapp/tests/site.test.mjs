@@ -179,3 +179,10 @@ test("the docker command uses the image tag and digest that the Action pins", ()
   assert.ok(command, "the docker command is missing");
   assert.ok(command[1].includes(`${image.repository}:${image.osvTag}@${image.osvDigest}`));
 });
+
+test("every container command uses the image version that the Action pins", () => {
+  const image = JSON.parse(readFileSync(join(siteDir, "..", "..", "action", "image.json"), "utf8"));
+  const refs = [...workflowSection().matchAll(/ghcr\.io\/imranur-rahman\/mttx:([^\s@"<]+)/g)].map((m) => m[1]);
+  assert.ok(refs.length >= 5, "the container commands are missing");
+  for (const tag of refs) assert.ok([image.version, image.osvTag].includes(tag), `the tag ${tag} is not ${image.version} or ${image.osvTag}`);
+});
