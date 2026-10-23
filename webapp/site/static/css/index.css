@@ -771,15 +771,15 @@ a:focus {
   padding: 2rem;
 }
 
-/* A chart box holds one Chart.js canvas. webapp.js sets its height (CHART_HEIGHTS).
-   min-width: 0 lets a chart in a column shrink when the window gets narrower. */
+/* A chart box holds one Chart.js canvas. webapp.js sets its size and centers it
+   (chartBoxStyle in comparison.js), so the CSS sets no size here. */
 #try-it .chart-box {
   position: relative;
-  min-width: 0;
 }
 
-#release-charts-figure .column {
-  min-width: 0;
+/* The title of a line chart is centered over the centered chart. */
+#try-it .chart-title {
+  text-align: center;
 }
 
 #try-it .label {
@@ -876,19 +876,12 @@ a:focus {
   content: "\26A0\FE0E  ";
 }
 
-/* The status of the Job. A failed or refused Job shows in red. */
+/* The status of the Job while it waits or runs. An error shows in a notification. */
 .tryit-status {
   margin-top: 1rem;
   padding: 0.8rem 1rem;
   border-radius: var(--border-radius);
   background-color: var(--background-accent);
   color: var(--text-primary);
-}
-
-.tryit-status.is-error {
-  border-left: 4px solid #dc2626;
-  background-color: #fef2f2;
-  color: #b91c1c;
-  font-weight: 500;
 }
 

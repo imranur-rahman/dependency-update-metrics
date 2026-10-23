@@ -47,18 +47,29 @@ test("the homepage has the privacy note on the stored package names and IP hashe
   assert.match(note[1], /hash of your IP address/);
 });
 
-test("the two line charts sit in one row of columns, which stacks on a phone", () => {
+test("the two line charts sit in one column, the MTTU chart above the MTTR chart", () => {
   const html = readFileSync(join(siteDir, "index.html"), "utf8");
   const figure = html.match(/<figure[^>]*id="release-charts-figure"[^>]*>([\s\S]*?)<\/figure>/);
 
   assert.ok(figure, "the figure of the line charts is missing");
-  // Bulma "columns is-tablet" puts the columns side by side from 769 px and stacks them below.
-  assert.match(figure[1], /<div class="columns is-tablet[^"]*">/);
-  const columns = [...figure[1].matchAll(/<div class="column[ "][\s\S]*?<canvas id="(release-chart-\w+)"/g)];
+  // Bulma columns would put the charts side by side; the charts stay in one column.
+  assert.doesNotMatch(figure[1], /class="columns?[ "]/);
+  const canvases = [...figure[1].matchAll(/<canvas id="(release-chart-\w+)"/g)];
   assert.deepEqual(
-    columns.map((m) => m[1]),
+    canvases.map((m) => m[1]),
     ["release-chart-mttu", "release-chart-mttr"],
   );
+});
+
+test("each chart box gets its size from chartBoxStyle, not from the HTML or the CSS", () => {
+  const html = readFileSync(join(siteDir, "index.html"), "utf8");
+  const css = readFileSync(join(siteDir, "static", "css", "index.css"), "utf8");
+  const boxes = [...html.matchAll(/<div class="chart-box"[^>]*>/g)];
+
+  assert.equal(boxes.length, 3);
+  for (const box of boxes) assert.doesNotMatch(box[0], /style=/);
+  const rules = [...css.matchAll(/\.chart-box[^{]*\{([^}]*)\}/g)].map((m) => m[1]).join("");
+  assert.doesNotMatch(rules, /(max-)?width|height/, "the CSS sets no size of a chart box");
 });
 
 test("each chart keeps its aria-label", () => {
@@ -75,4 +86,18 @@ test("the results card shows the Explanation under the result table", () => {
   const html = readFileSync(join(siteDir, "index.html"), "utf8");
   const card = html.slice(html.indexOf('id="results-card"'));
   assert.ok(card.indexOf('id="results-explanation"') > card.indexOf('id="result-table"'));
+});
+
+test("the page shows errors in in-page notifications with role=\"alert\", never window.alert()", () => {
+  const html = readFileSync(join(siteDir, "index.html"), "utf8");
+  for (const id of ["job-notice", "results-notice"]) {
+    assert.match(html, new RegExp(`<div[^>]*id="${id}"`), `the container ${id} is missing`);
+  }
+  const jsDir = join(siteDir, "static", "js");
+  const notification = readFileSync(join(jsDir, "notification.js"), "utf8");
+  assert.match(notification, /setAttribute\("role", "alert"\)/);
+  for (const name of ["webapp.js", "index.js", "comparison.js", "errorNotice.js", "notification.js"]) {
+    const code = readFileSync(join(jsDir, name), "utf8").replace(/\/\/.*$/gm, "");
+    assert.doesNotMatch(code, /\balert\s*\(/, `${name} calls alert()`);
+  }
 });

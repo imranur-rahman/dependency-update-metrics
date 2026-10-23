@@ -10,7 +10,7 @@ import type { ChartOptions } from "chart.js";
 import {
   barChartData,
   barChartOptions,
-  CHART_HEIGHTS,
+  chartBoxStyle,
   chartHasValues,
   lineChartData,
   lineChartOptions,
@@ -121,10 +121,10 @@ function drawBarChart(job: ComparisonJob): string[] {
   if (!chartHasValues(data)) return [];
   for (const dataset of data.datasets) {
     const color = SERIES_COLORS[dataset.label];
-    Object.assign(dataset, { backgroundColor: color, borderColor: color, borderRadius: 4 });
+    Object.assign(dataset, { backgroundColor: color, borderColor: color });
   }
   const options = barChartOptions(chartJob) as ChartOptions<"bar">;
-  charts.push(new Chart(chartCanvas("bar", CHART_HEIGHTS.bar), { type: "bar", data, options }));
+  charts.push(new Chart(chartCanvas("bar"), { type: "bar", data, options }));
   return ["bar"];
 }
 
@@ -140,24 +140,21 @@ function drawLineCharts(job: ComparisonJob): string[] {
       Object.assign(dataset, {
         borderColor: color,
         backgroundColor: color,
-        borderWidth: 2,
-        pointRadius: 3,
-        pointHoverRadius: 5,
         pointStyle: PACKAGE_POINT_STYLES[index % PACKAGE_POINT_STYLES.length],
         spanGaps: false,
       });
     });
-    const canvas = chartCanvas(metric, CHART_HEIGHTS.line);
+    const canvas = chartCanvas(metric);
     const options = lineChartOptions(job) as ChartOptions<"line">;
     charts.push(new Chart(canvas, { type: "line", data, options }));
   });
   return metrics;
 }
 
-// Add a chart box with the compact height of the Webapp, and return its canvas.
-function chartCanvas(id: string, height: number): HTMLCanvasElement {
+// Add a chart box with the shared size and position of the Webapp, and return its canvas.
+function chartCanvas(id: string): HTMLCanvasElement {
   const box = element("div", "", "chart-box");
-  box.style.height = `${height}px`;
+  Object.assign(box.style, chartBoxStyle());
   const canvas = document.createElement("canvas");
   canvas.id = id;
   box.append(canvas);

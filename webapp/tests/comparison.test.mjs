@@ -23,13 +23,16 @@ import {
   dateErrors,
   submitErrorMessage,
   canAddPackage,
+  packageLimitNote,
   withComparison,
   comparisonFromSearch,
   formFromComparison,
   barChartData,
   barChartAxisLabel,
   barChartOptions,
-  CHART_HEIGHTS,
+  CHART_SIZE,
+  chartBoxStyle,
+  lineChartOptions,
   rowsToCsv,
   csvFileName,
   WEIGHTING_TYPES,
@@ -79,6 +82,11 @@ test("the form refuses no package, a sixth package, and duplicates", () => {
 test("the form allows a new package field only while it has fewer than 5", () => {
   assert.equal(canAddPackage(["a", "b", "c", "d"]), true);
   assert.equal(canAddPackage(["a", "b", "c", "d", "e"]), false);
+});
+
+test("the form tells the user when the Comparison holds 5 packages", () => {
+  assert.equal(packageLimitNote(["a", "b", "c", "d"]), "");
+  assert.equal(packageLimitNote(["a", "b", "c", "d", "e"]), "A Comparison holds at most 5 packages.");
 });
 
 test("a Comparison survives the round trip through the page URL", () => {
@@ -297,10 +305,42 @@ test("the bar chart axis label follows the weighting type of the Job", () => {
   assert.equal(barChartAxisLabel(job), "Days (weighted mean)");
 });
 
-test("the bar chart is compact: shorter than 320 px, a small legend, and few y-axis ticks", () => {
+test("every chart has one shared size: at most 720 px wide, and one height", () => {
+  assert.equal(CHART_SIZE.maxWidth, 720);
+  assert.ok(CHART_SIZE.height >= 180 && CHART_SIZE.height <= 240, `the charts are ${CHART_SIZE.height} px high`);
+});
+
+test("the chart box style centers each chart in one column with the shared size", () => {
+  assert.deepEqual(chartBoxStyle(), {
+    position: "relative",
+    width: "100%",
+    maxWidth: "720px",
+    height: `${CHART_SIZE.height}px`,
+    marginLeft: "auto",
+    marginRight: "auto",
+  });
+  // Each call returns a new object, so that a caller can change it without effect on others.
+  assert.notEqual(chartBoxStyle(), chartBoxStyle());
+});
+
+test("the bar chart and the line charts share thin lines, small points, and a light grid", () => {
+  const bar = barChartOptions(threePackageJob());
+  const line = lineChartOptions(threePackageJob());
+
+  for (const options of [bar, line]) {
+    assert.ok(options.elements.line.borderWidth <= 1.5, "the lines are thin");
+    assert.ok(options.elements.point.radius <= 2.5, "the points are small");
+    assert.ok(options.elements.point.hoverRadius > options.elements.point.radius);
+    assert.match(options.scales.y.grid.color, /^rgba\(128, 128, 128, 0\.1\d*\)$/, "the grid is light");
+  }
+  assert.deepEqual(bar.elements, line.elements);
+  assert.deepEqual(bar.scales.y.grid, line.scales.y.grid);
+  assert.ok(bar.datasets.bar.maxBarThickness <= 32, "the bars stay narrow in a wide chart");
+});
+
+test("the bar chart is compact: a small legend and few y-axis ticks", () => {
   const options = barChartOptions(threePackageJob());
 
-  assert.ok(CHART_HEIGHTS.bar <= 220, `the bar chart is ${CHART_HEIGHTS.bar} px high`);
   assert.equal(options.maintainAspectRatio, false);
   assert.equal(options.plugins.legend.labels.boxWidth, 12);
   assert.ok(options.plugins.legend.labels.font.size >= 11, "the legend text stays readable");
