@@ -27,12 +27,12 @@ test("a running Tool shows computing…", () => {
 });
 
 test("a Window summary result shows MTTU and MTTR in days", () => {
-  assert.equal(hintText({ kind: "result", result: okResult }, "mypkg"), "MTTU 579 d · MTTR 579 d");
+  assert.equal(hintText({ kind: "result", result: okResult }, "mypkg"), "MTTU 579.00 d · MTTR 579.00 d");
 });
 
-test("the hint rounds the days to whole days", () => {
-  const result = withSummary({ mttu: 12.6, mttr: 0.4 });
-  assert.equal(hintText({ kind: "result", result }, "mypkg"), "MTTU 13 d · MTTR 0 d");
+test("the hint shows the days with two decimals", () => {
+  const result = withSummary({ mttu: 12.6, mttr: 0.004 });
+  assert.equal(hintText({ kind: "result", result }, "mypkg"), "MTTU 12.60 d · MTTR 0.00 d");
 });
 
 test("both kinds of a package without dependencies show the no-dependencies text", () => {
@@ -90,13 +90,34 @@ test("the hover of a result shows the window, the dependencies, the source, the 
     { name: "mypkg", section: "devDependencies" },
   );
   assertHas(text, [
-    "MTTU 579.0 days · MTTR 579.0 days",
+    "MTTU 579.00 days · MTTR 579.00 days",
     "Window: 2020-01-01 to 2023-01-01",
     "Dependencies of `mypkg`: 1",
     "Data source: deps.dev",
     "Computed on: 2026-10-22",
     "Section: `devDependencies`",
   ]);
+});
+
+test("the hover of a result has one short Explanation line under the values", () => {
+  const text = hoverMarkdown({ kind: "result", result: okResult }, { name: "mypkg", section: "dependencies" });
+  const line =
+    "A direct dependency was behind the newest version for 579.00 days in total (mean over the direct dependencies), " +
+    "and on a known vulnerable version after a fix for 579.00 days in total (mean over the direct dependencies).";
+  assert.ok(text.includes(`MTTU 579.00 days · MTTR 579.00 days\n\n${line}\n`), text);
+});
+
+test("the hover Explanation of MTTR 0.0 does not say that no dependency was vulnerable", () => {
+  const result = withSummary({ mttu: 0, mttr: 0 });
+  const text = hoverMarkdown({ kind: "result", result }, { name: "mypkg", section: "dependencies" });
+  assert.ok(text.includes("none stayed on a known vulnerable version after a fix was available"), text);
+  assert.doesNotMatch(text, /no vulnerable|had no vulnerab/i);
+});
+
+test("without the OSV index, the hover has no Explanation line", () => {
+  const target = { name: "mypkg", section: "dependencies" };
+  const text = hoverMarkdown({ kind: "result", result: okResult }, target, { osvIndex: false });
+  assert.ok(!text.includes("A direct dependency"), text);
 });
 
 test("the hover of a package without dependencies repeats the no-dependencies text", () => {

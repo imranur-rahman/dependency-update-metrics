@@ -17,6 +17,12 @@ function hasNoDependencies(entry) {
   return entry?.status === "no_deps" || (entry?.status === "ok" && entry.num_dependencies === 0);
 }
 
+// Return true when a summary or a release has a value: the status is "ok", it has
+// dependencies, and both metrics are numbers.
+export function hasValue(entry) {
+  return metricValue(entry, "mttu") !== null && metricValue(entry, "mttr") !== null;
+}
+
 // Return the days of a summary or a release for one metric ("mttu" or "mttr"), or null
 // when the entry has no value: it failed, or it has no dependencies.
 function metricValue(entry, metric) {
@@ -124,6 +130,20 @@ export function canAddPackage(packages) {
   return packages.length < MAX_PACKAGES;
 }
 
+// Return the note that the form shows when the Comparison is full, or "" below the limit.
+export function packageLimitNote(packages) {
+  return canAddPackage(packages) ? "" : `A Comparison holds at most ${MAX_PACKAGES} packages.`;
+}
+
+// Return what the page does with the package limit note after a change of the package
+// fields: "show" when the count changes to the limit, "keep" when the count stays at the
+// limit (so that the note does not show again on each renumber), and "clear" below the
+// limit. previousCount is the count before the change, or null on the first call.
+export function packageLimitNoteAction(previousCount, packages) {
+  if (canAddPackage(packages)) return "clear";
+  return previousCount === packages.length ? "keep" : "show";
+}
+
 // The modes of a Comparison (GLOSSARY.md). The Host checks the same names (Mode).
 export const MODES = ["window_summary", "per_release"];
 const WINDOW_SUMMARY = "window_summary";
@@ -131,8 +151,8 @@ const PER_RELEASE = "per_release";
 
 // The weighting types of the Tool (--weighting-type). "disable" is the default.
 export const WEIGHTING_TYPES = ["disable", "linear", "exponential", "inverse"];
-const NO_WEIGHTING = "disable";
-const EXPONENTIAL = "exponential";
+export const NO_WEIGHTING = "disable";
+export const EXPONENTIAL = "exponential";
 // Exponential weighting needs a half-life in this range of days. The Host checks the same rule.
 const MIN_HALF_LIFE_DAYS = 1;
 const MAX_HALF_LIFE_DAYS = 3650;
@@ -368,14 +388,50 @@ export function chartHasValues(data) {
 }
 
 // Return the y-axis label of the bar chart of a done Job. It follows the weighting type,
-// because a sum of days and a weighted mean are different quantities (axisLabel).
+// because total days and average days are different quantities (axisLabel).
 export function barChartAxisLabel(job) {
   return axisLabel(job.comparison.weighting_type);
 }
 
-// The heights of the charts in CSS pixels. The charts are compact, so that the charts and
-// the result table fit on one screen. The page code sets the height of each chart box.
-export const CHART_HEIGHTS = { bar: 200, line: 220 };
+// The one size of every chart in CSS pixels, in the Webapp and in the Extension webview.
+// The charts sit in one column, so a wide window does not stretch them too far, and they
+// stay short, so that a chart and the start of the result table fit on one screen.
+export const CHART_SIZE = { maxWidth: 720, height: 220 };
+
+// Return the inline style of a chart box (CSSOM property names). The page code of the
+// Webapp and of the webview assigns it to each box, so both places use CHART_SIZE. The box
+// is centered and shrinks on a narrow screen. Each call returns a new object.
+export function chartBoxStyle() {
+  return {
+    position: "relative",
+    width: "100%",
+    maxWidth: `${CHART_SIZE.maxWidth}px`,
+    height: `${CHART_SIZE.height}px`,
+    marginLeft: "auto",
+    marginRight: "auto",
+  };
+}
+
+// The styles of the chart elements: thin lines, small points, and bars with round corners.
+// The dataset colors come from the page code. Each call returns a new object, because
+// Chart.js keeps the options of each chart.
+function chartElements() {
+  return {
+    line: { borderWidth: 1.5 },
+    point: { radius: 2, hoverRadius: 4 },
+    bar: { borderRadius: 3 },
+  };
+}
+
+// The bar thickness is a dataset option in Chart.js, so it goes in options.datasets. The
+// bars stay narrow when the chart is wide and the Job has few packages.
+const MAX_BAR_THICKNESS = 32;
+
+// A light y-axis grid. A gray with a low alpha shows on a light and on a dark background,
+// so the Webapp and the webview themes use the same value.
+function lightGrid() {
+  return { color: "rgba(128, 128, 128, 0.15)" };
+}
 
 // The legend of each chart: small color boxes and small text, so that the legend takes one
 // short line. The text stays at 12 px, so that it stays readable. Each call returns a new
@@ -391,7 +447,7 @@ function compactLegend(labels = {}) {
 // The most labels on a y-axis. Three or four values give enough scale for days.
 const MAX_Y_TICKS = 4;
 
-// Return the tooltip text of one value: the series name and the days with one decimal.
+// Return the tooltip text of one value: the series name and the days with two decimals.
 function tooltipValue(name, days) {
   return `${name}: ${days === null ? "no value" : `${formatDays(days)} days`}`;
 }
@@ -402,6 +458,8 @@ export function barChartOptions(job) {
   return {
     maintainAspectRatio: false,
     interaction: { mode: "index", intersect: false },
+    elements: chartElements(),
+    datasets: { bar: { maxBarThickness: MAX_BAR_THICKNESS } },
     plugins: {
       legend: compactLegend(),
       tooltip: { callbacks: { label: (item) => tooltipValue(item.dataset.label, item.raw) } },
@@ -411,14 +469,15 @@ export function barChartOptions(job) {
       y: {
         beginAtZero: true,
         ticks: { maxTicksLimit: MAX_Y_TICKS },
+        grid: lightGrid(),
         title: { display: true, text: barChartAxisLabel(job) },
       },
     },
   };
 }
 
-// The most labels on the x-axis of a line chart. Four dates fit in a half-width chart.
-const MAX_X_TICKS = 4;
+// The most labels on the x-axis of a line chart. Six dates fit in a chart of full width.
+const MAX_X_TICKS = 6;
 
 // Return a release date of the x-axis (milliseconds, UTC) as "YYYY-MM-DD".
 function formatReleaseDate(ms) {
@@ -432,6 +491,7 @@ export function lineChartOptions(job) {
   return {
     maintainAspectRatio: false,
     interaction: { mode: "nearest", intersect: false },
+    elements: chartElements(),
     plugins: {
       // Chart.js draws a point style with a diameter of about 1.4 times boxHeight.
       legend: compactLegend({ usePointStyle: true, boxHeight: 8 }),
@@ -453,6 +513,7 @@ export function lineChartOptions(job) {
       y: {
         beginAtZero: true,
         ticks: { maxTicksLimit: MAX_Y_TICKS },
+        grid: lightGrid(),
         title: { display: true, text: lineChartAxisLabel(job) },
       },
     },
@@ -513,9 +574,10 @@ export function csvFileName(comparison) {
   return `mttu-mttr_${parts.map((part) => safe(String(part))).join("_")}.csv`;
 }
 
-// Return a number of days with one decimal, or a dash when there is no value.
+// Return a number of days with two decimals, or a dash when there is no value. The table,
+// the CSV, the chart tooltips, the Explanation, and the Extension all show days this way.
 export function formatDays(days) {
-  return typeof days === "number" ? days.toFixed(1) : NO_VALUE;
+  return typeof days === "number" ? days.toFixed(2) : NO_VALUE;
 }
 
 // Return true when the weighting type needs a half-life (the form shows the field only then).
@@ -536,18 +598,50 @@ export function halfLifeError(weightingType, halfLife) {
 }
 
 // Return the y-axis label of the charts for the weighting type. Without weighting, the Tool
-// gives a sum of days; with weighting, it gives a weighted mean of days.
+// adds up the days of each dependency (total days); with weighting, it gives a weighted
+// average of days. The two are different quantities.
 export function axisLabel(weightingType) {
-  return weightingType === NO_WEIGHTING ? "Days (sum over intervals)" : "Days (weighted mean)";
+  return weightingType === NO_WEIGHTING ? "Total days" : "Average days";
 }
 
-// Return the one-line note near the results that says what the numbers are.
+// What MTTU and MTTR count, for the note near the results.
+const NOTE_WHAT =
+  "for each direct dependency, the days that it was behind the newest version (MTTU) " +
+  "or on a version with a known vulnerability after a fix was available (MTTR)";
+
+// Return the one-line note near the results that says plainly what the numbers are. The
+// Tool adds up the days of each dependency, then takes the mean over the direct
+// dependencies; with weighting, each day has a weight that is larger for recent days.
 export function resultsNote(weightingType) {
   if (weightingType === NO_WEIGHTING) {
-    return "Without weighting, MTTU and MTTR are the sum of the days over all intervals.";
+    return `Total days: ${NOTE_WHAT}, added up, then averaged over the direct dependencies.`;
   }
   return (
-    `With ${weightingType} weighting, MTTU and MTTR are a weighted mean of days. ` +
-    "Do not compare them with values that have no weighting."
+    `Average days, with ${weightingType} weighting: ${NOTE_WHAT}, as a weighted average in which ` +
+    "recent days count more. Do not compare them with total days."
   );
+}
+
+// --- Sample Comparison (ticket #45) ---
+
+// The path of the Sample Comparison file, relative to the homepage. The file is a done Job
+// of the Host (the shape of contract/examples/job_done_window_summary.json) plus
+// "computed_on" and "osv_index_date". The script in webapp/sample/ makes it again with the
+// Tool.
+export const SAMPLE_COMPARISON_PATH = "static/sample/sample_comparison.json";
+
+// Return the page URL for the Sample Comparison: the URL `href` with the sample Comparison
+// in place of any Comparison and without a job ID, so that a reload fills the form with the
+// sample and does not show an older Job.
+export function sampleUrl(href, comparison) {
+  const url = new URL(href);
+  url.searchParams.delete(JOB_PARAM);
+  url.search = withComparison(url.search, comparison);
+  url.hash = "#try-it";
+  return url.toString();
+}
+
+// Return the label that tells the reader when the Tool computed the Sample Comparison.
+export function sampleLabel(sample) {
+  return `Precomputed on ${sample.computed_on}`;
 }

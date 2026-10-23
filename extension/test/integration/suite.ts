@@ -59,7 +59,7 @@ export async function run(): Promise<void> {
 
   // The fresh user data dir has no OSV index, so MTTR waits for the index.
   const expected = new Map([
-    [5, "MTTU 579 d · MTTR needs the OSV index"],
+    [5, "MTTU 579.00 d · MTTR needs the OSV index"],
     [6, "could not compute since 'left-pad' has no dependencies"],
     [9, "error: Package not found in deps.dev"],
   ]);
@@ -67,7 +67,7 @@ export async function run(): Promise<void> {
 
   // The rebuild command builds the index of the fake Tool, and the hints get the MTTR.
   await vscode.commands.executeCommand("mttx.rebuildOsvIndex");
-  expected.set(5, "MTTU 579 d · MTTR 579 d");
+  expected.set(5, "MTTU 579.00 d · MTTR 579.00 d");
   await waitForLabels(document, expected);
 
   // The hover shows the details behind a hint, and the full error of a failed package.
@@ -95,11 +95,11 @@ export async function run(): Promise<void> {
   await vscode.commands.executeCommand("mttx.openSettings");
 
   await expectHints(join(folder, "pyproject.toml"), [
-    [4, "MTTU 579 d · MTTR 579 d"],
-    [8, "pytest: MTTU 579 d · MTTR 579 dleft-pad: could not compute since 'left-pad' has no dependencies"],
+    [4, "MTTU 579.00 d · MTTR 579.00 d"],
+    [8, "pytest: MTTU 579.00 d · MTTR 579.00 dleft-pad: could not compute since 'left-pad' has no dependencies"],
   ]);
   await expectHints(join(folder, "Cargo.toml"), [
-    [5, "MTTU 579 d · MTTR 579 d"],
+    [5, "MTTU 579.00 d · MTTR 579.00 d"],
     [7, "error: Package not found in deps.dev"],
   ]);
   await checkEditedManifest(folder);
@@ -126,9 +126,14 @@ async function checkComparison(): Promise<void> {
   assert.deepEqual(report.violations, []);
   assert.deepEqual(report.charts, ["bar"]);
   assert.deepEqual(report.notes, ["could not compute since 'left-pad' has no dependencies"]);
+  assert.equal(report.explanation.paragraphs.length, 1);
+  assert.match(report.explanation.paragraphs[0], /^express: MTTU is 579\.00 days: /);
+  assert.equal(report.explanation.limitations.length, 5);
+  // The OSV index is built at this point, so the Limitations name its build date.
+  assert.match(report.explanation.limitations[1], /as of \d{4}-\d{2}-\d{2}, the build date of the OSV index/);
   assert.deepEqual(report.rows, [
     ["Package", "MTTU (days)", "MTTR (days)", "Dependencies", "Error"],
-    ["express", "579.0", "579.0", "1", ""],
+    ["express", "579.00", "579.00", "1", ""],
     ["left-pad", "–", "–", "0", "could not compute since 'left-pad' has no dependencies"],
   ]);
   const tabs = vscode.window.tabGroups.all.flatMap((group) => group.tabs);
@@ -144,10 +149,10 @@ async function checkEditedManifest(folder: string): Promise<void> {
   mkdirSync(dir, { recursive: true });
   try {
     writeFileSync(path, manifest({ express: "^4.18.0" }));
-    await expectHints(path, [[2, "MTTU 579 d · MTTR 579 d"]]);
+    await expectHints(path, [[2, "MTTU 579.00 d · MTTR 579.00 d"]]);
     writeFileSync(path, manifest({ express: "^4.18.0", "left-pad": "1.3.0" }));
     await expectHints(path, [
-      [2, "MTTU 579 d · MTTR 579 d"],
+      [2, "MTTU 579.00 d · MTTR 579.00 d"],
       [3, "could not compute since 'left-pad' has no dependencies"],
     ]);
   } finally {

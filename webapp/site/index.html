@@ -283,6 +283,7 @@
                 </div>
               </div>
               <p class="tryit-error" id="package-error" role="alert" hidden></p>
+              <div id="package-limit" hidden></div>
             </div>
           </div>
         </div>
@@ -331,7 +332,7 @@
               <div class="control">
                 <div class="select is-fullwidth">
                   <select id="weighting-type" name="weightingType">
-                    <option value="disable" selected>disable (sum of days)</option>
+                    <option value="disable" selected>disable (total days)</option>
                     <option value="linear">linear</option>
                     <option value="exponential">exponential</option>
                     <option value="inverse">inverse</option>
@@ -366,12 +367,18 @@
           <div class="control">
             <button class="button is-medium" id="cancel-job" type="button" hidden>Cancel</button>
           </div>
+          <div class="control">
+            <!-- The Sample Comparison: precomputed results from static/sample/, with no Job. -->
+            <button class="button is-medium is-link is-light" id="show-sample" type="button">Show a sample Comparison</button>
+          </div>
         </div>
-        <!-- The status of the Job. webapp.js adds is-error for a failed or refused Job. -->
+        <!-- The status of the Job while it waits or runs. -->
         <div class="tryit-status" id="job-status-box" hidden>
           <p id="job-status" role="status" aria-live="polite"></p>
           <progress id="job-progress" class="progress is-small is-link mt-2" aria-label="Job progress" hidden></progress>
         </div>
+        <!-- A failed or refused Job. webapp.js puts a notification (role="alert") here. -->
+        <div class="mt-4" id="job-notice" hidden></div>
         <p class="is-size-7 mt-4 has-text-grey" id="privacy-note">
           Privacy: the Host stores the package names that you submit, so that it can show and reuse the
           results. For the rate limits, it stores a hash of your IP address for one hour, and it never
@@ -381,29 +388,28 @@
       <!-- The results. webapp.js shows this card only when a Job is done. -->
       <div class="tryit-card mt-5" id="results-card" hidden>
         <h3 class="title is-4 mb-0">Results</h3>
+        <!-- Only for the Sample Comparison: "Precomputed on <date>". -->
+        <p id="sample-label" class="tag is-info is-light mt-2" hidden></p>
         <p id="results-note" class="is-size-7 mt-2 has-text-grey" hidden></p>
-        <!-- webapp.js sets the height of each chart box from CHART_HEIGHTS in comparison.js. -->
+        <!-- A done Job in which a package failed. webapp.js puts a notification (role="alert") here. -->
+        <div class="mt-4" id="results-notice" hidden></div>
+        <!-- All charts sit in one column. webapp.js gives each chart box the shared size and
+             centers it (chartBoxStyle in comparison.js, which the Extension webview also uses). -->
         <figure class="mt-4" id="result-chart-figure" hidden>
-          <div class="chart-box" data-chart="bar">
+          <div class="chart-box">
             <canvas id="result-chart" role="img" aria-label="Bar chart of MTTU and MTTR for each package. The table below holds the same values."></canvas>
           </div>
         </figure>
         <!-- Per-release: two line charts, because MTTU values are often much larger than MTTR values.
-             They sit side by side from tablet width and stack on a phone. -->
+             The MTTU chart sits above the MTTR chart. -->
         <figure class="mt-4" id="release-charts-figure" hidden>
-          <div class="columns is-tablet is-variable is-4">
-            <div class="column is-half">
-              <p class="has-text-weight-semibold is-size-6 mb-1">MTTU at each release</p>
-              <div class="chart-box" data-chart="line">
-                <canvas id="release-chart-mttu" role="img" aria-label="Line chart of MTTU at each release date, one line for each package. A gap is a release that failed. The table below holds the same values."></canvas>
-              </div>
-            </div>
-            <div class="column is-half">
-              <p class="has-text-weight-semibold is-size-6 mb-1">MTTR at each release</p>
-              <div class="chart-box" data-chart="line">
-                <canvas id="release-chart-mttr" role="img" aria-label="Line chart of MTTR at each release date, one line for each package. A gap is a release that failed. The table below holds the same values."></canvas>
-              </div>
-            </div>
+          <p class="chart-title has-text-weight-semibold is-size-6 mb-1">MTTU at each release</p>
+          <div class="chart-box">
+            <canvas id="release-chart-mttu" role="img" aria-label="Line chart of MTTU at each release date, one line for each package. A gap is a release that failed. The table below holds the same values."></canvas>
+          </div>
+          <p class="chart-title has-text-weight-semibold is-size-6 mt-4 mb-1">MTTR at each release</p>
+          <div class="chart-box">
+            <canvas id="release-chart-mttr" role="img" aria-label="Line chart of MTTR at each release date, one line for each package. A gap is a release that failed. The table below holds the same values."></canvas>
           </div>
         </figure>
         <div class="table-container mt-4">
@@ -413,6 +419,8 @@
             <tbody></tbody>
           </table>
         </div>
+        <!-- The Explanation: webapp.js fills it from explanation.js. -->
+        <div class="content is-size-6 mt-4" id="results-explanation" hidden></div>
         <div class="has-text-right mt-3">
           <button class="button is-small is-link is-light" id="download-csv" type="button">
             <span class="icon is-small"><i class="fas fa-download"></i></span>

@@ -11,6 +11,7 @@ import {
   compareLink,
   comparisonJob,
   comparisonRows,
+  explanationContent,
   noDependenciesNotes,
   PACKAGE_COLORS,
   PACKAGE_POINT_STYLES,
@@ -20,6 +21,7 @@ import {
 } from "../../src/core/comparison.ts";
 import type { ToolResult } from "../../src/core/display.ts";
 import { barChartData } from "../../../webapp/site/static/js/comparison.js";
+import { LIMITATIONS } from "../../../webapp/site/static/js/explanation.js";
 
 test("the input takes 1 to 5 names, split by commas or spaces", () => {
   assert.deepEqual(parsePackageNames("npm", " express, koa  fastify,"), {
@@ -86,7 +88,7 @@ test("a package without dependencies shows the no-dependencies text and no bar s
     ],
   );
   assert.deepEqual(comparisonRows(job), [
-    { package: "mypkg", mttu: "579.0", mttr: "579.0", dependencies: 1, error: "" },
+    { package: "mypkg", mttu: "579.00", mttr: "579.00", dependencies: 1, error: "" },
     {
       package: "left-pad",
       mttu: "–",
@@ -103,6 +105,46 @@ test("a package without dependencies shows the no-dependencies text and no bar s
   assert.deepEqual(noDependenciesNotes(job), ["could not compute since 'left-pad' has no dependencies"]);
 });
 
+test("the panel shows one Explanation paragraph for each package with a value, then the Limitations", () => {
+  const example = exampleJob("job_done_with_package_error.json");
+  const [ok] = exampleJob("job_done_window_summary.json").results as ToolResult[];
+  const noDeps: ToolResult = {
+    ...ok,
+    package: "left-pad",
+    summary: { ...ok.summary!, mttu: 0, mttr: 0, num_dependencies: 0, status: "no_deps" },
+  };
+  const failed = example.results[1] as ToolResult;
+  const job = comparisonJob(request({ ecosystem: "pypi", packages: ["mypkg", "left-pad", "nope"] }), [
+    { kind: "result", result: ok },
+    { kind: "result", result: noDeps },
+    { kind: "result", result: failed },
+  ]);
+  assert.deepEqual(explanationContent(job), {
+    paragraphs: [
+      "mypkg: MTTU is 579.00 days: in this time window, a direct dependency of mypkg was behind the newest " +
+        "available version for 579.00 days in total, on average over the direct dependencies. MTTR is 579.00 days: " +
+        "in this time window, a direct dependency of mypkg stayed on a version with a known vulnerability after " +
+        "a fix was available for 579.00 days in total, on average over the direct dependencies.",
+    ],
+    limitations: LIMITATIONS,
+  });
+});
+
+test("the Limitations of the panel name the build date of the OSV index", () => {
+  const [ok] = exampleJob("job_done_window_summary.json").results as ToolResult[];
+  const job = comparisonJob(request({ packages: ["mypkg"] }), [{ kind: "result", result: ok }], "2026-10-21");
+  assert.equal(job.osv_index_date, "2026-10-21");
+  assert.match(explanationContent(job).limitations[1], /^The results use the OSV data as of 2026-10-21, /);
+  const withoutDate = comparisonJob(request({ packages: ["mypkg"] }), [{ kind: "result", result: ok }]);
+  assert.equal("osv_index_date" in withoutDate, false);
+});
+
+test("a Comparison where each package failed has no Explanation in the panel", () => {
+  const failed = exampleJob("job_done_with_package_error.json").results[1] as ToolResult;
+  const job = comparisonJob(request({ packages: ["nope"] }), [{ kind: "result", result: failed }]);
+  assert.deepEqual(explanationContent(job), { paragraphs: [], limitations: [] });
+});
+
 test("the webview charts use the colors of the Webapp charts", () => {
   const webapp = readFileSync(
     join(import.meta.dirname, "..", "..", "..", "webapp", "site", "static", "js", "webapp.js"),
@@ -114,6 +156,25 @@ test("the webview charts use the colors of the Webapp charts", () => {
   assert.deepEqual(PACKAGE_COLORS, ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4"]);
   assert.match(webapp, /const PACKAGE_POINT_STYLES = \["circle", "rect", "triangle", "rectRot", "crossRot"\];/);
   assert.deepEqual(PACKAGE_POINT_STYLES, ["circle", "rect", "triangle", "rectRot", "crossRot"]);
+});
+
+test("the webview chart boxes take the shared size of the Webapp charts", () => {
+  const source = (...path: string[]) => readFileSync(join(import.meta.dirname, "..", "..", "src", ...path), "utf8");
+  const webview = source("webview", "main.ts");
+  assert.match(webview, /Object\.assign\(box\.style, chartBoxStyle\(\)\);/);
+  assert.doesNotMatch(webview, /style\.(height|width|maxWidth) =/);
+  // The style element of the panel sets no size, so that chartBoxStyle is the one source.
+  const boxRule = /\.chart-box \{([^}]*)\}/.exec(source("comparisonPanel.ts"));
+  assert.ok(boxRule, "the panel style has no .chart-box rule");
+  assert.doesNotMatch(boxRule[1], /width|height/);
+  // The Explanation takes the width of the charts from CHART_SIZE, not a copy of the number.
+  assert.match(source("comparisonPanel.ts"), /\.explanation \{ max-width: \$\{CHART_SIZE\.maxWidth\}px;/);
+});
+
+test("the webview draws the Explanation from the blocks of explanation.js", () => {
+  const webview = readFileSync(join(import.meta.dirname, "..", "..", "src", "webview", "main.ts"), "utf8");
+  assert.match(webview, /explanationBlocks\(job\)/);
+  assert.doesNotMatch(webview, /What the results mean|"Limitations"/);
 });
 
 test("the hover link starts a Comparison with the package of the dependency", () => {

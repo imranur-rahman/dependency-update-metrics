@@ -1,6 +1,9 @@
 // The display model of the core module: the mapping from a Tool result to the hint text.
 // This module has no `vscode` import, so that `node --test` tests it directly.
 
+import { hoverExplanation } from "../../../webapp/site/static/js/explanation.js";
+import { formatDays } from "../../../webapp/site/static/js/comparison.js";
+
 // A summary of the Window summary mode, or a release of the Per-release mode, as the Tool
 // prints it with `--json` (the same shape as the results in contract/examples/).
 export interface MetricsEntry {
@@ -77,8 +80,8 @@ export function hintText(
   const value = resultValue(state.result);
   if (value.kind === "error") return errorText(value.message);
   if (value.kind === "no_deps") return noDependenciesText(packageName);
-  const mttr = context.osvIndex ? `${Math.round(value.mttr)} d` : NEEDS_OSV_INDEX;
-  return `MTTU ${Math.round(value.mttu)} d · MTTR ${mttr}`;
+  const mttr = context.osvIndex ? `${formatDays(value.mttr)} d` : NEEDS_OSV_INDEX;
+  return `MTTU ${formatDays(value.mttu)} d · MTTR ${mttr}`;
 }
 
 // Return the Markdown text of the hover for one dependency: the details behind the hint,
@@ -104,6 +107,10 @@ export function hoverMarkdown(
     } else {
       const mttr = context.osvIndex ? days(value.mttr) : NEEDS_OSV_INDEX;
       lines.push(`MTTU ${days(value.mttu)} · MTTR ${mttr}`, "");
+      // The Explanation line (explanation.js). Without the OSV index, the MTTR of 0 is not
+      // true, so the hover has no Explanation.
+      const explanation = context.osvIndex ? hoverExplanation(result) : null;
+      if (explanation) lines.push(escapeMarkdown(explanation), "");
     }
     lines.push(`- Window: ${result.start_date} to ${result.end_date}`);
     if (value.kind !== "error") {
@@ -137,8 +144,9 @@ export function noDependenciesText(packageName: string): string {
   return `could not compute since '${packageName}' has no dependencies`;
 }
 
+// The days with two decimals, as in the Webapp (formatDays in comparison.js).
 function days(value: number): string {
-  return `${value.toFixed(1)} days`;
+  return `${formatDays(value)} days`;
 }
 
 // Return the lines of a fenced code block that shows `text` literally. The fence is longer

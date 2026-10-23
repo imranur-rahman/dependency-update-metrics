@@ -10,7 +10,7 @@ import type { ChartOptions } from "chart.js";
 import {
   barChartData,
   barChartOptions,
-  CHART_HEIGHTS,
+  chartBoxStyle,
   chartHasValues,
   lineChartData,
   lineChartOptions,
@@ -18,14 +18,18 @@ import {
   resultsNote,
   tableColumns,
 } from "../../../webapp/site/static/js/comparison.js";
+import { explanationBlocks } from "../../../webapp/site/static/js/explanation.js";
 import {
   barChartJob,
   comparisonRows,
+  explanationContent,
   noDependenciesNotes,
   PACKAGE_COLORS,
   PACKAGE_POINT_STYLES,
   SERIES_COLORS,
   type ComparisonJob,
+  type ExplanationBlock,
+  type ExplanationContent,
   type PanelMessage,
   type WebviewMessage,
 } from "../core/comparison.ts";
@@ -78,8 +82,32 @@ function render(): void {
   // A package without dependencies has no bar; a note under the chart gives its text.
   const notes = perRelease ? [] : noDependenciesNotes(job);
   for (const note of notes) app.append(element("p", note, "note"));
+  const explanation = drawExplanation(job);
   const rows = drawTable(job);
-  vscode.postMessage({ type: "rendered", report: { charts: drawn, notes, rows, violations: [...violations] } });
+  vscode.postMessage({
+    type: "rendered",
+    report: { charts: drawn, notes, explanation, rows, violations: [...violations] },
+  });
+}
+
+// Add the Explanation under the charts: the blocks of explanation.js, the same as in the
+// Webapp. A Job without a value adds nothing. Return the text that the report gives.
+function drawExplanation(job: ComparisonJob): ExplanationContent {
+  const blocks = explanationBlocks(job) as ExplanationBlock[];
+  if (blocks.length === 0) return explanationContent(job);
+  const box = element("section", "", "explanation");
+  for (const block of blocks) {
+    if (block.kind === "heading") box.append(element("h3", block.text));
+    else if (block.kind === "subheading") box.append(element("p", block.text, "note"));
+    else if (block.kind === "paragraph") box.append(element("p", `${block.title}: ${block.text}`));
+    else {
+      const list = element("ul", "", "note");
+      for (const text of block.items) list.append(element("li", text));
+      box.append(list);
+    }
+  }
+  app.append(box);
+  return explanationContent(job);
 }
 
 // Chart.js draws on a canvas, so it does not see the CSS variables of the theme.
@@ -99,10 +127,10 @@ function drawBarChart(job: ComparisonJob): string[] {
   if (!chartHasValues(data)) return [];
   for (const dataset of data.datasets) {
     const color = SERIES_COLORS[dataset.label];
-    Object.assign(dataset, { backgroundColor: color, borderColor: color, borderRadius: 4 });
+    Object.assign(dataset, { backgroundColor: color, borderColor: color });
   }
   const options = barChartOptions(chartJob) as ChartOptions<"bar">;
-  charts.push(new Chart(chartCanvas("bar", CHART_HEIGHTS.bar), { type: "bar", data, options }));
+  charts.push(new Chart(chartCanvas("bar"), { type: "bar", data, options }));
   return ["bar"];
 }
 
@@ -118,24 +146,21 @@ function drawLineCharts(job: ComparisonJob): string[] {
       Object.assign(dataset, {
         borderColor: color,
         backgroundColor: color,
-        borderWidth: 2,
-        pointRadius: 3,
-        pointHoverRadius: 5,
         pointStyle: PACKAGE_POINT_STYLES[index % PACKAGE_POINT_STYLES.length],
         spanGaps: false,
       });
     });
-    const canvas = chartCanvas(metric, CHART_HEIGHTS.line);
+    const canvas = chartCanvas(metric);
     const options = lineChartOptions(job) as ChartOptions<"line">;
     charts.push(new Chart(canvas, { type: "line", data, options }));
   });
   return metrics;
 }
 
-// Add a chart box with the compact height of the Webapp, and return its canvas.
-function chartCanvas(id: string, height: number): HTMLCanvasElement {
+// Add a chart box with the shared size and position of the Webapp, and return its canvas.
+function chartCanvas(id: string): HTMLCanvasElement {
   const box = element("div", "", "chart-box");
-  box.style.height = `${height}px`;
+  Object.assign(box.style, chartBoxStyle());
   const canvas = document.createElement("canvas");
   canvas.id = id;
   box.append(canvas);

@@ -1,6 +1,7 @@
-# Extension CI. It also runs on a change in contract/ and in the Webapp comparison.js,
+# Extension CI. It also runs on a change in contract/ and in the Webapp comparison.js and explanation.js,
 # because the Extension unit tests read the contract examples and check that the
-# no-dependencies rule matches the rule of comparison.js.
+# no-dependencies rule matches the rule of comparison.js, and the Extension hover and
+# Comparison panel show the Explanation text of explanation.js.
 # A pushed tag extension-v* also runs the tests and then publishes the Extension
 # (job publish). extension/README.md (Publishing) lists the credentials.
 name: Extension CI
@@ -14,6 +15,7 @@ on:
       - 'extension/**'
       - 'contract/**'
       - 'webapp/site/static/js/comparison.js'
+      - 'webapp/site/static/js/explanation.js'
       - '.github/workflows/extension.yml'
   pull_request:
     branches: [ main ]
@@ -21,6 +23,7 @@ on:
       - 'extension/**'
       - 'contract/**'
       - 'webapp/site/static/js/comparison.js'
+      - 'webapp/site/static/js/explanation.js'
       - '.github/workflows/extension.yml'
   workflow_dispatch:
 

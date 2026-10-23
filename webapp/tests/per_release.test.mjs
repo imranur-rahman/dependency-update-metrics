@@ -16,7 +16,6 @@ import {
   lineChartData,
   lineChartAxisLabel,
   lineChartOptions,
-  CHART_HEIGHTS,
   resultRows,
   tableColumns,
   rowsToCsv,
@@ -106,15 +105,15 @@ test("a package that failed has a line with no points", () => {
 
 test("the line chart axis label follows the weighting type of the Job", () => {
   const job = perReleaseJob();
-  assert.equal(lineChartAxisLabel(job), "Days (sum over intervals)");
+  assert.equal(lineChartAxisLabel(job), "Total days");
 
   job.comparison.weighting_type = "inverse";
-  assert.equal(lineChartAxisLabel(job), "Days (weighted mean)");
+  assert.equal(lineChartAxisLabel(job), "Average days");
 });
 
 test("a Per-release Job gives one table row for each release, with the error of the failed one", () => {
   assert.deepEqual(resultRows(perReleaseJob()), [
-    { package: "mypkg", version: "1.0.0", releaseDate: "2021-01-01", mttu: "0.0", mttr: "0.0", dependencies: 1, error: "" },
+    { package: "mypkg", version: "1.0.0", releaseDate: "2021-01-01", mttu: "0.00", mttr: "0.00", dependencies: 1, error: "" },
     {
       package: "mypkg",
       version: "1.1.0",
@@ -124,9 +123,9 @@ test("a Per-release Job gives one table row for each release, with the error of 
       dependencies: 0,
       error: "Something went wrong (ref: example-job-id)",
     },
-    { package: "mypkg", version: "1.2.0", releaseDate: "2022-01-01", mttu: "214.0", mttr: "214.0", dependencies: 1, error: "" },
-    { package: "yourpkg", version: "1.0.0", releaseDate: "2021-03-01", mttu: "0.0", mttr: "0.0", dependencies: 1, error: "" },
-    { package: "yourpkg", version: "2.0.0", releaseDate: "2021-12-01", mttu: "183.0", mttr: "183.0", dependencies: 1, error: "" },
+    { package: "mypkg", version: "1.2.0", releaseDate: "2022-01-01", mttu: "214.00", mttr: "214.00", dependencies: 1, error: "" },
+    { package: "yourpkg", version: "1.0.0", releaseDate: "2021-03-01", mttu: "0.00", mttr: "0.00", dependencies: 1, error: "" },
+    { package: "yourpkg", version: "2.0.0", releaseDate: "2021-12-01", mttu: "183.00", mttr: "183.00", dependencies: 1, error: "" },
   ]);
 });
 
@@ -164,11 +163,11 @@ test("the Per-release CSV download has the same columns and values as the table"
   assert.equal(
     rowsToCsv(resultRows(job), tableColumns(job.comparison.mode)),
     "Package,Version,Release date,MTTU (days),MTTR (days),Dependencies,Error\r\n" +
-      "mypkg,1.0.0,2021-01-01,0.0,0.0,1,\r\n" +
+      "mypkg,1.0.0,2021-01-01,0.00,0.00,1,\r\n" +
       "mypkg,1.1.0,2021-09-01,,,0,Something went wrong (ref: example-job-id)\r\n" +
-      "mypkg,1.2.0,2022-01-01,214.0,214.0,1,\r\n" +
-      "yourpkg,1.0.0,2021-03-01,0.0,0.0,1,\r\n" +
-      "yourpkg,2.0.0,2021-12-01,183.0,183.0,1,\r\n",
+      "mypkg,1.2.0,2022-01-01,214.00,214.00,1,\r\n" +
+      "yourpkg,1.0.0,2021-03-01,0.00,0.00,1,\r\n" +
+      "yourpkg,2.0.0,2021-12-01,183.00,183.00,1,\r\n",
   );
 });
 
@@ -193,15 +192,14 @@ test("line charts in which no release has a value have no values", () => {
   assert.equal(chartHasValues(lineChartData(perReleaseJob(), "mttu")), true);
 });
 
-test("the line charts are compact: at most 220 px high, a small legend, and few ticks", () => {
+test("the line charts are compact: a small legend and few ticks", () => {
   const options = lineChartOptions(perReleaseJob());
 
-  assert.ok(CHART_HEIGHTS.line <= 220, `the line charts are ${CHART_HEIGHTS.line} px high`);
   assert.equal(options.maintainAspectRatio, false);
   assert.equal(options.plugins.legend.labels.usePointStyle, true);
   assert.equal(options.plugins.legend.labels.boxWidth, 12);
   assert.ok(options.plugins.legend.labels.font.size >= 11, "the legend text stays readable");
-  assert.equal(options.scales.x.ticks.maxTicksLimit, 4);
+  assert.equal(options.scales.x.ticks.maxTicksLimit, 6);
   assert.equal(options.scales.x.ticks.maxRotation, 0, "the dates stay horizontal");
   assert.equal(options.scales.y.ticks.maxTicksLimit, 4);
   assert.equal(options.scales.y.beginAtZero, true);
@@ -213,10 +211,10 @@ test("the line chart options carry the axis titles", () => {
 
   assert.equal(scales.x.type, "linear");
   assert.equal(scales.x.title.text, "Release date");
-  assert.equal(scales.y.title.text, "Days (sum over intervals)");
+  assert.equal(scales.y.title.text, "Total days");
 
   job.comparison.weighting_type = "inverse";
-  assert.equal(lineChartOptions(job).scales.y.title.text, "Days (weighted mean)");
+  assert.equal(lineChartOptions(job).scales.y.title.text, "Average days");
 });
 
 test("the line chart shows release dates on the x-axis and in the tooltip title", () => {
@@ -229,6 +227,6 @@ test("the line chart shows release dates on the x-axis and in the tooltip title"
 test("the line chart tooltip names the package, the version, and the days", () => {
   const { label } = lineChartOptions(perReleaseJob()).plugins.tooltip.callbacks;
 
-  assert.equal(label({ dataset: { label: "mypkg" }, raw: { y: 214, version: "1.2.0" } }), "mypkg 1.2.0: 214.0 days");
+  assert.equal(label({ dataset: { label: "mypkg" }, raw: { y: 214, version: "1.2.0" } }), "mypkg 1.2.0: 214.00 days");
   assert.equal(label({ dataset: { label: "mypkg" }, raw: { y: null, version: "1.1.0" } }), "mypkg 1.1.0: no value");
 });

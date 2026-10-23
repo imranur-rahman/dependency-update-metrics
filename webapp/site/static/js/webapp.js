@@ -12,9 +12,10 @@ import {
   resultsNote,
   packageErrors,
   dateErrors,
-  submitErrorMessage,
   botCheckError,
   canAddPackage,
+  packageLimitNote,
+  packageLimitNoteAction,
   withComparison,
   comparisonFromSearch,
   formFromComparison,
@@ -22,7 +23,7 @@ import {
   barChartOptions,
   lineChartData,
   lineChartOptions,
-  CHART_HEIGHTS,
+  chartBoxStyle,
   chartHasValues,
   tableColumns,
   rowsToCsv,
@@ -31,7 +32,20 @@ import {
   jobIdFromUrl,
   urlWithJobId,
   JOB_EVENTS,
+  SAMPLE_COMPARISON_PATH,
+  sampleLabel,
+  sampleUrl,
 } from "./comparison.js";
+import { explanationBlocks } from "./explanation.js";
+import {
+  refusalNotice,
+  connectionErrorNotice,
+  sampleErrorNotice,
+  jobErrorNotice,
+  doneJobNotice,
+  errorCell,
+} from "./errorNotice.js";
+import { showNotification, clearNotification, scrollToElement } from "./notification.js";
 
 // Colors of the bar chart: slots 1 and 2 of the validated categorical palette
 // (blue, orange), so that the two series stay apart for color-blind readers.
@@ -46,6 +60,8 @@ const section = document.getElementById("try-it");
 const form = document.getElementById("comparison-form");
 const statusLine = document.getElementById("job-status");
 const statusBox = document.getElementById("job-status-box");
+const jobNotice = document.getElementById("job-notice");
+const resultsNotice = document.getElementById("results-notice");
 const resultsCard = document.getElementById("results-card");
 const progressBar = document.getElementById("job-progress");
 const table = document.getElementById("result-table");
@@ -59,6 +75,7 @@ const halfLifeMessage = document.getElementById("half-life-error");
 const resultsNoteLine = document.getElementById("results-note");
 const packageFields = document.getElementById("package-fields");
 const addPackageButton = document.getElementById("add-package");
+const packageLimit = document.getElementById("package-limit");
 const packageMessage = document.getElementById("package-error");
 const dateMessage = document.getElementById("date-error");
 const startDateInput = document.getElementById("start-date");
@@ -72,10 +89,12 @@ const releaseCanvases = {
 };
 const csvButton = document.getElementById("download-csv");
 const botCheckMessage = document.getElementById("bot-check-error");
+const sampleButton = document.getElementById("show-sample");
+const sampleLabelLine = document.getElementById("sample-label");
 
-// Each chart box gets its compact height from comparison.js, which the Extension shares.
+// Each chart box gets the shared size from comparison.js, which the Extension shares.
 for (const box of document.querySelectorAll(".chart-box")) {
-  box.style.height = `${CHART_HEIGHTS[box.dataset.chart]}px`;
+  Object.assign(box.style, chartBoxStyle());
 }
 
 let chart = null;
@@ -114,13 +133,26 @@ function packageValues() {
   return packageInputs().map((input) => input.value);
 }
 
-// Give each package field its number, and allow a new field only below the limit.
+// The number of package fields at the last renumber, so that the limit note shows only when
+// the count changes to the limit.
+let packageCount = null;
+
+// Give each package field its number, and allow a new field only below the limit. The limit
+// note (role="alert") shows once, when the count changes to the limit.
 function renumberPackageFields() {
   packageInputs().forEach((input, index) => {
     input.id = `package-${index + 1}`;
     input.setAttribute("aria-label", `Package ${index + 1}`);
   });
-  addPackageButton.disabled = !canAddPackage(packageValues());
+  const packages = packageValues();
+  addPackageButton.disabled = !canAddPackage(packages);
+  const action = packageLimitNoteAction(packageCount, packages);
+  packageCount = packages.length;
+  if (action === "show") {
+    showNotification(packageLimit, { message: packageLimitNote(packages) }, { tone: "info", scroll: false });
+  } else if (action === "clear") {
+    clearNotification(packageLimit);
+  }
 }
 
 function addPackageField(value = "") {
@@ -205,7 +237,11 @@ function resetBotCheck() {
 // Fill the form from a Comparison in the page URL (a shared link).
 function fillFormFromUrl() {
   const comparison = comparisonFromSearch(window.location.search);
-  if (comparison === null) return;
+  if (comparison !== null) fillForm(comparison);
+}
+
+// Make the form show a Comparison (a shared link or the Sample Comparison).
+function fillForm(comparison) {
   const state = formFromComparison(comparison);
   form.elements.ecosystem.value = state.ecosystem;
   setPackageFields(state.packages);
@@ -225,11 +261,19 @@ function showComparisonInUrl(comparison) {
 
 // --- Results ---
 
-// Show the status of the Job. An error (a failed or refused Job) shows in red.
-function showStatus(text, isError = false) {
+// Show the status of the Job while it waits or runs.
+function showStatus(text) {
   statusLine.textContent = text;
   statusBox.hidden = !text;
-  statusBox.classList.toggle("is-error", isError);
+}
+
+// Show an error (a failed or refused Job) in a red notification in place of the status, and
+// scroll to it, so that the user does not miss it. notice comes from errorNotice.js.
+function showError(notice) {
+  showStatus("");
+  showProgress(null);
+  cancelButton.hidden = true;
+  showNotification(jobNotice, notice);
 }
 
 // Show a bar with no value while the Job waits, and the share of packages that are done
@@ -249,9 +293,35 @@ function showProgress(progress) {
 function showJob(job) {
   currentJobId = job.job_id;
   cancelButton.hidden = !canCancel(job);
-  showStatus(describeJob(job), job.state === "error");
+  if (job.state === "error") {
+    showError(jobErrorNotice(job));
+    return;
+  }
+  clearNotification(jobNotice);
+  showStatus(describeJob(job));
   showProgress(progressOf(job));
-  if (job.state === "done") showResult(job);
+  if (job.state === "done") {
+    showResult(job);
+    // The results card holds the notice of a failed package, so one scroll shows both.
+    scrollToElement(resultsCard);
+  }
+}
+
+// Show the text of an error cell in red, with the next step under it (errorCell). A cell
+// without an error, or with the no-dependencies text, keeps its plain text.
+function fillErrorCell(td, text) {
+  const cell = errorCell(text);
+  if (cell === null) {
+    td.textContent = String(text);
+    return;
+  }
+  const message = document.createElement("span");
+  message.className = "has-text-danger has-text-weight-semibold";
+  message.textContent = cell.text;
+  const nextStep = document.createElement("span");
+  nextStep.className = "is-block is-size-7";
+  nextStep.textContent = cell.nextStep;
+  td.replaceChildren(message, nextStep);
 }
 
 function showRows(rows, columns) {
@@ -267,7 +337,8 @@ function showRows(rows, columns) {
       const tr = document.createElement("tr");
       for (const [key] of columns) {
         const td = document.createElement("td");
-        td.textContent = String(row[key]);
+        if (key === "error") fillErrorCell(td, row[key]);
+        else td.textContent = String(row[key]);
         tr.append(td);
       }
       return tr;
@@ -294,7 +365,7 @@ function showChart(job) {
   }
   for (const dataset of data.datasets) {
     const color = SERIES_COLORS[dataset.label];
-    Object.assign(dataset, { backgroundColor: color, borderColor: color, borderRadius: 4 });
+    Object.assign(dataset, { backgroundColor: color, borderColor: color });
   }
   chartFigure.hidden = false;
   chart = new window.Chart(chartCanvas, { type: "bar", data, options: barChartOptions(job) });
@@ -325,9 +396,6 @@ function showReleaseCharts(job) {
       Object.assign(dataset, {
         borderColor: color,
         backgroundColor: color,
-        borderWidth: 2,
-        pointRadius: 3,
-        pointHoverRadius: 5,
         pointStyle: PACKAGE_POINT_STYLES[index % PACKAGE_POINT_STYLES.length],
         spanGaps: false,
       });
@@ -348,6 +416,40 @@ function showCsvButton(job) {
   csvButton.hidden = false;
 }
 
+// Show the Explanation under the results: the blocks of explanation.js (the heading, one
+// paragraph for each package with a value, then the shared Limitations list). A Job without
+// a value shows none.
+function showExplanation(job) {
+  const box = document.getElementById("results-explanation");
+  const children = (job === null ? [] : explanationBlocks(job)).map(explanationElement);
+  box.replaceChildren(...children);
+  box.hidden = children.length === 0;
+}
+
+// Return the element of one Explanation block.
+function explanationElement(block) {
+  if (block.kind === "list") {
+    const list = document.createElement("ul");
+    for (const text of block.items) {
+      const entry = document.createElement("li");
+      entry.textContent = text;
+      list.append(entry);
+    }
+    return list;
+  }
+  if (block.kind === "paragraph") {
+    const paragraph = document.createElement("p");
+    const title = document.createElement("strong");
+    title.textContent = `${block.title}: `;
+    paragraph.append(title, block.text);
+    return paragraph;
+  }
+  const heading = document.createElement(block.kind === "heading" ? "h4" : "p");
+  heading.className = block.kind === "heading" ? "title is-6 mb-2" : "has-text-weight-semibold mb-1";
+  heading.textContent = block.text;
+  return heading;
+}
+
 // Show the results card only for a done Job.
 function showResult(job) {
   resultsCard.hidden = job === null;
@@ -356,6 +458,25 @@ function showResult(job) {
   showReleaseCharts(job);
   showCsvButton(job);
   showResultsNote(job === null ? null : job.comparison.weighting_type);
+  showExplanation(job);
+  showPackageFailures(job);
+  showSampleLabel(job);
+}
+
+// Show "Precomputed on <date>" for the Sample Comparison. A Job of the Host has no
+// computed_on field, so its results show no label.
+function showSampleLabel(job) {
+  const isSample = job !== null && Boolean(job.computed_on);
+  sampleLabelLine.textContent = isSample ? sampleLabel(job) : "";
+  sampleLabelLine.hidden = !isSample;
+}
+
+// Show a red notification above the results of a done Job in which a package failed. The
+// table shows each error next to its package (fillErrorCell).
+function showPackageFailures(job) {
+  const notice = job === null ? null : doneJobNotice(job);
+  if (notice === null) clearNotification(resultsNotice);
+  else showNotification(resultsNotice, notice, { scroll: false });
 }
 
 function downloadCsv() {
@@ -371,7 +492,13 @@ function downloadCsv() {
 
 async function getJob(jobId) {
   const response = await fetch(`${hostUrl}/api/jobs/${encodeURIComponent(jobId)}`);
-  if (!response.ok) throw new Error(`GET returned ${response.status}`);
+  if (!response.ok) {
+    // The Host gives a user message (for example "Job not found"); the error carries its notice.
+    const refusal = await response.json().catch(() => null);
+    throw Object.assign(new Error(`GET returned ${response.status}`), {
+      notice: refusalNotice(refusal),
+    });
+  }
   return response.json();
 }
 
@@ -431,9 +558,7 @@ async function resumeJobFromUrl() {
     if (!isFinished(job)) await followJob(jobId);
   } catch (error) {
     console.error(error);
-    showProgress(null);
-    cancelButton.hidden = true;
-    showStatus("Something went wrong. Try again later.", true);
+    showError(error.notice ?? connectionErrorNotice());
   } finally {
     submitButton.disabled = false;
   }
@@ -469,6 +594,7 @@ form.addEventListener("submit", async (event) => {
   showComparisonInUrl(comparison);
   submitButton.disabled = true;
   showResult(null);
+  clearNotification(jobNotice);
   showStatus("Sending");
   try {
     const response = await fetch(`${hostUrl}/api/jobs`, {
@@ -480,8 +606,7 @@ form.addEventListener("submit", async (event) => {
       // The Host gives a user message for a refused submit (for example, a rate limit).
       const refusal = await response.json().catch(() => null);
       console.error(`POST returned ${response.status}`, refusal);
-      showProgress(null);
-      showStatus(submitErrorMessage(refusal), true);
+      showError(refusalNotice(refusal));
       return;
     }
     const { job_id: jobId } = await response.json();
@@ -489,16 +614,42 @@ form.addEventListener("submit", async (event) => {
     await followJob(jobId);
   } catch (error) {
     console.error(error);
-    showProgress(null);
-    cancelButton.hidden = true;
-    showStatus("Something went wrong. Try again later.", true);
+    showError(connectionErrorNotice());
   } finally {
     resetBotCheck();
     submitButton.disabled = false;
   }
 });
 
+// --- Sample Comparison (ticket #45) ---
+
+// Fill the form with the Sample Comparison and show its precomputed results through the
+// same path as a done Job. The file comes from the published folder: no Job, no Host call.
+async function showSample() {
+  sampleButton.disabled = true;
+  try {
+    const response = await fetch(SAMPLE_COMPARISON_PATH);
+    if (!response.ok) throw new Error(`GET ${SAMPLE_COMPARISON_PATH} returned ${response.status}`);
+    const sample = await response.json();
+    fillForm(sample.comparison);
+    history.replaceState(null, "", sampleUrl(location.href, sample.comparison));
+    currentJobId = null;
+    cancelButton.hidden = true;
+    clearNotification(jobNotice);
+    showStatus("");
+    showProgress(null);
+    showResult(sample);
+    scrollToElement(resultsCard);
+  } catch (error) {
+    console.error(error);
+    showError(sampleErrorNotice());
+  } finally {
+    sampleButton.disabled = false;
+  }
+}
+
 weightingSelect.addEventListener("change", showWeightingFields);
+sampleButton.addEventListener("click", showSample);
 addPackageButton.addEventListener("click", () => addPackageField()?.focus());
 csvButton.addEventListener("click", downloadCsv);
 cancelButton.addEventListener("click", cancelJob);
