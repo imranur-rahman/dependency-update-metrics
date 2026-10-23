@@ -21,6 +21,10 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PIP_NO_CACHE_DIR=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1
 
+# The native npm resolver calls the npm CLI. With `docker run --user`, HOME is /, which the
+# user cannot write, and npm then finds no versions. /tmp is writable for every user.
+ENV NPM_CONFIG_CACHE=/tmp/.npm
+
 WORKDIR /opt/mttx
 # Every package comes from the lock, with its hash, so a rebuild gets the same packages.
 COPY image/requirements.lock image/requirements.lock
