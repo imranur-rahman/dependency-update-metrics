@@ -1,5 +1,5 @@
-// The rules for the OSV index (#30). MTTR needs the OSV index, a download of about 260 MB,
-// so the Extension asks once before the Tool builds it. The Tool is the single source of
+// The rules for the OSV index. MTTR needs the OSV index, a large download, so the Extension
+// asks once before the Tool builds it. The Tool is the single source of
 // the index: `--osv-index-date` prints its build date, and `--build-osv` builds it.
 // This module has no `vscode` import.
 
@@ -10,10 +10,14 @@ export type OsvIndexState = { kind: "missing" } | { kind: "built"; date: string 
 // prompt does not come back on each run.
 export type OsvConsent = "accepted" | "declined";
 
+// The size of the download that the prompt and the progress name. AGENTS.md owns the
+// measured sizes; change this text when they change.
+export const OSV_DOWNLOAD_SIZE = "about 260 MB";
+
 // The prompt before the first build, and its two buttons.
 export const OSV_PROMPT = {
   message:
-    "MTTX needs the OSV index to compute MTTR. The download is about 260 MB. " +
+    `MTTX needs the OSV index to compute MTTR. The download is ${OSV_DOWNLOAD_SIZE}. ` +
     "Without the index, the hints show MTTU only.",
   build: "Download the OSV index",
   decline: "Not now",

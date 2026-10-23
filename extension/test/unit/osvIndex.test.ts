@@ -8,6 +8,7 @@ import { join } from "node:path";
 
 import { hintText, hoverMarkdown, type ToolResult } from "../../src/core/display.ts";
 import {
+  OSV_DOWNLOAD_SIZE,
   OSV_PROMPT,
   buildOsvArgs,
   consentFromAnswer,
@@ -62,7 +63,8 @@ test("the Extension asks only when the index is missing and the developer did no
 });
 
 test("the prompt names the size of the download", () => {
-  assert.match(OSV_PROMPT.message, /about 260 MB/);
+  assert.match(OSV_DOWNLOAD_SIZE, /^about \d+ MB$/);
+  assert.ok(OSV_PROMPT.message.includes(`The download is ${OSV_DOWNLOAD_SIZE}.`));
   assert.match(OSV_PROMPT.build, /Download/);
 });
 

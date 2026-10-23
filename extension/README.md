@@ -61,11 +61,11 @@ All settings are under `mttx.` in the Settings editor. Settings Sync carries the
 
 The hints update after you change a setting.
 
-## The OSV index (about 260 MB)
+## The OSV index
 
-MTTR needs the OSV index, a local copy of the vulnerability data of [OSV](https://osv.dev). To build it, the Tool downloads the OSV files for npm, PyPI, and crates.io from `storage.googleapis.com/osv-vulnerabilities`. The download is about 260 MB (219 MB, 37 MB, and 3.6 MB on 2026-10-21).
+MTTR needs the OSV index, a local copy of the vulnerability data of [OSV](https://osv.dev). To build it, the Tool downloads the OSV files for npm, PyPI, and crates.io from `storage.googleapis.com/osv-vulnerabilities`. The prompt names the size of the download. [`AGENTS.md`](https://github.com/imranur-rahman/dependency-update-metrics/blob/main/AGENTS.md) gives the measured size of each file.
 
-The Extension asks before the first download. If you decline, the hints show MTTU, and they mark MTTR as "needs the OSV index". Run "MTTX: Rebuild OSV index" to get recent vulnerability data later.
+The Extension asks before the first download. If you decline, the hints show MTTU, and they mark MTTR as "needs the OSV index". Run "MTTX: Rebuild OSV index" to get recent vulnerability data later. After each build, the Extension computes the values again, so a value from before the build does not show as the MTTR of the new index.
 
 ## Privacy
 

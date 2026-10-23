@@ -5,6 +5,7 @@
 import * as vscode from "vscode";
 
 import {
+  OSV_DOWNLOAD_SIZE,
   OSV_PROMPT,
   consentFromAnswer,
   osvIndexChanged,
@@ -101,7 +102,7 @@ export class OsvIndex implements vscode.Disposable {
       void vscode.window.showErrorMessage(`MTTX: the OSV index build failed: ${ready.message}`);
       return;
     }
-    const title = `MTTX: Building the OSV index, about 260 MB (now: ${osvIndexText(this.state)})`;
+    const title = `MTTX: Building the OSV index, ${OSV_DOWNLOAD_SIZE} (now: ${osvIndexText(this.state)})`;
     const outcome = await vscode.window.withProgress(
       { location: vscode.ProgressLocation.Notification, title, cancellable: true },
       (progress, token) => {

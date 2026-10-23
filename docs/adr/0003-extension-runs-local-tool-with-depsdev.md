@@ -10,5 +10,5 @@ The Extension runs the Tool on the user's machine, in a venv that the Extension 
 ## Consequences
 
 - The Tool gets a `--json` flag that prints one result on stdout, with the same fields as the Host API result in `contract/examples/`. The Extension pins a range of Tool versions, so this JSON shape can change only with a new minor version of the Tool.
-- The user needs Python 3.10 or later. MTTR needs the OSV index, a download of about 260 MB that the Extension builds only after the user agrees.
+- The user needs Python 3.10 or later. MTTR needs the OSV index, a large download (`AGENTS.md` gives its size) that the Extension builds only after the user agrees.
 - The Extension and the Host both use deps.dev, so for the same window and weighting they give the same values. The paper validates the native resolvers, so a user who wants the validated path switches the setting to the native registries.
