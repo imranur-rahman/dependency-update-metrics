@@ -7,6 +7,7 @@ import { hasNoDependencies, noDependenciesText, type ToolResult } from "./displa
 import type { Ecosystem } from "./manifest.ts";
 import type { ToolOutcome, ToolRequest } from "./tool.ts";
 import { packageErrors, resultRows } from "../../../webapp/site/static/js/comparison.js";
+import { explainComparison } from "../../../webapp/site/static/js/explanation.js";
 
 // The "comparison" object of a Host Job (contract/examples/).
 export interface JobComparison {
@@ -63,11 +64,13 @@ export type PanelMessage = { type: "status"; text: string } | { type: "job"; job
 export type WebviewMessage = { type: "ready" } | { type: "rendered"; report: ComparisonReport };
 
 // What the webview drew: the IDs of the charts that it drew, the notes under the charts, the
-// text of the table cells (the header first), and the content security policy violations. The command returns it,
+// Explanation, the text of the table cells (the header first), and the content security
+// policy violations. The command returns it,
 // so that the integration test checks the webview.
 export interface ComparisonReport {
   charts: string[];
   notes: string[];
+  explanation: ExplanationContent;
   rows: string[][];
   violations: string[];
 }
@@ -159,6 +162,22 @@ export function barChartJob(job: ComparisonJob): ComparisonJob {
 // Job.
 export function noDependenciesNotes(job: ComparisonJob): string[] {
   return job.results.filter(withoutDependencies).map((result) => noDependenciesText(result.package));
+}
+
+// What the panel shows under the charts: one Explanation paragraph for each package with a
+// value ("<title>: <sentences>"), then the shared Limitations list (explanation.js). Both
+// are empty when no package has a value.
+export interface ExplanationContent {
+  paragraphs: string[];
+  limitations: string[];
+}
+
+export function explanationContent(job: ComparisonJob): ExplanationContent {
+  const { packages, limitations } = explainComparison(job);
+  return {
+    paragraphs: packages.map((item: { title: string; sentences: string[] }) => `${item.title}: ${item.sentences.join(" ")}`),
+    limitations,
+  };
 }
 
 // Return the result of a package whose Tool run gave no result, in the shape of

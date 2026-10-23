@@ -126,6 +126,9 @@ async function checkComparison(): Promise<void> {
   assert.deepEqual(report.violations, []);
   assert.deepEqual(report.charts, ["bar"]);
   assert.deepEqual(report.notes, ["could not compute since 'left-pad' has no dependencies"]);
+  assert.equal(report.explanation.paragraphs.length, 1);
+  assert.match(report.explanation.paragraphs[0], /^express: MTTU is 579\.0 days: /);
+  assert.equal(report.explanation.limitations.length, 5);
   assert.deepEqual(report.rows, [
     ["Package", "MTTU (days)", "MTTR (days)", "Dependencies", "Error"],
     ["express", "579.0", "579.0", "1", ""],

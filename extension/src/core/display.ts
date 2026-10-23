@@ -1,6 +1,8 @@
 // The display model of the core module: the mapping from a Tool result to the hint text.
 // This module has no `vscode` import, so that `node --test` tests it directly.
 
+import { hoverExplanation } from "../../../webapp/site/static/js/explanation.js";
+
 // A summary of the Window summary mode, or a release of the Per-release mode, as the Tool
 // prints it with `--json` (the same shape as the results in contract/examples/).
 export interface MetricsEntry {
@@ -104,6 +106,10 @@ export function hoverMarkdown(
     } else {
       const mttr = context.osvIndex ? days(value.mttr) : NEEDS_OSV_INDEX;
       lines.push(`MTTU ${days(value.mttu)} · MTTR ${mttr}`, "");
+      // The Explanation line (explanation.js). Without the OSV index, the MTTR of 0 is not
+      // true, so the hover has no Explanation.
+      const explanation = context.osvIndex ? hoverExplanation(result) : null;
+      if (explanation) lines.push(escapeMarkdown(explanation), "");
     }
     lines.push(`- Window: ${result.start_date} to ${result.end_date}`);
     if (value.kind !== "error") {

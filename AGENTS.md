@@ -11,7 +11,7 @@ The repository holds the four parts that `GLOSSARY.md` defines. Each part has it
 | Tool | `dependency_metrics/`, `tests/`, `pyproject.toml`, `vendor/` | `.github/workflows/ci.yml` (also builds and publishes to PyPI on a GitHub Release, except for an `extension-v*` tag; keep the file name, because the PyPI trusted publisher names it) |
 | Host | `host/` | `.github/workflows/host.yml` (also runs when `dependency_metrics/` changes, because the Host runs the Tool) |
 | Webapp | `webapp/site/` (published), `webapp/tests/` | `.github/workflows/webapp.yml` (tests with `node --test webapp/tests/*.test.mjs`, then publishes `webapp/site/` to GitHub Pages from `main`) |
-| Extension | `extension/` | `.github/workflows/extension.yml` (also runs when `contract/` or `webapp/site/static/js/comparison.js` changes; unit tests with `npm run test:unit`, then one VS Code integration test, on ubuntu, macos, and windows; a pushed tag `extension-v*` also publishes to the Marketplace and Open VSX, see `extension/README.md`) |
+| Extension | `extension/` | `.github/workflows/extension.yml` (also runs when `contract/`, `webapp/site/static/js/comparison.js`, or `webapp/site/static/js/explanation.js` changes; unit tests with `npm run test:unit`, then one VS Code integration test, on ubuntu, macos, and windows; a pushed tag `extension-v*` also publishes to the Marketplace and Open VSX, see `extension/README.md`) |
 
 `contract/examples/` holds example bodies of the Host API. The Host tests, the Webapp tests, and the Extension tests read them, so a change to the API contract fails a test on each side. A change in `contract/` runs the Host CI, the Webapp CI, and the Extension CI.
 

@@ -11,6 +11,7 @@ import {
   compareLink,
   comparisonJob,
   comparisonRows,
+  explanationContent,
   noDependenciesNotes,
   PACKAGE_COLORS,
   PACKAGE_POINT_STYLES,
@@ -20,6 +21,7 @@ import {
 } from "../../src/core/comparison.ts";
 import type { ToolResult } from "../../src/core/display.ts";
 import { barChartData } from "../../../webapp/site/static/js/comparison.js";
+import { LIMITATIONS } from "../../../webapp/site/static/js/explanation.js";
 
 test("the input takes 1 to 5 names, split by commas or spaces", () => {
   assert.deepEqual(parsePackageNames("npm", " express, koa  fastify,"), {
@@ -101,6 +103,37 @@ test("a package without dependencies shows the no-dependencies text and no bar s
   assert.deepEqual(bars.labels, ["mypkg"]);
   assert.deepEqual(bars.datasets.map((dataset: { data: unknown[] }) => dataset.data), [[579], [579]]);
   assert.deepEqual(noDependenciesNotes(job), ["could not compute since 'left-pad' has no dependencies"]);
+});
+
+test("the panel shows one Explanation paragraph for each package with a value, then the Limitations", () => {
+  const example = exampleJob("job_done_with_package_error.json");
+  const [ok] = exampleJob("job_done_window_summary.json").results as ToolResult[];
+  const noDeps: ToolResult = {
+    ...ok,
+    package: "left-pad",
+    summary: { ...ok.summary!, mttu: 0, mttr: 0, num_dependencies: 0, status: "no_deps" },
+  };
+  const failed = example.results[1] as ToolResult;
+  const job = comparisonJob(request({ ecosystem: "pypi", packages: ["mypkg", "left-pad", "nope"] }), [
+    { kind: "result", result: ok },
+    { kind: "result", result: noDeps },
+    { kind: "result", result: failed },
+  ]);
+  assert.deepEqual(explanationContent(job), {
+    paragraphs: [
+      "mypkg: MTTU is 579.0 days: in this time window, a direct dependency of mypkg was behind the newest " +
+        "available version for a sum of 579.0 days, as a mean over the direct dependencies. MTTR is 579.0 days: " +
+        "in this time window, a direct dependency of mypkg stayed on a version with a known vulnerability after " +
+        "a fix was available for a sum of 579.0 days, as a mean over the direct dependencies.",
+    ],
+    limitations: LIMITATIONS,
+  });
+});
+
+test("a Comparison where each package failed has no Explanation in the panel", () => {
+  const failed = exampleJob("job_done_with_package_error.json").results[1] as ToolResult;
+  const job = comparisonJob(request({ packages: ["nope"] }), [{ kind: "result", result: failed }]);
+  assert.deepEqual(explanationContent(job), { paragraphs: [], limitations: [] });
 });
 
 test("the webview charts use the colors of the Webapp charts", () => {

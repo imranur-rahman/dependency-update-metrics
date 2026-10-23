@@ -99,6 +99,26 @@ test("the hover of a result shows the window, the dependencies, the source, the 
   ]);
 });
 
+test("the hover of a result has one short Explanation line under the values", () => {
+  const text = hoverMarkdown({ kind: "result", result: okResult }, { name: "mypkg", section: "dependencies" });
+  const line =
+    "A direct dependency was behind the newest version for a sum of 579.0 days, and on a known vulnerable version after a fix for a sum of 579.0 days.";
+  assert.ok(text.includes(`MTTU 579.0 days · MTTR 579.0 days\n\n${line}\n`), text);
+});
+
+test("the hover Explanation of MTTR 0.0 does not say that no dependency was vulnerable", () => {
+  const result = withSummary({ mttu: 0, mttr: 0 });
+  const text = hoverMarkdown({ kind: "result", result }, { name: "mypkg", section: "dependencies" });
+  assert.ok(text.includes("none stayed on a known vulnerable version after a fix was available"), text);
+  assert.doesNotMatch(text, /no vulnerable|had no vulnerab/i);
+});
+
+test("without the OSV index, the hover has no Explanation line", () => {
+  const target = { name: "mypkg", section: "dependencies" };
+  const text = hoverMarkdown({ kind: "result", result: okResult }, target, { osvIndex: false });
+  assert.ok(!text.includes("A direct dependency"), text);
+});
+
 test("the hover of a package without dependencies repeats the no-dependencies text", () => {
   const result = withSummary({ mttu: 0, mttr: 0, num_dependencies: 0, status: "no_deps" });
   const text = hoverMarkdown({ kind: "result", result }, { name: "left-pad", section: "dependencies" });
