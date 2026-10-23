@@ -20,11 +20,18 @@ export class ResultStore {
   private readonly runner: ToolRunner;
   private readonly makeRequest: (key: PackageKey) => ToolRequest;
   private readonly abort = new AbortController();
+  private readonly now: () => Date;
   private active = 0;
 
-  constructor(runner: ToolRunner, makeRequest: (key: PackageKey) => ToolRequest) {
+  // `now` gives the clock for the date of a value (a test hook).
+  constructor(
+    runner: ToolRunner,
+    makeRequest: (key: PackageKey) => ToolRequest,
+    now: () => Date = () => new Date(),
+  ) {
     this.runner = runner;
     this.makeRequest = makeRequest;
+    this.now = now;
   }
 
   // Return the state of a package. A package that the store does not know gets a Tool run
@@ -56,7 +63,10 @@ export class ResultStore {
   private async runOne(id: string, key: PackageKey): Promise<void> {
     const outcome = await this.runner.run(this.makeRequest(key), this.abort.signal);
     if (this.abort.signal.aborted) return;
-    this.states.set(id, outcome);
+    this.states.set(
+      id,
+      outcome.kind === "result" ? { ...outcome, computedOn: localDate(this.now()) } : outcome,
+    );
     for (const listener of this.listeners) listener();
   }
 
@@ -70,4 +80,10 @@ export class ResultStore {
       });
     }
   }
+}
+
+// Return the date (YYYY-MM-DD) of a time in the local time zone.
+function localDate(time: Date): string {
+  const pad = (value: number) => String(value).padStart(2, "0");
+  return `${time.getFullYear()}-${pad(time.getMonth() + 1)}-${pad(time.getDate())}`;
 }
