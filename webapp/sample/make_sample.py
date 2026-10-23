@@ -30,7 +30,8 @@ from dmhost import JobQueue, ToolAnalysis, Worker  # noqa: E402
 from dmhost.app import job_view  # noqa: E402
 from dmhost.models import Comparison  # noqa: E402
 
-# The Sample Comparison of spec #39: the last 2 full years, the default weighting.
+# The Sample Comparison of spec #39: the fixed window 2024-01-01 to 2025-12-31, the default
+# weighting.
 SAMPLE = Comparison(
     ecosystem="npm",
     packages=["express", "koa", "fastify"],
