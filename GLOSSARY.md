@@ -30,6 +30,16 @@ _Avoid_: query, batch, submission
 The unit of work that the Host queues and runs for one Comparison.
 _Avoid_: task, run, request
 
+**Sample Comparison**:
+A Comparison with precomputed results that the Webapp shows at once, with no Job, so that a first-time reader sees results without a wait.
+_Avoid_: demo, example run
+
+## Results
+
+**Explanation**:
+The plain-English meaning of the MTTU and MTTR of one package in a Comparison, with the limitations of the data.
+_Avoid_: interpretation, insight, summary (summary is the result of the Window summary mode)
+
 ## Modes
 
 **Window summary**:
