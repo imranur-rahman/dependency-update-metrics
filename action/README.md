@@ -9,7 +9,13 @@ For both targets, the inputs `max-mttu-days` and `max-mttr-days` fail the step w
 
 The report explains what the numbers mean and lists the limitations of the data, with the same text as the [Webapp](https://imranur-rahman.github.io/dependency-update-metrics/) and the VS Code extension.
 
+## Runner
+
+The Action runs only on a Linux runner, because it runs the Tool with Docker. It also needs `node` (version 20 or later) on the `PATH`. Each GitHub-hosted Linux runner (`runs-on: ubuntu-latest`) has both. On macOS or Windows, the Action stops with an error.
+
 ## Target packages
+
+The input `packages` takes 1 to 5 package names of one ecosystem. For more packages, use more steps.
 
 ```yaml
 name: MTTX
@@ -147,7 +153,7 @@ The Action runs the Tool in the container image `ghcr.io/imranur-rahman/mttx`. E
 
 Each Tool run is one `docker run` with `$RUNNER_TEMP/mttx-data` on `/data`, as the runner user. So the Tool cache stays between the packages of one job, and the runner owns the files.
 
-The Action needs Docker, so it runs only on Linux runners. On macOS or Windows, it stops with an error. It also needs `node` (version 20 or later) on the `PATH`, as each GitHub-hosted Linux runner has.
+The [Runner](#runner) section lists what the runner needs.
 
 ## Development
 
@@ -179,10 +185,11 @@ The release job stops with an error when the tag does not match `package.json`, 
 
 The release job needs the secret `MTTX_ACTION_TOKEN`. Without it, the job skips the copy with a notice, and the release of the tag does nothing else.
 
-1. Create the public repository `imranur-rahman/mttx-action`, with no files.
-2. Create a fine-grained personal access token with access to `imranur-rahman/mttx-action` only, and the permission "Contents: Read and write".
-3. In `imranur-rahman/dependency-update-metrics`, add the token as the Actions secret `MTTX_ACTION_TOKEN`.
-4. Push the first tag `action-v1.0.0`.
-5. In `imranur-rahman/mttx-action`, edit the release `v1.0.0` that the job created. Select "Publish this Action to the GitHub Marketplace", accept the Marketplace developer agreement, and update the release.
+1. Make the GHCR package `ghcr.io/imranur-rahman/mttx` public: open its package settings on GitHub and set the visibility to public. Without this step, `docker pull` on a runner of another repository fails. `image/README.md` names the same step.
+2. Create the public repository `imranur-rahman/mttx-action`, with no files.
+3. Create a fine-grained personal access token with access to `imranur-rahman/mttx-action` only, and the permission "Contents: Read and write".
+4. In `imranur-rahman/dependency-update-metrics`, add the token as the Actions secret `MTTX_ACTION_TOKEN`.
+5. Push the first tag `action-v1.0.0`.
+6. In `imranur-rahman/mttx-action`, edit the release `v1.0.0` that the job created. Select "Publish this Action to the GitHub Marketplace", accept the Marketplace developer agreement, and update the release.
 
 For each later release, edit the release of the new tag in `imranur-rahman/mttx-action` and publish it to the Marketplace in the same way.
