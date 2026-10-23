@@ -360,7 +360,7 @@
           <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA"></div>
           <p class="tryit-error" id="bot-check-error" role="alert" hidden></p>
         </div>
-        <div class="field is-grouped">
+        <div class="field is-grouped is-grouped-multiline">
           <div class="control">
             <button class="button is-link is-medium tryit-submit" id="submit-comparison" type="submit">Compute</button>
           </div>
@@ -433,6 +433,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" integrity="sha512-CQBWl4fJHWbryGE+Pc7UAxWMUMNMWzWxF4SQo9CgkJIN1kx6djDQZjh3Y8SZ1d+6I+1zze6Z7kHXO7q3UyZAWw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script type="module" src="static/js/webapp.js"></script>
+  <script type="module" src="static/js/pipeline.js"></script>
 
   <!-- Design goals -->
   <section class="section">
@@ -461,17 +462,182 @@
     </div>
   </section>
 
-  <!-- Quick start -->
-  <section class="section hero is-light">
+  <!-- Use MTTX in your workflow: one stage for each place where a dependency decision happens.
+       pipeline.js switches the panels and copies the commands. The image tag and digest of the
+       Reproduce panel are the ones in action/image.json (site.test.mjs checks that they match). -->
+  <section class="section hero is-light" id="workflow">
     <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Quick Start</h2>
-      <div class="content">
-        <pre class="cli"><code># Install from PyPI (the command is dependency-metrics)
-pip install dependency-update-metrics
+      <h2 class="title is-3 has-text-centered">Use MTTX in Your Workflow</h2>
+      <p class="has-text-centered workflow-lead">
+        MTTU and MTTR show how the maintainers of a package responded to new dependency versions and to fixed vulnerabilities in the past.
+        MTTX brings this evidence to each place where you decide on a dependency: when you select it, while you code, and in CI.
+        The same Tool computes every value, so the numbers agree everywhere.
+      </p>
+
+      <div class="pipeline" role="tablist" aria-label="Stages of the development workflow">
+        <button class="pipeline-stage is-active" type="button" role="tab" id="stage-tab-select" aria-controls="stage-select" aria-selected="true">
+          <span class="pipeline-step">1</span>
+          <span class="pipeline-icon"><i class="fas fa-search" aria-hidden="true"></i></span>
+          <strong>Select</strong>
+          <small>Web dashboard</small>
+        </button>
+        <span class="pipeline-arrow" aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
+        <button class="pipeline-stage" type="button" role="tab" id="stage-tab-develop" aria-controls="stage-develop" aria-selected="false" tabindex="-1">
+          <span class="pipeline-step">2</span>
+          <span class="pipeline-icon"><i class="fas fa-code" aria-hidden="true"></i></span>
+          <strong>Develop</strong>
+          <small>IDE extension</small>
+        </button>
+        <span class="pipeline-arrow" aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
+        <button class="pipeline-stage" type="button" role="tab" id="stage-tab-integrate" aria-controls="stage-integrate" aria-selected="false" tabindex="-1">
+          <span class="pipeline-step">3</span>
+          <span class="pipeline-icon"><i class="fab fa-github" aria-hidden="true"></i></span>
+          <strong>Integrate</strong>
+          <small>GitHub Action</small>
+        </button>
+        <button class="pipeline-stage pipeline-foundation" type="button" role="tab" id="stage-tab-reproduce" aria-controls="stage-reproduce" aria-selected="false" tabindex="-1">
+          <span class="pipeline-icon"><i class="fas fa-terminal" aria-hidden="true"></i></span>
+          <strong>Analyze and reproduce</strong>
+          <small>CLI on PyPI and container image on GHCR, under every stage above</small>
+        </button>
+      </div>
+
+      <!-- 1. Select -->
+      <div class="pipeline-panel" role="tabpanel" id="stage-select" aria-labelledby="stage-tab-select">
+        <h3 class="title is-5">Compare candidate packages before you add one</h3>
+        <p>
+          The web dashboard on this page compares up to five packages from one ecosystem, with no installation.
+          Our server runs the Tool with deps.dev data and shows a bar chart, a table, and a plain-English Explanation of each value.
+          Per-release mode adds line charts that show how MTTU and MTTR changed at each release.
+        </p>
+        <ol class="workflow-steps">
+          <li>Go to <a href="#try-it">Try It</a>, pick the ecosystem, and type the names of the candidate packages.</li>
+          <li>Pick a time window and a mode, and then select <strong>Compute</strong>.</li>
+          <li>Read the Explanation under the table, and download the CSV file if you want to keep the values.</li>
+        </ol>
+        <div class="buttons">
+          <button class="button is-link" type="button" id="workflow-show-sample">
+            <span class="icon"><i class="fas fa-play" aria-hidden="true"></i></span>
+            <span>Show the sample Comparison (express, koa, fastify)</span>
+          </button>
+          <a class="button is-link is-light" href="#try-it">Go to Try It</a>
+        </div>
+        <p class="is-size-7 has-text-grey">The sample loads precomputed results at once, so you see the charts and the Explanation without a wait.</p>
+      </div>
+
+      <!-- 2. Develop -->
+      <div class="pipeline-panel" role="tabpanel" id="stage-develop" aria-labelledby="stage-tab-develop" hidden>
+        <h3 class="title is-5">See MTTU and MTTR next to each dependency while you code</h3>
+        <p>
+          The MTTX extension shows the MTTU and MTTR of each dependency as an inline hint in <code>package.json</code>, <code>pyproject.toml</code>, and <code>Cargo.toml</code>.
+          The hover gives the time window, the data source, and the Explanation, and a link opens a Comparison of the package with alternatives.
+          The extension runs the Tool on your machine.
+        </p>
+        <div class="columns">
+          <div class="column">
+            <div class="install-card">
+              <p class="install-title"><i class="fas fa-code" aria-hidden="true"></i> VS Code</p>
+              <p>Install from the <a href="https://marketplace.visualstudio.com/items?itemName=imranur-rahman.mttx" target="_blank" rel="noopener">Visual Studio Marketplace</a>, or run:</p>
+              <pre class="cli"><code>code --install-extension imranur-rahman.mttx</code></pre>
+            </div>
+          </div>
+          <div class="column">
+            <div class="install-card">
+              <p class="install-title"><i class="fas fa-code-branch" aria-hidden="true"></i> Cursor, Windsurf, VSCodium, and other editors that use Open VSX</p>
+              <p>Search for <strong>MTTX</strong> in the Extensions view, or install from <a href="https://open-vsx.org/extension/imranur-rahman/mttx" target="_blank" rel="noopener">Open VSX</a>. For example:</p>
+              <pre class="cli"><code>codium --install-extension imranur-rahman.mttx</code></pre>
+            </div>
+          </div>
+        </div>
+        <p>
+          The first run installs the Tool in a private Python environment (Python 3.10 or later) and offers to build the OSV index, which MTTR needs.
+          To try the extension at once, open the <a href="https://github.com/imranur-rahman/dependency-update-metrics/tree/main/extension/demo" target="_blank" rel="noopener">demo project</a>, which has one manifest of each kind.
+        </p>
+        <!-- Screenshots of the hint, the hover, and the Comparison panel go here (issue 36). -->
+      </div>
+
+      <!-- 3. Integrate -->
+      <div class="pipeline-panel" role="tabpanel" id="stage-integrate" aria-labelledby="stage-tab-integrate" hidden>
+        <h3 class="title is-5">Report MTTU and MTTR in CI</h3>
+        <p>
+          The <a href="https://github.com/marketplace/actions/mttx-dependency-update-metrics" target="_blank" rel="noopener">MTTX GitHub Action</a> runs the Tool in the pinned container image.
+          It reports the values; it fails the step only when you set a limit and a value is above it.
+        </p>
+        <div class="columns">
+          <div class="column">
+            <p class="install-title">Review the dependencies that a pull request adds</p>
+            <pre class="cli"><code># .github/workflows/mttx.yml
+on: pull_request
+permissions:
+  contents: read
+  pull-requests: write
+jobs:
+  dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: imranur-rahman/mttx-action@v1
+        with:
+          target: pull-request</code></pre>
+          </div>
+          <div class="column">
+            <p class="install-title">Track your own packages each week</p>
+            <pre class="cli"><code># .github/workflows/mttx-weekly.yml
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+jobs:
+  packages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: imranur-rahman/mttx-action@v1
+        with:
+          packages: express, koa
+          ecosystem: npm
+          max-mttr-days: 30</code></pre>
+            <p class="is-size-7">The weekly job also gives step outputs, a job summary, and badge files for shields.io.</p>
+          </div>
+        </div>
+        <p class="install-title">Sample output: the comment on a pull request</p>
+        <div class="pr-comment">
+          <div class="pr-comment-header"><i class="fab fa-github" aria-hidden="true"></i> <strong>github-actions</strong> bot commented</div>
+          <div class="pr-comment-body content">
+            <p class="pr-comment-title">MTTU and MTTR of the dependencies that this pull request adds</p>
+            <p class="is-size-7">Window: 2024-10-23 to 2026-10-23 · Data source: deps.dev · Weighting: disable</p>
+            <div class="table-container">
+              <table class="table is-narrow is-fullwidth">
+                <thead><tr><th>Package</th><th>Ecosystem</th><th>MTTU (days)</th><th>MTTR (days)</th><th>Dependencies</th><th>Manifest</th><th>Note</th></tr></thead>
+                <tbody>
+                  <tr><td><code>serde</code></td><td>cargo</td><td>0.00</td><td>0.00</td><td>1</td><td><code>Cargo.toml</code></td><td></td></tr>
+                  <tr><td><code>axios</code></td><td>npm</td><td>52.24</td><td>0.00</td><td>4</td><td><code>package.json</code></td><td></td></tr>
+                  <tr><td><code>lodash</code></td><td>npm</td><td>–</td><td>–</td><td>0</td><td><code>package.json</code></td><td>could not compute since 'lodash' has no dependencies</td></tr>
+                  <tr><td><code>requests</code></td><td>pypi</td><td>0.00</td><td>0.00</td><td>4</td><td><code>pyproject.toml</code></td><td></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p><strong>axios</strong>: MTTU is 52.24 days: in this time window, a direct dependency of axios was behind the newest available version for 52.24 days in total, on average over the direct dependencies. In this time window, no direct dependency stayed on a version with a known vulnerability after a fix was available.</p>
+            <p class="is-size-7 has-text-grey">The comment also lists the Explanation of each package and the limitations of the data. A new push updates the same comment.</p>
+          </div>
+        </div>
+        <p class="is-size-7 has-text-grey">
+          From a test pull request in <a href="https://github.com/imranur-rahman/mttx-action-smoke/pull/1" target="_blank" rel="noopener">imranur-rahman/mttx-action-smoke</a>, shortened.
+          The <a href="https://github.com/imranur-rahman/mttx-action#readme" target="_blank" rel="noopener">Action README</a> lists every input and output.
+        </p>
+      </div>
+
+      <!-- 4. Analyze and reproduce -->
+      <div class="pipeline-panel" role="tabpanel" id="stage-reproduce" aria-labelledby="stage-tab-reproduce" hidden>
+        <h3 class="title is-5">Run the Tool yourself, at scale or exactly again</h3>
+        <div class="columns">
+          <div class="column">
+            <p class="install-title"><i class="fab fa-python" aria-hidden="true"></i> CLI from <a href="https://pypi.org/project/dependency-update-metrics/" target="_blank" rel="noopener">PyPI</a></p>
+            <pre class="cli"><code>pip install dependency-update-metrics
 
 # One package, with the OSV index built on the first run
 dependency-metrics --ecosystem npm --package express \
-  --start-date 2020-01-01 --end-date 2023-12-31 --build-osv
+  --start-date 2024-01-01 --end-date 2025-12-31 --build-osv
 
 # MTTU and MTTR at every release of a package
 dependency-metrics --ecosystem pypi --package requests \
@@ -479,9 +645,25 @@ dependency-metrics --ecosystem pypi --package requests \
 
 # A batch of packages from a CSV file, in parallel
 dependency-metrics --input-csv input.csv --workers 8 --output-dir output</code></pre>
-        <p class="has-text-centered">
-          Available on <a href="https://pypi.org/project/dependency-update-metrics/" target="_blank" rel="noopener">PyPI</a>.
-          See the <a href="https://github.com/imranur-rahman/dependency-update-metrics#readme" target="_blank" rel="noopener">README</a> for all options and for installing from source, and <a href="https://github.com/imranur-rahman/dependency-update-metrics/blob/main/ALGORITHM.md" target="_blank" rel="noopener">ALGORITHM.md</a> for how the metrics are computed.
+          </div>
+          <div class="column">
+            <p class="install-title"><i class="fab fa-docker" aria-hidden="true"></i> Container image on <a href="https://github.com/imranur-rahman/dependency-update-metrics/pkgs/container/mttx" target="_blank" rel="noopener">GHCR</a></p>
+            <p class="is-size-7">The image pins Python, every dependency, and the patched pip. The <code>-osv-</code> tag holds the OSV index of that date, so a rerun uses the same vulnerability data and downloads none.</p>
+            <pre class="cli"><code id="docker-command">docker run --rm -v "$PWD:/data" \
+  ghcr.io/imranur-rahman/mttx:0.2.1-osv-2026-10-23@sha256:3d528b998884f985e484b1da0cceb1219930c1d38625e18bb9ed9f69bce5c2eb \
+  --ecosystem npm --package express \
+  --start-date 2024-01-01 --end-date 2025-12-31 --depsdev --json</code></pre>
+            <p class="is-size-7">Output (shortened). The values equal the sample Comparison of the web dashboard:</p>
+            <pre class="cli"><code>{"package": "express", "data_source": "depsdev",
+ "summary": {"mttu": 120.31748718584655, "mttr": 3.0759126984126985,
+             "num_dependencies": 28, "status": "ok"}}</code></pre>
+          </div>
+        </div>
+        <p>
+          Cite the image digest for an exact rerun. The <a href="https://github.com/imranur-rahman/dependency-update-metrics#readme" target="_blank" rel="noopener">README</a> lists all options,
+          <a href="https://github.com/imranur-rahman/dependency-update-metrics/blob/main/ALGORITHM.md" target="_blank" rel="noopener">ALGORITHM.md</a> describes how the metrics are computed, and
+          <a href="https://github.com/imranur-rahman/dependency-update-metrics/blob/main/TESTING.md" target="_blank" rel="noopener">TESTING.md</a> maps each test to what it checks.
+          <!-- Archive: add the Zenodo DOI here when it exists. -->
         </p>
       </div>
     </div>

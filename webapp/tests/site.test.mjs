@@ -102,7 +102,7 @@ test("the page shows errors in in-page notifications with role=\"alert\", never 
   const jsDir = join(siteDir, "static", "js");
   const notification = readFileSync(join(jsDir, "notification.js"), "utf8");
   assert.match(notification, /setAttribute\("role", "alert"\)/);
-  for (const name of ["webapp.js", "index.js", "comparison.js", "errorNotice.js", "notification.js"]) {
+  for (const name of ["webapp.js", "index.js", "comparison.js", "errorNotice.js", "notification.js", "pipeline.js"]) {
     const code = readFileSync(join(jsDir, name), "utf8").replace(/\/\/.*$/gm, "");
     assert.doesNotMatch(code, /\balert\s*\(/, `${name} calls alert()`);
   }
@@ -131,4 +131,51 @@ test("the Sample Comparison loads from the published folder, not from the Host",
   assert.match(loader[1], /sampleErrorNotice\(\)/);
   assert.doesNotMatch(loader[1], /connectionErrorNotice/);
   assert.match(loader[1], /sampleUrl\(/);
+});
+
+// The "Use MTTX in Your Workflow" section.
+function workflowSection() {
+  const html = readFileSync(join(siteDir, "index.html"), "utf8");
+  const section = html.match(/<section[^>]*id="workflow"[^>]*>([\s\S]*?)<\/section>/);
+  assert.ok(section, "the workflow section is missing");
+  return section[1];
+}
+
+test("the workflow section has one tab and one panel for each stage", () => {
+  const section = workflowSection();
+  for (const stage of ["select", "develop", "integrate", "reproduce"]) {
+    assert.match(section, new RegExp(`role="tab" id="stage-tab-${stage}" aria-controls="stage-${stage}"`), `the tab ${stage} is missing`);
+    assert.match(section, new RegExp(`role="tabpanel" id="stage-${stage}" aria-labelledby="stage-tab-${stage}"`), `the panel ${stage} is missing`);
+  }
+  // Only the first panel shows before pipeline.js runs.
+  assert.equal([...section.matchAll(/role="tabpanel"[^>]*hidden/g)].length, 3);
+});
+
+test("the workflow section links to every place where MTTX is published", () => {
+  const section = workflowSection();
+  for (const url of [
+    "https://marketplace.visualstudio.com/items?itemName=imranur-rahman.mttx",
+    "https://open-vsx.org/extension/imranur-rahman/mttx",
+    "https://github.com/marketplace/actions/mttx-dependency-update-metrics",
+    "https://pypi.org/project/dependency-update-metrics/",
+    "https://github.com/imranur-rahman/dependency-update-metrics/pkgs/container/mttx",
+  ]) {
+    assert.ok(section.includes(`href="${url}"`), `the link ${url} is missing`);
+  }
+});
+
+test("the install commands name the published Extension and Action", () => {
+  const section = workflowSection();
+  const manifest = JSON.parse(readFileSync(join(siteDir, "..", "..", "extension", "package.json"), "utf8"));
+  const id = `${manifest.publisher}.${manifest.name}`;
+  assert.ok(section.includes(`code --install-extension ${id}`));
+  assert.ok(section.includes(`codium --install-extension ${id}`));
+  assert.match(section, /uses: imranur-rahman\/mttx-action@v1\b/);
+});
+
+test("the docker command uses the image tag and digest that the Action pins", () => {
+  const image = JSON.parse(readFileSync(join(siteDir, "..", "..", "action", "image.json"), "utf8"));
+  const command = workflowSection().match(/<code id="docker-command">([\s\S]*?)<\/code>/);
+  assert.ok(command, "the docker command is missing");
+  assert.ok(command[1].includes(`${image.repository}:${image.osvTag}@${image.osvDigest}`));
 });
