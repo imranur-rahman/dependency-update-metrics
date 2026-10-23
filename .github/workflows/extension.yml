@@ -1,0 +1,136 @@
+# Extension CI. It also runs on a change in contract/ and in the Webapp comparison.js,
+# because the Extension unit tests read the contract examples and check that the
+# no-dependencies rule matches the rule of comparison.js.
+# A pushed tag extension-v* also runs the tests and then publishes the Extension
+# (job publish). extension/README.md (Publishing) lists the credentials.
+name: Extension CI
+
+on:
+  push:
+    branches: [ main, develop ]
+    # GitHub does not apply the paths filter to a tag push.
+    tags: [ 'extension-v*' ]
+    paths:
+      - 'extension/**'
+      - 'contract/**'
+      - 'webapp/site/static/js/comparison.js'
+      - '.github/workflows/extension.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'extension/**'
+      - 'contract/**'
+      - 'webapp/site/static/js/comparison.js'
+      - '.github/workflows/extension.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ ubuntu-latest, macos-latest, windows-latest ]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: extension
+
+    steps:
+    - uses: actions/checkout@v4
+
+    # Node 24 runs the TypeScript unit tests without a build step (type stripping).
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '24'
+        cache: npm
+        cache-dependency-path: extension/package-lock.json
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Check types
+      run: npm run check-types
+
+    - name: Run unit tests
+      run: npm run test:unit
+
+    # The integration test downloads VS Code and opens it, so Linux needs a virtual display.
+    - name: Run the integration test (Linux)
+      if: runner.os == 'Linux'
+      run: xvfb-run -a npm run test:integration
+
+    - name: Run the integration test
+      if: runner.os != 'Linux'
+      run: npm run test:integration
+
+  # Publishes one .vsix to the VS Code Marketplace and to Open VSX, after the tests pass
+  # on all three systems. Runs only for a pushed tag extension-v*.
+  publish:
+    needs: test
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/extension-v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write  # trusted publishing (OIDC) for vsce and ovsx
+    defaults:
+      run:
+        working-directory: extension
+
+    steps:
+    - uses: actions/checkout@v4
+
+    # vsce 4.0.0 and ovsx 1.2.0 need Node 22 or later.
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '24'
+        cache: npm
+        cache-dependency-path: extension/package-lock.json
+
+    - name: Install dependencies
+      run: npm ci
+
+    # Stops with an error annotation if the tag does not match package.json,
+    # or if a registry has neither trusted publishing nor a token.
+    - name: Check the tag and the credentials
+      id: check
+      run: node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/releaseCheck.ts
+      env:
+        VSCE_TRUSTED_PUBLISHING: ${{ vars.VSCE_TRUSTED_PUBLISHING }}
+        OVSX_TRUSTED_PUBLISHING: ${{ vars.OVSX_TRUSTED_PUBLISHING }}
+        VSCE_PAT: ${{ secrets.VSCE_PAT }}
+        OVSX_PAT: ${{ secrets.OVSX_PAT }}
+
+    # vscode:prepublish builds the minified bundle; .vscodeignore keeps sources and tests out.
+    - name: Package the Extension
+      run: npm run package
+
+    - name: Publish to the VS Code Marketplace (trusted publishing)
+      if: steps.check.outputs.marketplace == 'oidc'
+      run: npx --yes @vscode/vsce@4.0.0 publish --oidc --packagePath mttx.vsix --skip-duplicate
+
+    - name: Publish to the VS Code Marketplace (token)
+      if: steps.check.outputs.marketplace == 'pat'
+      run: npx --yes @vscode/vsce@4.0.0 publish --packagePath mttx.vsix --skip-duplicate
+      env:
+        VSCE_PAT: ${{ secrets.VSCE_PAT }}
+
+    - name: Publish to Open VSX (trusted publishing)
+      if: steps.check.outputs.open_vsx == 'trusted'
+      run: npx --yes ovsx@1.2.0 publish mttx.vsix --trusted-publishing --skip-duplicate
+
+    - name: Publish to Open VSX (token)
+      if: steps.check.outputs.open_vsx == 'pat'
+      run: npx --yes ovsx@1.2.0 publish mttx.vsix --skip-duplicate
+      env:
+        OVSX_PAT: ${{ secrets.OVSX_PAT }}
+
+    - name: Keep the package
+      uses: actions/upload-artifact@v4
+      with:
+        name: mttx-vsix
+        path: extension/mttx.vsix

@@ -4,15 +4,16 @@
 
 ## Repository layout
 
-The repository holds the three parts that `GLOSSARY.md` defines. Each part has its own folder and its own CI workflow, and each workflow runs only when a file of its part changes.
+The repository holds the four parts that `GLOSSARY.md` defines. Each part has its own folder and its own CI workflow, and each workflow runs only when a file of its part changes.
 
 | Part | Folders | CI workflow |
 |---|---|---|
-| Tool | `dependency_metrics/`, `tests/`, `pyproject.toml`, `vendor/` | `.github/workflows/ci.yml` (also builds and publishes to PyPI; keep the file name, because the PyPI trusted publisher names it) |
+| Tool | `dependency_metrics/`, `tests/`, `pyproject.toml`, `vendor/` | `.github/workflows/ci.yml` (also builds and publishes to PyPI on a GitHub Release, except for an `extension-v*` tag; keep the file name, because the PyPI trusted publisher names it) |
 | Host | `host/` | `.github/workflows/host.yml` (also runs when `dependency_metrics/` changes, because the Host runs the Tool) |
 | Webapp | `webapp/site/` (published), `webapp/tests/` | `.github/workflows/webapp.yml` (tests with `node --test webapp/tests/*.test.mjs`, then publishes `webapp/site/` to GitHub Pages from `main`) |
+| Extension | `extension/` | `.github/workflows/extension.yml` (also runs when `contract/` or `webapp/site/static/js/comparison.js` changes; unit tests with `npm run test:unit`, then one VS Code integration test, on ubuntu, macos, and windows; a pushed tag `extension-v*` also publishes to the Marketplace and Open VSX, see `extension/README.md`) |
 
-`contract/examples/` holds example bodies of the Host API. The Host tests and the Webapp tests both read them, so a change to the API contract fails a test on both sides. A change in `contract/` runs the Host CI and the Webapp CI.
+`contract/examples/` holds example bodies of the Host API. The Host tests, the Webapp tests, and the Extension tests read them, so a change to the API contract fails a test on each side. A change in `contract/` runs the Host CI, the Webapp CI, and the Extension CI.
 
 `docs/` holds the ADRs (`docs/adr/`), the agent docs (`docs/agents/`), and the cited research that ADRs depend on (`docs/research/`). GitHub Pages does not publish `docs/`. Only the files in `webapp/site/` are public on the site.
 

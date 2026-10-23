@@ -1,0 +1,281 @@
+// The thin `vscode` layer: it registers the inlay hint provider and the hover provider for
+// the manifests and connects them to the core module and the Tool runner.
+import { mkdirSync } from "node:fs";
+import { join } from "node:path";
+
+import * as vscode from "vscode";
+
+import { compare } from "./comparisonPanel.ts";
+import { compareLink } from "./core/comparison.ts";
+import { MANIFEST_PATTERN, isAnalyzedManifest } from "./core/discovery.ts";
+import { hintText, hoverMarkdown, type HintContext } from "./core/display.ts";
+import { dependencyAt, hintLabel } from "./core/hintLabel.ts";
+import { parseManifest } from "./core/manifest.ts";
+import { ResultCache } from "./core/resultCache.ts";
+import { InvalidSettingsStore, ResultStore, type PackageKey, type PackageStates } from "./core/resultStore.ts";
+import { cachePruneArgs, resultContext, toolOutputDir, toolRequest } from "./core/settings.ts";
+import type { ToolOutcome } from "./core/tool.ts";
+import { OsvIndex, REBUILD_COMMAND, type ReadyCommand } from "./osvIndex.ts";
+import {
+  PYTHON_DOWNLOAD_URL,
+  prepareTool,
+  SetupToolRunner,
+  ToolSetupCache,
+  type ToolSetup,
+  type WithProgress,
+} from "./core/toolEnvironment.ts";
+import { ProcessToolRunner, pruneToolCache, toolCommand, type ToolCommand } from "./processToolRunner.ts";
+import { nodeToolFiles, runProcess, venvToolCommand } from "./pythonProcess.ts";
+import { checkedSettings, readSettings } from "./settings.ts";
+
+// `scheme: "file"` skips untitled documents and Git diffs. A filter with only a pattern
+// matches any language, which the TOML files need, because VS Code has no TOML language. The
+// pattern covers the three manifest names in any subfolder.
+const MANIFESTS: vscode.DocumentSelector = [{ scheme: "file", pattern: MANIFEST_PATTERN }];
+
+class HintProvider implements vscode.InlayHintsProvider, vscode.HoverProvider, vscode.Disposable {
+  private readonly changed = new vscode.EventEmitter<void>();
+  readonly onDidChangeInlayHints = this.changed.event;
+  private store: PackageStates;
+  private readonly makeStore: () => PackageStates;
+  private readonly hintContext: () => HintContext;
+
+  constructor(makeStore: () => PackageStates, hintContext: () => HintContext) {
+    this.makeStore = makeStore;
+    this.hintContext = hintContext;
+    this.store = this.newStore();
+  }
+
+  // Show the hints again with the same states, for example after the OSV index state changes.
+  redraw(): void {
+    this.changed.fire();
+  }
+
+  // Forget all states and run the Tool again, for example after a settings change.
+  reset(): void {
+    this.store.dispose();
+    this.store = this.newStore();
+    this.changed.fire();
+  }
+
+  // Show no hints, for example on a machine without Python 3.10 or later.
+  setHidden(hidden: boolean): void {
+    this.hidden = hidden;
+    this.changed.fire();
+  }
+
+  private hidden = false;
+
+  // Run the Tool for the dependencies of the manifest (the command "MTTX: Analyze
+  // dependencies").
+  async analyze(document: vscode.TextDocument): Promise<void> {
+    await this.analyzePackages(parseManifest(document.fileName, document.getText()));
+  }
+
+  // Run the Tool for the packages through the store of the hints, so that the runs share its
+  // queue limit, its one-day cache, and its fresh values (the command "MTTX: Compare
+  // packages"). A reset ends the runs of the old store with a failed outcome, so that no
+  // caller waits forever.
+  analyzePackages(keys: PackageKey[]): Promise<ToolOutcome[]> {
+    return this.store.analyze(keys);
+  }
+
+  provideInlayHints(document: vscode.TextDocument, range: vscode.Range): vscode.InlayHint[] {
+    if (this.hidden) return [];
+    if (!isAnalyzedManifest(document.uri.fsPath)) return [];
+    const hints: vscode.InlayHint[] = [];
+    const deps = parseManifest(document.fileName, document.getText());
+    for (const dep of deps) {
+      const end = document.lineAt(dep.line).range.end;
+      const state = range.contains(end) ? this.store.get(dep) : undefined;
+      if (!state) continue;
+      const text = hintText(state, dep.name, this.hintContext());
+      const hint = new vscode.InlayHint(end, hintLabel(dep, deps, text));
+      hint.paddingLeft = true;
+      hints.push(hint);
+    }
+    return hints;
+  }
+
+  // The hover of a dependency line shows the details behind the hint, or the full error.
+  provideHover(document: vscode.TextDocument, position: vscode.Position): vscode.Hover | undefined {
+    if (!isAnalyzedManifest(document.uri.fsPath)) return undefined;
+    const deps = parseManifest(document.fileName, document.getText());
+    const dep = dependencyAt(deps, position.line, position.character);
+    const state = dep && this.store.get(dep);
+    if (!dep || !state) return undefined;
+    const markdown = new vscode.MarkdownString(hoverMarkdown(state, dep, this.hintContext()));
+    markdown.appendMarkdown(`\n\n${compareLink(dep)}`);
+    markdown.isTrusted = { enabledCommands: ["mttx.compare"] };
+    return new vscode.Hover(markdown, document.lineAt(dep.line).range);
+  }
+
+  dispose(): void {
+    this.store.dispose();
+    this.changed.dispose();
+  }
+
+  private newStore(): PackageStates {
+    const store = this.makeStore();
+    store.onDidUpdate(() => this.changed.fire());
+    return store;
+  }
+}
+
+export function activate(context: vscode.ExtensionContext): void {
+  const outputDir = join(context.globalStorageUri.fsPath, "tool-output");
+  mkdirSync(outputDir, { recursive: true });
+
+  // The results persist across VS Code restarts in global state.
+  const cache = new ResultCache(context.globalState);
+
+  // The Tool setup: `mttx.toolPath`, or the venv in the global storage folder. A setup ends
+  // after `provider` exists, because prepareTool always waits at least once.
+  const venvDir = join(context.globalStorageUri.fsPath, "venv");
+  const setups = new ToolSetupCache(async (toolPath) => {
+    const setup = await prepareTool({
+      toolPath,
+      venvDir,
+      platform: process.platform,
+      run: runProcess,
+      files: nodeToolFiles,
+      withProgress: notificationProgress,
+    });
+    provider.setHidden(setup.kind === "noPython");
+    void showSetupMessage(setup);
+    return setup;
+  });
+  // The command of the Tool after the setup, or the message of a setup without a Tool or of
+  // the settings check. The cache prune and the OSV index processes wait for it, the same
+  // way the Tool runs do.
+  const readyCommand = async (): Promise<ReadyCommand> => {
+    const parsed = readSettings();
+    if (!parsed.ok) return { ok: false, message: parsed.message };
+    const setup = await setups.get(parsed.settings.toolPath);
+    if (setup.kind === "venv" || setup.kind === "toolPath") return { ok: true, command: setupCommand(setup) };
+    return { ok: false, message: setup.message };
+  };
+
+  const makeStore = (): PackageStates => {
+    const parsed = readSettings();
+    if (!parsed.ok) {
+      // Each hint shows the message, and no Tool run starts.
+      void vscode.window.showWarningMessage(`MTTX: ${parsed.message}`);
+      return new InvalidSettingsStore(parsed.message);
+    }
+    const { settings } = parsed;
+    const setup = setups.get(settings.toolPath);
+    return new ResultStore({
+      runner: new SetupToolRunner(setup, (ready) => new ProcessToolRunner(setupCommand(ready))),
+      makeRequest: (key) => toolRequest(key, settings, new Date(), outputDir),
+      cache: { results: cache, context: () => resultContext(settings, osvIndex.state) },
+      parallelRuns: settings.parallelRuns,
+      automaticRuns: settings.automaticRuns,
+    });
+  };
+  // The OSV index is in the Tool output dir. Without it, MTTR "needs the OSV index".
+  const osvIndex = new OsvIndex(
+    context,
+    () => {
+      const settings = checkedSettings();
+      return settings ? toolOutputDir(settings, outputDir) : outputDir;
+    },
+    readyCommand,
+    (rebuilt) => (rebuilt ? provider.reset() : provider.redraw()),
+  );
+  const provider = new HintProvider(makeStore, () => ({ osvIndex: osvIndex.available }));
+  void osvIndex.start();
+
+  // The Tool prunes its cache only in a run of its own, so the Extension prunes it at the
+  // start and after a change to the cache settings.
+  const pruneCache = () => {
+    const settings = checkedSettings();
+    if (!settings) return;
+    void readyCommand().then((ready) => {
+      if (ready.ok) return pruneToolCache(ready.command, cachePruneArgs(settings, outputDir));
+    });
+  };
+  pruneCache();
+
+  // A manifest that another program writes or creates (for example `npm install` or a Git
+  // checkout) gets its hints again. The watcher skips node_modules/ and .venv/.
+  const manifestWatcher = vscode.workspace.createFileSystemWatcher(MANIFEST_PATTERN);
+  const onManifest = (uri: vscode.Uri) => {
+    if (isAnalyzedManifest(uri.fsPath)) provider.redraw();
+  };
+  manifestWatcher.onDidChange(onManifest);
+  manifestWatcher.onDidCreate(onManifest);
+
+  // The status bar item with the OSV index date shows while a manifest is open.
+  const showOsvStatus = (editor: vscode.TextEditor | undefined) =>
+    osvIndex.setStatusVisible(editor?.document.uri.scheme === "file" && isAnalyzedManifest(editor.document.uri.fsPath));
+  showOsvStatus(vscode.window.activeTextEditor);
+
+  context.subscriptions.push(
+    osvIndex,
+    vscode.window.onDidChangeActiveTextEditor(showOsvStatus),
+    manifestWatcher,
+    vscode.commands.registerCommand(REBUILD_COMMAND, () => osvIndex.rebuild()),
+    provider,
+    vscode.languages.registerInlayHintsProvider(MANIFESTS, provider),
+    vscode.languages.registerHoverProvider(MANIFESTS, provider),
+    vscode.workspace.onDidChangeConfiguration((event) => {
+      if (event.affectsConfiguration("mttx")) provider.reset();
+      if (event.affectsConfiguration("mttx.cacheFolder") || event.affectsConfiguration("mttx.cacheSizeLimitGb")) {
+        pruneCache();
+      }
+      if (event.affectsConfiguration("mttx.cacheFolder") || event.affectsConfiguration("mttx.toolPath")) {
+        void osvIndex.start();
+      }
+    }),
+    vscode.commands.registerCommand("mttx.openSettings", () =>
+      vscode.commands.executeCommand("workbench.action.openSettings", "@ext:imranur-rahman.mttx"),
+    ),
+    vscode.commands.registerCommand("mttx.analyzeDependencies", () => analyzeOpenManifest(provider)),
+    vscode.commands.registerCommand("mttx.compare", (args?: unknown) =>
+      compare(context.extensionUri, (keys) => provider.analyzePackages(keys), args),
+    ),
+  );
+}
+
+async function analyzeOpenManifest(provider: HintProvider): Promise<void> {
+  const document = vscode.window.activeTextEditor?.document;
+  if (!document || document.uri.scheme !== "file" || !isAnalyzedManifest(document.uri.fsPath)) {
+    void vscode.window.showInformationMessage(
+      "MTTX: open a package.json, pyproject.toml, or Cargo.toml file to analyze its dependencies.",
+    );
+    return;
+  }
+  await vscode.window.withProgress(
+    { location: vscode.ProgressLocation.Window, title: "MTTX: analyzing dependencies" },
+    () => provider.analyze(document),
+  );
+}
+
+// The command that runs the Tool of a setup: the venv Python, or `mttx.toolPath`.
+function setupCommand(setup: ToolSetup): ToolCommand {
+  if (setup.kind === "venv") return venvToolCommand(setup.python);
+  return toolCommand(setup.kind === "toolPath" ? setup.path : "");
+}
+
+// Show the install of the Tool in a notification, because the first install takes tens of
+// seconds.
+const notificationProgress: WithProgress = (task) =>
+  Promise.resolve(
+    vscode.window.withProgress({ location: vscode.ProgressLocation.Notification, title: "MTTX" }, (progress) =>
+      task((message) => progress.report({ message })),
+    ),
+  );
+
+async function showSetupMessage(setup: ToolSetup): Promise<void> {
+  if (setup.kind === "failed") {
+    void vscode.window.showErrorMessage(setup.message);
+  } else if (setup.kind === "noPython") {
+    const download = "Download Python";
+    if ((await vscode.window.showWarningMessage(setup.message, download)) === download) {
+      void vscode.env.openExternal(vscode.Uri.parse(PYTHON_DOWNLOAD_URL));
+    }
+  }
+}
+
+export function deactivate(): void {}
