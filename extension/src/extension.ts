@@ -13,8 +13,17 @@ import { ResultCache } from "./core/resultCache.ts";
 import { DEFAULT_PARALLEL_RUNS, ResultStore } from "./core/resultStore.ts";
 import { cachePruneArgs, toolOutputDir, toolRequest } from "./core/settings.ts";
 import type { ToolRequest, ToolRunner } from "./core/tool.ts";
-import { OsvIndex, REBUILD_COMMAND } from "./osvIndex.ts";
-import { ProcessToolRunner, pruneToolCache, toolCommand } from "./processToolRunner.ts";
+import { OsvIndex, REBUILD_COMMAND, type ReadyCommand } from "./osvIndex.ts";
+import {
+  PYTHON_DOWNLOAD_URL,
+  prepareTool,
+  SetupToolRunner,
+  ToolSetupCache,
+  type ToolSetup,
+  type WithProgress,
+} from "./core/toolEnvironment.ts";
+import { ProcessToolRunner, pruneToolCache, toolCommand, type ToolCommand } from "./processToolRunner.ts";
+import { nodeToolFiles, runProcess, venvToolCommand } from "./pythonProcess.ts";
 import { readSettings } from "./settings.ts";
 
 // `scheme: "file"` skips untitled documents and Git diffs. A filter with only a pattern
@@ -47,6 +56,14 @@ class HintProvider implements vscode.InlayHintsProvider, vscode.HoverProvider, v
     this.changed.fire();
   }
 
+  // Show no hints, for example on a machine without Python 3.10 or later.
+  setHidden(hidden: boolean): void {
+    this.hidden = hidden;
+    this.changed.fire();
+  }
+
+  private hidden = false;
+
   // Run the Tool for the dependencies of the manifest (the command "MTTX: Analyze
   // dependencies").
   async analyze(document: vscode.TextDocument): Promise<void> {
@@ -54,6 +71,7 @@ class HintProvider implements vscode.InlayHintsProvider, vscode.HoverProvider, v
   }
 
   provideInlayHints(document: vscode.TextDocument, range: vscode.Range): vscode.InlayHint[] {
+    if (this.hidden) return [];
     if (!isAnalyzedManifest(document.uri.fsPath)) return [];
     const hints: vscode.InlayHint[] = [];
     const deps = parseManifest(document.fileName, document.getText());
@@ -99,7 +117,31 @@ export function activate(context: vscode.ExtensionContext): void {
   // The results persist across VS Code restarts in global state.
   const cache = new ResultCache(context.globalState);
 
-  const command = () => toolCommand(vscode.workspace.getConfiguration("mttx").get<string>("toolPath", ""));
+  // The Tool setup (#29): `mttx.toolPath`, or the venv in the global storage folder. A
+  // setup ends after `provider` exists, because prepareTool always waits at least once.
+  const toolPathSetting = () => vscode.workspace.getConfiguration("mttx").get<string>("toolPath", "");
+  const venvDir = join(context.globalStorageUri.fsPath, "venv");
+  const setups = new ToolSetupCache(async (toolPath) => {
+    const setup = await prepareTool({
+      toolPath,
+      venvDir,
+      platform: process.platform,
+      run: runProcess,
+      files: nodeToolFiles,
+      withProgress: notificationProgress,
+    });
+    provider.setHidden(setup.kind === "noPython");
+    void showSetupMessage(setup);
+    return setup;
+  });
+  // The command of the Tool after the setup, or the message of a setup without a Tool. The
+  // cache prune and the OSV index processes wait for it, the same way the Tool runs do.
+  const readyCommand = async (): Promise<ReadyCommand> => {
+    const setup = await setups.get(toolPathSetting());
+    if (setup.kind === "venv" || setup.kind === "toolPath") return { ok: true, command: setupCommand(setup) };
+    return { ok: false, message: setup.message };
+  };
+
   const makeStore = () => {
     const config = vscode.workspace.getConfiguration("mttx");
     const runControl = {
@@ -113,8 +155,10 @@ export function activate(context: vscode.ExtensionContext): void {
       const failed: ToolRunner = { run: async () => ({ kind: "failed", message: parsed.message }) };
       return new ResultStore({ runner: failed, makeRequest: () => ({}) as ToolRequest, ...runControl });
     }
+    const setup = setups.get(toolPathSetting());
+    const runner = new SetupToolRunner(setup, (ready) => new ProcessToolRunner(setupCommand(ready)));
     return new ResultStore({
-      runner: new ProcessToolRunner(command()),
+      runner,
       makeRequest: (key) => toolRequest(key, parsed.settings, new Date(), outputDir),
       cache,
       ...runControl,
@@ -127,7 +171,7 @@ export function activate(context: vscode.ExtensionContext): void {
       const parsed = readSettings();
       return parsed.ok ? toolOutputDir(parsed.settings, outputDir) : outputDir;
     },
-    command,
+    readyCommand,
     (rebuilt) => (rebuilt ? provider.reset() : provider.redraw()),
   );
   const provider = new HintProvider(makeStore, () => ({ osvIndex: osvIndex.available }));
@@ -137,7 +181,10 @@ export function activate(context: vscode.ExtensionContext): void {
   // start and after a change to the cache settings.
   const pruneCache = () => {
     const parsed = readSettings();
-    if (parsed.ok) void pruneToolCache(command(), cachePruneArgs(parsed.settings, outputDir));
+    if (!parsed.ok) return;
+    void readyCommand().then((ready) => {
+      if (ready.ok) return pruneToolCache(ready.command, cachePruneArgs(parsed.settings, outputDir));
+    });
   };
   pruneCache();
 
@@ -174,6 +221,32 @@ async function analyzeOpenManifest(provider: HintProvider): Promise<void> {
     { location: vscode.ProgressLocation.Window, title: "MTTX: analyzing dependencies" },
     () => provider.analyze(document),
   );
+}
+
+// The command that runs the Tool of a setup: the venv Python, or `mttx.toolPath`.
+function setupCommand(setup: ToolSetup): ToolCommand {
+  if (setup.kind === "venv") return venvToolCommand(setup.python);
+  return toolCommand(setup.kind === "toolPath" ? setup.path : "");
+}
+
+// Show the install of the Tool in a notification, because the first install takes tens of
+// seconds.
+const notificationProgress: WithProgress = (task) =>
+  Promise.resolve(
+    vscode.window.withProgress({ location: vscode.ProgressLocation.Notification, title: "MTTX" }, (progress) =>
+      task((message) => progress.report({ message })),
+    ),
+  );
+
+async function showSetupMessage(setup: ToolSetup): Promise<void> {
+  if (setup.kind === "failed") {
+    void vscode.window.showErrorMessage(setup.message);
+  } else if (setup.kind === "noPython") {
+    const download = "Download Python";
+    if ((await vscode.window.showWarningMessage(setup.message, download)) === download) {
+      void vscode.env.openExternal(vscode.Uri.parse(PYTHON_DOWNLOAD_URL));
+    }
+  }
 }
 
 export function deactivate(): void {}

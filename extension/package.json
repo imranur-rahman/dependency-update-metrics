@@ -118,7 +118,7 @@
           "type": "string",
           "default": "",
           "scope": "machine",
-          "markdownDescription": "Path of an installed `dependency-metrics`. Empty: the Extension runs `dependency-metrics` from the `PATH`."
+          "markdownDescription": "Path of an installed `dependency-metrics`. Empty: the Extension installs the Tool in its own Python environment (Python 3.10 or later)."
         },
         "mttx.parallelRuns": {
           "type": "integer",

@@ -17,6 +17,9 @@ import type { ToolCommand } from "./processToolRunner.ts";
 export const REBUILD_COMMAND = "mttx.rebuildOsvIndex";
 const CONSENT_KEY = "mttx.osvIndexConsent";
 
+// The command of the Tool after its setup (#29), or the message of a setup without a Tool.
+export type ReadyCommand = { ok: true; command: ToolCommand } | { ok: false; message: string };
+
 export class OsvIndex {
   // Undefined until the Tool gives the state, or when the Tool cannot give it.
   state: OsvIndexState | undefined;
@@ -24,7 +27,8 @@ export class OsvIndex {
   private readonly context: vscode.ExtensionContext;
   // The Tool output dir (`mttx.cacheFolder` or the default), read on each use.
   private readonly outputDir: () => string;
-  private readonly command: () => ToolCommand;
+  // Waits for the Tool setup, so that the index processes use the venv Tool too.
+  private readonly command: () => Promise<ReadyCommand>;
   // Called when the state changes. `rebuilt` is true after a build, so that the hints run
   // the Tool again and get the MTTR values.
   private readonly onDidChange: (rebuilt: boolean) => void;
@@ -32,7 +36,7 @@ export class OsvIndex {
   constructor(
     context: vscode.ExtensionContext,
     outputDir: () => string,
-    command: () => ToolCommand,
+    command: () => Promise<ReadyCommand>,
     onDidChange: (rebuilt: boolean) => void,
   ) {
     this.context = context;
@@ -69,6 +73,11 @@ export class OsvIndex {
   }
 
   private async build(): Promise<void> {
+    const ready = await this.command();
+    if (!ready.ok) {
+      void vscode.window.showErrorMessage(`MTTX: the OSV index build failed: ${ready.message}`);
+      return;
+    }
     const title = `MTTX: Building the OSV index, about 260 MB (now: ${osvIndexText(this.state)})`;
     const outcome = await vscode.window.withProgress(
       { location: vscode.ProgressLocation.Notification, title, cancellable: true },
@@ -76,7 +85,7 @@ export class OsvIndex {
         const abort = new AbortController();
         token.onCancellationRequested(() => abort.abort());
         return buildOsvIndex(
-          this.command(),
+          ready.command,
           this.outputDir(),
           (line) => progress.report({ message: line }),
           abort.signal,
@@ -92,7 +101,9 @@ export class OsvIndex {
   }
 
   private async refresh(rebuilt = false): Promise<void> {
-    this.state = await readOsvIndex(this.command(), this.outputDir());
+    // A setup without a Tool leaves the state unknown, so the prompt does not show.
+    const ready = await this.command();
+    this.state = ready.ok ? await readOsvIndex(ready.command, this.outputDir()) : undefined;
     this.onDidChange(rebuilt);
   }
 }
