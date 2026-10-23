@@ -122,9 +122,9 @@ test("the panel shows one Explanation paragraph for each package with a value, t
   assert.deepEqual(explanationContent(job), {
     paragraphs: [
       "mypkg: MTTU is 579.0 days: in this time window, a direct dependency of mypkg was behind the newest " +
-        "available version for a sum of 579.0 days, as a mean over the direct dependencies. MTTR is 579.0 days: " +
+        "available version for 579.0 days in total, on average over the direct dependencies. MTTR is 579.0 days: " +
         "in this time window, a direct dependency of mypkg stayed on a version with a known vulnerability after " +
-        "a fix was available for a sum of 579.0 days, as a mean over the direct dependencies.",
+        "a fix was available for 579.0 days in total, on average over the direct dependencies.",
     ],
     limitations: LIMITATIONS,
   });

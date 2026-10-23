@@ -5,10 +5,7 @@
 //
 // The results have the shape of the Host API results (contract/examples/).
 
-import { formatDays } from "./comparison.js";
-
-const NO_WEIGHTING = "disable";
-const EXPONENTIAL = "exponential";
+import { formatDays, hasValue, EXPONENTIAL, NO_WEIGHTING } from "./comparison.js";
 
 // The limitations of the data. They hold for each Comparison, so a page shows them once.
 export const LIMITATIONS = [
@@ -19,47 +16,59 @@ export const LIMITATIONS = [
   "The results depend on the declared version constraints and on the release dates in the registry.",
 ];
 
-const MTTU_ZERO = "In this time window, each direct dependency used the newest available version at all times.";
-// The result cannot show that no dependency was vulnerable (it has no count of vulnerable
-// versions and no flag for a missing OSV index), so the text never says that.
-const MTTR_ZERO =
-  "In this time window, no direct dependency stayed on a version with a known vulnerability after a fix was available.";
+// The words of each metric: the full sentence and the short hover line, for a value of 0.0
+// and for other values. The MTTR text never says that no dependency was vulnerable: the
+// result has no count of vulnerable versions and no flag for a missing OSV index.
+const METRIC_WORDS = {
+  mttu: {
+    zero: "In this time window, each direct dependency used the newest available version at all times.",
+    what: "was behind the newest available version",
+    hoverZero: "Each direct dependency used the newest version at all times",
+    hover: "A direct dependency was behind the newest version",
+  },
+  mttr: {
+    zero: "In this time window, no direct dependency stayed on a version with a known vulnerability after a fix was available.",
+    what: "stayed on a version with a known vulnerability after a fix was available",
+    hoverZero: "none stayed on a known vulnerable version after a fix was available",
+    hover: "on a known vulnerable version after a fix",
+  },
+};
 
-// What each metric counts, in the words of the full sentence and of the short hover line.
-const BEHIND = "behind the newest available version";
-const VULNERABLE = "stayed on a version with a known vulnerability after a fix was available";
-
-// Return true when a summary or a release has a value: the status is "ok" and it has
-// dependencies. The rule matches hasNoDependencies in comparison.js.
-function hasValue(entry) {
-  return (
-    entry?.status === "ok" &&
-    entry.num_dependencies > 0 &&
-    typeof entry.mttu === "number" &&
-    typeof entry.mttr === "number"
-  );
+// Return true when a value shows as 0.0. The text follows the value that the reader sees,
+// so a value of 0.03 days gets the 0.0 sentence.
+function showsZero(days) {
+  return formatDays(days) === formatDays(0);
 }
 
-// Return the words that name the weighting of a weighted result.
-function weightingWords(result) {
-  if (result.weighting_type === EXPONENTIAL) {
-    return `exponential weighting and a half-life of ${result.half_life} days`;
-  }
-  return `${result.weighting_type} weighting`;
-}
-
-// Return the sentence for one metric. Without weighting the value is a sum of days; with
-// weighting it is a weighted mean (AGENTS.md, "Metric semantics that are intended").
-function metricSentence(metric, days, result) {
-  if (days === 0) return metric === "mttu" ? MTTU_ZERO : MTTR_ZERO;
-  const name = metric.toUpperCase();
+// Return the words for an amount of days: { sentence, hover }. Without weighting, the
+// analyzer sums the days of each dependency, then takes the mean over the direct
+// dependencies; with weighting, the value is a weighted mean (AGENTS.md, "Metric semantics
+// that are intended").
+function amountWords(days, result) {
   const value = formatDays(days);
-  const what = metric === "mttu" ? `was ${BEHIND}` : VULNERABLE;
-  const amount =
-    result.weighting_type === NO_WEIGHTING
-      ? `for a sum of ${value} days, as a mean over the direct dependencies`
-      : `for ${value} days on average, with ${weightingWords(result)}`;
-  return `${name} is ${value} days: in this time window, a direct dependency of ${result.package} ${what} ${amount}.`;
+  if (result.weighting_type === NO_WEIGHTING) {
+    return {
+      sentence: `for ${value} days in total, on average over the direct dependencies`,
+      hover: `${value} days in total (mean over the direct dependencies)`,
+    };
+  }
+  const exponential = result.weighting_type === EXPONENTIAL;
+  const weighting = exponential
+    ? { long: `exponential weighting and a half-life of ${result.half_life} days`, short: `half-life ${result.half_life} days` }
+    : { long: `${result.weighting_type} weighting`, short: `${result.weighting_type} weighting` };
+  return {
+    sentence: `for ${value} days on average, with ${weighting.long}`,
+    hover: `${value} days on average (${weighting.short})`,
+  };
+}
+
+// Return the sentence for one metric ("mttu" or "mttr").
+function metricSentence(metric, days, result) {
+  const words = METRIC_WORDS[metric];
+  if (showsZero(days)) return words.zero;
+  const value = formatDays(days);
+  const amount = amountWords(days, result).sentence;
+  return `${metric.toUpperCase()} is ${value} days: in this time window, a direct dependency of ${result.package} ${words.what} ${amount}.`;
 }
 
 // Return the releases of a Per-release result that have a value, in release order.
@@ -105,29 +114,18 @@ export function explainComparison(job) {
   return { packages, limitations: packages.length > 0 ? [...LIMITATIONS] : [] };
 }
 
-// Return the amount of days for the hover line.
-function hoverAmount(days, result) {
-  const value = formatDays(days);
-  if (result.weighting_type === NO_WEIGHTING) return `a sum of ${value} days`;
-  const weighting = result.weighting_type === EXPONENTIAL ? `half-life ${result.half_life} days` : `${result.weighting_type} weighting`;
-  return `${value} days on average (${weighting})`;
-}
-
 // Return the one short line of the Extension hover for a result, or null when the result
 // has an error or no value.
 export function hoverExplanation(result) {
   const entry = describedEntry(result);
   if (entry === null) return null;
-  const mttu =
-    entry.mttu === 0
-      ? "Each direct dependency used the newest version at all times"
-      : `A direct dependency was behind the newest version for ${hoverAmount(entry.mttu, result)}`;
-  let mttr;
-  if (entry.mttr === 0) {
-    mttr = "none stayed on a known vulnerable version after a fix was available";
-  } else {
-    const subject = entry.mttu === 0 ? "a direct dependency stayed " : "";
-    mttr = `${subject}on a known vulnerable version after a fix for ${hoverAmount(entry.mttr, result)}`;
+  const { mttu, mttr } = METRIC_WORDS;
+  const mttuText = showsZero(entry.mttu) ? mttu.hoverZero : `${mttu.hover} for ${amountWords(entry.mttu, result).hover}`;
+  let mttrText = mttr.hoverZero;
+  if (!showsZero(entry.mttr)) {
+    // After the 0.0 text of MTTU, the MTTR part needs its own subject.
+    const subject = showsZero(entry.mttu) ? "a direct dependency stayed " : "";
+    mttrText = `${subject}${mttr.hover} for ${amountWords(entry.mttr, result).hover}`;
   }
-  return `${mttu}, and ${mttr}.`;
+  return `${mttuText}, and ${mttrText}.`;
 }

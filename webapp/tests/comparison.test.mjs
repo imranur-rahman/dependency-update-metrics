@@ -15,6 +15,7 @@ import {
   cancelRequest,
   resultRows,
   formatDays,
+  hasValue,
   progressOf,
   jobIdFromUrl,
   urlWithJobId,
@@ -592,6 +593,16 @@ const noDependenciesJob = () => {
   Object.assign(job.results[0].summary, { mttu: 0, mttr: 0, num_dependencies: 0, status: "no_deps" });
   return job;
 };
+
+test("an entry has a value only with the status ok, dependencies, and both metrics", () => {
+  const entry = { status: "ok", num_dependencies: 2, mttu: 1, mttr: 0, error: "" };
+  assert.equal(hasValue(entry), true);
+  assert.equal(hasValue({ ...entry, num_dependencies: 0 }), false);
+  assert.equal(hasValue({ ...entry, status: "no_deps" }), false);
+  assert.equal(hasValue({ ...entry, status: "error", mttu: null, mttr: null }), false);
+  assert.equal(hasValue({ ...entry, mttr: null }), false);
+  assert.equal(hasValue(null), false);
+});
 
 test("a package without dependencies shows an error, not 0 days", () => {
   assert.deepEqual(resultRows(noDependenciesJob()), [

@@ -102,7 +102,8 @@ test("the hover of a result shows the window, the dependencies, the source, the 
 test("the hover of a result has one short Explanation line under the values", () => {
   const text = hoverMarkdown({ kind: "result", result: okResult }, { name: "mypkg", section: "dependencies" });
   const line =
-    "A direct dependency was behind the newest version for a sum of 579.0 days, and on a known vulnerable version after a fix for a sum of 579.0 days.";
+    "A direct dependency was behind the newest version for 579.0 days in total (mean over the direct dependencies), " +
+    "and on a known vulnerable version after a fix for 579.0 days in total (mean over the direct dependencies).";
   assert.ok(text.includes(`MTTU 579.0 days · MTTR 579.0 days\n\n${line}\n`), text);
 });
 

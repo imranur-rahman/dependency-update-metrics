@@ -47,18 +47,28 @@ test("MTTU 0.0 and MTTR 0.0 use the agreed sentences", () => {
   assert.deepEqual(explanation.sentences, [MTTU_ZERO, MTTR_ZERO]);
 });
 
+test("a value that shows as 0.0 uses the agreed 0.0 sentences", () => {
+  const explanation = explainResult(summaryResult({ mttu: 0.03, mttr: 0.049 }));
+  assert.deepEqual(explanation.sentences, [MTTU_ZERO, MTTR_ZERO]);
+  assert.equal(
+    hoverExplanation(summaryResult({ mttu: 0.03, mttr: 0.04 })),
+    "Each direct dependency used the newest version at all times, and none stayed on a known vulnerable version after a fix was available.",
+  );
+  assert.match(explainResult(summaryResult({ mttu: 0.05, mttr: 0 })).sentences[0], /^MTTU is 0\.1 days: /);
+});
+
 test("MTTR 0.0 never claims that no dependency was vulnerable", () => {
   const { sentences } = explainResult(summaryResult({ mttu: 0, mttr: 0 }));
   for (const sentence of sentences) assert.doesNotMatch(sentence, /had no vulnerab|no vulnerable/i);
   assert.doesNotMatch(hoverExplanation(summaryResult({ mttu: 0, mttr: 0 })), /had no vulnerab|no vulnerable/i);
 });
 
-test("without weighting, each metric gets one sentence that says it is a sum of days", () => {
+test("without weighting, each metric gets one sentence that says it is a total per dependency, averaged", () => {
   const explanation = explainResult(summaryResult({ mttu: 579, mttr: 12.25 }));
   assert.equal(explanation.title, "mypkg");
   assert.deepEqual(explanation.sentences, [
-    "MTTU is 579.0 days: in this time window, a direct dependency of mypkg was behind the newest available version for a sum of 579.0 days, as a mean over the direct dependencies.",
-    "MTTR is 12.3 days: in this time window, a direct dependency of mypkg stayed on a version with a known vulnerability after a fix was available for a sum of 12.3 days, as a mean over the direct dependencies.",
+    "MTTU is 579.0 days: in this time window, a direct dependency of mypkg was behind the newest available version for 579.0 days in total, on average over the direct dependencies.",
+    "MTTR is 12.3 days: in this time window, a direct dependency of mypkg stayed on a version with a known vulnerability after a fix was available for 12.3 days in total, on average over the direct dependencies.",
   ]);
 });
 
@@ -155,7 +165,7 @@ test("the hover line is short and follows the values and the weighting", () => {
   );
   assert.equal(
     hoverExplanation(summaryResult({ mttu: 579, mttr: 12 })),
-    "A direct dependency was behind the newest version for a sum of 579.0 days, and on a known vulnerable version after a fix for a sum of 12.0 days.",
+    "A direct dependency was behind the newest version for 579.0 days in total (mean over the direct dependencies), and on a known vulnerable version after a fix for 12.0 days in total (mean over the direct dependencies).",
   );
   assert.equal(
     hoverExplanation(summaryResult({ mttu: 4, mttr: 0 }, { weighting: "exponential", halfLife: 90 })),

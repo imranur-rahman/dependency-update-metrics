@@ -17,6 +17,12 @@ function hasNoDependencies(entry) {
   return entry?.status === "no_deps" || (entry?.status === "ok" && entry.num_dependencies === 0);
 }
 
+// Return true when a summary or a release has a value: the status is "ok", it has
+// dependencies, and both metrics are numbers.
+export function hasValue(entry) {
+  return metricValue(entry, "mttu") !== null && metricValue(entry, "mttr") !== null;
+}
+
 // Return the days of a summary or a release for one metric ("mttu" or "mttr"), or null
 // when the entry has no value: it failed, or it has no dependencies.
 function metricValue(entry, metric) {
@@ -136,8 +142,8 @@ const PER_RELEASE = "per_release";
 
 // The weighting types of the Tool (--weighting-type). "disable" is the default.
 export const WEIGHTING_TYPES = ["disable", "linear", "exponential", "inverse"];
-const NO_WEIGHTING = "disable";
-const EXPONENTIAL = "exponential";
+export const NO_WEIGHTING = "disable";
+export const EXPONENTIAL = "exponential";
 // Exponential weighting needs a half-life in this range of days. The Host checks the same rule.
 const MIN_HALF_LIFE_DAYS = 1;
 const MAX_HALF_LIFE_DAYS = 3650;
