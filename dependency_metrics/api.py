@@ -200,11 +200,7 @@ def analyze(
         if raise_errors:
             raise
         logger.exception("Analysis of %s/%s failed", analyzer.ecosystem, package)
-        message = str(exc) or type(exc).__name__
-        error_summary = (
-            WindowSummary(None, None, 0, "error", message) if mode == WINDOW_SUMMARY else None
-        )
-        return AnalysisResult(**common, summary=error_summary, error=message)
+        return failed_result(**common, message=str(exc) or type(exc).__name__)
 
     num_deps = int(raw.get("num_dependencies", 0))
     summary = WindowSummary(
@@ -214,6 +210,40 @@ def analyze(
         status="ok" if num_deps else "no_deps",
     )
     return AnalysisResult(**common, summary=summary, analyzer_output=raw)
+
+
+def failed_result(
+    *,
+    ecosystem: str,
+    package: str,
+    mode: Mode,
+    start_date: str,
+    end_date: str,
+    weighting_type: str,
+    half_life: Optional[float],
+    data_source: DataSource,
+    message: str,
+) -> AnalysisResult:
+    """Return the result of a package whose analysis failed with ``message``.
+
+    :func:`analyze` returns it for an error that it catches. Callers that catch the error
+    themselves (the CLI with ``--json``, the Host) use it too, so that every failed
+    package has one shape: a Window summary gets an ``"error"`` summary, and a Per-release
+    result gets no releases.
+    """
+    summary = WindowSummary(None, None, 0, "error", message) if mode == WINDOW_SUMMARY else None
+    return AnalysisResult(
+        ecosystem=ecosystem,
+        package=package,
+        mode=mode,
+        start_date=start_date,
+        end_date=end_date,
+        weighting_type=weighting_type,
+        half_life=half_life,
+        data_source=data_source,
+        summary=summary,
+        error=message,
+    )
 
 
 def _release_result(summary: Dict[str, Any]) -> ReleaseResult:

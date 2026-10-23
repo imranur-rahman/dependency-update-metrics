@@ -218,6 +218,24 @@ Resume behavior in per-release mode:
 - Already-written `(ecosystem, package_name, window_start, package_version)` entries are skipped.
 - New release entries are appended to the output CSV.
 
+### JSON result on stdout (`--json`)
+
+With `--json`, the tool prints one result as one JSON object on stdout. The object has the same shape as one item of `results` in the Host API (see `contract/examples/`), so other programs, such as the MTTX VS Code extension, read one shape. `--json` works only with `--package`, in the Window summary mode and with `--per-release`.
+
+```bash
+dependency-metrics --ecosystem pypi --package requests --depsdev \
+  --start-date 2024-01-01 --end-date 2026-01-01 --json > requests.json
+```
+
+- Stdout holds only the JSON object. Logs, warnings, progress bars, and the other console output go to stderr.
+- The tool still writes its result files to `--output-dir`, the same as without `--json`.
+- In the Window summary mode, `summary` holds `mttu`, `mttr`, `num_dependencies`, `status`, and `error`, and `releases` is empty. With `--per-release`, `summary` is `null` and `releases` holds one item for each release.
+- `status` is `ok`, `no_deps` (the package has no dependencies, so its values of 0 mean nothing), or `error`. A release that fails has `status` `error`, `mttu` and `mttr` `null`, and the other releases keep their values.
+- If the analysis of the package fails, the tool prints a result with the message in `error`, then exits with status 1. In the Window summary mode, `summary.status` is `error`. With `--per-release`, `releases` is empty.
+- An error in the arguments (for example, an incorrect date) prints no JSON and exits with status 1 or 2.
+
+The JSON shape changes only with a new minor version of the tool, so a program that reads it can pin a range of tool versions.
+
 ## Understanding the Output
 
 ### Console Output
