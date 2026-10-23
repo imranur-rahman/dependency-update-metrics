@@ -132,7 +132,8 @@ function resultValue(result: ToolResult): ResultValue {
   return { kind: "ok", mttu: summary.mttu, mttr: summary.mttr };
 }
 
-function noDependenciesText(packageName: string): string {
+// The text of a package without dependencies, in the hint, the hover, and the Comparison.
+export function noDependenciesText(packageName: string): string {
   return `could not compute since '${packageName}' has no dependencies`;
 }
 

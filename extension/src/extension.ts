@@ -5,14 +5,16 @@ import { join } from "node:path";
 
 import * as vscode from "vscode";
 
+import { compare } from "./comparisonPanel.ts";
+import { compareLink } from "./core/comparison.ts";
 import { MANIFEST_PATTERN, isAnalyzedManifest } from "./core/discovery.ts";
 import { hintText, hoverMarkdown, type HintContext } from "./core/display.ts";
 import { dependencyAt, hintLabel } from "./core/hintLabel.ts";
 import { parseManifest } from "./core/manifest.ts";
 import { ResultCache } from "./core/resultCache.ts";
-import { DEFAULT_PARALLEL_RUNS, ResultStore } from "./core/resultStore.ts";
+import { DEFAULT_PARALLEL_RUNS, ResultStore, type PackageKey } from "./core/resultStore.ts";
 import { cachePruneArgs, toolOutputDir, toolRequest } from "./core/settings.ts";
-import type { ToolRequest, ToolRunner } from "./core/tool.ts";
+import type { ToolOutcome, ToolRequest, ToolRunner } from "./core/tool.ts";
 import { OsvIndex, REBUILD_COMMAND, type ReadyCommand } from "./osvIndex.ts";
 import {
   PYTHON_DOWNLOAD_URL,
@@ -67,7 +69,15 @@ class HintProvider implements vscode.InlayHintsProvider, vscode.HoverProvider, v
   // Run the Tool for the dependencies of the manifest (the command "MTTX: Analyze
   // dependencies").
   async analyze(document: vscode.TextDocument): Promise<void> {
-    await this.store.analyze(parseManifest(document.fileName, document.getText()));
+    await this.analyzePackages(parseManifest(document.fileName, document.getText()));
+  }
+
+  // Run the Tool for the packages through the store of the hints, so that the runs share its
+  // queue limit, its one-day cache, and its fresh values (the command "MTTX: Compare
+  // packages"). A reset ends the runs of the old store with a failed outcome, so that no
+  // caller waits forever.
+  analyzePackages(keys: PackageKey[]): Promise<ToolOutcome[]> {
+    return this.store.analyze(keys);
   }
 
   provideInlayHints(document: vscode.TextDocument, range: vscode.Range): vscode.InlayHint[] {
@@ -95,6 +105,8 @@ class HintProvider implements vscode.InlayHintsProvider, vscode.HoverProvider, v
     const state = dep && this.store.get(dep);
     if (!dep || !state) return undefined;
     const markdown = new vscode.MarkdownString(hoverMarkdown(state, dep, this.hintContext()));
+    markdown.appendMarkdown(`\n\n${compareLink(dep)}`);
+    markdown.isTrusted = { enabledCommands: ["mttx.compare"] };
     return new vscode.Hover(markdown, document.lineAt(dep.line).range);
   }
 
@@ -206,6 +218,9 @@ export function activate(context: vscode.ExtensionContext): void {
       vscode.commands.executeCommand("workbench.action.openSettings", "@ext:imranur-rahman.mttx"),
     ),
     vscode.commands.registerCommand("mttx.analyzeDependencies", () => analyzeOpenManifest(provider)),
+    vscode.commands.registerCommand("mttx.compare", (args?: unknown) =>
+      compare(context.extensionUri, (keys) => provider.analyzePackages(keys), args),
+    ),
   );
 }
 

@@ -48,6 +48,11 @@
         "command": "mttx.analyzeDependencies",
         "title": "Analyze dependencies",
         "category": "MTTX"
+      },
+      {
+        "command": "mttx.compare",
+        "title": "Compare packages",
+        "category": "MTTX"
       }
     ],
     "configuration": {
@@ -148,6 +153,7 @@
     "@types/node": "24.19.2",
     "@types/vscode": "1.100.0",
     "@vscode/test-electron": "3.1.0",
+    "chart.js": "4.4.1",
     "esbuild": "0.28.2",
     "typescript": "7.0.2"
   }
