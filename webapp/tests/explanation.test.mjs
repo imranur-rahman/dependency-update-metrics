@@ -47,6 +47,12 @@ function perReleaseResult(releases, pkg = "mypkg") {
 const MTTU_ZERO = "In this time window, each direct dependency used the newest available version at all times.";
 const MTTR_ZERO =
   "In this time window, no direct dependency stayed on a version with a known vulnerability after a fix was available.";
+const MTTU_WHY =
+  "MTTU goes up when a dependency publishes a newer version and the package keeps the older one. " +
+  "It goes down when a release of the package moves to newer versions.";
+const MTTR_WHY =
+  "MTTR goes up when a fix is published and the package stays on the vulnerable version. " +
+  "It goes down when a release moves to the fixed version.";
 
 test("MTTU 0.00 and MTTR 0.00 use the agreed sentences", () => {
   const explanation = explainResult(summaryResult({ mttu: 0, mttr: 0 }));
@@ -116,7 +122,45 @@ test("Per-release explains the latest release and the change over the window", (
     MTTU_ZERO,
     MTTR_ZERO,
     "MTTU went from 4.00 to 0.00 days over 3 releases.",
+    "The largest drop of MTTU was at 1.2.0 (2023-09-01), from 4.00 to 1.00 days.",
+    MTTU_WHY,
     "MTTR went from 2.00 to 0.00 days over 3 releases.",
+    "The largest drop of MTTR was at 2.0.0 (2024-03-01), from 2.00 to 0.00 days.",
+    MTTR_WHY,
+  ]);
+});
+
+test("Per-release names the largest rise and the largest drop, and the effect of weighting", () => {
+  const result = {
+    ...perReleaseResult([
+      release("1.0.0", "2023-02-01", 1, 0),
+      release("1.1.0", "2023-04-01", 3, 5),
+      release("1.2.0", "2023-06-01", 10, 4),
+      release("1.3.0", "2023-08-01", 2, 4),
+    ]),
+    weighting_type: "linear",
+  };
+  const sentences = explainResult(result).sentences.slice(2);
+  assert.deepEqual(sentences, [
+    "MTTU went from 1.00 to 2.00 days over 4 releases.",
+    "The largest rise of MTTU was at 1.2.0 (2023-06-01), from 3.00 to 10.00 days.",
+    "The largest drop of MTTU was at 1.3.0 (2023-08-01), from 10.00 to 2.00 days.",
+    MTTU_WHY,
+    "MTTR went from 0.00 to 4.00 days over 4 releases.",
+    "The largest rise of MTTR was at 1.1.0 (2023-04-01), from 0.00 to 5.00 days.",
+    "The largest drop of MTTR was at 1.2.0 (2023-06-01), from 5.00 to 4.00 days.",
+    MTTR_WHY,
+    "With weighting, recent days count more, so a value can also change as time passes.",
+  ]);
+});
+
+test("Per-release names no rise and no drop when the shown values stay the same", () => {
+  const result = perReleaseResult([release("1.0.0", "2023-02-01", 1, 0), release("1.1.0", "2023-04-01", 1.001, 0)]);
+  assert.deepEqual(explainResult(result).sentences.slice(2), [
+    "MTTU went from 1.00 to 1.00 days over 2 releases.",
+    MTTU_WHY,
+    "MTTR went from 0.00 to 0.00 days over 2 releases.",
+    MTTR_WHY,
   ]);
 });
 

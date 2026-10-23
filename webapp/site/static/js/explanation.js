@@ -90,6 +90,52 @@ function metricSentence(metric, days, result) {
   return `${metric.toUpperCase()} is ${value} days: in this time window, a direct dependency of ${result.package} ${words.what} ${amount}.`;
 }
 
+// Why a Per-release value goes up or down, for each metric, and the effect of weighting.
+const WHY_CHANGE = {
+  mttu:
+    "MTTU goes up when a dependency publishes a newer version and the package keeps the older one. " +
+    "It goes down when a release of the package moves to newer versions.",
+  mttr:
+    "MTTR goes up when a fix is published and the package stays on the vulnerable version. " +
+    "It goes down when a release moves to the fixed version.",
+};
+const WEIGHTING_CHANGE = "With weighting, recent days count more, so a value can also change as time passes.";
+
+// Return the step between two releases with values that changes the shown value most in
+// one direction (sign 1: the largest rise, sign -1: the largest drop), or null when no step
+// changes the shown value in that direction. The first step wins a tie.
+function largestStep(metric, releases, sign) {
+  let best = null;
+  for (let index = 1; index < releases.length; index += 1) {
+    const [before, after] = [releases[index - 1][metric], releases[index][metric]];
+    if (formatDays(before) === formatDays(after)) continue;
+    const change = (after - before) * sign;
+    if (change > 0 && (best === null || change > best.change)) best = { change, before, release: releases[index] };
+  }
+  return best;
+}
+
+// Return the sentences on the change of one metric over the releases with values: the
+// change over the window, the release with the largest rise and with the largest drop (if
+// there is one), and why the metric goes up or down.
+function changeSentences(metric, releases) {
+  const name = metric.toUpperCase();
+  const first = formatDays(releases[0][metric]);
+  const last = formatDays(releases.at(-1)[metric]);
+  const sentences = [`${name} went from ${first} to ${last} days over ${releases.length} releases.`];
+  for (const [sign, word] of [[1, "rise"], [-1, "drop"]]) {
+    const step = largestStep(metric, releases, sign);
+    if (step === null) continue;
+    const { release } = step;
+    sentences.push(
+      `The largest ${word} of ${name} was at ${release.package_version} (${release.package_release_date}), ` +
+        `from ${formatDays(step.before)} to ${formatDays(release[metric])} days.`,
+    );
+  }
+  sentences.push(WHY_CHANGE[metric]);
+  return sentences;
+}
+
 // Return the releases of a Per-release result that have a value, in release order.
 function releasesWithValues(result) {
   return (result.releases ?? []).filter(hasValue);
@@ -105,8 +151,9 @@ function describedEntry(result) {
 }
 
 // Return the Explanation of one package result: { title, sentences }, with one sentence for
-// each metric, and for Per-release one more sentence for each metric on the change over the
-// window. Return null for a result with an error or without dependencies; the result table
+// each metric. For Per-release with more than one release with a value, each metric also
+// gets the sentences on its change over the window (changeSentences), and a weighted result
+// gets one sentence on the effect of the weighting. Return null for a result with an error or without dependencies; the result table
 // keeps its error text.
 export function explainResult(result) {
   const entry = describedEntry(result);
@@ -115,11 +162,8 @@ export function explainResult(result) {
   if (result.mode !== "per_release") return { title: result.package, sentences };
   const releases = releasesWithValues(result);
   if (releases.length > 1) {
-    for (const metric of ["mttu", "mttr"]) {
-      const from = formatDays(releases[0][metric]);
-      const to = formatDays(entry[metric]);
-      sentences.push(`${metric.toUpperCase()} went from ${from} to ${to} days over ${releases.length} releases.`);
-    }
+    for (const metric of ["mttu", "mttr"]) sentences.push(...changeSentences(metric, releases));
+    if (result.weighting_type !== NO_WEIGHTING) sentences.push(WEIGHTING_CHANGE);
   }
   const title = `${result.package} ${entry.package_version}, the latest release with a value (${entry.package_release_date})`;
   return { title, sentences };
