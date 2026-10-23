@@ -26,6 +26,7 @@ In Remote SSH, WSL, and Codespaces, the Extension runs on the machine that holds
 - **Hover:** the hover on a dependency shows the time window, the number of dependencies of that package, the data source, the date of the value, and the manifest section. From the hover, you can start a Comparison.
 - **No dependencies:** a package that has no dependencies of its own gets the text `could not compute since '<package>' has no dependencies`. It does not get a value of 0 days.
 - **Errors:** a short error shows in the hint, and the full error shows in the hover.
+- **OSV index date:** while a manifest is open, the status bar item **OSV** shows the build date of the OSV index (or `none`). Click it to rebuild the index. VS Code cannot put a changing date into a command title or a setting description, so the status bar shows it, and the description of `mttx.cacheFolder` names the item.
 
 By default, the values cover the last 2 years. The Extension reuses a value for one day. It analyzes a manifest only when you open it, and it skips `node_modules/` and `.venv/`. When another program changes or creates a manifest (for example `npm install` or a Git checkout), the hints update.
 

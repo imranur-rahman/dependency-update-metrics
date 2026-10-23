@@ -105,7 +105,7 @@
           "type": "string",
           "default": "",
           "scope": "machine",
-          "markdownDescription": "The folder of the Tool cache and the OSV index (the Tool flag `--output-dir`). Empty: a folder in the storage of the Extension."
+          "markdownDescription": "The folder of the Tool cache and the OSV index (the Tool flag `--output-dir`). Empty: a folder in the storage of the Extension. While a manifest is open, the status bar item **OSV** shows the build date of the OSV index in this folder; a click on it runs **MTTX: Rebuild OSV index**."
         },
         "mttx.cacheSizeLimitGb": {
           "type": "number",

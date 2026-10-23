@@ -60,6 +60,13 @@ export function osvIndexText(index: OsvIndexState | undefined): string {
   return `OSV index built on ${index.date}`;
 }
 
+// Return the text and the tooltip of the status bar item of the index. The item shows the
+// build date where the developer can see it without a rebuild, and a click rebuilds the index.
+export function osvIndexStatus(index: OsvIndexState | undefined): { text: string; tooltip: string } {
+  const date = index === undefined ? "unknown" : index.kind === "missing" ? "none" : index.date;
+  return { text: `$(database) OSV ${date}`, tooltip: `MTTX: ${osvIndexText(index)}. Click to rebuild it.` };
+}
+
 // Return the last line of a stderr chunk of `--build-osv`, without the log level, for the
 // progress notification. A tqdm bar rewrites its line with "\r", so "\r" also ends a line.
 export function progressLine(chunk: string): string | undefined {

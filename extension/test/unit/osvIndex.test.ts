@@ -13,6 +13,7 @@ import {
   consentFromAnswer,
   osvIndexChanged,
   osvIndexDateArgs,
+  osvIndexStatus,
   osvIndexText,
   parseOsvIndexDate,
   progressLine,
@@ -76,6 +77,15 @@ test("the index text gives the build date of the index", () => {
   assert.equal(osvIndexText({ kind: "built", date: "2026-10-21" }), "OSV index built on 2026-10-21");
   assert.equal(osvIndexText({ kind: "missing" }), "no OSV index");
   assert.equal(osvIndexText(undefined), "OSV index date unknown");
+});
+
+test("the status bar item shows the build date of the index and rebuilds it on a click", () => {
+  assert.deepEqual(osvIndexStatus({ kind: "built", date: "2026-10-21" }), {
+    text: "$(database) OSV 2026-10-21",
+    tooltip: "MTTX: OSV index built on 2026-10-21. Click to rebuild it.",
+  });
+  assert.equal(osvIndexStatus({ kind: "missing" }).text, "$(database) OSV none");
+  assert.equal(osvIndexStatus(undefined).text, "$(database) OSV unknown");
 });
 
 test("the progress shows the last line of the build output, also of a tqdm bar", () => {

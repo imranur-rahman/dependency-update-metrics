@@ -1,5 +1,6 @@
-// The thin `vscode` layer of the OSV index (#30): the prompt before the first build, the
-// command "MTTX: Rebuild OSV index" with its progress, and the index state for the hints.
+// The thin `vscode` layer of the OSV index: the prompt before the first build, the command
+// "MTTX: Rebuild OSV index" with its progress, the status bar item with the build date, and
+// the index state for the hints.
 // The rules are in src/core/osvIndex.ts; the Tool processes are in src/osvIndexProcess.ts.
 import * as vscode from "vscode";
 
@@ -7,6 +8,7 @@ import {
   OSV_PROMPT,
   consentFromAnswer,
   osvIndexChanged,
+  osvIndexStatus,
   osvIndexText,
   shouldAskForOsvIndex,
   type OsvConsent,
@@ -24,11 +26,14 @@ const stateKey = (outputDir: string) => `mttx.osvIndexState:${outputDir}`;
 // The command of the Tool after its setup (#29), or the message of a setup without a Tool.
 export type ReadyCommand = { ok: true; command: ToolCommand } | { ok: false; message: string };
 
-export class OsvIndex {
+export class OsvIndex implements vscode.Disposable {
   // The last state that the Tool gave for the output dir. Undefined before the first state,
   // or when the Tool cannot give it.
   state: OsvIndexState | undefined;
   private building: Promise<void> | undefined;
+  // Shows the build date while a manifest is open. VS Code has no dynamic command title or
+  // setting description, so the status bar is the place that shows the date without a run.
+  private readonly status = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right);
   private readonly context: vscode.ExtensionContext;
   // The Tool output dir (`mttx.cacheFolder` or the default), read on each use.
   private readonly outputDir: () => string;
@@ -49,6 +54,18 @@ export class OsvIndex {
     this.command = command;
     this.onDidChange = onDidChange;
     this.state = this.saved();
+    this.status.command = REBUILD_COMMAND;
+    this.showStatus();
+  }
+
+  // Show the status bar item only while the active editor holds a manifest.
+  setStatusVisible(visible: boolean): void {
+    if (visible) this.status.show();
+    else this.status.hide();
+  }
+
+  dispose(): void {
+    this.status.dispose();
   }
 
   // True unless the Tool says that there is no index. An unknown state shows the MTTR.
@@ -112,11 +129,17 @@ export class OsvIndex {
     const outputDir = this.outputDir();
     // The output dir can change with `mttx.cacheFolder`; its last state applies at once.
     const before = (this.state = this.saved());
+    this.showStatus();
     // A setup without a Tool leaves the state unknown, so the prompt does not show.
     const ready = await this.command();
     this.state = ready.ok ? await readOsvIndex(ready.command, outputDir) : undefined;
     if (this.state) await this.context.globalState.update(stateKey(outputDir), this.state);
+    this.showStatus();
     this.onDidChange(rebuilt || osvIndexChanged(before, this.state));
+  }
+
+  private showStatus(): void {
+    Object.assign(this.status, osvIndexStatus(this.state));
   }
 
   private saved(): OsvIndexState | undefined {

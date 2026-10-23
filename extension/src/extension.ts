@@ -209,7 +209,14 @@ export function activate(context: vscode.ExtensionContext): void {
   manifestWatcher.onDidChange(onManifest);
   manifestWatcher.onDidCreate(onManifest);
 
+  // The status bar item with the OSV index date shows while a manifest is open.
+  const showOsvStatus = (editor: vscode.TextEditor | undefined) =>
+    osvIndex.setStatusVisible(editor?.document.uri.scheme === "file" && isAnalyzedManifest(editor.document.uri.fsPath));
+  showOsvStatus(vscode.window.activeTextEditor);
+
   context.subscriptions.push(
+    osvIndex,
+    vscode.window.onDidChangeActiveTextEditor(showOsvStatus),
     manifestWatcher,
     vscode.commands.registerCommand(REBUILD_COMMAND, () => osvIndex.rebuild()),
     provider,
