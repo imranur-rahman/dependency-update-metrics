@@ -207,4 +207,6 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.MTTX_ACTION_TOKEN }}
         TAG: ${{ steps.check.outputs.tag }}
-      run: gh release create "$TAG" --repo imranur-rahman/mttx-action --title "$TAG" --notes "MTTX Action $TAG. Image: see image.json in imranur-rahman/dependency-update-metrics at tag action-$TAG."
+      run: |
+        gh release create "$TAG" --repo imranur-rahman/mttx-action --title "$TAG" \
+          --notes "MTTX Action $TAG. The image digest is in action/image.json of imranur-rahman/dependency-update-metrics at the tag action-$TAG."
