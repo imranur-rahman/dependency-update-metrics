@@ -15,6 +15,7 @@ import {
   submitErrorMessage,
   botCheckError,
   canAddPackage,
+  packageLimitNote,
   withComparison,
   comparisonFromSearch,
   formFromComparison,
@@ -59,6 +60,7 @@ const halfLifeMessage = document.getElementById("half-life-error");
 const resultsNoteLine = document.getElementById("results-note");
 const packageFields = document.getElementById("package-fields");
 const addPackageButton = document.getElementById("add-package");
+const packageLimit = document.getElementById("package-limit");
 const packageMessage = document.getElementById("package-error");
 const dateMessage = document.getElementById("date-error");
 const startDateInput = document.getElementById("start-date");
@@ -121,6 +123,8 @@ function renumberPackageFields() {
     input.setAttribute("aria-label", `Package ${index + 1}`);
   });
   addPackageButton.disabled = !canAddPackage(packageValues());
+  packageLimit.textContent = packageLimitNote(packageValues());
+  packageLimit.hidden = !packageLimit.textContent;
 }
 
 function addPackageField(value = "") {
