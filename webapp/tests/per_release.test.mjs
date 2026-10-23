@@ -105,10 +105,10 @@ test("a package that failed has a line with no points", () => {
 
 test("the line chart axis label follows the weighting type of the Job", () => {
   const job = perReleaseJob();
-  assert.equal(lineChartAxisLabel(job), "Days (sum over intervals)");
+  assert.equal(lineChartAxisLabel(job), "Total days");
 
   job.comparison.weighting_type = "inverse";
-  assert.equal(lineChartAxisLabel(job), "Days (weighted mean)");
+  assert.equal(lineChartAxisLabel(job), "Average days");
 });
 
 test("a Per-release Job gives one table row for each release, with the error of the failed one", () => {
@@ -211,10 +211,10 @@ test("the line chart options carry the axis titles", () => {
 
   assert.equal(scales.x.type, "linear");
   assert.equal(scales.x.title.text, "Release date");
-  assert.equal(scales.y.title.text, "Days (sum over intervals)");
+  assert.equal(scales.y.title.text, "Total days");
 
   job.comparison.weighting_type = "inverse";
-  assert.equal(lineChartOptions(job).scales.y.title.text, "Days (weighted mean)");
+  assert.equal(lineChartOptions(job).scales.y.title.text, "Average days");
 });
 
 test("the line chart shows release dates on the x-axis and in the tooltip title", () => {

@@ -311,10 +311,10 @@ test("the bar chart of the contract example has one group", () => {
 
 test("the bar chart axis label follows the weighting type of the Job", () => {
   const job = threePackageJob();
-  assert.equal(barChartAxisLabel(job), "Days (sum over intervals)");
+  assert.equal(barChartAxisLabel(job), "Total days");
 
   job.comparison.weighting_type = "linear";
-  assert.equal(barChartAxisLabel(job), "Days (weighted mean)");
+  assert.equal(barChartAxisLabel(job), "Average days");
 });
 
 test("every chart has one shared size: at most 720 px wide, and one height", () => {
@@ -362,10 +362,10 @@ test("the bar chart is compact: a small legend and few y-axis ticks", () => {
 
 test("the bar chart options carry the axis label of the weighting type", () => {
   const job = threePackageJob();
-  assert.deepEqual(barChartOptions(job).scales.y.title, { display: true, text: "Days (sum over intervals)" });
+  assert.deepEqual(barChartOptions(job).scales.y.title, { display: true, text: "Total days" });
 
   job.comparison.weighting_type = "linear";
-  assert.equal(barChartOptions(job).scales.y.title.text, "Days (weighted mean)");
+  assert.equal(barChartOptions(job).scales.y.title.text, "Average days");
 });
 
 test("the bar chart tooltip shows the days with two decimals, and no value for a missing bar", () => {
@@ -498,18 +498,27 @@ test("the request body has no half-life for the other weighting types", () => {
   assert.equal(body.half_life, null);
 });
 
-test("the axis label says a sum without weighting and a weighted mean with weighting", () => {
-  assert.equal(axisLabel("disable"), "Days (sum over intervals)");
+test("the axis label says total days without weighting and average days with weighting", () => {
+  assert.equal(axisLabel("disable"), "Total days");
   for (const type of ["linear", "exponential", "inverse"]) {
-    assert.equal(axisLabel(type), "Days (weighted mean)");
+    assert.equal(axisLabel(type), "Average days");
   }
 });
 
-test("the note near the results says what the numbers are", () => {
-  assert.match(resultsNote("disable"), /sum/);
-  assert.doesNotMatch(resultsNote("disable"), /weighted mean/);
-  assert.match(resultsNote("exponential"), /weighted mean/);
-  assert.notEqual(resultsNote("disable"), resultsNote("linear"));
+test("the note near the results says plainly what the numbers are", () => {
+  assert.equal(
+    resultsNote("disable"),
+    "Total days: for each direct dependency, the days that it was behind the newest version (MTTU) " +
+      "or on a version with a known vulnerability after a fix was available (MTTR), added up, " +
+      "then averaged over the direct dependencies.",
+  );
+  assert.equal(
+    resultsNote("linear"),
+    "Average days, with linear weighting: for each direct dependency, the days that it was behind the newest " +
+      "version (MTTU) or on a version with a known vulnerability after a fix was available (MTTR), as a " +
+      "weighted average in which recent days count more. Do not compare them with total days.",
+  );
+  assert.match(resultsNote("exponential"), /^Average days, with exponential weighting: /);
 });
 
 // The same names as the Host test (host/tests/test_input_checks.py), so both sides agree.

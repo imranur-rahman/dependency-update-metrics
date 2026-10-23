@@ -388,7 +388,7 @@ export function chartHasValues(data) {
 }
 
 // Return the y-axis label of the bar chart of a done Job. It follows the weighting type,
-// because a sum of days and a weighted mean are different quantities (axisLabel).
+// because total days and average days are different quantities (axisLabel).
 export function barChartAxisLabel(job) {
   return axisLabel(job.comparison.weighting_type);
 }
@@ -598,19 +598,27 @@ export function halfLifeError(weightingType, halfLife) {
 }
 
 // Return the y-axis label of the charts for the weighting type. Without weighting, the Tool
-// gives a sum of days; with weighting, it gives a weighted mean of days.
+// adds up the days of each dependency (total days); with weighting, it gives a weighted
+// average of days. The two are different quantities.
 export function axisLabel(weightingType) {
-  return weightingType === NO_WEIGHTING ? "Days (sum over intervals)" : "Days (weighted mean)";
+  return weightingType === NO_WEIGHTING ? "Total days" : "Average days";
 }
 
-// Return the one-line note near the results that says what the numbers are.
+// What MTTU and MTTR count, for the note near the results.
+const NOTE_WHAT =
+  "for each direct dependency, the days that it was behind the newest version (MTTU) " +
+  "or on a version with a known vulnerability after a fix was available (MTTR)";
+
+// Return the one-line note near the results that says plainly what the numbers are. The
+// Tool adds up the days of each dependency, then takes the mean over the direct
+// dependencies; with weighting, each day has a weight that is larger for recent days.
 export function resultsNote(weightingType) {
   if (weightingType === NO_WEIGHTING) {
-    return "Without weighting, MTTU and MTTR are the sum of the days over all intervals.";
+    return `Total days: ${NOTE_WHAT}, added up, then averaged over the direct dependencies.`;
   }
   return (
-    `With ${weightingType} weighting, MTTU and MTTR are a weighted mean of days. ` +
-    "Do not compare them with values that have no weighting."
+    `Average days, with ${weightingType} weighting: ${NOTE_WHAT}, as a weighted average in which ` +
+    "recent days count more. Do not compare them with total days."
   );
 }
 
