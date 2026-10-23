@@ -382,20 +382,28 @@
       <div class="tryit-card mt-5" id="results-card" hidden>
         <h3 class="title is-4 mb-0">Results</h3>
         <p id="results-note" class="is-size-7 mt-2 has-text-grey" hidden></p>
+        <!-- webapp.js sets the height of each chart box from CHART_HEIGHTS in comparison.js. -->
         <figure class="mt-4" id="result-chart-figure" hidden>
-          <div style="position: relative; height: 320px;">
+          <div class="chart-box" data-chart="bar">
             <canvas id="result-chart" role="img" aria-label="Bar chart of MTTU and MTTR for each package. The table below holds the same values."></canvas>
           </div>
         </figure>
-        <!-- Per-release: two line charts, because MTTU values are often much larger than MTTR values. -->
+        <!-- Per-release: two line charts, because MTTU values are often much larger than MTTR values.
+             They sit side by side from tablet width and stack on a phone. -->
         <figure class="mt-4" id="release-charts-figure" hidden>
-          <p class="has-text-weight-semibold">MTTU at each release</p>
-          <div style="position: relative; height: 280px;">
-            <canvas id="release-chart-mttu" role="img" aria-label="Line chart of MTTU at each release date, one line for each package. A gap is a release that failed. The table below holds the same values."></canvas>
-          </div>
-          <p class="has-text-weight-semibold mt-4">MTTR at each release</p>
-          <div style="position: relative; height: 280px;">
-            <canvas id="release-chart-mttr" role="img" aria-label="Line chart of MTTR at each release date, one line for each package. A gap is a release that failed. The table below holds the same values."></canvas>
+          <div class="columns is-tablet is-variable is-4">
+            <div class="column is-half">
+              <p class="has-text-weight-semibold is-size-6 mb-1">MTTU at each release</p>
+              <div class="chart-box" data-chart="line">
+                <canvas id="release-chart-mttu" role="img" aria-label="Line chart of MTTU at each release date, one line for each package. A gap is a release that failed. The table below holds the same values."></canvas>
+              </div>
+            </div>
+            <div class="column is-half">
+              <p class="has-text-weight-semibold is-size-6 mb-1">MTTR at each release</p>
+              <div class="chart-box" data-chart="line">
+                <canvas id="release-chart-mttr" role="img" aria-label="Line chart of MTTR at each release date, one line for each package. A gap is a release that failed. The table below holds the same values."></canvas>
+              </div>
+            </div>
           </div>
         </figure>
         <div class="table-container mt-4">

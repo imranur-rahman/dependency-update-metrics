@@ -373,6 +373,92 @@ export function barChartAxisLabel(job) {
   return axisLabel(job.comparison.weighting_type);
 }
 
+// The heights of the charts in CSS pixels. The charts are compact, so that the charts and
+// the result table fit on one screen. The page code sets the height of each chart box.
+export const CHART_HEIGHTS = { bar: 200, line: 220 };
+
+// The legend of each chart: small color boxes and small text, so that the legend takes one
+// short line. The text stays at 12 px, so that it stays readable. Each call returns a new
+// object, because Chart.js keeps the options of each chart.
+function compactLegend(labels = {}) {
+  return {
+    position: "top",
+    align: "end",
+    labels: { boxWidth: 12, boxHeight: 12, padding: 8, font: { size: 12 }, ...labels },
+  };
+}
+
+// The most labels on a y-axis. Three or four values give enough scale for days.
+const MAX_Y_TICKS = 4;
+
+// Return the tooltip text of one value: the series name and the days with one decimal.
+function tooltipValue(name, days) {
+  return `${name}: ${days === null ? "no value" : `${formatDays(days)} days`}`;
+}
+
+// Return the Chart.js options of the bar chart of a done Window summary Job (barChartData).
+// The options hold no DOM objects, so that the Extension webview uses them unchanged.
+export function barChartOptions(job) {
+  return {
+    maintainAspectRatio: false,
+    interaction: { mode: "index", intersect: false },
+    plugins: {
+      legend: compactLegend(),
+      tooltip: { callbacks: { label: (item) => tooltipValue(item.dataset.label, item.raw) } },
+    },
+    scales: {
+      x: { grid: { display: false } },
+      y: {
+        beginAtZero: true,
+        ticks: { maxTicksLimit: MAX_Y_TICKS },
+        title: { display: true, text: barChartAxisLabel(job) },
+      },
+    },
+  };
+}
+
+// The most labels on the x-axis of a line chart. Four dates fit in a half-width chart.
+const MAX_X_TICKS = 4;
+
+// Return a release date of the x-axis (milliseconds, UTC) as "YYYY-MM-DD".
+function formatReleaseDate(ms) {
+  return new Date(ms).toISOString().slice(0, 10);
+}
+
+// Return the Chart.js options of one line chart of a done Per-release Job (lineChartData).
+// The x-axis is linear in milliseconds, so the ticks and the tooltip title show the date.
+// The options hold no DOM objects, so that the Extension webview uses them unchanged.
+export function lineChartOptions(job) {
+  return {
+    maintainAspectRatio: false,
+    interaction: { mode: "nearest", intersect: false },
+    plugins: {
+      // Chart.js draws a point style with a diameter of about 1.4 times boxHeight.
+      legend: compactLegend({ usePointStyle: true, boxHeight: 8 }),
+      tooltip: {
+        callbacks: {
+          title: (items) => formatReleaseDate(items[0].parsed.x),
+          label: (item) => tooltipValue(`${item.dataset.label} ${item.raw.version}`, item.raw.y),
+        },
+      },
+    },
+    scales: {
+      x: {
+        type: "linear",
+        title: { display: true, text: "Release date" },
+        // Horizontal dates are easier to read; Chart.js skips a date that does not fit.
+        ticks: { callback: (value) => formatReleaseDate(value), maxTicksLimit: MAX_X_TICKS, maxRotation: 0 },
+        grid: { display: false },
+      },
+      y: {
+        beginAtZero: true,
+        ticks: { maxTicksLimit: MAX_Y_TICKS },
+        title: { display: true, text: lineChartAxisLabel(job) },
+      },
+    },
+  };
+}
+
 // The columns of the result table and of the CSV download, in order: [row key, header].
 // The page code builds the table from this list, so the table and the CSV always match.
 export const TABLE_COLUMNS = [
