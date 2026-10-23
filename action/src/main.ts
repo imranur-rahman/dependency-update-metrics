@@ -1,6 +1,6 @@
 // The run of the Action: check the inputs, get the OSV index, run the Tool for each package,
-// and write the outputs, the job summary, the badge files (mode packages) or the pull
-// request comment (mode pull-request). Every effect goes through ActionIO, so that the tests
+// and write the outputs, the job summary, the badge files (target packages) or the pull
+// request comment (target pull-request). Every effect goes through ActionIO, so that the tests
 // run the Action with fakes. src/index.ts makes the real ActionIO.
 
 import { buildOsvArgs, osvIndexDateArgs, parseOsvIndexDate } from "../../extension/src/core/osvIndex.ts";
@@ -10,13 +10,20 @@ import { formatDate } from "../../extension/src/core/tool.ts";
 import type { SpawnResult } from "../../extension/src/spawnProcess.ts";
 import { formatDays } from "../../webapp/site/static/js/comparison.js";
 import { addedDependencies, type AddedDependency, type ManifestChange } from "./added.ts";
-import { parseInputs, type ActionConfig } from "./inputs.ts";
+import { parseInputs, type ActionConfig, type OsvIndexSource } from "./inputs.ts";
 import { badgeFiles, COMMENT_MARKER, outputRows, reportMarkdown, thresholdFailures, type PackageOutcome } from "./report.ts";
 
 // The one seam of the Tool: run `dependency-metrics` with these arguments. The real seam runs
 // the Tool in the GHCR image (src/docker.ts); the tests pass a fake. timeoutMs stops a slow
 // run.
 export type ToolProcess = (args: string[], timeoutMs?: number) => Promise<SpawnResult>;
+
+// The Tool seam for one run of the Action, and the `--output-dir` of the Tool, as the Tool
+// sees it.
+export interface ToolSeam {
+  tool: ToolProcess;
+  outputDir: string;
+}
 
 export interface Comment {
   id: number;
@@ -40,9 +47,9 @@ export interface PullRequest {
 export interface ActionIO {
   inputs: Record<string, string>;
   today: Date;
-  // The `--output-dir` of the Tool, as the Tool sees it.
-  outputDir: string;
-  tool: ToolProcess;
+  // Open the Tool seam for the checked osv-index input. The Action calls it once, after the
+  // input check, and only when there is a package to analyze.
+  openTool(osvIndex: OsvIndexSource): ToolSeam;
   // Undefined when the event is not a pull request.
   pullRequest?: PullRequest;
   setOutput(name: string, value: string): void;
@@ -63,13 +70,13 @@ export async function runAction(io: ActionIO): Promise<number> {
     return 1;
   }
   const { config } = parsed;
-  if (config.mode === "pull-request" && !io.pullRequest) {
-    io.error("Input mode pull-request needs a pull_request event (on: pull_request or pull_request_target).");
+  if (config.target === "pull-request" && !io.pullRequest) {
+    io.error("Input target pull-request needs a pull_request event (on: pull_request or pull_request_target).");
     return 1;
   }
 
   let packages: AddedDependency[];
-  if (config.mode === "packages") {
+  if (config.target === "packages") {
     packages = config.packages.map((name) => ({ ecosystem: config.ecosystem!, name, files: [] }));
   } else {
     packages = addedDependencies(await io.pullRequest!.changes());
@@ -82,15 +89,18 @@ export async function runAction(io: ActionIO): Promise<number> {
     io.setOutput("mttu", "");
     io.setOutput("mttr", "");
     io.setOutput("over-threshold", "false");
-    io.setOutput("comment-url", (await updateOldComment(io)) ?? "");
+    // A comment of an earlier push gets the text that the pull request adds none, so that
+    // it shows no old values. No comment stays no comment.
+    io.setOutput("comment-url", (await upsertComment(io, `${COMMENT_MARKER}\n${NO_DEPENDENCIES_ADDED}\n`, false)) ?? "");
     io.appendSummary(`${NO_DEPENDENCIES_ADDED}\n`);
     return 0;
   }
 
-  const osvIndexDate = await prepareOsvIndex(io, config);
+  const seam = io.openTool(config.osvIndex);
+  const osvIndexDate = await prepareOsvIndex(io, seam, config);
   const outcomes = await runPool(packages, config.settings.parallelRuns, async (dep): Promise<PackageOutcome> => {
     io.info(`Analyzing ${dep.name} (${dep.ecosystem})`);
-    return { ...dep, outcome: await analyze(io, config, dep) };
+    return { ...dep, outcome: await analyze(io, seam, config, dep) };
   });
 
   const rows = outputRows(outcomes);
@@ -101,7 +111,7 @@ export async function runAction(io: ActionIO): Promise<number> {
   io.setOutput("mttr", first.mttr === null ? "" : formatDays(first.mttr));
   io.setOutput("over-threshold", String(failures.length > 0));
 
-  const pullRequest = config.mode === "pull-request";
+  const pullRequest = config.target === "pull-request";
   const markdown = reportMarkdown(outcomes, {
     heading: pullRequest ? "MTTU and MTTR of the dependencies that this pull request adds" : "MTTU and MTTR",
     thresholds: config.thresholds,
@@ -110,7 +120,7 @@ export async function runAction(io: ActionIO): Promise<number> {
   });
   io.appendSummary(`${markdown}\n`);
   if (pullRequest) {
-    io.setOutput("comment-url", (await writeComment(io, markdown)) ?? "");
+    io.setOutput("comment-url", (await upsertComment(io, markdown, true)) ?? "");
   } else {
     for (const file of badgeFiles(rows, config.thresholds)) {
       io.writeFile(`${config.badgeDir}/${file.fileName}`, `${JSON.stringify(file.json)}\n`);
@@ -122,23 +132,23 @@ export async function runAction(io: ActionIO): Promise<number> {
 
 // Return the build date of the OSV index that the Tool uses, or undefined when it has none.
 // With osv-index fresh, the Tool builds the index when it is not from today.
-async function prepareOsvIndex(io: ActionIO, config: ActionConfig): Promise<string | undefined> {
-  let state = parseOsvIndexDate((await io.tool(osvIndexDateArgs(io.outputDir))).stdout);
+async function prepareOsvIndex(io: ActionIO, { tool, outputDir }: ToolSeam, config: ActionConfig): Promise<string | undefined> {
+  let state = parseOsvIndexDate((await tool(osvIndexDateArgs(outputDir))).stdout);
   const today = formatDate(io.today);
   if (config.osvIndex === "fresh" && !(state?.kind === "built" && state.date === today)) {
-    io.info("Building the OSV index of today (about 260 MB download)");
-    const build = await io.tool(buildOsvArgs(io.outputDir));
+    io.info("Building the OSV index of today. AGENTS.md of imranur-rahman/dependency-update-metrics gives the download size.");
+    const build = await tool(buildOsvArgs(outputDir));
     if (build.exitCode !== 0) io.warning(`The OSV index build failed: ${lastLine(build)}`);
-    state = parseOsvIndexDate((await io.tool(osvIndexDateArgs(io.outputDir))).stdout);
+    state = parseOsvIndexDate((await tool(osvIndexDateArgs(outputDir))).stdout);
   }
   if (state?.kind === "built") return state.date;
   io.warning("The Tool has no OSV index, so each MTTR is 0. Use the default image, or osv-index: fresh.");
   return undefined;
 }
 
-async function analyze(io: ActionIO, config: ActionConfig, dep: AddedDependency): Promise<ToolOutcome> {
-  const request = toolRequest(dep, config.settings, io.today, io.outputDir);
-  const output = await io.tool(toolArgs(request), request.timeoutSeconds * 1000);
+async function analyze(io: ActionIO, { tool, outputDir }: ToolSeam, config: ActionConfig, dep: AddedDependency): Promise<ToolOutcome> {
+  const request = toolRequest(dep, config.settings, io.today, outputDir);
+  const output = await tool(toolArgs(request), request.timeoutSeconds * 1000);
   if (output.timedOut) {
     return { kind: "failed", message: `the Tool stopped after ${request.timeoutSeconds} s (package-timeout-seconds)` };
   }
@@ -146,30 +156,17 @@ async function analyze(io: ActionIO, config: ActionConfig, dep: AddedDependency)
   return parseToolOutput(output);
 }
 
-// Write the report as the one comment of the Action: update the comment of an earlier push,
-// or create it. Return its URL. A comment that cannot be written (for example, the read-only
-// token of a pull request from a fork) gives a warning; the job summary still has the report.
-async function writeComment(io: ActionIO, markdown: string): Promise<string | undefined> {
-  const { comments } = io.pullRequest!;
-  try {
-    const old = (await comments.list()).find((comment) => comment.body.startsWith(COMMENT_MARKER));
-    const comment = old ? await comments.update(old.id, markdown) : await comments.create(markdown);
-    return comment.url;
-  } catch (error) {
-    io.warning(`The Action could not write the pull request comment: ${(error as Error).message}`);
-    return undefined;
-  }
-}
-
-// When the pull request adds no dependencies, a comment of an earlier push gets the text
-// that it adds none, so that it shows no old values. No comment stays no comment.
-async function updateOldComment(io: ActionIO): Promise<string | undefined> {
+// Write `body` as the one comment of the Action: update the comment of an earlier push, or
+// create one when `create` is true. Return its URL, or undefined when there is no comment. A
+// comment that cannot be written (for example, the read-only token of a pull request from a
+// fork) gives a warning; the job summary still has the report.
+async function upsertComment(io: ActionIO, body: string, create: boolean): Promise<string | undefined> {
   if (!io.pullRequest) return undefined;
   const { comments } = io.pullRequest;
   try {
     const old = (await comments.list()).find((comment) => comment.body.startsWith(COMMENT_MARKER));
-    if (!old) return undefined;
-    return (await comments.update(old.id, `${COMMENT_MARKER}\n${NO_DEPENDENCIES_ADDED}\n`)).url;
+    if (old) return (await comments.update(old.id, body)).url;
+    return create ? (await comments.create(body)).url : undefined;
   } catch (error) {
     io.warning(`The Action could not write the pull request comment: ${(error as Error).message}`);
     return undefined;

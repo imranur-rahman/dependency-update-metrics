@@ -10,8 +10,8 @@ import { MAX_PACKAGES } from "../../webapp/site/static/js/comparison.js";
 
 // packages: the Tool runs for the packages in the input `packages`.
 // pull-request: the Tool runs for the dependencies that the pull request adds.
-export const MODES = ["packages", "pull-request"] as const;
-export type Mode = (typeof MODES)[number];
+export const TARGETS = ["packages", "pull-request"] as const;
+export type Target = (typeof TARGETS)[number];
 
 // image: the OSV index inside the image (no download). fresh: the Tool builds the index of
 // today with `--build-osv`, and actions/cache keeps it for the day.
@@ -25,7 +25,7 @@ export interface Thresholds {
 }
 
 export interface ActionConfig {
-  mode: Mode;
+  target: Target;
   packages: string[];
   ecosystem: Ecosystem | null;
   settings: Settings;
@@ -54,8 +54,8 @@ const NUMBER_SETTINGS = new Set<keyof Settings>(["windowYears", "halfLife", "pac
 // Check the inputs (names as in action.yml). An empty or missing input gets its default.
 export function parseInputs(inputs: Record<string, string | undefined>): ParsedInputs {
   const input = (name: string) => (inputs[name] ?? "").trim();
-  const mode = input("mode") || "packages";
-  if (!(MODES as readonly string[]).includes(mode)) return oneOf("mode", mode, MODES);
+  const target = input("target") || "packages";
+  if (!(TARGETS as readonly string[]).includes(target)) return oneOf("target", target, TARGETS);
   const osvIndex = input("osv-index") || "image";
   if (!(OSV_INDEX_SOURCES as readonly string[]).includes(osvIndex)) {
     return oneOf("osv-index", osvIndex, OSV_INDEX_SOURCES);
@@ -63,7 +63,7 @@ export function parseInputs(inputs: Record<string, string | undefined>): ParsedI
 
   let packages: string[] = [];
   let ecosystem: Ecosystem | null = null;
-  if (mode === "packages") {
+  if (target === "packages") {
     if (input("packages") === "") {
       return invalid(`Input packages needs 1 to ${MAX_PACKAGES} package names, split by commas or spaces.`);
     }
@@ -100,7 +100,7 @@ export function parseInputs(inputs: Record<string, string | undefined>): ParsedI
   return {
     ok: true,
     config: {
-      mode: mode as Mode,
+      target: target as Target,
       packages,
       ecosystem,
       settings: settings.settings,

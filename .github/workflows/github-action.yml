@@ -64,12 +64,12 @@ jobs:
     - name: Run unit tests
       run: npm test
 
-    # Builds dist/index.mjs and runs it in mode pull-request on the fixture PR files in
+    # Builds dist/index.mjs and runs it with target pull-request on the fixture PR files in
     # action/test/fixtures/pr/, with the fake Tool and a fake GitHub REST API.
     - name: Run the end-to-end tests
       run: npm run test:e2e
 
-  # Runs the Action through action.yml (uses: ./action) in mode packages, with the fake Tool
+  # Runs the Action through action.yml (uses: ./action) with target packages, with the fake Tool
   # of the Extension in place of the Docker image (MTTX_ACTION_TOOL).
   run-action:
     needs: test
@@ -137,11 +137,114 @@ jobs:
         test "$OUTCOME" = "failure"
         test "$OVER" = "true"
 
+  # Runs the Action through action.yml (uses: ./action) with target pull-request, with the
+  # fake Tool, a fake pull request event, and the fake GitHub REST API of the e2e test. Two
+  # commits in the checkout copy the fixture PR files of action/test/fixtures/pr/ (base, then
+  # push1, then push2) to the root, so that git finds the added dependencies.
+  run-action-pull-request:
+    needs: test
+    runs-on: ubuntu-latest
+    env:
+      MTTX_ACTION_TOOL: ${{ github.workspace }}/extension/test/fixtures/fake-tool.mjs
+      MTTX_ACTION_EVENT_PATH: ${{ github.workspace }}/../mttx-event.json
+      MTTX_ACTION_API_URL: http://127.0.0.1:8787
+      FIXTURES: action/test/fixtures/pr
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '24'
+        cache: npm
+        cache-dependency-path: action/package-lock.json
+
+    - name: Build the Action
+      working-directory: action
+      run: npm ci && npm run build
+
+    - name: Start the fake GitHub REST API
+      working-directory: action
+      run: |
+        nohup node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON test/e2e/fakeGitHubServer.ts 8787 > "$RUNNER_TEMP/fake-github.log" 2>&1 &
+        for _ in $(seq 50); do
+          curl -s -o /dev/null http://127.0.0.1:8787/ && exit 0
+          sleep 0.2
+        done
+        cat "$RUNNER_TEMP/fake-github.log"
+        exit 1
+
+    - name: Make the base and the first push of the pull request
+      run: |
+        set -euo pipefail
+        git config user.name test
+        git config user.email test@example.test
+        cp -r "$FIXTURES/base/." .
+        git add package.json pyproject.toml Cargo.toml
+        git commit -q -m base
+        base=$(git rev-parse HEAD)
+        cp -r "$FIXTURES/push1/." .
+        git add package.json pyproject.toml Cargo.toml
+        git commit -q -m "push 1"
+        echo "BASE_SHA=$base" >> "$GITHUB_ENV"
+        jq -n --arg base "$base" --arg head "$(git rev-parse HEAD)" \
+          '{pull_request: {number: 1, base: {sha: $base}, head: {sha: $head}}}' > "$MTTX_ACTION_EVENT_PATH"
+
+    - name: Run the Action on the first push
+      id: first
+      uses: ./action
+      with:
+        target: pull-request
+        github-token: test-token
+
+    - name: Check the outputs and the comment
+      env:
+        ADDED: ${{ steps.first.outputs.added }}
+        COMMENT_URL: ${{ steps.first.outputs.comment-url }}
+      run: |
+        set -euo pipefail
+        echo "$ADDED" | jq -e '[.[] | "\(.ecosystem):\(.name)"] == ["cargo:serde_json", "cargo:nope", "npm:koa", "npm:left-pad", "pypi:rich"]'
+        test "$COMMENT_URL" = "https://github.test/c2"
+        comments=$(curl -sf -H "Authorization: Bearer test-token" "$MTTX_ACTION_API_URL/repos/o/r/issues/1/comments?page=1")
+        echo "$comments" | jq -e 'length == 2 and .[0].body == "A comment of a person"'
+        echo "$comments" | jq -e '.[1].body | startswith("<!-- mttx-action -->") and contains("| `koa` | npm | 579.00 | 579.00 | 1 | `package.json` |")'
+
+    - name: Make the second push of the pull request
+      run: |
+        set -euo pipefail
+        cp -r "$FIXTURES/push2/." .
+        git add package.json
+        git commit -q -m "push 2"
+        jq -n --arg base "$BASE_SHA" --arg head "$(git rev-parse HEAD)" \
+          '{pull_request: {number: 1, base: {sha: $base}, head: {sha: $head}}}' > "$MTTX_ACTION_EVENT_PATH"
+
+    - name: Run the Action on the second push, with a threshold that a value exceeds
+      id: second
+      continue-on-error: true
+      uses: ./action
+      with:
+        target: pull-request
+        github-token: test-token
+        max-mttu-days: '100'
+
+    - name: Check that the threshold failed the step and that the same comment changed
+      env:
+        OUTCOME: ${{ steps.second.outcome }}
+        OVER: ${{ steps.second.outputs.over-threshold }}
+      run: |
+        set -euo pipefail
+        test "$OUTCOME" = "failure"
+        test "$OVER" = "true"
+        comments=$(curl -sf -H "Authorization: Bearer test-token" "$MTTX_ACTION_API_URL/repos/o/r/issues/1/comments?page=1")
+        echo "$comments" | jq -e 'length == 2'
+        echo "$comments" | jq -e '.[1].body | contains("`chalk`") and (contains("`left-pad`") | not)'
+
   # Copies the built Action to imranur-rahman/mttx-action, tags it v<version>, and moves the
   # major tag. Runs only for a pushed tag action-v*. Without the secret MTTX_ACTION_TOKEN the
   # job skips the copy with a notice.
   release:
-    needs: [ test, run-action ]
+    needs: [ test, run-action, run-action-pull-request ]
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/action-v')
     runs-on: ubuntu-latest
     defaults:

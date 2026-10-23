@@ -1,15 +1,21 @@
 # MTTX GitHub Action
 
-The MTTX Action computes MTTU and MTTR (mean time to update and mean time to remediate) in a GitHub Actions workflow. It runs the [`dependency-metrics`](https://github.com/imranur-rahman/dependency-update-metrics) Tool for npm, PyPI, and Cargo packages. It has two modes:
+The MTTX Action computes MTTU and MTTR (mean time to update and mean time to remediate) in a GitHub Actions workflow. It runs the [`dependency-metrics`](https://github.com/imranur-rahman/dependency-update-metrics) Tool for npm, PyPI, and Cargo packages. It has two targets:
 
 - **packages**: a scheduled or manual workflow computes the MTTU and MTTR of 1 to 5 published packages. The Action writes them to the job summary, gives them as step outputs, and writes JSON files for [shields.io endpoint badges](https://shields.io/badges/endpoint-badge).
 - **pull-request**: the Action finds the dependencies that a pull request adds to `package.json`, `pyproject.toml`, and `Cargo.toml`, and posts one comment with their MTTU and MTTR. A new push updates the same comment.
 
-In both modes, the inputs `max-mttu-days` and `max-mttr-days` fail the step when a value is more than the limit. A package with no dependencies shows "could not compute since '<name>' has no dependencies", and a package that fails shows its error. Neither one fails the step.
+For both targets, the inputs `max-mttu-days` and `max-mttr-days` fail the step when a value is more than the limit. A package with no dependencies shows "could not compute since '<name>' has no dependencies", and a package that fails shows its error. Neither one fails the step.
 
 The report explains what the numbers mean and lists the limitations of the data, with the same text as the [Webapp](https://imranur-rahman.github.io/dependency-update-metrics/) and the VS Code extension.
 
-## Mode packages
+## Runner
+
+The Action runs only on a Linux runner, because it runs the Tool with Docker. It also needs `node` (version 20 or later) on the `PATH`. Each GitHub-hosted Linux runner (`runs-on: ubuntu-latest`) has both. On macOS or Windows, the Action stops with an error.
+
+## Target packages
+
+The input `packages` takes 1 to 5 package names of one ecosystem. For more packages, use more steps.
 
 ```yaml
 name: MTTX
@@ -35,7 +41,7 @@ jobs:
 
 ### Badges
 
-In mode packages, the Action writes two files for each package to the folder `badge-dir` (default `mttx-badges/`): `<ecosystem>-<package>-mttu.json` and `<ecosystem>-<package>-mttr.json`. A `/` in a package name becomes `__`, and the Action removes the other characters that are not safe in a file name, so `@types/node` gives `npm-types__node-mttu.json`.
+With target packages, the Action writes two files for each package to the folder `badge-dir` (default `mttx-badges/`): `<ecosystem>-<package>-mttu.json` and `<ecosystem>-<package>-mttr.json`. A `/` in a package name becomes `__`, and the Action removes the other characters that are not safe in a file name, so `@types/node` gives `npm-types__node-mttu.json`.
 
 The badge color is red above the limit, bright green at or below it, blue when you set no limit, and light grey when the package has no value.
 
@@ -56,7 +62,7 @@ This step needs `permissions: { contents: write }`. Then use this badge URL:
 https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/<owner>/<repo>/badges/mttx-badges/npm-express-mttr.json
 ```
 
-## Mode pull-request
+## Target pull-request
 
 ```yaml
 name: MTTX
@@ -74,7 +80,7 @@ jobs:
         with: { fetch-depth: 0 }
       - uses: imranur-rahman/mttx-action@v1
         with:
-          mode: pull-request
+          target: pull-request
 ```
 
 The Action reads each changed manifest at the merge base of the pull request and at its head, with `git`. So the checkout needs the full history (`fetch-depth: 0`).
@@ -97,7 +103,7 @@ A pull request from a fork gets a read-only token on the event `pull_request`, s
 
 ## Permissions
 
-| Mode | Permissions |
+| Target | Permissions |
 |---|---|
 | packages | `contents: read`. Add `contents: write` only if a later step pushes the badge files. |
 | pull-request | `contents: read` and `pull-requests: write` (to write the comment). |
@@ -108,9 +114,9 @@ The inputs `data-source`, `window-years`, `start-date`, `end-date`, `weighting-t
 
 | Input | Default | Description |
 |---|---|---|
-| `mode` | `packages` | `packages` or `pull-request`. |
-| `packages` | | Mode packages: 1 to 5 package names, split by commas or spaces. |
-| `ecosystem` | | Mode packages: `npm`, `pypi`, or `cargo`. |
+| `target` | `packages` | What the Action analyzes: `packages` (the packages in the input `packages`) or `pull-request` (the dependencies that the pull request adds). |
+| `packages` | | Target packages: 1 to 5 package names, split by commas or spaces. |
+| `ecosystem` | | Target packages: `npm`, `pypi`, or `cargo`. |
 | `data-source` | `depsdev` | `depsdev` (deps.dev) or `native` (the registry of each ecosystem). |
 | `window-years` | `2` | The length of the analysis window in years. The window ends on `end-date`. `start-date` replaces this value when it is set. |
 | `start-date` | | The start date of the window (YYYY-MM-DD). Empty: `window-years` years before the end date. |
@@ -121,9 +127,9 @@ The inputs `data-source`, `window-years`, `start-date`, `end-date`, `weighting-t
 | `parallel-runs` | `2` | The most Tool runs at a time (1 to 16). |
 | `max-mttu-days` | | The step fails when the MTTU of a package is more than this number of days. Empty: no limit. |
 | `max-mttr-days` | | The step fails when the MTTR of a package is more than this number of days. Empty: no limit. |
-| `osv-index` | `image` | `image`: use the OSV index inside the image, so that the run downloads no OSV data. `fresh`: build the OSV index of today (about 260 MB download). `actions/cache` keeps the index for the day. |
-| `badge-dir` | `mttx-badges` | Mode packages: the folder of the badge files, relative to the workspace. |
-| `github-token` | `${{ github.token }}` | Mode pull-request: the token that writes the comment. |
+| `osv-index` | `image` | `image`: use the OSV index inside the image, so that the run downloads no OSV data. `fresh`: build the OSV index of today. [AGENTS.md](https://github.com/imranur-rahman/dependency-update-metrics/blob/main/AGENTS.md) gives the download size. `actions/cache` keeps the index for the day. |
+| `badge-dir` | `mttx-badges` | Target packages: the folder of the badge files, relative to the workspace. |
+| `github-token` | `${{ github.token }}` | Target pull-request: the token that writes the comment. |
 
 The Action always uses the Window summary mode of the Tool: one MTTU and one MTTR for each package over the whole window.
 
@@ -135,8 +141,8 @@ The Action always uses the Window summary mode of the Tool: one MTTU and one MTT
 | `mttu` | The MTTU of the first package in days, with two decimals. Empty when it has no value. |
 | `mttr` | The MTTR of the first package in days, with two decimals. Empty when it has no value. |
 | `over-threshold` | `true` when a value is more than `max-mttu-days` or `max-mttr-days`, else `false`. |
-| `added` | Mode pull-request: a JSON array of the added dependencies (`ecosystem`, `name`, `files`). |
-| `comment-url` | Mode pull-request: the URL of the comment. Empty when the Action wrote no comment. |
+| `added` | Target pull-request: a JSON array of the added dependencies (`ecosystem`, `name`, `files`). |
+| `comment-url` | Target pull-request: the URL of the comment. Empty when the Action wrote no comment. |
 
 ## How the Action runs the Tool
 
@@ -147,7 +153,7 @@ The Action runs the Tool in the container image `ghcr.io/imranur-rahman/mttx`. E
 
 Each Tool run is one `docker run` with `$RUNNER_TEMP/mttx-data` on `/data`, as the runner user. So the Tool cache stays between the packages of one job, and the runner owns the files.
 
-The Action needs Docker, so it runs only on Linux runners. On macOS or Windows, it stops with an error. It also needs `node` (version 20 or later) on the `PATH`, as each GitHub-hosted Linux runner has.
+The [Runner](#runner) section lists what the runner needs.
 
 ## Development
 
@@ -161,7 +167,7 @@ npm test            # unit tests
 npm run test:e2e    # builds dist/index.mjs and runs it on the fixture PR files
 ```
 
-The Docker call is one seam (`ToolProcess` in `src/main.ts`). The tests replace it with a fake. The variable `MTTX_ACTION_TOOL` (the path of a JavaScript file) replaces the Docker call in the built Action; the CI sets it to the fake Tool of the Extension. Users never set it.
+The Docker call is one seam (`openTool` in `ActionIO`, `src/main.ts`), which gets the checked `osv-index` input. The tests replace it with a fake. The variable `MTTX_ACTION_TOOL` (the path of a JavaScript file) replaces the Docker call in the built Action; the CI sets it to the fake Tool of the Extension. Only with it, `MTTX_ACTION_EVENT_PATH` and `MTTX_ACTION_API_URL` replace the pull request event and the REST API, so that the CI runs `action.yml` with target pull-request. Users never set them.
 
 ## Releases
 
@@ -179,10 +185,11 @@ The release job stops with an error when the tag does not match `package.json`, 
 
 The release job needs the secret `MTTX_ACTION_TOKEN`. Without it, the job skips the copy with a notice, and the release of the tag does nothing else.
 
-1. Create the public repository `imranur-rahman/mttx-action`, with no files.
-2. Create a fine-grained personal access token with access to `imranur-rahman/mttx-action` only, and the permission "Contents: Read and write".
-3. In `imranur-rahman/dependency-update-metrics`, add the token as the Actions secret `MTTX_ACTION_TOKEN`.
-4. Push the first tag `action-v1.0.0`.
-5. In `imranur-rahman/mttx-action`, edit the release `v1.0.0` that the job created. Select "Publish this Action to the GitHub Marketplace", accept the Marketplace developer agreement, and update the release.
+1. Make the GHCR package `ghcr.io/imranur-rahman/mttx` public: open its package settings on GitHub and set the visibility to public. Without this step, `docker pull` on a runner of another repository fails. `image/README.md` names the same step.
+2. Create the public repository `imranur-rahman/mttx-action`, with no files.
+3. Create a fine-grained personal access token with access to `imranur-rahman/mttx-action` only, and the permission "Contents: Read and write".
+4. In `imranur-rahman/dependency-update-metrics`, add the token as the Actions secret `MTTX_ACTION_TOKEN`.
+5. Push the first tag `action-v1.0.0`.
+6. In `imranur-rahman/mttx-action`, edit the release `v1.0.0` that the job created. Select "Publish this Action to the GitHub Marketplace", accept the Marketplace developer agreement, and update the release.
 
 For each later release, edit the release of the new tag in `imranur-rahman/mttx-action` and publish it to the Marketplace in the same way.

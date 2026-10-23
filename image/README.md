@@ -15,7 +15,8 @@ The release job writes the digest of each tag to its job summary. Cite the diges
 
 - The entrypoint is the `dependency-metrics` CLI. With no arguments, the image prints `--help`.
 - The output dir is `/data` (`DEPENDENCY_METRICS_OUTPUT_DIR=/data`), so `-v "$PWD:/data"` keeps the results and the cache. `--output-dir` still wins.
-- The `-osv-` tag keeps its index at `/opt/mttx/osv/osv_database.parquet` (`DEPENDENCY_METRICS_OSV_INDEX`), so a mount on `/data` does not hide it. The Tool reads and builds the index at that path, also with `--build-osv`. For a fresh index that you keep in `/data`, use the plain tag.
+- The `-osv-` tag keeps its index at `/opt/mttx/osv/osv_database.parquet` (`DEPENDENCY_METRICS_OSV_INDEX`), so a mount on `/data` does not hide it. The Tool reads and builds the index at that path, also with `--build-osv`.
+- Do not run `--build-osv` on the `-osv-` tag. `/opt/mttx/osv` belongs to root, so the build fails with `--user`. Without `--user`, the new index stays in the container, and `--rm` removes it. For a fresh index, use the plain tag, which builds the index in `/data`. To build it with an `-osv-` tag, add `-e DEPENDENCY_METRICS_OSV_INDEX=/data/osv_database.parquet`.
 - The container runs as root. On Linux, add `--user "$(id -u):$(id -g)"`, so that the files in your folder belong to you.
 
 ```bash
@@ -48,9 +49,9 @@ docker run --rm ghcr.io/imranur-rahman/mttx:0.2.0-osv-2026-10-23 --osv-index-dat
 
 ## CI
 
-- On each push and PR that changes the Tool or `image/`, the `image` job builds both targets for amd64 (no push), builds a real OSV index with the image (`image/build-osv-index.sh`), and runs `image/check-image.sh`.
+- On each push and PR that changes the Tool or `image/`, the `image` job builds both targets for amd64 (no push), and runs `image/check-image.sh`. It builds a real OSV index with the image (`image/build-osv-index.sh`) once a week: `actions/cache` keeps the index under the ISO week, and the script keeps an index that it finds. When `image/` changes, the job also builds the plain target for arm64 (no load, no run), so that an arm64 break shows before a release.
 - `image/check-image.sh` checks that `--help` starts with no network, that a native PyPI run writes to `/data` and leaves no `~/.dependency_metrics/vendor`, and that the `-osv-` image prints the date of its tag with a mount on `/data`.
-- On a release (not `extension-v*`), the `image-release` job runs after the PyPI publish. It pushes both tags, then runs the same checks on the pushed digests.
+- On a release (not `extension-v*` or `action-v*`), the `image-release` job runs after the PyPI publish. It pushes both tags, then runs the same checks on the pushed digests.
 
 Build locally from the repository root, with `vendor/pip` checked out:
 

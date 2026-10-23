@@ -8,6 +8,7 @@ import { join } from "node:path";
 
 import type { SpawnResult } from "../../extension/src/spawnProcess.ts";
 import type { ManifestChange } from "../src/added.ts";
+import type { OsvIndexSource } from "../src/inputs.ts";
 import { runAction, type ActionIO, type Comment, type CommentStore, type ToolProcess } from "../src/main.ts";
 import { COMMENT_MARKER } from "../src/report.ts";
 
@@ -71,7 +72,10 @@ function fakeComments(existing: Comment[] = []): CommentStore & { comments: Comm
   };
 }
 
-function fakeIO(inputs: Record<string, string>, extra: Partial<ActionIO> = {}) {
+// `tool` is the Tool seam that openTool gives; `opened` records the osv-index of each call.
+function fakeIO(inputs: Record<string, string>, extra: Partial<ActionIO> & { tool?: ToolProcess } = {}) {
+  const { tool = fakeTool().run, ...rest } = extra;
+  const opened: OsvIndexSource[] = [];
   const outputs: Record<string, string> = {};
   const files: Record<string, string> = {};
   const errors: string[] = [];
@@ -80,8 +84,10 @@ function fakeIO(inputs: Record<string, string>, extra: Partial<ActionIO> = {}) {
   const io: ActionIO = {
     inputs,
     today: new Date(2026, 9, 23),
-    outputDir: "/data",
-    tool: fakeTool().run,
+    openTool: (osvIndex) => {
+      opened.push(osvIndex);
+      return { tool, outputDir: "/data" };
+    },
     setOutput: (name, value) => {
       outputs[name] = value;
     },
@@ -94,16 +100,17 @@ function fakeIO(inputs: Record<string, string>, extra: Partial<ActionIO> = {}) {
     error: (message) => errors.push(message),
     warning: (message) => warnings.push(message),
     info: () => {},
-    ...extra,
+    ...rest,
   };
-  return { io, outputs, files, errors, warnings, summary: () => summary };
+  return { io, outputs, files, errors, warnings, opened, summary: () => summary };
 }
 
-test("mode packages: the outputs, the job summary, and the badge files for npm, PyPI, and Cargo", async () => {
+test("target packages: the outputs, the job summary, and the badge files for npm, PyPI, and Cargo", async () => {
   for (const [ecosystem, name] of [["npm", "express"], ["pypi", "requests"], ["cargo", "serde"]]) {
     const tool = fakeTool();
     const run = fakeIO({ packages: `${name}, left-pad`, ecosystem }, { tool: tool.run });
     assert.equal(await runAction(run.io), 0);
+    assert.deepEqual(run.opened, ["image"], "the default osv-index opens the image with the index inside");
     const results = JSON.parse(run.outputs.results);
     assert.deepEqual(results.map((row: { package: string; status: string }) => [row.package, row.status]), [
       [name, "ok"],
@@ -150,6 +157,7 @@ test("an invalid input fails the step before a Tool run", async () => {
   assert.equal(await runAction(run.io), 1);
   assert.deepEqual(run.errors, ['Input ecosystem "maven" is not one of npm, pypi, cargo.']);
   assert.deepEqual(tool.calls, []);
+  assert.deepEqual(run.opened, []);
 });
 
 test("osv-index fresh builds the index of today when the index is older, and skips the build when it is new", async () => {
@@ -157,6 +165,7 @@ test("osv-index fresh builds the index of today when the index is older, and ski
   const run = fakeIO({ packages: "express", ecosystem: "npm", "osv-index": "fresh" }, { tool: old.run });
   assert.equal(await runAction(run.io), 0);
   assert.ok(old.calls.some((args) => args.includes("--build-osv")));
+  assert.deepEqual(run.opened, ["fresh"], "the Tool seam gets the checked osv-index input");
   assert.match(run.summary(), /OSV data as of 2026-10-23/);
 
   const fresh = fakeTool("2026-10-23");
@@ -176,10 +185,10 @@ const PR_CHANGES: ManifestChange[] = [
   { path: "Cargo.toml", base: null, head: '[dependencies]\nnope = "1"\n' },
 ];
 
-test("mode pull-request: one comment for the dependencies that each manifest kind adds, updated on a new push", async () => {
+test("target pull-request: one comment for the dependencies that each manifest kind adds, updated on a new push", async () => {
   const comments = fakeComments([{ id: 7, body: "LGTM", url: "u7" }]);
   const tool = fakeTool();
-  const run = fakeIO({ mode: "pull-request" }, { tool: tool.run, pullRequest: { changes: async () => PR_CHANGES, comments } });
+  const run = fakeIO({ target: "pull-request" }, { tool: tool.run, pullRequest: { changes: async () => PR_CHANGES, comments } });
   assert.equal(await runAction(run.io), 0);
   assert.equal(comments.comments.length, 2);
   const body = comments.comments[1].body;
@@ -194,7 +203,7 @@ test("mode pull-request: one comment for the dependencies that each manifest kin
   assert.equal(Object.keys(run.files).length, 0);
 
   // A second push updates the same comment.
-  const second = fakeIO({ mode: "pull-request" }, {
+  const second = fakeIO({ target: "pull-request" }, {
     pullRequest: { changes: async () => PR_CHANGES.slice(0, 1), comments },
   });
   assert.equal(await runAction(second.io), 0);
@@ -203,47 +212,48 @@ test("mode pull-request: one comment for the dependencies that each manifest kin
   assert.match(comments.comments[1].body, /`koa`/);
 });
 
-test("mode pull-request: a pull request that adds no dependencies gets no comment", async () => {
+test("target pull-request: a pull request that adds no dependencies gets no comment", async () => {
   const comments = fakeComments();
   const tool = fakeTool();
   const changes = [{ path: "package.json", base: '{"dependencies": {"express": "^4"}}', head: '{"dependencies": {"express": "^5"}}' }];
-  const run = fakeIO({ mode: "pull-request" }, { tool: tool.run, pullRequest: { changes: async () => changes, comments } });
+  const run = fakeIO({ target: "pull-request" }, { tool: tool.run, pullRequest: { changes: async () => changes, comments } });
   assert.equal(await runAction(run.io), 0);
   assert.equal(comments.comments.length, 0);
   assert.deepEqual(tool.calls, []);
+  assert.deepEqual(run.opened, [], "no package opens no Tool seam");
   assert.equal(run.outputs.added, "[]");
   assert.equal(run.outputs["comment-url"], "");
 });
 
-test("mode pull-request: a comment of an earlier push says that the pull request no longer adds dependencies", async () => {
+test("target pull-request: a comment of an earlier push says that the pull request no longer adds dependencies", async () => {
   const comments = fakeComments([{ id: 3, body: `${COMMENT_MARKER}\nold table`, url: "u3" }]);
-  const run = fakeIO({ mode: "pull-request" }, { pullRequest: { changes: async () => [], comments } });
+  const run = fakeIO({ target: "pull-request" }, { pullRequest: { changes: async () => [], comments } });
   assert.equal(await runAction(run.io), 0);
   assert.equal(comments.comments.length, 1);
   assert.match(comments.comments[0].body, /This pull request adds no dependencies/);
 });
 
-test("mode pull-request: a threshold fails the check after the comment is written", async () => {
+test("target pull-request: a threshold fails the check after the comment is written", async () => {
   const comments = fakeComments();
-  const run = fakeIO({ mode: "pull-request", "max-mttu-days": "100" }, { pullRequest: { changes: async () => PR_CHANGES, comments } });
+  const run = fakeIO({ target: "pull-request", "max-mttu-days": "100" }, { pullRequest: { changes: async () => PR_CHANGES, comments } });
   assert.equal(await runAction(run.io), 1);
   assert.equal(comments.comments.length, 1);
   assert.equal(run.errors.length, 2);
 });
 
-test("mode pull-request: a comment that cannot be written gives a warning, not a failure", async () => {
+test("target pull-request: a comment that cannot be written gives a warning, not a failure", async () => {
   const comments = fakeComments();
   comments.create = async () => {
     throw new Error("403 Resource not accessible by integration");
   };
-  const run = fakeIO({ mode: "pull-request" }, { pullRequest: { changes: async () => PR_CHANGES, comments } });
+  const run = fakeIO({ target: "pull-request" }, { pullRequest: { changes: async () => PR_CHANGES, comments } });
   assert.equal(await runAction(run.io), 0);
   assert.match(run.warnings.join("\n"), /could not write the pull request comment: 403/);
   assert.match(run.summary(), /`koa`/);
 });
 
-test("mode pull-request outside a pull request event fails with a clear error", async () => {
-  const run = fakeIO({ mode: "pull-request" });
+test("target pull-request outside a pull request event fails with a clear error", async () => {
+  const run = fakeIO({ target: "pull-request" });
   assert.equal(await runAction(run.io), 1);
   assert.match(run.errors[0], /needs a pull_request event/);
 });

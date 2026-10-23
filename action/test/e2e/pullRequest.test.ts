@@ -1,4 +1,4 @@
-// End-to-end test of the built Action (dist/index.mjs, `npm run build` first) in mode
+// End-to-end test of the built Action (dist/index.mjs, `npm run build` first) with target
 // pull-request. It makes a git repository from the fixture PR files in
 // test/fixtures/pr/ (base, then push1, then push2 on top of push1), runs the bundle with the
 // fake Tool of the Extension (MTTX_ACTION_TOOL) and a fake GitHub REST API on localhost, and
@@ -7,56 +7,14 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { execFileSync, spawn, spawnSync } from "node:child_process";
 import { cpSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { createServer } from "node:http";
-import type { AddressInfo } from "node:net";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+
+import { fakeGitHub } from "./fakeGitHub.ts";
 
 const ACTION = join(import.meta.dirname, "..", "..");
 const FIXTURES = join(ACTION, "test", "fixtures", "pr");
 const FAKE_TOOL = join(ACTION, "..", "extension", "test", "fixtures", "fake-tool.mjs");
-
-interface StoredComment {
-  id: number;
-  body: string;
-  html_url: string;
-}
-
-// A fake REST API with the comments of pull request 1 of o/r.
-async function fakeGitHub() {
-  const comments: StoredComment[] = [{ id: 1, body: "A comment of a person", html_url: "https://github.test/c1" }];
-  const server = createServer((request, response) => {
-    let text = "";
-    request.on("data", (chunk) => (text += chunk));
-    request.on("end", () => {
-      const url = new URL(request.url ?? "", "http://localhost");
-      const send = (status: number, body: unknown) => {
-        response.writeHead(status, { "content-type": "application/json" });
-        response.end(JSON.stringify(body));
-      };
-      if (request.headers.authorization !== "Bearer test-token") return send(401, { message: "Bad credentials" });
-      if (url.pathname === "/repos/o/r/issues/1/comments" && request.method === "GET") {
-        return send(200, url.searchParams.get("page") === "1" ? comments : []);
-      }
-      if (url.pathname === "/repos/o/r/issues/1/comments" && request.method === "POST") {
-        const id = comments.length + 1;
-        const comment = { id, body: JSON.parse(text).body, html_url: `https://github.test/c${id}` };
-        comments.push(comment);
-        return send(201, comment);
-      }
-      const patch = /^\/repos\/o\/r\/issues\/comments\/(\d+)$/.exec(url.pathname);
-      if (patch && request.method === "PATCH") {
-        const comment = comments.find((item) => item.id === Number(patch[1]));
-        if (!comment) return send(404, { message: "Not Found" });
-        comment.body = JSON.parse(text).body;
-        return send(200, comment);
-      }
-      send(404, { message: "Not Found" });
-    });
-  });
-  await new Promise<void>((resolve) => server.listen(0, "127.0.0.1", resolve));
-  return { comments, server, url: `http://127.0.0.1:${(server.address() as AddressInfo).port}` };
-}
 
 function git(cwd: string, ...args: string[]): string {
   return execFileSync("git", args, { cwd, encoding: "utf8" }).trim();
@@ -87,7 +45,7 @@ async function runBundle(repo: string, apiUrl: string, base: string, head: strin
       GITHUB_API_URL: apiUrl,
       GITHUB_OUTPUT: join(temp, "output"),
       GITHUB_STEP_SUMMARY: join(temp, "summary"),
-      INPUT_MODE: "pull-request",
+      INPUT_TARGET: "pull-request",
       INPUT_GITHUB_TOKEN: "test-token",
     };
     for (const [name, value] of Object.entries(inputs)) env[`INPUT_${name.toUpperCase().replace(/-/g, "_")}`] = value;

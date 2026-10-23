@@ -1,4 +1,4 @@
-// The release check of the release job in .github/workflows/action.yml (src/release.ts).
+// The release check of the release job in .github/workflows/github-action.yml (src/release.ts).
 // It writes publish, tag, and major to GITHUB_OUTPUT, and fails with an error annotation
 // when the tag or image.json is wrong. A missing MTTX_ACTION_TOKEN gives a notice and
 // publish=false.
