@@ -26,9 +26,82 @@
     "onLanguage:json"
   ],
   "contributes": {
+    "commands": [
+      {
+        "command": "mttx.openSettings",
+        "title": "Open Settings",
+        "category": "MTTX"
+      },
+      {
+        "command": "mttx.analyzeDependencies",
+        "title": "Analyze dependencies",
+        "category": "MTTX"
+      }
+    ],
     "configuration": {
       "title": "MTTX",
       "properties": {
+        "mttx.dataSource": {
+          "type": "string",
+          "enum": ["depsdev", "native"],
+          "enumDescriptions": [
+            "deps.dev (the Tool flag `--depsdev`).",
+            "The native registries of each ecosystem."
+          ],
+          "default": "depsdev",
+          "markdownDescription": "The source of the package data."
+        },
+        "mttx.windowYears": {
+          "type": "integer",
+          "default": 2,
+          "minimum": 1,
+          "markdownDescription": "The length of the analysis window in years. The window ends on `#mttx.endDate#` (or today). `#mttx.startDate#` replaces this value when it is set."
+        },
+        "mttx.startDate": {
+          "type": "string",
+          "default": "",
+          "pattern": "^$|^\\d{4}-\\d{2}-\\d{2}$",
+          "patternErrorMessage": "Use YYYY-MM-DD, or leave it empty.",
+          "markdownDescription": "The start date of the analysis window (YYYY-MM-DD). Empty: `#mttx.windowYears#` years before the end date."
+        },
+        "mttx.endDate": {
+          "type": "string",
+          "default": "",
+          "pattern": "^$|^\\d{4}-\\d{2}-\\d{2}$",
+          "patternErrorMessage": "Use YYYY-MM-DD, or leave it empty.",
+          "markdownDescription": "The end date of the analysis window (YYYY-MM-DD). Empty: today."
+        },
+        "mttx.weightingType": {
+          "type": "string",
+          "enum": ["disable", "linear", "exponential", "inverse"],
+          "default": "disable",
+          "markdownDescription": "The weighting of the time intervals (the Tool flag `--weighting-type`). With `disable`, MTTU and MTTR are sums of days; with a weighting, they are weighted means."
+        },
+        "mttx.halfLife": {
+          "type": ["number", "null"],
+          "default": null,
+          "minimum": 1,
+          "maximum": 3650,
+          "markdownDescription": "The half-life in days for `exponential` weighting (the Tool flag `--half-life`). Exponential weighting needs it."
+        },
+        "mttx.cacheFolder": {
+          "type": "string",
+          "default": "",
+          "scope": "machine",
+          "markdownDescription": "The folder of the Tool cache and the OSV index (the Tool flag `--output-dir`). Empty: a folder in the storage of the Extension."
+        },
+        "mttx.cacheSizeLimitGb": {
+          "type": "number",
+          "default": 5,
+          "minimum": 0,
+          "markdownDescription": "The size limit of the Tool cache in GB. The Extension removes the least recently used rows above this limit when it starts and when this setting changes (the Tool flag `--cache-prune-gb`)."
+        },
+        "mttx.packageTimeoutSeconds": {
+          "type": "integer",
+          "default": 600,
+          "minimum": 10,
+          "markdownDescription": "The Extension stops a Tool run for one package after this number of seconds."
+        },
         "mttx.toolPath": {
           "type": "string",
           "default": "",
@@ -48,14 +121,7 @@
           "markdownDescription": "Run the Tool when you open a manifest. Off: run it with the command **MTTX: Analyze dependencies**."
         }
       }
-    },
-    "commands": [
-      {
-        "command": "mttx.analyzeDependencies",
-        "title": "Analyze dependencies",
-        "category": "MTTX"
-      }
-    ]
+    }
   },
   "scripts": {
     "check-types": "tsc --noEmit",

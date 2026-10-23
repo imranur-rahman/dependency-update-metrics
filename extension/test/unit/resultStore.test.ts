@@ -53,8 +53,13 @@ const key = (name: string): PackageKey => ({ ecosystem: "npm", name });
 const makeRequest = (k: PackageKey): ToolRequest => ({
   ecosystem: k.ecosystem,
   packageName: k.name,
+  dataSource: "depsdev",
   startDate: "2024-10-22",
+  endDate: "2026-10-22",
+  weightingType: "disable",
+  halfLife: null,
   outputDir: "/out",
+  timeoutSeconds: 600,
 });
 class MemoryStorage implements CacheStorage {
   private readonly values = new Map<string, unknown>();

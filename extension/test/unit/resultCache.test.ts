@@ -28,8 +28,13 @@ function request(overrides: Partial<ToolRequest> = {}): ToolRequest {
   return {
     ecosystem: "npm",
     packageName: "express",
+    dataSource: "depsdev",
     startDate: "2024-10-22",
+    endDate: "2026-10-22",
+    weightingType: "disable",
+    halfLife: null,
     outputDir: "/storage/tool-output",
+    timeoutSeconds: 600,
     ...overrides,
   };
 }
@@ -60,17 +65,25 @@ test("a request with another package, ecosystem, or setting does not get the res
 
   assert.equal(cache.get(request({ packageName: "left-pad" })), undefined);
   assert.equal(cache.get(request({ ecosystem: "pypi" as ToolRequest["ecosystem"] })), undefined);
-  assert.equal(cache.get(request({ startDate: "2025-10-22" })), undefined);
-  // A field that #31 adds to the request, such as the weighting, joins the key.
-  assert.equal(cache.get({ ...request(), weighting: "linear" } as ToolRequest), undefined);
+  for (const overrides of [
+    { dataSource: "native" as const },
+    { startDate: "2025-10-22" },
+    { endDate: "2026-10-21" },
+    { weightingType: "exponential" as const, halfLife: 180 },
+  ]) {
+    assert.equal(cache.get(request(overrides)), undefined, JSON.stringify(overrides));
+  }
+  // A field that a later ticket adds to the request joins the key without a change.
+  assert.equal(cache.get({ ...request(), perRelease: true } as ToolRequest), undefined);
 });
 
-test("the output folder of the Tool does not change the result", async () => {
+test("the output folder and the timeout of the Tool do not change the result", async () => {
   const now = Date.parse("2026-10-22T09:00:00Z");
   const cache = new ResultCache(new MemoryStorage(), () => now);
   await cache.set(request(), RESULT);
 
   assert.deepEqual(cache.get(request({ outputDir: "/other/tool-output" }))?.result, RESULT);
+  assert.deepEqual(cache.get(request({ timeoutSeconds: 30 }))?.result, RESULT);
 });
 
 test("the cache removes the results that are not fresh when it stores a new result", async () => {

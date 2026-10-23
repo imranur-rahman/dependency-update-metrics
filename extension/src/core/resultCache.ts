@@ -19,14 +19,15 @@ export interface CachedResult {
 export const FRESH_MS = 24 * 60 * 60 * 1000;
 const STORAGE_KEY = "mttx.results";
 
-// The request fields that do not change the result.
-const IGNORED_FIELDS = new Set<string>(["outputDir"]);
+// The request fields that do not change a result: the folder of the Tool cache, and the
+// timeout (a run that times out fails, and a failed run does not go into the cache).
+const IGNORED_FIELDS = new Set<keyof ToolRequest>(["outputDir", "timeoutSeconds"]);
 
-// Return the cache key of a request: every field of the request except the output folder.
-// So the settings that #31 adds to ToolRequest join the key without a change here.
+// Return the cache key of a request: every field of the request except IGNORED_FIELDS. So a
+// field that a later ticket adds to ToolRequest joins the key without a change here.
 export function cacheKey(request: ToolRequest): string {
   const fields = Object.entries(request)
-    .filter(([name]) => !IGNORED_FIELDS.has(name))
+    .filter(([name]) => !IGNORED_FIELDS.has(name as keyof ToolRequest))
     .sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0));
   return JSON.stringify(fields);
 }

@@ -10,8 +10,10 @@ import { hintText, hoverMarkdown } from "./core/display.ts";
 import { parseManifest } from "./core/manifest.ts";
 import { ResultCache } from "./core/resultCache.ts";
 import { DEFAULT_PARALLEL_RUNS, ResultStore } from "./core/resultStore.ts";
-import { windowStartDate } from "./core/tool.ts";
-import { ProcessToolRunner, toolCommand } from "./processToolRunner.ts";
+import { cachePruneArgs, toolRequest } from "./core/settings.ts";
+import type { ToolRequest, ToolRunner } from "./core/tool.ts";
+import { ProcessToolRunner, pruneToolCache, toolCommand } from "./processToolRunner.ts";
+import { readSettings } from "./settings.ts";
 
 // `scheme: "file"` skips untitled documents and Git diffs. A filter with only a pattern
 // matches any language, in any subfolder.
@@ -86,23 +88,36 @@ export function activate(context: vscode.ExtensionContext): void {
   // The results persist across VS Code restarts in global state.
   const cache = new ResultCache(context.globalState);
 
+  const command = () => toolCommand(vscode.workspace.getConfiguration("mttx").get<string>("toolPath", ""));
   const makeStore = () => {
     const config = vscode.workspace.getConfiguration("mttx");
-    const runner = new ProcessToolRunner(toolCommand(config.get<string>("toolPath", "")));
-    return new ResultStore({
-      runner,
-      makeRequest: (key) => ({
-        ecosystem: key.ecosystem,
-        packageName: key.name,
-        startDate: windowStartDate(new Date()),
-        outputDir,
-      }),
-      cache,
+    const runControl = {
       parallelRuns: config.get<number>("parallelRuns", DEFAULT_PARALLEL_RUNS),
       automaticRuns: config.get<boolean>("automaticRuns", true),
+    };
+    const parsed = readSettings();
+    if (!parsed.ok) {
+      // Each hint shows the message, and the store never starts the Tool.
+      void vscode.window.showWarningMessage(`MTTX: ${parsed.message}`);
+      const failed: ToolRunner = { run: async () => ({ kind: "failed", message: parsed.message }) };
+      return new ResultStore({ runner: failed, makeRequest: () => ({}) as ToolRequest, ...runControl });
+    }
+    return new ResultStore({
+      runner: new ProcessToolRunner(command()),
+      makeRequest: (key) => toolRequest(key, parsed.settings, new Date(), outputDir),
+      cache,
+      ...runControl,
     });
   };
   const provider = new HintProvider(makeStore);
+
+  // The Tool prunes its cache only in a run of its own, so the Extension prunes it at the
+  // start and after a change to the cache settings.
+  const pruneCache = () => {
+    const parsed = readSettings();
+    if (parsed.ok) void pruneToolCache(command(), cachePruneArgs(parsed.settings, outputDir));
+  };
+  pruneCache();
 
   context.subscriptions.push(
     provider,
@@ -110,7 +125,13 @@ export function activate(context: vscode.ExtensionContext): void {
     vscode.languages.registerHoverProvider(MANIFESTS, provider),
     vscode.workspace.onDidChangeConfiguration((event) => {
       if (event.affectsConfiguration("mttx")) provider.reset();
+      if (event.affectsConfiguration("mttx.cacheFolder") || event.affectsConfiguration("mttx.cacheSizeLimitGb")) {
+        pruneCache();
+      }
     }),
+    vscode.commands.registerCommand("mttx.openSettings", () =>
+      vscode.commands.executeCommand("workbench.action.openSettings", "@ext:imranur-rahman.mttx"),
+    ),
     vscode.commands.registerCommand("mttx.analyzeDependencies", () => analyzeOpenManifest(provider)),
   );
 }
