@@ -221,7 +221,8 @@ test("ToolSetupCache keeps one setup for each toolPath, and starts a new one aft
 });
 
 test("SetupToolRunner waits for the setup, then runs the Tool, or fails with the setup message", async () => {
-  const request: ToolRequest = { ecosystem: "npm", packageName: "express", startDate: "2024-10-22", outputDir: "/out" };
+  // The fake runners do not read the request.
+  const request = { ecosystem: "npm", packageName: "express" } as ToolRequest;
   const used: ToolSetup[] = [];
   const makeRunner = (setup: ToolSetup): ToolRunner => {
     used.push(setup);

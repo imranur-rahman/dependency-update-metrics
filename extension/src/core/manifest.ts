@@ -1,11 +1,15 @@
 // The manifest parsers of the core module. This module has no `vscode` import, so that
 // `node --test` tests it directly.
 
-// The ecosystems that the Extension reads. #28 adds "pypi" and "cargo".
-export type Ecosystem = "npm";
+import { parseCargoToml } from "./cargo.ts";
+import { parsePyproject } from "./pyproject.ts";
+
+// The ecosystems that the Extension reads, with the names that the Tool takes.
+export type Ecosystem = "npm" | "pypi" | "cargo";
 
 // One direct dependency in a manifest. The line and the columns are 0-based and count
-// UTF-16 code units, as VS Code positions do. The columns cover the name with its quotes.
+// UTF-16 code units, as VS Code positions do. The columns cover the name: a JSON or TOML key
+// with its quotes, or only the name in a requirement string of pyproject.toml.
 export interface ManifestDependency {
   ecosystem: Ecosystem;
   name: string;
@@ -18,9 +22,11 @@ export interface ManifestDependency {
 // A parser takes the text of one manifest and returns its direct dependencies.
 export type ManifestParser = (text: string) => ManifestDependency[];
 
-// The parser for each manifest file name. #28 adds pyproject.toml and Cargo.toml.
+// The parser for each manifest file name.
 const PARSERS: Record<string, ManifestParser> = {
   "package.json": parsePackageJson,
+  "pyproject.toml": parsePyproject,
+  "Cargo.toml": parseCargoToml,
 };
 
 // Return the direct dependencies of a manifest, in the order of the text. A file that is not

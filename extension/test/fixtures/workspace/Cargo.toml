@@ -1,0 +1,9 @@
+[package]
+name = "mttx-fixture-workspace"
+version = "1.0.0"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+
+[target.'cfg(unix)'.dev-dependencies.nope]
+version = "1"

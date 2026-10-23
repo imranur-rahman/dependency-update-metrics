@@ -1,11 +1,16 @@
 {
   "name": "mttx",
   "displayName": "MTTX",
-  "description": "MTTU and MTTR of each dependency in package.json",
+  "description": "MTTU and MTTR of each dependency in package.json, pyproject.toml, and Cargo.toml",
   "version": "0.0.1",
   "publisher": "imranur-rahman",
   "license": "MIT",
   "private": true,
+  "icon": "images/icon.png",
+  "homepage": "https://github.com/imranur-rahman/dependency-update-metrics/tree/main/extension#readme",
+  "bugs": {
+    "url": "https://github.com/imranur-rahman/dependency-update-metrics/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/imranur-rahman/dependency-update-metrics",
@@ -23,12 +28,82 @@
   "main": "./dist/extension.js",
   "activationEvents": [
     "workspaceContains:**/package.json",
+    "workspaceContains:**/pyproject.toml",
+    "workspaceContains:**/Cargo.toml",
     "onLanguage:json"
   ],
   "contributes": {
+    "commands": [
+      {
+        "command": "mttx.openSettings",
+        "title": "Open Settings",
+        "category": "MTTX"
+      }
+    ],
     "configuration": {
       "title": "MTTX",
       "properties": {
+        "mttx.dataSource": {
+          "type": "string",
+          "enum": ["depsdev", "native"],
+          "enumDescriptions": [
+            "deps.dev (the Tool flag `--depsdev`).",
+            "The native registries of each ecosystem."
+          ],
+          "default": "depsdev",
+          "markdownDescription": "The source of the package data."
+        },
+        "mttx.windowYears": {
+          "type": "integer",
+          "default": 2,
+          "minimum": 1,
+          "markdownDescription": "The length of the analysis window in years. The window ends on `#mttx.endDate#` (or today). `#mttx.startDate#` replaces this value when it is set."
+        },
+        "mttx.startDate": {
+          "type": "string",
+          "default": "",
+          "pattern": "^$|^\\d{4}-\\d{2}-\\d{2}$",
+          "patternErrorMessage": "Use YYYY-MM-DD, or leave it empty.",
+          "markdownDescription": "The start date of the analysis window (YYYY-MM-DD). Empty: `#mttx.windowYears#` years before the end date."
+        },
+        "mttx.endDate": {
+          "type": "string",
+          "default": "",
+          "pattern": "^$|^\\d{4}-\\d{2}-\\d{2}$",
+          "patternErrorMessage": "Use YYYY-MM-DD, or leave it empty.",
+          "markdownDescription": "The end date of the analysis window (YYYY-MM-DD). Empty: today."
+        },
+        "mttx.weightingType": {
+          "type": "string",
+          "enum": ["disable", "linear", "exponential", "inverse"],
+          "default": "disable",
+          "markdownDescription": "The weighting of the time intervals (the Tool flag `--weighting-type`). With `disable`, MTTU and MTTR are sums of days; with a weighting, they are weighted means."
+        },
+        "mttx.halfLife": {
+          "type": ["number", "null"],
+          "default": null,
+          "minimum": 1,
+          "maximum": 3650,
+          "markdownDescription": "The half-life in days for `exponential` weighting (the Tool flag `--half-life`). Exponential weighting needs it."
+        },
+        "mttx.cacheFolder": {
+          "type": "string",
+          "default": "",
+          "scope": "machine",
+          "markdownDescription": "The folder of the Tool cache and the OSV index (the Tool flag `--output-dir`). Empty: a folder in the storage of the Extension."
+        },
+        "mttx.cacheSizeLimitGb": {
+          "type": "number",
+          "default": 5,
+          "minimum": 0,
+          "markdownDescription": "The size limit of the Tool cache in GB. The Extension removes the least recently used rows above this limit when it starts and when this setting changes (the Tool flag `--cache-prune-gb`)."
+        },
+        "mttx.packageTimeoutSeconds": {
+          "type": "integer",
+          "default": 600,
+          "minimum": 10,
+          "markdownDescription": "The Extension stops a Tool run for one package after this number of seconds."
+        },
         "mttx.toolPath": {
           "type": "string",
           "default": "",
@@ -43,7 +118,9 @@
     "build": "node esbuild.mjs",
     "test:unit": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test \"test/unit/*.test.ts\"",
     "test:integration": "node esbuild.mjs && node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON test/integration/run.ts",
-    "test": "npm run check-types && npm run test:unit && npm run test:integration"
+    "test": "npm run check-types && npm run test:unit && npm run test:integration",
+    "vscode:prepublish": "node esbuild.mjs --production",
+    "package": "npx --yes @vscode/vsce@4.0.0 package --no-dependencies --out mttx.vsix"
   },
   "devDependencies": {
     "@types/node": "24.19.2",
