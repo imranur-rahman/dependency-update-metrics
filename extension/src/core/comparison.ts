@@ -62,11 +62,12 @@ export type PanelMessage = { type: "status"; text: string } | { type: "job"; job
 // and "rendered" after it drew a Job.
 export type WebviewMessage = { type: "ready" } | { type: "rendered"; report: ComparisonReport };
 
-// What the webview drew: the IDs of the charts that it drew, the text of the table cells
-// (the header first), and the content security policy violations. The command returns it,
+// What the webview drew: the IDs of the charts that it drew, the notes under the charts, the
+// text of the table cells (the header first), and the content security policy violations. The command returns it,
 // so that the integration test checks the webview.
 export interface ComparisonReport {
   charts: string[];
+  notes: string[];
   rows: string[][];
   violations: string[];
 }
@@ -132,10 +133,32 @@ export function comparisonJob(request: ComparisonRequest, outcomes: ToolOutcome[
 export function comparisonRows(job: ComparisonJob): ComparisonRow[] {
   const rows = resultRows(job) as ComparisonRow[];
   return rows.map((row, index) => {
-    const { summary, error } = job.results[index];
-    if (error || !summary || !hasNoDependencies(summary)) return row;
+    if (!withoutDependencies(job.results[index])) return row;
     return { ...row, error: noDependenciesText(row.package) };
   });
+}
+
+// True for a Window summary result of a package without dependencies.
+function withoutDependencies(result: ToolResult): boolean {
+  return !result.error && result.summary !== null && hasNoDependencies(result.summary);
+}
+
+// Return the Job of the bar chart: the Job without the packages that have no dependencies,
+// so that barChartData in comparison.js gives them no empty slot. noDependenciesNotes gives
+// the text that the webview shows for them next to the chart.
+export function barChartJob(job: ComparisonJob): ComparisonJob {
+  const results = job.results.filter((result) => !withoutDependencies(result));
+  return {
+    ...job,
+    comparison: { ...job.comparison, packages: results.map((result) => result.package) },
+    results,
+  };
+}
+
+// Return the no-dependencies text of each package without dependencies, in the order of the
+// Job.
+export function noDependenciesNotes(job: ComparisonJob): string[] {
+  return job.results.filter(withoutDependencies).map((result) => noDependenciesText(result.package));
 }
 
 function failedResult(request: ComparisonRequest, packageName: string, message: string): ToolResult {

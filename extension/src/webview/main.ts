@@ -19,7 +19,9 @@ import {
   tableColumns,
 } from "../../../webapp/site/static/js/comparison.js";
 import {
+  barChartJob,
   comparisonRows,
+  noDependenciesNotes,
   PACKAGE_COLORS,
   PACKAGE_POINT_STYLES,
   SERIES_COLORS,
@@ -71,9 +73,13 @@ function render(): void {
   const job = current.job;
   useThemeColors();
   app.append(element("p", resultsNote(job.comparison.weighting_type), "note"));
-  const drawn = job.comparison.mode === "per_release" ? drawLineCharts(job) : drawBarChart(job);
+  const perRelease = job.comparison.mode === "per_release";
+  const drawn = perRelease ? drawLineCharts(job) : drawBarChart(job);
+  // A package without dependencies has no bar; a note under the chart gives its text.
+  const notes = perRelease ? [] : noDependenciesNotes(job);
+  for (const note of notes) app.append(element("p", note, "note"));
   const rows = drawTable(job);
-  vscode.postMessage({ type: "rendered", report: { charts: drawn, rows, violations: [...violations] } });
+  vscode.postMessage({ type: "rendered", report: { charts: drawn, notes, rows, violations: [...violations] } });
 }
 
 // Chart.js draws on a canvas, so it does not see the CSS variables of the theme.
@@ -85,15 +91,17 @@ function useThemeColors(): void {
   Chart.defaults.font.family = variable("--vscode-font-family", Chart.defaults.font.family ?? "sans-serif");
 }
 
-// Draw the grouped bar chart of a Window summary Job. A package without a value has no bar.
+// Draw the grouped bar chart of a Window summary Job. A package without dependencies has no
+// slot in the chart, and a package without a value has no bar.
 function drawBarChart(job: ComparisonJob): string[] {
-  const data = barChartData(job);
+  const chartJob = barChartJob(job);
+  const data = barChartData(chartJob);
   if (!chartHasValues(data)) return [];
   for (const dataset of data.datasets) {
     const color = SERIES_COLORS[dataset.label];
     Object.assign(dataset, { backgroundColor: color, borderColor: color, borderRadius: 4 });
   }
-  const options = barChartOptions(job) as ChartOptions<"bar">;
+  const options = barChartOptions(chartJob) as ChartOptions<"bar">;
   charts.push(new Chart(chartCanvas("bar", CHART_HEIGHTS.bar), { type: "bar", data, options }));
   return ["bar"];
 }

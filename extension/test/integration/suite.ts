@@ -125,6 +125,7 @@ async function checkComparison(): Promise<void> {
   assert.ok(report, "the command returns the report of the webview");
   assert.deepEqual(report.violations, []);
   assert.deepEqual(report.charts, ["bar"]);
+  assert.deepEqual(report.notes, ["could not compute since 'left-pad' has no dependencies"]);
   assert.deepEqual(report.rows, [
     ["Package", "MTTU (days)", "MTTR (days)", "Dependencies", "Error"],
     ["express", "579.0", "579.0", "1", ""],

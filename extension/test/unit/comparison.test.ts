@@ -7,9 +7,11 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
 import {
+  barChartJob,
   compareLink,
   comparisonJob,
   comparisonRows,
+  noDependenciesNotes,
   PACKAGE_COLORS,
   PACKAGE_POINT_STYLES,
   parsePackageNames,
@@ -69,7 +71,7 @@ test("the Job of the Tool results has the shape of a done Host Job", () => {
   assert.deepEqual(job, { ...example, job_id: "mttx-extension" });
 });
 
-test("a package without dependencies shows the no-dependencies text and no bar", () => {
+test("a package without dependencies shows the no-dependencies text and no bar slot", () => {
   const [ok] = exampleJob("job_done_window_summary.json").results as ToolResult[];
   const noDeps: ToolResult = {
     ...ok,
@@ -93,10 +95,12 @@ test("a package without dependencies shows the no-dependencies text and no bar",
       error: "could not compute since 'left-pad' has no dependencies",
     },
   ]);
-  assert.deepEqual(barChartData(job).datasets.map((dataset: { data: unknown[] }) => dataset.data), [
-    [579, null],
-    [579, null],
-  ]);
+  // The bar chart leaves the package out, so the chart has no empty slot for it, and a note
+  // next to the chart gives the text.
+  const bars = barChartData(barChartJob(job));
+  assert.deepEqual(bars.labels, ["mypkg"]);
+  assert.deepEqual(bars.datasets.map((dataset: { data: unknown[] }) => dataset.data), [[579], [579]]);
+  assert.deepEqual(noDependenciesNotes(job), ["could not compute since 'left-pad' has no dependencies"]);
 });
 
 test("the webview charts use the colors of the Webapp charts", () => {
