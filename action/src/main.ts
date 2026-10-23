@@ -1,6 +1,6 @@
 // The run of the Action: check the inputs, get the OSV index, run the Tool for each package,
-// and write the outputs, the job summary, the badge files (mode packages) or the pull
-// request comment (mode pull-request). Every effect goes through ActionIO, so that the tests
+// and write the outputs, the job summary, the badge files (target packages) or the pull
+// request comment (target pull-request). Every effect goes through ActionIO, so that the tests
 // run the Action with fakes. src/index.ts makes the real ActionIO.
 
 import { buildOsvArgs, osvIndexDateArgs, parseOsvIndexDate } from "../../extension/src/core/osvIndex.ts";
@@ -63,13 +63,13 @@ export async function runAction(io: ActionIO): Promise<number> {
     return 1;
   }
   const { config } = parsed;
-  if (config.mode === "pull-request" && !io.pullRequest) {
-    io.error("Input mode pull-request needs a pull_request event (on: pull_request or pull_request_target).");
+  if (config.target === "pull-request" && !io.pullRequest) {
+    io.error("Input target pull-request needs a pull_request event (on: pull_request or pull_request_target).");
     return 1;
   }
 
   let packages: AddedDependency[];
-  if (config.mode === "packages") {
+  if (config.target === "packages") {
     packages = config.packages.map((name) => ({ ecosystem: config.ecosystem!, name, files: [] }));
   } else {
     packages = addedDependencies(await io.pullRequest!.changes());
@@ -101,7 +101,7 @@ export async function runAction(io: ActionIO): Promise<number> {
   io.setOutput("mttr", first.mttr === null ? "" : formatDays(first.mttr));
   io.setOutput("over-threshold", String(failures.length > 0));
 
-  const pullRequest = config.mode === "pull-request";
+  const pullRequest = config.target === "pull-request";
   const markdown = reportMarkdown(outcomes, {
     heading: pullRequest ? "MTTU and MTTR of the dependencies that this pull request adds" : "MTTU and MTTR",
     thresholds: config.thresholds,

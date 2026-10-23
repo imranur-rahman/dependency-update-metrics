@@ -1,15 +1,15 @@
 # MTTX GitHub Action
 
-The MTTX Action computes MTTU and MTTR (mean time to update and mean time to remediate) in a GitHub Actions workflow. It runs the [`dependency-metrics`](https://github.com/imranur-rahman/dependency-update-metrics) Tool for npm, PyPI, and Cargo packages. It has two modes:
+The MTTX Action computes MTTU and MTTR (mean time to update and mean time to remediate) in a GitHub Actions workflow. It runs the [`dependency-metrics`](https://github.com/imranur-rahman/dependency-update-metrics) Tool for npm, PyPI, and Cargo packages. It has two targets:
 
 - **packages**: a scheduled or manual workflow computes the MTTU and MTTR of 1 to 5 published packages. The Action writes them to the job summary, gives them as step outputs, and writes JSON files for [shields.io endpoint badges](https://shields.io/badges/endpoint-badge).
 - **pull-request**: the Action finds the dependencies that a pull request adds to `package.json`, `pyproject.toml`, and `Cargo.toml`, and posts one comment with their MTTU and MTTR. A new push updates the same comment.
 
-In both modes, the inputs `max-mttu-days` and `max-mttr-days` fail the step when a value is more than the limit. A package with no dependencies shows "could not compute since '<name>' has no dependencies", and a package that fails shows its error. Neither one fails the step.
+For both targets, the inputs `max-mttu-days` and `max-mttr-days` fail the step when a value is more than the limit. A package with no dependencies shows "could not compute since '<name>' has no dependencies", and a package that fails shows its error. Neither one fails the step.
 
 The report explains what the numbers mean and lists the limitations of the data, with the same text as the [Webapp](https://imranur-rahman.github.io/dependency-update-metrics/) and the VS Code extension.
 
-## Mode packages
+## Target packages
 
 ```yaml
 name: MTTX
@@ -35,7 +35,7 @@ jobs:
 
 ### Badges
 
-In mode packages, the Action writes two files for each package to the folder `badge-dir` (default `mttx-badges/`): `<ecosystem>-<package>-mttu.json` and `<ecosystem>-<package>-mttr.json`. A `/` in a package name becomes `__`, and the Action removes the other characters that are not safe in a file name, so `@types/node` gives `npm-types__node-mttu.json`.
+With target packages, the Action writes two files for each package to the folder `badge-dir` (default `mttx-badges/`): `<ecosystem>-<package>-mttu.json` and `<ecosystem>-<package>-mttr.json`. A `/` in a package name becomes `__`, and the Action removes the other characters that are not safe in a file name, so `@types/node` gives `npm-types__node-mttu.json`.
 
 The badge color is red above the limit, bright green at or below it, blue when you set no limit, and light grey when the package has no value.
 
@@ -56,7 +56,7 @@ This step needs `permissions: { contents: write }`. Then use this badge URL:
 https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/<owner>/<repo>/badges/mttx-badges/npm-express-mttr.json
 ```
 
-## Mode pull-request
+## Target pull-request
 
 ```yaml
 name: MTTX
@@ -74,7 +74,7 @@ jobs:
         with: { fetch-depth: 0 }
       - uses: imranur-rahman/mttx-action@v1
         with:
-          mode: pull-request
+          target: pull-request
 ```
 
 The Action reads each changed manifest at the merge base of the pull request and at its head, with `git`. So the checkout needs the full history (`fetch-depth: 0`).
@@ -97,7 +97,7 @@ A pull request from a fork gets a read-only token on the event `pull_request`, s
 
 ## Permissions
 
-| Mode | Permissions |
+| Target | Permissions |
 |---|---|
 | packages | `contents: read`. Add `contents: write` only if a later step pushes the badge files. |
 | pull-request | `contents: read` and `pull-requests: write` (to write the comment). |
@@ -108,9 +108,9 @@ The inputs `data-source`, `window-years`, `start-date`, `end-date`, `weighting-t
 
 | Input | Default | Description |
 |---|---|---|
-| `mode` | `packages` | `packages` or `pull-request`. |
-| `packages` | | Mode packages: 1 to 5 package names, split by commas or spaces. |
-| `ecosystem` | | Mode packages: `npm`, `pypi`, or `cargo`. |
+| `target` | `packages` | What the Action analyzes: `packages` (the packages in the input `packages`) or `pull-request` (the dependencies that the pull request adds). |
+| `packages` | | Target packages: 1 to 5 package names, split by commas or spaces. |
+| `ecosystem` | | Target packages: `npm`, `pypi`, or `cargo`. |
 | `data-source` | `depsdev` | `depsdev` (deps.dev) or `native` (the registry of each ecosystem). |
 | `window-years` | `2` | The length of the analysis window in years. The window ends on `end-date`. `start-date` replaces this value when it is set. |
 | `start-date` | | The start date of the window (YYYY-MM-DD). Empty: `window-years` years before the end date. |
@@ -122,8 +122,8 @@ The inputs `data-source`, `window-years`, `start-date`, `end-date`, `weighting-t
 | `max-mttu-days` | | The step fails when the MTTU of a package is more than this number of days. Empty: no limit. |
 | `max-mttr-days` | | The step fails when the MTTR of a package is more than this number of days. Empty: no limit. |
 | `osv-index` | `image` | `image`: use the OSV index inside the image, so that the run downloads no OSV data. `fresh`: build the OSV index of today (about 260 MB download). `actions/cache` keeps the index for the day. |
-| `badge-dir` | `mttx-badges` | Mode packages: the folder of the badge files, relative to the workspace. |
-| `github-token` | `${{ github.token }}` | Mode pull-request: the token that writes the comment. |
+| `badge-dir` | `mttx-badges` | Target packages: the folder of the badge files, relative to the workspace. |
+| `github-token` | `${{ github.token }}` | Target pull-request: the token that writes the comment. |
 
 The Action always uses the Window summary mode of the Tool: one MTTU and one MTTR for each package over the whole window.
 
@@ -135,8 +135,8 @@ The Action always uses the Window summary mode of the Tool: one MTTU and one MTT
 | `mttu` | The MTTU of the first package in days, with two decimals. Empty when it has no value. |
 | `mttr` | The MTTR of the first package in days, with two decimals. Empty when it has no value. |
 | `over-threshold` | `true` when a value is more than `max-mttu-days` or `max-mttr-days`, else `false`. |
-| `added` | Mode pull-request: a JSON array of the added dependencies (`ecosystem`, `name`, `files`). |
-| `comment-url` | Mode pull-request: the URL of the comment. Empty when the Action wrote no comment. |
+| `added` | Target pull-request: a JSON array of the added dependencies (`ecosystem`, `name`, `files`). |
+| `comment-url` | Target pull-request: the URL of the comment. Empty when the Action wrote no comment. |
 
 ## How the Action runs the Tool
 

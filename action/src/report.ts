@@ -13,7 +13,7 @@ import type { Thresholds } from "./inputs.ts";
 // The first line of each comment of the Action. A new push finds the comment by it.
 export const COMMENT_MARKER = "<!-- mttx-action -->";
 
-// The Tool outcome of one package, with the manifests that add it (mode pull-request).
+// The Tool outcome of one package, with the manifests that add it (target pull-request).
 export interface PackageOutcome {
   ecosystem: Ecosystem;
   name: string;
@@ -110,7 +110,7 @@ export function badgeFiles(rows: OutputRow[], thresholds: Thresholds): { fileNam
 export interface ReportOptions {
   heading: string;
   thresholds: Thresholds;
-  // Show the Manifest column (mode pull-request).
+  // Show the Manifest column (target pull-request).
   showFiles: boolean;
   // The build date of the OSV index, when the Action knows it.
   osvIndexDate?: string;

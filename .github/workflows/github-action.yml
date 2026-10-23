@@ -64,12 +64,12 @@ jobs:
     - name: Run unit tests
       run: npm test
 
-    # Builds dist/index.mjs and runs it in mode pull-request on the fixture PR files in
+    # Builds dist/index.mjs and runs it with target pull-request on the fixture PR files in
     # action/test/fixtures/pr/, with the fake Tool and a fake GitHub REST API.
     - name: Run the end-to-end tests
       run: npm run test:e2e
 
-  # Runs the Action through action.yml (uses: ./action) in mode packages, with the fake Tool
+  # Runs the Action through action.yml (uses: ./action) with target packages, with the fake Tool
   # of the Extension in place of the Docker image (MTTX_ACTION_TOOL).
   run-action:
     needs: test

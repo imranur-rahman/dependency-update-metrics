@@ -8,16 +8,16 @@ branding:
 # README.md documents each input and output. The window, the weighting, and the data source
 # have the names of the mttx.* settings of the VS Code extension, in kebab case.
 inputs:
-  mode:
+  target:
     description: "packages: analyze the packages in the input packages. pull-request: analyze the dependencies that the pull request adds."
     required: false
     default: 'packages'
   packages:
-    description: "Mode packages: 1 to 5 package names, split by commas or spaces."
+    description: "Target packages: 1 to 5 package names, split by commas or spaces."
     required: false
     default: ''
   ecosystem:
-    description: "Mode packages: npm, pypi, or cargo."
+    description: "Target packages: npm, pypi, or cargo."
     required: false
     default: ''
   data-source:
@@ -65,11 +65,11 @@ inputs:
     required: false
     default: 'image'
   badge-dir:
-    description: "Mode packages: the folder for the shields.io endpoint badge files."
+    description: "Target packages: the folder for the shields.io endpoint badge files."
     required: false
     default: 'mttx-badges'
   github-token:
-    description: "Mode pull-request: the token that reads the pull request and writes its comment."
+    description: "Target pull-request: the token that reads the pull request and writes its comment."
     required: false
     default: ${{ github.token }}
 
@@ -87,10 +87,10 @@ outputs:
     description: "true when a value is more than max-mttu-days or max-mttr-days, else false."
     value: ${{ steps.run.outputs.over-threshold }}
   added:
-    description: "Mode pull-request: a JSON array of the dependencies that the pull request adds (ecosystem, name, files)."
+    description: "Target pull-request: a JSON array of the dependencies that the pull request adds (ecosystem, name, files)."
     value: ${{ steps.run.outputs.added }}
   comment-url:
-    description: "Mode pull-request: the URL of the pull request comment. Empty when the Action wrote no comment."
+    description: "Target pull-request: the URL of the pull request comment. Empty when the Action wrote no comment."
     value: ${{ steps.run.outputs.comment-url }}
 
 runs:
@@ -125,7 +125,7 @@ runs:
       shell: bash
       run: node "$GITHUB_ACTION_PATH/dist/index.mjs"
       env:
-        INPUT_MODE: ${{ inputs.mode }}
+        INPUT_TARGET: ${{ inputs.target }}
         INPUT_PACKAGES: ${{ inputs.packages }}
         INPUT_ECOSYSTEM: ${{ inputs.ecosystem }}
         INPUT_DATA_SOURCE: ${{ inputs.data-source }}

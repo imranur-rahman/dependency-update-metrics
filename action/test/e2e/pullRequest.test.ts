@@ -1,4 +1,4 @@
-// End-to-end test of the built Action (dist/index.mjs, `npm run build` first) in mode
+// End-to-end test of the built Action (dist/index.mjs, `npm run build` first) with target
 // pull-request. It makes a git repository from the fixture PR files in
 // test/fixtures/pr/ (base, then push1, then push2 on top of push1), runs the bundle with the
 // fake Tool of the Extension (MTTX_ACTION_TOOL) and a fake GitHub REST API on localhost, and
@@ -87,7 +87,7 @@ async function runBundle(repo: string, apiUrl: string, base: string, head: strin
       GITHUB_API_URL: apiUrl,
       GITHUB_OUTPUT: join(temp, "output"),
       GITHUB_STEP_SUMMARY: join(temp, "summary"),
-      INPUT_MODE: "pull-request",
+      INPUT_TARGET: "pull-request",
       INPUT_GITHUB_TOKEN: "test-token",
     };
     for (const [name, value] of Object.entries(inputs)) env[`INPUT_${name.toUpperCase().replace(/-/g, "_")}`] = value;

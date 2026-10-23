@@ -8,11 +8,11 @@ import { parseInputs } from "../src/inputs.ts";
 
 const ACTION_YML = readFileSync(join(import.meta.dirname, "..", "action.yml"), "utf8");
 
-test("the defaults: the packages mode, deps.dev, a window of 2 years, no weighting, and the image index", () => {
+test("the defaults: target packages, deps.dev, a window of 2 years, no weighting, and the image index", () => {
   const parsed = parseInputs({ packages: "express, koa", ecosystem: "npm" });
   assert.ok(parsed.ok);
   const { config } = parsed;
-  assert.equal(config.mode, "packages");
+  assert.equal(config.target, "packages");
   assert.deepEqual(config.packages, ["express", "koa"]);
   assert.equal(config.ecosystem, "npm");
   assert.equal(config.settings.dataSource, "depsdev");
@@ -49,10 +49,10 @@ test("the window, the weighting, the data source, and the thresholds come from t
   assert.equal(config.osvIndex, "fresh");
 });
 
-test("the pull-request mode needs no packages and no ecosystem", () => {
-  const parsed = parseInputs({ mode: "pull-request" });
+test("target pull-request needs no packages and no ecosystem", () => {
+  const parsed = parseInputs({ target: "pull-request" });
   assert.ok(parsed.ok);
-  assert.equal(parsed.config.mode, "pull-request");
+  assert.equal(parsed.config.target, "pull-request");
   assert.deepEqual(parsed.config.packages, []);
 });
 
@@ -61,7 +61,7 @@ test("an invalid input gives a message that names the input of the Action", () =
     const parsed = parseInputs(inputs);
     return parsed.ok ? "" : parsed.message;
   };
-  assert.match(message({ mode: "nightly" }), /^Input mode "nightly" is not one of packages, pull-request\./);
+  assert.match(message({ target: "nightly" }), /^Input target "nightly" is not one of packages, pull-request\./);
   assert.match(message({ ecosystem: "npm" }), /^Input packages needs 1 to 5 package names/);
   assert.match(message({ packages: "express" }), /^Input ecosystem "" is not one of npm, pypi, cargo\./);
   assert.match(message({ packages: "Bad Name!", ecosystem: "npm" }), /^Input packages: /);
@@ -74,7 +74,7 @@ test("an invalid input gives a message that names the input of the Action", () =
 
 test("action.yml declares each input that the check reads, with the same default", () => {
   for (const [name, fallback] of [
-    ["mode", "packages"],
+    ["target", "packages"],
     ["packages", ""],
     ["ecosystem", ""],
     ["data-source", "depsdev"],

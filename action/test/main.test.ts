@@ -99,7 +99,7 @@ function fakeIO(inputs: Record<string, string>, extra: Partial<ActionIO> = {}) {
   return { io, outputs, files, errors, warnings, summary: () => summary };
 }
 
-test("mode packages: the outputs, the job summary, and the badge files for npm, PyPI, and Cargo", async () => {
+test("target packages: the outputs, the job summary, and the badge files for npm, PyPI, and Cargo", async () => {
   for (const [ecosystem, name] of [["npm", "express"], ["pypi", "requests"], ["cargo", "serde"]]) {
     const tool = fakeTool();
     const run = fakeIO({ packages: `${name}, left-pad`, ecosystem }, { tool: tool.run });
@@ -176,10 +176,10 @@ const PR_CHANGES: ManifestChange[] = [
   { path: "Cargo.toml", base: null, head: '[dependencies]\nnope = "1"\n' },
 ];
 
-test("mode pull-request: one comment for the dependencies that each manifest kind adds, updated on a new push", async () => {
+test("target pull-request: one comment for the dependencies that each manifest kind adds, updated on a new push", async () => {
   const comments = fakeComments([{ id: 7, body: "LGTM", url: "u7" }]);
   const tool = fakeTool();
-  const run = fakeIO({ mode: "pull-request" }, { tool: tool.run, pullRequest: { changes: async () => PR_CHANGES, comments } });
+  const run = fakeIO({ target: "pull-request" }, { tool: tool.run, pullRequest: { changes: async () => PR_CHANGES, comments } });
   assert.equal(await runAction(run.io), 0);
   assert.equal(comments.comments.length, 2);
   const body = comments.comments[1].body;
@@ -194,7 +194,7 @@ test("mode pull-request: one comment for the dependencies that each manifest kin
   assert.equal(Object.keys(run.files).length, 0);
 
   // A second push updates the same comment.
-  const second = fakeIO({ mode: "pull-request" }, {
+  const second = fakeIO({ target: "pull-request" }, {
     pullRequest: { changes: async () => PR_CHANGES.slice(0, 1), comments },
   });
   assert.equal(await runAction(second.io), 0);
@@ -203,11 +203,11 @@ test("mode pull-request: one comment for the dependencies that each manifest kin
   assert.match(comments.comments[1].body, /`koa`/);
 });
 
-test("mode pull-request: a pull request that adds no dependencies gets no comment", async () => {
+test("target pull-request: a pull request that adds no dependencies gets no comment", async () => {
   const comments = fakeComments();
   const tool = fakeTool();
   const changes = [{ path: "package.json", base: '{"dependencies": {"express": "^4"}}', head: '{"dependencies": {"express": "^5"}}' }];
-  const run = fakeIO({ mode: "pull-request" }, { tool: tool.run, pullRequest: { changes: async () => changes, comments } });
+  const run = fakeIO({ target: "pull-request" }, { tool: tool.run, pullRequest: { changes: async () => changes, comments } });
   assert.equal(await runAction(run.io), 0);
   assert.equal(comments.comments.length, 0);
   assert.deepEqual(tool.calls, []);
@@ -215,35 +215,35 @@ test("mode pull-request: a pull request that adds no dependencies gets no commen
   assert.equal(run.outputs["comment-url"], "");
 });
 
-test("mode pull-request: a comment of an earlier push says that the pull request no longer adds dependencies", async () => {
+test("target pull-request: a comment of an earlier push says that the pull request no longer adds dependencies", async () => {
   const comments = fakeComments([{ id: 3, body: `${COMMENT_MARKER}\nold table`, url: "u3" }]);
-  const run = fakeIO({ mode: "pull-request" }, { pullRequest: { changes: async () => [], comments } });
+  const run = fakeIO({ target: "pull-request" }, { pullRequest: { changes: async () => [], comments } });
   assert.equal(await runAction(run.io), 0);
   assert.equal(comments.comments.length, 1);
   assert.match(comments.comments[0].body, /This pull request adds no dependencies/);
 });
 
-test("mode pull-request: a threshold fails the check after the comment is written", async () => {
+test("target pull-request: a threshold fails the check after the comment is written", async () => {
   const comments = fakeComments();
-  const run = fakeIO({ mode: "pull-request", "max-mttu-days": "100" }, { pullRequest: { changes: async () => PR_CHANGES, comments } });
+  const run = fakeIO({ target: "pull-request", "max-mttu-days": "100" }, { pullRequest: { changes: async () => PR_CHANGES, comments } });
   assert.equal(await runAction(run.io), 1);
   assert.equal(comments.comments.length, 1);
   assert.equal(run.errors.length, 2);
 });
 
-test("mode pull-request: a comment that cannot be written gives a warning, not a failure", async () => {
+test("target pull-request: a comment that cannot be written gives a warning, not a failure", async () => {
   const comments = fakeComments();
   comments.create = async () => {
     throw new Error("403 Resource not accessible by integration");
   };
-  const run = fakeIO({ mode: "pull-request" }, { pullRequest: { changes: async () => PR_CHANGES, comments } });
+  const run = fakeIO({ target: "pull-request" }, { pullRequest: { changes: async () => PR_CHANGES, comments } });
   assert.equal(await runAction(run.io), 0);
   assert.match(run.warnings.join("\n"), /could not write the pull request comment: 403/);
   assert.match(run.summary(), /`koa`/);
 });
 
-test("mode pull-request outside a pull request event fails with a clear error", async () => {
-  const run = fakeIO({ mode: "pull-request" });
+test("target pull-request outside a pull request event fails with a clear error", async () => {
+  const run = fakeIO({ target: "pull-request" });
   assert.equal(await runAction(run.io), 1);
   assert.match(run.errors[0], /needs a pull_request event/);
 });
