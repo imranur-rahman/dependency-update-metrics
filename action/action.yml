@@ -1,0 +1,144 @@
+name: MTTX
+description: MTTU and MTTR of npm, PyPI, and Cargo packages, and of the dependencies that a pull request adds
+author: Imranur Rahman
+branding:
+  icon: clock
+  color: blue
+
+# README.md documents each input and output. The window, the weighting, and the data source
+# have the names of the mttx.* settings of the VS Code extension, in kebab case.
+inputs:
+  mode:
+    description: "packages: analyze the packages in the input packages. pull-request: analyze the dependencies that the pull request adds."
+    required: false
+    default: 'packages'
+  packages:
+    description: "Mode packages: 1 to 5 package names, split by commas or spaces."
+    required: false
+    default: ''
+  ecosystem:
+    description: "Mode packages: npm, pypi, or cargo."
+    required: false
+    default: ''
+  data-source:
+    description: "depsdev (deps.dev) or native (the registry of each ecosystem)."
+    required: false
+    default: 'depsdev'
+  window-years:
+    description: "The length of the analysis window in years. The window ends on end-date (or today). start-date replaces this value when it is set."
+    required: false
+    default: '2'
+  start-date:
+    description: "The start date of the analysis window (YYYY-MM-DD). Empty: window-years years before the end date."
+    required: false
+    default: ''
+  end-date:
+    description: "The end date of the analysis window (YYYY-MM-DD). Empty: today (UTC)."
+    required: false
+    default: ''
+  weighting-type:
+    description: "disable, linear, exponential, or inverse. With disable, MTTU and MTTR are total days; with a weighting, they are average days."
+    required: false
+    default: 'disable'
+  half-life:
+    description: "The half-life in days (1 to 3650) for exponential weighting. Exponential weighting needs it."
+    required: false
+    default: ''
+  package-timeout-seconds:
+    description: "The Action stops the Tool run for one package after this number of seconds."
+    required: false
+    default: '600'
+  parallel-runs:
+    description: "The most Tool runs at a time (1 to 16)."
+    required: false
+    default: '2'
+  max-mttu-days:
+    description: "The step fails when the MTTU of a package is more than this number of days. Empty: no limit."
+    required: false
+    default: ''
+  max-mttr-days:
+    description: "The step fails when the MTTR of a package is more than this number of days. Empty: no limit."
+    required: false
+    default: ''
+  osv-index:
+    description: "image: use the OSV index inside the image (no download). fresh: build the OSV index of today (about 260 MB download), with actions/cache for the day."
+    required: false
+    default: 'image'
+  badge-dir:
+    description: "Mode packages: the folder for the shields.io endpoint badge files."
+    required: false
+    default: 'mttx-badges'
+  github-token:
+    description: "Mode pull-request: the token that reads the pull request and writes its comment."
+    required: false
+    default: ${{ github.token }}
+
+outputs:
+  results:
+    description: "A JSON array with one object for each package: ecosystem, package, mttu, mttr, num_dependencies, status (ok, no_deps, or error), and error."
+    value: ${{ steps.run.outputs.results }}
+  mttu:
+    description: "The MTTU of the first package in days, with two decimals. Empty when it has no value."
+    value: ${{ steps.run.outputs.mttu }}
+  mttr:
+    description: "The MTTR of the first package in days, with two decimals. Empty when it has no value."
+    value: ${{ steps.run.outputs.mttr }}
+  over-threshold:
+    description: "true when a value is more than max-mttu-days or max-mttr-days, else false."
+    value: ${{ steps.run.outputs.over-threshold }}
+  added:
+    description: "Mode pull-request: a JSON array of the dependencies that the pull request adds (ecosystem, name, files)."
+    value: ${{ steps.run.outputs.added }}
+  comment-url:
+    description: "Mode pull-request: the URL of the pull request comment. Empty when the Action wrote no comment."
+    value: ${{ steps.run.outputs.comment-url }}
+
+runs:
+  using: composite
+  steps:
+    # The Action runs the Tool in a Docker image, and only Linux runners run Docker.
+    - name: Check the runner
+      if: runner.os != 'Linux'
+      shell: bash
+      run: |
+        echo "::error title=MTTX::The MTTX Action runs only on Linux runners, because it needs Docker. Use runs-on: ubuntu-latest."
+        exit 1
+
+    - name: Get the date of the OSV index
+      id: date
+      if: inputs.osv-index == 'fresh'
+      shell: bash
+      run: echo "date=$(date -u +%F)" >> "$GITHUB_OUTPUT"
+
+    # An older index restores from restore-keys; the Action then builds the index of today,
+    # and the cache saves it under the key of today.
+    - name: Restore the OSV index
+      if: inputs.osv-index == 'fresh'
+      uses: actions/cache@v4
+      with:
+        path: ${{ runner.temp }}/mttx-data/osv_database.parquet
+        key: mttx-osv-${{ steps.date.outputs.date }}
+        restore-keys: mttx-osv-
+
+    - name: Run MTTX
+      id: run
+      shell: bash
+      run: node "$GITHUB_ACTION_PATH/dist/index.mjs"
+      env:
+        INPUT_MODE: ${{ inputs.mode }}
+        INPUT_PACKAGES: ${{ inputs.packages }}
+        INPUT_ECOSYSTEM: ${{ inputs.ecosystem }}
+        INPUT_DATA_SOURCE: ${{ inputs.data-source }}
+        INPUT_WINDOW_YEARS: ${{ inputs.window-years }}
+        INPUT_START_DATE: ${{ inputs.start-date }}
+        INPUT_END_DATE: ${{ inputs.end-date }}
+        INPUT_WEIGHTING_TYPE: ${{ inputs.weighting-type }}
+        INPUT_HALF_LIFE: ${{ inputs.half-life }}
+        INPUT_PACKAGE_TIMEOUT_SECONDS: ${{ inputs.package-timeout-seconds }}
+        INPUT_PARALLEL_RUNS: ${{ inputs.parallel-runs }}
+        INPUT_MAX_MTTU_DAYS: ${{ inputs.max-mttu-days }}
+        INPUT_MAX_MTTR_DAYS: ${{ inputs.max-mttr-days }}
+        INPUT_OSV_INDEX: ${{ inputs.osv-index }}
+        INPUT_BADGE_DIR: ${{ inputs.badge-dir }}
+        INPUT_GITHUB_TOKEN: ${{ inputs.github-token }}
+        MTTX_DATA_DIR: ${{ runner.temp }}/mttx-data
