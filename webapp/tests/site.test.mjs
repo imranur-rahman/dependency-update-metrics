@@ -101,3 +101,24 @@ test("the page shows errors in in-page notifications with role=\"alert\", never 
     assert.doesNotMatch(code, /\balert\s*\(/, `${name} calls alert()`);
   }
 });
+
+test("the Try It section has the Sample Comparison button and the label of its date", () => {
+  const html = readFileSync(join(siteDir, "index.html"), "utf8");
+  const form = html.match(/<form[^>]*id="comparison-form"[^>]*>([\s\S]*?)<\/form>/);
+  assert.ok(form, "the form is missing");
+  const button = form[1].match(/<button[^>]*id="show-sample"[^>]*>([\s\S]*?)<\/button>/);
+  assert.ok(button, "the Sample Comparison button is missing");
+  // type="button", so that a click does not submit the form (no Job).
+  assert.match(button[0], /type="button"/);
+  assert.match(button[1], /Show a sample Comparison/);
+  const card = html.slice(html.indexOf('id="results-card"'));
+  assert.match(card, /<p[^>]*id="sample-label"[^>]*hidden/);
+});
+
+test("the Sample Comparison loads from the published folder, not from the Host", () => {
+  const code = readFileSync(join(siteDir, "static", "js", "webapp.js"), "utf8");
+  const loader = code.match(/async function showSample\(\) \{([\s\S]*?)\n\}/);
+  assert.ok(loader, "showSample() is missing in webapp.js");
+  assert.match(loader[1], /fetch\(SAMPLE_COMPARISON_PATH\)/);
+  assert.doesNotMatch(loader[1], /hostUrl|EventSource/);
+});
