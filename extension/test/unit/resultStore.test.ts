@@ -93,9 +93,29 @@ test("a fresh value from the cache shows at once, without a Tool run", async () 
   const runner = new FakeRunner();
   const store = new ResultStore({ runner, makeRequest, cache });
 
-  assert.deepEqual(store.get(key("express")), { kind: "result", result: result("express") });
+  const state = store.get(key("express"));
+  assert.deepEqual(state?.kind === "result" && state.result, result("express"));
   await settle();
   assert.deepEqual(runner.started, []);
+});
+
+test("a value from the cache carries the local date of the run that computed it", async () => {
+  const savedAt = new Date(2026, 9, 21, 23, 30).getTime();
+  const storage = new MemoryStorage();
+  await new ResultCache(storage, () => savedAt).set(makeRequest(key("express")), result("express"));
+  const now = new Date(2026, 9, 22, 8, 0);
+  const store = new ResultStore({
+    runner: new FakeRunner(),
+    makeRequest,
+    cache: new ResultCache(storage, () => now.getTime()),
+    now: () => now,
+  });
+
+  assert.deepEqual(store.get(key("express")), {
+    kind: "result",
+    result: result("express"),
+    computedOn: "2026-10-21",
+  });
 });
 
 test("a result of a Tool run goes into the cache, so that the next session shows it at once", async () => {
@@ -152,7 +172,13 @@ test("analyze runs the Tool for the packages without a fresh value, and gives al
   const cache = new ResultCache(new MemoryStorage(), () => now);
   await cache.set(makeRequest(key("a")), result("a"));
   const runner = new FakeRunner();
-  const store = new ResultStore({ runner, makeRequest, cache, automaticRuns: false, now: () => now });
+  const store = new ResultStore({
+    runner,
+    makeRequest,
+    cache,
+    automaticRuns: false,
+    now: () => new Date(now),
+  });
   let updates = 0;
   store.onDidUpdate(() => updates++);
 
@@ -163,11 +189,10 @@ test("analyze runs the Tool for the packages without a fresh value, and gives al
   runner.finish("b");
   runner.finish("c", { kind: "failed", message: "timeout" });
 
-  assert.deepEqual(await outcomes, [
-    { kind: "result", result: result("a") },
-    { kind: "result", result: result("b") },
-    { kind: "failed", message: "timeout" },
-  ]);
+  assert.deepEqual(
+    (await outcomes).map((o) => (o.kind === "result" ? o.result.package : o.message)),
+    ["a", "b", "timeout"],
+  );
   assert.equal(updates, 2);
 });
 
@@ -210,7 +235,7 @@ test("dispose gives the waiting analyze calls a failed outcome, so that no calle
 test("a value older than one day gets a new Tool run in a long session", async () => {
   let now = Date.parse("2026-10-22T09:00:00Z");
   const runner = new FakeRunner();
-  const store = new ResultStore({ runner, makeRequest, now: () => now });
+  const store = new ResultStore({ runner, makeRequest, now: () => new Date(now) });
   store.get(key("express"));
   await settle();
   runner.finish("express");

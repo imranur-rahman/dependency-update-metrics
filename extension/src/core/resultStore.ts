@@ -23,8 +23,8 @@ export interface ResultStoreOptions {
   // The cache that keeps the results across sessions. Without it, the store keeps the
   // results only in memory.
   cache?: ResultCache;
-  // The clock, in ms since the epoch.
-  now?: () => number;
+  // The clock: for the age of a value, and for the date of a value that the hover shows.
+  now?: () => Date;
   // false: `get` starts no Tool run, and only `analyze` does (the setting `mttx.automaticRuns`).
   automaticRuns?: boolean;
 }
@@ -49,7 +49,7 @@ export class ResultStore {
   private readonly runner: ToolRunner;
   private readonly makeRequest: (key: PackageKey) => ToolRequest;
   private readonly cache: ResultCache | undefined;
-  private readonly now: () => number;
+  private readonly now: () => Date;
   private readonly abort = new AbortController();
   private readonly parallelRuns: number;
   private readonly automaticRuns: boolean;
@@ -59,7 +59,7 @@ export class ResultStore {
     this.runner = options.runner;
     this.makeRequest = options.makeRequest;
     this.cache = options.cache;
-    this.now = options.now ?? Date.now;
+    this.now = options.now ?? (() => new Date());
     this.parallelRuns = Math.max(1, Math.floor(options.parallelRuns ?? DEFAULT_PARALLEL_RUNS));
     this.automaticRuns = options.automaticRuns ?? true;
   }
@@ -107,11 +107,15 @@ export class ResultStore {
   private known(key: PackageKey): Entry | undefined {
     const id = idOf(key);
     const entry = this.entries.get(id);
-    if (entry && (entry.run || this.now() < entry.freshUntil)) return entry;
+    if (entry && (entry.run || this.now().getTime() < entry.freshUntil)) return entry;
     const cached = this.cache?.get(this.makeRequest(key));
     if (!cached) return undefined;
     const fresh: Entry = {
-      state: { kind: "result", result: cached.result },
+      state: {
+        kind: "result",
+        result: cached.result,
+        computedOn: localDate(new Date(cached.savedAt)),
+      },
       freshUntil: cached.savedAt + FRESH_MS,
     };
     this.entries.set(id, fresh);
@@ -141,8 +145,11 @@ export class ResultStore {
 
   // Keep the outcome for one day. Only a result without a package error goes into the cache,
   // so that the next session runs a failed package again.
+  // A result carries the local date of the run, so that the hover can show it.
   private finish(id: string, request: ToolRequest, outcome: ToolOutcome): void {
-    this.entries.set(id, { state: outcome, freshUntil: this.now() + FRESH_MS });
+    const now = this.now();
+    const state = outcome.kind === "result" ? { ...outcome, computedOn: localDate(now) } : outcome;
+    this.entries.set(id, { state, freshUntil: now.getTime() + FRESH_MS });
     if (outcome.kind === "result" && !outcome.result.error) {
       // A failed write loses only the cache entry, and the next session runs the Tool again.
       this.cache?.set(request, outcome.result).catch(() => undefined);
@@ -164,4 +171,10 @@ export class ResultStore {
 
 function idOf(key: PackageKey): string {
   return `${key.ecosystem}:${key.name}`;
+}
+
+// Return the date (YYYY-MM-DD) of a time in the local time zone.
+function localDate(time: Date): string {
+  const pad = (value: number) => String(value).padStart(2, "0");
+  return `${time.getFullYear()}-${pad(time.getMonth() + 1)}-${pad(time.getDate())}`;
 }
