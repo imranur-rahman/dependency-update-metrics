@@ -31,8 +31,8 @@ export interface ToolRequest {
 export type ToolOutcome = Exclude<DependencyState, { kind: "computing" }>;
 
 // Runs the Tool for one package. The real runner spawns the Tool process
-// (src/processToolRunner.ts); #29 gives it the managed venv, and #32 puts a queue and a
-// cache in front of it.
+// (src/processToolRunner.ts), SetupToolRunner waits for the Tool setup in front of it, and
+// the result store puts a queue and a cache in front of both.
 export interface ToolRunner {
   run(request: ToolRequest, signal?: AbortSignal): Promise<ToolOutcome>;
 }

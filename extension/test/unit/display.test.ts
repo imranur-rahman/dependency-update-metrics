@@ -77,7 +77,7 @@ test("the no-dependencies rule is the rule of the Webapp", () => {
   }
 });
 
-// The hover (#27): the details behind the hint.
+// The hover: the details behind the hint.
 function assertHas(text: string, parts: string[]): void {
   for (const part of parts) {
     assert.ok(text.includes(part), `missing ${JSON.stringify(part)} in:\n${text}`);

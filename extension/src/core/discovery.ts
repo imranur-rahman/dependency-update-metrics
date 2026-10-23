@@ -2,7 +2,7 @@
 // module has no `vscode` import. The Extension analyzes a manifest only when the developer
 // opens it, because VS Code asks for inlay hints only for an open editor.
 
-// The manifest names in any folder of the workspace. #28 adds the parsers of the TOML files.
+// The manifest names in any folder of the workspace.
 export const MANIFEST_NAMES = ["package.json", "pyproject.toml", "Cargo.toml"] as const;
 
 // The folders that hold installed packages. Their manifests are not the developer's.

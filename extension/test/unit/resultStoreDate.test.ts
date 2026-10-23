@@ -1,4 +1,4 @@
-// Tests for the date of the value (#27): the result store records the local date when a Tool
+// Tests for the date of the value: the result store records the local date when a Tool
 // run finishes, so that the hover can show it.
 import { test } from "node:test";
 import assert from "node:assert/strict";

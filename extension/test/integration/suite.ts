@@ -57,7 +57,7 @@ export async function run(): Promise<void> {
   const first = await hintLabels(document);
   assert.equal(first.get(5), "computing…");
 
-  // The fresh user data dir has no OSV index, so MTTR waits for the index (#30).
+  // The fresh user data dir has no OSV index, so MTTR waits for the index.
   const expected = new Map([
     [5, "MTTU 579 d · MTTR needs the OSV index"],
     [6, "could not compute since 'left-pad' has no dependencies"],

@@ -24,7 +24,7 @@ const CONSENT_KEY = "mttx.osvIndexConsent";
 // starts with it, so that the cached values show before the Tool gives the state again.
 const stateKey = (outputDir: string) => `mttx.osvIndexState:${outputDir}`;
 
-// The command of the Tool after its setup (#29), or the message of a setup without a Tool.
+// The command of the Tool after its setup, or the message of a setup without a Tool.
 export type ReadyCommand = { ok: true; command: ToolCommand } | { ok: false; message: string };
 
 export class OsvIndex implements vscode.Disposable {

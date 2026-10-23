@@ -61,7 +61,7 @@ export function hasNoDependencies(entry: Pick<MetricsEntry, "status" | "num_depe
 }
 
 // What the hint knows besides the Tool result. `osvIndex: false` means that the OSV index
-// does not exist: the Tool then gives an MTTR of 0 that is not true (#30).
+// does not exist: the Tool then gives an MTTR of 0 that is not true.
 export interface HintContext {
   osvIndex: boolean;
 }
