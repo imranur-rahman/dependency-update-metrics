@@ -92,7 +92,7 @@
           "type": "string",
           "enum": ["disable", "linear", "exponential", "inverse"],
           "default": "disable",
-          "markdownDescription": "The weighting of the time intervals (the Tool flag `--weighting-type`). With `disable`, MTTU and MTTR are sums of days; with a weighting, they are weighted means."
+          "markdownDescription": "The weighting of the time intervals (the Tool flag `--weighting-type`). With `disable`, MTTU and MTTR are total days; with a weighting, they are average days."
         },
         "mttx.halfLife": {
           "type": ["number", "null"],
