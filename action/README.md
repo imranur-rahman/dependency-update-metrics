@@ -161,7 +161,7 @@ npm test            # unit tests
 npm run test:e2e    # builds dist/index.mjs and runs it on the fixture PR files
 ```
 
-The Docker call is one seam (`openTool` in `ActionIO`, `src/main.ts`), which gets the checked `osv-index` input. The tests replace it with a fake. The variable `MTTX_ACTION_TOOL` (the path of a JavaScript file) replaces the Docker call in the built Action; the CI sets it to the fake Tool of the Extension. Users never set it.
+The Docker call is one seam (`openTool` in `ActionIO`, `src/main.ts`), which gets the checked `osv-index` input. The tests replace it with a fake. The variable `MTTX_ACTION_TOOL` (the path of a JavaScript file) replaces the Docker call in the built Action; the CI sets it to the fake Tool of the Extension. Only with it, `MTTX_ACTION_EVENT_PATH` and `MTTX_ACTION_API_URL` replace the pull request event and the REST API, so that the CI runs `action.yml` with target pull-request. Users never set them.
 
 ## Releases
 
