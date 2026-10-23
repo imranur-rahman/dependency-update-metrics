@@ -46,3 +46,27 @@ test("the homepage has the privacy note on the stored package names and IP hashe
   assert.match(note[1], /package names/);
   assert.match(note[1], /hash of your IP address/);
 });
+
+test("the two line charts sit in one row of columns, which stacks on a phone", () => {
+  const html = readFileSync(join(siteDir, "index.html"), "utf8");
+  const figure = html.match(/<figure[^>]*id="release-charts-figure"[^>]*>([\s\S]*?)<\/figure>/);
+
+  assert.ok(figure, "the figure of the line charts is missing");
+  // Bulma "columns is-tablet" puts the columns side by side from 769 px and stacks them below.
+  assert.match(figure[1], /<div class="columns is-tablet[^"]*">/);
+  const columns = [...figure[1].matchAll(/<div class="column[ "][\s\S]*?<canvas id="(release-chart-\w+)"/g)];
+  assert.deepEqual(
+    columns.map((m) => m[1]),
+    ["release-chart-mttu", "release-chart-mttr"],
+  );
+});
+
+test("each chart keeps its aria-label", () => {
+  const html = readFileSync(join(siteDir, "index.html"), "utf8");
+  for (const id of ["result-chart", "release-chart-mttu", "release-chart-mttr"]) {
+    const canvas = html.match(new RegExp(`<canvas id="${id}"[^>]*>`));
+    assert.ok(canvas, `the canvas ${id} is missing`);
+    assert.match(canvas[0], /role="img"/);
+    assert.match(canvas[0], /aria-label="[^"]*The table below holds the same values\."/);
+  }
+});

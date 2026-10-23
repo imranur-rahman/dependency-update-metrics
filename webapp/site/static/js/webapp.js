@@ -19,9 +19,10 @@ import {
   comparisonFromSearch,
   formFromComparison,
   barChartData,
-  barChartAxisLabel,
+  barChartOptions,
   lineChartData,
-  lineChartAxisLabel,
+  lineChartOptions,
+  CHART_HEIGHTS,
   chartHasValues,
   tableColumns,
   rowsToCsv,
@@ -71,6 +72,11 @@ const releaseCanvases = {
 };
 const csvButton = document.getElementById("download-csv");
 const botCheckMessage = document.getElementById("bot-check-error");
+
+// Each chart box gets its compact height from comparison.js, which the Extension shares.
+for (const box of document.querySelectorAll(".chart-box")) {
+  box.style.height = `${CHART_HEIGHTS[box.dataset.chart]}px`;
+}
 
 let chart = null;
 let releaseCharts = [];
@@ -291,24 +297,7 @@ function showChart(job) {
     Object.assign(dataset, { backgroundColor: color, borderColor: color, borderRadius: 4 });
   }
   chartFigure.hidden = false;
-  chart = new window.Chart(chartCanvas, {
-    type: "bar",
-    data,
-    options: {
-      maintainAspectRatio: false,
-      interaction: { mode: "index", intersect: false },
-      plugins: { legend: { position: "top" } },
-      scales: {
-        x: { grid: { display: false } },
-        y: { beginAtZero: true, title: { display: true, text: barChartAxisLabel(job) } },
-      },
-    },
-  });
-}
-
-// Format a release date of the x-axis (milliseconds, UTC) as "YYYY-MM-DD".
-function formatReleaseDate(ms) {
-  return new Date(ms).toISOString().slice(0, 10);
+  chart = new window.Chart(chartCanvas, { type: "bar", data, options: barChartOptions(job) });
 }
 
 // Show the MTTU and the MTTR line charts of a done Per-release Job: one line for each
@@ -337,43 +326,13 @@ function showReleaseCharts(job) {
         borderColor: color,
         backgroundColor: color,
         borderWidth: 2,
-        pointRadius: 4,
-        pointHoverRadius: 6,
+        pointRadius: 3,
+        pointHoverRadius: 5,
         pointStyle: PACKAGE_POINT_STYLES[index % PACKAGE_POINT_STYLES.length],
         spanGaps: false,
       });
     });
-    releaseCharts.push(
-      new window.Chart(canvas, {
-        type: "line",
-        data,
-        options: {
-          maintainAspectRatio: false,
-          interaction: { mode: "nearest", intersect: false },
-          plugins: {
-            legend: { position: "top", labels: { usePointStyle: true } },
-            tooltip: {
-              callbacks: {
-                title: (items) => formatReleaseDate(items[0].parsed.x),
-                label: (item) =>
-                  `${item.dataset.label} ${item.raw.version}: ${
-                    item.raw.y === null ? "no value" : `${item.raw.y.toFixed(1)} days`
-                  }`,
-              },
-            },
-          },
-          scales: {
-            x: {
-              type: "linear",
-              title: { display: true, text: "Release date" },
-              ticks: { callback: (value) => formatReleaseDate(value), maxTicksLimit: 6 },
-              grid: { display: false },
-            },
-            y: { beginAtZero: true, title: { display: true, text: lineChartAxisLabel(job) } },
-          },
-        },
-      }),
-    );
+    releaseCharts.push(new window.Chart(canvas, { type: "line", data, options: lineChartOptions(job) }));
   }
 }
 

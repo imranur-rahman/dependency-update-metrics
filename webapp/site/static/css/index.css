@@ -771,6 +771,17 @@ a:focus {
   padding: 2rem;
 }
 
+/* A chart box holds one Chart.js canvas. webapp.js sets its height (CHART_HEIGHTS).
+   min-width: 0 lets a chart in a column shrink when the window gets narrower. */
+#try-it .chart-box {
+  position: relative;
+  min-width: 0;
+}
+
+#release-charts-figure .column {
+  min-width: 0;
+}
+
 #try-it .label {
   color: var(--text-primary);
   font-weight: 600;
