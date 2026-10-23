@@ -187,7 +187,7 @@ test("every container command uses the image version that the Action pins", () =
   for (const tag of refs) assert.ok([image.version, image.osvTag].includes(tag), `the tag ${tag} is not ${image.version} or ${image.osvTag}`);
 });
 
-test("every container analysis reads deps.dev, as the web dashboard and the Action do", () => {
+test("every container analysis reads deps.dev, as the interactive dashboard and the Action do", () => {
   const commands = [...workflowSection().matchAll(/docker run[\s\S]*?(?=\n\n|<\/code>)/g)].map((m) => m[0]);
   const analyses = commands.filter((command) => command.includes("--ecosystem") || command.includes("--input-csv"));
   assert.ok(analyses.length >= 5, "the container analyses are missing");
