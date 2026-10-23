@@ -597,3 +597,15 @@ export function resultsNote(weightingType) {
     "Do not compare them with values that have no weighting."
   );
 }
+
+// --- Sample Comparison (ticket #45) ---
+
+// The path of the Sample Comparison file, relative to the homepage. The file is a done Job
+// of the Host (the shape of contract/examples/job_done_window_summary.json) plus
+// "computed_on". The script in webapp/sample/ makes it again with the Tool.
+export const SAMPLE_COMPARISON_PATH = "static/sample/sample_comparison.json";
+
+// Return the label that tells the reader when the Tool computed the Sample Comparison.
+export function sampleLabel(sample) {
+  return `Precomputed on ${sample.computed_on}`;
+}

@@ -31,6 +31,8 @@ import {
   jobIdFromUrl,
   urlWithJobId,
   JOB_EVENTS,
+  SAMPLE_COMPARISON_PATH,
+  sampleLabel,
 } from "./comparison.js";
 import { explainComparison } from "./explanation.js";
 import {
@@ -84,6 +86,8 @@ const releaseCanvases = {
 };
 const csvButton = document.getElementById("download-csv");
 const botCheckMessage = document.getElementById("bot-check-error");
+const sampleButton = document.getElementById("show-sample");
+const sampleLabelLine = document.getElementById("sample-label");
 
 // Each chart box gets the shared size from comparison.js, which the Extension shares.
 for (const box of document.querySelectorAll(".chart-box")) {
@@ -223,7 +227,11 @@ function resetBotCheck() {
 // Fill the form from a Comparison in the page URL (a shared link).
 function fillFormFromUrl() {
   const comparison = comparisonFromSearch(window.location.search);
-  if (comparison === null) return;
+  if (comparison !== null) fillForm(comparison);
+}
+
+// Make the form show a Comparison (a shared link or the Sample Comparison).
+function fillForm(comparison) {
   const state = formFromComparison(comparison);
   form.elements.ecosystem.value = state.ecosystem;
   setPackageFields(state.packages);
@@ -443,6 +451,15 @@ function showResult(job) {
   showResultsNote(job === null ? null : job.comparison.weighting_type);
   showExplanation(job);
   showPackageFailures(job);
+  showSampleLabel(job);
+}
+
+// Show "Precomputed on <date>" for the Sample Comparison. A Job of the Host has no
+// computed_on field, so its results show no label.
+function showSampleLabel(job) {
+  const isSample = job !== null && Boolean(job.computed_on);
+  sampleLabelLine.textContent = isSample ? sampleLabel(job) : "";
+  sampleLabelLine.hidden = !isSample;
 }
 
 // Show a red notification above the results of a done Job in which a package failed. The
@@ -595,7 +612,34 @@ form.addEventListener("submit", async (event) => {
   }
 });
 
+// --- Sample Comparison (ticket #45) ---
+
+// Fill the form with the Sample Comparison and show its precomputed results through the
+// same path as a done Job. The file comes from the published folder: no Job, no Host call.
+async function showSample() {
+  sampleButton.disabled = true;
+  try {
+    const response = await fetch(SAMPLE_COMPARISON_PATH);
+    if (!response.ok) throw new Error(`GET ${SAMPLE_COMPARISON_PATH} returned ${response.status}`);
+    const sample = await response.json();
+    fillForm(sample.comparison);
+    currentJobId = null;
+    cancelButton.hidden = true;
+    clearNotification(jobNotice);
+    showStatus("");
+    showProgress(null);
+    showResult(sample);
+    scrollToElement(resultsCard);
+  } catch (error) {
+    console.error(error);
+    showError(connectionErrorNotice());
+  } finally {
+    sampleButton.disabled = false;
+  }
+}
+
 weightingSelect.addEventListener("change", showWeightingFields);
+sampleButton.addEventListener("click", showSample);
 addPackageButton.addEventListener("click", () => addPackageField()?.focus());
 csvButton.addEventListener("click", downloadCsv);
 cancelButton.addEventListener("click", cancelJob);

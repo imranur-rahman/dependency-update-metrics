@@ -367,6 +367,10 @@
           <div class="control">
             <button class="button is-medium" id="cancel-job" type="button" hidden>Cancel</button>
           </div>
+          <div class="control">
+            <!-- The Sample Comparison: precomputed results from static/sample/, with no Job. -->
+            <button class="button is-medium is-link is-light" id="show-sample" type="button">Show a sample Comparison</button>
+          </div>
         </div>
         <!-- The status of the Job while it waits or runs. -->
         <div class="tryit-status" id="job-status-box" hidden>
@@ -384,6 +388,8 @@
       <!-- The results. webapp.js shows this card only when a Job is done. -->
       <div class="tryit-card mt-5" id="results-card" hidden>
         <h3 class="title is-4 mb-0">Results</h3>
+        <!-- Only for the Sample Comparison: "Precomputed on <date>". -->
+        <p id="sample-label" class="tag is-info is-light mt-2" hidden></p>
         <p id="results-note" class="is-size-7 mt-2 has-text-grey" hidden></p>
         <!-- A done Job in which a package failed. webapp.js puts a notification (role="alert") here. -->
         <div class="mt-4" id="results-notice" hidden></div>

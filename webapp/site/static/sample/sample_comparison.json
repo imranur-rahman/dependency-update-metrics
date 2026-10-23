@@ -1,0 +1,78 @@
+{
+  "job_id": "sample",
+  "state": "done",
+  "comparison": {
+    "ecosystem": "npm",
+    "packages": [
+      "express",
+      "koa",
+      "fastify"
+    ],
+    "start_date": "2024-01-01",
+    "end_date": "2025-12-31",
+    "mode": "window_summary",
+    "weighting_type": "disable",
+    "half_life": null
+  },
+  "results": [
+    {
+      "ecosystem": "npm",
+      "package": "express",
+      "mode": "window_summary",
+      "start_date": "2024-01-01",
+      "end_date": "2025-12-31",
+      "weighting_type": "disable",
+      "half_life": null,
+      "data_source": "depsdev",
+      "summary": {
+        "mttu": 120.31748718584655,
+        "mttr": 3.0759126984126985,
+        "num_dependencies": 28,
+        "status": "ok",
+        "error": ""
+      },
+      "releases": [],
+      "error": ""
+    },
+    {
+      "ecosystem": "npm",
+      "package": "koa",
+      "mode": "window_summary",
+      "start_date": "2024-01-01",
+      "end_date": "2025-12-31",
+      "weighting_type": "disable",
+      "half_life": null,
+      "data_source": "depsdev",
+      "summary": {
+        "mttu": 174.8568840020576,
+        "mttr": 0.0,
+        "num_dependencies": 18,
+        "status": "ok",
+        "error": ""
+      },
+      "releases": [],
+      "error": ""
+    },
+    {
+      "ecosystem": "npm",
+      "package": "fastify",
+      "mode": "window_summary",
+      "start_date": "2024-01-01",
+      "end_date": "2025-12-31",
+      "weighting_type": "disable",
+      "half_life": null,
+      "data_source": "depsdev",
+      "summary": {
+        "mttu": 63.00909722222222,
+        "mttr": 0.0,
+        "num_dependencies": 15,
+        "status": "ok",
+        "error": ""
+      },
+      "releases": [],
+      "error": ""
+    }
+  ],
+  "computed_on": "2026-10-23",
+  "osv_index_date": "2026-10-23"
+}
