@@ -1,5 +1,5 @@
 // The thin `vscode` layer: it registers the inlay hint provider and the hover provider for
-// package.json and connects them to the core module and the Tool runner.
+// the manifests and connects them to the core module and the Tool runner.
 import { mkdirSync } from "node:fs";
 import { join } from "node:path";
 
@@ -7,6 +7,7 @@ import * as vscode from "vscode";
 
 import { MANIFEST_PATTERN, isAnalyzedManifest } from "./core/discovery.ts";
 import { hintText, hoverMarkdown } from "./core/display.ts";
+import { dependencyAt, hintLabel } from "./core/hintLabel.ts";
 import { parseManifest } from "./core/manifest.ts";
 import { ResultCache } from "./core/resultCache.ts";
 import { DEFAULT_PARALLEL_RUNS, ResultStore } from "./core/resultStore.ts";
@@ -16,7 +17,8 @@ import { ProcessToolRunner, pruneToolCache, toolCommand } from "./processToolRun
 import { readSettings } from "./settings.ts";
 
 // `scheme: "file"` skips untitled documents and Git diffs. A filter with only a pattern
-// matches any language, in any subfolder.
+// matches any language, which the TOML files need, because VS Code has no TOML language. The
+// pattern covers the three manifest names in any subfolder.
 const MANIFESTS: vscode.DocumentSelector = [{ scheme: "file", pattern: MANIFEST_PATTERN }];
 
 class HintProvider implements vscode.InlayHintsProvider, vscode.HoverProvider, vscode.Disposable {
@@ -46,11 +48,12 @@ class HintProvider implements vscode.InlayHintsProvider, vscode.HoverProvider, v
   provideInlayHints(document: vscode.TextDocument, range: vscode.Range): vscode.InlayHint[] {
     if (!isAnalyzedManifest(document.uri.fsPath)) return [];
     const hints: vscode.InlayHint[] = [];
-    for (const dep of parseManifest(document.fileName, document.getText())) {
+    const deps = parseManifest(document.fileName, document.getText());
+    for (const dep of deps) {
       const end = document.lineAt(dep.line).range.end;
       const state = range.contains(end) ? this.store.get(dep) : undefined;
       if (!state) continue;
-      const hint = new vscode.InlayHint(end, hintText(state, dep.name));
+      const hint = new vscode.InlayHint(end, hintLabel(dep, deps, hintText(state, dep.name)));
       hint.paddingLeft = true;
       hints.push(hint);
     }
@@ -60,9 +63,8 @@ class HintProvider implements vscode.InlayHintsProvider, vscode.HoverProvider, v
   // The hover of a dependency line shows the details behind the hint, or the full error.
   provideHover(document: vscode.TextDocument, position: vscode.Position): vscode.Hover | undefined {
     if (!isAnalyzedManifest(document.uri.fsPath)) return undefined;
-    const dep = parseManifest(document.fileName, document.getText()).find(
-      (candidate) => candidate.line === position.line,
-    );
+    const deps = parseManifest(document.fileName, document.getText());
+    const dep = dependencyAt(deps, position.line, position.character);
     const state = dep && this.store.get(dep);
     if (!dep || !state) return undefined;
     const markdown = new vscode.MarkdownString(hoverMarkdown(state, dep));

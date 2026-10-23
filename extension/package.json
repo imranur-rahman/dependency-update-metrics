@@ -1,11 +1,16 @@
 {
   "name": "mttx",
   "displayName": "MTTX",
-  "description": "MTTU and MTTR of each dependency in package.json",
+  "description": "MTTU and MTTR of each dependency in package.json, pyproject.toml, and Cargo.toml",
   "version": "0.0.1",
   "publisher": "imranur-rahman",
   "license": "MIT",
   "private": true,
+  "icon": "images/icon.png",
+  "homepage": "https://github.com/imranur-rahman/dependency-update-metrics/tree/main/extension#readme",
+  "bugs": {
+    "url": "https://github.com/imranur-rahman/dependency-update-metrics/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/imranur-rahman/dependency-update-metrics",
@@ -23,6 +28,8 @@
   "main": "./dist/extension.js",
   "activationEvents": [
     "workspaceContains:**/package.json",
+    "workspaceContains:**/pyproject.toml",
+    "workspaceContains:**/Cargo.toml",
     "onLanguage:json"
   ],
   "contributes": {
@@ -128,7 +135,9 @@
     "build": "node esbuild.mjs",
     "test:unit": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test \"test/unit/*.test.ts\"",
     "test:integration": "node esbuild.mjs && node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON test/integration/run.ts",
-    "test": "npm run check-types && npm run test:unit && npm run test:integration"
+    "test": "npm run check-types && npm run test:unit && npm run test:integration",
+    "vscode:prepublish": "node esbuild.mjs --production",
+    "package": "npx --yes @vscode/vsce@4.0.0 package --no-dependencies --out mttx.vsix"
   },
   "devDependencies": {
     "@types/node": "24.19.2",

@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling"]
+
+[project]
+name = "demo"
+dependencies = [
+  "requests[socks]>=2.31; python_version >= '3.8'",
+  'numpy',
+  "Flask_Login ~= 0.6",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8", "coverage[toml]"]
+docs = [
+    "sphinx",
+]
+
+[dependency-groups]
+dev = ["ruff==0.6.0", { include-group = "test" }]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "^5.0"
+pandas = { version = "^2.2", extras = ["excel"], optional = true }
+
+[tool.poetry.group.lint.dependencies]
+black = "*"
+
+[tool.poetry.dev-dependencies]
+mypy = "^1.10"
