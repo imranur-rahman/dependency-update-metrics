@@ -182,3 +182,19 @@ def test_json_needs_package(tmp_path, capsys):
 
     assert exc.value.code == 2
     assert capsys.readouterr().out == ""
+
+
+def test_json_per_release_row_of_a_package_without_dependencies_has_0_dependencies(
+    tmp_path, capsys, in_process_executor
+):
+    # depA has no dependencies, so each Per-release row has the status "no_deps" and 0
+    # dependencies. The Webapp and the Extension show such a row as "has no dependencies".
+    code, out, _ = _run_json(tmp_path, capsys, "--per-release", package="depA")
+
+    result = json.loads(out)
+    assert code == 0
+    assert result["mode"] == "per_release"
+    assert result["summary"] is None
+    assert [r["package_version"] for r in result["releases"]] == ["1.0.0", "2.0.0"]
+    for release in result["releases"]:
+        assert (release["status"], release["num_dependencies"], release["error"]) == ("no_deps", 0, "")
