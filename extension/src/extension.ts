@@ -5,15 +5,17 @@ import { join } from "node:path";
 
 import * as vscode from "vscode";
 
+import { MANIFEST_PATTERN, isAnalyzedManifest } from "./core/discovery.ts";
 import { hintText } from "./core/display.ts";
 import { parseManifest } from "./core/manifest.ts";
-import { ResultStore } from "./core/resultStore.ts";
+import { ResultCache } from "./core/resultCache.ts";
+import { DEFAULT_PARALLEL_RUNS, ResultStore } from "./core/resultStore.ts";
 import { windowStartDate } from "./core/tool.ts";
 import { ProcessToolRunner, toolCommand } from "./processToolRunner.ts";
 
 // `scheme: "file"` skips untitled documents and Git diffs. A filter with only a pattern
-// matches any language. #28 adds pyproject.toml and Cargo.toml.
-const MANIFESTS: vscode.DocumentSelector = [{ scheme: "file", pattern: "**/package.json" }];
+// matches any language, in any subfolder.
+const MANIFESTS: vscode.DocumentSelector = [{ scheme: "file", pattern: MANIFEST_PATTERN }];
 
 class HintProvider implements vscode.InlayHintsProvider, vscode.Disposable {
   private readonly changed = new vscode.EventEmitter<void>();
@@ -33,13 +35,20 @@ class HintProvider implements vscode.InlayHintsProvider, vscode.Disposable {
     this.changed.fire();
   }
 
+  // Run the Tool for the dependencies of the manifest (the command "MTTX: Analyze
+  // dependencies").
+  async analyze(document: vscode.TextDocument): Promise<void> {
+    await this.store.analyze(parseManifest(document.fileName, document.getText()));
+  }
+
   provideInlayHints(document: vscode.TextDocument, range: vscode.Range): vscode.InlayHint[] {
-    if (/[\\/]node_modules[\\/]/.test(document.uri.fsPath)) return [];
+    if (!isAnalyzedManifest(document.uri.fsPath)) return [];
     const hints: vscode.InlayHint[] = [];
     for (const dep of parseManifest(document.fileName, document.getText())) {
       const end = document.lineAt(dep.line).range.end;
-      if (!range.contains(end)) continue;
-      const hint = new vscode.InlayHint(end, hintText(this.store.get(dep), dep.name));
+      const state = range.contains(end) ? this.store.get(dep) : undefined;
+      if (!state) continue;
+      const hint = new vscode.InlayHint(end, hintText(state, dep.name));
       hint.paddingLeft = true;
       hints.push(hint);
     }
@@ -62,15 +71,24 @@ export function activate(context: vscode.ExtensionContext): void {
   const outputDir = join(context.globalStorageUri.fsPath, "tool-output");
   mkdirSync(outputDir, { recursive: true });
 
+  // The results persist across VS Code restarts in global state.
+  const cache = new ResultCache(context.globalState);
+
   const makeStore = () => {
-    const toolPath = vscode.workspace.getConfiguration("mttx").get<string>("toolPath", "");
-    const runner = new ProcessToolRunner(toolCommand(toolPath));
-    return new ResultStore(runner, (key) => ({
-      ecosystem: key.ecosystem,
-      packageName: key.name,
-      startDate: windowStartDate(new Date()),
-      outputDir,
-    }));
+    const config = vscode.workspace.getConfiguration("mttx");
+    const runner = new ProcessToolRunner(toolCommand(config.get<string>("toolPath", "")));
+    return new ResultStore({
+      runner,
+      makeRequest: (key) => ({
+        ecosystem: key.ecosystem,
+        packageName: key.name,
+        startDate: windowStartDate(new Date()),
+        outputDir,
+      }),
+      cache,
+      parallelRuns: config.get<number>("parallelRuns", DEFAULT_PARALLEL_RUNS),
+      automaticRuns: config.get<boolean>("automaticRuns", true),
+    });
   };
   const provider = new HintProvider(makeStore);
 
@@ -80,6 +98,21 @@ export function activate(context: vscode.ExtensionContext): void {
     vscode.workspace.onDidChangeConfiguration((event) => {
       if (event.affectsConfiguration("mttx")) provider.reset();
     }),
+    vscode.commands.registerCommand("mttx.analyzeDependencies", () => analyzeOpenManifest(provider)),
+  );
+}
+
+async function analyzeOpenManifest(provider: HintProvider): Promise<void> {
+  const document = vscode.window.activeTextEditor?.document;
+  if (!document || document.uri.scheme !== "file" || !isAnalyzedManifest(document.uri.fsPath)) {
+    void vscode.window.showInformationMessage(
+      "MTTX: open a package.json, pyproject.toml, or Cargo.toml file to analyze its dependencies.",
+    );
+    return;
+  }
+  await vscode.window.withProgress(
+    { location: vscode.ProgressLocation.Window, title: "MTTX: analyzing dependencies" },
+    () => provider.analyze(document),
   );
 }
 

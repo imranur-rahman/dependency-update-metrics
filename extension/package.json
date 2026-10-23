@@ -34,9 +34,28 @@
           "default": "",
           "scope": "machine",
           "markdownDescription": "Path of an installed `dependency-metrics`. Empty: the Extension runs `dependency-metrics` from the `PATH`."
+        },
+        "mttx.parallelRuns": {
+          "type": "integer",
+          "default": 2,
+          "minimum": 1,
+          "maximum": 16,
+          "markdownDescription": "The most Tool processes that run at a time."
+        },
+        "mttx.automaticRuns": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Run the Tool when you open a manifest. Off: run it with the command **MTTX: Analyze dependencies**."
         }
       }
-    }
+    },
+    "commands": [
+      {
+        "command": "mttx.analyzeDependencies",
+        "title": "Analyze dependencies",
+        "category": "MTTX"
+      }
+    ]
   },
   "scripts": {
     "check-types": "tsc --noEmit",

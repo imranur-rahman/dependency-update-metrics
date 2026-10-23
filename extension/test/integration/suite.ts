@@ -56,5 +56,9 @@ export async function run(): Promise<void> {
   } catch {
     assert.deepEqual(Object.fromEntries(last), Object.fromEntries(expected));
   }
+
+  // The command analyzes the open manifest. The values are fresh, so the hints stay.
+  await vscode.commands.executeCommand("mttx.analyzeDependencies");
+  assert.deepEqual(Object.fromEntries(await hintLabels(document)), Object.fromEntries(expected));
   console.log("MTTX integration test passed");
 }
