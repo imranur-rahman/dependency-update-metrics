@@ -167,6 +167,14 @@ test("the webview chart boxes take the shared size of the Webapp charts", () => 
   const boxRule = /\.chart-box \{([^}]*)\}/.exec(source("comparisonPanel.ts"));
   assert.ok(boxRule, "the panel style has no .chart-box rule");
   assert.doesNotMatch(boxRule[1], /width|height/);
+  // The Explanation takes the width of the charts from CHART_SIZE, not a copy of the number.
+  assert.match(source("comparisonPanel.ts"), /\.explanation \{ max-width: \$\{CHART_SIZE\.maxWidth\}px;/);
+});
+
+test("the webview draws the Explanation from the blocks of explanation.js", () => {
+  const webview = readFileSync(join(import.meta.dirname, "..", "..", "src", "webview", "main.ts"), "utf8");
+  assert.match(webview, /explanationBlocks\(job\)/);
+  assert.doesNotMatch(webview, /What the results mean|"Limitations"/);
 });
 
 test("the hover link starts a Comparison with the package of the dependency", () => {

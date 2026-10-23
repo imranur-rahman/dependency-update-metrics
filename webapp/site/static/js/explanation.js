@@ -16,6 +16,10 @@ export const LIMITATIONS = [
   "The results depend on the declared version constraints and on the release dates in the registry.",
 ];
 
+// The headings of the Explanation on a page.
+export const EXPLANATION_HEADING = "What the results mean";
+export const LIMITATIONS_HEADING = "Limitations";
+
 // The index of the OSV limitation in LIMITATIONS.
 const OSV_LIMITATION = 1;
 
@@ -128,6 +132,22 @@ export function explainResult(result) {
 export function explainComparison(job) {
   const packages = job.results.map(explainResult).filter((item) => item !== null);
   return { packages, limitations: packages.length > 0 ? limitationsFor(job.osv_index_date) : [] };
+}
+
+// Return the blocks that a page draws for the Explanation of a done Job, in order: the
+// heading, one paragraph for each package with a value ({ title, text }), the Limitations
+// heading, and the Limitations list ({ items }). The Webapp (webapp.js) and the Extension
+// webview draw the same blocks, each with its own elements. Return [] when no package has
+// a value.
+export function explanationBlocks(job) {
+  const { packages, limitations } = explainComparison(job);
+  if (packages.length === 0) return [];
+  return [
+    { kind: "heading", text: EXPLANATION_HEADING },
+    ...packages.map((item) => ({ kind: "paragraph", title: item.title, text: item.sentences.join(" ") })),
+    { kind: "subheading", text: LIMITATIONS_HEADING },
+    { kind: "list", items: limitations },
+  ];
 }
 
 // Return the one short line of the Extension hover for a result, or null when the result

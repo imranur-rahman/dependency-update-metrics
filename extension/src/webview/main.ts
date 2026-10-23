@@ -18,6 +18,7 @@ import {
   resultsNote,
   tableColumns,
 } from "../../../webapp/site/static/js/comparison.js";
+import { explanationBlocks } from "../../../webapp/site/static/js/explanation.js";
 import {
   barChartJob,
   comparisonRows,
@@ -27,6 +28,7 @@ import {
   PACKAGE_POINT_STYLES,
   SERIES_COLORS,
   type ComparisonJob,
+  type ExplanationBlock,
   type ExplanationContent,
   type PanelMessage,
   type WebviewMessage,
@@ -88,20 +90,24 @@ function render(): void {
   });
 }
 
-// Add the Explanation under the charts: one paragraph for each package with a value, then
-// the shared Limitations list. A Job without a value adds nothing.
+// Add the Explanation under the charts: the blocks of explanation.js, the same as in the
+// Webapp. A Job without a value adds nothing. Return the text that the report gives.
 function drawExplanation(job: ComparisonJob): ExplanationContent {
-  const content = explanationContent(job);
-  if (content.paragraphs.length === 0) return content;
+  const blocks = explanationBlocks(job) as ExplanationBlock[];
+  if (blocks.length === 0) return explanationContent(job);
   const box = element("section", "", "explanation");
-  box.append(element("h3", "What the results mean"));
-  for (const paragraph of content.paragraphs) box.append(element("p", paragraph));
-  box.append(element("p", "Limitations", "note"));
-  const list = element("ul", "", "note");
-  for (const text of content.limitations) list.append(element("li", text));
-  box.append(list);
+  for (const block of blocks) {
+    if (block.kind === "heading") box.append(element("h3", block.text));
+    else if (block.kind === "subheading") box.append(element("p", block.text, "note"));
+    else if (block.kind === "paragraph") box.append(element("p", `${block.title}: ${block.text}`));
+    else {
+      const list = element("ul", "", "note");
+      for (const text of block.items) list.append(element("li", text));
+      box.append(list);
+    }
+  }
   app.append(box);
-  return content;
+  return explanationContent(job);
 }
 
 // Chart.js draws on a canvas, so it does not see the CSS variables of the theme.

@@ -88,6 +88,12 @@ test("the results card shows the Explanation under the result table", () => {
   assert.ok(card.indexOf('id="results-explanation"') > card.indexOf('id="result-table"'));
 });
 
+test("the page draws the Explanation from the blocks of explanation.js", () => {
+  const code = readFileSync(join(siteDir, "static", "js", "webapp.js"), "utf8");
+  assert.match(code, /explanationBlocks\(job\)/);
+  assert.doesNotMatch(code, /What the results mean|"Limitations"/);
+});
+
 test("the page shows errors in in-page notifications with role=\"alert\", never window.alert()", () => {
   const html = readFileSync(join(siteDir, "index.html"), "utf8");
   for (const id of ["job-notice", "results-notice", "package-limit"]) {

@@ -34,7 +34,7 @@ import {
   SAMPLE_COMPARISON_PATH,
   sampleLabel,
 } from "./comparison.js";
-import { explainComparison } from "./explanation.js";
+import { explanationBlocks } from "./explanation.js";
 import {
   submitErrorNotice,
   connectionErrorNotice,
@@ -406,39 +406,38 @@ function showCsvButton(job) {
   csvButton.hidden = false;
 }
 
-// Show the Explanation under the results: one paragraph for each package with a value,
-// then the shared Limitations list. A Job without a value shows none.
+// Show the Explanation under the results: the blocks of explanation.js (the heading, one
+// paragraph for each package with a value, then the shared Limitations list). A Job without
+// a value shows none.
 function showExplanation(job) {
   const box = document.getElementById("results-explanation");
-  const { packages, limitations } = job === null ? { packages: [], limitations: [] } : explainComparison(job);
-  const children = [];
-  if (packages.length > 0) {
-    const heading = document.createElement("h4");
-    heading.className = "title is-6 mb-2";
-    heading.textContent = "What the results mean";
-    children.push(heading);
-  }
-  for (const item of packages) {
-    const paragraph = document.createElement("p");
-    const title = document.createElement("strong");
-    title.textContent = `${item.title}: `;
-    paragraph.append(title, item.sentences.join(" "));
-    children.push(paragraph);
-  }
-  if (limitations.length > 0) {
-    const heading = document.createElement("p");
-    heading.className = "has-text-weight-semibold mb-1";
-    heading.textContent = "Limitations";
+  const children = (job === null ? [] : explanationBlocks(job)).map(explanationElement);
+  box.replaceChildren(...children);
+  box.hidden = children.length === 0;
+}
+
+// Return the element of one Explanation block.
+function explanationElement(block) {
+  if (block.kind === "list") {
     const list = document.createElement("ul");
-    for (const text of limitations) {
+    for (const text of block.items) {
       const entry = document.createElement("li");
       entry.textContent = text;
       list.append(entry);
     }
-    children.push(heading, list);
+    return list;
   }
-  box.replaceChildren(...children);
-  box.hidden = children.length === 0;
+  if (block.kind === "paragraph") {
+    const paragraph = document.createElement("p");
+    const title = document.createElement("strong");
+    title.textContent = `${block.title}: `;
+    paragraph.append(title, block.text);
+    return paragraph;
+  }
+  const heading = document.createElement(block.kind === "heading" ? "h4" : "p");
+  heading.className = block.kind === "heading" ? "title is-6 mb-2" : "has-text-weight-semibold mb-1";
+  heading.textContent = block.text;
+  return heading;
 }
 
 // Show the results card only for a done Job.

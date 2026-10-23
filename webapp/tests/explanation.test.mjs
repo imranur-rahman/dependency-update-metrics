@@ -3,7 +3,13 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-import { explainComparison, explainResult, hoverExplanation, LIMITATIONS } from "../site/static/js/explanation.js";
+import {
+  explainComparison,
+  explainResult,
+  explanationBlocks,
+  hoverExplanation,
+  LIMITATIONS,
+} from "../site/static/js/explanation.js";
 
 function summaryResult(summary, { pkg = "mypkg", weighting = "disable", halfLife = null } = {}) {
   return {
@@ -158,6 +164,21 @@ test("the Limitations name the date of the OSV index when the Job carries one", 
     LIMITATIONS.filter((_, index) => index !== 1),
   );
   assert.deepEqual(explainComparison({ ...job, osv_index_date: null }).limitations, LIMITATIONS);
+});
+
+test("the blocks of the Explanation give the layout that the Webapp and the Extension draw", () => {
+  const job = {
+    comparison: { mode: "window_summary", weighting_type: "disable", half_life: null },
+    results: [summaryResult({ mttu: 0, mttr: 0 }, { pkg: "a" })],
+  };
+  assert.deepEqual(explanationBlocks(job), [
+    { kind: "heading", text: "What the results mean" },
+    { kind: "paragraph", title: "a", text: `${MTTU_ZERO} ${MTTR_ZERO}` },
+    { kind: "subheading", text: "Limitations" },
+    { kind: "list", items: LIMITATIONS },
+  ]);
+  const failed = { ...job, results: [{ ...summaryResult({}), summary: null, error: "Package not found" }] };
+  assert.deepEqual(explanationBlocks(failed), []);
 });
 
 test("a Comparison without a value has no Explanation and no Limitations", () => {
