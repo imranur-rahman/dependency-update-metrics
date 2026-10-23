@@ -70,3 +70,9 @@ test("each chart keeps its aria-label", () => {
     assert.match(canvas[0], /aria-label="[^"]*The table below holds the same values\."/);
   }
 });
+
+test("the results card shows the Explanation under the result table", () => {
+  const html = readFileSync(join(siteDir, "index.html"), "utf8");
+  const card = html.slice(html.indexOf('id="results-card"'));
+  assert.ok(card.indexOf('id="results-explanation"') > card.indexOf('id="result-table"'));
+});

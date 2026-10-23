@@ -32,6 +32,7 @@ import {
   urlWithJobId,
   JOB_EVENTS,
 } from "./comparison.js";
+import { explainComparison } from "./explanation.js";
 
 // Colors of the bar chart: slots 1 and 2 of the validated categorical palette
 // (blue, orange), so that the two series stay apart for color-blind readers.
@@ -348,6 +349,41 @@ function showCsvButton(job) {
   csvButton.hidden = false;
 }
 
+// Show the Explanation under the results: one paragraph for each package with a value,
+// then the shared Limitations list. A Job without a value shows none.
+function showExplanation(job) {
+  const box = document.getElementById("results-explanation");
+  const { packages, limitations } = job === null ? { packages: [], limitations: [] } : explainComparison(job);
+  const children = [];
+  if (packages.length > 0) {
+    const heading = document.createElement("h4");
+    heading.className = "title is-6 mb-2";
+    heading.textContent = "What the results mean";
+    children.push(heading);
+  }
+  for (const item of packages) {
+    const paragraph = document.createElement("p");
+    const title = document.createElement("strong");
+    title.textContent = `${item.title}: `;
+    paragraph.append(title, item.sentences.join(" "));
+    children.push(paragraph);
+  }
+  if (limitations.length > 0) {
+    const heading = document.createElement("p");
+    heading.className = "has-text-weight-semibold mb-1";
+    heading.textContent = "Limitations";
+    const list = document.createElement("ul");
+    for (const text of limitations) {
+      const entry = document.createElement("li");
+      entry.textContent = text;
+      list.append(entry);
+    }
+    children.push(heading, list);
+  }
+  box.replaceChildren(...children);
+  box.hidden = children.length === 0;
+}
+
 // Show the results card only for a done Job.
 function showResult(job) {
   resultsCard.hidden = job === null;
@@ -356,6 +392,7 @@ function showResult(job) {
   showReleaseCharts(job);
   showCsvButton(job);
   showResultsNote(job === null ? null : job.comparison.weighting_type);
+  showExplanation(job);
 }
 
 function downloadCsv() {
