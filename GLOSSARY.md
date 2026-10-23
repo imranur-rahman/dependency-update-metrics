@@ -1,6 +1,6 @@
 # Dependency Update Metrics
 
-This project measures how fast a package updates its direct dependencies (MTTU) and how fast it removes vulnerable dependency versions (MTTR). People use it as a command-line tool or through a hosted web version.
+This project measures how fast a package updates its direct dependencies (MTTU) and how fast it removes vulnerable dependency versions (MTTR). People use it as a command-line tool, through a hosted web version, or in VS Code.
 
 ## Parts of the project
 
@@ -16,10 +16,14 @@ _Avoid_: backend, server app
 The static web page on GitHub Pages where users submit a Comparison and see its results.
 _Avoid_: frontend, homepage, site
 
-## Web requests
+**Extension**:
+The VS Code extension that runs the Tool on the user's machine and shows the MTTU and MTTR of each dependency in the manifest of the open workspace.
+_Avoid_: plugin, add-on
+
+## Requests
 
 **Comparison**:
-One user request: 1 to 5 packages from one ecosystem, with one time window, one mode, and one weighting.
+One user request from the Webapp or the Extension: 1 to 5 packages from one ecosystem, with one time window, one mode, and one weighting.
 _Avoid_: query, batch, submission
 
 **Job**:
