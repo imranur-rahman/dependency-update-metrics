@@ -4,16 +4,17 @@
 
 ## Repository layout
 
-The repository holds the four parts that `GLOSSARY.md` defines. Each part has its own folder and its own CI workflow, and each workflow runs only when a file of its part changes.
+The repository holds the five parts that `GLOSSARY.md` defines. Each part has its own folder and its own CI workflow, and each workflow runs only when a file of its part changes.
 
 | Part | Folders | CI workflow |
 |---|---|---|
-| Tool | `dependency_metrics/`, `tests/`, `pyproject.toml`, `vendor/` | `.github/workflows/ci.yml` (also builds and publishes to PyPI on a GitHub Release, except for an `extension-v*` tag; keep the file name, because the PyPI trusted publisher names it) |
+| Tool | `dependency_metrics/`, `tests/`, `pyproject.toml`, `vendor/`, `image/` (the container image `ghcr.io/imranur-rahman/mttx`, see `image/README.md`) | `.github/workflows/ci.yml` (also builds the image on each push and PR; on a GitHub Release, except for an `extension-v*` or `action-v*` tag, publishes to PyPI and then pushes the image to GHCR; keep the file name, because the PyPI trusted publisher names it) |
 | Host | `host/` | `.github/workflows/host.yml` (also runs when `dependency_metrics/` changes, because the Host runs the Tool) |
 | Webapp | `webapp/site/` (published), `webapp/tests/`, `webapp/sample/` (the script that makes the Sample Comparison) | `.github/workflows/webapp.yml` (tests with `node --test webapp/tests/*.test.mjs`, then publishes `webapp/site/` to GitHub Pages from `main`) |
 | Extension | `extension/` | `.github/workflows/extension.yml` (also runs when `contract/`, `webapp/site/static/js/comparison.js`, or `webapp/site/static/js/explanation.js` changes; unit tests with `npm run test:unit`, then one VS Code integration test, on ubuntu, macos, and windows; a pushed tag `extension-v*` also publishes to the Marketplace and Open VSX, see `extension/README.md`) |
+| Action | `action/` (the GitHub Action; it imports the Extension core parsers and the Webapp Explanation) | `.github/workflows/github-action.yml` (also runs when `contract/`, the Extension core, the Extension fake Tool, `comparison.js`, or `explanation.js` changes; unit tests with `npm test`, an end-to-end test of the bundle on the fixture PR files, and runs of `action.yml` with the fake Tool for both targets; a pushed tag `action-v*` also copies the Action to `imranur-rahman/mttx-action`, see `action/README.md`) |
 
-`contract/examples/` holds example bodies of the Host API. The Host tests, the Webapp tests, and the Extension tests read them, so a change to the API contract fails a test on each side. A change in `contract/` runs the Host CI, the Webapp CI, and the Extension CI.
+`contract/examples/` holds example bodies of the Host API. The Host tests, the Webapp tests, the Extension tests, and the Action tests read them, so a change to the API contract fails a test on each side. A change in `contract/` runs the Host CI, the Webapp CI, the Extension CI, and the Action CI.
 
 `docs/` holds the ADRs (`docs/adr/`), the agent docs (`docs/agents/`), and the cited research that ADRs depend on (`docs/research/`). GitHub Pages does not publish `docs/`. Only the files in `webapp/site/` are public on the site.
 
@@ -54,7 +55,7 @@ These results look like bugs, but they are correct.
 - A dependency with no version constraint always resolves to the newest version, so its MTTR is close to 0.
 - With `--weighting-type disable`, TTU and TTR are sums of days. With weights, they are weighted means. These are different quantities.
 - `--per-release` builds one continuous timeline per dependency. All `dependency_frames` sit on the result of the last release.
-- Single-package mode reads `osv_database.parquet` from `--output-dir`. If the file is missing, every MTTR is 0. `--build-osv` downloads the OSV zips for npm, PyPI, and crates.io, about 260 MB in total (219 MB, 37 MB, and 3.6 MB on 2026-10-21). It reads the records directly from the zips and replaces the index in one rename. `--build-osv` without `--package` only rebuilds the index. `OSVBuilder.index_date()` returns the build date that the index file holds.
+- Single-package mode reads `osv_database.parquet` from `--output-dir`, or the file that `DEPENDENCY_METRICS_OSV_INDEX` names (the `-osv-` image sets it). If the file is missing, every MTTR is 0. `--build-osv` downloads the OSV zips for npm, PyPI, and crates.io, about 260 MB in total (219 MB, 37 MB, and 3.6 MB on 2026-10-21). It reads the records directly from the zips and replaces the index in one rename. `--build-osv` without `--package` only rebuilds the index. `OSVBuilder.index_date()` returns the build date that the index file holds.
 
 ## Cache rules
 

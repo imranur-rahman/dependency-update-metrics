@@ -1,0 +1,315 @@
+# GitHub Action CI. It also runs on a change in the Extension core parsers, the spawn helper,
+# the fake Tool, the Webapp comparison.js and explanation.js, and contract/, because the
+# Action bundles them and its tests read the contract examples.
+# A pushed tag action-v* also runs the tests and then copies the built Action to the public
+# repository imranur-rahman/mttx-action (job release). action/README.md (Releases) lists
+# the secret and the one-time setup.
+name: GitHub Action CI
+
+on:
+  push:
+    branches: [ main, develop ]
+    # GitHub does not apply the paths filter to a tag push.
+    tags: [ 'action-v*' ]
+    paths:
+      - 'action/**'
+      - 'extension/src/core/**'
+      - 'extension/src/spawnProcess.ts'
+      - 'extension/src/processToolRunner.ts'
+      - 'extension/test/fixtures/fake-tool.mjs'
+      - 'contract/**'
+      - 'webapp/site/static/js/comparison.js'
+      - 'webapp/site/static/js/explanation.js'
+      - '.github/workflows/github-action.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'action/**'
+      - 'extension/src/core/**'
+      - 'extension/src/spawnProcess.ts'
+      - 'extension/src/processToolRunner.ts'
+      - 'extension/test/fixtures/fake-tool.mjs'
+      - 'contract/**'
+      - 'webapp/site/static/js/comparison.js'
+      - 'webapp/site/static/js/explanation.js'
+      - '.github/workflows/github-action.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: action
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '24'
+        cache: npm
+        cache-dependency-path: action/package-lock.json
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Check types
+      run: npm run check-types
+
+    - name: Run unit tests
+      run: npm test
+
+    # Builds dist/index.mjs and runs it with target pull-request on the fixture PR files in
+    # action/test/fixtures/pr/, with the fake Tool and a fake GitHub REST API.
+    - name: Run the end-to-end tests
+      run: npm run test:e2e
+
+  # Runs the Action through action.yml (uses: ./action) with target packages, with the fake Tool
+  # of the Extension in place of the Docker image (MTTX_ACTION_TOOL).
+  run-action:
+    needs: test
+    runs-on: ubuntu-latest
+    env:
+      MTTX_ACTION_TOOL: ${{ github.workspace }}/extension/test/fixtures/fake-tool.mjs
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { ecosystem: npm, package: express }
+          - { ecosystem: pypi, package: requests }
+          - { ecosystem: cargo, package: serde }
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '24'
+        cache: npm
+        cache-dependency-path: action/package-lock.json
+
+    - name: Build the Action
+      working-directory: action
+      run: npm ci && npm run build
+
+    - name: Run the Action
+      id: mttx
+      uses: ./action
+      with:
+        packages: ${{ matrix.package }}, left-pad, nope
+        ecosystem: ${{ matrix.ecosystem }}
+        max-mttr-days: '600'
+        osv-index: fresh
+
+    - name: Check the outputs and the badge files
+      env:
+        RESULTS: ${{ steps.mttx.outputs.results }}
+        MTTU: ${{ steps.mttx.outputs.mttu }}
+        OVER: ${{ steps.mttx.outputs.over-threshold }}
+      run: |
+        set -euo pipefail
+        test "$MTTU" = "579.00"
+        test "$OVER" = "false"
+        echo "$RESULTS" | jq -e '[.[].status] == ["ok", "no_deps", "error"]'
+        jq -e '.message == "579.00 days" and .color == "brightgreen"' "mttx-badges/${{ matrix.ecosystem }}-${{ matrix.package }}-mttr.json"
+        jq -e '.message == "no dependencies"' "mttx-badges/${{ matrix.ecosystem }}-left-pad-mttu.json"
+
+    - name: Run the Action with a threshold that a value exceeds
+      id: over
+      continue-on-error: true
+      uses: ./action
+      with:
+        packages: ${{ matrix.package }}
+        ecosystem: ${{ matrix.ecosystem }}
+        max-mttr-days: '30'
+
+    - name: Check that the threshold failed the step
+      env:
+        OUTCOME: ${{ steps.over.outcome }}
+        OVER: ${{ steps.over.outputs.over-threshold }}
+      run: |
+        test "$OUTCOME" = "failure"
+        test "$OVER" = "true"
+
+  # Runs the Action through action.yml (uses: ./action) with target pull-request, with the
+  # fake Tool, a fake pull request event, and the fake GitHub REST API of the e2e test. Two
+  # commits in the checkout copy the fixture PR files of action/test/fixtures/pr/ (base, then
+  # push1, then push2) to the root, so that git finds the added dependencies.
+  run-action-pull-request:
+    needs: test
+    runs-on: ubuntu-latest
+    env:
+      MTTX_ACTION_TOOL: ${{ github.workspace }}/extension/test/fixtures/fake-tool.mjs
+      MTTX_ACTION_EVENT_PATH: ${{ github.workspace }}/../mttx-event.json
+      MTTX_ACTION_API_URL: http://127.0.0.1:8787
+      FIXTURES: action/test/fixtures/pr
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '24'
+        cache: npm
+        cache-dependency-path: action/package-lock.json
+
+    - name: Build the Action
+      working-directory: action
+      run: npm ci && npm run build
+
+    - name: Start the fake GitHub REST API
+      working-directory: action
+      run: |
+        nohup node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON test/e2e/fakeGitHubServer.ts 8787 > "$RUNNER_TEMP/fake-github.log" 2>&1 &
+        for _ in $(seq 50); do
+          curl -s -o /dev/null http://127.0.0.1:8787/ && exit 0
+          sleep 0.2
+        done
+        cat "$RUNNER_TEMP/fake-github.log"
+        exit 1
+
+    - name: Make the base and the first push of the pull request
+      run: |
+        set -euo pipefail
+        git config user.name test
+        git config user.email test@example.test
+        cp -r "$FIXTURES/base/." .
+        git add package.json pyproject.toml Cargo.toml
+        git commit -q -m base
+        base=$(git rev-parse HEAD)
+        cp -r "$FIXTURES/push1/." .
+        git add package.json pyproject.toml Cargo.toml
+        git commit -q -m "push 1"
+        echo "BASE_SHA=$base" >> "$GITHUB_ENV"
+        jq -n --arg base "$base" --arg head "$(git rev-parse HEAD)" \
+          '{pull_request: {number: 1, base: {sha: $base}, head: {sha: $head}}}' > "$MTTX_ACTION_EVENT_PATH"
+
+    - name: Run the Action on the first push
+      id: first
+      uses: ./action
+      with:
+        target: pull-request
+        github-token: test-token
+
+    - name: Check the outputs and the comment
+      env:
+        ADDED: ${{ steps.first.outputs.added }}
+        COMMENT_URL: ${{ steps.first.outputs.comment-url }}
+      run: |
+        set -euo pipefail
+        echo "$ADDED" | jq -e '[.[] | "\(.ecosystem):\(.name)"] == ["cargo:serde_json", "cargo:nope", "npm:koa", "npm:left-pad", "pypi:rich"]'
+        test "$COMMENT_URL" = "https://github.test/c2"
+        comments=$(curl -sf -H "Authorization: Bearer test-token" "$MTTX_ACTION_API_URL/repos/o/r/issues/1/comments?page=1")
+        echo "$comments" | jq -e 'length == 2 and .[0].body == "A comment of a person"'
+        echo "$comments" | jq -e '.[1].body | startswith("<!-- mttx-action -->") and contains("| `koa` | npm | 579.00 | 579.00 | 1 | `package.json` |")'
+
+    - name: Make the second push of the pull request
+      run: |
+        set -euo pipefail
+        cp -r "$FIXTURES/push2/." .
+        git add package.json
+        git commit -q -m "push 2"
+        jq -n --arg base "$BASE_SHA" --arg head "$(git rev-parse HEAD)" \
+          '{pull_request: {number: 1, base: {sha: $base}, head: {sha: $head}}}' > "$MTTX_ACTION_EVENT_PATH"
+
+    - name: Run the Action on the second push, with a threshold that a value exceeds
+      id: second
+      continue-on-error: true
+      uses: ./action
+      with:
+        target: pull-request
+        github-token: test-token
+        max-mttu-days: '100'
+
+    - name: Check that the threshold failed the step and that the same comment changed
+      env:
+        OUTCOME: ${{ steps.second.outcome }}
+        OVER: ${{ steps.second.outputs.over-threshold }}
+      run: |
+        set -euo pipefail
+        test "$OUTCOME" = "failure"
+        test "$OVER" = "true"
+        comments=$(curl -sf -H "Authorization: Bearer test-token" "$MTTX_ACTION_API_URL/repos/o/r/issues/1/comments?page=1")
+        echo "$comments" | jq -e 'length == 2'
+        echo "$comments" | jq -e '.[1].body | contains("`chalk`") and (contains("`left-pad`") | not)'
+
+  # Copies the built Action to imranur-rahman/mttx-action, tags it v<version>, and moves the
+  # major tag. Runs only for a pushed tag action-v*. Without the secret MTTX_ACTION_TOKEN the
+  # job skips the copy with a notice.
+  release:
+    needs: [ test, run-action, run-action-pull-request ]
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/action-v')
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: action
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '24'
+        cache: npm
+        cache-dependency-path: action/package-lock.json
+
+    - name: Install dependencies
+      run: npm ci
+
+    # Stops with an error annotation if the tag does not match package.json or image.json
+    # pins no image digest. A missing token gives a notice and publish=false.
+    - name: Check the tag, the image, and the credential
+      id: check
+      run: node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/releaseCheck.ts
+      env:
+        MTTX_ACTION_TOKEN: ${{ secrets.MTTX_ACTION_TOKEN }}
+
+    - name: Build the Action
+      if: steps.check.outputs.publish == 'true'
+      run: npm run build
+
+    - name: Copy the Action to imranur-rahman/mttx-action
+      if: steps.check.outputs.publish == 'true'
+      env:
+        TOKEN: ${{ secrets.MTTX_ACTION_TOKEN }}
+        TAG: ${{ steps.check.outputs.tag }}
+        MAJOR: ${{ steps.check.outputs.major }}
+        SOURCE_SHA: ${{ github.sha }}
+      run: |
+        set -euo pipefail
+        target="$RUNNER_TEMP/mttx-action"
+        git clone "https://x-access-token:${TOKEN}@github.com/imranur-rahman/mttx-action.git" "$target"
+        find "$target" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+        mkdir -p "$target/dist"
+        cp action.yml README.md "$target/"
+        cp ../LICENSE "$target/"
+        cp dist/index.mjs "$target/dist/"
+        cd "$target"
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add -A
+        git commit --allow-empty -m "Release $TAG" -m "From imranur-rahman/dependency-update-metrics@$SOURCE_SHA"
+        git tag "$TAG"
+        git tag -f "$MAJOR"
+        git push origin HEAD
+        git push origin "$TAG"
+        git push -f origin "$MAJOR"
+
+    # The Marketplace lists a release only after a person publishes it on the release page
+    # (action/README.md, One-time setup).
+    - name: Create the release in imranur-rahman/mttx-action
+      if: steps.check.outputs.publish == 'true'
+      env:
+        GH_TOKEN: ${{ secrets.MTTX_ACTION_TOKEN }}
+        TAG: ${{ steps.check.outputs.tag }}
+      run: |
+        gh release create "$TAG" --repo imranur-rahman/mttx-action --title "$TAG" \
+          --notes "MTTX Action $TAG. The image digest is in action/image.json of imranur-rahman/dependency-update-metrics at the tag action-$TAG."

@@ -27,6 +27,20 @@ cd dependency-update-metrics
 pip install -e .
 ```
 
+### With Docker (exact reruns)
+
+The container image `ghcr.io/imranur-rahman/mttx` holds the Tool with pinned dependencies and the patched pip, so a rerun years later uses the same environment:
+
+```bash
+docker run --rm -v "$PWD:/data" ghcr.io/imranur-rahman/mttx:<version>-osv-<YYYY-MM-DD> \
+  --package express --ecosystem npm --start-date 2024-01-01 --end-date 2025-01-01
+```
+
+- `mttx:<version>` (and `latest`) has no OSV index. MTTR needs `--build-osv` once, as with pip.
+- `mttx:<version>-osv-<YYYY-MM-DD>` holds the OSV index built on that date, so MTTR is the same in each rerun.
+
+The results and the cache go to `/data`. For exact reruns, cite the image digest (`ghcr.io/imranur-rahman/mttx@sha256:…`), not the tag. See [image/README.md](image/README.md).
+
 ## Usage
 
 ### As a command-line tool
@@ -80,6 +94,18 @@ Accepted ecosystem values are `npm`, `pypi`, `cargo`, and `crates.io`; `crates.i
 If `end_date` is omitted, the CLI `--end-date` value is used; when `--end-date` is also omitted, it defaults to today.
 Extra columns are allowed; duplicates are removed by `ecosystem, package_name, end_date`.
 Bulk mode computes metrics per package using the latest dependency set.
+
+### In GitHub Actions
+
+The MTTX Action runs the Tool image in a workflow. It reports the MTTU and MTTR of chosen packages (with badges and thresholds), or comments on a pull request with the MTTU and MTTR of the dependencies that it adds. See [`action/README.md`](action/README.md).
+
+```yaml
+- uses: imranur-rahman/mttx-action@v1
+  with:
+    packages: express, koa
+    ecosystem: npm
+    max-mttr-days: 30
+```
 
 ### As a Python module
 

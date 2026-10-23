@@ -1,0 +1,3 @@
+# Build tools for the editable install of the Tool in the image (pip install --no-build-isolation).
+setuptools
+wheel

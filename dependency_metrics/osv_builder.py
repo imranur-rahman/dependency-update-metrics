@@ -37,6 +37,17 @@ FetchZip = Callable[[str, Path], None]
 # Parquet metadata key that holds the UTC build date of the index (ISO format).
 _INDEX_DATE_KEY = b"osv_index_date"
 
+# Environment value that names the index file. The "-osv-" container image sets it,
+# because a mount on the output dir (/data) would hide an index inside that dir.
+OSV_INDEX_ENV = "DEPENDENCY_METRICS_OSV_INDEX"
+
+
+def osv_index_file(output_dir: Path) -> Path:
+    """Return the OSV index file: the file that ``OSV_INDEX_ENV`` names, if it is set,
+    else ``<output_dir>/osv_database.parquet``."""
+    override = os.environ.get(OSV_INDEX_ENV)
+    return Path(override) if override else Path(output_dir) / "osv_database.parquet"
+
 
 def _normalize_severity(raw: str) -> str:
     """Map raw severity string to normalized label.
@@ -172,7 +183,7 @@ class OSVBuilder:
             clock: Returns the current UTC time; the build records its date.
         """
         self.output_dir = Path(output_dir)
-        self.osv_db_file = self.output_dir / "osv_database.parquet"
+        self.osv_db_file = osv_index_file(self.output_dir)
         self._fetch_zip: FetchZip = fetch_zip or download_file
         self.ecosystems = tuple(ecosystems)
         self._clock: Callable[[], datetime] = clock or (lambda: datetime.now(timezone.utc))
@@ -255,10 +266,11 @@ class OSVBuilder:
         if self.osv_db_file.exists() and not force:
             return self._load_existing()
 
-        self.output_dir.mkdir(parents=True, exist_ok=True)
-        # The zips and the new index go in a temporary folder inside output_dir,
+        index_dir = self.osv_db_file.parent
+        index_dir.mkdir(parents=True, exist_ok=True)
+        # The zips and the new index go in a temporary folder next to the index,
         # so that the final os.replace is a rename on the same file system.
-        with tempfile.TemporaryDirectory(prefix=".osv-build-", dir=self.output_dir) as tmp:
+        with tempfile.TemporaryDirectory(prefix=".osv-build-", dir=index_dir) as tmp:
             tmp_dir = Path(tmp)
             zip_paths: List[Path] = []
             for eco, url in zip(self.ecosystems, self.zip_urls()):

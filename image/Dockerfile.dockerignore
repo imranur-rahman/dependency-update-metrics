@@ -1,0 +1,9 @@
+# The build context is the repository root. Send only the files that image/Dockerfile copies.
+*
+!image/requirements.lock
+!pyproject.toml
+!README.md
+!LICENSE
+!dependency_metrics/
+!vendor/pip/src/
+**/__pycache__
