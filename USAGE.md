@@ -482,13 +482,13 @@ for dep_name, dep_df in results['dependency_data'].items():
 
 ## Contributing
 
-Contributions are welcome! Please see CONTRIBUTING.md for guidelines.
+Contributions are welcome! See AGENTS.md for the setup and the checks, and CODING_STANDARDS.md for the rules.
 
 ## Support
 
 - GitHub Issues: https://github.com/imranur-rahman/dependency-update-metrics/issues
 - Documentation: See README.md and this guide
-- Examples: Check the `examples/` directory
+- Examples: see the commands in this guide and in README.md
 
 ## License
 

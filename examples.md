@@ -1,1 +1,0 @@
-`dependency-metrics --ecosystem npm --package random-access-application --end-date 2024-12-31 --build-osv --get-worksheets`
