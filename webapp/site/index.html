@@ -367,11 +367,13 @@
             <button class="button is-medium" id="cancel-job" type="button" hidden>Cancel</button>
           </div>
         </div>
-        <!-- The status of the Job. webapp.js adds is-error for a failed or refused Job. -->
+        <!-- The status of the Job while it waits or runs. -->
         <div class="tryit-status" id="job-status-box" hidden>
           <p id="job-status" role="status" aria-live="polite"></p>
           <progress id="job-progress" class="progress is-small is-link mt-2" aria-label="Job progress" hidden></progress>
         </div>
+        <!-- A failed or refused Job. webapp.js puts a notification (role="alert") here. -->
+        <div class="mt-4" id="job-notice" hidden></div>
         <p class="is-size-7 mt-4 has-text-grey" id="privacy-note">
           Privacy: the Host stores the package names that you submit, so that it can show and reuse the
           results. For the rate limits, it stores a hash of your IP address for one hour, and it never
@@ -382,6 +384,8 @@
       <div class="tryit-card mt-5" id="results-card" hidden>
         <h3 class="title is-4 mb-0">Results</h3>
         <p id="results-note" class="is-size-7 mt-2 has-text-grey" hidden></p>
+        <!-- A done Job in which a package failed. webapp.js puts a notification (role="alert") here. -->
+        <div class="mt-4" id="results-notice" hidden></div>
         <!-- webapp.js sets the height of each chart box from CHART_HEIGHTS in comparison.js. -->
         <figure class="mt-4" id="result-chart-figure" hidden>
           <div class="chart-box" data-chart="bar">

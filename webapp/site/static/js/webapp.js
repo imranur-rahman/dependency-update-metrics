@@ -12,7 +12,6 @@ import {
   resultsNote,
   packageErrors,
   dateErrors,
-  submitErrorMessage,
   botCheckError,
   canAddPackage,
   withComparison,
@@ -32,6 +31,14 @@ import {
   urlWithJobId,
   JOB_EVENTS,
 } from "./comparison.js";
+import {
+  submitErrorNotice,
+  connectionErrorNotice,
+  jobErrorNotice,
+  doneJobNotice,
+  errorCell,
+} from "./errorNotice.js";
+import { showNotification, clearNotification } from "./notification.js";
 
 // Colors of the bar chart: slots 1 and 2 of the validated categorical palette
 // (blue, orange), so that the two series stay apart for color-blind readers.
@@ -46,6 +53,8 @@ const section = document.getElementById("try-it");
 const form = document.getElementById("comparison-form");
 const statusLine = document.getElementById("job-status");
 const statusBox = document.getElementById("job-status-box");
+const jobNotice = document.getElementById("job-notice");
+const resultsNotice = document.getElementById("results-notice");
 const resultsCard = document.getElementById("results-card");
 const progressBar = document.getElementById("job-progress");
 const table = document.getElementById("result-table");
@@ -225,11 +234,19 @@ function showComparisonInUrl(comparison) {
 
 // --- Results ---
 
-// Show the status of the Job. An error (a failed or refused Job) shows in red.
-function showStatus(text, isError = false) {
+// Show the status of the Job while it waits or runs.
+function showStatus(text) {
   statusLine.textContent = text;
   statusBox.hidden = !text;
-  statusBox.classList.toggle("is-error", isError);
+}
+
+// Show an error (a failed or refused Job) in a red notification in place of the status, and
+// scroll to it, so that the user does not miss it. notice comes from errorNotice.js.
+function showError(notice) {
+  showStatus("");
+  showProgress(null);
+  cancelButton.hidden = true;
+  showNotification(jobNotice, notice);
 }
 
 // Show a bar with no value while the Job waits, and the share of packages that are done
@@ -249,9 +266,31 @@ function showProgress(progress) {
 function showJob(job) {
   currentJobId = job.job_id;
   cancelButton.hidden = !canCancel(job);
-  showStatus(describeJob(job), job.state === "error");
+  if (job.state === "error") {
+    showError(jobErrorNotice(job));
+    return;
+  }
+  clearNotification(jobNotice);
+  showStatus(describeJob(job));
   showProgress(progressOf(job));
   if (job.state === "done") showResult(job);
+}
+
+// Show the text of an error cell in red, with the next step under it (errorCell). A cell
+// without an error, or with the no-dependencies text, keeps its plain text.
+function fillErrorCell(td, text) {
+  const cell = errorCell(text);
+  if (cell === null) {
+    td.textContent = String(text);
+    return;
+  }
+  const message = document.createElement("span");
+  message.className = "has-text-danger has-text-weight-semibold";
+  message.textContent = cell.text;
+  const nextStep = document.createElement("span");
+  nextStep.className = "is-block is-size-7";
+  nextStep.textContent = cell.nextStep;
+  td.replaceChildren(message, nextStep);
 }
 
 function showRows(rows, columns) {
@@ -267,7 +306,8 @@ function showRows(rows, columns) {
       const tr = document.createElement("tr");
       for (const [key] of columns) {
         const td = document.createElement("td");
-        td.textContent = String(row[key]);
+        if (key === "error") fillErrorCell(td, row[key]);
+        else td.textContent = String(row[key]);
         tr.append(td);
       }
       return tr;
@@ -356,6 +396,15 @@ function showResult(job) {
   showReleaseCharts(job);
   showCsvButton(job);
   showResultsNote(job === null ? null : job.comparison.weighting_type);
+  showPackageFailures(job);
+}
+
+// Show a red notification above the results of a done Job in which a package failed. The
+// table shows each error next to its package (fillErrorCell).
+function showPackageFailures(job) {
+  const notice = job === null ? null : doneJobNotice(job);
+  if (notice === null) clearNotification(resultsNotice);
+  else showNotification(resultsNotice, notice);
 }
 
 function downloadCsv() {
@@ -371,7 +420,13 @@ function downloadCsv() {
 
 async function getJob(jobId) {
   const response = await fetch(`${hostUrl}/api/jobs/${encodeURIComponent(jobId)}`);
-  if (!response.ok) throw new Error(`GET returned ${response.status}`);
+  if (!response.ok) {
+    // The Host gives a user message (for example "Job not found"); the error carries its notice.
+    const refusal = await response.json().catch(() => null);
+    throw Object.assign(new Error(`GET returned ${response.status}`), {
+      notice: submitErrorNotice(refusal),
+    });
+  }
   return response.json();
 }
 
@@ -431,9 +486,7 @@ async function resumeJobFromUrl() {
     if (!isFinished(job)) await followJob(jobId);
   } catch (error) {
     console.error(error);
-    showProgress(null);
-    cancelButton.hidden = true;
-    showStatus("Something went wrong. Try again later.", true);
+    showError(error.notice ?? connectionErrorNotice());
   } finally {
     submitButton.disabled = false;
   }
@@ -469,6 +522,7 @@ form.addEventListener("submit", async (event) => {
   showComparisonInUrl(comparison);
   submitButton.disabled = true;
   showResult(null);
+  clearNotification(jobNotice);
   showStatus("Sending");
   try {
     const response = await fetch(`${hostUrl}/api/jobs`, {
@@ -480,8 +534,7 @@ form.addEventListener("submit", async (event) => {
       // The Host gives a user message for a refused submit (for example, a rate limit).
       const refusal = await response.json().catch(() => null);
       console.error(`POST returned ${response.status}`, refusal);
-      showProgress(null);
-      showStatus(submitErrorMessage(refusal), true);
+      showError(submitErrorNotice(refusal));
       return;
     }
     const { job_id: jobId } = await response.json();
@@ -489,9 +542,7 @@ form.addEventListener("submit", async (event) => {
     await followJob(jobId);
   } catch (error) {
     console.error(error);
-    showProgress(null);
-    cancelButton.hidden = true;
-    showStatus("Something went wrong. Try again later.", true);
+    showError(connectionErrorNotice());
   } finally {
     resetBotCheck();
     submitButton.disabled = false;
