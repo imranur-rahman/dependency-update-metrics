@@ -21,11 +21,13 @@ import {
 import {
   barChartJob,
   comparisonRows,
+  explanationContent,
   noDependenciesNotes,
   PACKAGE_COLORS,
   PACKAGE_POINT_STYLES,
   SERIES_COLORS,
   type ComparisonJob,
+  type ExplanationContent,
   type PanelMessage,
   type WebviewMessage,
 } from "../core/comparison.ts";
@@ -78,8 +80,28 @@ function render(): void {
   // A package without dependencies has no bar; a note under the chart gives its text.
   const notes = perRelease ? [] : noDependenciesNotes(job);
   for (const note of notes) app.append(element("p", note, "note"));
+  const explanation = drawExplanation(job);
   const rows = drawTable(job);
-  vscode.postMessage({ type: "rendered", report: { charts: drawn, notes, rows, violations: [...violations] } });
+  vscode.postMessage({
+    type: "rendered",
+    report: { charts: drawn, notes, explanation, rows, violations: [...violations] },
+  });
+}
+
+// Add the Explanation under the charts: one paragraph for each package with a value, then
+// the shared Limitations list. A Job without a value adds nothing.
+function drawExplanation(job: ComparisonJob): ExplanationContent {
+  const content = explanationContent(job);
+  if (content.paragraphs.length === 0) return content;
+  const box = element("section", "", "explanation");
+  box.append(element("h3", "What the results mean"));
+  for (const paragraph of content.paragraphs) box.append(element("p", paragraph));
+  box.append(element("p", "Limitations", "note"));
+  const list = element("ul", "", "note");
+  for (const text of content.limitations) list.append(element("li", text));
+  box.append(list);
+  app.append(box);
+  return content;
 }
 
 // Chart.js draws on a canvas, so it does not see the CSS variables of the theme.
