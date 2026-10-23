@@ -33,27 +33,30 @@ By default, the values cover the last 2 years. The Extension reuses a value for 
 
 Open the Command Palette and type "MTTX":
 
-| Command | What it does |
+| Command (ID) | What it does |
 |---|---|
-| MTTX: Analyze dependencies | Starts the analysis of the open manifest. Use it when the automatic runs are off. |
-| MTTX: Compare packages | Asks for 1 to 5 package names of one ecosystem and opens a Comparison with the same charts as the [Webapp](https://imranur-rahman.github.io/dependency-update-metrics/). |
-| MTTX: Rebuild OSV index | Downloads the OSV data again, so that MTTR uses recent vulnerability data. |
-| MTTX: Open Settings | Opens the Settings editor filtered to MTTX. |
+| MTTX: Analyze dependencies (`mttx.analyzeDependencies`) | Starts the analysis of the open manifest. Use it when the automatic runs are off. |
+| MTTX: Compare packages (`mttx.compare`) | Asks for 1 to 5 package names of one ecosystem and opens a Comparison with the same charts as the [Webapp](https://imranur-rahman.github.io/dependency-update-metrics/). The Comparison shares the queue and the one-day cache of the hints. |
+| MTTX: Rebuild OSV index (`mttx.rebuildOsvIndex`) | Downloads the OSV data again, so that MTTR uses recent vulnerability data. |
+| MTTX: Open Settings (`mttx.openSettings`) | Opens the Settings editor filtered to MTTX. |
 
 ## Settings
 
 All settings are under `mttx.` in the Settings editor. Settings Sync carries them to your other machines, except the settings that hold a path on one machine.
 
-| Setting | Default |
-|---|---|
-| The data source: deps.dev, or the native registries of the ecosystem | deps.dev |
-| The window in years, or a start date and an end date | 2 years |
-| The weighting type and the half-life | no weighting |
-| The path of the Tool (`mttx.toolPath`) | empty: the Extension installs the Tool |
-| The cache folder and the size limit of the cache | the global storage of the Extension |
-| The package timeout | |
-| The number of parallel Tool processes | 2 |
-| Automatic runs | on |
+| Setting | What it sets | Default |
+|---|---|---|
+| `mttx.dataSource` | The data source: `depsdev`, or `native` (the registries of the ecosystem) | `depsdev` |
+| `mttx.windowYears` | The window in years | 2 |
+| `mttx.startDate`, `mttx.endDate` | The start date and the end date of the window | empty |
+| `mttx.weightingType` | The weighting type: `disable`, `linear`, `exponential`, or `inverse` | `disable` |
+| `mttx.halfLife` | The half-life of the exponential weighting | empty |
+| `mttx.toolPath` | The path of the Tool | empty: the Extension installs the Tool |
+| `mttx.cacheFolder` | The cache folder | empty: the global storage of the Extension |
+| `mttx.cacheSizeLimitGb` | The size limit of the cache, in GB | 5 |
+| `mttx.packageTimeoutSeconds` | The package timeout, in seconds | 600 |
+| `mttx.parallelRuns` | The most Tool processes that run at a time | 2 |
+| `mttx.automaticRuns` | Run the Tool when you open a manifest | on |
 
 The hints update after you change a setting.
 
