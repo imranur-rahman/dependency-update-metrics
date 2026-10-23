@@ -61,7 +61,7 @@ inputs:
     required: false
     default: ''
   osv-index:
-    description: "image: use the OSV index inside the image (no download). fresh: build the OSV index of today (about 260 MB download), with actions/cache for the day."
+    description: "image: use the OSV index inside the image (no download). fresh: build the OSV index of today, with actions/cache for the day. AGENTS.md of imranur-rahman/dependency-update-metrics gives the download size."
     required: false
     default: 'image'
   badge-dir:

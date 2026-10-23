@@ -121,7 +121,7 @@ The inputs `data-source`, `window-years`, `start-date`, `end-date`, `weighting-t
 | `parallel-runs` | `2` | The most Tool runs at a time (1 to 16). |
 | `max-mttu-days` | | The step fails when the MTTU of a package is more than this number of days. Empty: no limit. |
 | `max-mttr-days` | | The step fails when the MTTR of a package is more than this number of days. Empty: no limit. |
-| `osv-index` | `image` | `image`: use the OSV index inside the image, so that the run downloads no OSV data. `fresh`: build the OSV index of today (about 260 MB download). `actions/cache` keeps the index for the day. |
+| `osv-index` | `image` | `image`: use the OSV index inside the image, so that the run downloads no OSV data. `fresh`: build the OSV index of today. [AGENTS.md](https://github.com/imranur-rahman/dependency-update-metrics/blob/main/AGENTS.md) gives the download size. `actions/cache` keeps the index for the day. |
 | `badge-dir` | `mttx-badges` | Target packages: the folder of the badge files, relative to the workspace. |
 | `github-token` | `${{ github.token }}` | Target pull-request: the token that writes the comment. |
 

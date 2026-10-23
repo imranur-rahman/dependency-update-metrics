@@ -126,7 +126,7 @@ async function prepareOsvIndex(io: ActionIO, config: ActionConfig): Promise<stri
   let state = parseOsvIndexDate((await io.tool(osvIndexDateArgs(io.outputDir))).stdout);
   const today = formatDate(io.today);
   if (config.osvIndex === "fresh" && !(state?.kind === "built" && state.date === today)) {
-    io.info("Building the OSV index of today (about 260 MB download)");
+    io.info("Building the OSV index of today. AGENTS.md of imranur-rahman/dependency-update-metrics gives the download size.");
     const build = await io.tool(buildOsvArgs(io.outputDir));
     if (build.exitCode !== 0) io.warning(`The OSV index build failed: ${lastLine(build)}`);
     state = parseOsvIndexDate((await io.tool(osvIndexDateArgs(io.outputDir))).stdout);
