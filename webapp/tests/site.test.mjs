@@ -84,7 +84,7 @@ test("each chart keeps its aria-label", () => {
 
 test("the page shows errors in in-page notifications with role=\"alert\", never window.alert()", () => {
   const html = readFileSync(join(siteDir, "index.html"), "utf8");
-  for (const id of ["job-notice", "results-notice"]) {
+  for (const id of ["job-notice", "results-notice", "package-limit"]) {
     assert.match(html, new RegExp(`<div[^>]*id="${id}"`), `the container ${id} is missing`);
   }
   const jsDir = join(siteDir, "static", "js");
