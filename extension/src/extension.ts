@@ -8,9 +8,11 @@ import * as vscode from "vscode";
 import { hintText, hoverMarkdown, type HintContext } from "./core/display.ts";
 import { parseManifest } from "./core/manifest.ts";
 import { ResultStore } from "./core/resultStore.ts";
-import { windowStartDate } from "./core/tool.ts";
+import { cachePruneArgs, toolOutputDir, toolRequest } from "./core/settings.ts";
+import type { ToolRequest, ToolRunner } from "./core/tool.ts";
 import { OsvIndex, REBUILD_COMMAND } from "./osvIndex.ts";
-import { ProcessToolRunner, toolCommand } from "./processToolRunner.ts";
+import { ProcessToolRunner, pruneToolCache, toolCommand } from "./processToolRunner.ts";
+import { readSettings } from "./settings.ts";
 
 // `scheme: "file"` skips untitled documents and Git diffs. A filter with only a pattern
 // matches any language. #28 adds pyproject.toml and Cargo.toml.
@@ -81,25 +83,39 @@ export function activate(context: vscode.ExtensionContext): void {
   const outputDir = join(context.globalStorageUri.fsPath, "tool-output");
   mkdirSync(outputDir, { recursive: true });
 
+  const command = () => toolCommand(vscode.workspace.getConfiguration("mttx").get<string>("toolPath", ""));
   const makeStore = () => {
-    const toolPath = vscode.workspace.getConfiguration("mttx").get<string>("toolPath", "");
-    const runner = new ProcessToolRunner(toolCommand(toolPath));
-    return new ResultStore(runner, (key) => ({
-      ecosystem: key.ecosystem,
-      packageName: key.name,
-      startDate: windowStartDate(new Date()),
-      outputDir,
-    }));
+    const parsed = readSettings();
+    if (!parsed.ok) {
+      // Each hint shows the message, and the store never starts the Tool.
+      void vscode.window.showWarningMessage(`MTTX: ${parsed.message}`);
+      const failed: ToolRunner = { run: async () => ({ kind: "failed", message: parsed.message }) };
+      return new ResultStore(failed, () => ({}) as ToolRequest);
+    }
+    return new ResultStore(new ProcessToolRunner(command()), (key) =>
+      toolRequest(key, parsed.settings, new Date(), outputDir),
+    );
   };
-  // The OSV index (#30): without it, the hints show "MTTR needs the OSV index".
+  // The OSV index (#30) is in the Tool output dir. Without it, MTTR "needs the OSV index".
   const osvIndex = new OsvIndex(
     context,
-    outputDir,
-    () => toolCommand(vscode.workspace.getConfiguration("mttx").get<string>("toolPath", "")),
+    () => {
+      const parsed = readSettings();
+      return parsed.ok ? toolOutputDir(parsed.settings, outputDir) : outputDir;
+    },
+    command,
     (rebuilt) => (rebuilt ? provider.reset() : provider.redraw()),
   );
   const provider = new HintProvider(makeStore, () => ({ osvIndex: osvIndex.available }));
   void osvIndex.start();
+
+  // The Tool prunes its cache only in a run of its own, so the Extension prunes it at the
+  // start and after a change to the cache settings.
+  const pruneCache = () => {
+    const parsed = readSettings();
+    if (parsed.ok) void pruneToolCache(command(), cachePruneArgs(parsed.settings, outputDir));
+  };
+  pruneCache();
 
   context.subscriptions.push(
     vscode.commands.registerCommand(REBUILD_COMMAND, () => osvIndex.rebuild()),
@@ -108,7 +124,16 @@ export function activate(context: vscode.ExtensionContext): void {
     vscode.languages.registerHoverProvider(MANIFESTS, provider),
     vscode.workspace.onDidChangeConfiguration((event) => {
       if (event.affectsConfiguration("mttx")) provider.reset();
+      if (event.affectsConfiguration("mttx.cacheFolder") || event.affectsConfiguration("mttx.cacheSizeLimitGb")) {
+        pruneCache();
+      }
+      if (event.affectsConfiguration("mttx.cacheFolder") || event.affectsConfiguration("mttx.toolPath")) {
+        void osvIndex.start();
+      }
     }),
+    vscode.commands.registerCommand("mttx.openSettings", () =>
+      vscode.commands.executeCommand("workbench.action.openSettings", "@ext:imranur-rahman.mttx"),
+    ),
   );
 }
 

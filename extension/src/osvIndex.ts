@@ -22,7 +22,8 @@ export class OsvIndex {
   state: OsvIndexState | undefined;
   private building: Promise<void> | undefined;
   private readonly context: vscode.ExtensionContext;
-  private readonly outputDir: string;
+  // The Tool output dir (`mttx.cacheFolder` or the default), read on each use.
+  private readonly outputDir: () => string;
   private readonly command: () => ToolCommand;
   // Called when the state changes. `rebuilt` is true after a build, so that the hints run
   // the Tool again and get the MTTR values.
@@ -30,7 +31,7 @@ export class OsvIndex {
 
   constructor(
     context: vscode.ExtensionContext,
-    outputDir: string,
+    outputDir: () => string,
     command: () => ToolCommand,
     onDidChange: (rebuilt: boolean) => void,
   ) {
@@ -76,7 +77,7 @@ export class OsvIndex {
         token.onCancellationRequested(() => abort.abort());
         return buildOsvIndex(
           this.command(),
-          this.outputDir,
+          this.outputDir(),
           (line) => progress.report({ message: line }),
           abort.signal,
         );
@@ -91,7 +92,7 @@ export class OsvIndex {
   }
 
   private async refresh(rebuilt = false): Promise<void> {
-    this.state = await readOsvIndex(this.command(), this.outputDir);
+    this.state = await readOsvIndex(this.command(), this.outputDir());
     this.onDidChange(rebuilt);
   }
 }
