@@ -1,37 +1,17 @@
-// Tests for the Tool request and the Tool output rules of the core module (src/core/tool.ts).
+// Tests for the window and the Tool output rules of the core module (src/core/tool.ts).
+// test/unit/settings.test.ts tests the Tool arguments that the settings make.
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
-import { toolArgs, windowStartDate, parseToolOutput } from "../../src/core/tool.ts";
+import { windowStartDate, parseToolOutput } from "../../src/core/tool.ts";
 
 const EXAMPLES = join(import.meta.dirname, "..", "..", "..", "contract", "examples");
 
 function exampleResult(name: string, index = 0): unknown {
   return JSON.parse(readFileSync(join(EXAMPLES, name), "utf8")).results[index];
 }
-
-test("the Tool runs for one npm package with deps.dev, a start date, and JSON output", () => {
-  const args = toolArgs({
-    ecosystem: "npm",
-    packageName: "@types/node",
-    startDate: "2024-10-22",
-    outputDir: "/storage/tool-output",
-  });
-  assert.deepEqual(args, [
-    "--ecosystem",
-    "npm",
-    "--package",
-    "@types/node",
-    "--json",
-    "--depsdev",
-    "--start-date",
-    "2024-10-22",
-    "--output-dir",
-    "/storage/tool-output",
-  ]);
-});
 
 test("the window starts 2 years before today", () => {
   assert.equal(windowStartDate(new Date("2026-10-22T23:30:00")), "2024-10-22");
