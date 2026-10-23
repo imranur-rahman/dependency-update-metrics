@@ -6,7 +6,7 @@
 import { hasNoDependencies, noDependenciesText, type ToolResult } from "./display.ts";
 import type { Ecosystem } from "./manifest.ts";
 import type { ResultStore } from "./resultStore.ts";
-import type { ToolOutcome } from "./tool.ts";
+import type { ToolOutcome, ToolRequest } from "./tool.ts";
 import { packageErrors, resultRows } from "../../../webapp/site/static/js/comparison.js";
 
 // The "comparison" object of a Host Job (contract/examples/).
@@ -28,14 +28,13 @@ export interface ComparisonJob {
   results: ToolResult[];
 }
 
-// What the command asks the Tool for. The window is the fallback for a Comparison where no
-// Tool run gives a result; a result carries the window and the weighting of its run.
-export interface ComparisonRequest {
-  ecosystem: Ecosystem;
-  packages: string[];
-  startDate: string;
-  endDate: string;
-}
+// What the command asks the Tool for: the packages, and the window, the weighting, and the
+// data source of the settings (the same values as in each ToolRequest). A result carries
+// the values of its run; these values fill a package where the Tool gave no result.
+export type ComparisonRequest = { packages: string[] } & Pick<
+  ToolRequest,
+  "ecosystem" | "startDate" | "endDate" | "weightingType" | "halfLife" | "dataSource"
+>;
 
 // One row of the result table (resultRows in comparison.js).
 export interface ComparisonRow {
@@ -54,6 +53,7 @@ export const COMPARISON_ECOSYSTEMS: readonly Ecosystem[] = ["npm", "pypi", "carg
 // package in the line charts. A unit test checks that webapp.js holds the same values.
 export const SERIES_COLORS: Readonly<Record<string, string>> = { MTTU: "#2a78d6", MTTR: "#eb6834" };
 export const PACKAGE_COLORS: readonly string[] = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4"];
+export const PACKAGE_POINT_STYLES = ["circle", "rect", "triangle", "rectRot", "crossRot"] as const;
 
 // The messages from the panel to the webview: a status line while the Tool runs, then the
 // done Job.
@@ -173,9 +173,9 @@ function failedResult(request: ComparisonRequest, packageName: string, message: 
     mode: "window_summary",
     start_date: request.startDate,
     end_date: request.endDate,
-    weighting_type: "disable",
-    half_life: null,
-    data_source: "depsdev",
+    weighting_type: request.weightingType,
+    half_life: request.halfLife,
+    data_source: request.dataSource,
     summary: null,
     releases: [],
     error: message,

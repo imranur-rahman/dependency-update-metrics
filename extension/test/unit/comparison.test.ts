@@ -12,8 +12,10 @@ import {
   comparisonOutcomes,
   comparisonRows,
   PACKAGE_COLORS,
+  PACKAGE_POINT_STYLES,
   parsePackageNames,
   SERIES_COLORS,
+  type ComparisonRequest,
 } from "../../src/core/comparison.ts";
 import type { ToolResult } from "../../src/core/display.ts";
 import { ResultStore } from "../../src/core/resultStore.ts";
@@ -46,11 +48,25 @@ function exampleJob(name: string) {
   return JSON.parse(readFileSync(join(EXAMPLES, name), "utf8"));
 }
 
+// A Comparison request with the default settings.
+function request(changes: Partial<ComparisonRequest>): ComparisonRequest {
+  return {
+    ecosystem: "npm",
+    packages: [],
+    startDate: "2020-01-01",
+    endDate: "2023-01-01",
+    weightingType: "disable",
+    halfLife: null,
+    dataSource: "depsdev",
+    ...changes,
+  };
+}
+
 test("the Job of the Tool results has the shape of a done Host Job", () => {
   const example = exampleJob("job_done_with_package_error.json");
   const outcomes = example.results.map((result: ToolResult) => ({ kind: "result", result }) as const);
   const job = comparisonJob(
-    { ecosystem: "pypi", packages: ["mypkg", "nope"], startDate: "2019-06-01", endDate: "2019-07-01" },
+    request({ ecosystem: "pypi", packages: ["mypkg", "nope"], startDate: "2019-06-01", endDate: "2019-07-01" }),
     outcomes,
   );
   assert.deepEqual(job, { ...example, job_id: "mttx-extension" });
@@ -64,7 +80,7 @@ test("a package without dependencies shows the no-dependencies text and no bar",
     summary: { ...ok.summary!, mttu: 0, mttr: 0, num_dependencies: 0, status: "no_deps" },
   };
   const job = comparisonJob(
-    { ecosystem: "pypi", packages: ["mypkg", "left-pad"], startDate: "2020-01-01", endDate: "2023-01-01" },
+    request({ ecosystem: "pypi", packages: ["mypkg", "left-pad"] }),
     [
       { kind: "result", result: ok },
       { kind: "result", result: noDeps },
@@ -95,6 +111,8 @@ test("the webview charts use the colors of the Webapp charts", () => {
   assert.deepEqual(SERIES_COLORS, { MTTU: "#2a78d6", MTTR: "#eb6834" });
   assert.match(webapp, /const PACKAGE_COLORS = \["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4"\];/);
   assert.deepEqual(PACKAGE_COLORS, ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4"]);
+  assert.match(webapp, /const PACKAGE_POINT_STYLES = \["circle", "rect", "triangle", "rectRot", "crossRot"\];/);
+  assert.deepEqual(PACKAGE_POINT_STYLES, ["circle", "rect", "triangle", "rectRot", "crossRot"]);
 });
 
 test("the hover link starts a Comparison with the package of the dependency", () => {
@@ -114,10 +132,10 @@ test("the Comparison gets the outcome of each package through the result store",
         : { kind: "result", result: { ...ok, package: request.packageName } },
   };
   const store = new ResultStore(runner, (key) => ({
-    ecosystem: key.ecosystem,
+    ...request({ ecosystem: key.ecosystem }),
     packageName: key.name,
-    startDate: "2024-10-22",
     outputDir: "out",
+    timeoutSeconds: 600,
   }));
   const outcomes = await comparisonOutcomes(store, "npm", ["express", "nope", "koa"]);
   assert.deepEqual(
@@ -126,9 +144,17 @@ test("the Comparison gets the outcome of each package through the result store",
   );
 });
 
-test("a Tool run without a result becomes a package error in the Job", () => {
+test("a Tool run without a result becomes a package error with the settings of the request", () => {
   const job = comparisonJob(
-    { ecosystem: "npm", packages: ["express"], startDate: "2024-10-22", endDate: "2026-10-22" },
+    request({
+      ecosystem: "npm",
+      packages: ["express"],
+      startDate: "2024-10-22",
+      endDate: "2026-10-22",
+      weightingType: "exponential",
+      halfLife: 30,
+      dataSource: "native",
+    }),
     [{ kind: "failed", message: "spawn dependency-metrics ENOENT" }],
   );
   assert.deepEqual(job.comparison, {
@@ -137,9 +163,10 @@ test("a Tool run without a result becomes a package error in the Job", () => {
     start_date: "2024-10-22",
     end_date: "2026-10-22",
     mode: "window_summary",
-    weighting_type: "disable",
-    half_life: null,
+    weighting_type: "exponential",
+    half_life: 30,
   });
+  assert.equal(job.results[0].data_source, "native");
   assert.deepEqual(comparisonRows(job), [
     { package: "express", mttu: "–", mttr: "–", dependencies: 0, error: "spawn dependency-metrics ENOENT" },
   ]);
