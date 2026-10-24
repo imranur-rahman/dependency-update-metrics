@@ -1,6 +1,6 @@
 name: MTTX Dependency Update Metrics
 description: MTTU and MTTR of npm, PyPI, and Cargo packages, and of the dependencies that a pull request adds
-author: Imranur Rahman, Ranindya Paramitha, Mahzabina Tamanna, and Laurie Williams
+author: Imranur Rahman, Ranindya Paramitha, Mahzabin Tamanna, and Laurie Williams
 branding:
   icon: clock
   color: blue
