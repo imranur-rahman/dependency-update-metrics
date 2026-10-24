@@ -124,6 +124,14 @@
           </div>
           <i class="fas fa-external-link-alt"></i>
         </a>
+        <a href="https://doi.org/10.1109/ASE63991.2025.00229" class="work-item" target="_blank" rel="noopener">
+          <div class="work-info">
+            <h5>Which Is Better For Reducing Outdated and Vulnerable Dependencies: Pinning or Floating?</h5>
+            <p>Compares pinned and floating version constraints for outdated and vulnerable dependencies.</p>
+            <span class="work-venue">ASE 2025</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
         <a href="https://arxiv.org/abs/2607.15315" class="work-item" target="_blank" rel="noopener">
           <div class="work-info">
             <h5>CHRONO-RESOLUTION: A Dependency Resolution Dataset at Release Points for npm, PyPI, and crates.io Packages</h5>
@@ -155,14 +163,14 @@
             <h1 class="title is-2 publication-title">Beyond Stars: MTTX To Measure Developers' Responsiveness to Dependency Update and Remediation</h1>
             <h2 class="subtitle is-4">How fast do open-source packages update their dependencies and remediate known vulnerable dependencies, over time?</h2>
             <div class="is-size-5 publication-authors">
-              <span class="author-block"><a href="mailto:irahman3@ncsu.edu">Imranur Rahman</a><sup>1</sup>,</span>
-              <span class="author-block">Ranindya Paramitha<sup>2</sup>,</span>
-              <span class="author-block">Mahzabin Tamanna<sup>1</sup>,</span>
-              <span class="author-block">Laurie Williams<sup>1</sup></span>
+              <span class="author-block"><a href="mailto:irahman3@ncsu.edu">Imranur Rahman</a><sup>*</sup>,</span>
+              <span class="author-block">Ranindya Paramitha<sup>&dagger;</sup>,</span>
+              <span class="author-block">Mahzabin Tamanna<sup>*</sup>,</span>
+              <span class="author-block">Laurie Williams<sup>*</sup></span>
             </div>
             <div class="is-size-5 publication-authors">
-              <span class="author-block"><sup>1</sup>North Carolina State University,</span>
-              <span class="author-block"><sup>2</sup>University of Bristol</span>
+              <span class="author-block"><sup>*</sup>North Carolina State University,</span>
+              <span class="author-block"><sup>&dagger;</sup>University of Bristol</span>
             </div>
 
             <div class="column has-text-centered">
@@ -216,9 +224,9 @@
                     <span>Container (GHCR)</span>
                   </a>
                 </span>
-                <!-- Zenodo: the concept DOI, which always resolves to the newest archived version -->
+                <!-- Zenodo: the version DOI of the archive that the paper cites -->
                 <span class="link-block">
-                  <a href="https://doi.org/10.5281/zenodo.23608336" target="_blank" rel="noopener"
+                  <a href="https://doi.org/10.5281/zenodo.23608337" target="_blank" rel="noopener"
                      class="external-link button is-normal is-rounded is-dark">
                     <span class="icon"><i class="fas fa-archive"></i></span>
                     <span>Zenodo</span>
@@ -709,7 +717,7 @@ docker run --rm -v "$PWD:/data" ghcr.io/imranur-rahman/mttx:0.2.1-osv-2026-10-23
           Cite the image digest for an exact rerun. The <a href="https://github.com/imranur-rahman/dependency-update-metrics#readme" target="_blank" rel="noopener">README</a> lists all options,
           <a href="https://github.com/imranur-rahman/dependency-update-metrics/blob/main/ALGORITHM.md" target="_blank" rel="noopener">ALGORITHM.md</a> describes how the metrics are computed, and
           <a href="https://github.com/imranur-rahman/dependency-update-metrics/blob/main/TESTING.md" target="_blank" rel="noopener">TESTING.md</a> maps each test to what it checks.
-          The source code is archived on <a href="https://doi.org/10.5281/zenodo.23608336" target="_blank" rel="noopener">Zenodo</a> (DOI 10.5281/zenodo.23608336).
+          The source code is archived on <a href="https://doi.org/10.5281/zenodo.23608337" target="_blank" rel="noopener">Zenodo</a> (DOI 10.5281/zenodo.23608337).
         </p>
       </div>
     </div>
@@ -787,10 +795,10 @@ docker run --rm -v "$PWD:/data" ghcr.io/imranur-rahman/mttx:0.2.1-osv-2026-10-23
       </div>
       <p>Until the paper is published, please cite the software:</p>
       <pre id="bibtex-code"><code>@software{rahman2026dependencyupdatemetric,
-  title  = {MTTX: Mean Time To Update and Mean Time To Remediate for Open-Source Dependencies},
+  title  = {Beyond Stars: {MTTX} To Measure Developers' Responsiveness to Dependency Update and Remediation},
   author = {Rahman, Imranur and Paramitha, Ranindya and Tamanna, Mahzabin and Williams, Laurie},
   year   = {2026},
-  doi    = {10.5281/zenodo.23608336},
+  doi    = {10.5281/zenodo.23608337},
   url    = {https://github.com/imranur-rahman/dependency-update-metrics}
 }</code></pre>
     </div>
