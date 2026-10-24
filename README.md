@@ -1,348 +1,79 @@
-# Dependency Update Metrics
+# MTTX: Dependency Update Metrics
 
-A Python tool for analyzing time-to-update (TTU) and time-to-remediate (TTR) metrics for package dependencies across different ecosystems (npm, PyPI, Cargo/crates.io).
+MTTX measures how quickly the developers of an open-source package respond to new dependency releases and to security fixes. For the direct dependencies of an npm, PyPI, or Cargo package, it computes:
 
-## Features
+- **MTTU (Mean Time To Update):** how long the dependencies stay behind their newest version.
+- **MTTR (Mean Time To Remediate):** how long the dependencies keep a known vulnerability after a fix is available.
 
-- **Multi-ecosystem support**: Analyze packages from npm, PyPI, and Cargo/crates.io
-- **Time-to-Update (TTU)**: Measure how long dependencies stay behind the latest version
-- **Time-to-Remediate (TTR)**: Measure how long known vulnerabilities remain unpatched
-- **Flexible weighting**: Support for linear, exponential, inverse, or no weighting
-- **OSV integration**: Uses the Open Source Vulnerabilities database for security analysis
-- **Export capabilities**: Export detailed worksheets and OSV data
+MTTX resolves each version constraint as of a past date, so a value never uses data from the future.
 
-## Project structure
+**Project homepage:** <https://imranur-rahman.github.io/dependency-update-metrics/>. It has the interactive dashboard, the demo video, and the links to every part.
 
-MTTX has one core, the Tool, and three front ends that run it. `GLOSSARY.md` defines each part, and `AGENTS.md` names the CI workflow of each part.
+## Use MTTX
 
-```text
-dependency-update-metrics/
-├── dependency_metrics/   The Tool: the dependency-metrics CLI and Python package (on PyPI)
-│   ├── cli.py            Command-line interface, batch runs, --resume, --json
-│   ├── analyzer.py       Interval timeline and the TTU/TTR (MTTU/MTTR) scoring
-│   ├── resolvers.py      Resolver cache and the historical resolvers of npm, PyPI, and crates.io
-│   ├── depsdev_resolver.py  Historical resolver that reads deps.dev (--depsdev)
-│   ├── reporting.py      JSON, CSV, and worksheet output
-│   ├── osv_builder.py    Builds the OSV index from the OSV downloads
-│   └── api.py            Public analyze() function and the JSON result format
-├── tests/                Tool tests: unit, integration, regression, and metamorphic (pytest)
-├── vendor/pip/           Patched pip fork (git submodule) that resolves PyPI constraints as of a date
-├── image/                Container image of the Tool on GHCR (Dockerfile, lock file, checks)
-├── host/                 Host: the server API, Job queue, and workers behind the interactive dashboard
-├── webapp/               Interactive dashboard: the project homepage on GitHub Pages
-│   ├── site/             Published files (HTML, CSS, and JavaScript)
-│   ├── sample/           Script that makes the precomputed sample Comparison
-│   └── tests/            Webapp tests (node --test)
-├── extension/            IDE extension for VS Code and Open VSX (TypeScript)
-│   └── demo/             Demo project with one manifest of each kind
-├── action/               GitHub Action, copied to imranur-rahman/mttx-action on release
-├── contract/examples/    Shared JSON examples of the result format; the tests of each part read them
-├── case_study/           Inputs and scripts of the manual validation of 90 packages
-├── docs/                 ADRs (docs/adr/), agent docs, and cited research
-├── ALGORITHM.md          How MTTU and MTTR are computed
-├── TESTING.md            Each test type and where it lives
-└── USAGE.md              All CLI options
-```
+| Where | How |
+|---|---|
+| Interactive dashboard | Compare up to five packages on the [project homepage](https://imranur-rahman.github.io/dependency-update-metrics/), with no installation. |
+| IDE extension | Install `imranur-rahman.mttx` from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=imranur-rahman.mttx) or [Open VSX](https://open-vsx.org/extension/imranur-rahman/mttx) (Cursor, Windsurf, VSCodium). |
+| GitHub Action | `uses: imranur-rahman/mttx-action@v1`, from the [GitHub Marketplace](https://github.com/marketplace/actions/mttx-dependency-update-metrics). See [action/README.md](action/README.md). |
+| CLI | `pip install dependency-update-metrics`, from [PyPI](https://pypi.org/project/dependency-update-metrics/). |
+| Container image | `ghcr.io/imranur-rahman/mttx`, on [GHCR](https://github.com/imranur-rahman/dependency-update-metrics/pkgs/container/mttx). See [image/README.md](image/README.md). |
 
-## Installation
-
-### From PyPI
+## Quick start
 
 ```bash
 pip install dependency-update-metrics
-```
 
-### From source
-
-```bash
-git clone https://github.com/imranur-rahman/dependency-update-metrics.git
-cd dependency-update-metrics
-pip install -e .
-```
-
-### With Docker (exact reruns)
-
-The container image `ghcr.io/imranur-rahman/mttx` holds the Tool with pinned dependencies and the patched pip, so a rerun years later uses the same environment:
-
-```bash
-docker run --rm -v "$PWD:/data" ghcr.io/imranur-rahman/mttx:<version>-osv-<YYYY-MM-DD> \
-  --package express --ecosystem npm --start-date 2024-01-01 --end-date 2025-01-01
-```
-
-- `mttx:<version>` (and `latest`) has no OSV index. MTTR needs `--build-osv` once, as with pip.
-- `mttx:<version>-osv-<YYYY-MM-DD>` holds the OSV index built on that date, so MTTR is the same in each rerun.
-
-The results and the cache go to `/data`. For exact reruns, cite the image digest (`ghcr.io/imranur-rahman/mttx@sha256:…`), not the tag. See [image/README.md](image/README.md).
-
-## Usage
-
-### As a command-line tool
-
-```bash
-# Basic usage
-dependency-metrics --ecosystem npm --package express
-
-# With date range
+# MTTU and MTTR of one package over a time window (the first run builds the OSV index)
 dependency-metrics --ecosystem npm --package express \
-  --start-date 2020-01-01 \
-  --end-date 2023-12-31
+  --start-date 2024-01-01 --end-date 2025-12-31 --build-osv
 
-# With exponential weighting
-dependency-metrics --ecosystem npm --package express \
-  --weighting-type exponential \
-  --half-life 180
-
-# Build OSV database first (one-time operation)
-dependency-metrics --ecosystem npm --package express --build-osv
-
-# Export detailed worksheets
-dependency-metrics --ecosystem npm --package express --get-worksheets
-
-# Get OSV vulnerability data
-dependency-metrics --ecosystem npm --package express --get-osv
-
-# Test a PyPI package
-dependency-metrics --ecosystem pypi --package requests --start-date 2020-01-01 --end-date 2021-01-01 --get-worksheets
-
-# Test a Cargo/crates.io package
-dependency-metrics --ecosystem cargo --package serde --start-date 2020-01-01 --end-date 2024-01-01
-
-# Bulk CSV input (parallel by default)
-dependency-metrics --input-csv ./input.csv --workers 8 --output-dir ./output
-
-# Resume an interrupted bulk run
-dependency-metrics --input-csv ./input.csv --output-dir ./output --resume
-
-# Per-release analysis: MTTU/MTTR at every release of the parent package
-dependency-metrics --ecosystem pypi --package requests \
-  --start-date 2020-01-01 --end-date 2021-01-01 \
-  --per-release --get-worksheets
-
-# Per-release in bulk CSV mode
-dependency-metrics --input-csv ./input.csv --per-release --workers 4
+# The same run in the container image, with the OSV index of that date inside
+docker run --rm -v "$PWD:/data" ghcr.io/imranur-rahman/mttx:0.2.1-osv-2026-10-23 \
+  --ecosystem npm --package express --start-date 2024-01-01 --end-date 2025-12-31 --depsdev
 ```
 
-Input CSV columns: `ecosystem`, `package_name`, optional `start_date`, optional `end_date`.
-Accepted ecosystem values are `npm`, `pypi`, `cargo`, and `crates.io`; `crates.io` is normalized to `cargo` in outputs.
-If `end_date` is omitted, the CLI `--end-date` value is used; when `--end-date` is also omitted, it defaults to today.
-Extra columns are allowed; duplicates are removed by `ecosystem, package_name, end_date`.
-Bulk mode computes metrics per package using the latest dependency set.
+[USAGE.md](USAGE.md) lists every option: batch runs from a CSV file, `--per-release`, weighting, `--json`, worksheets, and the cache. [ALGORITHM.md](ALGORITHM.md) describes how MTTU and MTTR are computed.
 
-### In GitHub Actions
+## Project structure
 
-The MTTX Action runs the Tool image in a workflow. It reports the MTTU and MTTR of chosen packages (with badges and thresholds), or comments on a pull request with the MTTU and MTTR of the dependencies that it adds. See [`action/README.md`](action/README.md).
-
-```yaml
-- uses: imranur-rahman/mttx-action@v1
-  with:
-    packages: express, koa
-    ecosystem: npm
-    max-mttr-days: 30
+```text
+dependency-update-metrics/
+├── dependency_metrics/   The Tool: the dependency-metrics CLI and Python package
+├── tests/                Tool tests: unit, integration, regression, and metamorphic
+├── vendor/pip/           Patched pip fork (git submodule) that resolves PyPI constraints as of a date
+├── image/                Container image of the Tool on GHCR
+├── host/                 Server API, Job queue, and workers behind the interactive dashboard
+├── webapp/               Interactive dashboard and project homepage (GitHub Pages)
+├── extension/            IDE extension for VS Code and Open VSX, with a demo project
+├── action/               GitHub Action, copied to imranur-rahman/mttx-action on release
+├── contract/examples/    Shared JSON examples of the result format, which the tests of each part read
+├── case_study/           Inputs and scripts of the manual validation of 90 packages
+└── docs/                 Architecture decision records and cited research
 ```
-
-### As a Python module
-
-```python
-from datetime import datetime
-from pathlib import Path
-from dependency_metrics.analyzer import DependencyAnalyzer
-
-# Create analyzer
-analyzer = DependencyAnalyzer(
-    ecosystem="npm",
-    package="express",
-    start_date=datetime(2020, 1, 1),
-    end_date=datetime(2023, 12, 31),
-    weighting_type="exponential",
-    half_life=180,
-    output_dir=Path("./output")
-)
-
-# Run analysis
-results = analyzer.analyze()
-
-print(f"Average TTU: {results['ttu']:.2f} days")
-print(f"Average TTR: {results['ttr']:.2f} days")
-```
-
-## Command-line Arguments
-
-- `--ecosystem`: Ecosystem to analyze (`npm`, `pypi`, `cargo`, or `crates.io`) [Required unless `--input-csv`]
-- `--package`: Package name to analyze [Required unless `--input-csv`]
-- `--input-csv`: CSV file with columns `ecosystem, package_name`, optional `start_date`, and optional `end_date`. If `end_date` is omitted, `--end-date` is used.
-- `--start-date`: Start date for analysis (YYYY-MM-DD) [Default: 1900-01-01]
-- `--end-date`: End date for analysis (YYYY-MM-DD) [Default: today]
-- `--weighting-type`: Weighting method (`linear`, `exponential`, `inverse`, `disable`) [Default: disable]
-- `--half-life`: Half-life in days (required for exponential weighting)
-- `--build-osv`: Build or rebuild the OSV vulnerability database. It downloads the npm, PyPI, and crates.io OSV zips (about 260 MB in total). Without `--package`, it only rebuilds the database.
-- `--osv-index-date`: Print the build date of the OSV database as JSON (`null` when there is no database), then exit
-- `--cache-stats`: Show the rows and the size of each namespace in the resolver cache (`<output-dir>/cache/cache.db`), then exit
-- `--cache-prune-gb N`: Remove the least recently used cache rows until the cache holds less than N GB of data, then exit. The prune does not run `VACUUM`, so the file does not shrink; SQLite reuses the freed pages
-- `--cache-clear`: Remove all cache rows, then exit
-- `--cache-namespace X`: With `--cache-clear`, remove only the rows of namespace X
-- `--get-osv`: Export OSV data for the package's dependencies
-- `--get-worksheets`: Export detailed analysis worksheets to Excel
-- `--output-dir`: Output directory for results [Default: ./output]
-- `--workers`: Number of parallel workers for bulk CSV mode [Default: min(8, CPU count)]
-- `--package-timeout`: Per-package analysis timeout in seconds (bulk CSV mode only). Packages that exceed this time receive an error row and are skipped [Default: disabled]
-- `--resume`: Resume bulk CSV runs by skipping completed rows and retrying errors
-- `--per-release`: Compute MTTU/MTTR at every release of the parent package within the window (one output row per release)
-- `--json`: Print the result as one JSON object on stdout, in the result shape of the Host API (needs `--package`; see `USAGE.md`)
-
-## Weighting Methods
-
-### Disable (default)
-No weighting applied. All time periods are weighted equally.
-
-### Linear
-Weight decreases linearly with age:
-```
-weight = 1 - (age / max_age)
-```
-
-### Exponential
-Weight decreases exponentially based on half-life:
-```
-weight = exp(-λ * age)
-where λ = ln(2) / half_life
-```
-
-### Inverse
-Weight is inversely proportional to age:
-```
-weight = 1 / (1 + age)
-```
-
-## Output
-
-The tool generates several outputs in the specified output directory:
-
-1. **JSON results file**: Contains TTU, TTR, and metadata
-2. **OSV data** (with `--get-osv`): CSV file with vulnerability information
-3. **Excel worksheets** (with `--get-worksheets`): Detailed analysis for each dependency
-4. **Bulk CSV results** (with `--input-csv`): Summary CSV, plus an optional dependency details CSV with `--write-dependency-details`
-5. **Per-release results** (with `--per-release`): One row per package release with `package_version`, `package_release_date`, `window_start`, `window_end`, `mttu`, `mttr`
-
-### Example JSON output
-
-```json
-{
-  "package": "express",
-  "ecosystem": "npm",
-  "version": "4.18.2",
-  "start_date": "2020-01-01T00:00:00",
-  "end_date": "2023-12-31T00:00:00",
-  "weighting_type": "exponential",
-  "half_life": 180,
-  "ttu": 45.32,
-  "ttr": 12.15,
-  "num_dependencies": 30
-}
-```
-
-## How It Works
-
-1. **Package Analysis**: Fetches package metadata from the registry
-2. **Dependency Extraction**: Extracts dependencies from the package version closest to the end date
-3. **Timeline Construction**: Creates a timeline of version releases for each dependency
-4. **Version Resolution**: Resolves dependency versions at each time interval via ecosystem resolvers
-5. **Remediation Check**: Uses the OSV service to determine vulnerability remediation
-6. **Metric Calculation**:
-   - **TTU**: Measures time when dependency is not at the highest available version
-   - **TTR**: Measures time when dependency has known vulnerabilities
-7. **Weighting**: Applies optional time-based weighting to prioritize recent periods
-8. **Aggregation**: Averages metrics across all dependencies
-
-## Architecture Notes
-
-- Ecosystem-specific resolution is encapsulated in `dependency_metrics/resolvers.py`.
-- OSV remediation checks are handled by `dependency_metrics/osv_service.py`.
-- Reporting/export helpers live in `dependency_metrics/reporting.py`.
-- Bulk CSV mode groups rows by `(ecosystem, package_name)` and processes each group sequentially while running groups in parallel to maximize cache reuse.
-- For bulk runs, a single package analysis computes metrics across multiple end dates using the latest dependency set.
-- `--per-release` mode uses `analyze_at_release_points()` which fetches per-version dependency sets and builds a shared dep-cache covering the full window; it slices that cache for each release sub-window `[start_date, release_date]`.
-- **Cache invalidation:** `ResolverCache` (`dependency_metrics/resolvers.py`) persists all HTTP responses to a SQLite file at `<output-dir>/cache/cache.db`, keyed only by `(namespace, key)` — there is no TTL. This is fine for per-version data (a specific version's dependencies/metadata never changes), but package-level version-list lookups (`DepsDevClient.get_package()`'s `depsdev_package` namespace, and each resolver's `fetch_package_metadata()`/`_get_npm_time_data()` under the `metadata`/`npm_time` namespaces) cache the *entire*, mutable version list. Those lookups compare the requested `end_date` against the newest publish date already in the cached listing and transparently re-fetch whenever the cache can't yet rule out a newer release — so re-running against the same `--output-dir` won't silently miss versions published since the last run. The tradeoff: analyzing "as of today" re-fetches each package's version list on every run (since "today" is always newer than the last known release), which is the correct behavior — only truly historical, fixed `end_date` values benefit from the cache staying warm across runs.
-
-## Requirements
-
-- Python 3.10+
-- git (for auto-installing the patched pip on first PyPI analysis)
-- npm CLI (for npm ecosystem analysis) `sudo apt install nodejs npm`
-- Internet connection (for fetching package metadata and OSV data)
-
-> **Note:** PyPI analysis uses a patched pip fork that adds date-bounded version
-> resolution. The tool clones it automatically to `~/.dependency_metrics/vendor/pip`
-> on first use — no manual setup required.
 
 ## Development
 
-### Setup development environment
-
 ```bash
-git clone https://github.com/imranur-rahman/dependency-update-metrics.git
+git clone --recurse-submodules https://github.com/imranur-rahman/dependency-update-metrics.git
 cd dependency-update-metrics
 pip install -e ".[dev]"
+pytest tests/ -q
 ```
 
-### Run tests
+[TESTING.md](TESTING.md) maps each test type to its tests, and [AGENTS.md](AGENTS.md) gives the checks and the CI workflow of each part.
 
-```bash
-pytest
-```
+## Citation
 
-### Code formatting
-
-```bash
-black dependency_metrics/
-```
-
-## Publishing to PyPI
-
-### Prepare for publishing
-
-```bash
-# Install build tools
-pip install build twine
-
-# Build distribution
-python -m build
-
-# Check distribution
-twine check dist/*
-```
-
-### Upload to PyPI
-
-```bash
-# Upload to Test PyPI first
-twine upload --repository testpypi dist/*
-
-# If all looks good, upload to PyPI
-twine upload dist/*
+```bibtex
+@software{rahman2026dependencyupdatemetric,
+  title  = {MTTX: Mean Time To Update and Mean Time To Remediate for Open-Source Dependencies},
+  author = {Rahman, Imranur and Paramitha, Ranindya and Tamanna, Mahzabina and Williams, Laurie},
+  year   = {2026},
+  url    = {https://github.com/imranur-rahman/dependency-update-metrics}
+}
 ```
 
 ## License
 
-MIT License - see LICENSE file for details
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## Citation
-
-If you use this tool in your research, please cite:
-
-```bibtex
-@software{dependency_metrics,
-  author = {Rahman, Imranur},
-  title = {Dependency Update Metrics},
-  year = {2025},
-  url = {https://github.com/imranur-rahman/dependency-update-metrics}
-}
-```
-
-## Acknowledgments
-
-- Uses data from [Open Source Vulnerabilities (OSV)](https://osv.dev/)
-- Package metadata from [npm Registry](https://registry.npmjs.org/) and [PyPI](https://pypi.org/)
+MIT. See [LICENSE](LICENSE).
