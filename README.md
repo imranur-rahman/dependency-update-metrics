@@ -69,7 +69,7 @@ pytest tests/ -q
 
 ```bibtex
 @software{rahman2026dependencyupdatemetric,
-  title  = {Beyond Stars: {MTTX} To Measure Developers' Responsiveness to Dependency Update and Remediation},
+  title  = {Beyond Stars: {MTTX} Brings Developer Responsiveness to Dependency Decisions, from Dashboard to {IDE} to {CI}},
   author = {Rahman, Imranur and Paramitha, Ranindya and Tamanna, Mahzabin and Williams, Laurie},
   year   = {2026},
   doi    = {10.5281/zenodo.23608337},
