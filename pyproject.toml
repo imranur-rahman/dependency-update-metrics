@@ -5,11 +5,12 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "dependency-update-metrics"
 version = "0.2.1"
-description = "A tool for analyzing time-to-update and time-to-remediate metrics for package dependencies"
+description = "MTTX: how quickly the developers of a package update their dependencies (MTTU) and remediate vulnerable ones (MTTR), for npm, PyPI, and Cargo"
 readme = "README.md"
 authors = [
     {name = "Imranur Rahman", email = "irahman3@ncsu.edu"},
-    {name = "Mahzabina Tamanna", email = "mtamman@ncsu.edu"},
+    {name = "Ranindya Paramitha"},
+    {name = "Mahzabina Tamanna", email = "mtamann@ncsu.edu"},
     {name = "Laurie Williams", email = "lawilli3@ncsu.edu"},
 ]
 license = {text = "MIT"}
