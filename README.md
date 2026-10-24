@@ -1,5 +1,7 @@
 # MTTX: Dependency Update Metrics
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23608336.svg)](https://doi.org/10.5281/zenodo.23608336)
+
 MTTX measures how quickly the developers of an open-source package respond to new dependency releases and to security fixes. For the direct dependencies of an npm, PyPI, or Cargo package, it computes:
 
 - **MTTU (Mean Time To Update):** how long the dependencies stay behind their newest version.
@@ -70,6 +72,7 @@ pytest tests/ -q
   title  = {MTTX: Mean Time To Update and Mean Time To Remediate for Open-Source Dependencies},
   author = {Rahman, Imranur and Paramitha, Ranindya and Tamanna, Mahzabina and Williams, Laurie},
   year   = {2026},
+  doi    = {10.5281/zenodo.23608336},
   url    = {https://github.com/imranur-rahman/dependency-update-metrics}
 }
 ```
