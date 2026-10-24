@@ -230,11 +230,11 @@
                     <span>Algorithm</span>
                   </a>
                 </span>
-                <!-- Video: replace with the YouTube link when the demo video is public -->
                 <span class="link-block">
-                  <a class="button is-normal is-rounded is-dark is-static-soon" title="Coming soon" aria-disabled="true">
+                  <a href="https://youtu.be/MZqjDnJ8bEQ" target="_blank" rel="noopener"
+                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon"><i class="fab fa-youtube"></i></span>
-                    <span>Video (soon)</span>
+                    <span>Video</span>
                   </a>
                 </span>
               </div>
@@ -758,11 +758,17 @@ docker run --rm -v "$PWD:/data" ghcr.io/imranur-rahman/mttx:0.2.1-osv-2026-10-23
     </div>
   </section>
 
-  <!-- Demo video: replace this section's body with the YouTube embed when the video is public -->
-  <section class="section">
+  <!-- Demo video: the privacy-enhanced YouTube player, which sets no cookie until the visitor plays the video -->
+  <section class="section" id="demo-video">
     <div class="container is-max-desktop has-text-centered">
       <h2 class="title is-3">Demo Video</h2>
-      <p class="stat-label">Coming soon.</p>
+      <div class="video-frame">
+        <iframe src="https://www.youtube-nocookie.com/embed/MZqjDnJ8bEQ" title="MTTX demo video"
+                loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+      </div>
+      <p class="is-size-7 mt-2"><a href="https://youtu.be/MZqjDnJ8bEQ" target="_blank" rel="noopener">Watch on YouTube</a></p>
     </div>
   </section>
 

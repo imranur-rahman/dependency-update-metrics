@@ -210,3 +210,12 @@ test("the links at the top of the homepage name every place where MTTX is publis
   }
   assert.match(links[1], /Zenodo/);
 });
+
+test("the homepage embeds the demo video and links to it at the top", () => {
+  const html = readFileSync(join(siteDir, "index.html"), "utf8");
+  const video = html.match(/<section[^>]*id="demo-video"[^>]*>([\s\S]*?)<\/section>/);
+  assert.ok(video, "the demo video section is missing");
+  assert.match(video[1], /<iframe src="https:\/\/www\.youtube-nocookie\.com\/embed\/MZqjDnJ8bEQ"/);
+  const links = html.match(/<div class="publication-links">([\s\S]*?)<\/div>/);
+  assert.ok(links[1].includes('href="https://youtu.be/MZqjDnJ8bEQ"'), "the Video link at the top is missing");
+});
