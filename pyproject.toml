@@ -10,7 +10,7 @@ readme = "README.md"
 authors = [
     {name = "Imranur Rahman", email = "irahman3@ncsu.edu"},
     {name = "Ranindya Paramitha"},
-    {name = "Mahzabina Tamanna", email = "mtamann@ncsu.edu"},
+    {name = "Mahzabin Tamanna", email = "mtamann@ncsu.edu"},
     {name = "Laurie Williams", email = "lawilli3@ncsu.edu"},
 ]
 license = {text = "MIT"}

@@ -70,7 +70,7 @@ pytest tests/ -q
 ```bibtex
 @software{rahman2026dependencyupdatemetric,
   title  = {MTTX: Mean Time To Update and Mean Time To Remediate for Open-Source Dependencies},
-  author = {Rahman, Imranur and Paramitha, Ranindya and Tamanna, Mahzabina and Williams, Laurie},
+  author = {Rahman, Imranur and Paramitha, Ranindya and Tamanna, Mahzabin and Williams, Laurie},
   year   = {2026},
   doi    = {10.5281/zenodo.23608336},
   url    = {https://github.com/imranur-rahman/dependency-update-metrics}
