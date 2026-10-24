@@ -11,6 +11,39 @@ A Python tool for analyzing time-to-update (TTU) and time-to-remediate (TTR) met
 - **OSV integration**: Uses the Open Source Vulnerabilities database for security analysis
 - **Export capabilities**: Export detailed worksheets and OSV data
 
+## Project structure
+
+MTTX has one core, the Tool, and three front ends that run it. `GLOSSARY.md` defines each part, and `AGENTS.md` names the CI workflow of each part.
+
+```text
+dependency-update-metrics/
+├── dependency_metrics/   The Tool: the dependency-metrics CLI and Python package (on PyPI)
+│   ├── cli.py            Command-line interface, batch runs, --resume, --json
+│   ├── analyzer.py       Interval timeline and the TTU/TTR (MTTU/MTTR) scoring
+│   ├── resolvers.py      Resolver cache and the historical resolvers of npm, PyPI, and crates.io
+│   ├── depsdev_resolver.py  Historical resolver that reads deps.dev (--depsdev)
+│   ├── reporting.py      JSON, CSV, and worksheet output
+│   ├── osv_builder.py    Builds the OSV index from the OSV downloads
+│   └── api.py            Public analyze() function and the JSON result format
+├── tests/                Tool tests: unit, integration, regression, and metamorphic (pytest)
+├── vendor/pip/           Patched pip fork (git submodule) that resolves PyPI constraints as of a date
+├── image/                Container image of the Tool on GHCR (Dockerfile, lock file, checks)
+├── host/                 Host: the server API, Job queue, and workers behind the interactive dashboard
+├── webapp/               Interactive dashboard: the project homepage on GitHub Pages
+│   ├── site/             Published files (HTML, CSS, and JavaScript)
+│   ├── sample/           Script that makes the precomputed sample Comparison
+│   └── tests/            Webapp tests (node --test)
+├── extension/            IDE extension for VS Code and Open VSX (TypeScript)
+│   └── demo/             Demo project with one manifest of each kind
+├── action/               GitHub Action, copied to imranur-rahman/mttx-action on release
+├── contract/examples/    Shared JSON examples of the result format; the tests of each part read them
+├── case_study/           Inputs and scripts of the manual validation of 90 packages
+├── docs/                 ADRs (docs/adr/), agent docs, and cited research
+├── ALGORITHM.md          How MTTU and MTTR are computed
+├── TESTING.md            Each test type and where it lives
+└── USAGE.md              All CLI options
+```
+
 ## Installation
 
 ### From PyPI
