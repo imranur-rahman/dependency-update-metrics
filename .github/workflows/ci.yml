@@ -48,17 +48,17 @@ jobs:
         python-version: ['3.10', '3.11', '3.12']
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
       with:
         submodules: true
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v7
       with:
         python-version: ${{ matrix.python-version }}
 
     - name: Set up Node.js (for npm CLI)
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v7
       with:
         node-version: '18'
 
@@ -73,9 +73,9 @@ jobs:
         pytest tests/ -v --cov=dependency_metrics --cov-report=xml
 
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v4
+      uses: codecov/codecov-action@v7
       with:
-        file: ./coverage.xml
+        files: ./coverage.xml
         flags: unittests
         name: codecov-${{ matrix.os }}-py${{ matrix.python-version }}
 
@@ -83,12 +83,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
       with:
         submodules: true
 
     - name: Set up Python
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v7
       with:
         python-version: '3.11'
 
@@ -112,12 +112,12 @@ jobs:
     needs: [test, lint]
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
       with:
         submodules: true
 
     - name: Set up Python
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v7
       with:
         python-version: '3.11'
 
@@ -146,7 +146,7 @@ jobs:
       run: twine check dist/*
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: dist-packages
         path: dist/
@@ -166,7 +166,7 @@ jobs:
 
     steps:
     - name: Download artifacts
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         name: dist-packages
         path: dist/
@@ -182,7 +182,7 @@ jobs:
     if: github.event_name != 'release'
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
       with:
         submodules: true
         # The full history, to find whether image/ changed.
@@ -204,15 +204,15 @@ jobs:
         fi
 
     - name: Restore the OSV index of the week
-      uses: actions/cache@v4
+      uses: actions/cache@v6
       with:
         path: osv-index/osv_database.parquet
         key: mttx-image-osv-${{ steps.meta.outputs.week }}
 
-    - uses: docker/setup-buildx-action@v3
+    - uses: docker/setup-buildx-action@v4
 
     - name: Build the image without the OSV index
-      uses: docker/build-push-action@v6
+      uses: docker/build-push-action@v7
       with:
         context: .
         file: image/Dockerfile
@@ -227,7 +227,7 @@ jobs:
       run: bash image/build-osv-index.sh mttx:ci osv-index >> "$GITHUB_OUTPUT"
 
     - name: Build the image with the OSV index
-      uses: docker/build-push-action@v6
+      uses: docker/build-push-action@v7
       with:
         context: .
         file: image/Dockerfile
@@ -243,12 +243,12 @@ jobs:
 
     # A change in image/ also builds the arm64 image (no load, no run), so that an arm64
     # break shows before a release.
-    - uses: docker/setup-qemu-action@v3
+    - uses: docker/setup-qemu-action@v4
       if: steps.meta.outputs.image_changed == 'true'
 
     - name: Build the image without the OSV index for arm64
       if: steps.meta.outputs.image_changed == 'true'
-      uses: docker/build-push-action@v6
+      uses: docker/build-push-action@v7
       with:
         context: .
         file: image/Dockerfile
@@ -270,7 +270,7 @@ jobs:
       IMAGE: ghcr.io/imranur-rahman/mttx
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
       with:
         submodules: true
 
@@ -281,17 +281,17 @@ jobs:
         echo "version=$version" >> "$GITHUB_OUTPUT"
         echo "pip_commit=$(git -C vendor/pip rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
-    - uses: docker/setup-qemu-action@v3
-    - uses: docker/setup-buildx-action@v3
+    - uses: docker/setup-qemu-action@v4
+    - uses: docker/setup-buildx-action@v4
 
-    - uses: docker/login-action@v3
+    - uses: docker/login-action@v4
       with:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Build the image for amd64, to build the OSV index
-      uses: docker/build-push-action@v6
+      uses: docker/build-push-action@v7
       with:
         context: .
         file: image/Dockerfile
@@ -305,7 +305,7 @@ jobs:
 
     - name: Push the image without the OSV index
       id: push-tool
-      uses: docker/build-push-action@v6
+      uses: docker/build-push-action@v7
       with:
         context: .
         file: image/Dockerfile
@@ -322,7 +322,7 @@ jobs:
 
     - name: Push the image with the OSV index
       id: push-osv
-      uses: docker/build-push-action@v6
+      uses: docker/build-push-action@v7
       with:
         context: .
         file: image/Dockerfile
