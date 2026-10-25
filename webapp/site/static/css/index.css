@@ -970,14 +970,6 @@ a:focus {
 
 .pipeline-foundation {
   grid-column: 1 / -1;
-  flex-direction: row;
-  justify-content: center;
-  gap: 0.75rem;
-  border-style: dashed;
-}
-
-.pipeline-foundation small {
-  text-align: left;
 }
 
 .pipeline-panel {
@@ -1074,14 +1066,6 @@ a:focus {
   .pipeline-arrow {
     justify-content: center;
     transform: rotate(90deg);
-  }
-
-  .pipeline-foundation {
-    flex-direction: column;
-  }
-
-  .pipeline-foundation small {
-    text-align: center;
   }
 }
 
