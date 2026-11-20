@@ -67,7 +67,20 @@ pytest tests/ -q
 
 ## Citation
 
+Cite the paper. The second entry cites the archived version of the software.
+
 ```bibtex
+@misc{rahman2026starsmttxbringsdeveloper,
+  title         = {Beyond Stars: {MTTX} Brings Developer Responsiveness to Dependency Decisions, from Dashboard to {IDE} to {GitHub} Actions},
+  author        = {Rahman, Imranur and Paramitha, Ranindya and Tamanna, Mahzabin and Williams, Laurie},
+  year          = {2026},
+  eprint        = {2611.23285},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.SE},
+  doi           = {10.48550/arXiv.2611.23285},
+  url           = {https://arxiv.org/abs/2611.23285}
+}
+
 @software{rahman2026dependencyupdatemetric,
   title  = {Beyond Stars: {MTTX} Brings Developer Responsiveness to Dependency Decisions, from Dashboard to {IDE} to {GitHub} Actions},
   author = {Rahman, Imranur and Paramitha, Ranindya and Tamanna, Mahzabin and Williams, Laurie},

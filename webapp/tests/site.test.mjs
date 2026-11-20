@@ -209,6 +209,7 @@ test("the links at the top of the homepage name every place where MTTX is publis
     assert.ok(links[1].includes(`href="${url}"`), `the top link ${url} is missing`);
   }
   assert.ok(links[1].includes('href="https://doi.org/10.5281/zenodo.23608337"'), "the Zenodo link at the top is missing");
+  assert.ok(links[1].includes('href="https://arxiv.org/abs/2611.23285"'), "the arXiv link of the paper at the top is missing");
 });
 
 test("the homepage embeds the demo video and links to it at the top", () => {
