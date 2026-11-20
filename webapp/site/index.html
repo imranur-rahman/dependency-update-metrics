@@ -63,7 +63,6 @@
 
   <!-- Page-specific styles -->
   <style>
-    .button.is-static-soon { opacity: 0.55; cursor: not-allowed; }
     .goal-card { height: 100%; border-top: 4px solid #2563eb; }
     .goal-card.scal { border-top-color: #009E73; }
     .goal-card.ext { border-top-color: #E69F00; }
@@ -175,11 +174,11 @@
 
             <div class="column has-text-centered">
               <div class="publication-links">
-                <!-- Paper: replace with the PDF link when the paper is public -->
                 <span class="link-block">
-                  <a class="button is-normal is-rounded is-dark is-static-soon" title="Coming soon" aria-disabled="true">
-                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                    <span>Paper (soon)</span>
+                  <a href="https://arxiv.org/abs/2611.23285" target="_blank" rel="noopener"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
+                    <span>Paper (arXiv)</span>
                   </a>
                 </span>
                 <span class="link-block">
@@ -793,8 +792,19 @@ docker run --rm -v "$PWD:/data" ghcr.io/imranur-rahman/mttx:0.2.1-osv-2026-10-23
           <span class="copy-text">Copy</span>
         </button>
       </div>
-      <p>Until the paper is published, please cite the software:</p>
-      <pre id="bibtex-code"><code>@software{rahman2026dependencyupdatemetric,
+      <p>Please cite the paper. To cite the archived version of the software, use the second entry.</p>
+      <pre id="bibtex-code"><code>@misc{rahman2026starsmttxbringsdeveloper,
+  title         = {Beyond Stars: {MTTX} Brings Developer Responsiveness to Dependency Decisions, from Dashboard to {IDE} to {GitHub} Actions},
+  author        = {Rahman, Imranur and Paramitha, Ranindya and Tamanna, Mahzabin and Williams, Laurie},
+  year          = {2026},
+  eprint        = {2611.23285},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.SE},
+  doi           = {10.48550/arXiv.2611.23285},
+  url           = {https://arxiv.org/abs/2611.23285}
+}
+
+@software{rahman2026dependencyupdatemetric,
   title  = {Beyond Stars: {MTTX} Brings Developer Responsiveness to Dependency Decisions, from Dashboard to {IDE} to {GitHub} Actions},
   author = {Rahman, Imranur and Paramitha, Ranindya and Tamanna, Mahzabin and Williams, Laurie},
   year   = {2026},
