@@ -34,20 +34,17 @@ jobs:
     - name: Run tests
       run: node --test webapp/tests/*.test.mjs
 
-  deploy:
+  # The upload and the deploy are separate jobs. In one job, deploy-pages asked for the artifact
+  # about 1 second after the upload, and the artifact API did not show it yet ("No artifacts named
+  # github-pages"). A re-run of that job then found 2 artifacts. GitHub's Pages template also uses
+  # two jobs.
+  build:
     needs: test
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    concurrency:
-      group: pages
-      cancel-in-progress: false
+      pages: read
 
     steps:
     - uses: actions/checkout@v7
@@ -77,6 +74,20 @@ jobs:
       with:
         path: ${{ runner.temp }}/site
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+
+    steps:
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v5
